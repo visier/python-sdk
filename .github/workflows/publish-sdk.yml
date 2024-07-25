@@ -3,16 +3,16 @@ name: Publish Python SDK to PyPI
 on:
   workflow_dispatch:
     inputs:
-      branch:
-        description: 'Branch to use'
+      publish_branch:
         required: true
-        default: 'main'
+        description: 'Branch to publish from'
+
   pull_request:
     branches:
-      - feature/VAN-122988-publich-sdk-package
+      - feature/VAN-122988-test
 
 jobs:
-  publish:
+  publish_package:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,10 +21,22 @@ jobs:
           # Add more package directories as needed
 
     steps:
+      - name: Determine branch
+        id: determine-branch
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "BRANCH=${{ github.event.inputs.publish_branch }}" >> $GITHUB_ENV
+          else
+            echo "Error: Unsupported event type '${{ github.event_name }}'"
+            exit 1
+          fi
+
       - name: Check out code
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.inputs.branch }}
+          ref: ${{ env.BRANCH }}
 
       - name: Install dependencies
         run: |
@@ -39,3 +51,10 @@ jobs:
           cd ${{ matrix.package-dir }}
           python setup.py sdist bdist_wheel
           python -m twine upload dist/*
+
+      - name: Merge PR
+        if: github.event_name == 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge ${{ github.event.pull_request.number }} --merge --delete-branch
