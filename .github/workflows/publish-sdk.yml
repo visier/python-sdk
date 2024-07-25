@@ -1,0 +1,41 @@
+name: Publish Python SDK to PyPI
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to use'
+        required: true
+        default: 'main'
+  pull_request:
+    branches:
+      - feature/VAN-122988-publich-sdk-package
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package-dir:
+          - src/visier.sdk.api.model_query
+          # Add more package directories as needed
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install setuptools wheel twine
+
+      - name: Build and publish packages
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          cd ${{ matrix.package-dir }}
+          python setup.py sdist bdist_wheel
+          python -m twine upload dist/*
