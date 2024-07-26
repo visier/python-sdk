@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         package-dir:
-          - src/visier.sdk.api.data_version_export
+          - src/visier.sdk.api.tenant_management
           # TODO add all packages
 
     steps:
@@ -40,10 +40,14 @@ jobs:
           python -m twine upload dist/*
 
   merge_pr:
+    needs: publish_package
     name: Merge PR
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request' }}
     steps:
+      - name: Check out before merge
+        uses: actions/checkout@v4
+
       - name: Merge PR
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
