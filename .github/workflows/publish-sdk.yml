@@ -2,41 +2,28 @@ name: Publish Python SDK to PyPI
 
 on:
   workflow_dispatch:
-    inputs:
-      publish_branch:
-        required: true
-        description: 'Branch to publish from'
 
   pull_request:
+    types:
+      - opened
     branches:
-      - feature/VAN-122988-test
+      - main
 
 jobs:
+  name: Publish Python SDK to PyPI
   publish_package:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         package-dir:
-          - src/visier.sdk.api.model_query
-          # Add more package directories as needed
+          - src/visier.sdk.api.data_version_export
+          # TODO add all packages
 
     steps:
-      - name: Determine branch
-        id: determine-branch
-        run: |
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            echo "BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
-          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo "BRANCH=${{ github.event.inputs.publish_branch }}" >> $GITHUB_ENV
-          else
-            echo "Error: Unsupported event type '${{ github.event_name }}'"
-            exit 1
-          fi
-
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          ref: ${{ env.BRANCH }}
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
 
       - name: Install dependencies
         run: |
@@ -52,9 +39,13 @@ jobs:
           python setup.py sdist bdist_wheel
           python -m twine upload dist/*
 
+  merge_pr:
+    name: Merge PR
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
       - name: Merge PR
-        if: github.event_name == 'pull_request'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           gh pr merge ${{ github.event.pull_request.number }} --merge --delete-branch
