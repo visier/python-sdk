@@ -1,0 +1,509 @@
+# visier.sdk.api.administration.UserGroupsV2Api
+
+All URIs are relative to *http://localhost*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**create_user_groups**](UserGroupsV2Api.md#create_user_groups) | **POST** /v2beta/admin/user-groups | Create multiple user groups
+[**delete_user_group**](UserGroupsV2Api.md#delete_user_group) | **DELETE** /v2beta/admin/user-groups/{userGroupId} | Delete a user group
+[**delete_user_groups**](UserGroupsV2Api.md#delete_user_groups) | **DELETE** /v2beta/admin/user-groups | Delete multiple user groups
+[**get_user_group**](UserGroupsV2Api.md#get_user_group) | **GET** /v2beta/admin/user-groups/{userGroupId} | Retrieve the details of a user group
+[**get_user_groups**](UserGroupsV2Api.md#get_user_groups) | **GET** /v2beta/admin/user-groups | Retrieve a list of user groups
+[**patch_user_groups**](UserGroupsV2Api.md#patch_user_groups) | **PATCH** /v2beta/admin/user-groups | Patch multiple user groups
+[**put_user_groups**](UserGroupsV2Api.md#put_user_groups) | **PUT** /v2beta/admin/user-groups | Update multiple user groups
+
+
+# **create_user_groups**
+> UserGroupChangeResponseDTO create_user_groups(user_groups_change_dto)
+
+Create multiple user groups
+
+Create new user groups. To specify the tenant in which to add new user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to create new user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+### Example
+
+
+```python
+import visier.sdk.api.administration
+from visier.sdk.api.administration.models.user_group_change_response_dto import UserGroupChangeResponseDTO
+from visier.sdk.api.administration.models.user_groups_change_dto import UserGroupsChangeDTO
+from visier.sdk.api.administration.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = visier.sdk.api.administration.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with visier.sdk.api.administration.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = visier.sdk.api.administration.UserGroupsV2Api(api_client)
+    user_groups_change_dto = visier.sdk.api.administration.UserGroupsChangeDTO() # UserGroupsChangeDTO | 
+
+    try:
+        # Create multiple user groups
+        api_response = api_instance.create_user_groups(user_groups_change_dto)
+        print("The response of UserGroupsV2Api->create_user_groups:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserGroupsV2Api->create_user_groups: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_groups_change_dto** | [**UserGroupsChangeDTO**](UserGroupsChangeDTO.md)|  | 
+
+### Return type
+
+[**UserGroupChangeResponseDTO**](UserGroupChangeResponseDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Default error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_user_group**
+> UserGroupSingleDeleteResponseDTO delete_user_group(user_group_id, delete_user_group_v2_request)
+
+Delete a user group
+
+Delete a specific user group. To specify the tenant in which to delete a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete a user group, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+### Example
+
+
+```python
+import visier.sdk.api.administration
+from visier.sdk.api.administration.models.delete_user_group_v2_request import DeleteUserGroupV2Request
+from visier.sdk.api.administration.models.user_group_single_delete_response_dto import UserGroupSingleDeleteResponseDTO
+from visier.sdk.api.administration.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = visier.sdk.api.administration.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with visier.sdk.api.administration.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = visier.sdk.api.administration.UserGroupsV2Api(api_client)
+    user_group_id = 'user_group_id_example' # str | The ID of user group to delete.
+    delete_user_group_v2_request = visier.sdk.api.administration.DeleteUserGroupV2Request() # DeleteUserGroupV2Request | 
+
+    try:
+        # Delete a user group
+        api_response = api_instance.delete_user_group(user_group_id, delete_user_group_v2_request)
+        print("The response of UserGroupsV2Api->delete_user_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserGroupsV2Api->delete_user_group: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_group_id** | **str**| The ID of user group to delete. | 
+ **delete_user_group_v2_request** | [**DeleteUserGroupV2Request**](DeleteUserGroupV2Request.md)|  | 
+
+### Return type
+
+[**UserGroupSingleDeleteResponseDTO**](UserGroupSingleDeleteResponseDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Default error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_user_groups**
+> UserGroupDeleteResponseDTO delete_user_groups(user_groups_delete_request_dto)
+
+Delete multiple user groups
+
+Delete user groups in bulk. To specify the tenant in which to delete user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+### Example
+
+
+```python
+import visier.sdk.api.administration
+from visier.sdk.api.administration.models.user_group_delete_response_dto import UserGroupDeleteResponseDTO
+from visier.sdk.api.administration.models.user_groups_delete_request_dto import UserGroupsDeleteRequestDTO
+from visier.sdk.api.administration.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = visier.sdk.api.administration.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with visier.sdk.api.administration.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = visier.sdk.api.administration.UserGroupsV2Api(api_client)
+    user_groups_delete_request_dto = visier.sdk.api.administration.UserGroupsDeleteRequestDTO() # UserGroupsDeleteRequestDTO | 
+
+    try:
+        # Delete multiple user groups
+        api_response = api_instance.delete_user_groups(user_groups_delete_request_dto)
+        print("The response of UserGroupsV2Api->delete_user_groups:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserGroupsV2Api->delete_user_groups: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_groups_delete_request_dto** | [**UserGroupsDeleteRequestDTO**](UserGroupsDeleteRequestDTO.md)|  | 
+
+### Return type
+
+[**UserGroupDeleteResponseDTO**](UserGroupDeleteResponseDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Default error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_user_group**
+> UserGroupChangeDefinitionDTO get_user_group(user_group_id, var_with=var_with)
+
+Retrieve the details of a user group
+
+Retrieve all available information about a specific user group.    <br>To specify the tenant in which to retrieve a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to return a user group, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+### Example
+
+
+```python
+import visier.sdk.api.administration
+from visier.sdk.api.administration.models.user_group_change_definition_dto import UserGroupChangeDefinitionDTO
+from visier.sdk.api.administration.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = visier.sdk.api.administration.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with visier.sdk.api.administration.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = visier.sdk.api.administration.UserGroupsV2Api(api_client)
+    user_group_id = 'user_group_id_example' # str | The ID of user group.
+    var_with = 'var_with_example' # str | Controls the amount of detail to return in the response. Omit to return detailed information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information. (optional)
+
+    try:
+        # Retrieve the details of a user group
+        api_response = api_instance.get_user_group(user_group_id, var_with=var_with)
+        print("The response of UserGroupsV2Api->get_user_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserGroupsV2Api->get_user_group: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_group_id** | **str**| The ID of user group. | 
+ **var_with** | **str**| Controls the amount of detail to return in the response. Omit to return detailed information.  * **permissions**: Include the user group&#39;s permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information. | [optional] 
+
+### Return type
+
+[**UserGroupChangeDefinitionDTO**](UserGroupChangeDefinitionDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Default error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_user_groups**
+> UserGroupsChangeDTO get_user_groups(var_with=var_with, limit=limit)
+
+Retrieve a list of user groups
+
+Retrieve a collection of user groups. Use `with` to control the amount of detail returned in the response.  `with` supports these values:  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.   This API can return a maximum of 1000 user groups. The default number of user groups to return is 100.   To specify the project in which to return user groups, provide a project UUID in the `ProjectID` request header.   <br>To specify the tenant in which to retrieve user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+### Example
+
+
+```python
+import visier.sdk.api.administration
+from visier.sdk.api.administration.models.user_groups_change_dto import UserGroupsChangeDTO
+from visier.sdk.api.administration.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = visier.sdk.api.administration.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with visier.sdk.api.administration.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = visier.sdk.api.administration.UserGroupsV2Api(api_client)
+    var_with = 'var_with_example' # str | Controls the amount of detail to return in the response. Omit to return basic information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information. (optional)
+    limit = 56 # int | The number of results to return. The maximum number of user groups to retrieve is 1000. The default is 100. (optional)
+
+    try:
+        # Retrieve a list of user groups
+        api_response = api_instance.get_user_groups(var_with=var_with, limit=limit)
+        print("The response of UserGroupsV2Api->get_user_groups:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserGroupsV2Api->get_user_groups: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **var_with** | **str**| Controls the amount of detail to return in the response. Omit to return basic information.  * **permissions**: Include the user group&#39;s permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information. | [optional] 
+ **limit** | **int**| The number of results to return. The maximum number of user groups to retrieve is 1000. The default is 100. | [optional] 
+
+### Return type
+
+[**UserGroupsChangeDTO**](UserGroupsChangeDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Default error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patch_user_groups**
+> UserGroupChangeResponseDTO patch_user_groups(user_groups_change_dto)
+
+Patch multiple user groups
+
+Make partial changes to user groups. To specify the tenant in which to patch a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   Unlike `PUT`, which completely replaces the user group definition, use `PATCH` to change specific fields in the user group without affecting omitted fields.   To specify the project in which to patch user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+### Example
+
+
+```python
+import visier.sdk.api.administration
+from visier.sdk.api.administration.models.user_group_change_response_dto import UserGroupChangeResponseDTO
+from visier.sdk.api.administration.models.user_groups_change_dto import UserGroupsChangeDTO
+from visier.sdk.api.administration.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = visier.sdk.api.administration.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with visier.sdk.api.administration.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = visier.sdk.api.administration.UserGroupsV2Api(api_client)
+    user_groups_change_dto = visier.sdk.api.administration.UserGroupsChangeDTO() # UserGroupsChangeDTO | 
+
+    try:
+        # Patch multiple user groups
+        api_response = api_instance.patch_user_groups(user_groups_change_dto)
+        print("The response of UserGroupsV2Api->patch_user_groups:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserGroupsV2Api->patch_user_groups: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_groups_change_dto** | [**UserGroupsChangeDTO**](UserGroupsChangeDTO.md)|  | 
+
+### Return type
+
+[**UserGroupChangeResponseDTO**](UserGroupChangeResponseDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Default error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_user_groups**
+> UserGroupChangeResponseDTO put_user_groups(user_groups_change_dto)
+
+Update multiple user groups
+
+Update existing user groups. To specify the tenant in which to update a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   When updating user groups, the user group definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the user group. We recommend that you retrieve a user group's details before you update the user group with new values.    To specify the project in which to update user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+### Example
+
+
+```python
+import visier.sdk.api.administration
+from visier.sdk.api.administration.models.user_group_change_response_dto import UserGroupChangeResponseDTO
+from visier.sdk.api.administration.models.user_groups_change_dto import UserGroupsChangeDTO
+from visier.sdk.api.administration.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = visier.sdk.api.administration.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with visier.sdk.api.administration.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = visier.sdk.api.administration.UserGroupsV2Api(api_client)
+    user_groups_change_dto = visier.sdk.api.administration.UserGroupsChangeDTO() # UserGroupsChangeDTO | 
+
+    try:
+        # Update multiple user groups
+        api_response = api_instance.put_user_groups(user_groups_change_dto)
+        print("The response of UserGroupsV2Api->put_user_groups:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UserGroupsV2Api->put_user_groups: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_groups_change_dto** | [**UserGroupsChangeDTO**](UserGroupsChangeDTO.md)|  | 
+
+### Return type
+
+[**UserGroupChangeResponseDTO**](UserGroupChangeResponseDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Default error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
