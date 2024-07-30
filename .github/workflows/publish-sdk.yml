@@ -2,12 +2,12 @@ name: Publish Python SDK to PyPI
 
 on:
   workflow_dispatch:
-
   pull_request:
     types:
       - opened
     branches:
       - main
+      - github-actions-test
 
 jobs:
   publish_package:
@@ -16,8 +16,10 @@ jobs:
     strategy:
       matrix:
         package-dir:
-          - src/visier.sdk.api.tenant_management
-          # TODO add all packages
+          - src/visier.sdk.api.administration_apis
+          - src/visier.sdk.api.analytic_model_apis
+          - src/visier.sdk.api.data_in_apis
+          - src/visier.sdk.api.data_out_apis
 
     steps:
       - name: Check out code
