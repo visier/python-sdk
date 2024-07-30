@@ -41,7 +41,7 @@ jobs:
       - name: Build package
         run: |
           cd "src/${{ matrix.package }}"
-          python -m build --outdir "./dist/${{ matrix.package }}"
+          python -m build
 
       - name: List dist directory
         run: ls -R dist/
@@ -49,7 +49,7 @@ jobs:
       - name: pypi-publish
         uses: pypa/gh-action-pypi-publish@v1.9.0
         with:
-          packages-dir: "./dist/${{ matrix.package }}"
+          packages-dir: "src/${{ matrix.package }}/dist/${{ matrix.package }}"
 
   merge_pr:
     needs: publish_package
