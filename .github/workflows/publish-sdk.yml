@@ -20,11 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package-dir:
-          - src/visier.sdk.api.administration
-          - src/visier.sdk.api.analytic_model
-          - src/visier.sdk.api.data_in
-          - src/visier.sdk.api.data_out
+        package:
+          - visier.sdk.api.administration
+          - visier.sdk.api.analytic_model
+          - visier.sdk.api.data_in
+          - visier.sdk.api.data_out
 
     steps:
       - name: Check out code
@@ -39,13 +39,13 @@ jobs:
 
       - name: Build package
         run: |
-          cd ${{ matrix.package-dir }}
-          python -m build
+          cd "src/${{ matrix.package }}"
+          python -m build --outdir "dist/${{ matrix.package }}"
 
       - name: pypi-publish
         uses: pypa/gh-action-pypi-publish@v1.9.0
         with:
-          packages-dir: ${{ matrix.package-dir }}
+          packages-dir: "dist/${{ matrix.package }}"
 
   merge_pr:
     needs: publish_package
