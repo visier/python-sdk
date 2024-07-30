@@ -1,0 +1,66 @@
+name: Publish Python SDK to PyPI
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+    branches:
+      - main
+      - github-actions-test
+
+# Required to publish packages to PyPI
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish_package:
+    name: Publish Python SDK to PyPI
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package:
+          - visier.sdk.api.administration
+          - visier.sdk.api.analytic_model
+          - visier.sdk.api.data_in
+          - visier.sdk.api.data_out
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install setuptools wheel twine build
+
+      - name: Build package
+        run: |
+          cd "src/${{ matrix.package }}"
+          python -m build --outdir "dist/${{ matrix.package }}"
+
+      - name: List dist directory
+        run: ls -R dist/
+
+      - name: pypi-publish
+        uses: pypa/gh-action-pypi-publish@v1.9.0
+        with:
+          packages-dir: "dist/${{ matrix.package }}"
+
+  merge_pr:
+    needs: publish_package
+    name: Merge PR
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main' }}
+    steps:
+      - name: Check out before merge
+        uses: actions/checkout@v4
+
+      - name: Merge PR
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          gh pr merge ${{ github.event.pull_request.number }} --merge --delete-branch

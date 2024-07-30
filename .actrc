@@ -1,0 +1,5 @@
+--pull=false
+-s GITHUB_TOKEN
+-s PYPI_API_TOKEN
+-W .github/workflows/publish-sdk.yml
+--container-architecture linux/amd64
