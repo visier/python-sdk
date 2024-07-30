@@ -16,10 +16,10 @@ jobs:
     strategy:
       matrix:
         package-dir:
-          - src/visier.sdk.api.administration_apis
-          - src/visier.sdk.api.analytic_model_apis
-          - src/visier.sdk.api.data_in_apis
-          - src/visier.sdk.api.data_out_apis
+          - src/visier.sdk.api.administration
+          - src/visier.sdk.api.analytic_model
+          - src/visier.sdk.api.data_in
+          - src/visier.sdk.api.data_out
 
     steps:
       - name: Check out code
@@ -30,22 +30,23 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install setuptools wheel twine
+          pip install setuptools wheel twine build
 
-      - name: Build and publish packages
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      - name: Build package
         run: |
           cd ${{ matrix.package-dir }}
-          python setup.py sdist bdist_wheel
-          python -m twine upload dist/*
+          python -m build
+
+      - name: pypi-publish
+        uses: pypa/gh-action-pypi-publish@v1.9.0
+        with:
+          packages-dir: ${{ matrix.package-dir }}
 
   merge_pr:
     needs: publish_package
     name: Merge PR
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main' }}
     steps:
       - name: Check out before merge
         uses: actions/checkout@v4
