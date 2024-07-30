@@ -9,6 +9,11 @@ on:
       - main
       - github-actions-test
 
+# Required to publish packages to PyPI
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   publish_package:
     name: Publish Python SDK to PyPI
