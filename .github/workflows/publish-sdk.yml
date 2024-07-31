@@ -48,7 +48,7 @@ jobs:
       - name: pypi-publish
         uses: pypa/gh-action-pypi-publish@v1.9.0
         with:
-          packages-dir: "src/${{ matrix.package }}/dist/${{ matrix.package }}"
+          packages-dir: "src/${{ matrix.package }}/dist"
 
   merge_pr:
     needs: publish_package
