@@ -52,7 +52,7 @@ jobs:
     needs: publish_package
     name: Merge PR
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main' }}
+    if: ${{ github.event_name == 'pull_request'}}
     steps:
       - name: Check out before merge
         uses: actions/checkout@v4
