@@ -42,21 +42,8 @@ jobs:
         run: |
           cd "src/${{ matrix.package }}"
           python -m build --outdir ./dist
-
-      - name: List dist directory
-        run: |
-          #!/bin/bash
-          
-          recurse() {
-            for i in "$1"/*; do
-              if [ -d "$i" ]; then
-                echo "dir: $i"
-                recurse "$i"
-              fi
-            done
-          }
-          
-          recurse ./
+          pwd
+          ls -l ./dist
 
       - name: pypi-publish
         uses: pypa/gh-action-pypi-publish@v1.9.0
