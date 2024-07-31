@@ -5,9 +5,15 @@ on:
   pull_request:
     types:
       - opened
+      - reopened
     branches:
       - main
       - github-actions-test
+
+# Required to publish packages to PyPI
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
   publish_package:
@@ -15,11 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package-dir:
-          - src/visier.sdk.api.administration
-          - src/visier.sdk.api.analytic_model
-          - src/visier.sdk.api.data_in
-          - src/visier.sdk.api.data_out
+        package:
+          - visier.sdk.api.administration
+          - visier.sdk.api.analytic_model
+          - visier.sdk.api.data_in
+          - visier.sdk.api.data_out
 
     steps:
       - name: Check out code
@@ -34,13 +40,13 @@ jobs:
 
       - name: Build package
         run: |
-          cd ${{ matrix.package-dir }}
-          python -m build
+          cd "src/${{ matrix.package }}"
+          python -m build --outdir ./dist
 
-      - name: pypi-publish
+      - name: Publish PyPi package
         uses: pypa/gh-action-pypi-publish@v1.9.0
         with:
-          packages-dir: ${{ matrix.package-dir }}
+          packages-dir: "src/${{ matrix.package }}/dist"
 
   merge_pr:
     needs: publish_package
