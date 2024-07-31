@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "visier.sdk.api.data_out"
-version = "0.1.5"
+version = "0.1.6"
 description = "Visier Data Out APIs"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
 license = "Apache License, Version 2.0"
