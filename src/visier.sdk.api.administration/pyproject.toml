@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "visier.sdk.api.administration"
-version = "0.0.9"
+version = "0.1.0"
 description = "Visier Administration APIs"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
 license = "Apache License, Version 2.0"
