@@ -1,7 +1,6 @@
 name: Publish Python SDK to PyPI
 
 on:
-  workflow_dispatch:
   pull_request:
     types:
       - opened
@@ -10,13 +9,15 @@ on:
       - main
       - github-actions-test
 
-# Required to publish packages to PyPI
+# Permissions to create PR, to write changes, to use PyPi auth
 permissions:
-  contents: read
+  pull-requests: write
+  contents: write
   id-token: write
 
 jobs:
   publish_package:
+    if: startsWith(github.head_ref, 'release')
     name: Publish Python SDK to PyPI
     runs-on: ubuntu-latest
     strategy:
@@ -31,7 +32,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          ref: ${{ github.event.pull_request.head.ref}}
 
       - name: Install dependencies
         run: |
@@ -50,9 +51,9 @@ jobs:
 
   merge_pr:
     needs: publish_package
+    if: needs.publish_package.result == 'success'
     name: Merge PR
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main' }}
     steps:
       - name: Check out before merge
         uses: actions/checkout@v4
