@@ -42,10 +42,8 @@ jobs:
         run: |
           cd "src/${{ matrix.package }}"
           python -m build --outdir ./dist
-          pwd
-          ls -l ./dist
 
-      - name: pypi-publish
+      - name: Publish PyPi package
         uses: pypa/gh-action-pypi-publish@v1.9.0
         with:
           packages-dir: "src/${{ matrix.package }}/dist"
