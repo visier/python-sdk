@@ -10,9 +10,10 @@ on:
       - main
       - github-actions-test
 
-# Required to publish packages to PyPI
+# Permissions to create PR, to write changes, to use PyPi auth
 permissions:
-  contents: read
+  pull-requests: write
+  contents: write
   id-token: write
 
 jobs:
