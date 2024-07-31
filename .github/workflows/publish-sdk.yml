@@ -46,14 +46,16 @@ jobs:
       - name: List dist directory
         run: |
           #!/bin/bash
+          
           recurse() {
-           for i in "$1"/*;do
-              if [ -d "$i" ];then
-                  echo "dir: $i"
-                  recurse "$i"
-           done
+            for i in "$1"/*; do
+              if [ -d "$i" ]; then
+                echo "dir: $i"
+                recurse "$i"
+              fi
+            done
           }
-
+          
           recurse ./
 
       - name: pypi-publish
