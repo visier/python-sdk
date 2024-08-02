@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**get_project**](ProjectsApi.md#get_project) | **GET** /v1alpha/admin/projects/{projectId} | Retrieve a draft project&#39;s information
 [**get_project_commits**](ProjectsApi.md#get_project_commits) | **GET** /v1alpha/admin/projects/{projectId}/commits | Retrieve a list of all committed changes in a project
 [**get_projects**](ProjectsApi.md#get_projects) | **GET** /v1alpha/admin/projects | Retrieve a list of draft projects accessible to the user
+[**put_project_commits**](ProjectsApi.md#put_project_commits) | **PUT** /v1alpha/admin/projects/{projectId}/commits | Import committed changes into a project
 [**run_project_operation**](ProjectsApi.md#run_project_operation) | **POST** /v1alpha/admin/projects/{projectId} | Perform an operation on a draft project
 
 
@@ -224,7 +225,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_commits**
-> GetProjectCommitsAPIResponseDTO get_project_commits(project_id, limit=limit, start=start)
+> ProjectCommitsAPIResponseDTO get_project_commits(project_id, limit=limit, start=start)
 
 Retrieve a list of all committed changes in a project
 
@@ -235,7 +236,7 @@ Retrieve the full list of all committed changes in a project.   <br>**Note:** <e
 
 ```python
 import visier.sdk.api.administration
-from visier.sdk.api.administration.models.get_project_commits_api_response_dto import GetProjectCommitsAPIResponseDTO
+from visier.sdk.api.administration.models.project_commits_api_response_dto import ProjectCommitsAPIResponseDTO
 from visier.sdk.api.administration.rest import ApiException
 from pprint import pprint
 
@@ -276,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetProjectCommitsAPIResponseDTO**](GetProjectCommitsAPIResponseDTO.md)
+[**ProjectCommitsAPIResponseDTO**](ProjectCommitsAPIResponseDTO.md)
 
 ### Authorization
 
@@ -356,6 +357,78 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Default error response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_project_commits**
+> ProjectCommitsAPIResponseDTO put_project_commits(project_id, put_project_commits_request)
+
+Import committed changes into a project
+
+*  Import a ZIP file that contains a list of committed changes into a draft project. The file must be an export from `POST /v1alpha/admin/production-versions`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+### Example
+
+
+```python
+import visier.sdk.api.administration
+from visier.sdk.api.administration.models.project_commits_api_response_dto import ProjectCommitsAPIResponseDTO
+from visier.sdk.api.administration.models.put_project_commits_request import PutProjectCommitsRequest
+from visier.sdk.api.administration.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = visier.sdk.api.administration.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with visier.sdk.api.administration.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = visier.sdk.api.administration.ProjectsApi(api_client)
+    project_id = 'project_id_example' # str | The unique identifier of the draft project you want to import committed changes into.
+    put_project_commits_request = visier.sdk.api.administration.PutProjectCommitsRequest() # PutProjectCommitsRequest | 
+
+    try:
+        # Import committed changes into a project
+        api_response = api_instance.put_project_commits(project_id, put_project_commits_request)
+        print("The response of ProjectsApi->put_project_commits:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ProjectsApi->put_project_commits: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **str**| The unique identifier of the draft project you want to import committed changes into. | 
+ **put_project_commits_request** | [**PutProjectCommitsRequest**](PutProjectCommitsRequest.md)|  | 
+
+### Return type
+
+[**ProjectCommitsAPIResponseDTO**](ProjectCommitsAPIResponseDTO.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
