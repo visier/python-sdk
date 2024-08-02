@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **client_id** | **str** |  | [optional] 
 **client_secret** | **str** |  | [optional] 
 **o_auth_tenant_id** | **str** |  | [optional] 
+**privacy_mode** | **str** |  | [optional] 
 
 ## Example
 

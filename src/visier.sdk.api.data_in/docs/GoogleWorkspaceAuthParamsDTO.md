@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **auth_code** | **str** |  | [optional] 
 **client_id** | **str** |  | [optional] 
 **client_secret** | **str** |  | [optional] 
+**privacy_mode** | **str** |  | [optional] 
+**service_account** | **str** |  | [optional] 
 
 ## Example
 

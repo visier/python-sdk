@@ -5,7 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**target_analytic_object_id** | **str** | * The unique ID of the analytic object that the source analytic object should inherit filters from. The target analytic object must have a binding (strong) reference from the source analytic object. | [optional] 
+**analytic_object_reference** | **str** | The optional object name of a binding (strong) reference to the target analytic object. If not specified, uses the first binding reference from the source to the target analytic object. | [optional] 
+**target_analytic_object_id** | **str** | The unique ID of the analytic object that the source analytic object should inherit filters from. The target analytic object must have a binding (strong) reference from the source analytic object. | [optional] 
 
 ## Example
 

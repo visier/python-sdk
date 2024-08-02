@@ -6,8 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **exclude_all** | **bool** | If &#x60;true&#x60;, all data uploads are excluded for the analytic tenant. | [optional] 
+**max_upload_time** | **str** | An ISO8601 time for the latest upload time. If defined, omit &#x60;uploadTimes&#x60;. If omitted and &#x60;minUploadTime&#x60; is defined, excludes files up to latest time available. | [optional] 
+**min_upload_time** | **str** | An ISO8601 time for the earliest upload time. If defined, omit &#x60;uploadTimes&#x60;. If omitted and &#x60;maxUploadTime&#x60; is defined, excludes files up to earliest time available. | [optional] 
+**sources** | **List[str]** | A comma-separated list of strings representing the object name of each source to exclude. If &#x60;uploadTimes&#x60; is omitted, excludes files for the given sources for all &#x60;uploadTimes&#x60;. | [optional] 
 **tenant_code** | **str** | The tenant code of the analytic tenant you are excluding a data upload for. | [optional] 
-**upload_times** | **List[str]** | A comma-separated list of strings representing the upload time of each data upload to exclude. | [optional] 
+**upload_times** | **List[str]** | A comma-separated list of ISO8601 time strings representing the upload time of each data upload to exclude. | [optional] 
 
 ## Example
 
