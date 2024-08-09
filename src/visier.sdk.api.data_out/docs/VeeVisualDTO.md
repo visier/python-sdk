@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**context** | **str** |  | [optional] 
-**image** | **str** |  | [optional] 
-**title** | **str** |  | [optional] 
+**context** | **str** | Any filters applied to the visualization. For example, a time filter of April 2024. | [optional] 
+**image** | **str** | A PNG visualization encoded in a base64 string. | [optional] 
+**title** | **str** | The visualization title. | [optional] 
 
 ## Example
 
