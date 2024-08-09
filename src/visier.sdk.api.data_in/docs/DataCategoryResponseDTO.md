@@ -1,13 +1,12 @@
 # DataCategoryResponseDTO
 
-The data category's UUID and display name.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The UUID of the data category. | [optional] 
-**name** | **str** | The display name of the data category. | [optional] 
+**id** | **str** |  | [optional] 
+**name** | **str** |  | [optional] 
 
 ## Example
 

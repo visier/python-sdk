@@ -1,12 +1,11 @@
 # VeeSampleQuestionLibraryDTO
 
-***************************************************  Server Response DTOs for sample-questions endpoint **************************************************
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**questions** | [**List[VeeSampleQuestionDTO]**](VeeSampleQuestionDTO.md) | A list of sample questions to help your users start using Vee. | [optional] 
+**questions** | [**List[VeeSampleQuestionDTO]**](VeeSampleQuestionDTO.md) |  | [optional] 
 
 ## Example
 

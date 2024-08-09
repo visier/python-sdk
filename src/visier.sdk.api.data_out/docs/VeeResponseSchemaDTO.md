@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**concepts** | [**List[VeeResponseSchemaReferenceDTO]**](VeeResponseSchemaReferenceDTO.md) | A list of the concepts that contribute to Vee&#39;s answer. | [optional] 
-**dimensions** | [**List[VeeResponseSchemaReferenceDTO]**](VeeResponseSchemaReferenceDTO.md) | A list of the dimensions that contribute to Vee&#39;s answer. | [optional] 
-**metrics** | **List[str]** | A list of the metrics that contribute to Vee&#39;s answer. | [optional] 
+**concepts** | [**List[VeeResponseSchemaReferenceDTO]**](VeeResponseSchemaReferenceDTO.md) |  | [optional] 
+**dimensions** | [**List[VeeResponseSchemaReferenceDTO]**](VeeResponseSchemaReferenceDTO.md) |  | [optional] 
+**metrics** | **List[str]** |  | [optional] 
 
 ## Example
 

@@ -7,7 +7,7 @@ Users that are assigned a specific permission.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **limit** | **int** | The number of results to return. The maximum number of tenants to retrieve is 100. | [optional] 
-**start** | **int** | The index of the tenant to start retrieving results from, also known as offset. The index begins at 0. | [optional] 
+**start** | **int** | The index to start retrieving results from, also known as offset. The index begins at 0. | [optional] 
 **tenants** | [**List[PermissionAssignedByTenantDTO]**](PermissionAssignedByTenantDTO.md) | A list of objects representing the users that are assigned the specific permission, organized by the tenants the users belong to. | [optional] 
 
 ## Example

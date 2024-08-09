@@ -152,7 +152,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project**
-> ProjectDTO get_project(project_id)
+> ProjectDTO get_project(project_id, var_with=var_with, limit=limit)
 
 Retrieve a draft project's information
 
@@ -178,11 +178,13 @@ configuration = visier.sdk.api.administration.Configuration(
 with visier.sdk.api.administration.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = visier.sdk.api.administration.ProjectsApi(api_client)
-    project_id = 'project_id_example' # str | The unique identifier of the draft project you want to retrieve.
+    project_id = 'project_id_example' # str | 
+    var_with = ['var_with_example'] # List[str] | The types of draft projects to include in the request response.  * If empty, returns all the `Open` draft projects.  * If `Open`, returns all Open draft projects.  * If `Approval`, returns all draft projects in the approval stage. Changes cannot made in Approval projects.  * If `Rejected`, returns all draft projects that have been rejected. Changes cannot be committed in Rejected projects.  * If `Archived`, returns all draft projects that have been archived. Changes cannot be committed in Archived projects. (optional)
+    limit = 56 # int | The number of projects to return per type. The maximum number of projects to retrieve per type is 1000. The default is 100. (optional)
 
     try:
         # Retrieve a draft project's information
-        api_response = api_instance.get_project(project_id)
+        api_response = api_instance.get_project(project_id, var_with=var_with, limit=limit)
         print("The response of ProjectsApi->get_project:\n")
         pprint(api_response)
     except Exception as e:
@@ -196,7 +198,9 @@ with visier.sdk.api.administration.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_id** | **str**| The unique identifier of the draft project you want to retrieve. | 
+ **project_id** | **str**|  | 
+ **var_with** | [**List[str]**](str.md)| The types of draft projects to include in the request response.  * If empty, returns all the &#x60;Open&#x60; draft projects.  * If &#x60;Open&#x60;, returns all Open draft projects.  * If &#x60;Approval&#x60;, returns all draft projects in the approval stage. Changes cannot made in Approval projects.  * If &#x60;Rejected&#x60;, returns all draft projects that have been rejected. Changes cannot be committed in Rejected projects.  * If &#x60;Archived&#x60;, returns all draft projects that have been archived. Changes cannot be committed in Archived projects. | [optional] 
+ **limit** | **int**| The number of projects to return per type. The maximum number of projects to retrieve per type is 1000. The default is 100. | [optional] 
 
 ### Return type
 

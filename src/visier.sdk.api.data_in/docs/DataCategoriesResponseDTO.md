@@ -1,6 +1,5 @@
 # DataCategoriesResponseDTO
 
-A list of data categories.
 
 ## Properties
 
