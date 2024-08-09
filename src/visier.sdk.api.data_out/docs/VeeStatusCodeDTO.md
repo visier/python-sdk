@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status_code** | **str** | A status code indicating whether or not Vee successfully answered the question. | [optional] 
-**status_msg** | **str** | Additional information about whether or not Vee successfully answered the question. | [optional] 
+**status_code** | **str** |  | [optional] 
+**status_msg** | **str** |  | [optional] 
 
 ## Example
 

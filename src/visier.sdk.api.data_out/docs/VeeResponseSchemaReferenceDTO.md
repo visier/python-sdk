@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | The name of an attribute in the visualization; for example, Gender. | [optional] 
-**paths** | **List[str]** | The hierarchy path of an attribute in the visualization; for example, Employee.Gender. | [optional] 
+**name** | **str** |  | [optional] 
+**paths** | **List[str]** |  | [optional] 
 
 ## Example
 
