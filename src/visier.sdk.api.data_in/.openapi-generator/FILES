@@ -67,6 +67,7 @@ docs/JiraAuthParamsDTO.md
 docs/JiraConnectParamsDTO.md
 docs/JobCancellationResultDTO.md
 docs/JobCancellationResultsDTO.md
+docs/JobIdResponse.md
 docs/JobStatusListResponse.md
 docs/JobStatusWithStartTime.md
 docs/LeverAuthParamsDTO.md
@@ -208,6 +209,7 @@ visier/sdk/api/data_in/models/jira_auth_params_dto.py
 visier/sdk/api/data_in/models/jira_connect_params_dto.py
 visier/sdk/api/data_in/models/job_cancellation_result_dto.py
 visier/sdk/api/data_in/models/job_cancellation_results_dto.py
+visier/sdk/api/data_in/models/job_id_response.py
 visier/sdk/api/data_in/models/job_status_list_response.py
 visier/sdk/api/data_in/models/job_status_with_start_time.py
 visier/sdk/api/data_in/models/lever_auth_params_dto.py

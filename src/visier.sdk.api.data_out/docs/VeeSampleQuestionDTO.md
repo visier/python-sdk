@@ -1,13 +1,12 @@
 # VeeSampleQuestionDTO
 
-Query sample questions
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metadata** | [**VeeSampleQuestionMetadataDTO**](VeeSampleQuestionMetadataDTO.md) |  | [optional] 
-**question** | **str** |  | [optional] 
+**metadata** | [**VeeSampleQuestionMetadataDTO**](VeeSampleQuestionMetadataDTO.md) | Details about the sample question, such as what categories the question belongs to. | [optional] 
+**question** | **str** | A question in plain language. | [optional] 
 
 ## Example
 
