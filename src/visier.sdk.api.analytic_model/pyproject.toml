@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "visier.sdk.api.analytic_model"
-version = "22222222.99201.1431"
+version = "22222222.99201.1435"
 description = "Visier Analytic Model APIs"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
 license = "Apache License, Version 2.0"
