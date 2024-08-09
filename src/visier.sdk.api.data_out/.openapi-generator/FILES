@@ -51,7 +51,6 @@ docs/PropertyColumnDTO.md
 docs/PropertyReferenceDTO.md
 docs/QueryAxisDTO.md
 docs/QueryAxisOptionsDTO.md
-docs/QueryClarificationDTO.md
 docs/QueryDimensionDataMemberSelectionDTO.md
 docs/QueryDimensionLeafSelectionDTO.md
 docs/QueryDimensionLevelSelectionDTO.md
@@ -75,10 +74,11 @@ docs/SortOptionDTO.md
 docs/SqlLikeQueryExecutionDTO.md
 docs/Status.md
 docs/TimeShiftDTO.md
+docs/VeeApi.md
+docs/VeeClarificationDTO.md
+docs/VeeConversationStateDTO.md
+docs/VeeCorrectionsDTO.md
 docs/VeeDataDTO.md
-docs/VeeFeedbackDTO.md
-docs/VeeQueryApi.md
-docs/VeeQueryCorrectionsDTO.md
 docs/VeeResponseDTO.md
 docs/VeeResponseSchemaDTO.md
 docs/VeeResponseSchemaReferenceDTO.md
@@ -86,7 +86,6 @@ docs/VeeSampleQuestionDTO.md
 docs/VeeSampleQuestionLibraryDTO.md
 docs/VeeSampleQuestionMetadataDTO.md
 docs/VeeStatusCodeDTO.md
-docs/VeeThreadStateDTO.md
 docs/VeeVisualDTO.md
 git_push.sh
 pyproject.toml
@@ -95,6 +94,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_vee_api.py
+test/test_vee_clarification_dto.py
+test/test_vee_conversation_state_dto.py
+test/test_vee_corrections_dto.py
 tox.ini
 visier/__init__.py
 visier/sdk/__init__.py
@@ -104,7 +107,7 @@ visier/sdk/api/data_out/api/__init__.py
 visier/sdk/api/data_out/api/data_query_api.py
 visier/sdk/api/data_out/api/data_version_export_api.py
 visier/sdk/api/data_out/api/search_api.py
-visier/sdk/api/data_out/api/vee_query_api.py
+visier/sdk/api/data_out/api/vee_api.py
 visier/sdk/api/data_out/api_client.py
 visier/sdk/api/data_out/api_response.py
 visier/sdk/api/data_out/configuration.py
@@ -156,7 +159,6 @@ visier/sdk/api/data_out/models/property_column_dto.py
 visier/sdk/api/data_out/models/property_reference_dto.py
 visier/sdk/api/data_out/models/query_axis_dto.py
 visier/sdk/api/data_out/models/query_axis_options_dto.py
-visier/sdk/api/data_out/models/query_clarification_dto.py
 visier/sdk/api/data_out/models/query_dimension_data_member_selection_dto.py
 visier/sdk/api/data_out/models/query_dimension_leaf_selection_dto.py
 visier/sdk/api/data_out/models/query_dimension_level_selection_dto.py
@@ -179,9 +181,10 @@ visier/sdk/api/data_out/models/sort_option_dto.py
 visier/sdk/api/data_out/models/sql_like_query_execution_dto.py
 visier/sdk/api/data_out/models/status.py
 visier/sdk/api/data_out/models/time_shift_dto.py
+visier/sdk/api/data_out/models/vee_clarification_dto.py
+visier/sdk/api/data_out/models/vee_conversation_state_dto.py
+visier/sdk/api/data_out/models/vee_corrections_dto.py
 visier/sdk/api/data_out/models/vee_data_dto.py
-visier/sdk/api/data_out/models/vee_feedback_dto.py
-visier/sdk/api/data_out/models/vee_query_corrections_dto.py
 visier/sdk/api/data_out/models/vee_response_dto.py
 visier/sdk/api/data_out/models/vee_response_schema_dto.py
 visier/sdk/api/data_out/models/vee_response_schema_reference_dto.py
@@ -189,7 +192,6 @@ visier/sdk/api/data_out/models/vee_sample_question_dto.py
 visier/sdk/api/data_out/models/vee_sample_question_library_dto.py
 visier/sdk/api/data_out/models/vee_sample_question_metadata_dto.py
 visier/sdk/api/data_out/models/vee_status_code_dto.py
-visier/sdk/api/data_out/models/vee_thread_state_dto.py
 visier/sdk/api/data_out/models/vee_visual_dto.py
 visier/sdk/api/data_out/py.typed
 visier/sdk/api/data_out/rest.py

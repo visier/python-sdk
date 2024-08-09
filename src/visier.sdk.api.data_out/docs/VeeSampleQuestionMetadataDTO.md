@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**categories** | **List[str]** |  | [optional] 
+**categories** | **List[str]** | A list of topics that the sample question relates to. | [optional] 
 
 ## Example
 
