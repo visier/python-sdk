@@ -1,14 +1,14 @@
 # VeeFeedbackDTO
 
-Query feedback DTOs
+The request body fields to submit Vee feedback.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | [optional] 
-**is_approved** | **bool** |  | [optional] 
-**response** | [**VeeResponseDTO**](VeeResponseDTO.md) |  | [optional] 
+**description** | **str** | A description of how Vee should have answered the question or how Vee can improve the answer; for example, \&quot;Expected Headcount metric, but Vee returned Average Headcount\&quot;. | [optional] 
+**is_approved** | **bool** | If &#x60;true&#x60;, Vee answered the question correctly. If &#x60;false&#x60;, Vee&#39;s answer was incorrect or lacked details. | [optional] 
+**response** | [**VeeResponseDTO**](VeeResponseDTO.md) | Your feedback about Vee&#39;s answer. Include the response object from the &#x60;/question&#x60; call that you want to provide feedback about. | [optional] 
 
 ## Example
 

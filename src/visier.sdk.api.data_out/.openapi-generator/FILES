@@ -79,6 +79,9 @@ docs/VeeClarificationDTO.md
 docs/VeeConversationStateDTO.md
 docs/VeeCorrectionsDTO.md
 docs/VeeDataDTO.md
+docs/VeeFeedbackDTO.md
+docs/VeeOptionsDTO.md
+docs/VeeQuestionDTO.md
 docs/VeeResponseDTO.md
 docs/VeeResponseSchemaDTO.md
 docs/VeeResponseSchemaReferenceDTO.md
@@ -87,6 +90,7 @@ docs/VeeSampleQuestionLibraryDTO.md
 docs/VeeSampleQuestionMetadataDTO.md
 docs/VeeStatusCodeDTO.md
 docs/VeeVisualDTO.md
+docs/VeeVisualOptionsDTO.md
 git_push.sh
 pyproject.toml
 requirements.txt
@@ -94,6 +98,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_vee_options_dto.py
+test/test_vee_question_dto.py
+test/test_vee_visual_options_dto.py
 tox.ini
 visier/__init__.py
 visier/sdk/__init__.py
@@ -181,6 +188,9 @@ visier/sdk/api/data_out/models/vee_clarification_dto.py
 visier/sdk/api/data_out/models/vee_conversation_state_dto.py
 visier/sdk/api/data_out/models/vee_corrections_dto.py
 visier/sdk/api/data_out/models/vee_data_dto.py
+visier/sdk/api/data_out/models/vee_feedback_dto.py
+visier/sdk/api/data_out/models/vee_options_dto.py
+visier/sdk/api/data_out/models/vee_question_dto.py
 visier/sdk/api/data_out/models/vee_response_dto.py
 visier/sdk/api/data_out/models/vee_response_schema_dto.py
 visier/sdk/api/data_out/models/vee_response_schema_reference_dto.py
@@ -189,5 +199,6 @@ visier/sdk/api/data_out/models/vee_sample_question_library_dto.py
 visier/sdk/api/data_out/models/vee_sample_question_metadata_dto.py
 visier/sdk/api/data_out/models/vee_status_code_dto.py
 visier/sdk/api/data_out/models/vee_visual_dto.py
+visier/sdk/api/data_out/models/vee_visual_options_dto.py
 visier/sdk/api/data_out/py.typed
 visier/sdk/api/data_out/rest.py
