@@ -1,6 +1,6 @@
 # VeeSampleQuestionLibraryDTO
 
-***************************************************  Server Response DTOs for sample-questions endpoint **************************************************
+A list of sample questions to ask Vee.
 
 ## Properties
 

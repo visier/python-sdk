@@ -1,6 +1,6 @@
 # VeeResponseDTO
 
-*****************************************  Server Response DTOs for question endpoint ****************************************
+The response after asking Vee a question.
 
 ## Properties
 
