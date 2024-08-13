@@ -97,6 +97,7 @@ docs/Result.md
 docs/SalesforceAuthParamsDTO.md
 docs/SalesforceV2AuthParamsDTO.md
 docs/ServiceNowAuthParamsDTO.md
+docs/ServiceNowV2AuthParamsDTO.md
 docs/SlackAuthParamsDTO.md
 docs/SnowflakeAuthParamsDTO.md
 docs/Source.md
@@ -134,6 +135,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_service_now_v2_auth_params_dto.py
 tox.ini
 visier/__init__.py
 visier/sdk/__init__.py
@@ -239,6 +241,7 @@ visier/sdk/api/data_in/models/result.py
 visier/sdk/api/data_in/models/salesforce_auth_params_dto.py
 visier/sdk/api/data_in/models/salesforce_v2_auth_params_dto.py
 visier/sdk/api/data_in/models/service_now_auth_params_dto.py
+visier/sdk/api/data_in/models/service_now_v2_auth_params_dto.py
 visier/sdk/api/data_in/models/slack_auth_params_dto.py
 visier/sdk/api/data_in/models/snowflake_auth_params_dto.py
 visier/sdk/api/data_in/models/source.py
