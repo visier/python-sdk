@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **salesforce_auth_params** | [**SalesforceAuthParamsDTO**](SalesforceAuthParamsDTO.md) |  | [optional] 
 **salesforce_v2_auth_params** | [**SalesforceV2AuthParamsDTO**](SalesforceV2AuthParamsDTO.md) |  | [optional] 
 **service_now_auth_params** | [**ServiceNowAuthParamsDTO**](ServiceNowAuthParamsDTO.md) |  | [optional] 
+**service_now_v2_auth_params** | [**ServiceNowV2AuthParamsDTO**](ServiceNowV2AuthParamsDTO.md) |  | [optional] 
 **slack_auth_params** | [**SlackAuthParamsDTO**](SlackAuthParamsDTO.md) |  | [optional] 
 **snowflake_auth_params** | [**SnowflakeAuthParamsDTO**](SnowflakeAuthParamsDTO.md) |  | [optional] 
 **sql_server_auth_params** | [**SqlServerAuthParamsDTO**](SqlServerAuthParamsDTO.md) |  | [optional] 

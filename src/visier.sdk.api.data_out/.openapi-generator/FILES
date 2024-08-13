@@ -98,9 +98,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_vee_options_dto.py
-test/test_vee_question_dto.py
-test/test_vee_visual_options_dto.py
 tox.ini
 visier/__init__.py
 visier/sdk/__init__.py
