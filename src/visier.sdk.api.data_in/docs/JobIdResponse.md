@@ -1,6 +1,6 @@
 # JobIdResponse
 
-* @exclude  Response for requests with `jobId` as key to maintain compatibility with legacy APIs.  Future APIs returning a UUID should return `UUIDResponse`.
+The unique identifier of the returned job.
 
 ## Properties
 
