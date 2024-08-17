@@ -32,7 +32,7 @@ Method | HTTP request | Description
 
 
 # **adhoc_consolidated_analytics_job**
-> JobIdResponse adhoc_consolidated_analytics_job(tenant_code=tenant_code)
+> JobIdResponse adhoc_consolidated_analytics_job(consolidated_analytics_job_request_dto)
 
 Run a consolidated analytics job
 
@@ -48,6 +48,7 @@ Run a job for a consolidated analytics tenant. This request retrieves data for a
 
 ```python
 import visier.sdk.api.data_in
+from visier.sdk.api.data_in.models.consolidated_analytics_job_request_dto import ConsolidatedAnalyticsJobRequestDTO
 from visier.sdk.api.data_in.models.job_id_response import JobIdResponse
 from visier.sdk.api.data_in.rest import ApiException
 from pprint import pprint
@@ -88,11 +89,11 @@ configuration = visier.sdk.api.data_in.Configuration(
 with visier.sdk.api.data_in.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = visier.sdk.api.data_in.DataAndJobHandlingApi(api_client)
-    tenant_code = 'tenant_code_example' # str | The tenant code of the consolidated analytics tenant; for example, \"WFF_j1r~CAa7s\". (optional)
+    consolidated_analytics_job_request_dto = visier.sdk.api.data_in.ConsolidatedAnalyticsJobRequestDTO() # ConsolidatedAnalyticsJobRequestDTO | 
 
     try:
         # Run a consolidated analytics job
-        api_response = api_instance.adhoc_consolidated_analytics_job(tenant_code=tenant_code)
+        api_response = api_instance.adhoc_consolidated_analytics_job(consolidated_analytics_job_request_dto)
         print("The response of DataAndJobHandlingApi->adhoc_consolidated_analytics_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -106,7 +107,7 @@ with visier.sdk.api.data_in.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenant_code** | **str**| The tenant code of the consolidated analytics tenant; for example, \&quot;WFF_j1r~CAa7s\&quot;. | [optional] 
+ **consolidated_analytics_job_request_dto** | [**ConsolidatedAnalyticsJobRequestDTO**](ConsolidatedAnalyticsJobRequestDTO.md)|  | 
 
 ### Return type
 
@@ -118,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -131,11 +132,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adhoc_extraction_job**
-> JobIdResponse adhoc_extraction_job(tenants=tenants, all_tenants=all_tenants, override_last_extraction_timestamp=override_last_extraction_timestamp, publish_data_load_artifacts=publish_data_load_artifacts, run_processing_job=run_processing_job, data_category_id=data_category_id, disable_artifact_generation=disable_artifact_generation, connector_ids=connector_ids, last_extraction_time_offset_weeks=last_extraction_time_offset_weeks, months_to_extract=months_to_extract, extract_to_time_override=extract_to_time_override, batch_size_override=batch_size_override, sql_batch_size=sql_batch_size, force_update_existing_artifacts=force_update_existing_artifacts)
+> JobIdResponse adhoc_extraction_job(extract_data_and_load_dto)
 
 Run a data connector extraction job
 
-Run an extraction job to retrieve data through a Visier data connector and generate a new data version. Administrating tenants can run extraction jobs for all analytic tenants, a list of analytic tenants, or the administrating tenant.  If running extraction jobs for an administating tenant or their analytic tenants, this request starts a dispatching job that generates one extraction job per tenant. The response returns the job ID of the extraction job or dispatching job.
+Run an extraction job to retrieve data through a Visier data connector and generate a new data version. Administrating tenants can run extraction jobs for all analytic tenants, a list of analytic tenants, or the administrating tenant.  If running extraction jobs for an administrating tenant or their analytic tenants, this request starts a dispatching job that generates one extraction job per tenant. The response returns the job ID of the extraction job or dispatching job.
 
 ### Example
 
@@ -147,6 +148,7 @@ Run an extraction job to retrieve data through a Visier data connector and gener
 
 ```python
 import visier.sdk.api.data_in
+from visier.sdk.api.data_in.models.extract_data_and_load_dto import ExtractDataAndLoadDTO
 from visier.sdk.api.data_in.models.job_id_response import JobIdResponse
 from visier.sdk.api.data_in.rest import ApiException
 from pprint import pprint
@@ -187,24 +189,11 @@ configuration = visier.sdk.api.data_in.Configuration(
 with visier.sdk.api.data_in.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = visier.sdk.api.data_in.DataAndJobHandlingApi(api_client)
-    tenants = ['tenants_example'] # List[str] | The unique IDs of the tenants to run an extraction job for. (optional)
-    all_tenants = True # bool | If \"true\", runs an extraction job for all tenants and ignores the tenants field. (optional)
-    override_last_extraction_timestamp = 'override_last_extraction_timestamp_example' # str | An epoch timestamp in milliseconds from which to retrieve data. This overrides the last extraction date to retrieve more data. (optional)
-    publish_data_load_artifacts = True # bool | If \"true\", publishes the project to production. (optional)
-    run_processing_job = True # bool | If \"true\", runs a processing job to generate a data version after the extraction job succeeds. (optional)
-    data_category_id = 'data_category_id_example' # str | The unique ID of the data category in which to generate objects. (optional)
-    disable_artifact_generation = True # bool | If \"true\", doesn't generate objects after the extraction jobs succeeds. (optional)
-    connector_ids = ['connector_ids_example'] # List[str] | The unique IDs of the connectors to run extraction jobs for. (optional)
-    last_extraction_time_offset_weeks = 56 # int | The number of weeks from which to retrieve data. This overrides the last extraction date to retrieve more data. (optional)
-    months_to_extract = 56 # int | The number of months to retrieve snapshot data from. (optional)
-    extract_to_time_override = 'extract_to_time_override_example' # str | An epoch timestamp in milliseconds for the end time up to which to retrieve data. (optional)
-    batch_size_override = 56 # int | The maximum amount of IDs the job can retrieve in each batch. (optional)
-    sql_batch_size = 56 # int | The maximum amount of SQL table records the job can retrieve in each batch. (optional)
-    force_update_existing_artifacts = True # bool | If \"true\" and `disableArtifactGeneration` is \"false\", updates extractor artifacts, which may overwrite the artifacts' manual overrides. Ignored if `disableArtifactGeneration` is \"true\". (optional)
+    extract_data_and_load_dto = visier.sdk.api.data_in.ExtractDataAndLoadDTO() # ExtractDataAndLoadDTO | 
 
     try:
         # Run a data connector extraction job
-        api_response = api_instance.adhoc_extraction_job(tenants=tenants, all_tenants=all_tenants, override_last_extraction_timestamp=override_last_extraction_timestamp, publish_data_load_artifacts=publish_data_load_artifacts, run_processing_job=run_processing_job, data_category_id=data_category_id, disable_artifact_generation=disable_artifact_generation, connector_ids=connector_ids, last_extraction_time_offset_weeks=last_extraction_time_offset_weeks, months_to_extract=months_to_extract, extract_to_time_override=extract_to_time_override, batch_size_override=batch_size_override, sql_batch_size=sql_batch_size, force_update_existing_artifacts=force_update_existing_artifacts)
+        api_response = api_instance.adhoc_extraction_job(extract_data_and_load_dto)
         print("The response of DataAndJobHandlingApi->adhoc_extraction_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -218,20 +207,7 @@ with visier.sdk.api.data_in.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenants** | [**List[str]**](str.md)| The unique IDs of the tenants to run an extraction job for. | [optional] 
- **all_tenants** | **bool**| If \&quot;true\&quot;, runs an extraction job for all tenants and ignores the tenants field. | [optional] 
- **override_last_extraction_timestamp** | **str**| An epoch timestamp in milliseconds from which to retrieve data. This overrides the last extraction date to retrieve more data. | [optional] 
- **publish_data_load_artifacts** | **bool**| If \&quot;true\&quot;, publishes the project to production. | [optional] 
- **run_processing_job** | **bool**| If \&quot;true\&quot;, runs a processing job to generate a data version after the extraction job succeeds. | [optional] 
- **data_category_id** | **str**| The unique ID of the data category in which to generate objects. | [optional] 
- **disable_artifact_generation** | **bool**| If \&quot;true\&quot;, doesn&#39;t generate objects after the extraction jobs succeeds. | [optional] 
- **connector_ids** | [**List[str]**](str.md)| The unique IDs of the connectors to run extraction jobs for. | [optional] 
- **last_extraction_time_offset_weeks** | **int**| The number of weeks from which to retrieve data. This overrides the last extraction date to retrieve more data. | [optional] 
- **months_to_extract** | **int**| The number of months to retrieve snapshot data from. | [optional] 
- **extract_to_time_override** | **str**| An epoch timestamp in milliseconds for the end time up to which to retrieve data. | [optional] 
- **batch_size_override** | **int**| The maximum amount of IDs the job can retrieve in each batch. | [optional] 
- **sql_batch_size** | **int**| The maximum amount of SQL table records the job can retrieve in each batch. | [optional] 
- **force_update_existing_artifacts** | **bool**| If \&quot;true\&quot; and &#x60;disableArtifactGeneration&#x60; is \&quot;false\&quot;, updates extractor artifacts, which may overwrite the artifacts&#39; manual overrides. Ignored if &#x60;disableArtifactGeneration&#x60; is \&quot;true\&quot;. | [optional] 
+ **extract_data_and_load_dto** | [**ExtractDataAndLoadDTO**](ExtractDataAndLoadDTO.md)|  | 
 
 ### Return type
 
@@ -243,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -256,11 +232,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adhoc_processing_jobs**
-> JobIdResponse adhoc_processing_jobs(tenants=tenants, all_tenants=all_tenants, data_category_id=data_category_id, publish_to_production=publish_to_production)
+> JobIdResponse adhoc_processing_jobs(processing_job_request_dto)
 
 Run a processing job
 
-Run a processing job to generate a new data version. Administrating tenants can run processing jobs for all analytic tenants, a list of analytic tenants, or the administrating tenant.  If running processing jobs for an administating tenant or their analytic tenants, this request starts a dispatching job that generates one processing job per tenant. The response returns the job ID of the processing job or dispatching job.
+Run a processing job to generate a new data version. Administrating tenants can run processing jobs for all analytic tenants, a list of analytic tenants, or the administrating tenant.  If running processing jobs for an administrating tenant or their analytic tenants, this request starts a dispatching job that generates one processing job per tenant. The response returns the job ID of the processing job or dispatching job.
 
 ### Example
 
@@ -273,6 +249,7 @@ Run a processing job to generate a new data version. Administrating tenants can 
 ```python
 import visier.sdk.api.data_in
 from visier.sdk.api.data_in.models.job_id_response import JobIdResponse
+from visier.sdk.api.data_in.models.processing_job_request_dto import ProcessingJobRequestDTO
 from visier.sdk.api.data_in.rest import ApiException
 from pprint import pprint
 
@@ -312,14 +289,11 @@ configuration = visier.sdk.api.data_in.Configuration(
 with visier.sdk.api.data_in.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = visier.sdk.api.data_in.DataAndJobHandlingApi(api_client)
-    tenants = ['tenants_example'] # List[str] | The tenant codes of the tenants to run processing jobs for. If omitted, runs a processing job for the tenant associated with the user who made the API request. (optional)
-    all_tenants = True # bool | If `true`, runs processing jobs for all accessible analytic tenants. Default is `false`. (optional)
-    data_category_id = 'data_category_id_example' # str | The unique identifier of the data category to run the job. If omitted, runs a job using the primary data category.  To retrieve a list of all data categories, see `GET /v1/op/data/categories`. (optional)
-    publish_to_production = True # bool | If `true`, publishes the generated data version to production. Default is `false`. (optional)
+    processing_job_request_dto = visier.sdk.api.data_in.ProcessingJobRequestDTO() # ProcessingJobRequestDTO | 
 
     try:
         # Run a processing job
-        api_response = api_instance.adhoc_processing_jobs(tenants=tenants, all_tenants=all_tenants, data_category_id=data_category_id, publish_to_production=publish_to_production)
+        api_response = api_instance.adhoc_processing_jobs(processing_job_request_dto)
         print("The response of DataAndJobHandlingApi->adhoc_processing_jobs:\n")
         pprint(api_response)
     except Exception as e:
@@ -333,10 +307,7 @@ with visier.sdk.api.data_in.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tenants** | [**List[str]**](str.md)| The tenant codes of the tenants to run processing jobs for. If omitted, runs a processing job for the tenant associated with the user who made the API request. | [optional] 
- **all_tenants** | **bool**| If &#x60;true&#x60;, runs processing jobs for all accessible analytic tenants. Default is &#x60;false&#x60;. | [optional] 
- **data_category_id** | **str**| The unique identifier of the data category to run the job. If omitted, runs a job using the primary data category.  To retrieve a list of all data categories, see &#x60;GET /v1/op/data/categories&#x60;. | [optional] 
- **publish_to_production** | **bool**| If &#x60;true&#x60;, publishes the generated data version to production. Default is &#x60;false&#x60;. | [optional] 
+ **processing_job_request_dto** | [**ProcessingJobRequestDTO**](ProcessingJobRequestDTO.md)|  | 
 
 ### Return type
 
@@ -348,7 +319,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
