@@ -93,6 +93,7 @@ docs/PermissionsListDTO.md
 docs/PermissionsToUserGroupForTenantDTO.md
 docs/PermissionsToUserGroupRequestDTO.md
 docs/PermissionsToUserGroupsRequestDTO.md
+docs/ProductionVersionAPIOperationResponseDTO.md
 docs/ProductionVersionsAPIOperationRequestDTO.md
 docs/ProductionVersionsAPIOperationResponseDTO.md
 docs/ProductionVersionsApi.md
@@ -192,6 +193,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_production_version_api_operation_response_dto.py
 tox.ini
 visier/__init__.py
 visier/sdk/__init__.py
@@ -302,6 +304,7 @@ visier/sdk/api/administration/models/permissions_list_dto.py
 visier/sdk/api/administration/models/permissions_to_user_group_for_tenant_dto.py
 visier/sdk/api/administration/models/permissions_to_user_group_request_dto.py
 visier/sdk/api/administration/models/permissions_to_user_groups_request_dto.py
+visier/sdk/api/administration/models/production_version_api_operation_response_dto.py
 visier/sdk/api/administration/models/production_versions_api_operation_request_dto.py
 visier/sdk/api/administration/models/production_versions_api_operation_response_dto.py
 visier/sdk/api/administration/models/profile_assigned_for_accessible_tenant_dto.py
