@@ -120,6 +120,10 @@ docs/SecurablePropertyDTO.md
 docs/SecurityAssignmentResponseDTO.md
 docs/ShareableDataAccessSet.md
 docs/SimpleUserDTO.md
+docs/SourceImportResultSummaryDTO.md
+docs/SourcesAPIOperationRequestDTO.md
+docs/SourcesAPIPutResponseDTO.md
+docs/SourcesApi.md
 docs/StaticDimensionFilterDTO.md
 docs/Status.md
 docs/SuccessfulAccessibleTenantProfileAssignmentDTO.md
@@ -193,7 +197,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_production_version_api_operation_response_dto.py
+test/test_source_import_result_summary_dto.py
+test/test_sources_api.py
+test/test_sources_api_operation_request_dto.py
+test/test_sources_api_put_response_dto.py
 tox.ini
 visier/__init__.py
 visier/sdk/__init__.py
@@ -205,6 +212,7 @@ visier/sdk/api/administration/api/permissions_api.py
 visier/sdk/api/administration/api/production_versions_api.py
 visier/sdk/api/administration/api/profiles_api.py
 visier/sdk/api/administration/api/projects_api.py
+visier/sdk/api/administration/api/sources_api.py
 visier/sdk/api/administration/api/system_status_api.py
 visier/sdk/api/administration/api/tenants_v1_api.py
 visier/sdk/api/administration/api/tenants_v2_api.py
@@ -328,6 +336,9 @@ visier/sdk/api/administration/models/securable_property_dto.py
 visier/sdk/api/administration/models/security_assignment_response_dto.py
 visier/sdk/api/administration/models/shareable_data_access_set.py
 visier/sdk/api/administration/models/simple_user_dto.py
+visier/sdk/api/administration/models/source_import_result_summary_dto.py
+visier/sdk/api/administration/models/sources_api_operation_request_dto.py
+visier/sdk/api/administration/models/sources_api_put_response_dto.py
 visier/sdk/api/administration/models/static_dimension_filter_dto.py
 visier/sdk/api/administration/models/status.py
 visier/sdk/api/administration/models/successful_accessible_tenant_profile_assignment_dto.py
