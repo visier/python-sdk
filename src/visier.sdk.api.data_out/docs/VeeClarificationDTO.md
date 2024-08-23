@@ -5,7 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **str** | If Vee needs more context to answer your question, the follow-up question should address this clarification. | [optional] 
+**attributes** | **List[str]** | Suggested attributes to look at, that are similar or related to your question. | [optional] 
+**dimensions** | **List[str]** | Suggested dimensions to look at, that are similar or related to your question. | [optional] 
+**filters** | **List[str]** | Suggested filters that could be a better fit for the data. | [optional] 
+**message** | **str** | Returned if Vee needs more context to answer your question. | [optional] 
+**metrics** | **List[str]** | Suggested metrics to look at, that are similar or related to your question. | [optional] 
+**questions** | **List[str]** | Some related questions that could be helpful. | [optional] 
 
 ## Example
 
