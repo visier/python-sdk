@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **include_all** | **bool** | If &#x60;true&#x60;, all data uploads are included for the analytic tenant. | [optional] 
-**max_upload_time** | **str** | An ISO8601 time for the latest upload time. If defined, omit &#x60;uploadTimes&#x60;. If omitted and &#x60;minUploadTime&#x60; is defined, includes files up to latest time available. | [optional] 
-**min_upload_time** | **str** | An ISO8601 time for the earliest upload time. If defined, omit &#x60;uploadTimes&#x60;. If omitted and &#x60;maxUploadTime&#x60; is defined, includes files up to earliest time available. | [optional] 
+**max_upload_time** | **str** | An ISO8601 time such as &#x60;\&quot;2001-10-25T13:45:35.999\&quot;&#x60; for the latest upload time. If defined, omit &#x60;uploadTimes&#x60;. If omitted and &#x60;minUploadTime&#x60; is defined, includes files up to latest time available. | [optional] 
+**min_upload_time** | **str** | An ISO8601 time such as &#x60;\&quot;2001-10-25T13:45:35.999\&quot;&#x60; for the earliest upload time. If defined, omit &#x60;uploadTimes&#x60;. If omitted and &#x60;maxUploadTime&#x60; is defined, includes files up to earliest time available. | [optional] 
 **sources** | **List[str]** | A comma-separated list of strings representing the object name of each source to include. If &#x60;uploadTimes&#x60; is omitted, includes files for the given sources for all &#x60;uploadTimes&#x60;. | [optional] 
 **tenant_code** | **str** | The tenant code of the analytic tenant you are including a data upload for. | [optional] 
-**upload_times** | **List[str]** | A comma-separated list of ISO8601 time strings representing the upload time of each data upload to include. | [optional] 
+**upload_times** | **List[str]** | A comma-separated list of ISO8601 time strings such as &#x60;\&quot;2001-10-25T13:45:35.999\&quot;&#x60; representing the upload time of each data upload to include. | [optional] 
 
 ## Example
 
