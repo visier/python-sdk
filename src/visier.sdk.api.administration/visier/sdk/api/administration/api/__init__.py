@@ -6,6 +6,7 @@ from visier.sdk.api.administration.api.permissions_api import PermissionsApi
 from visier.sdk.api.administration.api.production_versions_api import ProductionVersionsApi
 from visier.sdk.api.administration.api.profiles_api import ProfilesApi
 from visier.sdk.api.administration.api.projects_api import ProjectsApi
+from visier.sdk.api.administration.api.sources_api import SourcesApi
 from visier.sdk.api.administration.api.system_status_api import SystemStatusApi
 from visier.sdk.api.administration.api.tenants_v1_api import TenantsV1Api
 from visier.sdk.api.administration.api.tenants_v2_api import TenantsV2Api
