@@ -29,9 +29,9 @@ class GoogleWorkspaceAuthParamsDTO(BaseModel):
     auth_code: Optional[StrictStr] = Field(default=None, alias="authCode")
     client_id: Optional[StrictStr] = Field(default=None, alias="clientId")
     client_secret: Optional[StrictStr] = Field(default=None, alias="clientSecret")
-    privacy_mode: Optional[StrictStr] = Field(default=None, alias="privacyMode")
     service_account: Optional[StrictStr] = Field(default=None, alias="serviceAccount")
-    __properties: ClassVar[List[str]] = ["authCode", "clientId", "clientSecret", "privacyMode", "serviceAccount"]
+    privacy_mode: Optional[StrictStr] = Field(default=None, alias="privacyMode")
+    __properties: ClassVar[List[str]] = ["authCode", "clientId", "clientSecret", "serviceAccount", "privacyMode"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,8 +87,8 @@ class GoogleWorkspaceAuthParamsDTO(BaseModel):
             "authCode": obj.get("authCode"),
             "clientId": obj.get("clientId"),
             "clientSecret": obj.get("clientSecret"),
-            "privacyMode": obj.get("privacyMode"),
-            "serviceAccount": obj.get("serviceAccount")
+            "serviceAccount": obj.get("serviceAccount"),
+            "privacyMode": obj.get("privacyMode")
         })
         return _obj
 

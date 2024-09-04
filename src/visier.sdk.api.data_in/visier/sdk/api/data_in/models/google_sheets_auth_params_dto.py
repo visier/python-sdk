@@ -27,10 +27,10 @@ class GoogleSheetsAuthParamsDTO(BaseModel):
     GoogleSheetsAuthParamsDTO
     """ # noqa: E501
     auth_code: Optional[StrictStr] = Field(default=None, alias="authCode")
+    configuration: Optional[StrictStr] = None
     client_id: Optional[StrictStr] = Field(default=None, alias="clientId")
     client_secret: Optional[StrictStr] = Field(default=None, alias="clientSecret")
-    configuration: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["authCode", "clientId", "clientSecret", "configuration"]
+    __properties: ClassVar[List[str]] = ["authCode", "configuration", "clientId", "clientSecret"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,9 +84,9 @@ class GoogleSheetsAuthParamsDTO(BaseModel):
 
         _obj = cls.model_validate({
             "authCode": obj.get("authCode"),
+            "configuration": obj.get("configuration"),
             "clientId": obj.get("clientId"),
-            "clientSecret": obj.get("clientSecret"),
-            "configuration": obj.get("configuration")
+            "clientSecret": obj.get("clientSecret")
         })
         return _obj
 

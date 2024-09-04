@@ -27,14 +27,14 @@ class BigQueryAuthParamsDTO(BaseModel):
     """
     BigQueryAuthParamsDTO
     """ # noqa: E501
+    project_id: Optional[StrictStr] = Field(default=None, alias="projectId")
+    dataset_location: Optional[StrictStr] = Field(default=None, alias="datasetLocation")
+    refresh_token: Optional[StrictStr] = Field(default=None, alias="refreshToken")
     client_id: Optional[StrictStr] = Field(default=None, alias="clientId")
     client_secret: Optional[StrictStr] = Field(default=None, alias="clientSecret")
-    dataset_location: Optional[StrictStr] = Field(default=None, alias="datasetLocation")
     default_dataset: Optional[StrictStr] = Field(default=None, alias="defaultDataset")
-    project_id: Optional[StrictStr] = Field(default=None, alias="projectId")
-    refresh_token: Optional[StrictStr] = Field(default=None, alias="refreshToken")
     service_account_params: Optional[BigQueryServiceAccountParamsDTO] = Field(default=None, alias="serviceAccountParams")
-    __properties: ClassVar[List[str]] = ["clientId", "clientSecret", "datasetLocation", "defaultDataset", "projectId", "refreshToken", "serviceAccountParams"]
+    __properties: ClassVar[List[str]] = ["projectId", "datasetLocation", "refreshToken", "clientId", "clientSecret", "defaultDataset", "serviceAccountParams"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,12 +90,12 @@ class BigQueryAuthParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "projectId": obj.get("projectId"),
+            "datasetLocation": obj.get("datasetLocation"),
+            "refreshToken": obj.get("refreshToken"),
             "clientId": obj.get("clientId"),
             "clientSecret": obj.get("clientSecret"),
-            "datasetLocation": obj.get("datasetLocation"),
             "defaultDataset": obj.get("defaultDataset"),
-            "projectId": obj.get("projectId"),
-            "refreshToken": obj.get("refreshToken"),
             "serviceAccountParams": BigQueryServiceAccountParamsDTO.from_dict(obj["serviceAccountParams"]) if obj.get("serviceAccountParams") is not None else None
         })
         return _obj

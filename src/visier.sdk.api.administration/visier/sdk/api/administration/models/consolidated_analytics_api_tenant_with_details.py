@@ -26,10 +26,10 @@ class ConsolidatedAnalyticsAPITenantWithDetails(BaseModel):
     """
     ConsolidatedAnalyticsAPITenantWithDetails
     """ # noqa: E501
-    excluded_sources_list: Optional[List[StrictStr]] = Field(default=None, description="A list of the CA tenant's excluded sources.", alias="excludedSourcesList")
-    source_tenants_list: Optional[List[StrictStr]] = Field(default=None, description="A list of the CA tenant's source tenants.", alias="sourceTenantsList")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The CA tenant's code.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["excludedSourcesList", "sourceTenantsList", "tenantCode"]
+    source_tenants_list: Optional[List[StrictStr]] = Field(default=None, description="A list of the CA tenant's source tenants.", alias="sourceTenantsList")
+    excluded_sources_list: Optional[List[StrictStr]] = Field(default=None, description="A list of the CA tenant's excluded sources.", alias="excludedSourcesList")
+    __properties: ClassVar[List[str]] = ["tenantCode", "sourceTenantsList", "excludedSourcesList"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class ConsolidatedAnalyticsAPITenantWithDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "excludedSourcesList": obj.get("excludedSourcesList"),
+            "tenantCode": obj.get("tenantCode"),
             "sourceTenantsList": obj.get("sourceTenantsList"),
-            "tenantCode": obj.get("tenantCode")
+            "excludedSourcesList": obj.get("excludedSourcesList")
         })
         return _obj
 

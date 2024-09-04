@@ -27,10 +27,10 @@ class AllUsersGetAPIResponseDTO(BaseModel):
     """
     AllUsersGetAPIResponseDTO
     """ # noqa: E501
+    users: Optional[List[UserGetAPIResponseDTO]] = Field(default=None, description="A list of available users.")
     limit: Optional[StrictInt] = Field(default=None, description="The number of results to return. The maximum number of users to retrieve is 1000.")
     start: Optional[StrictInt] = Field(default=None, description="The index to start retrieving results from, also known as offset. The index begins at 0.")
-    users: Optional[List[UserGetAPIResponseDTO]] = Field(default=None, description="A list of available users.")
-    __properties: ClassVar[List[str]] = ["limit", "start", "users"]
+    __properties: ClassVar[List[str]] = ["users", "limit", "start"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +90,9 @@ class AllUsersGetAPIResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "users": [UserGetAPIResponseDTO.from_dict(_item) for _item in obj["users"]] if obj.get("users") is not None else None,
             "limit": obj.get("limit"),
-            "start": obj.get("start"),
-            "users": [UserGetAPIResponseDTO.from_dict(_item) for _item in obj["users"]] if obj.get("users") is not None else None
+            "start": obj.get("start")
         })
         return _obj
 

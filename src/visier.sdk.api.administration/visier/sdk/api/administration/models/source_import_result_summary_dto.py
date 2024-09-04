@@ -27,10 +27,10 @@ class SourceImportResultSummaryDTO(BaseModel):
     SourceImportResultSummaryDTO
     """ # noqa: E501
     created: Optional[StrictInt] = Field(default=None, description="The number of imported sources that were newly created in the target tenant.")
-    deleted: Optional[StrictInt] = Field(default=None, description="The number of imported sources that existed in the target tenant prior to the import, and were deleted during the import.")
-    ignored: Optional[StrictInt] = Field(default=None, description="The number of imported sources that already existed and were ignored in the target tenant.")
     updated: Optional[StrictInt] = Field(default=None, description="The number of imported sources that already existed and were updated in the target tenant.")
-    __properties: ClassVar[List[str]] = ["created", "deleted", "ignored", "updated"]
+    ignored: Optional[StrictInt] = Field(default=None, description="The number of imported sources that already existed and were ignored in the target tenant.")
+    deleted: Optional[StrictInt] = Field(default=None, description="The number of imported sources that existed in the target tenant prior to the import, and were deleted during the import.")
+    __properties: ClassVar[List[str]] = ["created", "updated", "ignored", "deleted"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,9 +84,9 @@ class SourceImportResultSummaryDTO(BaseModel):
 
         _obj = cls.model_validate({
             "created": obj.get("created"),
-            "deleted": obj.get("deleted"),
+            "updated": obj.get("updated"),
             "ignored": obj.get("ignored"),
-            "updated": obj.get("updated")
+            "deleted": obj.get("deleted")
         })
         return _obj
 

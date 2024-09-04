@@ -28,10 +28,10 @@ class VeeQuestionDTO(BaseModel):
     """
     The request body fields to ask Vee a question.
     """ # noqa: E501
+    question: Optional[StrictStr] = Field(default=None, description="The question to ask Vee. If asking a follow-up question or continuing a conversation with Vee, specify the `conversationState` object from the question's response.")
     conversation_state: Optional[VeeConversationStateDTO] = Field(default=None, description="The unique identifier of the conversation with Vee. If empty, starts a new conversation with Vee. If asking a follow-up question or continuing a conversation with Vee, specify the `conversationState` object from the question's response. To submit feedback about Vee's answer, copy the entire response into your `/feedback` call.", alias="conversationState")
     options: Optional[VeeOptionsDTO] = Field(default=None, description="Options to specify how Vee should respond to a question.")
-    question: Optional[StrictStr] = Field(default=None, description="The question to ask Vee. If asking a follow-up question or continuing a conversation with Vee, specify the `conversationState` object from the question's response.")
-    __properties: ClassVar[List[str]] = ["conversationState", "options", "question"]
+    __properties: ClassVar[List[str]] = ["question", "conversationState", "options"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +90,9 @@ class VeeQuestionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "question": obj.get("question"),
             "conversationState": VeeConversationStateDTO.from_dict(obj["conversationState"]) if obj.get("conversationState") is not None else None,
-            "options": VeeOptionsDTO.from_dict(obj["options"]) if obj.get("options") is not None else None,
-            "question": obj.get("question")
+            "options": VeeOptionsDTO.from_dict(obj["options"]) if obj.get("options") is not None else None
         })
         return _obj
 

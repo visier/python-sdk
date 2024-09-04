@@ -26,10 +26,10 @@ class MetricValidationSummaryDTO(BaseModel):
     """
     MetricValidationSummaryDTO
     """ # noqa: E501
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable name that is displayed within Visier. For example, \"Headcount\".", alias="displayName")
     symbol_name: Optional[StrictStr] = Field(default=None, description="The symbol name of the metric. For example, \"employeeCount\".", alias="symbolName")
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable name that is displayed within Visier. For example, \"Headcount\".", alias="displayName")
     value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The current value of the metric expressed as an integer.")
-    __properties: ClassVar[List[str]] = ["displayName", "symbolName", "value"]
+    __properties: ClassVar[List[str]] = ["symbolName", "displayName", "value"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,8 +82,8 @@ class MetricValidationSummaryDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "displayName": obj.get("displayName"),
             "symbolName": obj.get("symbolName"),
+            "displayName": obj.get("displayName"),
             "value": obj.get("value")
         })
         return _obj

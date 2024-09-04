@@ -26,9 +26,9 @@ class DimensionMappingValidationExecutionDTO(BaseModel):
     """
     Instruction to execute a mapping validation query
     """ # noqa: E501
-    analytic_object: Optional[StrictStr] = Field(default=None, description="the analytic object associated with the dimension map", alias="analyticObject")
     member_map_id: Optional[StrictStr] = Field(default=None, description="memberMapId == dimensionMapId", alias="memberMapId")
-    __properties: ClassVar[List[str]] = ["analyticObject", "memberMapId"]
+    analytic_object: Optional[StrictStr] = Field(default=None, description="the analytic object associated with the dimension map", alias="analyticObject")
+    __properties: ClassVar[List[str]] = ["memberMapId", "analyticObject"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class DimensionMappingValidationExecutionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analyticObject": obj.get("analyticObject"),
-            "memberMapId": obj.get("memberMapId")
+            "memberMapId": obj.get("memberMapId"),
+            "analyticObject": obj.get("analyticObject")
         })
         return _obj
 

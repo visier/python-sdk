@@ -26,9 +26,9 @@ class SubjectMissingAccessDTO(BaseModel):
     """
     SubjectMissingAccessDTO
     """ # noqa: E501
-    attributes: Optional[List[StrictStr]] = Field(default=None, description="The attributes that cannot be accessed.")
     subject: Optional[StrictStr] = Field(default=None, description="The subjects that cannot be accessed.")
-    __properties: ClassVar[List[str]] = ["attributes", "subject"]
+    attributes: Optional[List[StrictStr]] = Field(default=None, description="The attributes that cannot be accessed.")
+    __properties: ClassVar[List[str]] = ["subject", "attributes"]
 
     @field_validator('subject')
     def subject_validate_enum(cls, value):
@@ -91,8 +91,8 @@ class SubjectMissingAccessDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "attributes": obj.get("attributes"),
-            "subject": obj.get("subject")
+            "subject": obj.get("subject"),
+            "attributes": obj.get("attributes")
         })
         return _obj
 

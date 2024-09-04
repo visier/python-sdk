@@ -29,9 +29,9 @@ class UserGroupChangeDimensionFilterDTO(BaseModel):
     UserGroupChangeDimensionFilterDTO
     """ # noqa: E501
     dimension_id: Optional[StrictStr] = Field(default=None, description="The object name of the dimension.", alias="dimensionId")
-    member_selections: Optional[List[UserGroupChangeMemberSelectionDTO]] = Field(default=None, description="The dimension members to select in the dynamic filter.", alias="memberSelections")
     subject_reference_path: Optional[ElementIDsDTO] = Field(default=None, description="A qualifying path if the dimension is from an analytic object that references Employee.  For example, use `subjectReferencePath` to create a filter on the `Employment_Start_Type` dimension from the `Employment_Start` object, which references `Employee`: `{ \"ids\": [ \"Employee\", \"Employment_Start\" ] }`.", alias="subjectReferencePath")
-    __properties: ClassVar[List[str]] = ["dimensionId", "memberSelections", "subjectReferencePath"]
+    member_selections: Optional[List[UserGroupChangeMemberSelectionDTO]] = Field(default=None, description="The dimension members to select in the dynamic filter.", alias="memberSelections")
+    __properties: ClassVar[List[str]] = ["dimensionId", "subjectReferencePath", "memberSelections"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,6 +72,9 @@ class UserGroupChangeDimensionFilterDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of subject_reference_path
+        if self.subject_reference_path:
+            _dict['subjectReferencePath'] = self.subject_reference_path.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in member_selections (list)
         _items = []
         if self.member_selections:
@@ -79,9 +82,6 @@ class UserGroupChangeDimensionFilterDTO(BaseModel):
                 if _item_member_selections:
                     _items.append(_item_member_selections.to_dict())
             _dict['memberSelections'] = _items
-        # override the default output from pydantic by calling `to_dict()` of subject_reference_path
-        if self.subject_reference_path:
-            _dict['subjectReferencePath'] = self.subject_reference_path.to_dict()
         return _dict
 
     @classmethod
@@ -95,8 +95,8 @@ class UserGroupChangeDimensionFilterDTO(BaseModel):
 
         _obj = cls.model_validate({
             "dimensionId": obj.get("dimensionId"),
-            "memberSelections": [UserGroupChangeMemberSelectionDTO.from_dict(_item) for _item in obj["memberSelections"]] if obj.get("memberSelections") is not None else None,
-            "subjectReferencePath": ElementIDsDTO.from_dict(obj["subjectReferencePath"]) if obj.get("subjectReferencePath") is not None else None
+            "subjectReferencePath": ElementIDsDTO.from_dict(obj["subjectReferencePath"]) if obj.get("subjectReferencePath") is not None else None,
+            "memberSelections": [UserGroupChangeMemberSelectionDTO.from_dict(_item) for _item in obj["memberSelections"]] if obj.get("memberSelections") is not None else None
         })
         return _obj
 

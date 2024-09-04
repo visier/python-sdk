@@ -26,10 +26,10 @@ class SuccessfulAccessibleTenantProfileAssignmentDTO(BaseModel):
     """
     SuccessfulAccessibleTenantProfileAssignmentDTO
     """ # noqa: E501
-    for_all_children: Optional[StrictBool] = Field(default=None, description="If true, the target assignment is for all analytic tenants.", alias="forAllChildren")
-    tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code.", alias="tenantCode")
     user_id: Optional[StrictStr] = Field(default=None, description="The user ID.", alias="userId")
-    __properties: ClassVar[List[str]] = ["forAllChildren", "tenantCode", "userId"]
+    tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code.", alias="tenantCode")
+    for_all_children: Optional[StrictBool] = Field(default=None, description="If true, the target assignment is for all analytic tenants.", alias="forAllChildren")
+    __properties: ClassVar[List[str]] = ["userId", "tenantCode", "forAllChildren"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class SuccessfulAccessibleTenantProfileAssignmentDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "forAllChildren": obj.get("forAllChildren"),
+            "userId": obj.get("userId"),
             "tenantCode": obj.get("tenantCode"),
-            "userId": obj.get("userId")
+            "forAllChildren": obj.get("forAllChildren")
         })
         return _obj
 

@@ -33,9 +33,9 @@ class AnalyticObjectDTO(BaseModel):
     display_name: Optional[StrictStr] = Field(default=None, description="An identifiable name to display in Visier, such as \"Employee\".", alias="displayName")
     object_type: Optional[StrictStr] = Field(default=None, description="The analytic object type.", alias="objectType")
     related_objects: Optional[List[RelatedAnalyticObjectDTO]] = Field(default=None, description="The analytic objects related to the data security object.", alias="relatedObjects")
-    securable_dimensions: Optional[List[SecurableDimensionDTO]] = Field(default=None, description="A list of dimensions that are available to define population access filters in the permission.", alias="securableDimensions")
     securable_properties: Optional[List[SecurablePropertyDTO]] = Field(default=None, description="All available properties from the data security object and its related analytic objects that you can configure data access for.", alias="securableProperties")
-    __properties: ClassVar[List[str]] = ["analyticObjectId", "displayName", "objectType", "relatedObjects", "securableDimensions", "securableProperties"]
+    securable_dimensions: Optional[List[SecurableDimensionDTO]] = Field(default=None, description="A list of dimensions that are available to define population access filters in the permission.", alias="securableDimensions")
+    __properties: ClassVar[List[str]] = ["analyticObjectId", "displayName", "objectType", "relatedObjects", "securableProperties", "securableDimensions"]
 
     @field_validator('object_type')
     def object_type_validate_enum(cls, value):
@@ -93,13 +93,6 @@ class AnalyticObjectDTO(BaseModel):
                 if _item_related_objects:
                     _items.append(_item_related_objects.to_dict())
             _dict['relatedObjects'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in securable_dimensions (list)
-        _items = []
-        if self.securable_dimensions:
-            for _item_securable_dimensions in self.securable_dimensions:
-                if _item_securable_dimensions:
-                    _items.append(_item_securable_dimensions.to_dict())
-            _dict['securableDimensions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in securable_properties (list)
         _items = []
         if self.securable_properties:
@@ -107,6 +100,13 @@ class AnalyticObjectDTO(BaseModel):
                 if _item_securable_properties:
                     _items.append(_item_securable_properties.to_dict())
             _dict['securableProperties'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in securable_dimensions (list)
+        _items = []
+        if self.securable_dimensions:
+            for _item_securable_dimensions in self.securable_dimensions:
+                if _item_securable_dimensions:
+                    _items.append(_item_securable_dimensions.to_dict())
+            _dict['securableDimensions'] = _items
         return _dict
 
     @classmethod
@@ -123,8 +123,8 @@ class AnalyticObjectDTO(BaseModel):
             "displayName": obj.get("displayName"),
             "objectType": obj.get("objectType"),
             "relatedObjects": [RelatedAnalyticObjectDTO.from_dict(_item) for _item in obj["relatedObjects"]] if obj.get("relatedObjects") is not None else None,
-            "securableDimensions": [SecurableDimensionDTO.from_dict(_item) for _item in obj["securableDimensions"]] if obj.get("securableDimensions") is not None else None,
-            "securableProperties": [SecurablePropertyDTO.from_dict(_item) for _item in obj["securableProperties"]] if obj.get("securableProperties") is not None else None
+            "securableProperties": [SecurablePropertyDTO.from_dict(_item) for _item in obj["securableProperties"]] if obj.get("securableProperties") is not None else None,
+            "securableDimensions": [SecurableDimensionDTO.from_dict(_item) for _item in obj["securableDimensions"]] if obj.get("securableDimensions") is not None else None
         })
         return _obj
 

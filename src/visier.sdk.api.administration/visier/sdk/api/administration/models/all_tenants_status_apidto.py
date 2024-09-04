@@ -27,10 +27,10 @@ class AllTenantsStatusAPIDTO(BaseModel):
     """
     AllTenantsStatusAPIDTO
     """ # noqa: E501
+    tenants: Optional[List[TenantDetailAPIDTO]] = Field(default=None, description="A list of objects representing all the analytic tenants.")
     limit: Optional[StrictInt] = Field(default=None, description="The limit of analytic tenants to return. The maximum value is 1000.")
     start: Optional[StrictInt] = Field(default=None, description="The index to start retrieving values from, also known as offset. The index begins at 0.")
-    tenants: Optional[List[TenantDetailAPIDTO]] = Field(default=None, description="A list of objects representing all the analytic tenants.")
-    __properties: ClassVar[List[str]] = ["limit", "start", "tenants"]
+    __properties: ClassVar[List[str]] = ["tenants", "limit", "start"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +90,9 @@ class AllTenantsStatusAPIDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "tenants": [TenantDetailAPIDTO.from_dict(_item) for _item in obj["tenants"]] if obj.get("tenants") is not None else None,
             "limit": obj.get("limit"),
-            "start": obj.get("start"),
-            "tenants": [TenantDetailAPIDTO.from_dict(_item) for _item in obj["tenants"]] if obj.get("tenants") is not None else None
+            "start": obj.get("start")
         })
         return _obj
 

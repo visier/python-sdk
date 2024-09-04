@@ -28,9 +28,9 @@ class UserGroupChangeResponseDTO(BaseModel):
     """
     UserGroupChangeResponseDTO
     """ # noqa: E501
-    failures: Optional[List[UserGroupChangeFailureDTO]] = Field(default=None, description="The user groups that were not created.")
     successes: Optional[List[UserGroupChangeSuccessDTO]] = Field(default=None, description="The user groups that were created.")
-    __properties: ClassVar[List[str]] = ["failures", "successes"]
+    failures: Optional[List[UserGroupChangeFailureDTO]] = Field(default=None, description="The user groups that were not created.")
+    __properties: ClassVar[List[str]] = ["successes", "failures"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,13 +71,6 @@ class UserGroupChangeResponseDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in failures (list)
-        _items = []
-        if self.failures:
-            for _item_failures in self.failures:
-                if _item_failures:
-                    _items.append(_item_failures.to_dict())
-            _dict['failures'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in successes (list)
         _items = []
         if self.successes:
@@ -85,6 +78,13 @@ class UserGroupChangeResponseDTO(BaseModel):
                 if _item_successes:
                     _items.append(_item_successes.to_dict())
             _dict['successes'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in failures (list)
+        _items = []
+        if self.failures:
+            for _item_failures in self.failures:
+                if _item_failures:
+                    _items.append(_item_failures.to_dict())
+            _dict['failures'] = _items
         return _dict
 
     @classmethod
@@ -97,8 +97,8 @@ class UserGroupChangeResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "failures": [UserGroupChangeFailureDTO.from_dict(_item) for _item in obj["failures"]] if obj.get("failures") is not None else None,
-            "successes": [UserGroupChangeSuccessDTO.from_dict(_item) for _item in obj["successes"]] if obj.get("successes") is not None else None
+            "successes": [UserGroupChangeSuccessDTO.from_dict(_item) for _item in obj["successes"]] if obj.get("successes") is not None else None,
+            "failures": [UserGroupChangeFailureDTO.from_dict(_item) for _item in obj["failures"]] if obj.get("failures") is not None else None
         })
         return _obj
 

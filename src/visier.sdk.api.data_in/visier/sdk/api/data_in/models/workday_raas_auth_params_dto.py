@@ -26,12 +26,12 @@ class WorkdayRaasAuthParamsDTO(BaseModel):
     """
     WorkdayRaasAuthParamsDTO
     """ # noqa: E501
+    user_id: Optional[StrictStr] = Field(default=None, alias="userId")
     domain_name: Optional[StrictStr] = Field(default=None, alias="domainName")
     implementation_name: Optional[StrictStr] = Field(default=None, alias="implementationName")
     password: Optional[StrictStr] = None
     test_report_url: Optional[StrictStr] = Field(default=None, alias="testReportUrl")
-    user_id: Optional[StrictStr] = Field(default=None, alias="userId")
-    __properties: ClassVar[List[str]] = ["domainName", "implementationName", "password", "testReportUrl", "userId"]
+    __properties: ClassVar[List[str]] = ["userId", "domainName", "implementationName", "password", "testReportUrl"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,11 +84,11 @@ class WorkdayRaasAuthParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "userId": obj.get("userId"),
             "domainName": obj.get("domainName"),
             "implementationName": obj.get("implementationName"),
             "password": obj.get("password"),
-            "testReportUrl": obj.get("testReportUrl"),
-            "userId": obj.get("userId")
+            "testReportUrl": obj.get("testReportUrl")
         })
         return _obj
 

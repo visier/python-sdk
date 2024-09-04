@@ -27,11 +27,11 @@ class SecurableDimensionDTO(BaseModel):
     """
     SecurableDimensionDTO
     """ # noqa: E501
-    analytic_object_ids: Optional[List[StrictStr]] = Field(default=None, description="A list of analytic object IDs.", alias="analyticObjectIds")
     dimension_id: Optional[StrictStr] = Field(default=None, description="The dimension ID.", alias="dimensionId")
     display_name: Optional[StrictStr] = Field(default=None, description="An identifiable dimension name to display in Visier, such as \"Contract Type\".", alias="displayName")
+    analytic_object_ids: Optional[List[StrictStr]] = Field(default=None, description="A list of analytic object IDs.", alias="analyticObjectIds")
     hierarchy_properties: Optional[List[HierarchyPropertyDTO]] = Field(default=None, description="The list of hierarchies you can map to a user in a permission's dynamic filter.", alias="hierarchyProperties")
-    __properties: ClassVar[List[str]] = ["analyticObjectIds", "dimensionId", "displayName", "hierarchyProperties"]
+    __properties: ClassVar[List[str]] = ["dimensionId", "displayName", "analyticObjectIds", "hierarchyProperties"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,9 +91,9 @@ class SecurableDimensionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analyticObjectIds": obj.get("analyticObjectIds"),
             "dimensionId": obj.get("dimensionId"),
             "displayName": obj.get("displayName"),
+            "analyticObjectIds": obj.get("analyticObjectIds"),
             "hierarchyProperties": [HierarchyPropertyDTO.from_dict(_item) for _item in obj["hierarchyProperties"]] if obj.get("hierarchyProperties") is not None else None
         })
         return _obj

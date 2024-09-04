@@ -27,11 +27,11 @@ class AssignConnectorCredentialsByTenantResponseDTO(BaseModel):
     """
     AssignConnectorCredentialsByTenantResponseDTO
     """ # noqa: E501
-    connectors: Optional[List[AssignConnectorWithCredentialsResponseDTO]] = Field(default=None, description="A list of objects representing the assigned credentials and connectors.")
-    message: Optional[StrictStr] = None
-    status: Optional[StrictStr] = Field(default=None, description="The state of the credential assignment. Valid values are Succeed or Failed.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the tenant.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["connectors", "message", "status", "tenantCode"]
+    connectors: Optional[List[AssignConnectorWithCredentialsResponseDTO]] = Field(default=None, description="A list of objects representing the assigned credentials and connectors.")
+    status: Optional[StrictStr] = Field(default=None, description="The state of the credential assignment. Valid values are Succeed or Failed.")
+    message: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["tenantCode", "connectors", "status", "message"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -101,10 +101,10 @@ class AssignConnectorCredentialsByTenantResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "tenantCode": obj.get("tenantCode"),
             "connectors": [AssignConnectorWithCredentialsResponseDTO.from_dict(_item) for _item in obj["connectors"]] if obj.get("connectors") is not None else None,
-            "message": obj.get("message"),
             "status": obj.get("status"),
-            "tenantCode": obj.get("tenantCode")
+            "message": obj.get("message")
         })
         return _obj
 

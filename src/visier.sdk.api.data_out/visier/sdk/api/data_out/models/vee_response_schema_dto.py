@@ -27,10 +27,10 @@ class VeeResponseSchemaDTO(BaseModel):
     """
     VeeResponseSchemaDTO
     """ # noqa: E501
-    concepts: Optional[List[VeeResponseSchemaReferenceDTO]] = Field(default=None, description="A list of the concepts that contribute to Vee's answer.")
-    dimensions: Optional[List[VeeResponseSchemaReferenceDTO]] = Field(default=None, description="A list of the dimensions that contribute to Vee's answer.")
     metrics: Optional[List[StrictStr]] = Field(default=None, description="A list of the metrics that contribute to Vee's answer.")
-    __properties: ClassVar[List[str]] = ["concepts", "dimensions", "metrics"]
+    dimensions: Optional[List[VeeResponseSchemaReferenceDTO]] = Field(default=None, description="A list of the dimensions that contribute to Vee's answer.")
+    concepts: Optional[List[VeeResponseSchemaReferenceDTO]] = Field(default=None, description="A list of the concepts that contribute to Vee's answer.")
+    __properties: ClassVar[List[str]] = ["metrics", "dimensions", "concepts"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,13 +71,6 @@ class VeeResponseSchemaDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in concepts (list)
-        _items = []
-        if self.concepts:
-            for _item_concepts in self.concepts:
-                if _item_concepts:
-                    _items.append(_item_concepts.to_dict())
-            _dict['concepts'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in dimensions (list)
         _items = []
         if self.dimensions:
@@ -85,6 +78,13 @@ class VeeResponseSchemaDTO(BaseModel):
                 if _item_dimensions:
                     _items.append(_item_dimensions.to_dict())
             _dict['dimensions'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in concepts (list)
+        _items = []
+        if self.concepts:
+            for _item_concepts in self.concepts:
+                if _item_concepts:
+                    _items.append(_item_concepts.to_dict())
+            _dict['concepts'] = _items
         return _dict
 
     @classmethod
@@ -97,9 +97,9 @@ class VeeResponseSchemaDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "concepts": [VeeResponseSchemaReferenceDTO.from_dict(_item) for _item in obj["concepts"]] if obj.get("concepts") is not None else None,
+            "metrics": obj.get("metrics"),
             "dimensions": [VeeResponseSchemaReferenceDTO.from_dict(_item) for _item in obj["dimensions"]] if obj.get("dimensions") is not None else None,
-            "metrics": obj.get("metrics")
+            "concepts": [VeeResponseSchemaReferenceDTO.from_dict(_item) for _item in obj["concepts"]] if obj.get("concepts") is not None else None
         })
         return _obj
 

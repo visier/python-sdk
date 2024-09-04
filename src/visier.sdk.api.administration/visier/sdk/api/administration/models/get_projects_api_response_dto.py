@@ -27,11 +27,11 @@ class GetProjectsAPIResponseDTO(BaseModel):
     """
     GetProjectsAPIResponseDTO
     """ # noqa: E501
-    approval_projects: Optional[List[ProjectDTO]] = Field(default=None, description="A list of objects representing the accessible approval projects for the user.", alias="approvalProjects")
-    archived_projects: Optional[List[ProjectDTO]] = Field(default=None, description="A list of objects representing the accessible archived projects for the user.", alias="archivedProjects")
     open_projects: Optional[List[ProjectDTO]] = Field(default=None, description="A list of objects representing the accessible open projects for the user.", alias="openProjects")
+    approval_projects: Optional[List[ProjectDTO]] = Field(default=None, description="A list of objects representing the accessible approval projects for the user.", alias="approvalProjects")
     rejected_projects: Optional[List[ProjectDTO]] = Field(default=None, description="A list of objects representing the accessible rejected projects for the user.", alias="rejectedProjects")
-    __properties: ClassVar[List[str]] = ["approvalProjects", "archivedProjects", "openProjects", "rejectedProjects"]
+    archived_projects: Optional[List[ProjectDTO]] = Field(default=None, description="A list of objects representing the accessible archived projects for the user.", alias="archivedProjects")
+    __properties: ClassVar[List[str]] = ["openProjects", "approvalProjects", "rejectedProjects", "archivedProjects"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,20 +72,6 @@ class GetProjectsAPIResponseDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in approval_projects (list)
-        _items = []
-        if self.approval_projects:
-            for _item_approval_projects in self.approval_projects:
-                if _item_approval_projects:
-                    _items.append(_item_approval_projects.to_dict())
-            _dict['approvalProjects'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in archived_projects (list)
-        _items = []
-        if self.archived_projects:
-            for _item_archived_projects in self.archived_projects:
-                if _item_archived_projects:
-                    _items.append(_item_archived_projects.to_dict())
-            _dict['archivedProjects'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in open_projects (list)
         _items = []
         if self.open_projects:
@@ -93,6 +79,13 @@ class GetProjectsAPIResponseDTO(BaseModel):
                 if _item_open_projects:
                     _items.append(_item_open_projects.to_dict())
             _dict['openProjects'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in approval_projects (list)
+        _items = []
+        if self.approval_projects:
+            for _item_approval_projects in self.approval_projects:
+                if _item_approval_projects:
+                    _items.append(_item_approval_projects.to_dict())
+            _dict['approvalProjects'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in rejected_projects (list)
         _items = []
         if self.rejected_projects:
@@ -100,6 +93,13 @@ class GetProjectsAPIResponseDTO(BaseModel):
                 if _item_rejected_projects:
                     _items.append(_item_rejected_projects.to_dict())
             _dict['rejectedProjects'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in archived_projects (list)
+        _items = []
+        if self.archived_projects:
+            for _item_archived_projects in self.archived_projects:
+                if _item_archived_projects:
+                    _items.append(_item_archived_projects.to_dict())
+            _dict['archivedProjects'] = _items
         return _dict
 
     @classmethod
@@ -112,10 +112,10 @@ class GetProjectsAPIResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "approvalProjects": [ProjectDTO.from_dict(_item) for _item in obj["approvalProjects"]] if obj.get("approvalProjects") is not None else None,
-            "archivedProjects": [ProjectDTO.from_dict(_item) for _item in obj["archivedProjects"]] if obj.get("archivedProjects") is not None else None,
             "openProjects": [ProjectDTO.from_dict(_item) for _item in obj["openProjects"]] if obj.get("openProjects") is not None else None,
-            "rejectedProjects": [ProjectDTO.from_dict(_item) for _item in obj["rejectedProjects"]] if obj.get("rejectedProjects") is not None else None
+            "approvalProjects": [ProjectDTO.from_dict(_item) for _item in obj["approvalProjects"]] if obj.get("approvalProjects") is not None else None,
+            "rejectedProjects": [ProjectDTO.from_dict(_item) for _item in obj["rejectedProjects"]] if obj.get("rejectedProjects") is not None else None,
+            "archivedProjects": [ProjectDTO.from_dict(_item) for _item in obj["archivedProjects"]] if obj.get("archivedProjects") is not None else None
         })
         return _obj
 

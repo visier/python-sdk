@@ -27,9 +27,9 @@ class ProductionVersionsAPIOperationRequestDTO(BaseModel):
     """
     ProductionVersionsAPIOperationRequestDTO
     """ # noqa: E501
-    export_parameters: Optional[ExportProductionVersionsAPIOperationParametersDTO] = Field(default=None, description="The parameters for the `export` option, such as the production version to start exporting versions from. Required for `export` operations.", alias="exportParameters")
     operation: Optional[StrictStr] = Field(default=None, description="The operation to perform. Valid values:  * `export`: Export the project changes of the requested production versions and their related files, such as any Guidebook images. If successful, a ZIP file is returned containing any relevant image files and a JSON file with the production project changes.")
-    __properties: ClassVar[List[str]] = ["exportParameters", "operation"]
+    export_parameters: Optional[ExportProductionVersionsAPIOperationParametersDTO] = Field(default=None, description="The parameters for the `export` option, such as the production version to start exporting versions from. Required for `export` operations.", alias="exportParameters")
+    __properties: ClassVar[List[str]] = ["operation", "exportParameters"]
 
     @field_validator('operation')
     def operation_validate_enum(cls, value):
@@ -95,8 +95,8 @@ class ProductionVersionsAPIOperationRequestDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "exportParameters": ExportProductionVersionsAPIOperationParametersDTO.from_dict(obj["exportParameters"]) if obj.get("exportParameters") is not None else None,
-            "operation": obj.get("operation")
+            "operation": obj.get("operation"),
+            "exportParameters": ExportProductionVersionsAPIOperationParametersDTO.from_dict(obj["exportParameters"]) if obj.get("exportParameters") is not None else None
         })
         return _obj
 

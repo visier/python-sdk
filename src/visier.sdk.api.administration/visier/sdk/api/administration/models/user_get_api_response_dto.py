@@ -30,17 +30,17 @@ class UserGetAPIResponseDTO(BaseModel):
     """
     UserGetAPIResponseDTO
     """ # noqa: E501
-    account_enabled: Optional[StrictBool] = Field(default=None, description="If false, the user account is disabled.", alias="accountEnabled")
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable name to display within Visier. For example, \"John Smith\".", alias="displayName")
-    email: Optional[StrictStr] = Field(default=None, description="The user's email address.")
-    employee_id: Optional[StrictStr] = Field(default=None, description="If applicable, and if available, the user employee ID in the data.", alias="employeeId")
-    last_login: Optional[LastLoginDTO] = Field(default=None, description="An object that represents the time that the user last logged into Visier.", alias="lastLogin")
-    permissions: Optional[AllPermissionsAssignedForLocalTenantDTO] = Field(default=None, description="A list of objects representing the user's permissions.")
-    profiles: Optional[AllProfileAssignedForLocalTenantDTO] = Field(default=None, description="A list of objects representing the list of available profiles.")
-    user_groups: Optional[AllUserGroupsAssignedForLocalTenantDTO] = Field(default=None, description="A list of objects representing the available user groups.", alias="userGroups")
     user_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the user.", alias="userId")
     username: Optional[StrictStr] = Field(default=None, description="The user's username. This is typically the user's email, such as john@jupiter.com.")
-    __properties: ClassVar[List[str]] = ["accountEnabled", "displayName", "email", "employeeId", "lastLogin", "permissions", "profiles", "userGroups", "userId", "username"]
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable name to display within Visier. For example, \"John Smith\".", alias="displayName")
+    employee_id: Optional[StrictStr] = Field(default=None, description="If applicable, and if available, the user employee ID in the data.", alias="employeeId")
+    account_enabled: Optional[StrictBool] = Field(default=None, description="If false, the user account is disabled.", alias="accountEnabled")
+    profiles: Optional[AllProfileAssignedForLocalTenantDTO] = Field(default=None, description="A list of objects representing the list of available profiles.")
+    permissions: Optional[AllPermissionsAssignedForLocalTenantDTO] = Field(default=None, description="A list of objects representing the user's permissions.")
+    user_groups: Optional[AllUserGroupsAssignedForLocalTenantDTO] = Field(default=None, description="A list of objects representing the available user groups.", alias="userGroups")
+    last_login: Optional[LastLoginDTO] = Field(default=None, description="An object that represents the time that the user last logged into Visier.", alias="lastLogin")
+    email: Optional[StrictStr] = Field(default=None, description="The user's email address.")
+    __properties: ClassVar[List[str]] = ["userId", "username", "displayName", "employeeId", "accountEnabled", "profiles", "permissions", "userGroups", "lastLogin", "email"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,18 +81,18 @@ class UserGetAPIResponseDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of last_login
-        if self.last_login:
-            _dict['lastLogin'] = self.last_login.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of permissions
-        if self.permissions:
-            _dict['permissions'] = self.permissions.to_dict()
         # override the default output from pydantic by calling `to_dict()` of profiles
         if self.profiles:
             _dict['profiles'] = self.profiles.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of permissions
+        if self.permissions:
+            _dict['permissions'] = self.permissions.to_dict()
         # override the default output from pydantic by calling `to_dict()` of user_groups
         if self.user_groups:
             _dict['userGroups'] = self.user_groups.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of last_login
+        if self.last_login:
+            _dict['lastLogin'] = self.last_login.to_dict()
         return _dict
 
     @classmethod
@@ -105,16 +105,16 @@ class UserGetAPIResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accountEnabled": obj.get("accountEnabled"),
-            "displayName": obj.get("displayName"),
-            "email": obj.get("email"),
-            "employeeId": obj.get("employeeId"),
-            "lastLogin": LastLoginDTO.from_dict(obj["lastLogin"]) if obj.get("lastLogin") is not None else None,
-            "permissions": AllPermissionsAssignedForLocalTenantDTO.from_dict(obj["permissions"]) if obj.get("permissions") is not None else None,
-            "profiles": AllProfileAssignedForLocalTenantDTO.from_dict(obj["profiles"]) if obj.get("profiles") is not None else None,
-            "userGroups": AllUserGroupsAssignedForLocalTenantDTO.from_dict(obj["userGroups"]) if obj.get("userGroups") is not None else None,
             "userId": obj.get("userId"),
-            "username": obj.get("username")
+            "username": obj.get("username"),
+            "displayName": obj.get("displayName"),
+            "employeeId": obj.get("employeeId"),
+            "accountEnabled": obj.get("accountEnabled"),
+            "profiles": AllProfileAssignedForLocalTenantDTO.from_dict(obj["profiles"]) if obj.get("profiles") is not None else None,
+            "permissions": AllPermissionsAssignedForLocalTenantDTO.from_dict(obj["permissions"]) if obj.get("permissions") is not None else None,
+            "userGroups": AllUserGroupsAssignedForLocalTenantDTO.from_dict(obj["userGroups"]) if obj.get("userGroups") is not None else None,
+            "lastLogin": LastLoginDTO.from_dict(obj["lastLogin"]) if obj.get("lastLogin") is not None else None,
+            "email": obj.get("email")
         })
         return _obj
 

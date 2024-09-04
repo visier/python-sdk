@@ -26,9 +26,9 @@ class SalesforceAuthParamsDTO(BaseModel):
     """
     SalesforceAuthParamsDTO
     """ # noqa: E501
-    client_id: Optional[StrictStr] = Field(default=None, alias="clientId")
     refresh_token: Optional[StrictStr] = Field(default=None, alias="refreshToken")
-    __properties: ClassVar[List[str]] = ["clientId", "refreshToken"]
+    client_id: Optional[StrictStr] = Field(default=None, alias="clientId")
+    __properties: ClassVar[List[str]] = ["refreshToken", "clientId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class SalesforceAuthParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "clientId": obj.get("clientId"),
-            "refreshToken": obj.get("refreshToken")
+            "refreshToken": obj.get("refreshToken"),
+            "clientId": obj.get("clientId")
         })
         return _obj
 

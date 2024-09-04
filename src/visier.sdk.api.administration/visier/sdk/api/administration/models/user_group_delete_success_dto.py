@@ -26,10 +26,10 @@ class UserGroupDeleteSuccessDTO(BaseModel):
     """
     UserGroupDeleteSuccessDTO
     """ # noqa: E501
-    project_id: Optional[StrictStr] = Field(default=None, description="The ID of the project in which user group was deleted.", alias="projectId")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The code of the tenant the user group was deleted from.", alias="tenantCode")
     user_group_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the user group that was deleted.", alias="userGroupId")
-    __properties: ClassVar[List[str]] = ["projectId", "tenantCode", "userGroupId"]
+    project_id: Optional[StrictStr] = Field(default=None, description="The ID of the project in which user group was deleted.", alias="projectId")
+    __properties: ClassVar[List[str]] = ["tenantCode", "userGroupId", "projectId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class UserGroupDeleteSuccessDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "projectId": obj.get("projectId"),
             "tenantCode": obj.get("tenantCode"),
-            "userGroupId": obj.get("userGroupId")
+            "userGroupId": obj.get("userGroupId"),
+            "projectId": obj.get("projectId")
         })
         return _obj
 

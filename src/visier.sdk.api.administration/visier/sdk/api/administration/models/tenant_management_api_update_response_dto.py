@@ -29,21 +29,21 @@ class TenantManagementAPIUpdateResponseDTO(BaseModel):
     """
     TenantManagementAPIUpdateResponseDTO
     """ # noqa: E501
-    click_through_link: Optional[StrictStr] = Field(default=None, description="A custom URL to redirect users into your portal to see the relevant content. This URL is used for links that are shared by and with your users through the sharing capability or email content.", alias="clickThroughLink")
-    custom_properties: Optional[List[CustomPropertyDTO]] = Field(default=None, description="A list of objects that represent different customizable properties for the analytic tenant.", alias="customProperties")
-    default_currency: Optional[StrictStr] = Field(default=None, description="The default currency to show in the application for the tenant.", alias="defaultCurrency")
-    embeddable_domains: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the URLs, or domains, in which Visier can be embedded. If domains at the administrating tenant level match the domains at the analytic tenant level, you do not need to include a domain for each analytic tenant.", alias="embeddableDomains")
-    home_analysis_by_user_group: Optional[List[HomeAnalysisByUserGroupDTO]] = Field(default=None, description="A list of objects representing the analysis to display to specific user groups when users log in.", alias="homeAnalysisByUserGroup")
-    home_analysis_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the analysis to display for this tenant when a user logs in. This is optional.   Retrieve the ID by opening an analysis in the production version of a tenant and copying the string after the last forward slash (/) in the URL. For example: https://jupiter.visier.com/hr/prod/appcontainer?previewId=-eZPm8xvo3SUMpD4Q5pdE-6mCj9CQ9K699XgqRGwtOxagH5x2IzDFawlWn3hYqFEfU7nP0YK9ASEzmrNfAihGg..&previewType=Production#/analytics/myanalyses/8a4c1d4f-eb61-4da0-9e5b-55bef757c30e.  The `homeAnalysisID` is 8a4c1d4f-eb61-4da0-9e5b-55bef757c30e.   Alternatively, retrieve the ID by copying the `contentId` found by following the `Embed a visualization` documentation.", alias="homeAnalysisId")
+    tenant_code: Optional[StrictStr] = Field(default=None, description="The unique identifier of the newly created analytic tenant.", alias="tenantCode")
+    tenant_display_name: Optional[StrictStr] = Field(default=None, description="A comma-separated collection of strings that represent the Visier modules assigned to the new analytic tenant.", alias="tenantDisplayName")
     industry_code: Optional[StrictInt] = Field(default=None, description="The 6-digit NAICS code for the industry to which the analytic tenant belongs.", alias="industryCode")
     primary_business_location: Optional[BusinessLocationDTO] = Field(default=None, description="The primary location of operations or where business is performed. If undefined, it is omitted from the response.", alias="primaryBusinessLocation")
     purchased_modules: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated collection of strings that represent the Visier modules assigned to the new analytic tenant.", alias="purchasedModules")
+    embeddable_domains: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the URLs, or domains, in which Visier can be embedded. If domains at the administrating tenant level match the domains at the analytic tenant level, you do not need to include a domain for each analytic tenant.", alias="embeddableDomains")
+    custom_properties: Optional[List[CustomPropertyDTO]] = Field(default=None, description="A list of objects that represent different customizable properties for the analytic tenant.", alias="customProperties")
     sso_instance_issuers: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the issuers for the SSO providers that can authenticate this tenant.", alias="ssoInstanceIssuers")
+    home_analysis_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the analysis to display for this tenant when a user logs in. This is optional.   Retrieve the ID by opening an analysis in the production version of a tenant and copying the string after the last forward slash (/) in the URL. For example: https://jupiter.visier.com/hr/prod/appcontainer?previewId=-eZPm8xvo3SUMpD4Q5pdE-6mCj9CQ9K699XgqRGwtOxagH5x2IzDFawlWn3hYqFEfU7nP0YK9ASEzmrNfAihGg..&previewType=Production#/analytics/myanalyses/8a4c1d4f-eb61-4da0-9e5b-55bef757c30e.  The `homeAnalysisID` is 8a4c1d4f-eb61-4da0-9e5b-55bef757c30e.   Alternatively, retrieve the ID by copying the `contentId` found by following the `Embed a visualization` documentation.", alias="homeAnalysisId")
+    home_analysis_by_user_group: Optional[List[HomeAnalysisByUserGroupDTO]] = Field(default=None, description="A list of objects representing the analysis to display to specific user groups when users log in.", alias="homeAnalysisByUserGroup")
     status: Optional[StrictStr] = Field(default=None, description="Whether the tenant is enabled or disabled. Enabled tenants have access to Visier visualizations.")
-    tenant_code: Optional[StrictStr] = Field(default=None, description="The unique identifier of the newly created analytic tenant.", alias="tenantCode")
-    tenant_display_name: Optional[StrictStr] = Field(default=None, description="A comma-separated collection of strings that represent the Visier modules assigned to the new analytic tenant.", alias="tenantDisplayName")
+    click_through_link: Optional[StrictStr] = Field(default=None, description="A custom URL to redirect users into your portal to see the relevant content. This URL is used for links that are shared by and with your users through the sharing capability or email content.", alias="clickThroughLink")
     vanity_url_name: Optional[StrictStr] = Field(default=None, description="The name of the administrating tenant used in Visier URLs.", alias="vanityUrlName")
-    __properties: ClassVar[List[str]] = ["clickThroughLink", "customProperties", "defaultCurrency", "embeddableDomains", "homeAnalysisByUserGroup", "homeAnalysisId", "industryCode", "primaryBusinessLocation", "purchasedModules", "ssoInstanceIssuers", "status", "tenantCode", "tenantDisplayName", "vanityUrlName"]
+    default_currency: Optional[StrictStr] = Field(default=None, description="The default currency to show in the application for the tenant.", alias="defaultCurrency")
+    __properties: ClassVar[List[str]] = ["tenantCode", "tenantDisplayName", "industryCode", "primaryBusinessLocation", "purchasedModules", "embeddableDomains", "customProperties", "ssoInstanceIssuers", "homeAnalysisId", "homeAnalysisByUserGroup", "status", "clickThroughLink", "vanityUrlName", "defaultCurrency"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,6 +84,9 @@ class TenantManagementAPIUpdateResponseDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of primary_business_location
+        if self.primary_business_location:
+            _dict['primaryBusinessLocation'] = self.primary_business_location.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in custom_properties (list)
         _items = []
         if self.custom_properties:
@@ -98,9 +101,6 @@ class TenantManagementAPIUpdateResponseDTO(BaseModel):
                 if _item_home_analysis_by_user_group:
                     _items.append(_item_home_analysis_by_user_group.to_dict())
             _dict['homeAnalysisByUserGroup'] = _items
-        # override the default output from pydantic by calling `to_dict()` of primary_business_location
-        if self.primary_business_location:
-            _dict['primaryBusinessLocation'] = self.primary_business_location.to_dict()
         return _dict
 
     @classmethod
@@ -113,20 +113,20 @@ class TenantManagementAPIUpdateResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "clickThroughLink": obj.get("clickThroughLink"),
-            "customProperties": [CustomPropertyDTO.from_dict(_item) for _item in obj["customProperties"]] if obj.get("customProperties") is not None else None,
-            "defaultCurrency": obj.get("defaultCurrency"),
-            "embeddableDomains": obj.get("embeddableDomains"),
-            "homeAnalysisByUserGroup": [HomeAnalysisByUserGroupDTO.from_dict(_item) for _item in obj["homeAnalysisByUserGroup"]] if obj.get("homeAnalysisByUserGroup") is not None else None,
-            "homeAnalysisId": obj.get("homeAnalysisId"),
+            "tenantCode": obj.get("tenantCode"),
+            "tenantDisplayName": obj.get("tenantDisplayName"),
             "industryCode": obj.get("industryCode"),
             "primaryBusinessLocation": BusinessLocationDTO.from_dict(obj["primaryBusinessLocation"]) if obj.get("primaryBusinessLocation") is not None else None,
             "purchasedModules": obj.get("purchasedModules"),
+            "embeddableDomains": obj.get("embeddableDomains"),
+            "customProperties": [CustomPropertyDTO.from_dict(_item) for _item in obj["customProperties"]] if obj.get("customProperties") is not None else None,
             "ssoInstanceIssuers": obj.get("ssoInstanceIssuers"),
+            "homeAnalysisId": obj.get("homeAnalysisId"),
+            "homeAnalysisByUserGroup": [HomeAnalysisByUserGroupDTO.from_dict(_item) for _item in obj["homeAnalysisByUserGroup"]] if obj.get("homeAnalysisByUserGroup") is not None else None,
             "status": obj.get("status"),
-            "tenantCode": obj.get("tenantCode"),
-            "tenantDisplayName": obj.get("tenantDisplayName"),
-            "vanityUrlName": obj.get("vanityUrlName")
+            "clickThroughLink": obj.get("clickThroughLink"),
+            "vanityUrlName": obj.get("vanityUrlName"),
+            "defaultCurrency": obj.get("defaultCurrency")
         })
         return _obj
 

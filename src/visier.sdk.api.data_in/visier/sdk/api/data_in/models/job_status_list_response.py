@@ -27,10 +27,10 @@ class JobStatusListResponse(BaseModel):
     """
     JobStatusListResponse
     """ # noqa: E501
-    job_status: Optional[List[JobStatusWithStartTime]] = Field(default=None, description="The specific status to restrict the list of jobs to.", alias="jobStatus")
-    query_end_time: Optional[StrictStr] = Field(default=None, description="The end time from which to retrieve job statuses.", alias="queryEndTime")
     query_start_time: Optional[StrictStr] = Field(default=None, description="The start time from which to retrieve job statuses.", alias="queryStartTime")
-    __properties: ClassVar[List[str]] = ["jobStatus", "queryEndTime", "queryStartTime"]
+    query_end_time: Optional[StrictStr] = Field(default=None, description="The end time from which to retrieve job statuses.", alias="queryEndTime")
+    job_status: Optional[List[JobStatusWithStartTime]] = Field(default=None, description="The specific status to restrict the list of jobs to.", alias="jobStatus")
+    __properties: ClassVar[List[str]] = ["queryStartTime", "queryEndTime", "jobStatus"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +90,9 @@ class JobStatusListResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "jobStatus": [JobStatusWithStartTime.from_dict(_item) for _item in obj["jobStatus"]] if obj.get("jobStatus") is not None else None,
+            "queryStartTime": obj.get("queryStartTime"),
             "queryEndTime": obj.get("queryEndTime"),
-            "queryStartTime": obj.get("queryStartTime")
+            "jobStatus": [JobStatusWithStartTime.from_dict(_item) for _item in obj["jobStatus"]] if obj.get("jobStatus") is not None else None
         })
         return _obj
 

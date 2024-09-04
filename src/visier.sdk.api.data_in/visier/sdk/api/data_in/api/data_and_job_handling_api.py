@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
@@ -50,10 +52,7 @@ from visier.sdk.api.data_in.models.start_extraction_request import StartExtracti
 from visier.sdk.api.data_in.models.start_extraction_response import StartExtractionResponse
 from visier.sdk.api.data_in.models.tenant_data_uploads_list_response_dto import TenantDataUploadsListResponseDTO
 from visier.sdk.api.data_in.models.tenant_data_uploads_update_response_dto import TenantDataUploadsUpdateResponseDTO
-
-from visier.sdk.api.data_in.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.data_in.api_response import ApiResponse
-from visier.sdk.api.data_in.rest import RESTResponseType
+import visier.sdk.api.data_in.models
 
 
 class DataAndJobHandlingApi:
@@ -70,7 +69,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def adhoc_consolidated_analytics_job(
+    def data_and_job_handling_adhoc_consolidated_analytics_job(
         self,
         consolidated_analytics_job_request_dto: ConsolidatedAnalyticsJobRequestDTO,
         _request_timeout: Union[
@@ -114,7 +113,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._adhoc_consolidated_analytics_job_serialize(
+        _param = self._data_and_job_handling_adhoc_consolidated_analytics_job_serialize(
             consolidated_analytics_job_request_dto=consolidated_analytics_job_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -131,13 +130,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def adhoc_consolidated_analytics_job_with_http_info(
+    def data_and_job_handling_adhoc_consolidated_analytics_job_with_http_info(
         self,
         consolidated_analytics_job_request_dto: ConsolidatedAnalyticsJobRequestDTO,
         _request_timeout: Union[
@@ -181,7 +181,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._adhoc_consolidated_analytics_job_serialize(
+        _param = self._data_and_job_handling_adhoc_consolidated_analytics_job_serialize(
             consolidated_analytics_job_request_dto=consolidated_analytics_job_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -198,13 +198,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def adhoc_consolidated_analytics_job_without_preload_content(
+    def data_and_job_handling_adhoc_consolidated_analytics_job_without_preload_content(
         self,
         consolidated_analytics_job_request_dto: ConsolidatedAnalyticsJobRequestDTO,
         _request_timeout: Union[
@@ -248,7 +249,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._adhoc_consolidated_analytics_job_serialize(
+        _param = self._data_and_job_handling_adhoc_consolidated_analytics_job_serialize(
             consolidated_analytics_job_request_dto=consolidated_analytics_job_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -266,7 +267,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _adhoc_consolidated_analytics_job_serialize(
+    def _data_and_job_handling_adhoc_consolidated_analytics_job_serialize(
         self,
         consolidated_analytics_job_request_dto,
         _request_auth,
@@ -346,7 +347,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def adhoc_extraction_job(
+    def data_and_job_handling_adhoc_extraction_job(
         self,
         extract_data_and_load_dto: ExtractDataAndLoadDTO,
         _request_timeout: Union[
@@ -390,7 +391,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._adhoc_extraction_job_serialize(
+        _param = self._data_and_job_handling_adhoc_extraction_job_serialize(
             extract_data_and_load_dto=extract_data_and_load_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -407,13 +408,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def adhoc_extraction_job_with_http_info(
+    def data_and_job_handling_adhoc_extraction_job_with_http_info(
         self,
         extract_data_and_load_dto: ExtractDataAndLoadDTO,
         _request_timeout: Union[
@@ -457,7 +459,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._adhoc_extraction_job_serialize(
+        _param = self._data_and_job_handling_adhoc_extraction_job_serialize(
             extract_data_and_load_dto=extract_data_and_load_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -474,13 +476,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def adhoc_extraction_job_without_preload_content(
+    def data_and_job_handling_adhoc_extraction_job_without_preload_content(
         self,
         extract_data_and_load_dto: ExtractDataAndLoadDTO,
         _request_timeout: Union[
@@ -524,7 +527,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._adhoc_extraction_job_serialize(
+        _param = self._data_and_job_handling_adhoc_extraction_job_serialize(
             extract_data_and_load_dto=extract_data_and_load_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -542,7 +545,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _adhoc_extraction_job_serialize(
+    def _data_and_job_handling_adhoc_extraction_job_serialize(
         self,
         extract_data_and_load_dto,
         _request_auth,
@@ -622,7 +625,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def adhoc_processing_jobs(
+    def data_and_job_handling_adhoc_processing_jobs(
         self,
         processing_job_request_dto: ProcessingJobRequestDTO,
         _request_timeout: Union[
@@ -666,7 +669,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._adhoc_processing_jobs_serialize(
+        _param = self._data_and_job_handling_adhoc_processing_jobs_serialize(
             processing_job_request_dto=processing_job_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -683,13 +686,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def adhoc_processing_jobs_with_http_info(
+    def data_and_job_handling_adhoc_processing_jobs_with_http_info(
         self,
         processing_job_request_dto: ProcessingJobRequestDTO,
         _request_timeout: Union[
@@ -733,7 +737,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._adhoc_processing_jobs_serialize(
+        _param = self._data_and_job_handling_adhoc_processing_jobs_serialize(
             processing_job_request_dto=processing_job_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -750,13 +754,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def adhoc_processing_jobs_without_preload_content(
+    def data_and_job_handling_adhoc_processing_jobs_without_preload_content(
         self,
         processing_job_request_dto: ProcessingJobRequestDTO,
         _request_timeout: Union[
@@ -800,7 +805,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._adhoc_processing_jobs_serialize(
+        _param = self._data_and_job_handling_adhoc_processing_jobs_serialize(
             processing_job_request_dto=processing_job_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -818,7 +823,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _adhoc_processing_jobs_serialize(
+    def _data_and_job_handling_adhoc_processing_jobs_serialize(
         self,
         processing_job_request_dto,
         _request_auth,
@@ -898,7 +903,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def assign_connector_credential(
+    def data_and_job_handling_assign_connector_credential(
         self,
         assign_connector_credential_request: AssignConnectorCredentialRequest,
         _request_timeout: Union[
@@ -942,7 +947,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._assign_connector_credential_serialize(
+        _param = self._data_and_job_handling_assign_connector_credential_serialize(
             assign_connector_credential_request=assign_connector_credential_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -959,13 +964,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def assign_connector_credential_with_http_info(
+    def data_and_job_handling_assign_connector_credential_with_http_info(
         self,
         assign_connector_credential_request: AssignConnectorCredentialRequest,
         _request_timeout: Union[
@@ -1009,7 +1015,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._assign_connector_credential_serialize(
+        _param = self._data_and_job_handling_assign_connector_credential_serialize(
             assign_connector_credential_request=assign_connector_credential_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1026,13 +1032,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def assign_connector_credential_without_preload_content(
+    def data_and_job_handling_assign_connector_credential_without_preload_content(
         self,
         assign_connector_credential_request: AssignConnectorCredentialRequest,
         _request_timeout: Union[
@@ -1076,7 +1083,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._assign_connector_credential_serialize(
+        _param = self._data_and_job_handling_assign_connector_credential_serialize(
             assign_connector_credential_request=assign_connector_credential_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1094,7 +1101,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _assign_connector_credential_serialize(
+    def _data_and_job_handling_assign_connector_credential_serialize(
         self,
         assign_connector_credential_request,
         _request_auth,
@@ -1174,7 +1181,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def cancel_jobs(
+    def data_and_job_handling_cancel_jobs(
         self,
         cancel_job_batch_from_job_id_dto: CancelJobBatchFromJobIdDTO,
         _request_timeout: Union[
@@ -1218,7 +1225,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._cancel_jobs_serialize(
+        _param = self._data_and_job_handling_cancel_jobs_serialize(
             cancel_job_batch_from_job_id_dto=cancel_job_batch_from_job_id_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1235,13 +1242,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def cancel_jobs_with_http_info(
+    def data_and_job_handling_cancel_jobs_with_http_info(
         self,
         cancel_job_batch_from_job_id_dto: CancelJobBatchFromJobIdDTO,
         _request_timeout: Union[
@@ -1285,7 +1293,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._cancel_jobs_serialize(
+        _param = self._data_and_job_handling_cancel_jobs_serialize(
             cancel_job_batch_from_job_id_dto=cancel_job_batch_from_job_id_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1302,13 +1310,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def cancel_jobs_without_preload_content(
+    def data_and_job_handling_cancel_jobs_without_preload_content(
         self,
         cancel_job_batch_from_job_id_dto: CancelJobBatchFromJobIdDTO,
         _request_timeout: Union[
@@ -1352,7 +1361,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._cancel_jobs_serialize(
+        _param = self._data_and_job_handling_cancel_jobs_serialize(
             cancel_job_batch_from_job_id_dto=cancel_job_batch_from_job_id_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1370,7 +1379,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _cancel_jobs_serialize(
+    def _data_and_job_handling_cancel_jobs_serialize(
         self,
         cancel_job_batch_from_job_id_dto,
         _request_auth,
@@ -1450,7 +1459,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def create_connector_credential(
+    def data_and_job_handling_create_connector_credential(
         self,
         data_provider_auth_information_dto: DataProviderAuthInformationDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to create the credential for.")] = None,
@@ -1497,7 +1506,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_connector_credential_serialize(
+        _param = self._data_and_job_handling_create_connector_credential_serialize(
             data_provider_auth_information_dto=data_provider_auth_information_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -1515,13 +1524,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def create_connector_credential_with_http_info(
+    def data_and_job_handling_create_connector_credential_with_http_info(
         self,
         data_provider_auth_information_dto: DataProviderAuthInformationDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to create the credential for.")] = None,
@@ -1568,7 +1578,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_connector_credential_serialize(
+        _param = self._data_and_job_handling_create_connector_credential_serialize(
             data_provider_auth_information_dto=data_provider_auth_information_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -1586,13 +1596,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def create_connector_credential_without_preload_content(
+    def data_and_job_handling_create_connector_credential_without_preload_content(
         self,
         data_provider_auth_information_dto: DataProviderAuthInformationDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to create the credential for.")] = None,
@@ -1639,7 +1650,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_connector_credential_serialize(
+        _param = self._data_and_job_handling_create_connector_credential_serialize(
             data_provider_auth_information_dto=data_provider_auth_information_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -1658,7 +1669,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _create_connector_credential_serialize(
+    def _data_and_job_handling_create_connector_credential_serialize(
         self,
         data_provider_auth_information_dto,
         tenant_code,
@@ -1743,7 +1754,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def data_connector_credentials(
+    def data_and_job_handling_data_connector_credentials(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve for.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit to retrieve.")] = None,
@@ -1793,7 +1804,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._data_connector_credentials_serialize(
+        _param = self._data_and_job_handling_data_connector_credentials_serialize(
             tenant_code=tenant_code,
             limit=limit,
             start=start,
@@ -1812,13 +1823,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def data_connector_credentials_with_http_info(
+    def data_and_job_handling_data_connector_credentials_with_http_info(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve for.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit to retrieve.")] = None,
@@ -1868,7 +1880,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._data_connector_credentials_serialize(
+        _param = self._data_and_job_handling_data_connector_credentials_serialize(
             tenant_code=tenant_code,
             limit=limit,
             start=start,
@@ -1887,13 +1899,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def data_connector_credentials_without_preload_content(
+    def data_and_job_handling_data_connector_credentials_without_preload_content(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve for.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit to retrieve.")] = None,
@@ -1943,7 +1956,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._data_connector_credentials_serialize(
+        _param = self._data_and_job_handling_data_connector_credentials_serialize(
             tenant_code=tenant_code,
             limit=limit,
             start=start,
@@ -1963,7 +1976,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _data_connector_credentials_serialize(
+    def _data_and_job_handling_data_connector_credentials_serialize(
         self,
         tenant_code,
         limit,
@@ -2042,7 +2055,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def data_connectors(
+    def data_and_job_handling_data_connectors(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve for.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit to retrieve.")] = None,
@@ -2092,7 +2105,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._data_connectors_serialize(
+        _param = self._data_and_job_handling_data_connectors_serialize(
             tenant_code=tenant_code,
             limit=limit,
             start=start,
@@ -2111,13 +2124,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def data_connectors_with_http_info(
+    def data_and_job_handling_data_connectors_with_http_info(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve for.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit to retrieve.")] = None,
@@ -2167,7 +2181,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._data_connectors_serialize(
+        _param = self._data_and_job_handling_data_connectors_serialize(
             tenant_code=tenant_code,
             limit=limit,
             start=start,
@@ -2186,13 +2200,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def data_connectors_without_preload_content(
+    def data_and_job_handling_data_connectors_without_preload_content(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve for.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit to retrieve.")] = None,
@@ -2242,7 +2257,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._data_connectors_serialize(
+        _param = self._data_and_job_handling_data_connectors_serialize(
             tenant_code=tenant_code,
             limit=limit,
             start=start,
@@ -2262,7 +2277,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _data_connectors_serialize(
+    def _data_and_job_handling_data_connectors_serialize(
         self,
         tenant_code,
         limit,
@@ -2341,7 +2356,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def delete_connector_credential(
+    def data_and_job_handling_delete_connector_credential(
         self,
         id: Annotated[StrictStr, Field(description="The credentialId of the credential you want to delete.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the analytic tenant in which the credential you're deleting.")] = None,
@@ -2388,7 +2403,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_connector_credential_serialize(
+        _param = self._data_and_job_handling_delete_connector_credential_serialize(
             id=id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -2406,13 +2421,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def delete_connector_credential_with_http_info(
+    def data_and_job_handling_delete_connector_credential_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The credentialId of the credential you want to delete.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the analytic tenant in which the credential you're deleting.")] = None,
@@ -2459,7 +2475,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_connector_credential_serialize(
+        _param = self._data_and_job_handling_delete_connector_credential_serialize(
             id=id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -2477,13 +2493,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def delete_connector_credential_without_preload_content(
+    def data_and_job_handling_delete_connector_credential_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The credentialId of the credential you want to delete.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the analytic tenant in which the credential you're deleting.")] = None,
@@ -2530,7 +2547,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_connector_credential_serialize(
+        _param = self._data_and_job_handling_delete_connector_credential_serialize(
             id=id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -2549,7 +2566,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _delete_connector_credential_serialize(
+    def _data_and_job_handling_delete_connector_credential_serialize(
         self,
         id,
         tenant_code,
@@ -2621,7 +2638,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def disable_dv(
+    def data_and_job_handling_disable_dv(
         self,
         disable_dv_request: DisableDVRequest,
         _request_timeout: Union[
@@ -2665,7 +2682,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._disable_dv_serialize(
+        _param = self._data_and_job_handling_disable_dv_serialize(
             disable_dv_request=disable_dv_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2682,13 +2699,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def disable_dv_with_http_info(
+    def data_and_job_handling_disable_dv_with_http_info(
         self,
         disable_dv_request: DisableDVRequest,
         _request_timeout: Union[
@@ -2732,7 +2750,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._disable_dv_serialize(
+        _param = self._data_and_job_handling_disable_dv_serialize(
             disable_dv_request=disable_dv_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2749,13 +2767,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def disable_dv_without_preload_content(
+    def data_and_job_handling_disable_dv_without_preload_content(
         self,
         disable_dv_request: DisableDVRequest,
         _request_timeout: Union[
@@ -2799,7 +2818,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._disable_dv_serialize(
+        _param = self._data_and_job_handling_disable_dv_serialize(
             disable_dv_request=disable_dv_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2817,7 +2836,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _disable_dv_serialize(
+    def _data_and_job_handling_disable_dv_serialize(
         self,
         disable_dv_request,
         _request_auth,
@@ -2897,7 +2916,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def dispatching_job_status(
+    def data_and_job_handling_dispatching_job_status(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the job you want to retrieve.")],
         _request_timeout: Union[
@@ -2941,7 +2960,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispatching_job_status_serialize(
+        _param = self._data_and_job_handling_dispatching_job_status_serialize(
             job_id=job_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2958,13 +2977,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def dispatching_job_status_with_http_info(
+    def data_and_job_handling_dispatching_job_status_with_http_info(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the job you want to retrieve.")],
         _request_timeout: Union[
@@ -3008,7 +3028,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispatching_job_status_serialize(
+        _param = self._data_and_job_handling_dispatching_job_status_serialize(
             job_id=job_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3025,13 +3045,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def dispatching_job_status_without_preload_content(
+    def data_and_job_handling_dispatching_job_status_without_preload_content(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the job you want to retrieve.")],
         _request_timeout: Union[
@@ -3075,7 +3096,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispatching_job_status_serialize(
+        _param = self._data_and_job_handling_dispatching_job_status_serialize(
             job_id=job_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3093,7 +3114,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _dispatching_job_status_serialize(
+    def _data_and_job_handling_dispatching_job_status_serialize(
         self,
         job_id,
         _request_auth,
@@ -3160,7 +3181,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def exclude_data_uplaods(
+    def data_and_job_handling_exclude_data_uplaods(
         self,
         exclude_data_uploads_request: ExcludeDataUploadsRequest,
         _request_timeout: Union[
@@ -3204,7 +3225,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._exclude_data_uplaods_serialize(
+        _param = self._data_and_job_handling_exclude_data_uplaods_serialize(
             exclude_data_uploads_request=exclude_data_uploads_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3221,13 +3242,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def exclude_data_uplaods_with_http_info(
+    def data_and_job_handling_exclude_data_uplaods_with_http_info(
         self,
         exclude_data_uploads_request: ExcludeDataUploadsRequest,
         _request_timeout: Union[
@@ -3271,7 +3293,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._exclude_data_uplaods_serialize(
+        _param = self._data_and_job_handling_exclude_data_uplaods_serialize(
             exclude_data_uploads_request=exclude_data_uploads_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3288,13 +3310,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def exclude_data_uplaods_without_preload_content(
+    def data_and_job_handling_exclude_data_uplaods_without_preload_content(
         self,
         exclude_data_uploads_request: ExcludeDataUploadsRequest,
         _request_timeout: Union[
@@ -3338,7 +3361,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._exclude_data_uplaods_serialize(
+        _param = self._data_and_job_handling_exclude_data_uplaods_serialize(
             exclude_data_uploads_request=exclude_data_uploads_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3356,7 +3379,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _exclude_data_uplaods_serialize(
+    def _data_and_job_handling_exclude_data_uplaods_serialize(
         self,
         exclude_data_uploads_request,
         _request_auth,
@@ -3436,7 +3459,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def extraction_job_and_status(
+    def data_and_job_handling_extraction_job_and_status(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the dispatching job you want to retrieve.")],
         dispatching_job_id: Annotated[Optional[StrictStr], Field(description="The ID of the dispatching job that generated the extraction jobs.")] = None,
@@ -3492,7 +3515,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._extraction_job_and_status_serialize(
+        _param = self._data_and_job_handling_extraction_job_and_status_serialize(
             job_id=job_id,
             dispatching_job_id=dispatching_job_id,
             tenant_code=tenant_code,
@@ -3513,13 +3536,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def extraction_job_and_status_with_http_info(
+    def data_and_job_handling_extraction_job_and_status_with_http_info(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the dispatching job you want to retrieve.")],
         dispatching_job_id: Annotated[Optional[StrictStr], Field(description="The ID of the dispatching job that generated the extraction jobs.")] = None,
@@ -3575,7 +3599,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._extraction_job_and_status_serialize(
+        _param = self._data_and_job_handling_extraction_job_and_status_serialize(
             job_id=job_id,
             dispatching_job_id=dispatching_job_id,
             tenant_code=tenant_code,
@@ -3596,13 +3620,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def extraction_job_and_status_without_preload_content(
+    def data_and_job_handling_extraction_job_and_status_without_preload_content(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the dispatching job you want to retrieve.")],
         dispatching_job_id: Annotated[Optional[StrictStr], Field(description="The ID of the dispatching job that generated the extraction jobs.")] = None,
@@ -3658,7 +3683,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._extraction_job_and_status_serialize(
+        _param = self._data_and_job_handling_extraction_job_and_status_serialize(
             job_id=job_id,
             dispatching_job_id=dispatching_job_id,
             tenant_code=tenant_code,
@@ -3680,7 +3705,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _extraction_job_and_status_serialize(
+    def _data_and_job_handling_extraction_job_and_status_serialize(
         self,
         job_id,
         dispatching_job_id,
@@ -3767,7 +3792,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def include_data_uploads(
+    def data_and_job_handling_include_data_uploads(
         self,
         include_data_uploads_request: IncludeDataUploadsRequest,
         _request_timeout: Union[
@@ -3811,7 +3836,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._include_data_uploads_serialize(
+        _param = self._data_and_job_handling_include_data_uploads_serialize(
             include_data_uploads_request=include_data_uploads_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3828,13 +3853,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def include_data_uploads_with_http_info(
+    def data_and_job_handling_include_data_uploads_with_http_info(
         self,
         include_data_uploads_request: IncludeDataUploadsRequest,
         _request_timeout: Union[
@@ -3878,7 +3904,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._include_data_uploads_serialize(
+        _param = self._data_and_job_handling_include_data_uploads_serialize(
             include_data_uploads_request=include_data_uploads_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3895,13 +3921,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def include_data_uploads_without_preload_content(
+    def data_and_job_handling_include_data_uploads_without_preload_content(
         self,
         include_data_uploads_request: IncludeDataUploadsRequest,
         _request_timeout: Union[
@@ -3945,7 +3972,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._include_data_uploads_serialize(
+        _param = self._data_and_job_handling_include_data_uploads_serialize(
             include_data_uploads_request=include_data_uploads_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3963,7 +3990,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _include_data_uploads_serialize(
+    def _data_and_job_handling_include_data_uploads_serialize(
         self,
         include_data_uploads_request,
         _request_auth,
@@ -4043,7 +4070,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def job_id_status(
+    def data_and_job_handling_job_id_status(
         self,
         job_id: Annotated[StrictStr, Field(description="The unique ID of the job to retrieve the status for.")],
         _request_timeout: Union[
@@ -4087,7 +4114,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._job_id_status_serialize(
+        _param = self._data_and_job_handling_job_id_status_serialize(
             job_id=job_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4104,13 +4131,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def job_id_status_with_http_info(
+    def data_and_job_handling_job_id_status_with_http_info(
         self,
         job_id: Annotated[StrictStr, Field(description="The unique ID of the job to retrieve the status for.")],
         _request_timeout: Union[
@@ -4154,7 +4182,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._job_id_status_serialize(
+        _param = self._data_and_job_handling_job_id_status_serialize(
             job_id=job_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4171,13 +4199,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def job_id_status_without_preload_content(
+    def data_and_job_handling_job_id_status_without_preload_content(
         self,
         job_id: Annotated[StrictStr, Field(description="The unique ID of the job to retrieve the status for.")],
         _request_timeout: Union[
@@ -4221,7 +4250,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._job_id_status_serialize(
+        _param = self._data_and_job_handling_job_id_status_serialize(
             job_id=job_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4239,7 +4268,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _job_id_status_serialize(
+    def _data_and_job_handling_job_id_status_serialize(
         self,
         job_id,
         _request_auth,
@@ -4306,7 +4335,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def job_status(
+    def data_and_job_handling_job_status(
         self,
         start_time: Annotated[Optional[StrictStr], Field(description="The start time from which to retrieve job statuses.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The end time from which to retrieve job statuses.")] = None,
@@ -4356,7 +4385,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._job_status_serialize(
+        _param = self._data_and_job_handling_job_status_serialize(
             start_time=start_time,
             end_time=end_time,
             status=status,
@@ -4375,13 +4404,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def job_status_with_http_info(
+    def data_and_job_handling_job_status_with_http_info(
         self,
         start_time: Annotated[Optional[StrictStr], Field(description="The start time from which to retrieve job statuses.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The end time from which to retrieve job statuses.")] = None,
@@ -4431,7 +4461,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._job_status_serialize(
+        _param = self._data_and_job_handling_job_status_serialize(
             start_time=start_time,
             end_time=end_time,
             status=status,
@@ -4450,13 +4480,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def job_status_without_preload_content(
+    def data_and_job_handling_job_status_without_preload_content(
         self,
         start_time: Annotated[Optional[StrictStr], Field(description="The start time from which to retrieve job statuses.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The end time from which to retrieve job statuses.")] = None,
@@ -4506,7 +4537,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._job_status_serialize(
+        _param = self._data_and_job_handling_job_status_serialize(
             start_time=start_time,
             end_time=end_time,
             status=status,
@@ -4526,7 +4557,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _job_status_serialize(
+    def _data_and_job_handling_job_status_serialize(
         self,
         start_time,
         end_time,
@@ -4605,7 +4636,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def latest_enabled_dv(
+    def data_and_job_handling_latest_enabled_dv(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve data versions for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data versions for.  This parameter is not used if the tenantCode parameter is specified.")] = None,
@@ -4658,7 +4689,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._latest_enabled_dv_serialize(
+        _param = self._data_and_job_handling_latest_enabled_dv_serialize(
             tenant_code=tenant_code,
             limit=limit,
             start=start,
@@ -4678,13 +4709,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def latest_enabled_dv_with_http_info(
+    def data_and_job_handling_latest_enabled_dv_with_http_info(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve data versions for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data versions for.  This parameter is not used if the tenantCode parameter is specified.")] = None,
@@ -4737,7 +4769,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._latest_enabled_dv_serialize(
+        _param = self._data_and_job_handling_latest_enabled_dv_serialize(
             tenant_code=tenant_code,
             limit=limit,
             start=start,
@@ -4757,13 +4789,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def latest_enabled_dv_without_preload_content(
+    def data_and_job_handling_latest_enabled_dv_without_preload_content(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve data versions for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data versions for.  This parameter is not used if the tenantCode parameter is specified.")] = None,
@@ -4816,7 +4849,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._latest_enabled_dv_serialize(
+        _param = self._data_and_job_handling_latest_enabled_dv_serialize(
             tenant_code=tenant_code,
             limit=limit,
             start=start,
@@ -4837,7 +4870,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _latest_enabled_dv_serialize(
+    def _data_and_job_handling_latest_enabled_dv_serialize(
         self,
         tenant_code,
         limit,
@@ -4921,7 +4954,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def processing_job_and_status(
+    def data_and_job_handling_processing_job_and_status(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the dispatching job you want to retrieve.")],
         dispatching_job_id: Annotated[Optional[StrictStr], Field(description="The ID of the dispatching job that generated the extraction jobs.")] = None,
@@ -4977,7 +5010,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._processing_job_and_status_serialize(
+        _param = self._data_and_job_handling_processing_job_and_status_serialize(
             job_id=job_id,
             dispatching_job_id=dispatching_job_id,
             tenant_code=tenant_code,
@@ -4998,13 +5031,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def processing_job_and_status_with_http_info(
+    def data_and_job_handling_processing_job_and_status_with_http_info(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the dispatching job you want to retrieve.")],
         dispatching_job_id: Annotated[Optional[StrictStr], Field(description="The ID of the dispatching job that generated the extraction jobs.")] = None,
@@ -5060,7 +5094,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._processing_job_and_status_serialize(
+        _param = self._data_and_job_handling_processing_job_and_status_serialize(
             job_id=job_id,
             dispatching_job_id=dispatching_job_id,
             tenant_code=tenant_code,
@@ -5081,13 +5115,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def processing_job_and_status_without_preload_content(
+    def data_and_job_handling_processing_job_and_status_without_preload_content(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the dispatching job you want to retrieve.")],
         dispatching_job_id: Annotated[Optional[StrictStr], Field(description="The ID of the dispatching job that generated the extraction jobs.")] = None,
@@ -5143,7 +5178,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._processing_job_and_status_serialize(
+        _param = self._data_and_job_handling_processing_job_and_status_serialize(
             job_id=job_id,
             dispatching_job_id=dispatching_job_id,
             tenant_code=tenant_code,
@@ -5165,7 +5200,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _processing_job_and_status_serialize(
+    def _data_and_job_handling_processing_job_and_status_serialize(
         self,
         job_id,
         dispatching_job_id,
@@ -5252,7 +5287,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def processing_job_status(
+    def data_and_job_handling_processing_job_status(
         self,
         receiving_job_id: Annotated[StrictStr, Field(description="The receiving job ID")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the tenant you want to retrieve the processing jobs for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
@@ -5305,7 +5340,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._processing_job_status_serialize(
+        _param = self._data_and_job_handling_processing_job_status_serialize(
             receiving_job_id=receiving_job_id,
             tenant_code=tenant_code,
             limit=limit,
@@ -5325,13 +5360,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def processing_job_status_with_http_info(
+    def data_and_job_handling_processing_job_status_with_http_info(
         self,
         receiving_job_id: Annotated[StrictStr, Field(description="The receiving job ID")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the tenant you want to retrieve the processing jobs for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
@@ -5384,7 +5420,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._processing_job_status_serialize(
+        _param = self._data_and_job_handling_processing_job_status_serialize(
             receiving_job_id=receiving_job_id,
             tenant_code=tenant_code,
             limit=limit,
@@ -5404,13 +5440,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def processing_job_status_without_preload_content(
+    def data_and_job_handling_processing_job_status_without_preload_content(
         self,
         receiving_job_id: Annotated[StrictStr, Field(description="The receiving job ID")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the tenant you want to retrieve the processing jobs for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
@@ -5463,7 +5500,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._processing_job_status_serialize(
+        _param = self._data_and_job_handling_processing_job_status_serialize(
             receiving_job_id=receiving_job_id,
             tenant_code=tenant_code,
             limit=limit,
@@ -5484,7 +5521,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _processing_job_status_serialize(
+    def _data_and_job_handling_processing_job_status_serialize(
         self,
         receiving_job_id,
         tenant_code,
@@ -5566,7 +5603,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def receiving_job_and_status(
+    def data_and_job_handling_receiving_job_and_status(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the dispatching job you want to retrieve.")],
         dispatching_job_id: Annotated[Optional[StrictStr], Field(description="The ID of the dispatching job that generated the extraction jobs.")] = None,
@@ -5622,7 +5659,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._receiving_job_and_status_serialize(
+        _param = self._data_and_job_handling_receiving_job_and_status_serialize(
             job_id=job_id,
             dispatching_job_id=dispatching_job_id,
             tenant_code=tenant_code,
@@ -5643,13 +5680,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def receiving_job_and_status_with_http_info(
+    def data_and_job_handling_receiving_job_and_status_with_http_info(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the dispatching job you want to retrieve.")],
         dispatching_job_id: Annotated[Optional[StrictStr], Field(description="The ID of the dispatching job that generated the extraction jobs.")] = None,
@@ -5705,7 +5743,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._receiving_job_and_status_serialize(
+        _param = self._data_and_job_handling_receiving_job_and_status_serialize(
             job_id=job_id,
             dispatching_job_id=dispatching_job_id,
             tenant_code=tenant_code,
@@ -5726,13 +5764,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def receiving_job_and_status_without_preload_content(
+    def data_and_job_handling_receiving_job_and_status_without_preload_content(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the dispatching job you want to retrieve.")],
         dispatching_job_id: Annotated[Optional[StrictStr], Field(description="The ID of the dispatching job that generated the extraction jobs.")] = None,
@@ -5788,7 +5827,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._receiving_job_and_status_serialize(
+        _param = self._data_and_job_handling_receiving_job_and_status_serialize(
             job_id=job_id,
             dispatching_job_id=dispatching_job_id,
             tenant_code=tenant_code,
@@ -5810,7 +5849,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _receiving_job_and_status_serialize(
+    def _data_and_job_handling_receiving_job_and_status_serialize(
         self,
         job_id,
         dispatching_job_id,
@@ -5897,7 +5936,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def receiving_job_status(
+    def data_and_job_handling_receiving_job_status(
         self,
         receiving_job_id: Annotated[StrictStr, Field(description="The jobId provided after sending data to Visier.")],
         jobs: Annotated[Optional[StrictBool], Field(description="If `true`, returns the status of receiving jobs spawned by the receiving job specified by `jobId`.")] = None,
@@ -5953,7 +5992,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._receiving_job_status_serialize(
+        _param = self._data_and_job_handling_receiving_job_status_serialize(
             receiving_job_id=receiving_job_id,
             jobs=jobs,
             tenant_code=tenant_code,
@@ -5974,13 +6013,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def receiving_job_status_with_http_info(
+    def data_and_job_handling_receiving_job_status_with_http_info(
         self,
         receiving_job_id: Annotated[StrictStr, Field(description="The jobId provided after sending data to Visier.")],
         jobs: Annotated[Optional[StrictBool], Field(description="If `true`, returns the status of receiving jobs spawned by the receiving job specified by `jobId`.")] = None,
@@ -6036,7 +6076,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._receiving_job_status_serialize(
+        _param = self._data_and_job_handling_receiving_job_status_serialize(
             receiving_job_id=receiving_job_id,
             jobs=jobs,
             tenant_code=tenant_code,
@@ -6057,13 +6097,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def receiving_job_status_without_preload_content(
+    def data_and_job_handling_receiving_job_status_without_preload_content(
         self,
         receiving_job_id: Annotated[StrictStr, Field(description="The jobId provided after sending data to Visier.")],
         jobs: Annotated[Optional[StrictBool], Field(description="If `true`, returns the status of receiving jobs spawned by the receiving job specified by `jobId`.")] = None,
@@ -6119,7 +6160,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._receiving_job_status_serialize(
+        _param = self._data_and_job_handling_receiving_job_status_serialize(
             receiving_job_id=receiving_job_id,
             jobs=jobs,
             tenant_code=tenant_code,
@@ -6141,7 +6182,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _receiving_job_status_serialize(
+    def _data_and_job_handling_receiving_job_status_serialize(
         self,
         receiving_job_id,
         jobs,
@@ -6228,7 +6269,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def retrieve_data_categories(
+    def data_and_job_handling_retrieve_data_categories(
         self,
         _request_timeout: Union[
             None,
@@ -6269,7 +6310,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._retrieve_data_categories_serialize(
+        _param = self._data_and_job_handling_retrieve_data_categories_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6285,13 +6326,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def retrieve_data_categories_with_http_info(
+    def data_and_job_handling_retrieve_data_categories_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -6332,7 +6374,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._retrieve_data_categories_serialize(
+        _param = self._data_and_job_handling_retrieve_data_categories_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6348,13 +6390,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def retrieve_data_categories_without_preload_content(
+    def data_and_job_handling_retrieve_data_categories_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -6395,7 +6438,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._retrieve_data_categories_serialize(
+        _param = self._data_and_job_handling_retrieve_data_categories_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6412,7 +6455,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _retrieve_data_categories_serialize(
+    def _data_and_job_handling_retrieve_data_categories_serialize(
         self,
         _request_auth,
         _content_type,
@@ -6476,7 +6519,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def retrieve_data_uploads(
+    def data_and_job_handling_retrieve_data_uploads(
         self,
         upload_job_id: Annotated[Optional[StrictStr], Field(description="The job ID of an upload job. Use this if you are interested in the data uploads for a specific upload job.")] = None,
         tenant_code: Annotated[Optional[StrictInt], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the data uploads for.")] = None,
@@ -6532,7 +6575,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._retrieve_data_uploads_serialize(
+        _param = self._data_and_job_handling_retrieve_data_uploads_serialize(
             upload_job_id=upload_job_id,
             tenant_code=tenant_code,
             limit=limit,
@@ -6553,13 +6596,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def retrieve_data_uploads_with_http_info(
+    def data_and_job_handling_retrieve_data_uploads_with_http_info(
         self,
         upload_job_id: Annotated[Optional[StrictStr], Field(description="The job ID of an upload job. Use this if you are interested in the data uploads for a specific upload job.")] = None,
         tenant_code: Annotated[Optional[StrictInt], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the data uploads for.")] = None,
@@ -6615,7 +6659,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._retrieve_data_uploads_serialize(
+        _param = self._data_and_job_handling_retrieve_data_uploads_serialize(
             upload_job_id=upload_job_id,
             tenant_code=tenant_code,
             limit=limit,
@@ -6636,13 +6680,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def retrieve_data_uploads_without_preload_content(
+    def data_and_job_handling_retrieve_data_uploads_without_preload_content(
         self,
         upload_job_id: Annotated[Optional[StrictStr], Field(description="The job ID of an upload job. Use this if you are interested in the data uploads for a specific upload job.")] = None,
         tenant_code: Annotated[Optional[StrictInt], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the data uploads for.")] = None,
@@ -6698,7 +6743,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._retrieve_data_uploads_serialize(
+        _param = self._data_and_job_handling_retrieve_data_uploads_serialize(
             upload_job_id=upload_job_id,
             tenant_code=tenant_code,
             limit=limit,
@@ -6720,7 +6765,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _retrieve_data_uploads_serialize(
+    def _data_and_job_handling_retrieve_data_uploads_serialize(
         self,
         upload_job_id,
         tenant_code,
@@ -6809,7 +6854,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def start_extraction(
+    def data_and_job_handling_start_extraction(
         self,
         start_extraction_request: StartExtractionRequest,
         _request_timeout: Union[
@@ -6853,7 +6898,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._start_extraction_serialize(
+        _param = self._data_and_job_handling_start_extraction_serialize(
             start_extraction_request=start_extraction_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -6870,13 +6915,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def start_extraction_with_http_info(
+    def data_and_job_handling_start_extraction_with_http_info(
         self,
         start_extraction_request: StartExtractionRequest,
         _request_timeout: Union[
@@ -6920,7 +6966,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._start_extraction_serialize(
+        _param = self._data_and_job_handling_start_extraction_serialize(
             start_extraction_request=start_extraction_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -6937,13 +6983,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def start_extraction_without_preload_content(
+    def data_and_job_handling_start_extraction_without_preload_content(
         self,
         start_extraction_request: StartExtractionRequest,
         _request_timeout: Union[
@@ -6987,7 +7034,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._start_extraction_serialize(
+        _param = self._data_and_job_handling_start_extraction_serialize(
             start_extraction_request=start_extraction_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7005,7 +7052,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _start_extraction_serialize(
+    def _data_and_job_handling_start_extraction_serialize(
         self,
         start_extraction_request,
         _request_auth,
@@ -7085,7 +7132,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def start_load(
+    def data_and_job_handling_start_load(
         self,
         data_load_request: DataLoadRequest,
         _request_timeout: Union[
@@ -7129,7 +7176,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._start_load_serialize(
+        _param = self._data_and_job_handling_start_load_serialize(
             data_load_request=data_load_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7146,13 +7193,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def start_load_with_http_info(
+    def data_and_job_handling_start_load_with_http_info(
         self,
         data_load_request: DataLoadRequest,
         _request_timeout: Union[
@@ -7196,7 +7244,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._start_load_serialize(
+        _param = self._data_and_job_handling_start_load_serialize(
             data_load_request=data_load_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7213,13 +7261,14 @@ class DataAndJobHandlingApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def start_load_without_preload_content(
+    def data_and_job_handling_start_load_without_preload_content(
         self,
         data_load_request: DataLoadRequest,
         _request_timeout: Union[
@@ -7263,7 +7312,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._start_load_serialize(
+        _param = self._data_and_job_handling_start_load_serialize(
             data_load_request=data_load_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7281,7 +7330,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _start_load_serialize(
+    def _data_and_job_handling_start_load_serialize(
         self,
         data_load_request,
         _request_auth,

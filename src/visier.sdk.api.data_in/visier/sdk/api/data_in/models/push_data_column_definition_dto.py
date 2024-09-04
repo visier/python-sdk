@@ -26,13 +26,13 @@ class PushDataColumnDefinitionDTO(BaseModel):
     """
     Definition of the source column.
     """ # noqa: E501
-    allow_empty: Optional[StrictBool] = Field(default=None, description="If true, the column allows an empty value for the record.", alias="allowEmpty")
     column_name: Optional[StrictStr] = Field(default=None, description="The name of the column.", alias="columnName")
-    data_formats: Optional[List[StrictStr]] = Field(default=None, description="The expected format for datetime data types.", alias="dataFormats")
     data_type: Optional[StrictStr] = Field(default=None, description="The data type associated with the column.", alias="dataType")
-    default_value: Optional[StrictStr] = Field(default=None, description="The default value of the column.", alias="defaultValue")
+    data_formats: Optional[List[StrictStr]] = Field(default=None, description="The expected format for datetime data types.", alias="dataFormats")
     is_mandatory: Optional[StrictBool] = Field(default=None, description="If true, the column value is required. If a column is mandatory, and the file is missing this column, the request will fail.", alias="isMandatory")
-    __properties: ClassVar[List[str]] = ["allowEmpty", "columnName", "dataFormats", "dataType", "defaultValue", "isMandatory"]
+    allow_empty: Optional[StrictBool] = Field(default=None, description="If true, the column allows an empty value for the record.", alias="allowEmpty")
+    default_value: Optional[StrictStr] = Field(default=None, description="The default value of the column.", alias="defaultValue")
+    __properties: ClassVar[List[str]] = ["columnName", "dataType", "dataFormats", "isMandatory", "allowEmpty", "defaultValue"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,12 +85,12 @@ class PushDataColumnDefinitionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "allowEmpty": obj.get("allowEmpty"),
             "columnName": obj.get("columnName"),
-            "dataFormats": obj.get("dataFormats"),
             "dataType": obj.get("dataType"),
-            "defaultValue": obj.get("defaultValue"),
-            "isMandatory": obj.get("isMandatory")
+            "dataFormats": obj.get("dataFormats"),
+            "isMandatory": obj.get("isMandatory"),
+            "allowEmpty": obj.get("allowEmpty"),
+            "defaultValue": obj.get("defaultValue")
         })
         return _obj
 

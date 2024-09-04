@@ -27,11 +27,11 @@ class SimpleDocumentHeaderSearchResultDTO(BaseModel):
     """
     Structure of a single document header search using the Simple search operation.
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="The `Web Template Framework` representation of the search result element. This commonly displayed alongside the result by search portals.")
     display_name: Optional[StrictStr] = Field(default=None, description="The display name of the element in the search result.", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="The `Web Template Framework` representation of the search result element. This commonly displayed alongside the result by search portals.")
     relevance: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The relevance of the search result and a number between `0` and `100`.")
     view_link: Optional[DocumentSearchLinkDTO] = Field(default=None, description="Use the `viewLink` to build a web request to view this document.", alias="viewLink")
-    __properties: ClassVar[List[str]] = ["description", "displayName", "relevance", "viewLink"]
+    __properties: ClassVar[List[str]] = ["displayName", "description", "relevance", "viewLink"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,8 +87,8 @@ class SimpleDocumentHeaderSearchResultDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
             "displayName": obj.get("displayName"),
+            "description": obj.get("description"),
             "relevance": obj.get("relevance"),
             "viewLink": DocumentSearchLinkDTO.from_dict(obj["viewLink"]) if obj.get("viewLink") is not None else None
         })

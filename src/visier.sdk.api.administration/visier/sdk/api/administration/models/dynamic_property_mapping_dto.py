@@ -28,9 +28,9 @@ class DynamicPropertyMappingDTO(BaseModel):
     DynamicPropertyMappingDTO
     """ # noqa: E501
     hierarchy_property_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the property.", alias="hierarchyPropertyId")
-    hierarchy_property_status: Optional[StrictStr] = Field(default=None, description="The property's validity status. Valid values: `Valid`, `NotFound`.  * **Valid**: The object exists and has loaded data.  * **NotFound**: The object doesn't exist.", alias="hierarchyPropertyStatus")
     user_property: Optional[UserPropertyDTO] = Field(default=None, description="The user property that you want to link the name property or organization head to.", alias="userProperty")
-    __properties: ClassVar[List[str]] = ["hierarchyPropertyId", "hierarchyPropertyStatus", "userProperty"]
+    hierarchy_property_status: Optional[StrictStr] = Field(default=None, description="The property's validity status. Valid values: `Valid`, `NotFound`.  * **Valid**: The object exists and has loaded data.  * **NotFound**: The object doesn't exist.", alias="hierarchyPropertyStatus")
+    __properties: ClassVar[List[str]] = ["hierarchyPropertyId", "userProperty", "hierarchyPropertyStatus"]
 
     @field_validator('hierarchy_property_status')
     def hierarchy_property_status_validate_enum(cls, value):
@@ -97,8 +97,8 @@ class DynamicPropertyMappingDTO(BaseModel):
 
         _obj = cls.model_validate({
             "hierarchyPropertyId": obj.get("hierarchyPropertyId"),
-            "hierarchyPropertyStatus": obj.get("hierarchyPropertyStatus"),
-            "userProperty": UserPropertyDTO.from_dict(obj["userProperty"]) if obj.get("userProperty") is not None else None
+            "userProperty": UserPropertyDTO.from_dict(obj["userProperty"]) if obj.get("userProperty") is not None else None,
+            "hierarchyPropertyStatus": obj.get("hierarchyPropertyStatus")
         })
         return _obj
 

@@ -26,14 +26,14 @@ class JobCancellationResultDTO(BaseModel):
     """
     JobCancellationResultDTO
     """ # noqa: E501
-    cancel_status: Optional[StrictStr] = Field(default=None, description="The status of the cancellation.", alias="cancelStatus")
-    job_id: Optional[StrictStr] = Field(default=None, description="The job ID of the job that the cancel operation was conducted for.", alias="jobId")
-    job_status: Optional[StrictStr] = Field(default=None, description="The job status after the cancel operation. If successful, the status is either Cancelled or Cancelling.", alias="jobStatus")
-    job_type: Optional[StrictStr] = Field(default=None, description="The job type associated with the job ID.", alias="jobType")
-    message: Optional[StrictStr] = Field(default=None, description="If applicable, the message explains what errors occurred while cancelling the jobs.")
-    parent_job_id: Optional[StrictStr] = Field(default=None, description="If applicable, the job ID of the job that spawned the given job.", alias="parentJobId")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The analytic tenant whose job the cancel operation was conducted for.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["cancelStatus", "jobId", "jobStatus", "jobType", "message", "parentJobId", "tenantCode"]
+    job_id: Optional[StrictStr] = Field(default=None, description="The job ID of the job that the cancel operation was conducted for.", alias="jobId")
+    job_type: Optional[StrictStr] = Field(default=None, description="The job type associated with the job ID.", alias="jobType")
+    parent_job_id: Optional[StrictStr] = Field(default=None, description="If applicable, the job ID of the job that spawned the given job.", alias="parentJobId")
+    cancel_status: Optional[StrictStr] = Field(default=None, description="The status of the cancellation.", alias="cancelStatus")
+    job_status: Optional[StrictStr] = Field(default=None, description="The job status after the cancel operation. If successful, the status is either Cancelled or Cancelling.", alias="jobStatus")
+    message: Optional[StrictStr] = Field(default=None, description="If applicable, the message explains what errors occurred while cancelling the jobs.")
+    __properties: ClassVar[List[str]] = ["tenantCode", "jobId", "jobType", "parentJobId", "cancelStatus", "jobStatus", "message"]
 
     @field_validator('cancel_status')
     def cancel_status_validate_enum(cls, value):
@@ -96,13 +96,13 @@ class JobCancellationResultDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "cancelStatus": obj.get("cancelStatus"),
+            "tenantCode": obj.get("tenantCode"),
             "jobId": obj.get("jobId"),
-            "jobStatus": obj.get("jobStatus"),
             "jobType": obj.get("jobType"),
-            "message": obj.get("message"),
             "parentJobId": obj.get("parentJobId"),
-            "tenantCode": obj.get("tenantCode")
+            "cancelStatus": obj.get("cancelStatus"),
+            "jobStatus": obj.get("jobStatus"),
+            "message": obj.get("message")
         })
         return _obj
 

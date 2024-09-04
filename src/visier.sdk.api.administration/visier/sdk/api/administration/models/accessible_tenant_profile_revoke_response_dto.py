@@ -31,9 +31,9 @@ class AccessibleTenantProfileRevokeResponseDTO(BaseModel):
     """ # noqa: E501
     bad_tenant_codes: Optional[List[ReducedTenantCodeErrorDTO]] = Field(default=None, description="A list of objects representing any tenants that returned errors.", alias="badTenantCodes")
     bad_user_ids: Optional[List[ReducedUserIdErrorDTO]] = Field(default=None, description="A list of objects representing the user IDs that may not be valid.", alias="badUserIds")
-    succeeded: Optional[List[SuccessfulLocalTenantProfileAssignmentDTO]] = Field(default=None, description="A list of objects representing the valid user IDs that succeeded.")
     unaffected_users: Optional[List[SuccessfulLocalTenantProfileAssignmentDTO]] = Field(default=None, description="A list of objects representing the valid user IDs that were not affected.", alias="unaffectedUsers")
-    __properties: ClassVar[List[str]] = ["badTenantCodes", "badUserIds", "succeeded", "unaffectedUsers"]
+    succeeded: Optional[List[SuccessfulLocalTenantProfileAssignmentDTO]] = Field(default=None, description="A list of objects representing the valid user IDs that succeeded.")
+    __properties: ClassVar[List[str]] = ["badTenantCodes", "badUserIds", "unaffectedUsers", "succeeded"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,13 +88,6 @@ class AccessibleTenantProfileRevokeResponseDTO(BaseModel):
                 if _item_bad_user_ids:
                     _items.append(_item_bad_user_ids.to_dict())
             _dict['badUserIds'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in succeeded (list)
-        _items = []
-        if self.succeeded:
-            for _item_succeeded in self.succeeded:
-                if _item_succeeded:
-                    _items.append(_item_succeeded.to_dict())
-            _dict['succeeded'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in unaffected_users (list)
         _items = []
         if self.unaffected_users:
@@ -102,6 +95,13 @@ class AccessibleTenantProfileRevokeResponseDTO(BaseModel):
                 if _item_unaffected_users:
                     _items.append(_item_unaffected_users.to_dict())
             _dict['unaffectedUsers'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in succeeded (list)
+        _items = []
+        if self.succeeded:
+            for _item_succeeded in self.succeeded:
+                if _item_succeeded:
+                    _items.append(_item_succeeded.to_dict())
+            _dict['succeeded'] = _items
         return _dict
 
     @classmethod
@@ -116,8 +116,8 @@ class AccessibleTenantProfileRevokeResponseDTO(BaseModel):
         _obj = cls.model_validate({
             "badTenantCodes": [ReducedTenantCodeErrorDTO.from_dict(_item) for _item in obj["badTenantCodes"]] if obj.get("badTenantCodes") is not None else None,
             "badUserIds": [ReducedUserIdErrorDTO.from_dict(_item) for _item in obj["badUserIds"]] if obj.get("badUserIds") is not None else None,
-            "succeeded": [SuccessfulLocalTenantProfileAssignmentDTO.from_dict(_item) for _item in obj["succeeded"]] if obj.get("succeeded") is not None else None,
-            "unaffectedUsers": [SuccessfulLocalTenantProfileAssignmentDTO.from_dict(_item) for _item in obj["unaffectedUsers"]] if obj.get("unaffectedUsers") is not None else None
+            "unaffectedUsers": [SuccessfulLocalTenantProfileAssignmentDTO.from_dict(_item) for _item in obj["unaffectedUsers"]] if obj.get("unaffectedUsers") is not None else None,
+            "succeeded": [SuccessfulLocalTenantProfileAssignmentDTO.from_dict(_item) for _item in obj["succeeded"]] if obj.get("succeeded") is not None else None
         })
         return _obj
 

@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
@@ -33,10 +35,7 @@ from visier.sdk.api.administration.models.get_permissions_api_response_dto impor
 from visier.sdk.api.administration.models.permission_bulk_operation_response_dto import PermissionBulkOperationResponseDTO
 from visier.sdk.api.administration.models.permission_dto import PermissionDTO
 from visier.sdk.api.administration.models.permissions_list_dto import PermissionsListDTO
-
-from visier.sdk.api.administration.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.administration.api_response import ApiResponse
-from visier.sdk.api.administration.rest import RESTResponseType
+import visier.sdk.api.administration.models
 
 
 class PermissionsApi:
@@ -53,7 +52,7 @@ class PermissionsApi:
 
 
     @validate_call
-    def create_data_access_sets(
+    def permissions_create_data_access_sets(
         self,
         create_data_access_set_request_dto: CreateDataAccessSetRequestDTO,
         _request_timeout: Union[
@@ -97,7 +96,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_data_access_sets_serialize(
+        _param = self._permissions_create_data_access_sets_serialize(
             create_data_access_set_request_dto=create_data_access_set_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -114,13 +113,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def create_data_access_sets_with_http_info(
+    def permissions_create_data_access_sets_with_http_info(
         self,
         create_data_access_set_request_dto: CreateDataAccessSetRequestDTO,
         _request_timeout: Union[
@@ -164,7 +164,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_data_access_sets_serialize(
+        _param = self._permissions_create_data_access_sets_serialize(
             create_data_access_set_request_dto=create_data_access_set_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -181,13 +181,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def create_data_access_sets_without_preload_content(
+    def permissions_create_data_access_sets_without_preload_content(
         self,
         create_data_access_set_request_dto: CreateDataAccessSetRequestDTO,
         _request_timeout: Union[
@@ -231,7 +232,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_data_access_sets_serialize(
+        _param = self._permissions_create_data_access_sets_serialize(
             create_data_access_set_request_dto=create_data_access_set_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -249,7 +250,7 @@ class PermissionsApi:
         return response_data.response
 
 
-    def _create_data_access_sets_serialize(
+    def _permissions_create_data_access_sets_serialize(
         self,
         create_data_access_set_request_dto,
         _request_auth,
@@ -324,7 +325,7 @@ class PermissionsApi:
 
 
     @validate_call
-    def create_permissions(
+    def permissions_create_permissions(
         self,
         permissions_list_dto: PermissionsListDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create permissions in.")] = None,
@@ -371,7 +372,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_permissions_serialize(
+        _param = self._permissions_create_permissions_serialize(
             permissions_list_dto=permissions_list_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -389,13 +390,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def create_permissions_with_http_info(
+    def permissions_create_permissions_with_http_info(
         self,
         permissions_list_dto: PermissionsListDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create permissions in.")] = None,
@@ -442,7 +444,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_permissions_serialize(
+        _param = self._permissions_create_permissions_serialize(
             permissions_list_dto=permissions_list_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -460,13 +462,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def create_permissions_without_preload_content(
+    def permissions_create_permissions_without_preload_content(
         self,
         permissions_list_dto: PermissionsListDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create permissions in.")] = None,
@@ -513,7 +516,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_permissions_serialize(
+        _param = self._permissions_create_permissions_serialize(
             permissions_list_dto=permissions_list_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -532,7 +535,7 @@ class PermissionsApi:
         return response_data.response
 
 
-    def _create_permissions_serialize(
+    def _permissions_create_permissions_serialize(
         self,
         permissions_list_dto,
         tenant_code,
@@ -612,7 +615,7 @@ class PermissionsApi:
 
 
     @validate_call
-    def delete_permissions(
+    def permissions_delete_permissions(
         self,
         delete_permissions_request_dto: DeletePermissionsRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete permissions from.")] = None,
@@ -659,7 +662,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_permissions_serialize(
+        _param = self._permissions_delete_permissions_serialize(
             delete_permissions_request_dto=delete_permissions_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -677,13 +680,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def delete_permissions_with_http_info(
+    def permissions_delete_permissions_with_http_info(
         self,
         delete_permissions_request_dto: DeletePermissionsRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete permissions from.")] = None,
@@ -730,7 +734,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_permissions_serialize(
+        _param = self._permissions_delete_permissions_serialize(
             delete_permissions_request_dto=delete_permissions_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -748,13 +752,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def delete_permissions_without_preload_content(
+    def permissions_delete_permissions_without_preload_content(
         self,
         delete_permissions_request_dto: DeletePermissionsRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete permissions from.")] = None,
@@ -801,7 +806,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_permissions_serialize(
+        _param = self._permissions_delete_permissions_serialize(
             delete_permissions_request_dto=delete_permissions_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -820,7 +825,7 @@ class PermissionsApi:
         return response_data.response
 
 
-    def _delete_permissions_serialize(
+    def _permissions_delete_permissions_serialize(
         self,
         delete_permissions_request_dto,
         tenant_code,
@@ -900,7 +905,7 @@ class PermissionsApi:
 
 
     @validate_call
-    def get_capabilities(
+    def permissions_get_capabilities(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the capabilities from.")] = None,
         _request_timeout: Union[
@@ -944,7 +949,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_capabilities_serialize(
+        _param = self._permissions_get_capabilities_serialize(
             tenant_code=tenant_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -961,13 +966,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_capabilities_with_http_info(
+    def permissions_get_capabilities_with_http_info(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the capabilities from.")] = None,
         _request_timeout: Union[
@@ -1011,7 +1017,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_capabilities_serialize(
+        _param = self._permissions_get_capabilities_serialize(
             tenant_code=tenant_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1028,13 +1034,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_capabilities_without_preload_content(
+    def permissions_get_capabilities_without_preload_content(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the capabilities from.")] = None,
         _request_timeout: Union[
@@ -1078,7 +1085,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_capabilities_serialize(
+        _param = self._permissions_get_capabilities_serialize(
             tenant_code=tenant_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1096,7 +1103,7 @@ class PermissionsApi:
         return response_data.response
 
 
-    def _get_capabilities_serialize(
+    def _permissions_get_capabilities_serialize(
         self,
         tenant_code,
         _request_auth,
@@ -1160,7 +1167,7 @@ class PermissionsApi:
 
 
     @validate_call
-    def get_capability(
+    def permissions_get_capability(
         self,
         capability_id: Annotated[StrictStr, Field(description="The unique identifier of the capability you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a capability from.")] = None,
@@ -1207,7 +1214,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_capability_serialize(
+        _param = self._permissions_get_capability_serialize(
             capability_id=capability_id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -1225,13 +1232,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_capability_with_http_info(
+    def permissions_get_capability_with_http_info(
         self,
         capability_id: Annotated[StrictStr, Field(description="The unique identifier of the capability you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a capability from.")] = None,
@@ -1278,7 +1286,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_capability_serialize(
+        _param = self._permissions_get_capability_serialize(
             capability_id=capability_id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -1296,13 +1304,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_capability_without_preload_content(
+    def permissions_get_capability_without_preload_content(
         self,
         capability_id: Annotated[StrictStr, Field(description="The unique identifier of the capability you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a capability from.")] = None,
@@ -1349,7 +1358,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_capability_serialize(
+        _param = self._permissions_get_capability_serialize(
             capability_id=capability_id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -1368,7 +1377,7 @@ class PermissionsApi:
         return response_data.response
 
 
-    def _get_capability_serialize(
+    def _permissions_get_capability_serialize(
         self,
         capability_id,
         tenant_code,
@@ -1435,7 +1444,7 @@ class PermissionsApi:
 
 
     @validate_call
-    def get_content_package(
+    def permissions_get_content_package(
         self,
         content_package_id: Annotated[StrictStr, Field(description="The unique identifier of the content package you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a content package from.")] = None,
@@ -1482,7 +1491,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_content_package_serialize(
+        _param = self._permissions_get_content_package_serialize(
             content_package_id=content_package_id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -1500,13 +1509,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_content_package_with_http_info(
+    def permissions_get_content_package_with_http_info(
         self,
         content_package_id: Annotated[StrictStr, Field(description="The unique identifier of the content package you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a content package from.")] = None,
@@ -1553,7 +1563,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_content_package_serialize(
+        _param = self._permissions_get_content_package_serialize(
             content_package_id=content_package_id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -1571,13 +1581,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_content_package_without_preload_content(
+    def permissions_get_content_package_without_preload_content(
         self,
         content_package_id: Annotated[StrictStr, Field(description="The unique identifier of the content package you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a content package from.")] = None,
@@ -1624,7 +1635,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_content_package_serialize(
+        _param = self._permissions_get_content_package_serialize(
             content_package_id=content_package_id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -1643,7 +1654,7 @@ class PermissionsApi:
         return response_data.response
 
 
-    def _get_content_package_serialize(
+    def _permissions_get_content_package_serialize(
         self,
         content_package_id,
         tenant_code,
@@ -1710,7 +1721,7 @@ class PermissionsApi:
 
 
     @validate_call
-    def get_content_packages(
+    def permissions_get_content_packages(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the content packages from.")] = None,
         search_string: Annotated[Optional[StrictStr], Field(description="Optional search string to return only content packages whose display name or description contains that search string.  If searchString is empty or not provided, the response returns a list of all content packages.")] = None,
@@ -1757,7 +1768,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_content_packages_serialize(
+        _param = self._permissions_get_content_packages_serialize(
             tenant_code=tenant_code,
             search_string=search_string,
             _request_auth=_request_auth,
@@ -1775,13 +1786,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_content_packages_with_http_info(
+    def permissions_get_content_packages_with_http_info(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the content packages from.")] = None,
         search_string: Annotated[Optional[StrictStr], Field(description="Optional search string to return only content packages whose display name or description contains that search string.  If searchString is empty or not provided, the response returns a list of all content packages.")] = None,
@@ -1828,7 +1840,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_content_packages_serialize(
+        _param = self._permissions_get_content_packages_serialize(
             tenant_code=tenant_code,
             search_string=search_string,
             _request_auth=_request_auth,
@@ -1846,13 +1858,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_content_packages_without_preload_content(
+    def permissions_get_content_packages_without_preload_content(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the content packages from.")] = None,
         search_string: Annotated[Optional[StrictStr], Field(description="Optional search string to return only content packages whose display name or description contains that search string.  If searchString is empty or not provided, the response returns a list of all content packages.")] = None,
@@ -1899,7 +1912,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_content_packages_serialize(
+        _param = self._permissions_get_content_packages_serialize(
             tenant_code=tenant_code,
             search_string=search_string,
             _request_auth=_request_auth,
@@ -1918,7 +1931,7 @@ class PermissionsApi:
         return response_data.response
 
 
-    def _get_content_packages_serialize(
+    def _permissions_get_content_packages_serialize(
         self,
         tenant_code,
         search_string,
@@ -1987,7 +2000,7 @@ class PermissionsApi:
 
 
     @validate_call
-    def get_data_access_set(
+    def permissions_get_data_access_set(
         self,
         data_access_set_id: Annotated[StrictStr, Field(description="The unique identifier of the data access set you want to retrieve.")],
         _request_timeout: Union[
@@ -2031,7 +2044,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_data_access_set_serialize(
+        _param = self._permissions_get_data_access_set_serialize(
             data_access_set_id=data_access_set_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2048,13 +2061,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_data_access_set_with_http_info(
+    def permissions_get_data_access_set_with_http_info(
         self,
         data_access_set_id: Annotated[StrictStr, Field(description="The unique identifier of the data access set you want to retrieve.")],
         _request_timeout: Union[
@@ -2098,7 +2112,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_data_access_set_serialize(
+        _param = self._permissions_get_data_access_set_serialize(
             data_access_set_id=data_access_set_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2115,13 +2129,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_data_access_set_without_preload_content(
+    def permissions_get_data_access_set_without_preload_content(
         self,
         data_access_set_id: Annotated[StrictStr, Field(description="The unique identifier of the data access set you want to retrieve.")],
         _request_timeout: Union[
@@ -2165,7 +2180,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_data_access_set_serialize(
+        _param = self._permissions_get_data_access_set_serialize(
             data_access_set_id=data_access_set_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2183,7 +2198,7 @@ class PermissionsApi:
         return response_data.response
 
 
-    def _get_data_access_set_serialize(
+    def _permissions_get_data_access_set_serialize(
         self,
         data_access_set_id,
         _request_auth,
@@ -2245,7 +2260,7 @@ class PermissionsApi:
 
 
     @validate_call
-    def get_data_access_sets(
+    def permissions_get_data_access_sets(
         self,
         analytic_object_id: Annotated[Optional[StrictStr], Field(description="Specify the analytic object ID to retrieve the shareable data access sets for. Default is all analytic objects.")] = None,
         var_with: Annotated[Optional[List[StrictStr]], Field(description="The information about the data access set to include in the request response.  * If empty, returns basic information for the data access set, including its unique ID, display name, description, and analytic object ID.  * If `details`, returns basic information and property data access information (`propertyAccessConfigs`).")] = None,
@@ -2295,7 +2310,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_data_access_sets_serialize(
+        _param = self._permissions_get_data_access_sets_serialize(
             analytic_object_id=analytic_object_id,
             var_with=var_with,
             limit=limit,
@@ -2314,13 +2329,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_data_access_sets_with_http_info(
+    def permissions_get_data_access_sets_with_http_info(
         self,
         analytic_object_id: Annotated[Optional[StrictStr], Field(description="Specify the analytic object ID to retrieve the shareable data access sets for. Default is all analytic objects.")] = None,
         var_with: Annotated[Optional[List[StrictStr]], Field(description="The information about the data access set to include in the request response.  * If empty, returns basic information for the data access set, including its unique ID, display name, description, and analytic object ID.  * If `details`, returns basic information and property data access information (`propertyAccessConfigs`).")] = None,
@@ -2370,7 +2386,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_data_access_sets_serialize(
+        _param = self._permissions_get_data_access_sets_serialize(
             analytic_object_id=analytic_object_id,
             var_with=var_with,
             limit=limit,
@@ -2389,13 +2405,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_data_access_sets_without_preload_content(
+    def permissions_get_data_access_sets_without_preload_content(
         self,
         analytic_object_id: Annotated[Optional[StrictStr], Field(description="Specify the analytic object ID to retrieve the shareable data access sets for. Default is all analytic objects.")] = None,
         var_with: Annotated[Optional[List[StrictStr]], Field(description="The information about the data access set to include in the request response.  * If empty, returns basic information for the data access set, including its unique ID, display name, description, and analytic object ID.  * If `details`, returns basic information and property data access information (`propertyAccessConfigs`).")] = None,
@@ -2445,7 +2462,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_data_access_sets_serialize(
+        _param = self._permissions_get_data_access_sets_serialize(
             analytic_object_id=analytic_object_id,
             var_with=var_with,
             limit=limit,
@@ -2465,7 +2482,7 @@ class PermissionsApi:
         return response_data.response
 
 
-    def _get_data_access_sets_serialize(
+    def _permissions_get_data_access_sets_serialize(
         self,
         analytic_object_id,
         var_with,
@@ -2540,7 +2557,7 @@ class PermissionsApi:
 
 
     @validate_call
-    def get_data_security_objects(
+    def permissions_get_data_security_objects(
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The unique identifiers of the data security objects (analytic objects) to retrieve.  Default is all data security objects.")] = None,
         include_details: Annotated[Optional[StrictBool], Field(description="If `true`, the response includes the analytic objects (display name, ID, and object type), related objects,  securable properties, and securable dimensions. If `false`, the response only includes analytic objects  (display name, ID, and object type). Default is `false`.")] = None,
@@ -2590,7 +2607,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_data_security_objects_serialize(
+        _param = self._permissions_get_data_security_objects_serialize(
             id=id,
             include_details=include_details,
             tenant_code=tenant_code,
@@ -2609,13 +2626,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_data_security_objects_with_http_info(
+    def permissions_get_data_security_objects_with_http_info(
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The unique identifiers of the data security objects (analytic objects) to retrieve.  Default is all data security objects.")] = None,
         include_details: Annotated[Optional[StrictBool], Field(description="If `true`, the response includes the analytic objects (display name, ID, and object type), related objects,  securable properties, and securable dimensions. If `false`, the response only includes analytic objects  (display name, ID, and object type). Default is `false`.")] = None,
@@ -2665,7 +2683,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_data_security_objects_serialize(
+        _param = self._permissions_get_data_security_objects_serialize(
             id=id,
             include_details=include_details,
             tenant_code=tenant_code,
@@ -2684,13 +2702,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_data_security_objects_without_preload_content(
+    def permissions_get_data_security_objects_without_preload_content(
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The unique identifiers of the data security objects (analytic objects) to retrieve.  Default is all data security objects.")] = None,
         include_details: Annotated[Optional[StrictBool], Field(description="If `true`, the response includes the analytic objects (display name, ID, and object type), related objects,  securable properties, and securable dimensions. If `false`, the response only includes analytic objects  (display name, ID, and object type). Default is `false`.")] = None,
@@ -2740,7 +2759,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_data_security_objects_serialize(
+        _param = self._permissions_get_data_security_objects_serialize(
             id=id,
             include_details=include_details,
             tenant_code=tenant_code,
@@ -2760,7 +2779,7 @@ class PermissionsApi:
         return response_data.response
 
 
-    def _get_data_security_objects_serialize(
+    def _permissions_get_data_security_objects_serialize(
         self,
         id,
         include_details,
@@ -2835,7 +2854,7 @@ class PermissionsApi:
 
 
     @validate_call
-    def get_permission(
+    def permissions_get_permission(
         self,
         permission_id: Annotated[StrictStr, Field(description="The unique identifier of the permission you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a permission from.")] = None,
@@ -2885,7 +2904,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_permission_serialize(
+        _param = self._permissions_get_permission_serialize(
             permission_id=permission_id,
             tenant_code=tenant_code,
             include_details_with_status=include_details_with_status,
@@ -2904,13 +2923,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_permission_with_http_info(
+    def permissions_get_permission_with_http_info(
         self,
         permission_id: Annotated[StrictStr, Field(description="The unique identifier of the permission you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a permission from.")] = None,
@@ -2960,7 +2980,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_permission_serialize(
+        _param = self._permissions_get_permission_serialize(
             permission_id=permission_id,
             tenant_code=tenant_code,
             include_details_with_status=include_details_with_status,
@@ -2979,13 +2999,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_permission_without_preload_content(
+    def permissions_get_permission_without_preload_content(
         self,
         permission_id: Annotated[StrictStr, Field(description="The unique identifier of the permission you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a permission from.")] = None,
@@ -3035,7 +3056,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_permission_serialize(
+        _param = self._permissions_get_permission_serialize(
             permission_id=permission_id,
             tenant_code=tenant_code,
             include_details_with_status=include_details_with_status,
@@ -3055,7 +3076,7 @@ class PermissionsApi:
         return response_data.response
 
 
-    def _get_permission_serialize(
+    def _permissions_get_permission_serialize(
         self,
         permission_id,
         tenant_code,
@@ -3127,7 +3148,7 @@ class PermissionsApi:
 
 
     @validate_call
-    def get_permissions(
+    def permissions_get_permissions(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the permissions from.")] = None,
         include_details: Annotated[Optional[StrictBool], Field(description="If `true`, returns the permission's details. If `false`, only returns the permissions' ID, display name,  and description. Default is `false`.")] = None,
@@ -3177,7 +3198,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_permissions_serialize(
+        _param = self._permissions_get_permissions_serialize(
             tenant_code=tenant_code,
             include_details=include_details,
             include_details_with_status=include_details_with_status,
@@ -3196,13 +3217,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_permissions_with_http_info(
+    def permissions_get_permissions_with_http_info(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the permissions from.")] = None,
         include_details: Annotated[Optional[StrictBool], Field(description="If `true`, returns the permission's details. If `false`, only returns the permissions' ID, display name,  and description. Default is `false`.")] = None,
@@ -3252,7 +3274,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_permissions_serialize(
+        _param = self._permissions_get_permissions_serialize(
             tenant_code=tenant_code,
             include_details=include_details,
             include_details_with_status=include_details_with_status,
@@ -3271,13 +3293,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_permissions_without_preload_content(
+    def permissions_get_permissions_without_preload_content(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the permissions from.")] = None,
         include_details: Annotated[Optional[StrictBool], Field(description="If `true`, returns the permission's details. If `false`, only returns the permissions' ID, display name,  and description. Default is `false`.")] = None,
@@ -3327,7 +3350,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_permissions_serialize(
+        _param = self._permissions_get_permissions_serialize(
             tenant_code=tenant_code,
             include_details=include_details,
             include_details_with_status=include_details_with_status,
@@ -3347,7 +3370,7 @@ class PermissionsApi:
         return response_data.response
 
 
-    def _get_permissions_serialize(
+    def _permissions_get_permissions_serialize(
         self,
         tenant_code,
         include_details,
@@ -3421,7 +3444,7 @@ class PermissionsApi:
 
 
     @validate_call
-    def update_permissions(
+    def permissions_update_permissions(
         self,
         permissions_list_dto: PermissionsListDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update permissions in.")] = None,
@@ -3468,7 +3491,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_permissions_serialize(
+        _param = self._permissions_update_permissions_serialize(
             permissions_list_dto=permissions_list_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -3486,13 +3509,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def update_permissions_with_http_info(
+    def permissions_update_permissions_with_http_info(
         self,
         permissions_list_dto: PermissionsListDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update permissions in.")] = None,
@@ -3539,7 +3563,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_permissions_serialize(
+        _param = self._permissions_update_permissions_serialize(
             permissions_list_dto=permissions_list_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -3557,13 +3581,14 @@ class PermissionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def update_permissions_without_preload_content(
+    def permissions_update_permissions_without_preload_content(
         self,
         permissions_list_dto: PermissionsListDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update permissions in.")] = None,
@@ -3610,7 +3635,7 @@ class PermissionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_permissions_serialize(
+        _param = self._permissions_update_permissions_serialize(
             permissions_list_dto=permissions_list_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -3629,7 +3654,7 @@ class PermissionsApi:
         return response_data.response
 
 
-    def _update_permissions_serialize(
+    def _permissions_update_permissions_serialize(
         self,
         permissions_list_dto,
         tenant_code,

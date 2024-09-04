@@ -26,9 +26,9 @@ class TagMapElementDTO(BaseModel):
     """
     Tag identifier and display name pair.
     """ # noqa: E501
-    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the tag.", alias="displayName")
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the tag.")
-    __properties: ClassVar[List[str]] = ["displayName", "id"]
+    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the tag.", alias="displayName")
+    __properties: ClassVar[List[str]] = ["id", "displayName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class TagMapElementDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "displayName": obj.get("displayName"),
-            "id": obj.get("id")
+            "id": obj.get("id"),
+            "displayName": obj.get("displayName")
         })
         return _obj
 

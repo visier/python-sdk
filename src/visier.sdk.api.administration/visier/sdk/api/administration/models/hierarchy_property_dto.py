@@ -26,9 +26,9 @@ class HierarchyPropertyDTO(BaseModel):
     """
     HierarchyPropertyDTO
     """ # noqa: E501
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable property name to display in Visier, such as \"Name Property\".", alias="displayName")
     hierarchy_property_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the property.", alias="hierarchyPropertyId")
-    __properties: ClassVar[List[str]] = ["displayName", "hierarchyPropertyId"]
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable property name to display in Visier, such as \"Name Property\".", alias="displayName")
+    __properties: ClassVar[List[str]] = ["hierarchyPropertyId", "displayName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class HierarchyPropertyDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "displayName": obj.get("displayName"),
-            "hierarchyPropertyId": obj.get("hierarchyPropertyId")
+            "hierarchyPropertyId": obj.get("hierarchyPropertyId"),
+            "displayName": obj.get("displayName")
         })
         return _obj
 

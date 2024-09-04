@@ -27,14 +27,14 @@ class DataVersionExportDTO(BaseModel):
     """
     DataVersionExportDTO
     """ # noqa: E501
-    base_data_version_number: Optional[StrictStr] = Field(default=None, description="The baseline data version number for which the export was generated. If specified, the export is a delta of the differences between `dateVersionNumber` and `baseDataVersionNumber`. If empty, a full export is generated for `dataVersionNumber`.", alias="baseDataVersionNumber")
-    data_version_number: Optional[StrictStr] = Field(default=None, description="The data version number for which the export was generated.", alias="dataVersionNumber")
-    deleted_tables: Optional[List[StrictStr]] = Field(default=None, description="Tables that do not exist in `dataVersionNumber` but did exist in `baseDataVersionNumber`.", alias="deletedTables")
-    new_tables: Optional[List[StrictStr]] = Field(default=None, description="Tables that exist in `dataVersionNumber` but did not exist in `baseDataVersionNumber`.", alias="newTables")
-    tables: Optional[List[DataVersionExportTableDTO]] = Field(default=None, description="Information about the tables in the export.")
-    timestamp: Optional[StrictStr] = Field(default=None, description="The date that the data version export was generated, in milliseconds since 1970-01-01T00:00:00Z.")
     uuid: Optional[StrictStr] = Field(default=None, description="The unique identifier of the data version export. Must be a valid UUID.")
-    __properties: ClassVar[List[str]] = ["baseDataVersionNumber", "dataVersionNumber", "deletedTables", "newTables", "tables", "timestamp", "uuid"]
+    timestamp: Optional[StrictStr] = Field(default=None, description="The date that the data version export was generated, in milliseconds since 1970-01-01T00:00:00Z.")
+    data_version_number: Optional[StrictStr] = Field(default=None, description="The data version number for which the export was generated.", alias="dataVersionNumber")
+    base_data_version_number: Optional[StrictStr] = Field(default=None, description="The baseline data version number for which the export was generated. If specified, the export is a delta of the differences between `dateVersionNumber` and `baseDataVersionNumber`. If empty, a full export is generated for `dataVersionNumber`.", alias="baseDataVersionNumber")
+    tables: Optional[List[DataVersionExportTableDTO]] = Field(default=None, description="Information about the tables in the export.")
+    new_tables: Optional[List[StrictStr]] = Field(default=None, description="Tables that exist in `dataVersionNumber` but did not exist in `baseDataVersionNumber`.", alias="newTables")
+    deleted_tables: Optional[List[StrictStr]] = Field(default=None, description="Tables that do not exist in `dataVersionNumber` but did exist in `baseDataVersionNumber`.", alias="deletedTables")
+    __properties: ClassVar[List[str]] = ["uuid", "timestamp", "dataVersionNumber", "baseDataVersionNumber", "tables", "newTables", "deletedTables"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,13 +94,13 @@ class DataVersionExportDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "baseDataVersionNumber": obj.get("baseDataVersionNumber"),
-            "dataVersionNumber": obj.get("dataVersionNumber"),
-            "deletedTables": obj.get("deletedTables"),
-            "newTables": obj.get("newTables"),
-            "tables": [DataVersionExportTableDTO.from_dict(_item) for _item in obj["tables"]] if obj.get("tables") is not None else None,
+            "uuid": obj.get("uuid"),
             "timestamp": obj.get("timestamp"),
-            "uuid": obj.get("uuid")
+            "dataVersionNumber": obj.get("dataVersionNumber"),
+            "baseDataVersionNumber": obj.get("baseDataVersionNumber"),
+            "tables": [DataVersionExportTableDTO.from_dict(_item) for _item in obj["tables"]] if obj.get("tables") is not None else None,
+            "newTables": obj.get("newTables"),
+            "deletedTables": obj.get("deletedTables")
         })
         return _obj
 

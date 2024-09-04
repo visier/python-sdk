@@ -22,16 +22,6 @@ from visier.sdk.api.data_in.api.data_intake_api import DataIntakeApi
 from visier.sdk.api.data_in.api.data_upload_api import DataUploadApi
 from visier.sdk.api.data_in.api.direct_data_intake_api import DirectDataIntakeApi
 
-# import ApiClient
-from visier.sdk.api.data_in.api_response import ApiResponse
-from visier.sdk.api.data_in.api_client import ApiClient
-from visier.sdk.api.data_in.configuration import Configuration
-from visier.sdk.api.data_in.exceptions import OpenApiException
-from visier.sdk.api.data_in.exceptions import ApiTypeError
-from visier.sdk.api.data_in.exceptions import ApiValueError
-from visier.sdk.api.data_in.exceptions import ApiKeyError
-from visier.sdk.api.data_in.exceptions import ApiAttributeError
-from visier.sdk.api.data_in.exceptions import ApiException
 
 # import models into sdk package
 from visier.sdk.api.data_in.models.adp_auth_params_dto import AdpAuthParamsDTO

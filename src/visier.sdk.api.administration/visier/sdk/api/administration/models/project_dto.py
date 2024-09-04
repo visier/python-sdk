@@ -26,14 +26,14 @@ class ProjectDTO(BaseModel):
     """
     ProjectDTO
     """ # noqa: E501
-    capabilities: Optional[List[StrictStr]] = Field(default=None, description="The current user's capabilities for the project. Users with `canWrite`, `canShare`, or `owner` capabilities can add and commit changes to the project.  **canRead**: The project has been shared to the user with `View` access.  **canWrite**: The project has been shared to the user with `Edit` access.  **canShare**: The project has been shared to the user with `Share` access.  **owner**: The user is the owner of the project.  Omit when creating a new project.")
-    description: Optional[StrictStr] = Field(default=None, description="A description of the project.")
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the project. Omit when creating a new project.")
     name: Optional[StrictStr] = Field(default=None, description="An identifiable project name to display in Visier.")
+    description: Optional[StrictStr] = Field(default=None, description="A description of the project.")
     release_version: Optional[StrictStr] = Field(default=None, description="The release version of the project.", alias="releaseVersion")
     ticket_number: Optional[StrictStr] = Field(default=None, description="The change management ticket number of the project.", alias="ticketNumber")
     version_number: Optional[StrictInt] = Field(default=None, description="The version number of the project.", alias="versionNumber")
-    __properties: ClassVar[List[str]] = ["capabilities", "description", "id", "name", "releaseVersion", "ticketNumber", "versionNumber"]
+    capabilities: Optional[List[StrictStr]] = Field(default=None, description="The current user's capabilities for the project. Users with `canWrite`, `canShare`, or `owner` capabilities can add and commit changes to the project.  **canRead**: The project has been shared to the user with `View` access.  **canWrite**: The project has been shared to the user with `Edit` access.  **canShare**: The project has been shared to the user with `Share` access.  **owner**: The user is the owner of the project.  Omit when creating a new project.")
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "releaseVersion", "ticketNumber", "versionNumber", "capabilities"]
 
     @field_validator('capabilities')
     def capabilities_validate_enum(cls, value):
@@ -97,13 +97,13 @@ class ProjectDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "capabilities": obj.get("capabilities"),
-            "description": obj.get("description"),
             "id": obj.get("id"),
             "name": obj.get("name"),
+            "description": obj.get("description"),
             "releaseVersion": obj.get("releaseVersion"),
             "ticketNumber": obj.get("ticketNumber"),
-            "versionNumber": obj.get("versionNumber")
+            "versionNumber": obj.get("versionNumber"),
+            "capabilities": obj.get("capabilities")
         })
         return _obj
 

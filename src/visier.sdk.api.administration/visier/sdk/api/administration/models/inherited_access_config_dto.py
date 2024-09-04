@@ -28,9 +28,9 @@ class InheritedAccessConfigDTO(BaseModel):
     InheritedAccessConfigDTO
     """ # noqa: E501
     analytic_object_id: Optional[StrictStr] = Field(default=None, description="The analytic object ID associated with the inherited access configuration.", alias="analyticObjectId")
-    member_filter_configs: Optional[List[MemberFilterConfigDTO]] = Field(default=None, description="Custom filters that define population access for an inherited analytic object in the permission.", alias="memberFilterConfigs")
     remove_access: Optional[StrictBool] = Field(default=None, description="The flag for removing access to the inherited analytic object.", alias="removeAccess")
-    __properties: ClassVar[List[str]] = ["analyticObjectId", "memberFilterConfigs", "removeAccess"]
+    member_filter_configs: Optional[List[MemberFilterConfigDTO]] = Field(default=None, description="Custom filters that define population access for an inherited analytic object in the permission.", alias="memberFilterConfigs")
+    __properties: ClassVar[List[str]] = ["analyticObjectId", "removeAccess", "memberFilterConfigs"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,8 +91,8 @@ class InheritedAccessConfigDTO(BaseModel):
 
         _obj = cls.model_validate({
             "analyticObjectId": obj.get("analyticObjectId"),
-            "memberFilterConfigs": [MemberFilterConfigDTO.from_dict(_item) for _item in obj["memberFilterConfigs"]] if obj.get("memberFilterConfigs") is not None else None,
-            "removeAccess": obj.get("removeAccess")
+            "removeAccess": obj.get("removeAccess"),
+            "memberFilterConfigs": [MemberFilterConfigDTO.from_dict(_item) for _item in obj["memberFilterConfigs"]] if obj.get("memberFilterConfigs") is not None else None
         })
         return _obj
 

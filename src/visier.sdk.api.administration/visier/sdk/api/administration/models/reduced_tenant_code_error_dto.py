@@ -27,10 +27,10 @@ class ReducedTenantCodeErrorDTO(BaseModel):
     """
     ReducedTenantCodeErrorDTO
     """ # noqa: E501
-    error: Optional[ReducedErrorDTO] = Field(default=None, description="The details about the error.")
-    for_all_children: Optional[StrictBool] = Field(default=None, description="If true, the assignment is for all the analytic tenants of the specified tenant.", alias="forAllChildren")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The bad tenant code.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["error", "forAllChildren", "tenantCode"]
+    for_all_children: Optional[StrictBool] = Field(default=None, description="If true, the assignment is for all the analytic tenants of the specified tenant.", alias="forAllChildren")
+    error: Optional[ReducedErrorDTO] = Field(default=None, description="The details about the error.")
+    __properties: ClassVar[List[str]] = ["tenantCode", "forAllChildren", "error"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,9 +86,9 @@ class ReducedTenantCodeErrorDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "error": ReducedErrorDTO.from_dict(obj["error"]) if obj.get("error") is not None else None,
+            "tenantCode": obj.get("tenantCode"),
             "forAllChildren": obj.get("forAllChildren"),
-            "tenantCode": obj.get("tenantCode")
+            "error": ReducedErrorDTO.from_dict(obj["error"]) if obj.get("error") is not None else None
         })
         return _obj
 

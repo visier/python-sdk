@@ -28,9 +28,9 @@ class TenantModuleDTO(BaseModel):
     TenantModuleDTO
     """ # noqa: E501
     display_name: Optional[StrictStr] = Field(default=None, description="An identifiable name that is displayed within Visier. For example, \"TALENT\".", alias="displayName")
-    module_settings: Optional[ModuleSettingsDTO] = Field(default=None, description="The settings associated with the module.", alias="moduleSettings")
     symbol_name: Optional[StrictStr] = Field(default=None, description="The symbol name of the module. For example, \"Talent_Management\".", alias="symbolName")
-    __properties: ClassVar[List[str]] = ["displayName", "moduleSettings", "symbolName"]
+    module_settings: Optional[ModuleSettingsDTO] = Field(default=None, description="The settings associated with the module.", alias="moduleSettings")
+    __properties: ClassVar[List[str]] = ["displayName", "symbolName", "moduleSettings"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,8 +87,8 @@ class TenantModuleDTO(BaseModel):
 
         _obj = cls.model_validate({
             "displayName": obj.get("displayName"),
-            "moduleSettings": ModuleSettingsDTO.from_dict(obj["moduleSettings"]) if obj.get("moduleSettings") is not None else None,
-            "symbolName": obj.get("symbolName")
+            "symbolName": obj.get("symbolName"),
+            "moduleSettings": ModuleSettingsDTO.from_dict(obj["moduleSettings"]) if obj.get("moduleSettings") is not None else None
         })
         return _obj
 

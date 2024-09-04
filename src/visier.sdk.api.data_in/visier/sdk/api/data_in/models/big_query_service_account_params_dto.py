@@ -26,9 +26,9 @@ class BigQueryServiceAccountParamsDTO(BaseModel):
     """
     BigQueryServiceAccountParamsDTO
     """ # noqa: E501
-    private_key: Optional[StrictStr] = Field(default=None, alias="privateKey")
     service_account_email: Optional[StrictStr] = Field(default=None, alias="serviceAccountEmail")
-    __properties: ClassVar[List[str]] = ["privateKey", "serviceAccountEmail"]
+    private_key: Optional[StrictStr] = Field(default=None, alias="privateKey")
+    __properties: ClassVar[List[str]] = ["serviceAccountEmail", "privateKey"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class BigQueryServiceAccountParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "privateKey": obj.get("privateKey"),
-            "serviceAccountEmail": obj.get("serviceAccountEmail")
+            "serviceAccountEmail": obj.get("serviceAccountEmail"),
+            "privateKey": obj.get("privateKey")
         })
         return _obj
 

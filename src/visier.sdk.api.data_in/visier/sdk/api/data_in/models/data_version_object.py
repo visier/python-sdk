@@ -26,9 +26,9 @@ class DataVersionObject(BaseModel):
     """
     DataVersionObject
     """ # noqa: E501
-    data_versions: Optional[StrictStr] = Field(default=None, description="The data version to disable for a particular analytic tenant.", alias="dataVersions")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code for the analytic tenant that you are disabling a data version.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["dataVersions", "tenantCode"]
+    data_versions: Optional[StrictStr] = Field(default=None, description="The data version to disable for a particular analytic tenant.", alias="dataVersions")
+    __properties: ClassVar[List[str]] = ["tenantCode", "dataVersions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class DataVersionObject(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dataVersions": obj.get("dataVersions"),
-            "tenantCode": obj.get("tenantCode")
+            "tenantCode": obj.get("tenantCode"),
+            "dataVersions": obj.get("dataVersions")
         })
         return _obj
 

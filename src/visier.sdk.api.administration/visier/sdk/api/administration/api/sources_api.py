@@ -16,15 +16,14 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictBool
 from typing import Any, Dict, Optional
 from typing_extensions import Annotated
 from visier.sdk.api.administration.models.sources_api_operation_request_dto import SourcesAPIOperationRequestDTO
 from visier.sdk.api.administration.models.sources_api_put_response_dto import SourcesAPIPutResponseDTO
-
-from visier.sdk.api.administration.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.administration.api_response import ApiResponse
-from visier.sdk.api.administration.rest import RESTResponseType
+import visier.sdk.api.administration.models
 
 
 class SourcesApi:
@@ -41,7 +40,7 @@ class SourcesApi:
 
 
     @validate_call
-    def put_sources(
+    def sources_put_sources(
         self,
         replace_all_existing_sources: Annotated[Optional[StrictBool], Field(description="`false` if the sources from the ZIP archive should be added to the sources in the target tenant. `true` if all sources in the target tenant should be removed while importing the ZIP archive.")] = None,
         _request_timeout: Union[
@@ -85,7 +84,7 @@ class SourcesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_sources_serialize(
+        _param = self._sources_put_sources_serialize(
             replace_all_existing_sources=replace_all_existing_sources,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -102,13 +101,14 @@ class SourcesApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def put_sources_with_http_info(
+    def sources_put_sources_with_http_info(
         self,
         replace_all_existing_sources: Annotated[Optional[StrictBool], Field(description="`false` if the sources from the ZIP archive should be added to the sources in the target tenant. `true` if all sources in the target tenant should be removed while importing the ZIP archive.")] = None,
         _request_timeout: Union[
@@ -152,7 +152,7 @@ class SourcesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_sources_serialize(
+        _param = self._sources_put_sources_serialize(
             replace_all_existing_sources=replace_all_existing_sources,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -169,13 +169,14 @@ class SourcesApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def put_sources_without_preload_content(
+    def sources_put_sources_without_preload_content(
         self,
         replace_all_existing_sources: Annotated[Optional[StrictBool], Field(description="`false` if the sources from the ZIP archive should be added to the sources in the target tenant. `true` if all sources in the target tenant should be removed while importing the ZIP archive.")] = None,
         _request_timeout: Union[
@@ -219,7 +220,7 @@ class SourcesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_sources_serialize(
+        _param = self._sources_put_sources_serialize(
             replace_all_existing_sources=replace_all_existing_sources,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -237,7 +238,7 @@ class SourcesApi:
         return response_data.response
 
 
-    def _put_sources_serialize(
+    def _sources_put_sources_serialize(
         self,
         replace_all_existing_sources,
         _request_auth,
@@ -314,7 +315,7 @@ class SourcesApi:
 
 
     @validate_call
-    def run_sources_operation(
+    def sources_run_sources_operation(
         self,
         sources_api_operation_request_dto: SourcesAPIOperationRequestDTO,
         _request_timeout: Union[
@@ -358,7 +359,7 @@ class SourcesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._run_sources_operation_serialize(
+        _param = self._sources_run_sources_operation_serialize(
             sources_api_operation_request_dto=sources_api_operation_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -375,13 +376,14 @@ class SourcesApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def run_sources_operation_with_http_info(
+    def sources_run_sources_operation_with_http_info(
         self,
         sources_api_operation_request_dto: SourcesAPIOperationRequestDTO,
         _request_timeout: Union[
@@ -425,7 +427,7 @@ class SourcesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._run_sources_operation_serialize(
+        _param = self._sources_run_sources_operation_serialize(
             sources_api_operation_request_dto=sources_api_operation_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -442,13 +444,14 @@ class SourcesApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def run_sources_operation_without_preload_content(
+    def sources_run_sources_operation_without_preload_content(
         self,
         sources_api_operation_request_dto: SourcesAPIOperationRequestDTO,
         _request_timeout: Union[
@@ -492,7 +495,7 @@ class SourcesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._run_sources_operation_serialize(
+        _param = self._sources_run_sources_operation_serialize(
             sources_api_operation_request_dto=sources_api_operation_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -510,7 +513,7 @@ class SourcesApi:
         return response_data.response
 
 
-    def _run_sources_operation_serialize(
+    def _sources_run_sources_operation_serialize(
         self,
         sources_api_operation_request_dto,
         _request_auth,
