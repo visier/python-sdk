@@ -28,9 +28,9 @@ class UserGroupSingleDeleteResponseDTO(BaseModel):
     """
     UserGroupSingleDeleteResponseDTO
     """ # noqa: E501
-    failure: Optional[UserGroupDeleteFailureDTO] = Field(default=None, description="The user group was not successfully deleted.")
     success: Optional[UserGroupDeleteSuccessDTO] = Field(default=None, description="The user group was successfully deleted.")
-    __properties: ClassVar[List[str]] = ["failure", "success"]
+    failure: Optional[UserGroupDeleteFailureDTO] = Field(default=None, description="The user group was not successfully deleted.")
+    __properties: ClassVar[List[str]] = ["success", "failure"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,12 +71,12 @@ class UserGroupSingleDeleteResponseDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of failure
-        if self.failure:
-            _dict['failure'] = self.failure.to_dict()
         # override the default output from pydantic by calling `to_dict()` of success
         if self.success:
             _dict['success'] = self.success.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of failure
+        if self.failure:
+            _dict['failure'] = self.failure.to_dict()
         return _dict
 
     @classmethod
@@ -89,8 +89,8 @@ class UserGroupSingleDeleteResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "failure": UserGroupDeleteFailureDTO.from_dict(obj["failure"]) if obj.get("failure") is not None else None,
-            "success": UserGroupDeleteSuccessDTO.from_dict(obj["success"]) if obj.get("success") is not None else None
+            "success": UserGroupDeleteSuccessDTO.from_dict(obj["success"]) if obj.get("success") is not None else None,
+            "failure": UserGroupDeleteFailureDTO.from_dict(obj["failure"]) if obj.get("failure") is not None else None
         })
         return _obj
 

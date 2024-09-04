@@ -16,11 +16,10 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from visier.sdk.api.administration.models.system_status_dto import SystemStatusDTO
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
-from visier.sdk.api.administration.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.administration.api_response import ApiResponse
-from visier.sdk.api.administration.rest import RESTResponseType
+from visier.sdk.api.administration.models.system_status_dto import SystemStatusDTO
+import visier.sdk.api.administration.models
 
 
 class SystemStatusApi:
@@ -37,7 +36,7 @@ class SystemStatusApi:
 
 
     @validate_call
-    def post_system_status(
+    def system_status_post_system_status(
         self,
         _request_timeout: Union[
             None,
@@ -78,7 +77,7 @@ class SystemStatusApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._post_system_status_serialize(
+        _param = self._system_status_post_system_status_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -94,13 +93,14 @@ class SystemStatusApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def post_system_status_with_http_info(
+    def system_status_post_system_status_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -141,7 +141,7 @@ class SystemStatusApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._post_system_status_serialize(
+        _param = self._system_status_post_system_status_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -157,13 +157,14 @@ class SystemStatusApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def post_system_status_without_preload_content(
+    def system_status_post_system_status_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -204,7 +205,7 @@ class SystemStatusApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._post_system_status_serialize(
+        _param = self._system_status_post_system_status_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -221,7 +222,7 @@ class SystemStatusApi:
         return response_data.response
 
 
-    def _post_system_status_serialize(
+    def _system_status_post_system_status_serialize(
         self,
         _request_auth,
         _content_type,
@@ -280,7 +281,7 @@ class SystemStatusApi:
 
 
     @validate_call
-    def system_status(
+    def system_status_system_status(
         self,
         _request_timeout: Union[
             None,
@@ -321,7 +322,7 @@ class SystemStatusApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._system_status_serialize(
+        _param = self._system_status_system_status_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -337,13 +338,14 @@ class SystemStatusApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def system_status_with_http_info(
+    def system_status_system_status_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -384,7 +386,7 @@ class SystemStatusApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._system_status_serialize(
+        _param = self._system_status_system_status_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -400,13 +402,14 @@ class SystemStatusApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def system_status_without_preload_content(
+    def system_status_system_status_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -447,7 +450,7 @@ class SystemStatusApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._system_status_serialize(
+        _param = self._system_status_system_status_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -464,7 +467,7 @@ class SystemStatusApi:
         return response_data.response
 
 
-    def _system_status_serialize(
+    def _system_status_system_status_serialize(
         self,
         _request_auth,
         _content_type,

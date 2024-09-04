@@ -26,9 +26,9 @@ class UserGroupAssignedForLocalTenantDTO(BaseModel):
     """
     UserGroupAssignedForLocalTenantDTO
     """ # noqa: E501
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable user group name to display in Visier, such as \"Leadership User Group\".", alias="displayName")
     user_group_id: Optional[StrictStr] = Field(default=None, description="The user group ID.", alias="userGroupId")
-    __properties: ClassVar[List[str]] = ["displayName", "userGroupId"]
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable user group name to display in Visier, such as \"Leadership User Group\".", alias="displayName")
+    __properties: ClassVar[List[str]] = ["userGroupId", "displayName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class UserGroupAssignedForLocalTenantDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "displayName": obj.get("displayName"),
-            "userGroupId": obj.get("userGroupId")
+            "userGroupId": obj.get("userGroupId"),
+            "displayName": obj.get("displayName")
         })
         return _obj
 

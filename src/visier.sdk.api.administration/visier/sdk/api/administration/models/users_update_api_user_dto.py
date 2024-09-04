@@ -26,12 +26,12 @@ class UsersUpdateAPIUserDTO(BaseModel):
     """
     UsersUpdateAPIUserDTO
     """ # noqa: E501
-    account_enabled: Optional[StrictStr] = Field(default=None, description="If true, the user account is enabled.", alias="accountEnabled")
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable name to display within Visier. For example, \"John Smith\".", alias="displayName")
-    email: Optional[StrictStr] = Field(default=None, description="The user's email address.")
-    employee_id: Optional[StrictStr] = Field(default=None, description="If applicable, and if available, the user employee ID in the data.", alias="employeeId")
     user_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the user.", alias="userId")
-    __properties: ClassVar[List[str]] = ["accountEnabled", "displayName", "email", "employeeId", "userId"]
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable name to display within Visier. For example, \"John Smith\".", alias="displayName")
+    employee_id: Optional[StrictStr] = Field(default=None, description="If applicable, and if available, the user employee ID in the data.", alias="employeeId")
+    account_enabled: Optional[StrictStr] = Field(default=None, description="If true, the user account is enabled.", alias="accountEnabled")
+    email: Optional[StrictStr] = Field(default=None, description="The user's email address.")
+    __properties: ClassVar[List[str]] = ["userId", "displayName", "employeeId", "accountEnabled", "email"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,11 +84,11 @@ class UsersUpdateAPIUserDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accountEnabled": obj.get("accountEnabled"),
+            "userId": obj.get("userId"),
             "displayName": obj.get("displayName"),
-            "email": obj.get("email"),
             "employeeId": obj.get("employeeId"),
-            "userId": obj.get("userId")
+            "accountEnabled": obj.get("accountEnabled"),
+            "email": obj.get("email")
         })
         return _obj
 

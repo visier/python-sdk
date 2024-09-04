@@ -27,11 +27,11 @@ class PushDataCancelResponse(BaseModel):
     """
     PushDataCancelResponse
     """ # noqa: E501
-    data_transfer_result_details: Optional[List[DataTransferResultDetail]] = Field(default=None, description="A list of objects representing the results of the transfer session.", alias="dataTransferResultDetails")
     message: Optional[StrictStr] = Field(default=None, description="A meaningful message about the transfer session.")
-    status: Optional[StrictStr] = Field(default=None, description="The status of the transfer session. A cancelled session returns the status CANCELLED.")
     transfer_session_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the transfer session.", alias="transferSessionId")
-    __properties: ClassVar[List[str]] = ["dataTransferResultDetails", "message", "status", "transferSessionId"]
+    data_transfer_result_details: Optional[List[DataTransferResultDetail]] = Field(default=None, description="A list of objects representing the results of the transfer session.", alias="dataTransferResultDetails")
+    status: Optional[StrictStr] = Field(default=None, description="The status of the transfer session. A cancelled session returns the status CANCELLED.")
+    __properties: ClassVar[List[str]] = ["message", "transferSessionId", "dataTransferResultDetails", "status"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,10 +91,10 @@ class PushDataCancelResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dataTransferResultDetails": [DataTransferResultDetail.from_dict(_item) for _item in obj["dataTransferResultDetails"]] if obj.get("dataTransferResultDetails") is not None else None,
             "message": obj.get("message"),
-            "status": obj.get("status"),
-            "transferSessionId": obj.get("transferSessionId")
+            "transferSessionId": obj.get("transferSessionId"),
+            "dataTransferResultDetails": [DataTransferResultDetail.from_dict(_item) for _item in obj["dataTransferResultDetails"]] if obj.get("dataTransferResultDetails") is not None else None,
+            "status": obj.get("status")
         })
         return _obj
 

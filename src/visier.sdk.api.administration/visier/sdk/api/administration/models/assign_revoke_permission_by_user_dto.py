@@ -26,10 +26,10 @@ class AssignRevokePermissionByUserDTO(BaseModel):
     """
     The results of the permission assignment or removal by user.
     """ # noqa: E501
-    message: Optional[StrictStr] = Field(default=None, description="A meaningful message about the user permission.")
     user_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the user.", alias="userId")
     username: Optional[StrictStr] = Field(default=None, description="The user's username. This is typically the user's email, such as john@visier.com.")
-    __properties: ClassVar[List[str]] = ["message", "userId", "username"]
+    message: Optional[StrictStr] = Field(default=None, description="A meaningful message about the user permission.")
+    __properties: ClassVar[List[str]] = ["userId", "username", "message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class AssignRevokePermissionByUserDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": obj.get("message"),
             "userId": obj.get("userId"),
-            "username": obj.get("username")
+            "username": obj.get("username"),
+            "message": obj.get("message")
         })
         return _obj
 

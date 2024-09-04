@@ -27,12 +27,12 @@ class SelectionConceptDTO(BaseModel):
     """
     Selection concepts select a population of subject members of a given subject or event.
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="The localized description of the selection concept.")
-    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the selection concept.", alias="displayName")
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the selection concept  Note: See `SelectionConcepts` to get the ID.")
-    tags: Optional[List[TagMapElementDTO]] = Field(default=None, description="The optional collection of tags defined for this element.")
+    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the selection concept.", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="The localized description of the selection concept.")
     visible_in_app: Optional[StrictBool] = Field(default=None, description="`true` if this selection concept is set to be visible in your solution.", alias="visibleInApp")
-    __properties: ClassVar[List[str]] = ["description", "displayName", "id", "tags", "visibleInApp"]
+    tags: Optional[List[TagMapElementDTO]] = Field(default=None, description="The optional collection of tags defined for this element.")
+    __properties: ClassVar[List[str]] = ["id", "displayName", "description", "visibleInApp", "tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -92,11 +92,11 @@ class SelectionConceptDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
-            "displayName": obj.get("displayName"),
             "id": obj.get("id"),
-            "tags": [TagMapElementDTO.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
-            "visibleInApp": obj.get("visibleInApp")
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description"),
+            "visibleInApp": obj.get("visibleInApp"),
+            "tags": [TagMapElementDTO.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None
         })
         return _obj
 

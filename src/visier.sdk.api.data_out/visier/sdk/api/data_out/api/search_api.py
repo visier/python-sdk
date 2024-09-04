@@ -16,14 +16,13 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
 from visier.sdk.api.data_out.models.simple_document_header_search_response_dto import SimpleDocumentHeaderSearchResponseDTO
-
-from visier.sdk.api.data_out.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.data_out.api_response import ApiResponse
-from visier.sdk.api.data_out.rest import RESTResponseType
+import visier.sdk.api.data_out.models
 
 
 class SearchApi:
@@ -40,7 +39,7 @@ class SearchApi:
 
 
     @validate_call
-    def simple_search_document_headers(
+    def search_simple_search_document_headers(
         self,
         q: Annotated[Optional[StrictStr], Field(description="The search query string.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of results to return. Defaults to 100.")] = None,
@@ -90,7 +89,7 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._simple_search_document_headers_serialize(
+        _param = self._search_simple_search_document_headers_serialize(
             q=q,
             limit=limit,
             offset=offset,
@@ -109,13 +108,14 @@ class SearchApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def simple_search_document_headers_with_http_info(
+    def search_simple_search_document_headers_with_http_info(
         self,
         q: Annotated[Optional[StrictStr], Field(description="The search query string.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of results to return. Defaults to 100.")] = None,
@@ -165,7 +165,7 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._simple_search_document_headers_serialize(
+        _param = self._search_simple_search_document_headers_serialize(
             q=q,
             limit=limit,
             offset=offset,
@@ -184,13 +184,14 @@ class SearchApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def simple_search_document_headers_without_preload_content(
+    def search_simple_search_document_headers_without_preload_content(
         self,
         q: Annotated[Optional[StrictStr], Field(description="The search query string.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of results to return. Defaults to 100.")] = None,
@@ -240,7 +241,7 @@ class SearchApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._simple_search_document_headers_serialize(
+        _param = self._search_simple_search_document_headers_serialize(
             q=q,
             limit=limit,
             offset=offset,
@@ -260,7 +261,7 @@ class SearchApi:
         return response_data.response
 
 
-    def _simple_search_document_headers_serialize(
+    def _search_simple_search_document_headers_serialize(
         self,
         q,
         limit,

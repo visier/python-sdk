@@ -26,9 +26,9 @@ class TenantDataUploadStatusResponseDTO(BaseModel):
     """
     TenantDataUploadStatusResponseDTO
     """ # noqa: E501
-    included: Optional[StrictBool] = Field(default=None, description="If \"true\", the data upload is included.")
     upload_time: Optional[StrictStr] = Field(default=None, description="The upload time of the data upload.", alias="uploadTime")
-    __properties: ClassVar[List[str]] = ["included", "uploadTime"]
+    included: Optional[StrictBool] = Field(default=None, description="If \"true\", the data upload is included.")
+    __properties: ClassVar[List[str]] = ["uploadTime", "included"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class TenantDataUploadStatusResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "included": obj.get("included"),
-            "uploadTime": obj.get("uploadTime")
+            "uploadTime": obj.get("uploadTime"),
+            "included": obj.get("included")
         })
         return _obj
 

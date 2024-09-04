@@ -26,9 +26,9 @@ class PermissionsToUserGroupRequestDTO(BaseModel):
     """
     PermissionsToUserGroupRequestDTO
     """ # noqa: E501
-    permissions_ids: Optional[List[StrictStr]] = Field(default=None, description="A list of strings representing the unique permission IDs to assign.", alias="permissionsIds")
     user_group_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the user group.", alias="userGroupId")
-    __properties: ClassVar[List[str]] = ["permissionsIds", "userGroupId"]
+    permissions_ids: Optional[List[StrictStr]] = Field(default=None, description="A list of strings representing the unique permission IDs to assign.", alias="permissionsIds")
+    __properties: ClassVar[List[str]] = ["userGroupId", "permissionsIds"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class PermissionsToUserGroupRequestDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "permissionsIds": obj.get("permissionsIds"),
-            "userGroupId": obj.get("userGroupId")
+            "userGroupId": obj.get("userGroupId"),
+            "permissionsIds": obj.get("permissionsIds")
         })
         return _obj
 

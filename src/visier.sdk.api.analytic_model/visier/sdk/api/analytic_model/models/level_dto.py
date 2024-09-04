@@ -26,10 +26,10 @@ class LevelDTO(BaseModel):
     """
     Levels are the hierarchical structure of members within a dimension.
     """ # noqa: E501
-    depth: Optional[StrictInt] = Field(default=None, description="The level depth of the dimension.")
-    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the dimension.", alias="displayName")
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of a level within a dimension.")
-    __properties: ClassVar[List[str]] = ["depth", "displayName", "id"]
+    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the dimension.", alias="displayName")
+    depth: Optional[StrictInt] = Field(default=None, description="The level depth of the dimension.")
+    __properties: ClassVar[List[str]] = ["id", "displayName", "depth"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class LevelDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "depth": obj.get("depth"),
+            "id": obj.get("id"),
             "displayName": obj.get("displayName"),
-            "id": obj.get("id")
+            "depth": obj.get("depth")
         })
         return _obj
 

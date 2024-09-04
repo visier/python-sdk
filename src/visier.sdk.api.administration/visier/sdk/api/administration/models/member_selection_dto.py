@@ -26,10 +26,10 @@ class MemberSelectionDTO(BaseModel):
     """
     MemberSelectionDTO
     """ # noqa: E501
-    dimension_member_status: Optional[StrictStr] = Field(default=None, description="The dimension member's validity status. Valid values: Valid, NotFound.  * **Valid**: The object exists and has loaded data.  * **NotFound**: The object doesn't exist.", alias="dimensionMemberStatus")
-    excluded: Optional[StrictBool] = Field(default=None, description="If `true`, population access is granted for all members except this member.")
     name_path: Optional[List[StrictStr]] = Field(default=None, description="The member name path.", alias="namePath")
-    __properties: ClassVar[List[str]] = ["dimensionMemberStatus", "excluded", "namePath"]
+    excluded: Optional[StrictBool] = Field(default=None, description="If `true`, population access is granted for all members except this member.")
+    dimension_member_status: Optional[StrictStr] = Field(default=None, description="The dimension member's validity status. Valid values: Valid, NotFound.  * **Valid**: The object exists and has loaded data.  * **NotFound**: The object doesn't exist.", alias="dimensionMemberStatus")
+    __properties: ClassVar[List[str]] = ["namePath", "excluded", "dimensionMemberStatus"]
 
     @field_validator('dimension_member_status')
     def dimension_member_status_validate_enum(cls, value):
@@ -92,9 +92,9 @@ class MemberSelectionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dimensionMemberStatus": obj.get("dimensionMemberStatus"),
+            "namePath": obj.get("namePath"),
             "excluded": obj.get("excluded"),
-            "namePath": obj.get("namePath")
+            "dimensionMemberStatus": obj.get("dimensionMemberStatus")
         })
         return _obj
 

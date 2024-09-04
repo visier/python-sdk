@@ -27,11 +27,11 @@ class PermissionsToUserGroupForTenantDTO(BaseModel):
     """
     PermissionsToUserGroupForTenantDTO
     """ # noqa: E501
-    message: Optional[StrictStr] = Field(default=None, description="A detailed description of the request outcome, if available.")
-    status: Optional[StrictStr] = Field(default=None, description="The state of the permission assignment or removal. Valid values are Succeed or Failed.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the tenant.", alias="tenantCode")
+    status: Optional[StrictStr] = Field(default=None, description="The state of the permission assignment or removal. Valid values are Succeed or Failed.")
+    message: Optional[StrictStr] = Field(default=None, description="A detailed description of the request outcome, if available.")
     user_groups: Optional[List[UserGroupGetAPIResponseDTO]] = Field(default=None, description="A list of objects representing user groups and the permissions to assign to or remove from them.", alias="userGroups")
-    __properties: ClassVar[List[str]] = ["message", "status", "tenantCode", "userGroups"]
+    __properties: ClassVar[List[str]] = ["tenantCode", "status", "message", "userGroups"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,9 +91,9 @@ class PermissionsToUserGroupForTenantDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": obj.get("message"),
-            "status": obj.get("status"),
             "tenantCode": obj.get("tenantCode"),
+            "status": obj.get("status"),
+            "message": obj.get("message"),
             "userGroups": [UserGroupGetAPIResponseDTO.from_dict(_item) for _item in obj["userGroups"]] if obj.get("userGroups") is not None else None
         })
         return _obj

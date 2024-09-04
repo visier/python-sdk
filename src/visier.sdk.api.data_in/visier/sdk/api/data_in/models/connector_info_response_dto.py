@@ -27,9 +27,9 @@ class ConnectorInfoResponseDTO(BaseModel):
     ConnectorInfoResponseDTO
     """ # noqa: E501
     connector_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the data connector.", alias="connectorId")
-    description: Optional[StrictStr] = None
     display_name: Optional[StrictStr] = Field(default=None, description="An identifiable data connector name that is displayed within Visier.", alias="displayName")
-    __properties: ClassVar[List[str]] = ["connectorId", "description", "displayName"]
+    description: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["connectorId", "displayName", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,8 +83,8 @@ class ConnectorInfoResponseDTO(BaseModel):
 
         _obj = cls.model_validate({
             "connectorId": obj.get("connectorId"),
-            "description": obj.get("description"),
-            "displayName": obj.get("displayName")
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description")
         })
         return _obj
 

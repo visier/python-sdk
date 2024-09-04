@@ -27,12 +27,12 @@ class DataAccessSetDTO(BaseModel):
     """
     DataAccessSetDTO
     """ # noqa: E501
-    analytic_object_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the analytic object that the data access set is for.", alias="analyticObjectId")
-    description: Optional[StrictStr] = Field(default=None, description="A description of the data access set.")
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable data access set name to display in Visier, such as \"Aggregate(Employee)\".", alias="displayName")
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the data access set.")
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable data access set name to display in Visier, such as \"Aggregate(Employee)\".", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="A description of the data access set.")
+    analytic_object_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the analytic object that the data access set is for.", alias="analyticObjectId")
     property_access_configs: Optional[List[PropertyAccessConfigDTO]] = Field(default=None, description="The data access assigned to properties in the data access set.", alias="propertyAccessConfigs")
-    __properties: ClassVar[List[str]] = ["analyticObjectId", "description", "displayName", "id", "propertyAccessConfigs"]
+    __properties: ClassVar[List[str]] = ["id", "displayName", "description", "analyticObjectId", "propertyAccessConfigs"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -92,10 +92,10 @@ class DataAccessSetDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analyticObjectId": obj.get("analyticObjectId"),
-            "description": obj.get("description"),
-            "displayName": obj.get("displayName"),
             "id": obj.get("id"),
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description"),
+            "analyticObjectId": obj.get("analyticObjectId"),
             "propertyAccessConfigs": [PropertyAccessConfigDTO.from_dict(_item) for _item in obj["propertyAccessConfigs"]] if obj.get("propertyAccessConfigs") is not None else None
         })
         return _obj

@@ -27,11 +27,11 @@ class AggregationTypeParameterDTO(BaseModel):
     """
     The definition of an aggregation parameter. These parameters resolve metrics that use aggregation parameters.  For example, Visier Benchmarks metrics often use aggregation parameters to enable callers to aggregate metric values according to their average or different percentiles.
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="The localized description of the parameter.")
-    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the parameter.", alias="displayName")
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the parameter.")
+    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the parameter.", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="The localized description of the parameter.")
     parameter_options: Optional[List[AggregationTypeOptionDTO]] = Field(default=None, description="The options defined for the parameter.", alias="parameterOptions")
-    __properties: ClassVar[List[str]] = ["description", "displayName", "id", "parameterOptions"]
+    __properties: ClassVar[List[str]] = ["id", "displayName", "description", "parameterOptions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,9 +91,9 @@ class AggregationTypeParameterDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
-            "displayName": obj.get("displayName"),
             "id": obj.get("id"),
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description"),
             "parameterOptions": [AggregationTypeOptionDTO.from_dict(_item) for _item in obj["parameterOptions"]] if obj.get("parameterOptions") is not None else None
         })
         return _obj

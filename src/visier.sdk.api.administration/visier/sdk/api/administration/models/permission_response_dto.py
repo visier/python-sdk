@@ -26,9 +26,9 @@ class PermissionResponseDTO(BaseModel):
     """
     PermissionResponseDTO
     """ # noqa: E501
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable permission name to display in Visier, such as \"Diversity Access\".", alias="displayName")
     permission_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the permission.", alias="permissionId")
-    __properties: ClassVar[List[str]] = ["displayName", "permissionId"]
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable permission name to display in Visier, such as \"Diversity Access\".", alias="displayName")
+    __properties: ClassVar[List[str]] = ["permissionId", "displayName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class PermissionResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "displayName": obj.get("displayName"),
-            "permissionId": obj.get("permissionId")
+            "permissionId": obj.get("permissionId"),
+            "displayName": obj.get("displayName")
         })
         return _obj
 

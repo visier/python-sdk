@@ -26,12 +26,12 @@ class ServiceNowV2AuthParamsDTO(BaseModel):
     """
     ServiceNowV2AuthParamsDTO
     """ # noqa: E501
-    alternate_domain: Optional[StrictStr] = Field(default=None, alias="alternateDomain")
-    auth_code: Optional[StrictStr] = Field(default=None, alias="authCode")
+    host_domain_name: Optional[StrictStr] = Field(default=None, alias="hostDomainName")
     client_id: Optional[StrictStr] = Field(default=None, alias="clientId")
     client_secret: Optional[StrictStr] = Field(default=None, alias="clientSecret")
-    host_domain_name: Optional[StrictStr] = Field(default=None, alias="hostDomainName")
-    __properties: ClassVar[List[str]] = ["alternateDomain", "authCode", "clientId", "clientSecret", "hostDomainName"]
+    auth_code: Optional[StrictStr] = Field(default=None, alias="authCode")
+    alternate_domain: Optional[StrictStr] = Field(default=None, alias="alternateDomain")
+    __properties: ClassVar[List[str]] = ["hostDomainName", "clientId", "clientSecret", "authCode", "alternateDomain"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,11 +84,11 @@ class ServiceNowV2AuthParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "alternateDomain": obj.get("alternateDomain"),
-            "authCode": obj.get("authCode"),
+            "hostDomainName": obj.get("hostDomainName"),
             "clientId": obj.get("clientId"),
             "clientSecret": obj.get("clientSecret"),
-            "hostDomainName": obj.get("hostDomainName")
+            "authCode": obj.get("authCode"),
+            "alternateDomain": obj.get("alternateDomain")
         })
         return _obj
 

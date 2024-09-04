@@ -28,20 +28,20 @@ class TenantDetailAPIDTO(BaseModel):
     """
     TenantDetailAPIDTO
     """ # noqa: E501
-    can_administer_other_tenants: Optional[StrictBool] = Field(default=None, description="If true, the tenant is an administrating tenant.", alias="canAdministerOtherTenants")
-    current_data_version: Optional[StrictStr] = Field(default=None, description="The data version ID that the tenant is using.", alias="currentDataVersion")
-    custom_properties: Optional[List[CustomTenantPropertyDTO]] = Field(default=None, description="A set of key-value pairs that represent different customizable properties for the analytic tenant.", alias="customProperties")
-    data_version_date: Optional[StrictStr] = Field(default=None, description="The date that the data version was published to production.", alias="dataVersionDate")
-    embeddable_domains: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the URLs, or domains, in which Visier can be embedded.", alias="embeddableDomains")
-    industry_code: Optional[StrictInt] = Field(default=None, description="The 6-digit NAICS code for the industry to which the analytic tenant belongs.", alias="industryCode")
-    modules: Optional[List[TenantModuleDTO]] = Field(default=None, description="The modules assigned to the analytic tenant.")
-    provision_date: Optional[StrictStr] = Field(default=None, description="The date that the tenant was created.", alias="provisionDate")
-    sso_instance_issuers: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the issuers for the SSO providers that can authenticate this tenant.", alias="ssoInstanceIssuers")
-    status: Optional[StrictStr] = Field(default=None, description="Whether the tenant is enabled or disabled.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code of the analytic tenant. For example, \"WFF_j1r~i1o\".", alias="tenantCode")
     tenant_display_name: Optional[StrictStr] = Field(default=None, description="An identifiable tenant name that is displayed within Visier. For example, \"Callisto\".", alias="tenantDisplayName")
+    status: Optional[StrictStr] = Field(default=None, description="Whether the tenant is enabled or disabled.")
+    provision_date: Optional[StrictStr] = Field(default=None, description="The date that the tenant was created.", alias="provisionDate")
+    current_data_version: Optional[StrictStr] = Field(default=None, description="The data version ID that the tenant is using.", alias="currentDataVersion")
+    data_version_date: Optional[StrictStr] = Field(default=None, description="The date that the data version was published to production.", alias="dataVersionDate")
+    modules: Optional[List[TenantModuleDTO]] = Field(default=None, description="The modules assigned to the analytic tenant.")
+    industry_code: Optional[StrictInt] = Field(default=None, description="The 6-digit NAICS code for the industry to which the analytic tenant belongs.", alias="industryCode")
+    can_administer_other_tenants: Optional[StrictBool] = Field(default=None, description="If true, the tenant is an administrating tenant.", alias="canAdministerOtherTenants")
+    embeddable_domains: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the URLs, or domains, in which Visier can be embedded.", alias="embeddableDomains")
+    custom_properties: Optional[List[CustomTenantPropertyDTO]] = Field(default=None, description="A set of key-value pairs that represent different customizable properties for the analytic tenant.", alias="customProperties")
+    sso_instance_issuers: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the issuers for the SSO providers that can authenticate this tenant.", alias="ssoInstanceIssuers")
     vanity_url_name: Optional[StrictStr] = Field(default=None, description="The name of the administrating tenant used in Visier URLs.", alias="vanityUrlName")
-    __properties: ClassVar[List[str]] = ["canAdministerOtherTenants", "currentDataVersion", "customProperties", "dataVersionDate", "embeddableDomains", "industryCode", "modules", "provisionDate", "ssoInstanceIssuers", "status", "tenantCode", "tenantDisplayName", "vanityUrlName"]
+    __properties: ClassVar[List[str]] = ["tenantCode", "tenantDisplayName", "status", "provisionDate", "currentDataVersion", "dataVersionDate", "modules", "industryCode", "canAdministerOtherTenants", "embeddableDomains", "customProperties", "ssoInstanceIssuers", "vanityUrlName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,13 +82,6 @@ class TenantDetailAPIDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in custom_properties (list)
-        _items = []
-        if self.custom_properties:
-            for _item_custom_properties in self.custom_properties:
-                if _item_custom_properties:
-                    _items.append(_item_custom_properties.to_dict())
-            _dict['customProperties'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in modules (list)
         _items = []
         if self.modules:
@@ -96,6 +89,13 @@ class TenantDetailAPIDTO(BaseModel):
                 if _item_modules:
                     _items.append(_item_modules.to_dict())
             _dict['modules'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in custom_properties (list)
+        _items = []
+        if self.custom_properties:
+            for _item_custom_properties in self.custom_properties:
+                if _item_custom_properties:
+                    _items.append(_item_custom_properties.to_dict())
+            _dict['customProperties'] = _items
         return _dict
 
     @classmethod
@@ -108,18 +108,18 @@ class TenantDetailAPIDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "canAdministerOtherTenants": obj.get("canAdministerOtherTenants"),
-            "currentDataVersion": obj.get("currentDataVersion"),
-            "customProperties": [CustomTenantPropertyDTO.from_dict(_item) for _item in obj["customProperties"]] if obj.get("customProperties") is not None else None,
-            "dataVersionDate": obj.get("dataVersionDate"),
-            "embeddableDomains": obj.get("embeddableDomains"),
-            "industryCode": obj.get("industryCode"),
-            "modules": [TenantModuleDTO.from_dict(_item) for _item in obj["modules"]] if obj.get("modules") is not None else None,
-            "provisionDate": obj.get("provisionDate"),
-            "ssoInstanceIssuers": obj.get("ssoInstanceIssuers"),
-            "status": obj.get("status"),
             "tenantCode": obj.get("tenantCode"),
             "tenantDisplayName": obj.get("tenantDisplayName"),
+            "status": obj.get("status"),
+            "provisionDate": obj.get("provisionDate"),
+            "currentDataVersion": obj.get("currentDataVersion"),
+            "dataVersionDate": obj.get("dataVersionDate"),
+            "modules": [TenantModuleDTO.from_dict(_item) for _item in obj["modules"]] if obj.get("modules") is not None else None,
+            "industryCode": obj.get("industryCode"),
+            "canAdministerOtherTenants": obj.get("canAdministerOtherTenants"),
+            "embeddableDomains": obj.get("embeddableDomains"),
+            "customProperties": [CustomTenantPropertyDTO.from_dict(_item) for _item in obj["customProperties"]] if obj.get("customProperties") is not None else None,
+            "ssoInstanceIssuers": obj.get("ssoInstanceIssuers"),
             "vanityUrlName": obj.get("vanityUrlName")
         })
         return _obj

@@ -26,11 +26,11 @@ class ExtractionJob(BaseModel):
     """
     ExtractionJob
     """ # noqa: E501
-    current_stage: Optional[StrictStr] = Field(default=None, description="The current stage of the job. This is not returned if the stage is \"Completed\".  - Valid values: Initialize, Retrieve Main Subject, Retrieve Secondary Subjects, Retrieve Custom Subjects, Process Records, Publish Artifacts, Publish Records, Completed.", alias="currentStage")
     extraction_job_id: Optional[StrictStr] = Field(default=None, description="The ID of the extraction job.", alias="extractionJobId")
-    status: Optional[StrictStr] = Field(default=None, description="The current state of the job.  - Valid values: Pending, Running, Succeeded, Failed, Error, Cancelling, Cancelled, RolledBack, Rescheduling, Rescheduled.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code of the analytic tenant for the extraction job.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["currentStage", "extractionJobId", "status", "tenantCode"]
+    status: Optional[StrictStr] = Field(default=None, description="The current state of the job.  - Valid values: Pending, Running, Succeeded, Failed, Error, Cancelling, Cancelled, RolledBack, Rescheduling, Rescheduled.")
+    current_stage: Optional[StrictStr] = Field(default=None, description="The current stage of the job. This is not returned if the stage is \"Completed\".  - Valid values: Initialize, Retrieve Main Subject, Retrieve Secondary Subjects, Retrieve Custom Subjects, Process Records, Publish Artifacts, Publish Records, Completed.", alias="currentStage")
+    __properties: ClassVar[List[str]] = ["extractionJobId", "tenantCode", "status", "currentStage"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,10 +83,10 @@ class ExtractionJob(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "currentStage": obj.get("currentStage"),
             "extractionJobId": obj.get("extractionJobId"),
+            "tenantCode": obj.get("tenantCode"),
             "status": obj.get("status"),
-            "tenantCode": obj.get("tenantCode")
+            "currentStage": obj.get("currentStage")
         })
         return _obj
 

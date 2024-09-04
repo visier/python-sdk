@@ -27,10 +27,10 @@ class UserGroupChangeFilterDTO(BaseModel):
     """
     UserGroupChangeFilterDTO
     """ # noqa: E501
+    filter_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the filter. Omit if creating a new filter.", alias="filterId")
     analytic_object_id: Optional[StrictStr] = Field(default=None, description="The analytic object the filter applies to. Currently, the only supported analytic object is `Employee`. Default is `Employee`.", alias="analyticObjectId")
     dimension_filters: Optional[List[UserGroupChangeDimensionFilterDTO]] = Field(default=None, description="The dimensions in the dynamic filter.", alias="dimensionFilters")
-    filter_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the filter. Omit if creating a new filter.", alias="filterId")
-    __properties: ClassVar[List[str]] = ["analyticObjectId", "dimensionFilters", "filterId"]
+    __properties: ClassVar[List[str]] = ["filterId", "analyticObjectId", "dimensionFilters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +90,9 @@ class UserGroupChangeFilterDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "filterId": obj.get("filterId"),
             "analyticObjectId": obj.get("analyticObjectId"),
-            "dimensionFilters": [UserGroupChangeDimensionFilterDTO.from_dict(_item) for _item in obj["dimensionFilters"]] if obj.get("dimensionFilters") is not None else None,
-            "filterId": obj.get("filterId")
+            "dimensionFilters": [UserGroupChangeDimensionFilterDTO.from_dict(_item) for _item in obj["dimensionFilters"]] if obj.get("dimensionFilters") is not None else None
         })
         return _obj
 

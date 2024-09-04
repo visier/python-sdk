@@ -28,10 +28,10 @@ class StaticDimensionFilterDTO(BaseModel):
     StaticDimensionFilterDTO
     """ # noqa: E501
     dimension_id: Optional[StrictStr] = Field(default=None, description="The dimension ID associated with the filter.", alias="dimensionId")
-    dimension_status: Optional[StrictStr] = Field(default=None, description="The dimension's validity status. Valid values: Valid, NoData, NotFound.  * **Valid**: The object exists and has loaded data.  * **NoData**: The object exists but doesn't have loaded data.  * **NotFound**: The object doesn't exist.", alias="dimensionStatus")
-    member_selections: Optional[List[MemberSelectionDTO]] = Field(default=None, description="A list of objects representing the dimension members assigned population access in the member filter.", alias="memberSelections")
     subject_reference_path: Optional[List[StrictStr]] = Field(default=None, description="The subject reference path.", alias="subjectReferencePath")
-    __properties: ClassVar[List[str]] = ["dimensionId", "dimensionStatus", "memberSelections", "subjectReferencePath"]
+    member_selections: Optional[List[MemberSelectionDTO]] = Field(default=None, description="A list of objects representing the dimension members assigned population access in the member filter.", alias="memberSelections")
+    dimension_status: Optional[StrictStr] = Field(default=None, description="The dimension's validity status. Valid values: Valid, NoData, NotFound.  * **Valid**: The object exists and has loaded data.  * **NoData**: The object exists but doesn't have loaded data.  * **NotFound**: The object doesn't exist.", alias="dimensionStatus")
+    __properties: ClassVar[List[str]] = ["dimensionId", "subjectReferencePath", "memberSelections", "dimensionStatus"]
 
     @field_validator('dimension_status')
     def dimension_status_validate_enum(cls, value):
@@ -102,9 +102,9 @@ class StaticDimensionFilterDTO(BaseModel):
 
         _obj = cls.model_validate({
             "dimensionId": obj.get("dimensionId"),
-            "dimensionStatus": obj.get("dimensionStatus"),
+            "subjectReferencePath": obj.get("subjectReferencePath"),
             "memberSelections": [MemberSelectionDTO.from_dict(_item) for _item in obj["memberSelections"]] if obj.get("memberSelections") is not None else None,
-            "subjectReferencePath": obj.get("subjectReferencePath")
+            "dimensionStatus": obj.get("dimensionStatus")
         })
         return _obj
 

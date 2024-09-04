@@ -26,12 +26,12 @@ class SqlServerAuthParamsDTO(BaseModel):
     """
     SqlServerAuthParamsDTO
     """ # noqa: E501
-    database: Optional[StrictStr] = None
     host: Optional[StrictStr] = None
-    password: Optional[StrictStr] = None
     port: Optional[StrictStr] = None
     username: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["database", "host", "password", "port", "username"]
+    password: Optional[StrictStr] = None
+    database: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["host", "port", "username", "password", "database"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,11 +84,11 @@ class SqlServerAuthParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "database": obj.get("database"),
             "host": obj.get("host"),
-            "password": obj.get("password"),
             "port": obj.get("port"),
-            "username": obj.get("username")
+            "username": obj.get("username"),
+            "password": obj.get("password"),
+            "database": obj.get("database")
         })
         return _obj
 

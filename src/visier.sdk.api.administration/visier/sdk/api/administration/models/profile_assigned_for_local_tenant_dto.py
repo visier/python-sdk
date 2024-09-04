@@ -28,13 +28,13 @@ class ProfileAssignedForLocalTenantDTO(BaseModel):
     """
     ProfileAssignedForLocalTenantDTO
     """ # noqa: E501
-    additional_capabilities: Optional[AdditionalCapabilitiesDTO] = Field(default=None, description="A list of the additional capabilities that are assigned to this profile.", alias="additionalCapabilities")
-    capabilities: Optional[List[CapabilitiesDTO]] = Field(default=None, description="A list of objects representing the access that this profile has for the capabilities of this profile.")
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable profile name to display in Visier, such as \"Partner Service Manager\".", alias="displayName")
     profile_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the profile.", alias="profileId")
-    validity_end_time: Optional[StrictStr] = Field(default=None, description="An exclusive date-time when this profile is no longer active.", alias="validityEndTime")
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable profile name to display in Visier, such as \"Partner Service Manager\".", alias="displayName")
     validity_start_time: Optional[StrictStr] = Field(default=None, description="An inclusive date-time when this profile is active.", alias="validityStartTime")
-    __properties: ClassVar[List[str]] = ["additionalCapabilities", "capabilities", "displayName", "profileId", "validityEndTime", "validityStartTime"]
+    validity_end_time: Optional[StrictStr] = Field(default=None, description="An exclusive date-time when this profile is no longer active.", alias="validityEndTime")
+    capabilities: Optional[List[CapabilitiesDTO]] = Field(default=None, description="A list of objects representing the access that this profile has for the capabilities of this profile.")
+    additional_capabilities: Optional[AdditionalCapabilitiesDTO] = Field(default=None, description="A list of the additional capabilities that are assigned to this profile.", alias="additionalCapabilities")
+    __properties: ClassVar[List[str]] = ["profileId", "displayName", "validityStartTime", "validityEndTime", "capabilities", "additionalCapabilities"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,9 +75,6 @@ class ProfileAssignedForLocalTenantDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of additional_capabilities
-        if self.additional_capabilities:
-            _dict['additionalCapabilities'] = self.additional_capabilities.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in capabilities (list)
         _items = []
         if self.capabilities:
@@ -85,6 +82,9 @@ class ProfileAssignedForLocalTenantDTO(BaseModel):
                 if _item_capabilities:
                     _items.append(_item_capabilities.to_dict())
             _dict['capabilities'] = _items
+        # override the default output from pydantic by calling `to_dict()` of additional_capabilities
+        if self.additional_capabilities:
+            _dict['additionalCapabilities'] = self.additional_capabilities.to_dict()
         return _dict
 
     @classmethod
@@ -97,12 +97,12 @@ class ProfileAssignedForLocalTenantDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "additionalCapabilities": AdditionalCapabilitiesDTO.from_dict(obj["additionalCapabilities"]) if obj.get("additionalCapabilities") is not None else None,
-            "capabilities": [CapabilitiesDTO.from_dict(_item) for _item in obj["capabilities"]] if obj.get("capabilities") is not None else None,
-            "displayName": obj.get("displayName"),
             "profileId": obj.get("profileId"),
+            "displayName": obj.get("displayName"),
+            "validityStartTime": obj.get("validityStartTime"),
             "validityEndTime": obj.get("validityEndTime"),
-            "validityStartTime": obj.get("validityStartTime")
+            "capabilities": [CapabilitiesDTO.from_dict(_item) for _item in obj["capabilities"]] if obj.get("capabilities") is not None else None,
+            "additionalCapabilities": AdditionalCapabilitiesDTO.from_dict(obj["additionalCapabilities"]) if obj.get("additionalCapabilities") is not None else None
         })
         return _obj
 

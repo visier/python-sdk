@@ -26,10 +26,10 @@ class PlanningModelDTO(BaseModel):
     """
     The basic information about the planning model. A planning model captures the planning intent, plan items, and the relationship between them.
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="The localized description of the planning model.")
-    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the planning model.", alias="displayName")
     id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the planning model.  Note: See `PlanningModels` to get the ID.")
-    __properties: ClassVar[List[str]] = ["description", "displayName", "id"]
+    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the planning model.", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="The localized description of the planning model.")
+    __properties: ClassVar[List[str]] = ["id", "displayName", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class PlanningModelDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
+            "id": obj.get("id"),
             "displayName": obj.get("displayName"),
-            "id": obj.get("id")
+            "description": obj.get("description")
         })
         return _obj
 

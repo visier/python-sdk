@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
@@ -25,10 +27,7 @@ from visier.sdk.api.data_in.models.push_data_complete_response import PushDataCo
 from visier.sdk.api.data_in.models.push_data_response import PushDataResponse
 from visier.sdk.api.data_in.models.push_data_source_definitions_dto import PushDataSourceDefinitionsDTO
 from visier.sdk.api.data_in.models.start_transfer_response import StartTransferResponse
-
-from visier.sdk.api.data_in.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.data_in.api_response import ApiResponse
-from visier.sdk.api.data_in.rest import RESTResponseType
+import visier.sdk.api.data_in.models
 
 
 class DataIntakeApi:
@@ -45,7 +44,7 @@ class DataIntakeApi:
 
 
     @validate_call
-    def get_sources(
+    def data_intake_get_sources(
         self,
         _request_timeout: Union[
             None,
@@ -86,7 +85,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_sources_serialize(
+        _param = self._data_intake_get_sources_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -102,13 +101,14 @@ class DataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_sources_with_http_info(
+    def data_intake_get_sources_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -149,7 +149,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_sources_serialize(
+        _param = self._data_intake_get_sources_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -165,13 +165,14 @@ class DataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_sources_without_preload_content(
+    def data_intake_get_sources_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -212,7 +213,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_sources_serialize(
+        _param = self._data_intake_get_sources_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -229,7 +230,7 @@ class DataIntakeApi:
         return response_data.response
 
 
-    def _get_sources_serialize(
+    def _data_intake_get_sources_serialize(
         self,
         _request_auth,
         _content_type,
@@ -293,7 +294,7 @@ class DataIntakeApi:
 
 
     @validate_call
-    def push_data(
+    def data_intake_push_data(
         self,
         transfer_session_id: Annotated[StrictStr, Field(description="The transfer session ID returned after the data transfer session starts.")],
         body: StrictStr,
@@ -349,7 +350,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._push_data_serialize(
+        _param = self._data_intake_push_data_serialize(
             transfer_session_id=transfer_session_id,
             body=body,
             source_id=source_id,
@@ -370,13 +371,14 @@ class DataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def push_data_with_http_info(
+    def data_intake_push_data_with_http_info(
         self,
         transfer_session_id: Annotated[StrictStr, Field(description="The transfer session ID returned after the data transfer session starts.")],
         body: StrictStr,
@@ -432,7 +434,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._push_data_serialize(
+        _param = self._data_intake_push_data_serialize(
             transfer_session_id=transfer_session_id,
             body=body,
             source_id=source_id,
@@ -453,13 +455,14 @@ class DataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def push_data_without_preload_content(
+    def data_intake_push_data_without_preload_content(
         self,
         transfer_session_id: Annotated[StrictStr, Field(description="The transfer session ID returned after the data transfer session starts.")],
         body: StrictStr,
@@ -515,7 +518,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._push_data_serialize(
+        _param = self._data_intake_push_data_serialize(
             transfer_session_id=transfer_session_id,
             body=body,
             source_id=source_id,
@@ -537,7 +540,7 @@ class DataIntakeApi:
         return response_data.response
 
 
-    def _push_data_serialize(
+    def _data_intake_push_data_serialize(
         self,
         transfer_session_id,
         body,
@@ -635,7 +638,7 @@ class DataIntakeApi:
 
 
     @validate_call
-    def push_data_cancel(
+    def data_intake_push_data_cancel(
         self,
         transfer_session_id: Annotated[StrictStr, Field(description="The transfer session ID to cancel.")],
         _request_timeout: Union[
@@ -679,7 +682,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._push_data_cancel_serialize(
+        _param = self._data_intake_push_data_cancel_serialize(
             transfer_session_id=transfer_session_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -696,13 +699,14 @@ class DataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def push_data_cancel_with_http_info(
+    def data_intake_push_data_cancel_with_http_info(
         self,
         transfer_session_id: Annotated[StrictStr, Field(description="The transfer session ID to cancel.")],
         _request_timeout: Union[
@@ -746,7 +750,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._push_data_cancel_serialize(
+        _param = self._data_intake_push_data_cancel_serialize(
             transfer_session_id=transfer_session_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -763,13 +767,14 @@ class DataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def push_data_cancel_without_preload_content(
+    def data_intake_push_data_cancel_without_preload_content(
         self,
         transfer_session_id: Annotated[StrictStr, Field(description="The transfer session ID to cancel.")],
         _request_timeout: Union[
@@ -813,7 +818,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._push_data_cancel_serialize(
+        _param = self._data_intake_push_data_cancel_serialize(
             transfer_session_id=transfer_session_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -831,7 +836,7 @@ class DataIntakeApi:
         return response_data.response
 
 
-    def _push_data_cancel_serialize(
+    def _data_intake_push_data_cancel_serialize(
         self,
         transfer_session_id,
         _request_auth,
@@ -898,7 +903,7 @@ class DataIntakeApi:
 
 
     @validate_call
-    def push_data_complete(
+    def data_intake_push_data_complete(
         self,
         push_data_complete_request: PushDataCompleteRequest,
         _request_timeout: Union[
@@ -942,7 +947,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._push_data_complete_serialize(
+        _param = self._data_intake_push_data_complete_serialize(
             push_data_complete_request=push_data_complete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -959,13 +964,14 @@ class DataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def push_data_complete_with_http_info(
+    def data_intake_push_data_complete_with_http_info(
         self,
         push_data_complete_request: PushDataCompleteRequest,
         _request_timeout: Union[
@@ -1009,7 +1015,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._push_data_complete_serialize(
+        _param = self._data_intake_push_data_complete_serialize(
             push_data_complete_request=push_data_complete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1026,13 +1032,14 @@ class DataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def push_data_complete_without_preload_content(
+    def data_intake_push_data_complete_without_preload_content(
         self,
         push_data_complete_request: PushDataCompleteRequest,
         _request_timeout: Union[
@@ -1076,7 +1083,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._push_data_complete_serialize(
+        _param = self._data_intake_push_data_complete_serialize(
             push_data_complete_request=push_data_complete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1094,7 +1101,7 @@ class DataIntakeApi:
         return response_data.response
 
 
-    def _push_data_complete_serialize(
+    def _data_intake_push_data_complete_serialize(
         self,
         push_data_complete_request,
         _request_auth,
@@ -1174,7 +1181,7 @@ class DataIntakeApi:
 
 
     @validate_call
-    def start_transfer(
+    def data_intake_start_transfer(
         self,
         _request_timeout: Union[
             None,
@@ -1215,7 +1222,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._start_transfer_serialize(
+        _param = self._data_intake_start_transfer_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1231,13 +1238,14 @@ class DataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def start_transfer_with_http_info(
+    def data_intake_start_transfer_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -1278,7 +1286,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._start_transfer_serialize(
+        _param = self._data_intake_start_transfer_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1294,13 +1302,14 @@ class DataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def start_transfer_without_preload_content(
+    def data_intake_start_transfer_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -1341,7 +1350,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._start_transfer_serialize(
+        _param = self._data_intake_start_transfer_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1358,7 +1367,7 @@ class DataIntakeApi:
         return response_data.response
 
 
-    def _start_transfer_serialize(
+    def _data_intake_start_transfer_serialize(
         self,
         _request_auth,
         _content_type,
@@ -1422,7 +1431,7 @@ class DataIntakeApi:
 
 
     @validate_call
-    def upload_data(
+    def data_intake_upload_data(
         self,
         transfer_session_id: Annotated[StrictStr, Field(description="The transfer session ID returned after the data transfer session starts.")],
         source_id: Annotated[Optional[StrictStr], Field(description="The unique identifier associated with the source you want to transfer data to.")] = None,
@@ -1475,7 +1484,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._upload_data_serialize(
+        _param = self._data_intake_upload_data_serialize(
             transfer_session_id=transfer_session_id,
             source_id=source_id,
             sequence=sequence,
@@ -1495,13 +1504,14 @@ class DataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def upload_data_with_http_info(
+    def data_intake_upload_data_with_http_info(
         self,
         transfer_session_id: Annotated[StrictStr, Field(description="The transfer session ID returned after the data transfer session starts.")],
         source_id: Annotated[Optional[StrictStr], Field(description="The unique identifier associated with the source you want to transfer data to.")] = None,
@@ -1554,7 +1564,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._upload_data_serialize(
+        _param = self._data_intake_upload_data_serialize(
             transfer_session_id=transfer_session_id,
             source_id=source_id,
             sequence=sequence,
@@ -1574,13 +1584,14 @@ class DataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def upload_data_without_preload_content(
+    def data_intake_upload_data_without_preload_content(
         self,
         transfer_session_id: Annotated[StrictStr, Field(description="The transfer session ID returned after the data transfer session starts.")],
         source_id: Annotated[Optional[StrictStr], Field(description="The unique identifier associated with the source you want to transfer data to.")] = None,
@@ -1633,7 +1644,7 @@ class DataIntakeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._upload_data_serialize(
+        _param = self._data_intake_upload_data_serialize(
             transfer_session_id=transfer_session_id,
             source_id=source_id,
             sequence=sequence,
@@ -1654,7 +1665,7 @@ class DataIntakeApi:
         return response_data.response
 
 
-    def _upload_data_serialize(
+    def _data_intake_upload_data_serialize(
         self,
         transfer_session_id,
         source_id,

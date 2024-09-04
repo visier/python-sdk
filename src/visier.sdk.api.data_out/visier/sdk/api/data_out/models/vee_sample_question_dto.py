@@ -27,9 +27,9 @@ class VeeSampleQuestionDTO(BaseModel):
     """
     VeeSampleQuestionDTO
     """ # noqa: E501
-    metadata: Optional[VeeSampleQuestionMetadataDTO] = Field(default=None, description="Details about the sample question, such as what categories the question belongs to.")
     question: Optional[StrictStr] = Field(default=None, description="A question in plain language.")
-    __properties: ClassVar[List[str]] = ["metadata", "question"]
+    metadata: Optional[VeeSampleQuestionMetadataDTO] = Field(default=None, description="Details about the sample question, such as what categories the question belongs to.")
+    __properties: ClassVar[List[str]] = ["question", "metadata"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,8 +85,8 @@ class VeeSampleQuestionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "metadata": VeeSampleQuestionMetadataDTO.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
-            "question": obj.get("question")
+            "question": obj.get("question"),
+            "metadata": VeeSampleQuestionMetadataDTO.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None
         })
         return _obj
 

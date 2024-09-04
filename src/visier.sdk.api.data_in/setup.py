@@ -22,12 +22,9 @@ from setuptools import setup, find_packages  # noqa: H301
 # http://pypi.python.org/pypi/setuptools
 NAME = "visier.sdk.api.data-in"
 VERSION = "22222222.99201.1456"
-PYTHON_REQUIRES = ">=3.7"
+PYTHON_REQUIRES = ">=3.8"
 REQUIRES = [
-    "urllib3 >= 1.25.3, < 2.1.0",
-    "python-dateutil",
-    "pydantic >= 2",
-    "typing-extensions >= 4.7.1",
+    "visier.sdk.api.core == 22222222.99201.1456",
 ]
 
 setup(

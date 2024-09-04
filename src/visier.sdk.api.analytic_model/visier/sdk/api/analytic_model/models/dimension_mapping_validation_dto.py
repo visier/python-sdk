@@ -27,11 +27,11 @@ class DimensionMappingValidationDTO(BaseModel):
     """
     DimensionMappingValidationDTO
     """ # noqa: E501
-    dimension_id: Optional[StrictStr] = Field(default=None, alias="dimensionId")
     dimension_map_id: Optional[StrictStr] = Field(default=None, alias="dimensionMapId")
-    failures: Optional[List[StrictStr]] = None
+    dimension_id: Optional[StrictStr] = Field(default=None, alias="dimensionId")
     unmapped_members: Optional[List[DimensionMemberReferenceDTO]] = Field(default=None, alias="unmappedMembers")
-    __properties: ClassVar[List[str]] = ["dimensionId", "dimensionMapId", "failures", "unmappedMembers"]
+    failures: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = ["dimensionMapId", "dimensionId", "unmappedMembers", "failures"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,10 +91,10 @@ class DimensionMappingValidationDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dimensionId": obj.get("dimensionId"),
             "dimensionMapId": obj.get("dimensionMapId"),
-            "failures": obj.get("failures"),
-            "unmappedMembers": [DimensionMemberReferenceDTO.from_dict(_item) for _item in obj["unmappedMembers"]] if obj.get("unmappedMembers") is not None else None
+            "dimensionId": obj.get("dimensionId"),
+            "unmappedMembers": [DimensionMemberReferenceDTO.from_dict(_item) for _item in obj["unmappedMembers"]] if obj.get("unmappedMembers") is not None else None,
+            "failures": obj.get("failures")
         })
         return _obj
 

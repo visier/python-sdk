@@ -26,12 +26,12 @@ class DirectDataJobStatusResponseDTO(BaseModel):
     """
     The job status information for a committed transaction.
     """ # noqa: E501
-    job_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the processing job.", alias="jobId")
-    message: Optional[StrictStr] = Field(default=None, description="If the processing job fails, this field contains details specific to the failure.")
-    status: Optional[StrictStr] = Field(default=None, description="The status of the processing job.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant for the data load.", alias="tenantCode")
     transaction_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the committed transaction.", alias="transactionId")
-    __properties: ClassVar[List[str]] = ["jobId", "message", "status", "tenantCode", "transactionId"]
+    job_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the processing job.", alias="jobId")
+    status: Optional[StrictStr] = Field(default=None, description="The status of the processing job.")
+    message: Optional[StrictStr] = Field(default=None, description="If the processing job fails, this field contains details specific to the failure.")
+    __properties: ClassVar[List[str]] = ["tenantCode", "transactionId", "jobId", "status", "message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,11 +84,11 @@ class DirectDataJobStatusResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "jobId": obj.get("jobId"),
-            "message": obj.get("message"),
-            "status": obj.get("status"),
             "tenantCode": obj.get("tenantCode"),
-            "transactionId": obj.get("transactionId")
+            "transactionId": obj.get("transactionId"),
+            "jobId": obj.get("jobId"),
+            "status": obj.get("status"),
+            "message": obj.get("message")
         })
         return _obj
 

@@ -26,10 +26,10 @@ class ErrorDTO(BaseModel):
     """
     ErrorDTO
     """ # noqa: E501
+    root_cause_id: Optional[StrictStr] = Field(default=None, description="The root cause identifier that allows Visier to determine the source of the problem.", alias="rootCauseId")
     error_code: Optional[StrictStr] = Field(default=None, description="A brief identifier of the type of error.", alias="errorCode")
     error_message: Optional[StrictStr] = Field(default=None, description="A description of the error that occurred.", alias="errorMessage")
-    root_cause_id: Optional[StrictStr] = Field(default=None, description="The root cause identifier that allows Visier to determine the source of the problem.", alias="rootCauseId")
-    __properties: ClassVar[List[str]] = ["errorCode", "errorMessage", "rootCauseId"]
+    __properties: ClassVar[List[str]] = ["rootCauseId", "errorCode", "errorMessage"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class ErrorDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "rootCauseId": obj.get("rootCauseId"),
             "errorCode": obj.get("errorCode"),
-            "errorMessage": obj.get("errorMessage"),
-            "rootCauseId": obj.get("rootCauseId")
+            "errorMessage": obj.get("errorMessage")
         })
         return _obj
 

@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
@@ -23,10 +25,7 @@ from visier.sdk.api.administration.models.get_production_versions_api_response_d
 from visier.sdk.api.administration.models.production_version_api_operation_response_dto import ProductionVersionAPIOperationResponseDTO
 from visier.sdk.api.administration.models.production_versions_api_operation_request_dto import ProductionVersionsAPIOperationRequestDTO
 from visier.sdk.api.administration.models.production_versions_api_operation_response_dto import ProductionVersionsAPIOperationResponseDTO
-
-from visier.sdk.api.administration.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.administration.api_response import ApiResponse
-from visier.sdk.api.administration.rest import RESTResponseType
+import visier.sdk.api.administration.models
 
 
 class ProductionVersionsApi:
@@ -43,7 +42,7 @@ class ProductionVersionsApi:
 
 
     @validate_call
-    def get_production_versions(
+    def production_versions_get_production_versions(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of production versions to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first production version to return. Default is 0.")] = None,
@@ -90,7 +89,7 @@ class ProductionVersionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_production_versions_serialize(
+        _param = self._production_versions_get_production_versions_serialize(
             limit=limit,
             start=start,
             _request_auth=_request_auth,
@@ -108,13 +107,14 @@ class ProductionVersionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_production_versions_with_http_info(
+    def production_versions_get_production_versions_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of production versions to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first production version to return. Default is 0.")] = None,
@@ -161,7 +161,7 @@ class ProductionVersionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_production_versions_serialize(
+        _param = self._production_versions_get_production_versions_serialize(
             limit=limit,
             start=start,
             _request_auth=_request_auth,
@@ -179,13 +179,14 @@ class ProductionVersionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_production_versions_without_preload_content(
+    def production_versions_get_production_versions_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of production versions to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first production version to return. Default is 0.")] = None,
@@ -232,7 +233,7 @@ class ProductionVersionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_production_versions_serialize(
+        _param = self._production_versions_get_production_versions_serialize(
             limit=limit,
             start=start,
             _request_auth=_request_auth,
@@ -251,7 +252,7 @@ class ProductionVersionsApi:
         return response_data.response
 
 
-    def _get_production_versions_serialize(
+    def _production_versions_get_production_versions_serialize(
         self,
         limit,
         start,
@@ -320,7 +321,7 @@ class ProductionVersionsApi:
 
 
     @validate_call
-    def post_production_version(
+    def production_versions_post_production_version(
         self,
         production_version_id: StrictStr,
         operation: Annotated[Optional[StrictStr], Field(description="The operation to perform. Valid values:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.")] = None,
@@ -367,7 +368,7 @@ class ProductionVersionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._post_production_version_serialize(
+        _param = self._production_versions_post_production_version_serialize(
             production_version_id=production_version_id,
             operation=operation,
             _request_auth=_request_auth,
@@ -385,13 +386,14 @@ class ProductionVersionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def post_production_version_with_http_info(
+    def production_versions_post_production_version_with_http_info(
         self,
         production_version_id: StrictStr,
         operation: Annotated[Optional[StrictStr], Field(description="The operation to perform. Valid values:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.")] = None,
@@ -438,7 +440,7 @@ class ProductionVersionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._post_production_version_serialize(
+        _param = self._production_versions_post_production_version_serialize(
             production_version_id=production_version_id,
             operation=operation,
             _request_auth=_request_auth,
@@ -456,13 +458,14 @@ class ProductionVersionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def post_production_version_without_preload_content(
+    def production_versions_post_production_version_without_preload_content(
         self,
         production_version_id: StrictStr,
         operation: Annotated[Optional[StrictStr], Field(description="The operation to perform. Valid values:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.")] = None,
@@ -509,7 +512,7 @@ class ProductionVersionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._post_production_version_serialize(
+        _param = self._production_versions_post_production_version_serialize(
             production_version_id=production_version_id,
             operation=operation,
             _request_auth=_request_auth,
@@ -528,7 +531,7 @@ class ProductionVersionsApi:
         return response_data.response
 
 
-    def _post_production_version_serialize(
+    def _production_versions_post_production_version_serialize(
         self,
         production_version_id,
         operation,
@@ -608,7 +611,7 @@ class ProductionVersionsApi:
 
 
     @validate_call
-    def post_production_versions(
+    def production_versions_post_production_versions(
         self,
         production_versions_api_operation_request_dto: ProductionVersionsAPIOperationRequestDTO,
         _request_timeout: Union[
@@ -652,7 +655,7 @@ class ProductionVersionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._post_production_versions_serialize(
+        _param = self._production_versions_post_production_versions_serialize(
             production_versions_api_operation_request_dto=production_versions_api_operation_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -669,13 +672,14 @@ class ProductionVersionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def post_production_versions_with_http_info(
+    def production_versions_post_production_versions_with_http_info(
         self,
         production_versions_api_operation_request_dto: ProductionVersionsAPIOperationRequestDTO,
         _request_timeout: Union[
@@ -719,7 +723,7 @@ class ProductionVersionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._post_production_versions_serialize(
+        _param = self._production_versions_post_production_versions_serialize(
             production_versions_api_operation_request_dto=production_versions_api_operation_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -736,13 +740,14 @@ class ProductionVersionsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def post_production_versions_without_preload_content(
+    def production_versions_post_production_versions_without_preload_content(
         self,
         production_versions_api_operation_request_dto: ProductionVersionsAPIOperationRequestDTO,
         _request_timeout: Union[
@@ -786,7 +791,7 @@ class ProductionVersionsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._post_production_versions_serialize(
+        _param = self._production_versions_post_production_versions_serialize(
             production_versions_api_operation_request_dto=production_versions_api_operation_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -804,7 +809,7 @@ class ProductionVersionsApi:
         return response_data.response
 
 
-    def _post_production_versions_serialize(
+    def _production_versions_post_production_versions_serialize(
         self,
         production_versions_api_operation_request_dto,
         _request_auth,
