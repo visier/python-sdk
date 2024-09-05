@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.0.103"
+__version__ = "0.0.105"
 
 # import apis into sdk package
 from visier.sdk.api.data_out.api.data_query_api import DataQueryApi

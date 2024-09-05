@@ -487,7 +487,7 @@ conf = visier.sdk.api.core.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 22222222.99201.1456\n"\
-               "SDK Package Version: 0.0.103".\
+               "SDK Package Version: 0.0.105".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
