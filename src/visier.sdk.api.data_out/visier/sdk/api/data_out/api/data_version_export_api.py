@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictBytes, StrictInt, StrictStr
 from typing import Union
 from typing_extensions import Annotated
@@ -24,10 +26,7 @@ from visier.sdk.api.data_out.models.data_version_export_job_status_dto import Da
 from visier.sdk.api.data_out.models.data_version_export_schedule_job_request_dto import DataVersionExportScheduleJobRequestDTO
 from visier.sdk.api.data_out.models.data_version_export_schedule_job_response_dto import DataVersionExportScheduleJobResponseDTO
 from visier.sdk.api.data_out.models.data_version_exports_dto import DataVersionExportsDTO
-
-from visier.sdk.api.data_out.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.data_out.api_response import ApiResponse
-from visier.sdk.api.data_out.rest import RESTResponseType
+import visier.sdk.api.data_out.models
 
 
 class DataVersionExportApi:
@@ -109,8 +108,9 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -180,8 +180,9 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -380,8 +381,9 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -443,8 +445,9 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -628,8 +631,9 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -691,8 +695,9 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -880,8 +885,9 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -947,8 +953,9 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -1143,8 +1150,9 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -1210,8 +1218,9 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -1406,8 +1415,9 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -1473,8 +1483,9 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 

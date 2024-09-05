@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictBytes, StrictStr
 from typing import Optional, Union
 from typing_extensions import Annotated
@@ -24,10 +26,7 @@ from visier.sdk.api.data_in.models.direct_data_load_config_dto import DirectData
 from visier.sdk.api.data_in.models.direct_data_schema_field_dto import DirectDataSchemaFieldDTO
 from visier.sdk.api.data_in.models.direct_data_transaction_start_response_dto import DirectDataTransactionStartResponseDTO
 from visier.sdk.api.data_in.models.direct_data_upload_file_response_dto import DirectDataUploadFileResponseDTO
-
-from visier.sdk.api.data_in.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.data_in.api_response import ApiResponse
-from visier.sdk.api.data_in.rest import RESTResponseType
+import visier.sdk.api.data_in.models
 
 
 class DirectDataIntakeApi:
@@ -109,8 +108,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -180,8 +180,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -383,8 +384,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -450,8 +452,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -650,8 +653,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -721,8 +725,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -928,8 +933,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -999,8 +1005,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -1206,8 +1213,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -1277,8 +1285,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -1497,8 +1506,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -1568,8 +1578,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -1771,8 +1782,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -1838,8 +1850,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -2046,8 +2059,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -2125,8 +2139,9 @@ class DirectDataIntakeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_in.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 

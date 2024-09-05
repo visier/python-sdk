@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "22222222.99201.1456"
+__version__ = "0.0.202"
 
 # import apis into sdk package
 from visier.sdk.api.data_out.api.data_query_api import DataQueryApi
@@ -22,16 +22,6 @@ from visier.sdk.api.data_out.api.data_version_export_api import DataVersionExpor
 from visier.sdk.api.data_out.api.search_api import SearchApi
 from visier.sdk.api.data_out.api.vee_api import VeeApi
 
-# import ApiClient
-from visier.sdk.api.data_out.api_response import ApiResponse
-from visier.sdk.api.data_out.api_client import ApiClient
-from visier.sdk.api.data_out.configuration import Configuration
-from visier.sdk.api.data_out.exceptions import OpenApiException
-from visier.sdk.api.data_out.exceptions import ApiTypeError
-from visier.sdk.api.data_out.exceptions import ApiValueError
-from visier.sdk.api.data_out.exceptions import ApiKeyError
-from visier.sdk.api.data_out.exceptions import ApiAttributeError
-from visier.sdk.api.data_out.exceptions import ApiException
 
 # import models into sdk package
 from visier.sdk.api.data_out.models.aggregation_query_dto import AggregationQueryDTO

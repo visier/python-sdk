@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictStr
 from typing_extensions import Annotated
 from visier.sdk.api.analytic_model.models.calculation_concept_configuration_map_dto import CalculationConceptConfigurationMapDTO
@@ -25,10 +27,7 @@ from visier.sdk.api.analytic_model.models.concept_configuration_result_dto impor
 from visier.sdk.api.analytic_model.models.selection_concept_configuration_map_dto import SelectionConceptConfigurationMapDTO
 from visier.sdk.api.analytic_model.models.selection_concept_dto import SelectionConceptDTO
 from visier.sdk.api.analytic_model.models.selection_concept_list_dto import SelectionConceptListDTO
-
-from visier.sdk.api.analytic_model.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.analytic_model.api_response import ApiResponse
-from visier.sdk.api.analytic_model.rest import RESTResponseType
+import visier.sdk.api.analytic_model.models
 
 
 class ObjectConfigurationApi:
@@ -106,8 +105,9 @@ class ObjectConfigurationApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.analytic_model.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -173,8 +173,9 @@ class ObjectConfigurationApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.analytic_model.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -365,8 +366,9 @@ class ObjectConfigurationApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.analytic_model.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -428,8 +430,9 @@ class ObjectConfigurationApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.analytic_model.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -617,8 +620,9 @@ class ObjectConfigurationApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.analytic_model.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -684,8 +688,9 @@ class ObjectConfigurationApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.analytic_model.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -876,8 +881,9 @@ class ObjectConfigurationApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.analytic_model.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -939,8 +945,9 @@ class ObjectConfigurationApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.analytic_model.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -1132,8 +1139,9 @@ class ObjectConfigurationApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.analytic_model.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -1203,8 +1211,9 @@ class ObjectConfigurationApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.analytic_model.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -1423,8 +1432,9 @@ class ObjectConfigurationApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.analytic_model.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -1494,8 +1504,9 @@ class ObjectConfigurationApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.analytic_model.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 

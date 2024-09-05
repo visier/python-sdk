@@ -16,16 +16,15 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from visier.sdk.api.data_out.models.aggregation_query_execution_dto import AggregationQueryExecutionDTO
 from visier.sdk.api.data_out.models.cell_set_dto import CellSetDTO
 from visier.sdk.api.data_out.models.list_query_execution_dto import ListQueryExecutionDTO
 from visier.sdk.api.data_out.models.list_response import ListResponse
 from visier.sdk.api.data_out.models.snapshot_query_execution_dto import SnapshotQueryExecutionDTO
 from visier.sdk.api.data_out.models.sql_like_query_execution_dto import SqlLikeQueryExecutionDTO
-
-from visier.sdk.api.data_out.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.data_out.api_response import ApiResponse
-from visier.sdk.api.data_out.rest import RESTResponseType
+import visier.sdk.api.data_out.models
 
 
 class DataQueryApi:
@@ -103,8 +102,9 @@ class DataQueryApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -170,8 +170,9 @@ class DataQueryApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -379,8 +380,9 @@ class DataQueryApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -446,8 +448,9 @@ class DataQueryApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -657,8 +660,9 @@ class DataQueryApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -724,8 +728,9 @@ class DataQueryApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
@@ -935,8 +940,9 @@ class DataQueryApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
@@ -1002,8 +1008,9 @@ class DataQueryApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
