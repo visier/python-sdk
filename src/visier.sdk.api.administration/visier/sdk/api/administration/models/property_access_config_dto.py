@@ -26,12 +26,12 @@ class PropertyAccessConfigDTO(BaseModel):
     """
     PropertyAccessConfigDTO
     """ # noqa: E501
-    access_level: Optional[StrictStr] = Field(default=None, description="The access level of the property. Valid values are: `Aggregate`, `Detailed`.  * **Aggregate**: The property can only be accessed as part of an aggregate.  * **Detailed**: The property can be accessed at a detailed level.", alias="accessLevel")
+    property_id: Optional[StrictStr] = Field(default=None, description="The property ID associated with the property access configuration.", alias="propertyId")
     analytic_object_id: Optional[StrictStr] = Field(default=None, description="The analytic object ID of the property.", alias="analyticObjectId")
     analytic_object_reference_paths: Optional[List[StrictStr]] = Field(default=None, description="The path to the analytic object reference. Empty if the configuration is not a reference.", alias="analyticObjectReferencePaths")
-    property_id: Optional[StrictStr] = Field(default=None, description="The property ID associated with the property access configuration.", alias="propertyId")
+    access_level: Optional[StrictStr] = Field(default=None, description="The access level of the property. Valid values are: `Aggregate`, `Detailed`.  * **Aggregate**: The property can only be accessed as part of an aggregate.  * **Detailed**: The property can be accessed at a detailed level.", alias="accessLevel")
     property_status: Optional[StrictStr] = Field(default=None, description="The property's validity status. Valid values: `Valid`, `NoData`, `NotFound`.  * **Valid**: The object exists and has loaded data.  * **NoData**: The object exists but doesn't have loaded data.  * **NotFound**: The object doesn't exist.", alias="propertyStatus")
-    __properties: ClassVar[List[str]] = ["accessLevel", "analyticObjectId", "analyticObjectReferencePaths", "propertyId", "propertyStatus"]
+    __properties: ClassVar[List[str]] = ["propertyId", "analyticObjectId", "analyticObjectReferencePaths", "accessLevel", "propertyStatus"]
 
     @field_validator('access_level')
     def access_level_validate_enum(cls, value):
@@ -104,10 +104,10 @@ class PropertyAccessConfigDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessLevel": obj.get("accessLevel"),
+            "propertyId": obj.get("propertyId"),
             "analyticObjectId": obj.get("analyticObjectId"),
             "analyticObjectReferencePaths": obj.get("analyticObjectReferencePaths"),
-            "propertyId": obj.get("propertyId"),
+            "accessLevel": obj.get("accessLevel"),
             "propertyStatus": obj.get("propertyStatus")
         })
         return _obj

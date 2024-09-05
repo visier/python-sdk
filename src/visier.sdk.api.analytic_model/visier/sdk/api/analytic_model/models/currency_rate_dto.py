@@ -26,12 +26,12 @@ class CurrencyRateDTO(BaseModel):
     """
     Information about a currency exchange rate.
     """ # noqa: E501
-    end_time: Optional[StrictStr] = Field(default=None, description="The latest time instant to retrieve exchange rates from.  **Note:** Format is the number of milliseconds since Jan 1, 1970 12:00 AM UTC.", alias="endTime")
     from_currency_code: Optional[StrictStr] = Field(default=None, description="The currency to convert **from**.  **Note:** If USD is the `fromCurrencyCode`, you are retrieving the exchange rates from USD to a different currency.", alias="fromCurrencyCode")
+    to_currency_code: Optional[StrictStr] = Field(default=None, description="The currency to convert **to**.  **Note:** If USD is the `toCurrencyCode`, you are retrieving the exchange rates from a different currency to USD.", alias="toCurrencyCode")
     rate: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The numeric value of the exchange rate.  **Note:** If **decimals** is specified, rate rounds to that value. If **decimals** is undefined, **rate** rounds to 2 significant figures after the decimal point.")
     start_time: Optional[StrictStr] = Field(default=None, description="The earliest time instant to retrieve exchange rates from.  **Note:** Format is the number of milliseconds since Jan 1, 1970 12:00 AM UTC.", alias="startTime")
-    to_currency_code: Optional[StrictStr] = Field(default=None, description="The currency to convert **to**.  **Note:** If USD is the `toCurrencyCode`, you are retrieving the exchange rates from a different currency to USD.", alias="toCurrencyCode")
-    __properties: ClassVar[List[str]] = ["endTime", "fromCurrencyCode", "rate", "startTime", "toCurrencyCode"]
+    end_time: Optional[StrictStr] = Field(default=None, description="The latest time instant to retrieve exchange rates from.  **Note:** Format is the number of milliseconds since Jan 1, 1970 12:00 AM UTC.", alias="endTime")
+    __properties: ClassVar[List[str]] = ["fromCurrencyCode", "toCurrencyCode", "rate", "startTime", "endTime"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,11 +84,11 @@ class CurrencyRateDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "endTime": obj.get("endTime"),
             "fromCurrencyCode": obj.get("fromCurrencyCode"),
+            "toCurrencyCode": obj.get("toCurrencyCode"),
             "rate": obj.get("rate"),
             "startTime": obj.get("startTime"),
-            "toCurrencyCode": obj.get("toCurrencyCode")
+            "endTime": obj.get("endTime")
         })
         return _obj
 

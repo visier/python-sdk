@@ -26,14 +26,14 @@ class RedshiftAuthParamsDTO(BaseModel):
     """
     RedshiftAuthParamsDTO
     """ # noqa: E501
-    database: Optional[StrictStr] = None
     endpoint: Optional[StrictStr] = None
-    password: Optional[StrictStr] = None
     port: Optional[StrictStr] = None
-    var_schema: Optional[StrictStr] = Field(default=None, alias="schema")
-    table_prefix: Optional[StrictStr] = Field(default=None, alias="tablePrefix")
+    database: Optional[StrictStr] = None
     username: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["database", "endpoint", "password", "port", "schema", "tablePrefix", "username"]
+    password: Optional[StrictStr] = None
+    table_prefix: Optional[StrictStr] = Field(default=None, alias="tablePrefix")
+    var_schema: Optional[StrictStr] = Field(default=None, alias="schema")
+    __properties: ClassVar[List[str]] = ["endpoint", "port", "database", "username", "password", "tablePrefix", "schema"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,13 +86,13 @@ class RedshiftAuthParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "database": obj.get("database"),
             "endpoint": obj.get("endpoint"),
-            "password": obj.get("password"),
             "port": obj.get("port"),
-            "schema": obj.get("schema"),
+            "database": obj.get("database"),
+            "username": obj.get("username"),
+            "password": obj.get("password"),
             "tablePrefix": obj.get("tablePrefix"),
-            "username": obj.get("username")
+            "schema": obj.get("schema")
         })
         return _obj
 

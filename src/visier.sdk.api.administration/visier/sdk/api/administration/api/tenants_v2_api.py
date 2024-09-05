@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
@@ -25,10 +27,7 @@ from visier.sdk.api.administration.models.tenant_management_api_list_response_dt
 from visier.sdk.api.administration.models.tenant_management_api_update_request_dto import TenantManagementAPIUpdateRequestDTO
 from visier.sdk.api.administration.models.tenant_management_api_update_response_dto import TenantManagementAPIUpdateResponseDTO
 from visier.sdk.api.administration.models.tenant_status_apidto import TenantStatusAPIDTO
-
-from visier.sdk.api.administration.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.administration.api_response import ApiResponse
-from visier.sdk.api.administration.rest import RESTResponseType
+import visier.sdk.api.administration.models
 
 
 class TenantsV2Api:
@@ -45,7 +44,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def create_tenant(
+    def tenants_v2_create_tenant(
         self,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
         _request_timeout: Union[
@@ -89,7 +88,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_tenant_serialize(
+        _param = self._tenants_v2_create_tenant_serialize(
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -106,13 +105,14 @@ class TenantsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def create_tenant_with_http_info(
+    def tenants_v2_create_tenant_with_http_info(
         self,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
         _request_timeout: Union[
@@ -156,7 +156,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_tenant_serialize(
+        _param = self._tenants_v2_create_tenant_serialize(
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -173,13 +173,14 @@ class TenantsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def create_tenant_without_preload_content(
+    def tenants_v2_create_tenant_without_preload_content(
         self,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
         _request_timeout: Union[
@@ -223,7 +224,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_tenant_serialize(
+        _param = self._tenants_v2_create_tenant_serialize(
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -241,7 +242,7 @@ class TenantsV2Api:
         return response_data.response
 
 
-    def _create_tenant_serialize(
+    def _tenants_v2_create_tenant_serialize(
         self,
         tenant_management_api_update_request_dto,
         _request_auth,
@@ -316,7 +317,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def delete_tenant(
+    def tenants_v2_delete_tenant(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~{YYY} where {XXX} is the administrating tenant code and {YYY}  is the analytic tenant code.")],
         _request_timeout: Union[
@@ -360,7 +361,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_tenant_serialize(
+        _param = self._tenants_v2_delete_tenant_serialize(
             tenant_id=tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -377,13 +378,14 @@ class TenantsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def delete_tenant_with_http_info(
+    def tenants_v2_delete_tenant_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~{YYY} where {XXX} is the administrating tenant code and {YYY}  is the analytic tenant code.")],
         _request_timeout: Union[
@@ -427,7 +429,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_tenant_serialize(
+        _param = self._tenants_v2_delete_tenant_serialize(
             tenant_id=tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -444,13 +446,14 @@ class TenantsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def delete_tenant_without_preload_content(
+    def tenants_v2_delete_tenant_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~{YYY} where {XXX} is the administrating tenant code and {YYY}  is the analytic tenant code.")],
         _request_timeout: Union[
@@ -494,7 +497,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_tenant_serialize(
+        _param = self._tenants_v2_delete_tenant_serialize(
             tenant_id=tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -512,7 +515,7 @@ class TenantsV2Api:
         return response_data.response
 
 
-    def _delete_tenant_serialize(
+    def _tenants_v2_delete_tenant_serialize(
         self,
         tenant_id,
         _request_auth,
@@ -574,7 +577,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def list_tenants(
+    def tenants_v2_list_tenants(
         self,
         mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
@@ -624,7 +627,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_tenants_serialize(
+        _param = self._tenants_v2_list_tenants_serialize(
             mask_message=mask_message,
             limit=limit,
             start=start,
@@ -643,13 +646,14 @@ class TenantsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def list_tenants_with_http_info(
+    def tenants_v2_list_tenants_with_http_info(
         self,
         mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
@@ -699,7 +703,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_tenants_serialize(
+        _param = self._tenants_v2_list_tenants_serialize(
             mask_message=mask_message,
             limit=limit,
             start=start,
@@ -718,13 +722,14 @@ class TenantsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def list_tenants_without_preload_content(
+    def tenants_v2_list_tenants_without_preload_content(
         self,
         mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
@@ -774,7 +779,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_tenants_serialize(
+        _param = self._tenants_v2_list_tenants_serialize(
             mask_message=mask_message,
             limit=limit,
             start=start,
@@ -794,7 +799,7 @@ class TenantsV2Api:
         return response_data.response
 
 
-    def _list_tenants_serialize(
+    def _tenants_v2_list_tenants_serialize(
         self,
         mask_message,
         limit,
@@ -879,7 +884,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def tenant_info(
+    def tenants_v2_tenant_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to retrieve.")],
         mask_message: MaskMessage,
@@ -926,7 +931,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._tenant_info_serialize(
+        _param = self._tenants_v2_tenant_info_serialize(
             tenant_id=tenant_id,
             mask_message=mask_message,
             _request_auth=_request_auth,
@@ -944,13 +949,14 @@ class TenantsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def tenant_info_with_http_info(
+    def tenants_v2_tenant_info_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to retrieve.")],
         mask_message: MaskMessage,
@@ -997,7 +1003,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._tenant_info_serialize(
+        _param = self._tenants_v2_tenant_info_serialize(
             tenant_id=tenant_id,
             mask_message=mask_message,
             _request_auth=_request_auth,
@@ -1015,13 +1021,14 @@ class TenantsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def tenant_info_without_preload_content(
+    def tenants_v2_tenant_info_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to retrieve.")],
         mask_message: MaskMessage,
@@ -1068,7 +1075,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._tenant_info_serialize(
+        _param = self._tenants_v2_tenant_info_serialize(
             tenant_id=tenant_id,
             mask_message=mask_message,
             _request_auth=_request_auth,
@@ -1087,7 +1094,7 @@ class TenantsV2Api:
         return response_data.response
 
 
-    def _tenant_info_serialize(
+    def _tenants_v2_tenant_info_serialize(
         self,
         tenant_id,
         mask_message,
@@ -1165,7 +1172,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def update_tenant(
+    def tenants_v2_update_tenant(
         self,
         tenant_id: StrictStr,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
@@ -1212,7 +1219,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_tenant_serialize(
+        _param = self._tenants_v2_update_tenant_serialize(
             tenant_id=tenant_id,
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
             _request_auth=_request_auth,
@@ -1230,13 +1237,14 @@ class TenantsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def update_tenant_with_http_info(
+    def tenants_v2_update_tenant_with_http_info(
         self,
         tenant_id: StrictStr,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
@@ -1283,7 +1291,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_tenant_serialize(
+        _param = self._tenants_v2_update_tenant_serialize(
             tenant_id=tenant_id,
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
             _request_auth=_request_auth,
@@ -1301,13 +1309,14 @@ class TenantsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def update_tenant_without_preload_content(
+    def tenants_v2_update_tenant_without_preload_content(
         self,
         tenant_id: StrictStr,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
@@ -1354,7 +1363,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_tenant_serialize(
+        _param = self._tenants_v2_update_tenant_serialize(
             tenant_id=tenant_id,
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
             _request_auth=_request_auth,
@@ -1373,7 +1382,7 @@ class TenantsV2Api:
         return response_data.response
 
 
-    def _update_tenant_serialize(
+    def _tenants_v2_update_tenant_serialize(
         self,
         tenant_id,
         tenant_management_api_update_request_dto,

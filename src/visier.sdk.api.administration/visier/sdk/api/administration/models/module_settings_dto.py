@@ -26,10 +26,10 @@ class ModuleSettingsDTO(BaseModel):
     """
     ModuleSettingsDTO
     """ # noqa: E501
-    locale: Optional[StrictStr] = Field(default=None, description="The language of the module. For example, a module that is in English will have the locale \"en\".")
-    special_handling_instruction: Optional[StrictStr] = Field(default=None, description="An instruction message in the module selection dialog. This can be a note for administrators such as \"Don't assign this module\" or \"Assign Module B instead\".", alias="specialHandlingInstruction")
     unavailable_for_assignment: Optional[StrictBool] = Field(default=None, description="If true, the module cannot be assigned to tenants.", alias="unavailableForAssignment")
-    __properties: ClassVar[List[str]] = ["locale", "specialHandlingInstruction", "unavailableForAssignment"]
+    special_handling_instruction: Optional[StrictStr] = Field(default=None, description="An instruction message in the module selection dialog. This can be a note for administrators such as \"Don't assign this module\" or \"Assign Module B instead\".", alias="specialHandlingInstruction")
+    locale: Optional[StrictStr] = Field(default=None, description="The language of the module. For example, a module that is in English will have the locale \"en\".")
+    __properties: ClassVar[List[str]] = ["unavailableForAssignment", "specialHandlingInstruction", "locale"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class ModuleSettingsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "locale": obj.get("locale"),
+            "unavailableForAssignment": obj.get("unavailableForAssignment"),
             "specialHandlingInstruction": obj.get("specialHandlingInstruction"),
-            "unavailableForAssignment": obj.get("unavailableForAssignment")
+            "locale": obj.get("locale")
         })
         return _obj
 

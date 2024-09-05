@@ -29,9 +29,9 @@ class QueryMemberMapSelectionDTO(BaseModel):
     A QueryMemberMapSelection groups data in a query by dimension members in a member map.  This allows grouping by a dimension that isn't typically valid on the analytic object being  queried by selecting a valid member map on the analytic object.  Note: This is unique to the data query API and cannot be reproduced in Visier's interface.
     """ # noqa: E501
     member_map: Optional[DimensionReferenceDTO] = Field(default=None, description="A member map and its qualifying path to query.", alias="memberMap")
-    members: Optional[List[DimensionMemberReferenceDTO]] = Field(default=None, description="A collection of the selected dimension members from the `targetDimension`. This must contain at least one member.")
     target_dimension_name: Optional[StrictStr] = Field(default=None, description="The name of the member map's dimension that you want to query. The member selection is based on this dimension.", alias="targetDimensionName")
-    __properties: ClassVar[List[str]] = ["memberMap", "members", "targetDimensionName"]
+    members: Optional[List[DimensionMemberReferenceDTO]] = Field(default=None, description="A collection of the selected dimension members from the `targetDimension`. This must contain at least one member.")
+    __properties: ClassVar[List[str]] = ["memberMap", "targetDimensionName", "members"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,8 +95,8 @@ class QueryMemberMapSelectionDTO(BaseModel):
 
         _obj = cls.model_validate({
             "memberMap": DimensionReferenceDTO.from_dict(obj["memberMap"]) if obj.get("memberMap") is not None else None,
-            "members": [DimensionMemberReferenceDTO.from_dict(_item) for _item in obj["members"]] if obj.get("members") is not None else None,
-            "targetDimensionName": obj.get("targetDimensionName")
+            "targetDimensionName": obj.get("targetDimensionName"),
+            "members": [DimensionMemberReferenceDTO.from_dict(_item) for _item in obj["members"]] if obj.get("members") is not None else None
         })
         return _obj
 

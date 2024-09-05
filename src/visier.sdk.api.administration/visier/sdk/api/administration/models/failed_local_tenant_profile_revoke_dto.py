@@ -26,9 +26,9 @@ class FailedLocalTenantProfileRevokeDTO(BaseModel):
     """
     FailedLocalTenantProfileRevokeDTO
     """ # noqa: E501
-    message: Optional[StrictStr] = Field(default=None, description="The details about the error.")
     user_id: Optional[StrictStr] = Field(default=None, description="The impacted user ID.", alias="userId")
-    __properties: ClassVar[List[str]] = ["message", "userId"]
+    message: Optional[StrictStr] = Field(default=None, description="The details about the error.")
+    __properties: ClassVar[List[str]] = ["userId", "message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class FailedLocalTenantProfileRevokeDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": obj.get("message"),
-            "userId": obj.get("userId")
+            "userId": obj.get("userId"),
+            "message": obj.get("message")
         })
         return _obj
 

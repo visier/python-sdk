@@ -28,14 +28,14 @@ class PlanningPlanDTO(BaseModel):
     """
     The definition of a plan. Plans are defined on planning models, and each plan may define multiple scenarios or snapshots.
     """ # noqa: E501
-    default_contexts: Optional[List[PlanningPlanContextDTO]] = Field(default=None, description="The contexts defined for the plan.", alias="defaultContexts")
     id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the plan.  Note: See `PlanningPlans` to get the ID.")
     name: Optional[StrictStr] = Field(default=None, description="The name of the plan.")
+    subject_id: Optional[StrictStr] = Field(default=None, description="The ID of subject for the plan.", alias="subjectId")
+    default_contexts: Optional[List[PlanningPlanContextDTO]] = Field(default=None, description="The contexts defined for the plan.", alias="defaultContexts")
     plan_dimension_ids: Optional[List[StrictStr]] = Field(default=None, description="The IDs of the dimensions defined for the plan.", alias="planDimensionIds")
     scenarios: Optional[List[ScenarioOrSnapshotDTO]] = Field(default=None, description="The available scenarios for the plan.")
     snapshots: Optional[List[ScenarioOrSnapshotDTO]] = Field(default=None, description="The available snapshots for the plan.")
-    subject_id: Optional[StrictStr] = Field(default=None, description="The ID of subject for the plan.", alias="subjectId")
-    __properties: ClassVar[List[str]] = ["defaultContexts", "id", "name", "planDimensionIds", "scenarios", "snapshots", "subjectId"]
+    __properties: ClassVar[List[str]] = ["id", "name", "subjectId", "defaultContexts", "planDimensionIds", "scenarios", "snapshots"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -109,13 +109,13 @@ class PlanningPlanDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "defaultContexts": [PlanningPlanContextDTO.from_dict(_item) for _item in obj["defaultContexts"]] if obj.get("defaultContexts") is not None else None,
             "id": obj.get("id"),
             "name": obj.get("name"),
+            "subjectId": obj.get("subjectId"),
+            "defaultContexts": [PlanningPlanContextDTO.from_dict(_item) for _item in obj["defaultContexts"]] if obj.get("defaultContexts") is not None else None,
             "planDimensionIds": obj.get("planDimensionIds"),
             "scenarios": [ScenarioOrSnapshotDTO.from_dict(_item) for _item in obj["scenarios"]] if obj.get("scenarios") is not None else None,
-            "snapshots": [ScenarioOrSnapshotDTO.from_dict(_item) for _item in obj["snapshots"]] if obj.get("snapshots") is not None else None,
-            "subjectId": obj.get("subjectId")
+            "snapshots": [ScenarioOrSnapshotDTO.from_dict(_item) for _item in obj["snapshots"]] if obj.get("snapshots") is not None else None
         })
         return _obj
 

@@ -26,10 +26,10 @@ class PlanningHierarchyFilterContextDTO(BaseModel):
     """
     A plan context defined using hierarchy members
     """ # noqa: E501
-    excluded_members: Optional[List[StrictStr]] = Field(default=None, description="The unique IDs of excluded dimension members.", alias="excludedMembers")
     hierarchy_name: Optional[StrictStr] = Field(default=None, description="The object name of the hierarchy.", alias="hierarchyName")
     included_members: Optional[List[StrictStr]] = Field(default=None, description="The unique IDs of the included dimension members.", alias="includedMembers")
-    __properties: ClassVar[List[str]] = ["excludedMembers", "hierarchyName", "includedMembers"]
+    excluded_members: Optional[List[StrictStr]] = Field(default=None, description="The unique IDs of excluded dimension members.", alias="excludedMembers")
+    __properties: ClassVar[List[str]] = ["hierarchyName", "includedMembers", "excludedMembers"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class PlanningHierarchyFilterContextDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "excludedMembers": obj.get("excludedMembers"),
             "hierarchyName": obj.get("hierarchyName"),
-            "includedMembers": obj.get("includedMembers")
+            "includedMembers": obj.get("includedMembers"),
+            "excludedMembers": obj.get("excludedMembers")
         })
         return _obj
 

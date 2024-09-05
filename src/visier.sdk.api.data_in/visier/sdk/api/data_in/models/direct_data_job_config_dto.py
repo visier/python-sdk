@@ -26,9 +26,9 @@ class DirectDataJobConfigDTO(BaseModel):
     """
     Whether the direct data intake job is a primary job or a supplemental job.
     """ # noqa: E501
-    extend_objects: Optional[List[StrictStr]] = Field(default=None, description="The target analytic objects to load using extension tables.  You can extend objects if the job type is supplemental and the target objects already contain data from a previous data version.  This allows you to load data for objects that already contain data in Visier.", alias="extendObjects")
     supplemental_mode: Optional[StrictStr] = Field(default=None, description="The configuration for the processing job as a primary job (default) or a supplemental job. If a primary job is already defined, the direct data   intake job must be supplemental. The valid values are `IS_PRIMARY`, `IS_SUPPLEMENTAL`, and `UNCHANGED`.", alias="supplementalMode")
-    __properties: ClassVar[List[str]] = ["extendObjects", "supplementalMode"]
+    extend_objects: Optional[List[StrictStr]] = Field(default=None, description="The target analytic objects to load using extension tables.  You can extend objects if the job type is supplemental and the target objects already contain data from a previous data version.  This allows you to load data for objects that already contain data in Visier.", alias="extendObjects")
+    __properties: ClassVar[List[str]] = ["supplementalMode", "extendObjects"]
 
     @field_validator('supplemental_mode')
     def supplemental_mode_validate_enum(cls, value):
@@ -91,8 +91,8 @@ class DirectDataJobConfigDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "extendObjects": obj.get("extendObjects"),
-            "supplementalMode": obj.get("supplementalMode")
+            "supplementalMode": obj.get("supplementalMode"),
+            "extendObjects": obj.get("extendObjects")
         })
         return _obj
 

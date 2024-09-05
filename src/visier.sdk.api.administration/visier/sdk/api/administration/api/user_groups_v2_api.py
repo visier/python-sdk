@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
@@ -26,10 +28,7 @@ from visier.sdk.api.administration.models.user_group_delete_response_dto import 
 from visier.sdk.api.administration.models.user_group_single_delete_response_dto import UserGroupSingleDeleteResponseDTO
 from visier.sdk.api.administration.models.user_groups_change_dto import UserGroupsChangeDTO
 from visier.sdk.api.administration.models.user_groups_delete_request_dto import UserGroupsDeleteRequestDTO
-
-from visier.sdk.api.administration.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.administration.api_response import ApiResponse
-from visier.sdk.api.administration.rest import RESTResponseType
+import visier.sdk.api.administration.models
 
 
 class UserGroupsV2Api:
@@ -46,7 +45,7 @@ class UserGroupsV2Api:
 
 
     @validate_call
-    def create_user_groups(
+    def user_groups_v2_create_user_groups(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
         _request_timeout: Union[
@@ -90,7 +89,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_user_groups_serialize(
+        _param = self._user_groups_v2_create_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -107,13 +106,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def create_user_groups_with_http_info(
+    def user_groups_v2_create_user_groups_with_http_info(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
         _request_timeout: Union[
@@ -157,7 +157,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_user_groups_serialize(
+        _param = self._user_groups_v2_create_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -174,13 +174,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def create_user_groups_without_preload_content(
+    def user_groups_v2_create_user_groups_without_preload_content(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
         _request_timeout: Union[
@@ -224,7 +225,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_user_groups_serialize(
+        _param = self._user_groups_v2_create_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -242,7 +243,7 @@ class UserGroupsV2Api:
         return response_data.response
 
 
-    def _create_user_groups_serialize(
+    def _user_groups_v2_create_user_groups_serialize(
         self,
         user_groups_change_dto,
         _request_auth,
@@ -317,7 +318,7 @@ class UserGroupsV2Api:
 
 
     @validate_call
-    def delete_user_group(
+    def user_groups_v2_delete_user_group(
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group to delete.")],
         delete_user_group_v2_request: DeleteUserGroupV2Request,
@@ -364,7 +365,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_user_group_serialize(
+        _param = self._user_groups_v2_delete_user_group_serialize(
             user_group_id=user_group_id,
             delete_user_group_v2_request=delete_user_group_v2_request,
             _request_auth=_request_auth,
@@ -382,13 +383,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def delete_user_group_with_http_info(
+    def user_groups_v2_delete_user_group_with_http_info(
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group to delete.")],
         delete_user_group_v2_request: DeleteUserGroupV2Request,
@@ -435,7 +437,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_user_group_serialize(
+        _param = self._user_groups_v2_delete_user_group_serialize(
             user_group_id=user_group_id,
             delete_user_group_v2_request=delete_user_group_v2_request,
             _request_auth=_request_auth,
@@ -453,13 +455,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def delete_user_group_without_preload_content(
+    def user_groups_v2_delete_user_group_without_preload_content(
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group to delete.")],
         delete_user_group_v2_request: DeleteUserGroupV2Request,
@@ -506,7 +509,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_user_group_serialize(
+        _param = self._user_groups_v2_delete_user_group_serialize(
             user_group_id=user_group_id,
             delete_user_group_v2_request=delete_user_group_v2_request,
             _request_auth=_request_auth,
@@ -525,7 +528,7 @@ class UserGroupsV2Api:
         return response_data.response
 
 
-    def _delete_user_group_serialize(
+    def _user_groups_v2_delete_user_group_serialize(
         self,
         user_group_id,
         delete_user_group_v2_request,
@@ -603,7 +606,7 @@ class UserGroupsV2Api:
 
 
     @validate_call
-    def delete_user_groups(
+    def user_groups_v2_delete_user_groups(
         self,
         user_groups_delete_request_dto: UserGroupsDeleteRequestDTO,
         _request_timeout: Union[
@@ -647,7 +650,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_user_groups_serialize(
+        _param = self._user_groups_v2_delete_user_groups_serialize(
             user_groups_delete_request_dto=user_groups_delete_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -664,13 +667,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def delete_user_groups_with_http_info(
+    def user_groups_v2_delete_user_groups_with_http_info(
         self,
         user_groups_delete_request_dto: UserGroupsDeleteRequestDTO,
         _request_timeout: Union[
@@ -714,7 +718,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_user_groups_serialize(
+        _param = self._user_groups_v2_delete_user_groups_serialize(
             user_groups_delete_request_dto=user_groups_delete_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -731,13 +735,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def delete_user_groups_without_preload_content(
+    def user_groups_v2_delete_user_groups_without_preload_content(
         self,
         user_groups_delete_request_dto: UserGroupsDeleteRequestDTO,
         _request_timeout: Union[
@@ -781,7 +786,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_user_groups_serialize(
+        _param = self._user_groups_v2_delete_user_groups_serialize(
             user_groups_delete_request_dto=user_groups_delete_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -799,7 +804,7 @@ class UserGroupsV2Api:
         return response_data.response
 
 
-    def _delete_user_groups_serialize(
+    def _user_groups_v2_delete_user_groups_serialize(
         self,
         user_groups_delete_request_dto,
         _request_auth,
@@ -874,7 +879,7 @@ class UserGroupsV2Api:
 
 
     @validate_call
-    def get_user_group(
+    def user_groups_v2_get_user_group(
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group.")],
         var_with: Annotated[Optional[StrictStr], Field(description="Controls the amount of detail to return in the response. Omit to return detailed information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.")] = None,
@@ -921,7 +926,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_group_serialize(
+        _param = self._user_groups_v2_get_user_group_serialize(
             user_group_id=user_group_id,
             var_with=var_with,
             _request_auth=_request_auth,
@@ -939,13 +944,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_user_group_with_http_info(
+    def user_groups_v2_get_user_group_with_http_info(
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group.")],
         var_with: Annotated[Optional[StrictStr], Field(description="Controls the amount of detail to return in the response. Omit to return detailed information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.")] = None,
@@ -992,7 +998,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_group_serialize(
+        _param = self._user_groups_v2_get_user_group_serialize(
             user_group_id=user_group_id,
             var_with=var_with,
             _request_auth=_request_auth,
@@ -1010,13 +1016,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_user_group_without_preload_content(
+    def user_groups_v2_get_user_group_without_preload_content(
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group.")],
         var_with: Annotated[Optional[StrictStr], Field(description="Controls the amount of detail to return in the response. Omit to return detailed information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.")] = None,
@@ -1063,7 +1070,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_group_serialize(
+        _param = self._user_groups_v2_get_user_group_serialize(
             user_group_id=user_group_id,
             var_with=var_with,
             _request_auth=_request_auth,
@@ -1082,7 +1089,7 @@ class UserGroupsV2Api:
         return response_data.response
 
 
-    def _get_user_group_serialize(
+    def _user_groups_v2_get_user_group_serialize(
         self,
         user_group_id,
         var_with,
@@ -1149,7 +1156,7 @@ class UserGroupsV2Api:
 
 
     @validate_call
-    def get_user_groups(
+    def user_groups_v2_get_user_groups(
         self,
         var_with: Annotated[Optional[StrictStr], Field(description="Controls the amount of detail to return in the response. Omit to return basic information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of results to return. The maximum number of user groups to retrieve is 1000. The default is 100.")] = None,
@@ -1196,7 +1203,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_groups_serialize(
+        _param = self._user_groups_v2_get_user_groups_serialize(
             var_with=var_with,
             limit=limit,
             _request_auth=_request_auth,
@@ -1214,13 +1221,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_user_groups_with_http_info(
+    def user_groups_v2_get_user_groups_with_http_info(
         self,
         var_with: Annotated[Optional[StrictStr], Field(description="Controls the amount of detail to return in the response. Omit to return basic information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of results to return. The maximum number of user groups to retrieve is 1000. The default is 100.")] = None,
@@ -1267,7 +1275,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_groups_serialize(
+        _param = self._user_groups_v2_get_user_groups_serialize(
             var_with=var_with,
             limit=limit,
             _request_auth=_request_auth,
@@ -1285,13 +1293,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_user_groups_without_preload_content(
+    def user_groups_v2_get_user_groups_without_preload_content(
         self,
         var_with: Annotated[Optional[StrictStr], Field(description="Controls the amount of detail to return in the response. Omit to return basic information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of results to return. The maximum number of user groups to retrieve is 1000. The default is 100.")] = None,
@@ -1338,7 +1347,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_groups_serialize(
+        _param = self._user_groups_v2_get_user_groups_serialize(
             var_with=var_with,
             limit=limit,
             _request_auth=_request_auth,
@@ -1357,7 +1366,7 @@ class UserGroupsV2Api:
         return response_data.response
 
 
-    def _get_user_groups_serialize(
+    def _user_groups_v2_get_user_groups_serialize(
         self,
         var_with,
         limit,
@@ -1426,7 +1435,7 @@ class UserGroupsV2Api:
 
 
     @validate_call
-    def patch_user_groups(
+    def user_groups_v2_patch_user_groups(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
         _request_timeout: Union[
@@ -1470,7 +1479,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_user_groups_serialize(
+        _param = self._user_groups_v2_patch_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1487,13 +1496,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def patch_user_groups_with_http_info(
+    def user_groups_v2_patch_user_groups_with_http_info(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
         _request_timeout: Union[
@@ -1537,7 +1547,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_user_groups_serialize(
+        _param = self._user_groups_v2_patch_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1554,13 +1564,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def patch_user_groups_without_preload_content(
+    def user_groups_v2_patch_user_groups_without_preload_content(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
         _request_timeout: Union[
@@ -1604,7 +1615,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_user_groups_serialize(
+        _param = self._user_groups_v2_patch_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1622,7 +1633,7 @@ class UserGroupsV2Api:
         return response_data.response
 
 
-    def _patch_user_groups_serialize(
+    def _user_groups_v2_patch_user_groups_serialize(
         self,
         user_groups_change_dto,
         _request_auth,
@@ -1697,7 +1708,7 @@ class UserGroupsV2Api:
 
 
     @validate_call
-    def put_user_groups(
+    def user_groups_v2_put_user_groups(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
         _request_timeout: Union[
@@ -1741,7 +1752,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_user_groups_serialize(
+        _param = self._user_groups_v2_put_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1758,13 +1769,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def put_user_groups_with_http_info(
+    def user_groups_v2_put_user_groups_with_http_info(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
         _request_timeout: Union[
@@ -1808,7 +1820,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_user_groups_serialize(
+        _param = self._user_groups_v2_put_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1825,13 +1837,14 @@ class UserGroupsV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def put_user_groups_without_preload_content(
+    def user_groups_v2_put_user_groups_without_preload_content(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
         _request_timeout: Union[
@@ -1875,7 +1888,7 @@ class UserGroupsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_user_groups_serialize(
+        _param = self._user_groups_v2_put_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1893,7 +1906,7 @@ class UserGroupsV2Api:
         return response_data.response
 
 
-    def _put_user_groups_serialize(
+    def _user_groups_v2_put_user_groups_serialize(
         self,
         user_groups_change_dto,
         _request_auth,

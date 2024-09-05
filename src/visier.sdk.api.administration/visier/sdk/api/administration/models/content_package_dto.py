@@ -27,9 +27,9 @@ class ContentPackageDTO(BaseModel):
     ContentPackageDTO
     """ # noqa: E501
     content_package_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the content package.", alias="contentPackageId")
-    description: Optional[StrictStr] = Field(default=None, description="A description of the content package.")
     display_name: Optional[StrictStr] = Field(default=None, description="An identifiable content package name to display in Visier, such as \"Talent Acquisition Core Content\".", alias="displayName")
-    __properties: ClassVar[List[str]] = ["contentPackageId", "description", "displayName"]
+    description: Optional[StrictStr] = Field(default=None, description="A description of the content package.")
+    __properties: ClassVar[List[str]] = ["contentPackageId", "displayName", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,8 +83,8 @@ class ContentPackageDTO(BaseModel):
 
         _obj = cls.model_validate({
             "contentPackageId": obj.get("contentPackageId"),
-            "description": obj.get("description"),
-            "displayName": obj.get("displayName")
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description")
         })
         return _obj
 

@@ -26,9 +26,9 @@ class InheritedReferenceMemberFilterConfigDTO(BaseModel):
     """
     InheritedReferenceMemberFilterConfigDTO
     """ # noqa: E501
-    analytic_object_reference: Optional[StrictStr] = Field(default=None, description="The optional object name of a binding (strong) reference to the target analytic object. If not specified, uses the first binding reference from the source to the target analytic object.", alias="analyticObjectReference")
     target_analytic_object_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the analytic object that the source analytic object should inherit filters from. The target analytic object must have a binding (strong) reference from the source analytic object.", alias="targetAnalyticObjectId")
-    __properties: ClassVar[List[str]] = ["analyticObjectReference", "targetAnalyticObjectId"]
+    analytic_object_reference: Optional[StrictStr] = Field(default=None, description="The optional object name of a binding (strong) reference to the target analytic object. If not specified, uses the first binding reference from the source to the target analytic object.", alias="analyticObjectReference")
+    __properties: ClassVar[List[str]] = ["targetAnalyticObjectId", "analyticObjectReference"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class InheritedReferenceMemberFilterConfigDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analyticObjectReference": obj.get("analyticObjectReference"),
-            "targetAnalyticObjectId": obj.get("targetAnalyticObjectId")
+            "targetAnalyticObjectId": obj.get("targetAnalyticObjectId"),
+            "analyticObjectReference": obj.get("analyticObjectReference")
         })
         return _obj
 

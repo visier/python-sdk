@@ -28,9 +28,9 @@ class AggregationQueryExecutionDTO(BaseModel):
     """
     An AggregationQueryExecution provides instructions to perform your aggregation query.
     """ # noqa: E501
-    options: Optional[QueryExecutionOptionsDTO] = Field(default=None, description="Additional instructions for your query, such as a calendar type or conversion information.")
     query: Optional[AggregationQueryDTO] = Field(default=None, description="The data to perform an aggregation on, such as a metric or formula. The query must include a time interval,  and may optionally include filters and axes.")
-    __properties: ClassVar[List[str]] = ["options", "query"]
+    options: Optional[QueryExecutionOptionsDTO] = Field(default=None, description="Additional instructions for your query, such as a calendar type or conversion information.")
+    __properties: ClassVar[List[str]] = ["query", "options"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,12 +71,12 @@ class AggregationQueryExecutionDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of options
-        if self.options:
-            _dict['options'] = self.options.to_dict()
         # override the default output from pydantic by calling `to_dict()` of query
         if self.query:
             _dict['query'] = self.query.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of options
+        if self.options:
+            _dict['options'] = self.options.to_dict()
         return _dict
 
     @classmethod
@@ -89,8 +89,8 @@ class AggregationQueryExecutionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "options": QueryExecutionOptionsDTO.from_dict(obj["options"]) if obj.get("options") is not None else None,
-            "query": AggregationQueryDTO.from_dict(obj["query"]) if obj.get("query") is not None else None
+            "query": AggregationQueryDTO.from_dict(obj["query"]) if obj.get("query") is not None else None,
+            "options": QueryExecutionOptionsDTO.from_dict(obj["options"]) if obj.get("options") is not None else None
         })
         return _obj
 

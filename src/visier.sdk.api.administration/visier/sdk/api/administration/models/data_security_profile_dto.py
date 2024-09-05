@@ -30,14 +30,14 @@ class DataSecurityProfileDTO(BaseModel):
     """
     DataSecurityProfileDTO
     """ # noqa: E501
-    all_data_point_access: Optional[StrictBool] = Field(default=None, description="If `true`, the permission grants access to the entire population. If `false`, define `memberFilterConfigs` to set custom population access.", alias="allDataPointAccess")
     analytic_object_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the analytic object assigned data security in this permission.", alias="analyticObjectId")
-    analytic_object_status: Optional[StrictStr] = Field(default=None, description="The analytic object's validity status. Valid values: Valid, NoData, NotFound.  * **Valid**: The object exists and has loaded data.  * **NoData**: The object exists but doesn't have loaded data.  * **NotFound**: The object doesn't exist.", alias="analyticObjectStatus")
+    property_set_config: Optional[PropertySetConfigDTO] = Field(default=None, description="A list of objects representing the data access for an analytic object’s properties.", alias="propertySetConfig")
+    all_data_point_access: Optional[StrictBool] = Field(default=None, description="If `true`, the permission grants access to the entire population. If `false`, define `memberFilterConfigs` to set custom population access.", alias="allDataPointAccess")
+    member_filter_configs: Optional[List[MemberFilterConfigDTO]] = Field(default=None, description="Custom filters that define population access for an item in the permission.", alias="memberFilterConfigs")
     inherited_access_configs: Optional[List[InheritedAccessConfigDTO]] = Field(default=None, description="The events and related objects inherited from the analytic object.  By default, all events and related objects associated with the analytic object will be inherited from the analytic object in a permission.  For example, if you assign access to Employee, then access to the Employee Exit event is inherited in the permission.  To remove access to an event or related object, add the object to `inheritedAccessConfigs` with `removeAccess`: true.  To add custom filters to an event or related object, add the object to `inheritedAccessConfigs` and define `memberFilterConfigs`.", alias="inheritedAccessConfigs")
     inherited_reference_member_filter_config: Optional[InheritedReferenceMemberFilterConfigDTO] = Field(default=None, description="Configures the analytic object to inherit population access filters from. The target analytic object must be assigned population access in the permission and have a binding (strong) reference from the source analytic object.  * For example, assume `Applicant` -> `Requisition` is configured to be a binding (strong) reference.  For `Applicant` (source analytic object) to inherit population access filters from `Requisition` (target analytic object), in the Applicant `dataSecurityProfile`, set `inheritedReferenceMemberFilterConfig` to `Requisition`. In this example, Applicant will inherit filters from Requisition because Requsition is assigned data security in this permission and there is a binding (strong) reference from Applicant to Requisition.", alias="inheritedReferenceMemberFilterConfig")
-    member_filter_configs: Optional[List[MemberFilterConfigDTO]] = Field(default=None, description="Custom filters that define population access for an item in the permission.", alias="memberFilterConfigs")
-    property_set_config: Optional[PropertySetConfigDTO] = Field(default=None, description="A list of objects representing the data access for an analytic object’s properties.", alias="propertySetConfig")
-    __properties: ClassVar[List[str]] = ["allDataPointAccess", "analyticObjectId", "analyticObjectStatus", "inheritedAccessConfigs", "inheritedReferenceMemberFilterConfig", "memberFilterConfigs", "propertySetConfig"]
+    analytic_object_status: Optional[StrictStr] = Field(default=None, description="The analytic object's validity status. Valid values: Valid, NoData, NotFound.  * **Valid**: The object exists and has loaded data.  * **NoData**: The object exists but doesn't have loaded data.  * **NotFound**: The object doesn't exist.", alias="analyticObjectStatus")
+    __properties: ClassVar[List[str]] = ["analyticObjectId", "propertySetConfig", "allDataPointAccess", "memberFilterConfigs", "inheritedAccessConfigs", "inheritedReferenceMemberFilterConfig", "analyticObjectStatus"]
 
     @field_validator('analytic_object_status')
     def analytic_object_status_validate_enum(cls, value):
@@ -88,6 +88,16 @@ class DataSecurityProfileDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of property_set_config
+        if self.property_set_config:
+            _dict['propertySetConfig'] = self.property_set_config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in member_filter_configs (list)
+        _items = []
+        if self.member_filter_configs:
+            for _item_member_filter_configs in self.member_filter_configs:
+                if _item_member_filter_configs:
+                    _items.append(_item_member_filter_configs.to_dict())
+            _dict['memberFilterConfigs'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in inherited_access_configs (list)
         _items = []
         if self.inherited_access_configs:
@@ -98,16 +108,6 @@ class DataSecurityProfileDTO(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of inherited_reference_member_filter_config
         if self.inherited_reference_member_filter_config:
             _dict['inheritedReferenceMemberFilterConfig'] = self.inherited_reference_member_filter_config.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in member_filter_configs (list)
-        _items = []
-        if self.member_filter_configs:
-            for _item_member_filter_configs in self.member_filter_configs:
-                if _item_member_filter_configs:
-                    _items.append(_item_member_filter_configs.to_dict())
-            _dict['memberFilterConfigs'] = _items
-        # override the default output from pydantic by calling `to_dict()` of property_set_config
-        if self.property_set_config:
-            _dict['propertySetConfig'] = self.property_set_config.to_dict()
         return _dict
 
     @classmethod
@@ -120,13 +120,13 @@ class DataSecurityProfileDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "allDataPointAccess": obj.get("allDataPointAccess"),
             "analyticObjectId": obj.get("analyticObjectId"),
-            "analyticObjectStatus": obj.get("analyticObjectStatus"),
+            "propertySetConfig": PropertySetConfigDTO.from_dict(obj["propertySetConfig"]) if obj.get("propertySetConfig") is not None else None,
+            "allDataPointAccess": obj.get("allDataPointAccess"),
+            "memberFilterConfigs": [MemberFilterConfigDTO.from_dict(_item) for _item in obj["memberFilterConfigs"]] if obj.get("memberFilterConfigs") is not None else None,
             "inheritedAccessConfigs": [InheritedAccessConfigDTO.from_dict(_item) for _item in obj["inheritedAccessConfigs"]] if obj.get("inheritedAccessConfigs") is not None else None,
             "inheritedReferenceMemberFilterConfig": InheritedReferenceMemberFilterConfigDTO.from_dict(obj["inheritedReferenceMemberFilterConfig"]) if obj.get("inheritedReferenceMemberFilterConfig") is not None else None,
-            "memberFilterConfigs": [MemberFilterConfigDTO.from_dict(_item) for _item in obj["memberFilterConfigs"]] if obj.get("memberFilterConfigs") is not None else None,
-            "propertySetConfig": PropertySetConfigDTO.from_dict(obj["propertySetConfig"]) if obj.get("propertySetConfig") is not None else None
+            "analyticObjectStatus": obj.get("analyticObjectStatus")
         })
         return _obj
 

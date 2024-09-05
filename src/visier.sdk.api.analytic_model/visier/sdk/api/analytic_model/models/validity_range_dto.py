@@ -26,9 +26,9 @@ class ValidityRangeDTO(BaseModel):
     """
     A pair of values that represent the time interval to which the data is valid.  The validity range is defined in Unix epoch format and UTC timezone.  Note: Epochs are expressed as 64-bit integers and represented as stringified longs in JSON due to JSON's inherent  limitation in representing large numbers.
     """ # noqa: E501
-    end: Optional[StrictStr] = Field(default=None, description="The date from which data is no longer available.  Note: Format is the number of milliseconds since midnight 01 January, 1970 UTC as a string.")
     start: Optional[StrictStr] = Field(default=None, description="The date from which data becomes available.  Note: Format is the number of milliseconds since midnight 01 January, 1970 UTC as a string.")
-    __properties: ClassVar[List[str]] = ["end", "start"]
+    end: Optional[StrictStr] = Field(default=None, description="The date from which data is no longer available.  Note: Format is the number of milliseconds since midnight 01 January, 1970 UTC as a string.")
+    __properties: ClassVar[List[str]] = ["start", "end"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class ValidityRangeDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "end": obj.get("end"),
-            "start": obj.get("start")
+            "start": obj.get("start"),
+            "end": obj.get("end")
         })
         return _obj
 

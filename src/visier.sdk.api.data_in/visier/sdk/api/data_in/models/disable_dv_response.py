@@ -27,10 +27,10 @@ class DisableDVResponse(BaseModel):
     """
     DisableDVResponse
     """ # noqa: E501
-    results: Optional[List[Result]] = Field(default=None, description="A list of objects representing the disabling process.")
     total_failures: Optional[StrictInt] = Field(default=None, description="The number of data versions that failed during the disabling process.", alias="totalFailures")
     total_success: Optional[StrictInt] = Field(default=None, description="The number of data versions that were disabled successfully.", alias="totalSuccess")
-    __properties: ClassVar[List[str]] = ["results", "totalFailures", "totalSuccess"]
+    results: Optional[List[Result]] = Field(default=None, description="A list of objects representing the disabling process.")
+    __properties: ClassVar[List[str]] = ["totalFailures", "totalSuccess", "results"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +90,9 @@ class DisableDVResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "results": [Result.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None,
             "totalFailures": obj.get("totalFailures"),
-            "totalSuccess": obj.get("totalSuccess")
+            "totalSuccess": obj.get("totalSuccess"),
+            "results": [Result.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
         })
         return _obj
 

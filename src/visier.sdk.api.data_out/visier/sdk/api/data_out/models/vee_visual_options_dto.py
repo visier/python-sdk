@@ -26,9 +26,9 @@ class VeeVisualOptionsDTO(BaseModel):
     """
     VeeVisualOptionsDTO
     """ # noqa: E501
-    height: Optional[StrictInt] = Field(default=None, description="The pixel height of the rendered visualization. Default is 338. Valid values are between 90 and 900.")
     width: Optional[StrictInt] = Field(default=None, description="The pixel width of the rendered visualization. Default is 600. Valid values are between 160 and 1600.")
-    __properties: ClassVar[List[str]] = ["height", "width"]
+    height: Optional[StrictInt] = Field(default=None, description="The pixel height of the rendered visualization. Default is 338. Valid values are between 90 and 900.")
+    __properties: ClassVar[List[str]] = ["width", "height"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class VeeVisualOptionsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "height": obj.get("height"),
-            "width": obj.get("width")
+            "width": obj.get("width"),
+            "height": obj.get("height")
         })
         return _obj
 

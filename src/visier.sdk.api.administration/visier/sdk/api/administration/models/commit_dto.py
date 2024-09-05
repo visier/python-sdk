@@ -26,10 +26,10 @@ class CommitDTO(BaseModel):
     """
     CommitDTO
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="A description of the committed change.")
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the committed change.")
     name: Optional[StrictStr] = Field(default=None, description="An identifiable name of the committed change to display in Visier.")
-    __properties: ClassVar[List[str]] = ["description", "id", "name"]
+    description: Optional[StrictStr] = Field(default=None, description="A description of the committed change.")
+    __properties: ClassVar[List[str]] = ["id", "name", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class CommitDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
             "id": obj.get("id"),
-            "name": obj.get("name")
+            "name": obj.get("name"),
+            "description": obj.get("description")
         })
         return _obj
 

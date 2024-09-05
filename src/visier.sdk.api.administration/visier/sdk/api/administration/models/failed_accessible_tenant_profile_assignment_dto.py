@@ -27,11 +27,11 @@ class FailedAccessibleTenantProfileAssignmentDTO(BaseModel):
     """
     FailedAccessibleTenantProfileAssignmentDTO
     """ # noqa: E501
-    error: Optional[ErrorDTO] = Field(default=None, description="The details about the error.")
-    for_all_children: Optional[StrictBool] = Field(default=None, description="If true, the target assignment is for all analytic tenants.", alias="forAllChildren")
-    tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code.", alias="tenantCode")
     user_id: Optional[StrictStr] = Field(default=None, description="The impacted user ID.", alias="userId")
-    __properties: ClassVar[List[str]] = ["error", "forAllChildren", "tenantCode", "userId"]
+    tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code.", alias="tenantCode")
+    for_all_children: Optional[StrictBool] = Field(default=None, description="If true, the target assignment is for all analytic tenants.", alias="forAllChildren")
+    error: Optional[ErrorDTO] = Field(default=None, description="The details about the error.")
+    __properties: ClassVar[List[str]] = ["userId", "tenantCode", "forAllChildren", "error"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,10 +87,10 @@ class FailedAccessibleTenantProfileAssignmentDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "error": ErrorDTO.from_dict(obj["error"]) if obj.get("error") is not None else None,
-            "forAllChildren": obj.get("forAllChildren"),
+            "userId": obj.get("userId"),
             "tenantCode": obj.get("tenantCode"),
-            "userId": obj.get("userId")
+            "forAllChildren": obj.get("forAllChildren"),
+            "error": ErrorDTO.from_dict(obj["error"]) if obj.get("error") is not None else None
         })
         return _obj
 

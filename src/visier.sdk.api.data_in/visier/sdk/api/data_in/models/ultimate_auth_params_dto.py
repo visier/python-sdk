@@ -26,12 +26,12 @@ class UltimateAuthParamsDTO(BaseModel):
     """
     UltimateAuthParamsDTO
     """ # noqa: E501
-    api_key: Optional[StrictStr] = Field(default=None, alias="apiKey")
     host_domain_name: Optional[StrictStr] = Field(default=None, alias="hostDomainName")
+    api_key: Optional[StrictStr] = Field(default=None, alias="apiKey")
+    username: Optional[StrictStr] = None
     password: Optional[StrictStr] = None
     user_access_key: Optional[StrictStr] = Field(default=None, alias="userAccessKey")
-    username: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["apiKey", "hostDomainName", "password", "userAccessKey", "username"]
+    __properties: ClassVar[List[str]] = ["hostDomainName", "apiKey", "username", "password", "userAccessKey"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,11 +84,11 @@ class UltimateAuthParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "apiKey": obj.get("apiKey"),
             "hostDomainName": obj.get("hostDomainName"),
+            "apiKey": obj.get("apiKey"),
+            "username": obj.get("username"),
             "password": obj.get("password"),
-            "userAccessKey": obj.get("userAccessKey"),
-            "username": obj.get("username")
+            "userAccessKey": obj.get("userAccessKey")
         })
         return _obj
 

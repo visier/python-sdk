@@ -27,9 +27,9 @@ class AccessibleTenantProfileRevokeRequestDTO(BaseModel):
     """
     AccessibleTenantProfileRevokeRequestDTO
     """ # noqa: E501
-    target_tenant_codes: Optional[List[TargetTenantCodeDTO]] = Field(default=None, description="A list of objects representing the  analytic tenants for removing profiles from each target user ID.", alias="targetTenantCodes")
     target_user_ids: Optional[List[StrictStr]] = Field(default=None, description="A list of users to remove this profile from.", alias="targetUserIds")
-    __properties: ClassVar[List[str]] = ["targetTenantCodes", "targetUserIds"]
+    target_tenant_codes: Optional[List[TargetTenantCodeDTO]] = Field(default=None, description="A list of objects representing the  analytic tenants for removing profiles from each target user ID.", alias="targetTenantCodes")
+    __properties: ClassVar[List[str]] = ["targetUserIds", "targetTenantCodes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,8 +89,8 @@ class AccessibleTenantProfileRevokeRequestDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "targetTenantCodes": [TargetTenantCodeDTO.from_dict(_item) for _item in obj["targetTenantCodes"]] if obj.get("targetTenantCodes") is not None else None,
-            "targetUserIds": obj.get("targetUserIds")
+            "targetUserIds": obj.get("targetUserIds"),
+            "targetTenantCodes": [TargetTenantCodeDTO.from_dict(_item) for _item in obj["targetTenantCodes"]] if obj.get("targetTenantCodes") is not None else None
         })
         return _obj
 

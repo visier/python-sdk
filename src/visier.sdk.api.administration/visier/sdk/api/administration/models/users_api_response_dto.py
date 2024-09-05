@@ -28,9 +28,9 @@ class UsersAPIResponseDTO(BaseModel):
     """
     UsersAPIResponseDTO
     """ # noqa: E501
-    failures: Optional[List[UsersAPIFailureDTO]] = Field(default=None, description="The users for which the request failed.")
     successes: Optional[List[UsersAPISuccessDTO]] = Field(default=None, description="The users for which the request succeeded.")
-    __properties: ClassVar[List[str]] = ["failures", "successes"]
+    failures: Optional[List[UsersAPIFailureDTO]] = Field(default=None, description="The users for which the request failed.")
+    __properties: ClassVar[List[str]] = ["successes", "failures"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,13 +71,6 @@ class UsersAPIResponseDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in failures (list)
-        _items = []
-        if self.failures:
-            for _item_failures in self.failures:
-                if _item_failures:
-                    _items.append(_item_failures.to_dict())
-            _dict['failures'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in successes (list)
         _items = []
         if self.successes:
@@ -85,6 +78,13 @@ class UsersAPIResponseDTO(BaseModel):
                 if _item_successes:
                     _items.append(_item_successes.to_dict())
             _dict['successes'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in failures (list)
+        _items = []
+        if self.failures:
+            for _item_failures in self.failures:
+                if _item_failures:
+                    _items.append(_item_failures.to_dict())
+            _dict['failures'] = _items
         return _dict
 
     @classmethod
@@ -97,8 +97,8 @@ class UsersAPIResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "failures": [UsersAPIFailureDTO.from_dict(_item) for _item in obj["failures"]] if obj.get("failures") is not None else None,
-            "successes": [UsersAPISuccessDTO.from_dict(_item) for _item in obj["successes"]] if obj.get("successes") is not None else None
+            "successes": [UsersAPISuccessDTO.from_dict(_item) for _item in obj["successes"]] if obj.get("successes") is not None else None,
+            "failures": [UsersAPIFailureDTO.from_dict(_item) for _item in obj["failures"]] if obj.get("failures") is not None else None
         })
         return _obj
 

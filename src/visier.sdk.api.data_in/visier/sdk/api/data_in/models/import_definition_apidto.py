@@ -27,9 +27,9 @@ class ImportDefinitionAPIDTO(BaseModel):
     ImportDefinitionAPIDTO
     """ # noqa: E501
     connector_id: Optional[StrictStr] = Field(default=None, description="The ID associated with the data connector.", alias="connectorId")
-    credential_id: Optional[StrictStr] = Field(default=None, description="The ID associated with the connector credentials currently assigned to this data connector.", alias="credentialId")
     display_name: Optional[StrictStr] = Field(default=None, description="An identifiable data connector name that is displayed within Visier.", alias="displayName")
-    __properties: ClassVar[List[str]] = ["connectorId", "credentialId", "displayName"]
+    credential_id: Optional[StrictStr] = Field(default=None, description="The ID associated with the connector credentials currently assigned to this data connector.", alias="credentialId")
+    __properties: ClassVar[List[str]] = ["connectorId", "displayName", "credentialId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,8 +83,8 @@ class ImportDefinitionAPIDTO(BaseModel):
 
         _obj = cls.model_validate({
             "connectorId": obj.get("connectorId"),
-            "credentialId": obj.get("credentialId"),
-            "displayName": obj.get("displayName")
+            "displayName": obj.get("displayName"),
+            "credentialId": obj.get("credentialId")
         })
         return _obj
 

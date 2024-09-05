@@ -27,10 +27,10 @@ class UserGroupsGetAPIResponseDTO(BaseModel):
     """
     UserGroupsGetAPIResponseDTO
     """ # noqa: E501
+    user_groups: Optional[List[UserGroupGetAPIResponseDTO]] = Field(default=None, description="A list of user groups.", alias="userGroups")
     limit: Optional[StrictInt] = Field(default=None, description="The number of results to return. The maximum number of users to retrieve is 1000.")
     start: Optional[StrictInt] = Field(default=None, description="The index to start retrieving results from, also known as offset.")
-    user_groups: Optional[List[UserGroupGetAPIResponseDTO]] = Field(default=None, description="A list of user groups.", alias="userGroups")
-    __properties: ClassVar[List[str]] = ["limit", "start", "userGroups"]
+    __properties: ClassVar[List[str]] = ["userGroups", "limit", "start"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +90,9 @@ class UserGroupsGetAPIResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "userGroups": [UserGroupGetAPIResponseDTO.from_dict(_item) for _item in obj["userGroups"]] if obj.get("userGroups") is not None else None,
             "limit": obj.get("limit"),
-            "start": obj.get("start"),
-            "userGroups": [UserGroupGetAPIResponseDTO.from_dict(_item) for _item in obj["userGroups"]] if obj.get("userGroups") is not None else None
+            "start": obj.get("start")
         })
         return _obj
 

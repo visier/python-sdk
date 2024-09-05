@@ -27,9 +27,9 @@ class ConceptConfigurationResultDTO(BaseModel):
     ConceptConfigurationResultDTO
     """ # noqa: E501
     concept_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the configured concept.", alias="conceptId")
-    message: Optional[StrictStr] = Field(default=None, description="A meaningful message about the API result.")
     project_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the system-generated project.", alias="projectId")
-    __properties: ClassVar[List[str]] = ["conceptId", "message", "projectId"]
+    message: Optional[StrictStr] = Field(default=None, description="A meaningful message about the API result.")
+    __properties: ClassVar[List[str]] = ["conceptId", "projectId", "message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,8 +83,8 @@ class ConceptConfigurationResultDTO(BaseModel):
 
         _obj = cls.model_validate({
             "conceptId": obj.get("conceptId"),
-            "message": obj.get("message"),
-            "projectId": obj.get("projectId")
+            "projectId": obj.get("projectId"),
+            "message": obj.get("message")
         })
         return _obj
 

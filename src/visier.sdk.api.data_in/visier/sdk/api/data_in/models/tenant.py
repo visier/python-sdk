@@ -27,10 +27,10 @@ class Tenant(BaseModel):
     """
     Tenant
     """ # noqa: E501
-    sources: Optional[List[Source]] = Field(default=None, description="A list of objects representing the sources that data was pushed to and their data transfer results.")
-    status: Optional[StrictStr] = Field(default=None, description="The status of the data transfer for this tenant.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The code of the tenant that data was transferred to. For example, WFF_j1r or WFF_j1r~c7o.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["sources", "status", "tenantCode"]
+    status: Optional[StrictStr] = Field(default=None, description="The status of the data transfer for this tenant.")
+    sources: Optional[List[Source]] = Field(default=None, description="A list of objects representing the sources that data was pushed to and their data transfer results.")
+    __properties: ClassVar[List[str]] = ["tenantCode", "status", "sources"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +90,9 @@ class Tenant(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "sources": [Source.from_dict(_item) for _item in obj["sources"]] if obj.get("sources") is not None else None,
+            "tenantCode": obj.get("tenantCode"),
             "status": obj.get("status"),
-            "tenantCode": obj.get("tenantCode")
+            "sources": [Source.from_dict(_item) for _item in obj["sources"]] if obj.get("sources") is not None else None
         })
         return _obj
 

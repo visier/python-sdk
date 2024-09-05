@@ -14,22 +14,12 @@
 """  # noqa: E501
 
 
-__version__ = "22222222.99201.1456"
+__version__ = "0.0.201"
 
 # import apis into sdk package
 from visier.sdk.api.analytic_model.api.data_model_api import DataModelApi
 from visier.sdk.api.analytic_model.api.object_configuration_api import ObjectConfigurationApi
 
-# import ApiClient
-from visier.sdk.api.analytic_model.api_response import ApiResponse
-from visier.sdk.api.analytic_model.api_client import ApiClient
-from visier.sdk.api.analytic_model.configuration import Configuration
-from visier.sdk.api.analytic_model.exceptions import OpenApiException
-from visier.sdk.api.analytic_model.exceptions import ApiTypeError
-from visier.sdk.api.analytic_model.exceptions import ApiValueError
-from visier.sdk.api.analytic_model.exceptions import ApiKeyError
-from visier.sdk.api.analytic_model.exceptions import ApiAttributeError
-from visier.sdk.api.analytic_model.exceptions import ApiException
 
 # import models into sdk package
 from visier.sdk.api.analytic_model.models.aggregation_type_option_dto import AggregationTypeOptionDTO

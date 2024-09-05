@@ -26,11 +26,11 @@ class TenantStatusAPIDTO(BaseModel):
     """
     TenantStatusAPIDTO
     """ # noqa: E501
-    can_administer_other_tenants: Optional[StrictBool] = Field(default=None, description="If true, the tenant is an administrating tenant.", alias="canAdministerOtherTenants")
-    status: Optional[StrictStr] = Field(default=None, description="Whether the tenant is enabled or disabled.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The unique identifier for the analytic tenant.", alias="tenantCode")
+    status: Optional[StrictStr] = Field(default=None, description="Whether the tenant is enabled or disabled.")
     tenant_display_name: Optional[StrictStr] = Field(default=None, description="The identifiable tenant name that is displayed within Visier. For example, \"Callisto\".", alias="tenantDisplayName")
-    __properties: ClassVar[List[str]] = ["canAdministerOtherTenants", "status", "tenantCode", "tenantDisplayName"]
+    can_administer_other_tenants: Optional[StrictBool] = Field(default=None, description="If true, the tenant is an administrating tenant.", alias="canAdministerOtherTenants")
+    __properties: ClassVar[List[str]] = ["tenantCode", "status", "tenantDisplayName", "canAdministerOtherTenants"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,10 +83,10 @@ class TenantStatusAPIDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "canAdministerOtherTenants": obj.get("canAdministerOtherTenants"),
-            "status": obj.get("status"),
             "tenantCode": obj.get("tenantCode"),
-            "tenantDisplayName": obj.get("tenantDisplayName")
+            "status": obj.get("status"),
+            "tenantDisplayName": obj.get("tenantDisplayName"),
+            "canAdministerOtherTenants": obj.get("canAdministerOtherTenants")
         })
         return _obj
 

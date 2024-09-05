@@ -27,9 +27,9 @@ class LocalTenantProfileAssignmentRequestDTO(BaseModel):
     LocalTenantProfileAssignmentRequestDTO
     """ # noqa: E501
     target_user_ids: Optional[List[StrictStr]] = Field(default=None, description="A list of users to assign this profile.", alias="targetUserIds")
-    validity_end_time: Optional[StrictStr] = Field(default=None, description="An exclusive date-time when this profile is no longer active.", alias="validityEndTime")
     validity_start_time: Optional[StrictStr] = Field(default=None, description="An inclusive date-time when this profile is active.", alias="validityStartTime")
-    __properties: ClassVar[List[str]] = ["targetUserIds", "validityEndTime", "validityStartTime"]
+    validity_end_time: Optional[StrictStr] = Field(default=None, description="An exclusive date-time when this profile is no longer active.", alias="validityEndTime")
+    __properties: ClassVar[List[str]] = ["targetUserIds", "validityStartTime", "validityEndTime"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,8 +83,8 @@ class LocalTenantProfileAssignmentRequestDTO(BaseModel):
 
         _obj = cls.model_validate({
             "targetUserIds": obj.get("targetUserIds"),
-            "validityEndTime": obj.get("validityEndTime"),
-            "validityStartTime": obj.get("validityStartTime")
+            "validityStartTime": obj.get("validityStartTime"),
+            "validityEndTime": obj.get("validityEndTime")
         })
         return _obj
 

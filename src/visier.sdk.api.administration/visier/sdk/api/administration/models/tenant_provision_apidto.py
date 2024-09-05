@@ -27,14 +27,14 @@ class TenantProvisionAPIDTO(BaseModel):
     """
     TenantProvisionAPIDTO
     """ # noqa: E501
-    custom_properties: Optional[List[CustomTenantPropertyDTO]] = Field(default=None, description="A set of key-value pairs that represent different customizable properties for the analytic tenant.", alias="customProperties")
-    embeddable_domains: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the URLs, or domains, in which Visier can be embedded. If  domains at the administrating tenant level match the domains at the analytic tenant level, you do not need  to include a domain for each analytic tenant.", alias="embeddableDomains")
-    industry_code: Optional[StrictInt] = Field(default=None, description="The 6-digit NAICS code for the industry to which the analytic tenant belongs. If the code is unknown, type 000000.   For 2-digit codes, add trailing zeros at the end to reach 6 digits, such as 620000.", alias="industryCode")
-    purchased_modules: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the Visier modules assigned to the analytic tenant.", alias="purchasedModules")
-    sso_instance_issuers: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the issuers for the SSO providers that can authenticate this tenant.", alias="ssoInstanceIssuers")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The unique identifier of the analytic tenant.", alias="tenantCode")
     tenant_display_name: Optional[StrictStr] = Field(default=None, description="The display name that is assigned to the analytic tenant.", alias="tenantDisplayName")
-    __properties: ClassVar[List[str]] = ["customProperties", "embeddableDomains", "industryCode", "purchasedModules", "ssoInstanceIssuers", "tenantCode", "tenantDisplayName"]
+    purchased_modules: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the Visier modules assigned to the analytic tenant.", alias="purchasedModules")
+    industry_code: Optional[StrictInt] = Field(default=None, description="The 6-digit NAICS code for the industry to which the analytic tenant belongs. If the code is unknown, type 000000.   For 2-digit codes, add trailing zeros at the end to reach 6 digits, such as 620000.", alias="industryCode")
+    embeddable_domains: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the URLs, or domains, in which Visier can be embedded. If  domains at the administrating tenant level match the domains at the analytic tenant level, you do not need  to include a domain for each analytic tenant.", alias="embeddableDomains")
+    custom_properties: Optional[List[CustomTenantPropertyDTO]] = Field(default=None, description="A set of key-value pairs that represent different customizable properties for the analytic tenant.", alias="customProperties")
+    sso_instance_issuers: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the issuers for the SSO providers that can authenticate this tenant.", alias="ssoInstanceIssuers")
+    __properties: ClassVar[List[str]] = ["tenantCode", "tenantDisplayName", "purchasedModules", "industryCode", "embeddableDomains", "customProperties", "ssoInstanceIssuers"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,13 +94,13 @@ class TenantProvisionAPIDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "customProperties": [CustomTenantPropertyDTO.from_dict(_item) for _item in obj["customProperties"]] if obj.get("customProperties") is not None else None,
-            "embeddableDomains": obj.get("embeddableDomains"),
-            "industryCode": obj.get("industryCode"),
-            "purchasedModules": obj.get("purchasedModules"),
-            "ssoInstanceIssuers": obj.get("ssoInstanceIssuers"),
             "tenantCode": obj.get("tenantCode"),
-            "tenantDisplayName": obj.get("tenantDisplayName")
+            "tenantDisplayName": obj.get("tenantDisplayName"),
+            "purchasedModules": obj.get("purchasedModules"),
+            "industryCode": obj.get("industryCode"),
+            "embeddableDomains": obj.get("embeddableDomains"),
+            "customProperties": [CustomTenantPropertyDTO.from_dict(_item) for _item in obj["customProperties"]] if obj.get("customProperties") is not None else None,
+            "ssoInstanceIssuers": obj.get("ssoInstanceIssuers")
         })
         return _obj
 

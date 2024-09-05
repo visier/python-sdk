@@ -27,10 +27,10 @@ class UserGroupChangeSuccessDTO(BaseModel):
     UserGroupChangeSuccessDTO
     """ # noqa: E501
     display_name: Optional[StrictStr] = Field(default=None, description="The display name of the created user group.", alias="displayName")
-    project_id: Optional[StrictStr] = Field(default=None, description="The ID of the project the user group was created or updated in.", alias="projectId")
-    tenant_code: Optional[StrictStr] = Field(default=None, description="The code of the tenant the user group was created or updated in.", alias="tenantCode")
     user_group_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the user group.", alias="userGroupId")
-    __properties: ClassVar[List[str]] = ["displayName", "projectId", "tenantCode", "userGroupId"]
+    tenant_code: Optional[StrictStr] = Field(default=None, description="The code of the tenant the user group was created or updated in.", alias="tenantCode")
+    project_id: Optional[StrictStr] = Field(default=None, description="The ID of the project the user group was created or updated in.", alias="projectId")
+    __properties: ClassVar[List[str]] = ["displayName", "userGroupId", "tenantCode", "projectId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,9 +84,9 @@ class UserGroupChangeSuccessDTO(BaseModel):
 
         _obj = cls.model_validate({
             "displayName": obj.get("displayName"),
-            "projectId": obj.get("projectId"),
+            "userGroupId": obj.get("userGroupId"),
             "tenantCode": obj.get("tenantCode"),
-            "userGroupId": obj.get("userGroupId")
+            "projectId": obj.get("projectId")
         })
         return _obj
 

@@ -28,9 +28,9 @@ class AnalyticObjectFilterDTO(BaseModel):
     AnalyticObjectFilterDTO
     """ # noqa: E501
     analytic_object_uuid: Optional[StrictStr] = Field(default=None, description="The UUID of the analytic object used in the selection concept.", alias="analyticObjectUuid")
-    dimensions: Optional[List[DimensionFilterDTO]] = Field(default=None, description="A list of dimensions included in the concept.")
     symbol_name: Optional[StrictStr] = Field(default=None, description="The symbol name of the analytic object.", alias="symbolName")
-    __properties: ClassVar[List[str]] = ["analyticObjectUuid", "dimensions", "symbolName"]
+    dimensions: Optional[List[DimensionFilterDTO]] = Field(default=None, description="A list of dimensions included in the concept.")
+    __properties: ClassVar[List[str]] = ["analyticObjectUuid", "symbolName", "dimensions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,8 +91,8 @@ class AnalyticObjectFilterDTO(BaseModel):
 
         _obj = cls.model_validate({
             "analyticObjectUuid": obj.get("analyticObjectUuid"),
-            "dimensions": [DimensionFilterDTO.from_dict(_item) for _item in obj["dimensions"]] if obj.get("dimensions") is not None else None,
-            "symbolName": obj.get("symbolName")
+            "symbolName": obj.get("symbolName"),
+            "dimensions": [DimensionFilterDTO.from_dict(_item) for _item in obj["dimensions"]] if obj.get("dimensions") is not None else None
         })
         return _obj
 

@@ -26,9 +26,9 @@ class HomeAnalysisByUserGroupDTO(BaseModel):
     """
     HomeAnalysisByUserGroupDTO
     """ # noqa: E501
-    home_analysis_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the analysis to show for this user group when a user logs in.", alias="homeAnalysisId")
     user_group_id: Optional[StrictStr] = Field(default=None, description="The user group ID.", alias="userGroupId")
-    __properties: ClassVar[List[str]] = ["homeAnalysisId", "userGroupId"]
+    home_analysis_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the analysis to show for this user group when a user logs in.", alias="homeAnalysisId")
+    __properties: ClassVar[List[str]] = ["userGroupId", "homeAnalysisId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class HomeAnalysisByUserGroupDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "homeAnalysisId": obj.get("homeAnalysisId"),
-            "userGroupId": obj.get("userGroupId")
+            "userGroupId": obj.get("userGroupId"),
+            "homeAnalysisId": obj.get("homeAnalysisId")
         })
         return _obj
 
