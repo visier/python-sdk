@@ -27,10 +27,10 @@ class PerspectiveNodeDTO(BaseModel):
     """
     PerspectiveNodeDTO
     """ # noqa: E501
-    analytic_object_filters: Optional[List[AnalyticObjectFilterDTO]] = Field(default=None, description="A list of analytic object filters indicating the analytic object and dimensions used for the selection concept.", alias="analyticObjectFilters")
     selection_concept_uuid: Optional[StrictStr] = Field(default=None, description="The UUID of the node's selection concept. Perspective nodes are generated as selection concepts to enable filtering.", alias="selectionConceptUuid")
     symbol_name: Optional[StrictStr] = Field(default=None, description="The symbol name of the selection concept. For example, \"isExitActualSystemTermination\".", alias="symbolName")
-    __properties: ClassVar[List[str]] = ["analyticObjectFilters", "selectionConceptUuid", "symbolName"]
+    analytic_object_filters: Optional[List[AnalyticObjectFilterDTO]] = Field(default=None, description="A list of analytic object filters indicating the analytic object and dimensions used for the selection concept.", alias="analyticObjectFilters")
+    __properties: ClassVar[List[str]] = ["selectionConceptUuid", "symbolName", "analyticObjectFilters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +90,9 @@ class PerspectiveNodeDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analyticObjectFilters": [AnalyticObjectFilterDTO.from_dict(_item) for _item in obj["analyticObjectFilters"]] if obj.get("analyticObjectFilters") is not None else None,
             "selectionConceptUuid": obj.get("selectionConceptUuid"),
-            "symbolName": obj.get("symbolName")
+            "symbolName": obj.get("symbolName"),
+            "analyticObjectFilters": [AnalyticObjectFilterDTO.from_dict(_item) for _item in obj["analyticObjectFilters"]] if obj.get("analyticObjectFilters") is not None else None
         })
         return _obj
 

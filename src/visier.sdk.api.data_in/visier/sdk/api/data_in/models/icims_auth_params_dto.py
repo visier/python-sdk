@@ -27,9 +27,9 @@ class IcimsAuthParamsDTO(BaseModel):
     IcimsAuthParamsDTO
     """ # noqa: E501
     customer_id: Optional[StrictStr] = Field(default=None, alias="customerId")
-    password: Optional[StrictStr] = None
     username: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["customerId", "password", "username"]
+    password: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["customerId", "username", "password"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,8 +83,8 @@ class IcimsAuthParamsDTO(BaseModel):
 
         _obj = cls.model_validate({
             "customerId": obj.get("customerId"),
-            "password": obj.get("password"),
-            "username": obj.get("username")
+            "username": obj.get("username"),
+            "password": obj.get("password")
         })
         return _obj
 

@@ -26,11 +26,11 @@ class TenantDataUploadUpdateStatusResponseDTO(BaseModel):
     """
     TenantDataUploadUpdateStatusResponseDTO
     """ # noqa: E501
-    message: Optional[StrictStr] = Field(default=None, description="If applicable, the message explains why errors were encountered during the exclusion operation.")
-    status: Optional[StrictStr] = Field(default=None, description="The outcome of the exclusion operation.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The analytic tenant that the exclusion operation was conducted for.", alias="tenantCode")
     upload_time: Optional[StrictStr] = Field(default=None, description="The upload time of the data upload", alias="uploadTime")
-    __properties: ClassVar[List[str]] = ["message", "status", "tenantCode", "uploadTime"]
+    status: Optional[StrictStr] = Field(default=None, description="The outcome of the exclusion operation.")
+    message: Optional[StrictStr] = Field(default=None, description="If applicable, the message explains why errors were encountered during the exclusion operation.")
+    __properties: ClassVar[List[str]] = ["tenantCode", "uploadTime", "status", "message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,10 +83,10 @@ class TenantDataUploadUpdateStatusResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": obj.get("message"),
-            "status": obj.get("status"),
             "tenantCode": obj.get("tenantCode"),
-            "uploadTime": obj.get("uploadTime")
+            "uploadTime": obj.get("uploadTime"),
+            "status": obj.get("status"),
+            "message": obj.get("message")
         })
         return _obj
 

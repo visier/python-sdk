@@ -26,13 +26,13 @@ class Source(BaseModel):
     """
     Source
     """ # noqa: E501
-    data_size: Optional[StrictStr] = Field(default=None, description="The size of the data transfer in bytes.", alias="dataSize")
-    message: Optional[StrictStr] = Field(default=None, description="A meaningful message about the data transfer.")
-    rows: Optional[StrictStr] = Field(default=None, description="The number of rows in the data transfer.")
     source_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the source that data was transferred to.", alias="sourceId")
     source_name: Optional[StrictStr] = Field(default=None, description="The object name of the source.", alias="sourceName")
+    data_size: Optional[StrictStr] = Field(default=None, description="The size of the data transfer in bytes.", alias="dataSize")
+    rows: Optional[StrictStr] = Field(default=None, description="The number of rows in the data transfer.")
     status: Optional[StrictStr] = Field(default=None, description="The status of the data transfer for this source.")
-    __properties: ClassVar[List[str]] = ["dataSize", "message", "rows", "sourceId", "sourceName", "status"]
+    message: Optional[StrictStr] = Field(default=None, description="A meaningful message about the data transfer.")
+    __properties: ClassVar[List[str]] = ["sourceId", "sourceName", "dataSize", "rows", "status", "message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,12 +85,12 @@ class Source(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dataSize": obj.get("dataSize"),
-            "message": obj.get("message"),
-            "rows": obj.get("rows"),
             "sourceId": obj.get("sourceId"),
             "sourceName": obj.get("sourceName"),
-            "status": obj.get("status")
+            "dataSize": obj.get("dataSize"),
+            "rows": obj.get("rows"),
+            "status": obj.get("status"),
+            "message": obj.get("message")
         })
         return _obj
 

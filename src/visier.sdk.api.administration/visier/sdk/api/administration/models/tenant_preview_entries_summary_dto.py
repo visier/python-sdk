@@ -27,11 +27,11 @@ class TenantPreviewEntriesSummaryDTO(BaseModel):
     """
     TenantPreviewEntriesSummaryDTO
     """ # noqa: E501
+    tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code of the analytic tenant. For example, \"WFF_j1r~i1o\".", alias="tenantCode")
     data_version: Optional[StrictStr] = Field(default=None, description="The data version ID.", alias="dataVersion")
     data_version_date: Optional[StrictStr] = Field(default=None, description="The date that the data version was created.", alias="dataVersionDate")
     metrics: Optional[List[MetricValidationSummaryDTO]] = Field(default=None, description="A list of metrics and their values.")
-    tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code of the analytic tenant. For example, \"WFF_j1r~i1o\".", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["dataVersion", "dataVersionDate", "metrics", "tenantCode"]
+    __properties: ClassVar[List[str]] = ["tenantCode", "dataVersion", "dataVersionDate", "metrics"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,10 +91,10 @@ class TenantPreviewEntriesSummaryDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "tenantCode": obj.get("tenantCode"),
             "dataVersion": obj.get("dataVersion"),
             "dataVersionDate": obj.get("dataVersionDate"),
-            "metrics": [MetricValidationSummaryDTO.from_dict(_item) for _item in obj["metrics"]] if obj.get("metrics") is not None else None,
-            "tenantCode": obj.get("tenantCode")
+            "metrics": [MetricValidationSummaryDTO.from_dict(_item) for _item in obj["metrics"]] if obj.get("metrics") is not None else None
         })
         return _obj
 

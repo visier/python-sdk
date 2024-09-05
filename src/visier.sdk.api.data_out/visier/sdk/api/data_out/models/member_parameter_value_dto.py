@@ -27,11 +27,11 @@ class MemberParameterValueDTO(BaseModel):
     """
     The member value of a parameter, including the parameter ID, dimension that the parameter is based on,  and the included and excluded members for the parameter.
     """ # noqa: E501
-    dimension_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the dimension on which the parameter is based.", alias="dimensionId")
     parameter_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the member parameter qualified by the object.", alias="parameterId")
+    dimension_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the dimension on which the parameter is based.", alias="dimensionId")
     reference_path: Optional[List[StrictStr]] = Field(default=None, description="The analytic object reference path from the metric to the dimension.", alias="referencePath")
     values: Optional[MemberValuesDTO] = Field(default=None, description="The included and excluded member references in a dimension filter.")
-    __properties: ClassVar[List[str]] = ["dimensionId", "parameterId", "referencePath", "values"]
+    __properties: ClassVar[List[str]] = ["parameterId", "dimensionId", "referencePath", "values"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,8 +87,8 @@ class MemberParameterValueDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dimensionId": obj.get("dimensionId"),
             "parameterId": obj.get("parameterId"),
+            "dimensionId": obj.get("dimensionId"),
             "referencePath": obj.get("referencePath"),
             "values": MemberValuesDTO.from_dict(obj["values"]) if obj.get("values") is not None else None
         })

@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
@@ -26,10 +28,7 @@ from visier.sdk.api.administration.models.consolidated_analytics_api_tenant_list
 from visier.sdk.api.administration.models.consolidated_analytics_api_tenant_with_details_list_response_dto import ConsolidatedAnalyticsAPITenantWithDetailsListResponseDTO
 from visier.sdk.api.administration.models.excluded_sources_body import ExcludedSourcesBody
 from visier.sdk.api.administration.models.tenant_code_body import TenantCodeBody
-
-from visier.sdk.api.administration.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.administration.api_response import ApiResponse
-from visier.sdk.api.administration.rest import RESTResponseType
+import visier.sdk.api.administration.models
 
 
 class ConsolidatedAnalyticsApi:
@@ -46,7 +45,7 @@ class ConsolidatedAnalyticsApi:
 
 
     @validate_call
-    def add_excluded_sources(
+    def consolidated_analytics_add_excluded_sources(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
@@ -93,7 +92,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_excluded_sources_serialize(
+        _param = self._consolidated_analytics_add_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
             _request_auth=_request_auth,
@@ -111,13 +110,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def add_excluded_sources_with_http_info(
+    def consolidated_analytics_add_excluded_sources_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
@@ -164,7 +164,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_excluded_sources_serialize(
+        _param = self._consolidated_analytics_add_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
             _request_auth=_request_auth,
@@ -182,13 +182,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def add_excluded_sources_without_preload_content(
+    def consolidated_analytics_add_excluded_sources_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
@@ -235,7 +236,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_excluded_sources_serialize(
+        _param = self._consolidated_analytics_add_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
             _request_auth=_request_auth,
@@ -254,7 +255,7 @@ class ConsolidatedAnalyticsApi:
         return response_data.response
 
 
-    def _add_excluded_sources_serialize(
+    def _consolidated_analytics_add_excluded_sources_serialize(
         self,
         tenant_id,
         excluded_sources_body,
@@ -332,7 +333,7 @@ class ConsolidatedAnalyticsApi:
 
 
     @validate_call
-    def add_source_tenants(
+    def consolidated_analytics_add_source_tenants(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
@@ -382,7 +383,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_source_tenants_serialize(
+        _param = self._consolidated_analytics_add_source_tenants_serialize(
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
@@ -401,13 +402,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def add_source_tenants_with_http_info(
+    def consolidated_analytics_add_source_tenants_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
@@ -457,7 +459,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_source_tenants_serialize(
+        _param = self._consolidated_analytics_add_source_tenants_serialize(
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
@@ -476,13 +478,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def add_source_tenants_without_preload_content(
+    def consolidated_analytics_add_source_tenants_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
@@ -532,7 +535,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_source_tenants_serialize(
+        _param = self._consolidated_analytics_add_source_tenants_serialize(
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
@@ -552,7 +555,7 @@ class ConsolidatedAnalyticsApi:
         return response_data.response
 
 
-    def _add_source_tenants_serialize(
+    def _consolidated_analytics_add_source_tenants_serialize(
         self,
         tenant_id,
         tenant_code_body,
@@ -635,7 +638,7 @@ class ConsolidatedAnalyticsApi:
 
 
     @validate_call
-    def create_tenant(
+    def consolidated_analytics_create_tenant(
         self,
         consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO,
         _request_timeout: Union[
@@ -679,7 +682,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_tenant_serialize(
+        _param = self._consolidated_analytics_create_tenant_serialize(
             consolidated_analytics_api_tenant_create_request_dto=consolidated_analytics_api_tenant_create_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -696,13 +699,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def create_tenant_with_http_info(
+    def consolidated_analytics_create_tenant_with_http_info(
         self,
         consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO,
         _request_timeout: Union[
@@ -746,7 +750,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_tenant_serialize(
+        _param = self._consolidated_analytics_create_tenant_serialize(
             consolidated_analytics_api_tenant_create_request_dto=consolidated_analytics_api_tenant_create_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -763,13 +767,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def create_tenant_without_preload_content(
+    def consolidated_analytics_create_tenant_without_preload_content(
         self,
         consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO,
         _request_timeout: Union[
@@ -813,7 +818,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_tenant_serialize(
+        _param = self._consolidated_analytics_create_tenant_serialize(
             consolidated_analytics_api_tenant_create_request_dto=consolidated_analytics_api_tenant_create_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -831,7 +836,7 @@ class ConsolidatedAnalyticsApi:
         return response_data.response
 
 
-    def _create_tenant_serialize(
+    def _consolidated_analytics_create_tenant_serialize(
         self,
         consolidated_analytics_api_tenant_create_request_dto,
         _request_auth,
@@ -906,7 +911,7 @@ class ConsolidatedAnalyticsApi:
 
 
     @validate_call
-    def list_excluded_sources(
+    def consolidated_analytics_list_excluded_sources(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         _request_timeout: Union[
@@ -950,7 +955,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_excluded_sources_serialize(
+        _param = self._consolidated_analytics_list_excluded_sources_serialize(
             tenant_id=tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -967,13 +972,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def list_excluded_sources_with_http_info(
+    def consolidated_analytics_list_excluded_sources_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         _request_timeout: Union[
@@ -1017,7 +1023,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_excluded_sources_serialize(
+        _param = self._consolidated_analytics_list_excluded_sources_serialize(
             tenant_id=tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1034,13 +1040,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def list_excluded_sources_without_preload_content(
+    def consolidated_analytics_list_excluded_sources_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         _request_timeout: Union[
@@ -1084,7 +1091,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_excluded_sources_serialize(
+        _param = self._consolidated_analytics_list_excluded_sources_serialize(
             tenant_id=tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1102,7 +1109,7 @@ class ConsolidatedAnalyticsApi:
         return response_data.response
 
 
-    def _list_excluded_sources_serialize(
+    def _consolidated_analytics_list_excluded_sources_serialize(
         self,
         tenant_id,
         _request_auth,
@@ -1164,7 +1171,7 @@ class ConsolidatedAnalyticsApi:
 
 
     @validate_call
-    def list_source_tenants(
+    def consolidated_analytics_list_source_tenants(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
@@ -1214,7 +1221,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_source_tenants_serialize(
+        _param = self._consolidated_analytics_list_source_tenants_serialize(
             tenant_id=tenant_id,
             limit=limit,
             start=start,
@@ -1233,13 +1240,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def list_source_tenants_with_http_info(
+    def consolidated_analytics_list_source_tenants_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
@@ -1289,7 +1297,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_source_tenants_serialize(
+        _param = self._consolidated_analytics_list_source_tenants_serialize(
             tenant_id=tenant_id,
             limit=limit,
             start=start,
@@ -1308,13 +1316,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def list_source_tenants_without_preload_content(
+    def consolidated_analytics_list_source_tenants_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
@@ -1364,7 +1373,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_source_tenants_serialize(
+        _param = self._consolidated_analytics_list_source_tenants_serialize(
             tenant_id=tenant_id,
             limit=limit,
             start=start,
@@ -1384,7 +1393,7 @@ class ConsolidatedAnalyticsApi:
         return response_data.response
 
 
-    def _list_source_tenants_serialize(
+    def _consolidated_analytics_list_source_tenants_serialize(
         self,
         tenant_id,
         limit,
@@ -1456,7 +1465,7 @@ class ConsolidatedAnalyticsApi:
 
 
     @validate_call
-    def list_tenants(
+    def consolidated_analytics_list_tenants(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
@@ -1503,7 +1512,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_tenants_serialize(
+        _param = self._consolidated_analytics_list_tenants_serialize(
             limit=limit,
             start=start,
             _request_auth=_request_auth,
@@ -1521,13 +1530,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def list_tenants_with_http_info(
+    def consolidated_analytics_list_tenants_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
@@ -1574,7 +1584,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_tenants_serialize(
+        _param = self._consolidated_analytics_list_tenants_serialize(
             limit=limit,
             start=start,
             _request_auth=_request_auth,
@@ -1592,13 +1602,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def list_tenants_without_preload_content(
+    def consolidated_analytics_list_tenants_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
@@ -1645,7 +1656,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_tenants_serialize(
+        _param = self._consolidated_analytics_list_tenants_serialize(
             limit=limit,
             start=start,
             _request_auth=_request_auth,
@@ -1664,7 +1675,7 @@ class ConsolidatedAnalyticsApi:
         return response_data.response
 
 
-    def _list_tenants_serialize(
+    def _consolidated_analytics_list_tenants_serialize(
         self,
         limit,
         start,
@@ -1733,7 +1744,7 @@ class ConsolidatedAnalyticsApi:
 
 
     @validate_call
-    def list_tenants_with_details(
+    def consolidated_analytics_list_tenants_with_details(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
@@ -1780,7 +1791,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_tenants_with_details_serialize(
+        _param = self._consolidated_analytics_list_tenants_with_details_serialize(
             limit=limit,
             start=start,
             _request_auth=_request_auth,
@@ -1798,13 +1809,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def list_tenants_with_details_with_http_info(
+    def consolidated_analytics_list_tenants_with_details_with_http_info(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
@@ -1851,7 +1863,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_tenants_with_details_serialize(
+        _param = self._consolidated_analytics_list_tenants_with_details_serialize(
             limit=limit,
             start=start,
             _request_auth=_request_auth,
@@ -1869,13 +1881,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def list_tenants_with_details_without_preload_content(
+    def consolidated_analytics_list_tenants_with_details_without_preload_content(
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
@@ -1922,7 +1935,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_tenants_with_details_serialize(
+        _param = self._consolidated_analytics_list_tenants_with_details_serialize(
             limit=limit,
             start=start,
             _request_auth=_request_auth,
@@ -1941,7 +1954,7 @@ class ConsolidatedAnalyticsApi:
         return response_data.response
 
 
-    def _list_tenants_with_details_serialize(
+    def _consolidated_analytics_list_tenants_with_details_serialize(
         self,
         limit,
         start,
@@ -2010,7 +2023,7 @@ class ConsolidatedAnalyticsApi:
 
 
     @validate_call
-    def remove_excluded_sources(
+    def consolidated_analytics_remove_excluded_sources(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
@@ -2057,7 +2070,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_excluded_sources_serialize(
+        _param = self._consolidated_analytics_remove_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
             _request_auth=_request_auth,
@@ -2075,13 +2088,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def remove_excluded_sources_with_http_info(
+    def consolidated_analytics_remove_excluded_sources_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
@@ -2128,7 +2142,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_excluded_sources_serialize(
+        _param = self._consolidated_analytics_remove_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
             _request_auth=_request_auth,
@@ -2146,13 +2160,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def remove_excluded_sources_without_preload_content(
+    def consolidated_analytics_remove_excluded_sources_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
@@ -2199,7 +2214,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_excluded_sources_serialize(
+        _param = self._consolidated_analytics_remove_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
             _request_auth=_request_auth,
@@ -2218,7 +2233,7 @@ class ConsolidatedAnalyticsApi:
         return response_data.response
 
 
-    def _remove_excluded_sources_serialize(
+    def _consolidated_analytics_remove_excluded_sources_serialize(
         self,
         tenant_id,
         excluded_sources_body,
@@ -2296,7 +2311,7 @@ class ConsolidatedAnalyticsApi:
 
 
     @validate_call
-    def remove_source_tenants(
+    def consolidated_analytics_remove_source_tenants(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
@@ -2346,7 +2361,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_source_tenants_serialize(
+        _param = self._consolidated_analytics_remove_source_tenants_serialize(
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
@@ -2365,13 +2380,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def remove_source_tenants_with_http_info(
+    def consolidated_analytics_remove_source_tenants_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
@@ -2421,7 +2437,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_source_tenants_serialize(
+        _param = self._consolidated_analytics_remove_source_tenants_serialize(
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
@@ -2440,13 +2456,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def remove_source_tenants_without_preload_content(
+    def consolidated_analytics_remove_source_tenants_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
@@ -2496,7 +2513,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_source_tenants_serialize(
+        _param = self._consolidated_analytics_remove_source_tenants_serialize(
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
@@ -2516,7 +2533,7 @@ class ConsolidatedAnalyticsApi:
         return response_data.response
 
 
-    def _remove_source_tenants_serialize(
+    def _consolidated_analytics_remove_source_tenants_serialize(
         self,
         tenant_id,
         tenant_code_body,
@@ -2599,7 +2616,7 @@ class ConsolidatedAnalyticsApi:
 
 
     @validate_call
-    def set_excluded_sources(
+    def consolidated_analytics_set_excluded_sources(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
@@ -2646,7 +2663,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_excluded_sources_serialize(
+        _param = self._consolidated_analytics_set_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
             _request_auth=_request_auth,
@@ -2664,13 +2681,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def set_excluded_sources_with_http_info(
+    def consolidated_analytics_set_excluded_sources_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
@@ -2717,7 +2735,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_excluded_sources_serialize(
+        _param = self._consolidated_analytics_set_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
             _request_auth=_request_auth,
@@ -2735,13 +2753,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def set_excluded_sources_without_preload_content(
+    def consolidated_analytics_set_excluded_sources_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
@@ -2788,7 +2807,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_excluded_sources_serialize(
+        _param = self._consolidated_analytics_set_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
             _request_auth=_request_auth,
@@ -2807,7 +2826,7 @@ class ConsolidatedAnalyticsApi:
         return response_data.response
 
 
-    def _set_excluded_sources_serialize(
+    def _consolidated_analytics_set_excluded_sources_serialize(
         self,
         tenant_id,
         excluded_sources_body,
@@ -2885,7 +2904,7 @@ class ConsolidatedAnalyticsApi:
 
 
     @validate_call
-    def set_source_tenants(
+    def consolidated_analytics_set_source_tenants(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
@@ -2935,7 +2954,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_source_tenants_serialize(
+        _param = self._consolidated_analytics_set_source_tenants_serialize(
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
@@ -2954,13 +2973,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def set_source_tenants_with_http_info(
+    def consolidated_analytics_set_source_tenants_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
@@ -3010,7 +3030,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_source_tenants_serialize(
+        _param = self._consolidated_analytics_set_source_tenants_serialize(
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
@@ -3029,13 +3049,14 @@ class ConsolidatedAnalyticsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def set_source_tenants_without_preload_content(
+    def consolidated_analytics_set_source_tenants_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
@@ -3085,7 +3106,7 @@ class ConsolidatedAnalyticsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._set_source_tenants_serialize(
+        _param = self._consolidated_analytics_set_source_tenants_serialize(
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
@@ -3105,7 +3126,7 @@ class ConsolidatedAnalyticsApi:
         return response_data.response
 
 
-    def _set_source_tenants_serialize(
+    def _consolidated_analytics_set_source_tenants_serialize(
         self,
         tenant_id,
         tenant_code_body,

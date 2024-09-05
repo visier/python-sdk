@@ -26,12 +26,12 @@ class UserCreationAPIRequestDTO(BaseModel):
     """
     UserCreationAPIRequestDTO
     """ # noqa: E501
-    account_enabled: Optional[StrictStr] = Field(default=None, description="If false, the user account is disabled.", alias="accountEnabled")
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable name to display within Visier. For example, \"John Smith\".", alias="displayName")
-    email: Optional[StrictStr] = Field(default=None, description="The user's email. This is used if the user's email is different from their username. For example, \"john.doe@visier.com\".")
-    employee_id: Optional[StrictStr] = Field(default=None, description="If applicable, and if available, the user employee ID in the data.", alias="employeeId")
     username: Optional[StrictStr] = Field(default=None, description="The user's username. This is typically the user's email, such as john@visier.com.")
-    __properties: ClassVar[List[str]] = ["accountEnabled", "displayName", "email", "employeeId", "username"]
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable name to display within Visier. For example, \"John Smith\".", alias="displayName")
+    employee_id: Optional[StrictStr] = Field(default=None, description="If applicable, and if available, the user employee ID in the data.", alias="employeeId")
+    account_enabled: Optional[StrictStr] = Field(default=None, description="If false, the user account is disabled.", alias="accountEnabled")
+    email: Optional[StrictStr] = Field(default=None, description="The user's email. This is used if the user's email is different from their username. For example, \"john.doe@visier.com\".")
+    __properties: ClassVar[List[str]] = ["username", "displayName", "employeeId", "accountEnabled", "email"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,11 +84,11 @@ class UserCreationAPIRequestDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accountEnabled": obj.get("accountEnabled"),
+            "username": obj.get("username"),
             "displayName": obj.get("displayName"),
-            "email": obj.get("email"),
             "employeeId": obj.get("employeeId"),
-            "username": obj.get("username")
+            "accountEnabled": obj.get("accountEnabled"),
+            "email": obj.get("email")
         })
         return _obj
 

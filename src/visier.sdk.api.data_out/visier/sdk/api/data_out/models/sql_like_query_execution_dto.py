@@ -27,9 +27,9 @@ class SqlLikeQueryExecutionDTO(BaseModel):
     """
     *  Request body for SQL-like query executions
     """ # noqa: E501
-    options: Optional[QueryExecutionOptionsDTO] = Field(default=None, description="Optional options that currently that cannot be expressed in SQL-like")
     query: Optional[StrictStr] = Field(default=None, description="The SQL-like query string")
-    __properties: ClassVar[List[str]] = ["options", "query"]
+    options: Optional[QueryExecutionOptionsDTO] = Field(default=None, description="Optional options that currently that cannot be expressed in SQL-like")
+    __properties: ClassVar[List[str]] = ["query", "options"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,8 +85,8 @@ class SqlLikeQueryExecutionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "options": QueryExecutionOptionsDTO.from_dict(obj["options"]) if obj.get("options") is not None else None,
-            "query": obj.get("query")
+            "query": obj.get("query"),
+            "options": QueryExecutionOptionsDTO.from_dict(obj["options"]) if obj.get("options") is not None else None
         })
         return _obj
 

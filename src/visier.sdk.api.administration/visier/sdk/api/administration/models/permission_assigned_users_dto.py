@@ -27,10 +27,10 @@ class PermissionAssignedUsersDTO(BaseModel):
     """
     Users that are assigned a specific permission.
     """ # noqa: E501
+    tenants: Optional[List[PermissionAssignedByTenantDTO]] = Field(default=None, description="A list of objects representing the users that are assigned the specific permission, organized by the tenants the users belong to.")
     limit: Optional[StrictInt] = Field(default=None, description="The number of results to return. The maximum number of tenants to retrieve is 100.")
     start: Optional[StrictInt] = Field(default=None, description="The index of the tenant to start retrieving results from, also known as offset. The index begins at 0.")
-    tenants: Optional[List[PermissionAssignedByTenantDTO]] = Field(default=None, description="A list of objects representing the users that are assigned the specific permission, organized by the tenants the users belong to.")
-    __properties: ClassVar[List[str]] = ["limit", "start", "tenants"]
+    __properties: ClassVar[List[str]] = ["tenants", "limit", "start"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +90,9 @@ class PermissionAssignedUsersDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "tenants": [PermissionAssignedByTenantDTO.from_dict(_item) for _item in obj["tenants"]] if obj.get("tenants") is not None else None,
             "limit": obj.get("limit"),
-            "start": obj.get("start"),
-            "tenants": [PermissionAssignedByTenantDTO.from_dict(_item) for _item in obj["tenants"]] if obj.get("tenants") is not None else None
+            "start": obj.get("start")
         })
         return _obj
 

@@ -26,9 +26,9 @@ class DataCategoryResponseDTO(BaseModel):
     """
     The data category's UUID and display name.
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="The UUID of the data category.")
     name: Optional[StrictStr] = Field(default=None, description="The display name of the data category.")
-    __properties: ClassVar[List[str]] = ["id", "name"]
+    id: Optional[StrictStr] = Field(default=None, description="The UUID of the data category.")
+    __properties: ClassVar[List[str]] = ["name", "id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class DataCategoryResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "name": obj.get("name"),
+            "id": obj.get("id")
         })
         return _obj
 

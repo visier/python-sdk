@@ -27,9 +27,9 @@ class ServiceNowAuthParamsDTO(BaseModel):
     ServiceNowAuthParamsDTO
     """ # noqa: E501
     host_domain_name: Optional[StrictStr] = Field(default=None, alias="hostDomainName")
-    password: Optional[StrictStr] = None
     username: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["hostDomainName", "password", "username"]
+    password: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["hostDomainName", "username", "password"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,8 +83,8 @@ class ServiceNowAuthParamsDTO(BaseModel):
 
         _obj = cls.model_validate({
             "hostDomainName": obj.get("hostDomainName"),
-            "password": obj.get("password"),
-            "username": obj.get("username")
+            "username": obj.get("username"),
+            "password": obj.get("password")
         })
         return _obj
 

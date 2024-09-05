@@ -27,11 +27,11 @@ class OracleDbAuthParamsDTO(BaseModel):
     OracleDbAuthParamsDTO
     """ # noqa: E501
     host: Optional[StrictStr] = None
-    password: Optional[StrictStr] = None
     port: Optional[StrictStr] = None
-    service_name: Optional[StrictStr] = Field(default=None, alias="serviceName")
     username: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["host", "password", "port", "serviceName", "username"]
+    password: Optional[StrictStr] = None
+    service_name: Optional[StrictStr] = Field(default=None, alias="serviceName")
+    __properties: ClassVar[List[str]] = ["host", "port", "username", "password", "serviceName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,10 +85,10 @@ class OracleDbAuthParamsDTO(BaseModel):
 
         _obj = cls.model_validate({
             "host": obj.get("host"),
-            "password": obj.get("password"),
             "port": obj.get("port"),
-            "serviceName": obj.get("serviceName"),
-            "username": obj.get("username")
+            "username": obj.get("username"),
+            "password": obj.get("password"),
+            "serviceName": obj.get("serviceName")
         })
         return _obj
 

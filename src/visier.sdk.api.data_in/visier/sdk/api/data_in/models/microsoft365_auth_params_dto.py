@@ -26,11 +26,11 @@ class Microsoft365AuthParamsDTO(BaseModel):
     """
     Microsoft365AuthParamsDTO
     """ # noqa: E501
+    o_auth_tenant_id: Optional[StrictStr] = Field(default=None, alias="oAuthTenantId")
     client_id: Optional[StrictStr] = Field(default=None, alias="clientId")
     client_secret: Optional[StrictStr] = Field(default=None, alias="clientSecret")
-    o_auth_tenant_id: Optional[StrictStr] = Field(default=None, alias="oAuthTenantId")
     privacy_mode: Optional[StrictStr] = Field(default=None, alias="privacyMode")
-    __properties: ClassVar[List[str]] = ["clientId", "clientSecret", "oAuthTenantId", "privacyMode"]
+    __properties: ClassVar[List[str]] = ["oAuthTenantId", "clientId", "clientSecret", "privacyMode"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,9 +83,9 @@ class Microsoft365AuthParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "oAuthTenantId": obj.get("oAuthTenantId"),
             "clientId": obj.get("clientId"),
             "clientSecret": obj.get("clientSecret"),
-            "oAuthTenantId": obj.get("oAuthTenantId"),
             "privacyMode": obj.get("privacyMode")
         })
         return _obj

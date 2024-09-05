@@ -26,9 +26,9 @@ class InternalQueryExecutionOptionsDTO(BaseModel):
     """
     Internal options - not to be documented or used by external parties
     """ # noqa: E501
-    align_time_axis_to_period_end: Optional[StrictBool] = Field(default=None, description="If true, shifts the time axis members back by one millisecond.  Shifting the time axis members back by one millisecond makes them valid at the end of the period instead of at the start of the next period.  This aligns the returned data timestamps with the timestamps in the Visier application.   Example: If the timestamps are originally [`2019-06-01T00:00:00.000Z`, `2019-05-01T00:00:00.000Z`],  then `alignTimeAxisPeriodEnd` turns the timestamps into [`2019-05-31T23:59:59.999Z`, `2019-04-30T23:59:59.999Z`].   Example: If the timestamps are originally [`2019-05-01T00:00:00.000Z/2019-06-01T00:00:00.000Z`, `2019-04-01T00:00:00.000Z/2019-05-01T00:00:00.000Z`],  then `alignTimeAxisPeriodEnd` turns the timestamps into [`2019-05-01T00:00:00.000Z/2019-05-31T23:59:59.999Z`, `2019-04-01T00:00:00.000Z/2019-04-30T23:59:59.999Z`].", alias="alignTimeAxisToPeriodEnd")
     sparse_handling_mode: Optional[StrictStr] = Field(default=None, alias="sparseHandlingMode")
-    __properties: ClassVar[List[str]] = ["alignTimeAxisToPeriodEnd", "sparseHandlingMode"]
+    align_time_axis_to_period_end: Optional[StrictBool] = Field(default=None, description="If true, shifts the time axis members back by one millisecond.  Shifting the time axis members back by one millisecond makes them valid at the end of the period instead of at the start of the next period.  This aligns the returned data timestamps with the timestamps in the Visier application.   Example: If the timestamps are originally [`2019-06-01T00:00:00.000Z`, `2019-05-01T00:00:00.000Z`],  then `alignTimeAxisPeriodEnd` turns the timestamps into [`2019-05-31T23:59:59.999Z`, `2019-04-30T23:59:59.999Z`].   Example: If the timestamps are originally [`2019-05-01T00:00:00.000Z/2019-06-01T00:00:00.000Z`, `2019-04-01T00:00:00.000Z/2019-05-01T00:00:00.000Z`],  then `alignTimeAxisPeriodEnd` turns the timestamps into [`2019-05-01T00:00:00.000Z/2019-05-31T23:59:59.999Z`, `2019-04-01T00:00:00.000Z/2019-04-30T23:59:59.999Z`].", alias="alignTimeAxisToPeriodEnd")
+    __properties: ClassVar[List[str]] = ["sparseHandlingMode", "alignTimeAxisToPeriodEnd"]
 
     @field_validator('sparse_handling_mode')
     def sparse_handling_mode_validate_enum(cls, value):
@@ -91,8 +91,8 @@ class InternalQueryExecutionOptionsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "alignTimeAxisToPeriodEnd": obj.get("alignTimeAxisToPeriodEnd"),
-            "sparseHandlingMode": obj.get("sparseHandlingMode")
+            "sparseHandlingMode": obj.get("sparseHandlingMode"),
+            "alignTimeAxisToPeriodEnd": obj.get("alignTimeAxisToPeriodEnd")
         })
         return _obj
 

@@ -30,13 +30,13 @@ class QueryPropertyDTO(BaseModel):
     """
     A QueryProperty defines a property of a data point returned from a query.  This is not the same as a `property` in Visier's data mode.
     """ # noqa: E501
-    dimension: Optional[DimensionReferenceDTO] = Field(default=None, description="A dimension-based property that returns the full name path of the dimension member that the data point is mapped to.")
-    effective_date_property: Optional[Dict[str, Any]] = Field(default=None, description="A property that yields the effective date for the record", alias="effectiveDateProperty")
     formula: Optional[StrictStr] = Field(default=None, description="A formula-based property.")
-    member_map_property: Optional[QueryMemberMapPropertyDTO] = Field(default=None, description="A member map-based property that uses an existing member map in Visier.", alias="memberMapProperty")
     var_property: Optional[PropertyReferenceDTO] = Field(default=None, description="A property reference.", alias="property")
     selection_concept: Optional[SelectionConceptReferenceDTO] = Field(default=None, description="A selection concept-based property that returns true or false.", alias="selectionConcept")
-    __properties: ClassVar[List[str]] = ["dimension", "effectiveDateProperty", "formula", "memberMapProperty", "property", "selectionConcept"]
+    dimension: Optional[DimensionReferenceDTO] = Field(default=None, description="A dimension-based property that returns the full name path of the dimension member that the data point is mapped to.")
+    member_map_property: Optional[QueryMemberMapPropertyDTO] = Field(default=None, description="A member map-based property that uses an existing member map in Visier.", alias="memberMapProperty")
+    effective_date_property: Optional[Dict[str, Any]] = Field(default=None, description="A property that yields the effective date for the record", alias="effectiveDateProperty")
+    __properties: ClassVar[List[str]] = ["formula", "property", "selectionConcept", "dimension", "memberMapProperty", "effectiveDateProperty"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,18 +77,18 @@ class QueryPropertyDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of dimension
-        if self.dimension:
-            _dict['dimension'] = self.dimension.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of member_map_property
-        if self.member_map_property:
-            _dict['memberMapProperty'] = self.member_map_property.to_dict()
         # override the default output from pydantic by calling `to_dict()` of var_property
         if self.var_property:
             _dict['property'] = self.var_property.to_dict()
         # override the default output from pydantic by calling `to_dict()` of selection_concept
         if self.selection_concept:
             _dict['selectionConcept'] = self.selection_concept.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of dimension
+        if self.dimension:
+            _dict['dimension'] = self.dimension.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of member_map_property
+        if self.member_map_property:
+            _dict['memberMapProperty'] = self.member_map_property.to_dict()
         return _dict
 
     @classmethod
@@ -101,12 +101,12 @@ class QueryPropertyDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dimension": DimensionReferenceDTO.from_dict(obj["dimension"]) if obj.get("dimension") is not None else None,
-            "effectiveDateProperty": obj.get("effectiveDateProperty"),
             "formula": obj.get("formula"),
-            "memberMapProperty": QueryMemberMapPropertyDTO.from_dict(obj["memberMapProperty"]) if obj.get("memberMapProperty") is not None else None,
             "property": PropertyReferenceDTO.from_dict(obj["property"]) if obj.get("property") is not None else None,
-            "selectionConcept": SelectionConceptReferenceDTO.from_dict(obj["selectionConcept"]) if obj.get("selectionConcept") is not None else None
+            "selectionConcept": SelectionConceptReferenceDTO.from_dict(obj["selectionConcept"]) if obj.get("selectionConcept") is not None else None,
+            "dimension": DimensionReferenceDTO.from_dict(obj["dimension"]) if obj.get("dimension") is not None else None,
+            "memberMapProperty": QueryMemberMapPropertyDTO.from_dict(obj["memberMapProperty"]) if obj.get("memberMapProperty") is not None else None,
+            "effectiveDateProperty": obj.get("effectiveDateProperty")
         })
         return _obj
 

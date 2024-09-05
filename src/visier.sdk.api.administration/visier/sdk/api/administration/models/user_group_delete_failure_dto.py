@@ -26,12 +26,12 @@ class UserGroupDeleteFailureDTO(BaseModel):
     """
     UserGroupDeleteFailureDTO
     """ # noqa: E501
-    message: Optional[StrictStr] = Field(default=None, description="The error message containing the cause of the failure.")
-    project_id: Optional[StrictStr] = Field(default=None, description="The ID of the project in which the user group could not be deleted.", alias="projectId")
-    rci: Optional[StrictStr] = Field(default=None, description="The root cause identifier to provide to Visier Technical Support if you require further troubleshooting.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The code of the tenant from which the user group could not be deleted.", alias="tenantCode")
     user_group_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the user group that could not be deleted.", alias="userGroupId")
-    __properties: ClassVar[List[str]] = ["message", "projectId", "rci", "tenantCode", "userGroupId"]
+    message: Optional[StrictStr] = Field(default=None, description="The error message containing the cause of the failure.")
+    rci: Optional[StrictStr] = Field(default=None, description="The root cause identifier to provide to Visier Technical Support if you require further troubleshooting.")
+    project_id: Optional[StrictStr] = Field(default=None, description="The ID of the project in which the user group could not be deleted.", alias="projectId")
+    __properties: ClassVar[List[str]] = ["tenantCode", "userGroupId", "message", "rci", "projectId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,11 +84,11 @@ class UserGroupDeleteFailureDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": obj.get("message"),
-            "projectId": obj.get("projectId"),
-            "rci": obj.get("rci"),
             "tenantCode": obj.get("tenantCode"),
-            "userGroupId": obj.get("userGroupId")
+            "userGroupId": obj.get("userGroupId"),
+            "message": obj.get("message"),
+            "rci": obj.get("rci"),
+            "projectId": obj.get("projectId")
         })
         return _obj
 

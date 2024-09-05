@@ -29,10 +29,10 @@ class DimensionsAuthParamsDTO(BaseModel):
     app_key: Optional[StrictStr] = Field(default=None, alias="appKey")
     client_id: Optional[StrictStr] = Field(default=None, alias="clientId")
     client_secret: Optional[StrictStr] = Field(default=None, alias="clientSecret")
-    password: Optional[StrictStr] = None
-    username: Optional[StrictStr] = None
     vanity_url: Optional[StrictStr] = Field(default=None, alias="vanityUrl")
-    __properties: ClassVar[List[str]] = ["appKey", "clientId", "clientSecret", "password", "username", "vanityUrl"]
+    username: Optional[StrictStr] = None
+    password: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["appKey", "clientId", "clientSecret", "vanityUrl", "username", "password"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,9 +88,9 @@ class DimensionsAuthParamsDTO(BaseModel):
             "appKey": obj.get("appKey"),
             "clientId": obj.get("clientId"),
             "clientSecret": obj.get("clientSecret"),
-            "password": obj.get("password"),
+            "vanityUrl": obj.get("vanityUrl"),
             "username": obj.get("username"),
-            "vanityUrl": obj.get("vanityUrl")
+            "password": obj.get("password")
         })
         return _obj
 

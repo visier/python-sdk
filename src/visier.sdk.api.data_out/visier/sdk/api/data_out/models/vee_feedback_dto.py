@@ -27,10 +27,10 @@ class VeeFeedbackDTO(BaseModel):
     """
     The request body fields to submit Vee feedback.
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="A description of how Vee should have answered the question or how Vee can improve the answer; for example, \"Expected Headcount metric, but Vee returned Average Headcount\".")
-    is_approved: Optional[StrictBool] = Field(default=None, description="If `true`, Vee answered the question correctly. If `false`, Vee's answer was incorrect or lacked details.", alias="isApproved")
     response: Optional[VeeResponseDTO] = Field(default=None, description="Your feedback about Vee's answer. Include the response object from the `/question` call that you want to provide feedback about.")
-    __properties: ClassVar[List[str]] = ["description", "isApproved", "response"]
+    is_approved: Optional[StrictBool] = Field(default=None, description="If `true`, Vee answered the question correctly. If `false`, Vee's answer was incorrect or lacked details.", alias="isApproved")
+    description: Optional[StrictStr] = Field(default=None, description="A description of how Vee should have answered the question or how Vee can improve the answer; for example, \"Expected Headcount metric, but Vee returned Average Headcount\".")
+    __properties: ClassVar[List[str]] = ["response", "isApproved", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,9 +86,9 @@ class VeeFeedbackDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
+            "response": VeeResponseDTO.from_dict(obj["response"]) if obj.get("response") is not None else None,
             "isApproved": obj.get("isApproved"),
-            "response": VeeResponseDTO.from_dict(obj["response"]) if obj.get("response") is not None else None
+            "description": obj.get("description")
         })
         return _obj
 

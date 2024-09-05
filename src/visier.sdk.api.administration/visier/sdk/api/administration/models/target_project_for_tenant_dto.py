@@ -26,9 +26,9 @@ class TargetProjectForTenantDTO(BaseModel):
     """
     TargetProjectForTenantDTO
     """ # noqa: E501
-    project_id: Optional[StrictStr] = Field(default=None, description="The project in which to make changes for the tenant.", alias="projectId")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["projectId", "tenantCode"]
+    project_id: Optional[StrictStr] = Field(default=None, description="The project in which to make changes for the tenant.", alias="projectId")
+    __properties: ClassVar[List[str]] = ["tenantCode", "projectId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class TargetProjectForTenantDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "projectId": obj.get("projectId"),
-            "tenantCode": obj.get("tenantCode")
+            "tenantCode": obj.get("tenantCode"),
+            "projectId": obj.get("projectId")
         })
         return _obj
 

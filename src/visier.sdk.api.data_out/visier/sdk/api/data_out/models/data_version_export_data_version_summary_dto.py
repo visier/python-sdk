@@ -26,10 +26,10 @@ class DataVersionExportDataVersionSummaryDTO(BaseModel):
     """
     DataVersionExportDataVersionSummaryDTO
     """ # noqa: E501
-    created: Optional[StrictStr] = Field(default=None, description="The date that the data version was generated, in milliseconds since 1970-01-01T00:00:00Z.")
-    data_category: Optional[StrictStr] = Field(default=None, description="The data category that the data version belongs to. If empty, the data version belongs to the default data category.", alias="dataCategory")
     data_version: Optional[StrictStr] = Field(default=None, description="The data version number.", alias="dataVersion")
-    __properties: ClassVar[List[str]] = ["created", "dataCategory", "dataVersion"]
+    data_category: Optional[StrictStr] = Field(default=None, description="The data category that the data version belongs to. If empty, the data version belongs to the default data category.", alias="dataCategory")
+    created: Optional[StrictStr] = Field(default=None, description="The date that the data version was generated, in milliseconds since 1970-01-01T00:00:00Z.")
+    __properties: ClassVar[List[str]] = ["dataVersion", "dataCategory", "created"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class DataVersionExportDataVersionSummaryDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "created": obj.get("created"),
+            "dataVersion": obj.get("dataVersion"),
             "dataCategory": obj.get("dataCategory"),
-            "dataVersion": obj.get("dataVersion")
+            "created": obj.get("created")
         })
         return _obj
 

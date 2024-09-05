@@ -26,9 +26,9 @@ class DataVersionExportScheduleJobRequestDTO(BaseModel):
     """
     DataVersionExportScheduleJobRequestDTO
     """ # noqa: E501
-    base_data_version_number: Optional[StrictStr] = Field(default=None, description="Optional. The baseline data version number to use to generate a delta export.  Delta exports contain the differences between `baseDataVersionNumber` and  `dataVersionNumber`, such as anything updated, added, or removed in `dataVersionNumber`.  If `baseDataVersionNumber` is not provided, a full export generates for `dataVersionNumber`.", alias="baseDataVersionNumber")
     data_version_number: Optional[StrictStr] = Field(default=None, description="The data version number to generate an export for.", alias="dataVersionNumber")
-    __properties: ClassVar[List[str]] = ["baseDataVersionNumber", "dataVersionNumber"]
+    base_data_version_number: Optional[StrictStr] = Field(default=None, description="Optional. The baseline data version number to use to generate a delta export.  Delta exports contain the differences between `baseDataVersionNumber` and  `dataVersionNumber`, such as anything updated, added, or removed in `dataVersionNumber`.  If `baseDataVersionNumber` is not provided, a full export generates for `dataVersionNumber`.", alias="baseDataVersionNumber")
+    __properties: ClassVar[List[str]] = ["dataVersionNumber", "baseDataVersionNumber"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class DataVersionExportScheduleJobRequestDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "baseDataVersionNumber": obj.get("baseDataVersionNumber"),
-            "dataVersionNumber": obj.get("dataVersionNumber")
+            "dataVersionNumber": obj.get("dataVersionNumber"),
+            "baseDataVersionNumber": obj.get("baseDataVersionNumber")
         })
         return _obj
 

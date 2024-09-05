@@ -26,13 +26,13 @@ class ProfileAssignedForAccessibleTenantDTO(BaseModel):
     """
     ProfileAssignedForAccessibleTenantDTO
     """ # noqa: E501
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable profile name to display in Visier such as \"Partner Service Manager\".", alias="displayName")
-    for_all_children: Optional[StrictBool] = Field(default=None, description="If true, the profile is assigned for all the analytic tenants of the administrating tenant.", alias="forAllChildren")
     profile_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the profile.", alias="profileId")
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable profile name to display in Visier such as \"Partner Service Manager\".", alias="displayName")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code of the analytic tenant on which this profile is assigned.", alias="tenantCode")
-    validity_end_time: Optional[StrictStr] = Field(default=None, description="An exclusive date-time when this profile is no longer active.   Note: Long.Max_Value means that endTime is undefined and is equivalent to permanent access.", alias="validityEndTime")
+    for_all_children: Optional[StrictBool] = Field(default=None, description="If true, the profile is assigned for all the analytic tenants of the administrating tenant.", alias="forAllChildren")
     validity_start_time: Optional[StrictStr] = Field(default=None, description="An inclusive date-time when this profile is active.   Note: Long.Min_Value means that startTime is undefined.", alias="validityStartTime")
-    __properties: ClassVar[List[str]] = ["displayName", "forAllChildren", "profileId", "tenantCode", "validityEndTime", "validityStartTime"]
+    validity_end_time: Optional[StrictStr] = Field(default=None, description="An exclusive date-time when this profile is no longer active.   Note: Long.Max_Value means that endTime is undefined and is equivalent to permanent access.", alias="validityEndTime")
+    __properties: ClassVar[List[str]] = ["profileId", "displayName", "tenantCode", "forAllChildren", "validityStartTime", "validityEndTime"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,12 +85,12 @@ class ProfileAssignedForAccessibleTenantDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "displayName": obj.get("displayName"),
-            "forAllChildren": obj.get("forAllChildren"),
             "profileId": obj.get("profileId"),
+            "displayName": obj.get("displayName"),
             "tenantCode": obj.get("tenantCode"),
-            "validityEndTime": obj.get("validityEndTime"),
-            "validityStartTime": obj.get("validityStartTime")
+            "forAllChildren": obj.get("forAllChildren"),
+            "validityStartTime": obj.get("validityStartTime"),
+            "validityEndTime": obj.get("validityEndTime")
         })
         return _obj
 

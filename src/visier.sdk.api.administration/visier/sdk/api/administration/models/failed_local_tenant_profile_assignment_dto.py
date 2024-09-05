@@ -27,9 +27,9 @@ class FailedLocalTenantProfileAssignmentDTO(BaseModel):
     """
     FailedLocalTenantProfileAssignmentDTO
     """ # noqa: E501
-    error: Optional[ErrorDTO] = Field(default=None, description="The details about the error.")
     user_id: Optional[StrictStr] = Field(default=None, description="The impacted user ID.", alias="userId")
-    __properties: ClassVar[List[str]] = ["error", "userId"]
+    error: Optional[ErrorDTO] = Field(default=None, description="The details about the error.")
+    __properties: ClassVar[List[str]] = ["userId", "error"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,8 +85,8 @@ class FailedLocalTenantProfileAssignmentDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "error": ErrorDTO.from_dict(obj["error"]) if obj.get("error") is not None else None,
-            "userId": obj.get("userId")
+            "userId": obj.get("userId"),
+            "error": ErrorDTO.from_dict(obj["error"]) if obj.get("error") is not None else None
         })
         return _obj
 

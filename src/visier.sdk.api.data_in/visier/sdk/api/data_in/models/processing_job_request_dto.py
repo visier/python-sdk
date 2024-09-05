@@ -26,11 +26,11 @@ class ProcessingJobRequestDTO(BaseModel):
     """
     ProcessingJobRequestDTO
     """ # noqa: E501
+    tenants: Optional[List[StrictStr]] = Field(default=None, description="The tenant codes of the tenants to run processing jobs for. If omitted, runs a processing job for the tenant associated with the user who made the API request.")
     all_tenants: Optional[StrictBool] = Field(default=None, description="If `true`, runs processing jobs for all accessible analytic tenants. Default is `false`.", alias="allTenants")
     data_category_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the data category to run the job. If omitted, runs a job using the primary data category.  To retrieve a list of all data categories, see `GET /v1/op/data/categories`.", alias="dataCategoryId")
     publish_to_production: Optional[StrictBool] = Field(default=None, description="If `true`, publishes the generated data version to production. Default is `false`.", alias="publishToProduction")
-    tenants: Optional[List[StrictStr]] = Field(default=None, description="The tenant codes of the tenants to run processing jobs for. If omitted, runs a processing job for the tenant associated with the user who made the API request.")
-    __properties: ClassVar[List[str]] = ["allTenants", "dataCategoryId", "publishToProduction", "tenants"]
+    __properties: ClassVar[List[str]] = ["tenants", "allTenants", "dataCategoryId", "publishToProduction"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,10 +83,10 @@ class ProcessingJobRequestDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "tenants": obj.get("tenants"),
             "allTenants": obj.get("allTenants"),
             "dataCategoryId": obj.get("dataCategoryId"),
-            "publishToProduction": obj.get("publishToProduction"),
-            "tenants": obj.get("tenants")
+            "publishToProduction": obj.get("publishToProduction")
         })
         return _obj
 

@@ -29,13 +29,13 @@ class PermissionDTO(BaseModel):
     """
     PermissionDTO
     """ # noqa: E501
-    admin_capability_config: Optional[AdminCapabilityConfigDTO] = Field(default=None, description="The capabilities assigned in the permission.", alias="adminCapabilityConfig")
-    data_security_profiles: Optional[List[DataSecurityProfileDTO]] = Field(default=None, description="A list of objects representing the data security for each item in a permission.", alias="dataSecurityProfiles")
-    description: Optional[StrictStr] = Field(default=None, description="A user-defined description of the permission.")
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable permission name to display in Visier, such as \"Diversity Access\".", alias="displayName")
     permission_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the permission.", alias="permissionId")
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable permission name to display in Visier, such as \"Diversity Access\".", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="A user-defined description of the permission.")
+    data_security_profiles: Optional[List[DataSecurityProfileDTO]] = Field(default=None, description="A list of objects representing the data security for each item in a permission.", alias="dataSecurityProfiles")
+    admin_capability_config: Optional[AdminCapabilityConfigDTO] = Field(default=None, description="The capabilities assigned in the permission.", alias="adminCapabilityConfig")
     role_modules_config: Optional[RoleModulesConfigDTO] = Field(default=None, description="A list of content packages assigned to the permission.", alias="roleModulesConfig")
-    __properties: ClassVar[List[str]] = ["adminCapabilityConfig", "dataSecurityProfiles", "description", "displayName", "permissionId", "roleModulesConfig"]
+    __properties: ClassVar[List[str]] = ["permissionId", "displayName", "description", "dataSecurityProfiles", "adminCapabilityConfig", "roleModulesConfig"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,9 +76,6 @@ class PermissionDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of admin_capability_config
-        if self.admin_capability_config:
-            _dict['adminCapabilityConfig'] = self.admin_capability_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in data_security_profiles (list)
         _items = []
         if self.data_security_profiles:
@@ -86,6 +83,9 @@ class PermissionDTO(BaseModel):
                 if _item_data_security_profiles:
                     _items.append(_item_data_security_profiles.to_dict())
             _dict['dataSecurityProfiles'] = _items
+        # override the default output from pydantic by calling `to_dict()` of admin_capability_config
+        if self.admin_capability_config:
+            _dict['adminCapabilityConfig'] = self.admin_capability_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of role_modules_config
         if self.role_modules_config:
             _dict['roleModulesConfig'] = self.role_modules_config.to_dict()
@@ -101,11 +101,11 @@ class PermissionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "adminCapabilityConfig": AdminCapabilityConfigDTO.from_dict(obj["adminCapabilityConfig"]) if obj.get("adminCapabilityConfig") is not None else None,
-            "dataSecurityProfiles": [DataSecurityProfileDTO.from_dict(_item) for _item in obj["dataSecurityProfiles"]] if obj.get("dataSecurityProfiles") is not None else None,
-            "description": obj.get("description"),
-            "displayName": obj.get("displayName"),
             "permissionId": obj.get("permissionId"),
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description"),
+            "dataSecurityProfiles": [DataSecurityProfileDTO.from_dict(_item) for _item in obj["dataSecurityProfiles"]] if obj.get("dataSecurityProfiles") is not None else None,
+            "adminCapabilityConfig": AdminCapabilityConfigDTO.from_dict(obj["adminCapabilityConfig"]) if obj.get("adminCapabilityConfig") is not None else None,
             "roleModulesConfig": RoleModulesConfigDTO.from_dict(obj["roleModulesConfig"]) if obj.get("roleModulesConfig") is not None else None
         })
         return _obj

@@ -27,9 +27,9 @@ class VeeCorrectionsDTO(BaseModel):
     """
     VeeCorrectionsDTO
     """ # noqa: E501
-    clarifications: Optional[List[VeeClarificationDTO]] = Field(default=None, description="A list of clarifying questions if Vee needs more context to answer your question; for example, if asking about someone named Adam, Vee might clarify which Adam by asking for Adam's email address.")
     warning: Optional[List[StrictStr]] = Field(default=None, description="A list of warnings from Vee that accompanies an unsure answer; for example, Vee might return a close match warning if Vee finds multiple employees named Adam that relate to your question.")
-    __properties: ClassVar[List[str]] = ["clarifications", "warning"]
+    clarifications: Optional[List[VeeClarificationDTO]] = Field(default=None, description="A list of clarifying questions if Vee needs more context to answer your question; for example, if asking about someone named Adam, Vee might clarify which Adam by asking for Adam's email address.")
+    __properties: ClassVar[List[str]] = ["warning", "clarifications"]
 
     @field_validator('warning')
     def warning_validate_enum(cls, value):
@@ -100,8 +100,8 @@ class VeeCorrectionsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "clarifications": [VeeClarificationDTO.from_dict(_item) for _item in obj["clarifications"]] if obj.get("clarifications") is not None else None,
-            "warning": obj.get("warning")
+            "warning": obj.get("warning"),
+            "clarifications": [VeeClarificationDTO.from_dict(_item) for _item in obj["clarifications"]] if obj.get("clarifications") is not None else None
         })
         return _obj
 

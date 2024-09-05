@@ -26,10 +26,10 @@ class CapabilityDTO(BaseModel):
     """
     CapabilityDTO
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="A description of the capability.")
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable capability name to display in Visier, such as \"Schedule Analysis\".", alias="displayName")
     name: Optional[StrictStr] = Field(default=None, description="The unique name of the capability.")
-    __properties: ClassVar[List[str]] = ["description", "displayName", "name"]
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable capability name to display in Visier, such as \"Schedule Analysis\".", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="A description of the capability.")
+    __properties: ClassVar[List[str]] = ["name", "displayName", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class CapabilityDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
+            "name": obj.get("name"),
             "displayName": obj.get("displayName"),
-            "name": obj.get("name")
+            "description": obj.get("description")
         })
         return _obj
 
