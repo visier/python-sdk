@@ -23,6 +23,7 @@ jobs:
     strategy:
       matrix:
         package:
+          - visier.sdk.api.core
           - visier.sdk.api.administration
           - visier.sdk.api.analytic_model
           - visier.sdk.api.data_in
