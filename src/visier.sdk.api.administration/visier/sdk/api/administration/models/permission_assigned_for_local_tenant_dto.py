@@ -26,10 +26,10 @@ class PermissionAssignedForLocalTenantDTO(BaseModel):
     """
     PermissionAssignedForLocalTenantDTO
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="A user-defined description of the permission.")
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable permission name to display in Visier, such as \"Diversity Access\".", alias="displayName")
     permission_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the permission.", alias="permissionId")
-    __properties: ClassVar[List[str]] = ["description", "displayName", "permissionId"]
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable permission name to display in Visier, such as \"Diversity Access\".", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="A user-defined description of the permission.")
+    __properties: ClassVar[List[str]] = ["permissionId", "displayName", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class PermissionAssignedForLocalTenantDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
+            "permissionId": obj.get("permissionId"),
             "displayName": obj.get("displayName"),
-            "permissionId": obj.get("permissionId")
+            "description": obj.get("description")
         })
         return _obj
 

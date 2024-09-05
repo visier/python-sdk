@@ -26,12 +26,12 @@ class ProcessingJob(BaseModel):
     """
     ProcessingJob
     """ # noqa: E501
-    data_version: Optional[StrictStr] = Field(default=None, description="The data version associated with the processing job.", alias="dataVersion")
     job_id: Optional[StrictStr] = Field(default=None, description="The job ID of the processing job for the analytic tenant.", alias="jobId")
-    message: Optional[StrictStr] = Field(default=None, description="A meaningful message about the processing job.")
-    status: Optional[StrictStr] = Field(default=None, description="The status of the receiving job for the analytic tenant.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The analytic tenant code.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["dataVersion", "jobId", "message", "status", "tenantCode"]
+    data_version: Optional[StrictStr] = Field(default=None, description="The data version associated with the processing job.", alias="dataVersion")
+    status: Optional[StrictStr] = Field(default=None, description="The status of the receiving job for the analytic tenant.")
+    message: Optional[StrictStr] = Field(default=None, description="A meaningful message about the processing job.")
+    __properties: ClassVar[List[str]] = ["jobId", "tenantCode", "dataVersion", "status", "message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,11 +84,11 @@ class ProcessingJob(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dataVersion": obj.get("dataVersion"),
             "jobId": obj.get("jobId"),
-            "message": obj.get("message"),
+            "tenantCode": obj.get("tenantCode"),
+            "dataVersion": obj.get("dataVersion"),
             "status": obj.get("status"),
-            "tenantCode": obj.get("tenantCode")
+            "message": obj.get("message")
         })
         return _obj
 

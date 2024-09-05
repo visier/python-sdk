@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
@@ -23,10 +25,7 @@ from visier.sdk.api.administration.models.users_api_response_dto import UsersAPI
 from visier.sdk.api.administration.models.users_creation_api_request_dto import UsersCreationAPIRequestDTO
 from visier.sdk.api.administration.models.users_delete_api_request_dto import UsersDeleteAPIRequestDTO
 from visier.sdk.api.administration.models.users_update_api_request_dto import UsersUpdateAPIRequestDTO
-
-from visier.sdk.api.administration.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.administration.api_response import ApiResponse
-from visier.sdk.api.administration.rest import RESTResponseType
+import visier.sdk.api.administration.models
 
 
 class UsersV2Api:
@@ -43,7 +42,7 @@ class UsersV2Api:
 
 
     @validate_call
-    def add_users(
+    def users_v2_add_users(
         self,
         users_creation_api_request_dto: UsersCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
@@ -90,7 +89,7 @@ class UsersV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_users_serialize(
+        _param = self._users_v2_add_users_serialize(
             users_creation_api_request_dto=users_creation_api_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -108,13 +107,14 @@ class UsersV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def add_users_with_http_info(
+    def users_v2_add_users_with_http_info(
         self,
         users_creation_api_request_dto: UsersCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
@@ -161,7 +161,7 @@ class UsersV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_users_serialize(
+        _param = self._users_v2_add_users_serialize(
             users_creation_api_request_dto=users_creation_api_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -179,13 +179,14 @@ class UsersV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def add_users_without_preload_content(
+    def users_v2_add_users_without_preload_content(
         self,
         users_creation_api_request_dto: UsersCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
@@ -232,7 +233,7 @@ class UsersV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_users_serialize(
+        _param = self._users_v2_add_users_serialize(
             users_creation_api_request_dto=users_creation_api_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -251,7 +252,7 @@ class UsersV2Api:
         return response_data.response
 
 
-    def _add_users_serialize(
+    def _users_v2_add_users_serialize(
         self,
         users_creation_api_request_dto,
         tenant_code,
@@ -331,7 +332,7 @@ class UsersV2Api:
 
 
     @validate_call
-    def delete_users(
+    def users_v2_delete_users(
         self,
         users_delete_api_request_dto: UsersDeleteAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete a user in.")] = None,
@@ -378,7 +379,7 @@ class UsersV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_users_serialize(
+        _param = self._users_v2_delete_users_serialize(
             users_delete_api_request_dto=users_delete_api_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -396,13 +397,14 @@ class UsersV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def delete_users_with_http_info(
+    def users_v2_delete_users_with_http_info(
         self,
         users_delete_api_request_dto: UsersDeleteAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete a user in.")] = None,
@@ -449,7 +451,7 @@ class UsersV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_users_serialize(
+        _param = self._users_v2_delete_users_serialize(
             users_delete_api_request_dto=users_delete_api_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -467,13 +469,14 @@ class UsersV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def delete_users_without_preload_content(
+    def users_v2_delete_users_without_preload_content(
         self,
         users_delete_api_request_dto: UsersDeleteAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete a user in.")] = None,
@@ -520,7 +523,7 @@ class UsersV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_users_serialize(
+        _param = self._users_v2_delete_users_serialize(
             users_delete_api_request_dto=users_delete_api_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -539,7 +542,7 @@ class UsersV2Api:
         return response_data.response
 
 
-    def _delete_users_serialize(
+    def _users_v2_delete_users_serialize(
         self,
         users_delete_api_request_dto,
         tenant_code,
@@ -619,7 +622,7 @@ class UsersV2Api:
 
 
     @validate_call
-    def update_users(
+    def users_v2_update_users(
         self,
         users_update_api_request_dto: UsersUpdateAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update a user in.")] = None,
@@ -666,7 +669,7 @@ class UsersV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_users_serialize(
+        _param = self._users_v2_update_users_serialize(
             users_update_api_request_dto=users_update_api_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -684,13 +687,14 @@ class UsersV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def update_users_with_http_info(
+    def users_v2_update_users_with_http_info(
         self,
         users_update_api_request_dto: UsersUpdateAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update a user in.")] = None,
@@ -737,7 +741,7 @@ class UsersV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_users_serialize(
+        _param = self._users_v2_update_users_serialize(
             users_update_api_request_dto=users_update_api_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -755,13 +759,14 @@ class UsersV2Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def update_users_without_preload_content(
+    def users_v2_update_users_without_preload_content(
         self,
         users_update_api_request_dto: UsersUpdateAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update a user in.")] = None,
@@ -808,7 +813,7 @@ class UsersV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_users_serialize(
+        _param = self._users_v2_update_users_serialize(
             users_update_api_request_dto=users_update_api_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -827,7 +832,7 @@ class UsersV2Api:
         return response_data.response
 
 
-    def _update_users_serialize(
+    def _users_v2_update_users_serialize(
         self,
         users_update_api_request_dto,
         tenant_code,

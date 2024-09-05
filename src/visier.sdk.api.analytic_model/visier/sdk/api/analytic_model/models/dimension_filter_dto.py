@@ -28,9 +28,9 @@ class DimensionFilterDTO(BaseModel):
     DimensionFilterDTO
     """ # noqa: E501
     dimension_id: Optional[StrictStr] = Field(default=None, description="The UUID of the dimension.", alias="dimensionId")
-    dimension_members: Optional[List[DimensionMemberDTO]] = Field(default=None, description="A list of dimension members to map to the perspective node.   Note: If this array is empty, all dimension members will be removed for the node.", alias="dimensionMembers")
     symbol_name: Optional[StrictStr] = Field(default=None, description="The symbol name of the dimension.", alias="symbolName")
-    __properties: ClassVar[List[str]] = ["dimensionId", "dimensionMembers", "symbolName"]
+    dimension_members: Optional[List[DimensionMemberDTO]] = Field(default=None, description="A list of dimension members to map to the perspective node.   Note: If this array is empty, all dimension members will be removed for the node.", alias="dimensionMembers")
+    __properties: ClassVar[List[str]] = ["dimensionId", "symbolName", "dimensionMembers"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,8 +91,8 @@ class DimensionFilterDTO(BaseModel):
 
         _obj = cls.model_validate({
             "dimensionId": obj.get("dimensionId"),
-            "dimensionMembers": [DimensionMemberDTO.from_dict(_item) for _item in obj["dimensionMembers"]] if obj.get("dimensionMembers") is not None else None,
-            "symbolName": obj.get("symbolName")
+            "symbolName": obj.get("symbolName"),
+            "dimensionMembers": [DimensionMemberDTO.from_dict(_item) for _item in obj["dimensionMembers"]] if obj.get("dimensionMembers") is not None else None
         })
         return _obj
 

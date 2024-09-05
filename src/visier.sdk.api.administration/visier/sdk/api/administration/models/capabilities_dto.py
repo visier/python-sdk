@@ -26,10 +26,10 @@ class CapabilitiesDTO(BaseModel):
     """
     CapabilitiesDTO
     """ # noqa: E501
-    access_level: Optional[StrictStr] = Field(default=None, description="The access level of the profile for the given capability.", alias="accessLevel")
     capability: Optional[StrictStr] = Field(default=None, description="The name of the capability.")
+    access_level: Optional[StrictStr] = Field(default=None, description="The access level of the profile for the given capability.", alias="accessLevel")
     view_level: Optional[StrictStr] = Field(default=None, description="The view level of the profile for the given capability.", alias="viewLevel")
-    __properties: ClassVar[List[str]] = ["accessLevel", "capability", "viewLevel"]
+    __properties: ClassVar[List[str]] = ["capability", "accessLevel", "viewLevel"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,8 +82,8 @@ class CapabilitiesDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessLevel": obj.get("accessLevel"),
             "capability": obj.get("capability"),
+            "accessLevel": obj.get("accessLevel"),
             "viewLevel": obj.get("viewLevel")
         })
         return _obj

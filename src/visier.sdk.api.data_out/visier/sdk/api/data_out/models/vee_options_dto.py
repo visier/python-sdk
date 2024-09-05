@@ -27,12 +27,12 @@ class VeeOptionsDTO(BaseModel):
     """
     VeeOptionsDTO
     """ # noqa: E501
-    data_format: Optional[StrictStr] = Field(default=None, description="The format to return visualization data in. Valid values: `json`.", alias="dataFormat")
-    include_data: Optional[StrictBool] = Field(default=None, description="If `true`, returns additional data relevant to the question, including `dataJson` (visualization data) and `context` (filters applied to the visualization). Default is `false`.", alias="includeData")
-    include_reworded_question: Optional[StrictBool] = Field(default=None, description="If `true`, returns Vee's plain language interpretation of the original question. For example, if you asked \"what is the headcount by gender in each org?\", Vee might reword the question as \"What is the gender breakdown of our workforce by organization this month?\". Default is `false`.", alias="includeRewordedQuestion")
     include_visual: Optional[StrictBool] = Field(default=None, description="If `true`, returns a base64 string-encoded PNG of a rendered visualization with Vee's answer. Default is `false`.", alias="includeVisual")
     visual_options: Optional[VeeVisualOptionsDTO] = Field(default=None, description="Specify how to render the visualization.", alias="visualOptions")
-    __properties: ClassVar[List[str]] = ["dataFormat", "includeData", "includeRewordedQuestion", "includeVisual", "visualOptions"]
+    include_data: Optional[StrictBool] = Field(default=None, description="If `true`, returns additional data relevant to the question, including `dataJson` (visualization data) and `context` (filters applied to the visualization). Default is `false`.", alias="includeData")
+    data_format: Optional[StrictStr] = Field(default=None, description="The format to return visualization data in. Valid values: `json`.", alias="dataFormat")
+    include_reworded_question: Optional[StrictBool] = Field(default=None, description="If `true`, returns Vee's plain language interpretation of the original question. For example, if you asked \"what is the headcount by gender in each org?\", Vee might reword the question as \"What is the gender breakdown of our workforce by organization this month?\". Default is `false`.", alias="includeRewordedQuestion")
+    __properties: ClassVar[List[str]] = ["includeVisual", "visualOptions", "includeData", "dataFormat", "includeRewordedQuestion"]
 
     @field_validator('data_format')
     def data_format_validate_enum(cls, value):
@@ -98,11 +98,11 @@ class VeeOptionsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dataFormat": obj.get("dataFormat"),
-            "includeData": obj.get("includeData"),
-            "includeRewordedQuestion": obj.get("includeRewordedQuestion"),
             "includeVisual": obj.get("includeVisual"),
-            "visualOptions": VeeVisualOptionsDTO.from_dict(obj["visualOptions"]) if obj.get("visualOptions") is not None else None
+            "visualOptions": VeeVisualOptionsDTO.from_dict(obj["visualOptions"]) if obj.get("visualOptions") is not None else None,
+            "includeData": obj.get("includeData"),
+            "dataFormat": obj.get("dataFormat"),
+            "includeRewordedQuestion": obj.get("includeRewordedQuestion")
         })
         return _obj
 

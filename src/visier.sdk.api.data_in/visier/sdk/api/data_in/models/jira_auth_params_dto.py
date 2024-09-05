@@ -28,9 +28,9 @@ class JiraAuthParamsDTO(BaseModel):
     JiraAuthParamsDTO
     """ # noqa: E501
     api_token: Optional[StrictStr] = Field(default=None, alias="apiToken")
-    connect_params: Optional[JiraConnectParamsDTO] = Field(default=None, alias="connectParams")
     host_name: Optional[StrictStr] = Field(default=None, alias="hostName")
-    __properties: ClassVar[List[str]] = ["apiToken", "connectParams", "hostName"]
+    connect_params: Optional[JiraConnectParamsDTO] = Field(default=None, alias="connectParams")
+    __properties: ClassVar[List[str]] = ["apiToken", "hostName", "connectParams"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,8 +87,8 @@ class JiraAuthParamsDTO(BaseModel):
 
         _obj = cls.model_validate({
             "apiToken": obj.get("apiToken"),
-            "connectParams": JiraConnectParamsDTO.from_dict(obj["connectParams"]) if obj.get("connectParams") is not None else None,
-            "hostName": obj.get("hostName")
+            "hostName": obj.get("hostName"),
+            "connectParams": JiraConnectParamsDTO.from_dict(obj["connectParams"]) if obj.get("connectParams") is not None else None
         })
         return _obj
 

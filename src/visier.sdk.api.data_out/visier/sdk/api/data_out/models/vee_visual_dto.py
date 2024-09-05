@@ -26,10 +26,10 @@ class VeeVisualDTO(BaseModel):
     """
     VeeVisualDTO
     """ # noqa: E501
-    context: Optional[StrictStr] = Field(default=None, description="Any filters applied to the visualization. For example, a time filter of April 2024.")
     image: Optional[StrictStr] = Field(default=None, description="A PNG visualization encoded in a base64 string.")
     title: Optional[StrictStr] = Field(default=None, description="The visualization title.")
-    __properties: ClassVar[List[str]] = ["context", "image", "title"]
+    context: Optional[StrictStr] = Field(default=None, description="Any filters applied to the visualization. For example, a time filter of April 2024.")
+    __properties: ClassVar[List[str]] = ["image", "title", "context"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class VeeVisualDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "context": obj.get("context"),
             "image": obj.get("image"),
-            "title": obj.get("title")
+            "title": obj.get("title"),
+            "context": obj.get("context")
         })
         return _obj
 

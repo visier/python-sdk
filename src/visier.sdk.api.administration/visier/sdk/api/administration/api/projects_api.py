@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
@@ -25,10 +27,7 @@ from visier.sdk.api.administration.models.project_dto import ProjectDTO
 from visier.sdk.api.administration.models.project_operation_request_dto import ProjectOperationRequestDTO
 from visier.sdk.api.administration.models.project_operation_response_dto import ProjectOperationResponseDTO
 from visier.sdk.api.administration.models.put_project_commits_request import PutProjectCommitsRequest
-
-from visier.sdk.api.administration.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.administration.api_response import ApiResponse
-from visier.sdk.api.administration.rest import RESTResponseType
+import visier.sdk.api.administration.models
 
 
 class ProjectsApi:
@@ -45,7 +44,7 @@ class ProjectsApi:
 
 
     @validate_call
-    def create_project(
+    def projects_create_project(
         self,
         project_dto: ProjectDTO,
         _request_timeout: Union[
@@ -89,7 +88,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_project_serialize(
+        _param = self._projects_create_project_serialize(
             project_dto=project_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -106,13 +105,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def create_project_with_http_info(
+    def projects_create_project_with_http_info(
         self,
         project_dto: ProjectDTO,
         _request_timeout: Union[
@@ -156,7 +156,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_project_serialize(
+        _param = self._projects_create_project_serialize(
             project_dto=project_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -173,13 +173,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def create_project_without_preload_content(
+    def projects_create_project_without_preload_content(
         self,
         project_dto: ProjectDTO,
         _request_timeout: Union[
@@ -223,7 +224,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_project_serialize(
+        _param = self._projects_create_project_serialize(
             project_dto=project_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -241,7 +242,7 @@ class ProjectsApi:
         return response_data.response
 
 
-    def _create_project_serialize(
+    def _projects_create_project_serialize(
         self,
         project_dto,
         _request_auth,
@@ -316,7 +317,7 @@ class ProjectsApi:
 
 
     @validate_call
-    def delete_project(
+    def projects_delete_project(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique ID of the draft project to be deleted.")],
         _request_timeout: Union[
@@ -360,7 +361,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_project_serialize(
+        _param = self._projects_delete_project_serialize(
             project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -377,13 +378,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def delete_project_with_http_info(
+    def projects_delete_project_with_http_info(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique ID of the draft project to be deleted.")],
         _request_timeout: Union[
@@ -427,7 +429,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_project_serialize(
+        _param = self._projects_delete_project_serialize(
             project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -444,13 +446,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def delete_project_without_preload_content(
+    def projects_delete_project_without_preload_content(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique ID of the draft project to be deleted.")],
         _request_timeout: Union[
@@ -494,7 +497,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_project_serialize(
+        _param = self._projects_delete_project_serialize(
             project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -512,7 +515,7 @@ class ProjectsApi:
         return response_data.response
 
 
-    def _delete_project_serialize(
+    def _projects_delete_project_serialize(
         self,
         project_id,
         _request_auth,
@@ -574,7 +577,7 @@ class ProjectsApi:
 
 
     @validate_call
-    def get_project(
+    def projects_get_project(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to retrieve.")],
         _request_timeout: Union[
@@ -618,7 +621,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_project_serialize(
+        _param = self._projects_get_project_serialize(
             project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -635,13 +638,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_project_with_http_info(
+    def projects_get_project_with_http_info(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to retrieve.")],
         _request_timeout: Union[
@@ -685,7 +689,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_project_serialize(
+        _param = self._projects_get_project_serialize(
             project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -702,13 +706,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_project_without_preload_content(
+    def projects_get_project_without_preload_content(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to retrieve.")],
         _request_timeout: Union[
@@ -752,7 +757,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_project_serialize(
+        _param = self._projects_get_project_serialize(
             project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -770,7 +775,7 @@ class ProjectsApi:
         return response_data.response
 
 
-    def _get_project_serialize(
+    def _projects_get_project_serialize(
         self,
         project_id,
         _request_auth,
@@ -832,7 +837,7 @@ class ProjectsApi:
 
 
     @validate_call
-    def get_project_commits(
+    def projects_get_project_commits(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to retrieve the committed changes for.")],
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of committed changes to return. Default is 400.")] = None,
@@ -882,7 +887,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_project_commits_serialize(
+        _param = self._projects_get_project_commits_serialize(
             project_id=project_id,
             limit=limit,
             start=start,
@@ -901,13 +906,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_project_commits_with_http_info(
+    def projects_get_project_commits_with_http_info(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to retrieve the committed changes for.")],
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of committed changes to return. Default is 400.")] = None,
@@ -957,7 +963,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_project_commits_serialize(
+        _param = self._projects_get_project_commits_serialize(
             project_id=project_id,
             limit=limit,
             start=start,
@@ -976,13 +982,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_project_commits_without_preload_content(
+    def projects_get_project_commits_without_preload_content(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to retrieve the committed changes for.")],
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of committed changes to return. Default is 400.")] = None,
@@ -1032,7 +1039,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_project_commits_serialize(
+        _param = self._projects_get_project_commits_serialize(
             project_id=project_id,
             limit=limit,
             start=start,
@@ -1052,7 +1059,7 @@ class ProjectsApi:
         return response_data.response
 
 
-    def _get_project_commits_serialize(
+    def _projects_get_project_commits_serialize(
         self,
         project_id,
         limit,
@@ -1124,7 +1131,7 @@ class ProjectsApi:
 
 
     @validate_call
-    def get_projects(
+    def projects_get_projects(
         self,
         var_with: Annotated[Optional[List[StrictStr]], Field(description="The types of draft projects to include in the request response.  * If empty, returns all the `Open` draft projects.  * If `Open`, returns all Open draft projects.  * If `Approval`, returns all draft projects in the approval stage. Changes cannot made in Approval projects.  * If `Rejected`, returns all draft projects that have been rejected. Changes cannot be committed in Rejected projects.  * If `Archived`, returns all draft projects that have been archived. Changes cannot be committed in Archived projects.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of projects to return per type. The maximum number of projects to retrieve per type is 1000. The default is 100.")] = None,
@@ -1171,7 +1178,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_projects_serialize(
+        _param = self._projects_get_projects_serialize(
             var_with=var_with,
             limit=limit,
             _request_auth=_request_auth,
@@ -1189,13 +1196,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_projects_with_http_info(
+    def projects_get_projects_with_http_info(
         self,
         var_with: Annotated[Optional[List[StrictStr]], Field(description="The types of draft projects to include in the request response.  * If empty, returns all the `Open` draft projects.  * If `Open`, returns all Open draft projects.  * If `Approval`, returns all draft projects in the approval stage. Changes cannot made in Approval projects.  * If `Rejected`, returns all draft projects that have been rejected. Changes cannot be committed in Rejected projects.  * If `Archived`, returns all draft projects that have been archived. Changes cannot be committed in Archived projects.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of projects to return per type. The maximum number of projects to retrieve per type is 1000. The default is 100.")] = None,
@@ -1242,7 +1250,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_projects_serialize(
+        _param = self._projects_get_projects_serialize(
             var_with=var_with,
             limit=limit,
             _request_auth=_request_auth,
@@ -1260,13 +1268,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_projects_without_preload_content(
+    def projects_get_projects_without_preload_content(
         self,
         var_with: Annotated[Optional[List[StrictStr]], Field(description="The types of draft projects to include in the request response.  * If empty, returns all the `Open` draft projects.  * If `Open`, returns all Open draft projects.  * If `Approval`, returns all draft projects in the approval stage. Changes cannot made in Approval projects.  * If `Rejected`, returns all draft projects that have been rejected. Changes cannot be committed in Rejected projects.  * If `Archived`, returns all draft projects that have been archived. Changes cannot be committed in Archived projects.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of projects to return per type. The maximum number of projects to retrieve per type is 1000. The default is 100.")] = None,
@@ -1313,7 +1322,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_projects_serialize(
+        _param = self._projects_get_projects_serialize(
             var_with=var_with,
             limit=limit,
             _request_auth=_request_auth,
@@ -1332,7 +1341,7 @@ class ProjectsApi:
         return response_data.response
 
 
-    def _get_projects_serialize(
+    def _projects_get_projects_serialize(
         self,
         var_with,
         limit,
@@ -1402,7 +1411,7 @@ class ProjectsApi:
 
 
     @validate_call
-    def put_project_commits(
+    def projects_put_project_commits(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to import committed changes into.")],
         put_project_commits_request: PutProjectCommitsRequest,
@@ -1449,7 +1458,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_project_commits_serialize(
+        _param = self._projects_put_project_commits_serialize(
             project_id=project_id,
             put_project_commits_request=put_project_commits_request,
             _request_auth=_request_auth,
@@ -1467,13 +1476,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def put_project_commits_with_http_info(
+    def projects_put_project_commits_with_http_info(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to import committed changes into.")],
         put_project_commits_request: PutProjectCommitsRequest,
@@ -1520,7 +1530,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_project_commits_serialize(
+        _param = self._projects_put_project_commits_serialize(
             project_id=project_id,
             put_project_commits_request=put_project_commits_request,
             _request_auth=_request_auth,
@@ -1538,13 +1548,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def put_project_commits_without_preload_content(
+    def projects_put_project_commits_without_preload_content(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to import committed changes into.")],
         put_project_commits_request: PutProjectCommitsRequest,
@@ -1591,7 +1602,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._put_project_commits_serialize(
+        _param = self._projects_put_project_commits_serialize(
             project_id=project_id,
             put_project_commits_request=put_project_commits_request,
             _request_auth=_request_auth,
@@ -1610,7 +1621,7 @@ class ProjectsApi:
         return response_data.response
 
 
-    def _put_project_commits_serialize(
+    def _projects_put_project_commits_serialize(
         self,
         project_id,
         put_project_commits_request,
@@ -1688,7 +1699,7 @@ class ProjectsApi:
 
 
     @validate_call
-    def run_project_operation(
+    def projects_run_project_operation(
         self,
         project_id: StrictStr,
         project_operation_request_dto: ProjectOperationRequestDTO,
@@ -1735,7 +1746,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._run_project_operation_serialize(
+        _param = self._projects_run_project_operation_serialize(
             project_id=project_id,
             project_operation_request_dto=project_operation_request_dto,
             _request_auth=_request_auth,
@@ -1753,13 +1764,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def run_project_operation_with_http_info(
+    def projects_run_project_operation_with_http_info(
         self,
         project_id: StrictStr,
         project_operation_request_dto: ProjectOperationRequestDTO,
@@ -1806,7 +1818,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._run_project_operation_serialize(
+        _param = self._projects_run_project_operation_serialize(
             project_id=project_id,
             project_operation_request_dto=project_operation_request_dto,
             _request_auth=_request_auth,
@@ -1824,13 +1836,14 @@ class ProjectsApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def run_project_operation_without_preload_content(
+    def projects_run_project_operation_without_preload_content(
         self,
         project_id: StrictStr,
         project_operation_request_dto: ProjectOperationRequestDTO,
@@ -1877,7 +1890,7 @@ class ProjectsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._run_project_operation_serialize(
+        _param = self._projects_run_project_operation_serialize(
             project_id=project_id,
             project_operation_request_dto=project_operation_request_dto,
             _request_auth=_request_auth,
@@ -1896,7 +1909,7 @@ class ProjectsApi:
         return response_data.response
 
 
-    def _run_project_operation_serialize(
+    def _projects_run_project_operation_serialize(
         self,
         project_id,
         project_operation_request_dto,

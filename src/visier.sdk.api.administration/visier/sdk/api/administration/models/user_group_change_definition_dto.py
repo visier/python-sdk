@@ -28,14 +28,14 @@ class UserGroupChangeDefinitionDTO(BaseModel):
     """
     UserGroupChangeDefinitionDTO
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="A detailed description of the population and purpose of the user group.")
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable user group name to display in Visier, such as \"Leadership User Group\".", alias="displayName")
-    permission_ids: Optional[ElementIDsDTO] = Field(default=None, description="The unique identifiers of permissions assigned to members of this user group.", alias="permissionIds")
-    project_id: Optional[StrictStr] = Field(default=None, description="The project ID in which to update or create the user group.  If omitted and the ProjectID request header is not defined, the change is published to production immediately.", alias="projectId")
-    tenant_code: Optional[StrictStr] = Field(default=None, description="The code of the tenant to which the user group belongs or should be created in.  Omit if creating or updating user groups in the current tenant.", alias="tenantCode")
     user_group_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the user group. Omit if creating a new user group.", alias="userGroupId")
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable user group name to display in Visier, such as \"Leadership User Group\".", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="A detailed description of the population and purpose of the user group.")
+    permission_ids: Optional[ElementIDsDTO] = Field(default=None, description="The unique identifiers of permissions assigned to members of this user group.", alias="permissionIds")
     users: Optional[UserGroupChangeUsersDTO] = Field(default=None, description="The users assigned to the user group. You can define user group members dynamically with `dynamicFilterDefinition` or manually with `includeAllUsers` or `manuallyIncludedIds`.")
-    __properties: ClassVar[List[str]] = ["description", "displayName", "permissionIds", "projectId", "tenantCode", "userGroupId", "users"]
+    tenant_code: Optional[StrictStr] = Field(default=None, description="The code of the tenant to which the user group belongs or should be created in.  Omit if creating or updating user groups in the current tenant.", alias="tenantCode")
+    project_id: Optional[StrictStr] = Field(default=None, description="The project ID in which to update or create the user group.  If omitted and the ProjectID request header is not defined, the change is published to production immediately.", alias="projectId")
+    __properties: ClassVar[List[str]] = ["userGroupId", "displayName", "description", "permissionIds", "users", "tenantCode", "projectId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,13 +94,13 @@ class UserGroupChangeDefinitionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
-            "displayName": obj.get("displayName"),
-            "permissionIds": ElementIDsDTO.from_dict(obj["permissionIds"]) if obj.get("permissionIds") is not None else None,
-            "projectId": obj.get("projectId"),
-            "tenantCode": obj.get("tenantCode"),
             "userGroupId": obj.get("userGroupId"),
-            "users": UserGroupChangeUsersDTO.from_dict(obj["users"]) if obj.get("users") is not None else None
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description"),
+            "permissionIds": ElementIDsDTO.from_dict(obj["permissionIds"]) if obj.get("permissionIds") is not None else None,
+            "users": UserGroupChangeUsersDTO.from_dict(obj["users"]) if obj.get("users") is not None else None,
+            "tenantCode": obj.get("tenantCode"),
+            "projectId": obj.get("projectId")
         })
         return _obj
 

@@ -27,10 +27,10 @@ class CalculationConceptDTO(BaseModel):
     """
     CalculationConceptDTO
     """ # noqa: E501
-    configuration: Optional[CalculationConceptConfigurationDTO] = Field(default=None, description="A list of objects representing the configuration for the calculation concept.")
-    name: Optional[StrictStr] = Field(default=None, description="The display name of the calculation concept.")
     uuid: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the calculation concept.")
-    __properties: ClassVar[List[str]] = ["configuration", "name", "uuid"]
+    name: Optional[StrictStr] = Field(default=None, description="The display name of the calculation concept.")
+    configuration: Optional[CalculationConceptConfigurationDTO] = Field(default=None, description="A list of objects representing the configuration for the calculation concept.")
+    __properties: ClassVar[List[str]] = ["uuid", "name", "configuration"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,9 +86,9 @@ class CalculationConceptDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "configuration": CalculationConceptConfigurationDTO.from_dict(obj["configuration"]) if obj.get("configuration") is not None else None,
+            "uuid": obj.get("uuid"),
             "name": obj.get("name"),
-            "uuid": obj.get("uuid")
+            "configuration": CalculationConceptConfigurationDTO.from_dict(obj["configuration"]) if obj.get("configuration") is not None else None
         })
         return _obj
 

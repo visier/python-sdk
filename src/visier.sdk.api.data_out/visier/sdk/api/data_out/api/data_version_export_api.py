@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictBytes, StrictInt, StrictStr
 from typing import Union
 from typing_extensions import Annotated
@@ -24,10 +26,7 @@ from visier.sdk.api.data_out.models.data_version_export_job_status_dto import Da
 from visier.sdk.api.data_out.models.data_version_export_schedule_job_request_dto import DataVersionExportScheduleJobRequestDTO
 from visier.sdk.api.data_out.models.data_version_export_schedule_job_response_dto import DataVersionExportScheduleJobResponseDTO
 from visier.sdk.api.data_out.models.data_version_exports_dto import DataVersionExportsDTO
-
-from visier.sdk.api.data_out.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.data_out.api_response import ApiResponse
-from visier.sdk.api.data_out.rest import RESTResponseType
+import visier.sdk.api.data_out.models
 
 
 class DataVersionExportApi:
@@ -44,286 +43,7 @@ class DataVersionExportApi:
 
 
     @validate_call
-    def call_1_alpha_download_file(
-        self,
-        export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
-        file_id: Annotated[StrictInt, Field(description="The unique integer identifier of the file within the data version export.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> bytearray:
-        """Download a file from a data version export.
-
-        This API allows you to download a file from a data version export. Data version export files are in CSV format, compressed with gzip.
-
-        :param export_uuid: The unique identifier of the data version export. (required)
-        :type export_uuid: str
-        :param file_id: The unique integer identifier of the file within the data version export. (required)
-        :type file_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._call_1_alpha_download_file_serialize(
-            export_uuid=export_uuid,
-            file_id=file_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def call_1_alpha_download_file_with_http_info(
-        self,
-        export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
-        file_id: Annotated[StrictInt, Field(description="The unique integer identifier of the file within the data version export.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[bytearray]:
-        """Download a file from a data version export.
-
-        This API allows you to download a file from a data version export. Data version export files are in CSV format, compressed with gzip.
-
-        :param export_uuid: The unique identifier of the data version export. (required)
-        :type export_uuid: str
-        :param file_id: The unique integer identifier of the file within the data version export. (required)
-        :type file_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._call_1_alpha_download_file_serialize(
-            export_uuid=export_uuid,
-            file_id=file_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def call_1_alpha_download_file_without_preload_content(
-        self,
-        export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
-        file_id: Annotated[StrictInt, Field(description="The unique integer identifier of the file within the data version export.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Download a file from a data version export.
-
-        This API allows you to download a file from a data version export. Data version export files are in CSV format, compressed with gzip.
-
-        :param export_uuid: The unique identifier of the data version export. (required)
-        :type export_uuid: str
-        :param file_id: The unique integer identifier of the file within the data version export. (required)
-        :type file_id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._call_1_alpha_download_file_serialize(
-            export_uuid=export_uuid,
-            file_id=file_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _call_1_alpha_download_file_serialize(
-        self,
-        export_uuid,
-        file_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if export_uuid is not None:
-            _path_params['exportUuid'] = export_uuid
-        if file_id is not None:
-            _path_params['fileId'] = file_id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/gzip', 
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'CookieAuth', 
-            'ApiKeyAuth', 
-            'OAuth2Auth', 
-            'OAuth2Auth', 
-            'BearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1alpha/data/data-version-exports/exports/{exportUuid}/files/{fileId}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def get_available_data_versions(
+    def data_version_export_get_available_data_versions(
         self,
         _request_timeout: Union[
             None,
@@ -364,7 +84,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_available_data_versions_serialize(
+        _param = self._data_version_export_get_available_data_versions_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -380,13 +100,14 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_available_data_versions_with_http_info(
+    def data_version_export_get_available_data_versions_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -427,7 +148,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_available_data_versions_serialize(
+        _param = self._data_version_export_get_available_data_versions_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -443,13 +164,14 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_available_data_versions_without_preload_content(
+    def data_version_export_get_available_data_versions_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -490,7 +212,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_available_data_versions_serialize(
+        _param = self._data_version_export_get_available_data_versions_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -507,7 +229,7 @@ class DataVersionExportApi:
         return response_data.response
 
 
-    def _get_available_data_versions_serialize(
+    def _data_version_export_get_available_data_versions_serialize(
         self,
         _request_auth,
         _content_type,
@@ -571,7 +293,7 @@ class DataVersionExportApi:
 
 
     @validate_call
-    def get_available_exports(
+    def data_version_export_get_available_exports(
         self,
         _request_timeout: Union[
             None,
@@ -612,7 +334,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_available_exports_serialize(
+        _param = self._data_version_export_get_available_exports_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -628,13 +350,14 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_available_exports_with_http_info(
+    def data_version_export_get_available_exports_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -675,7 +398,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_available_exports_serialize(
+        _param = self._data_version_export_get_available_exports_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -691,13 +414,14 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_available_exports_without_preload_content(
+    def data_version_export_get_available_exports_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -738,7 +462,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_available_exports_serialize(
+        _param = self._data_version_export_get_available_exports_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -755,7 +479,7 @@ class DataVersionExportApi:
         return response_data.response
 
 
-    def _get_available_exports_serialize(
+    def _data_version_export_get_available_exports_serialize(
         self,
         _request_auth,
         _content_type,
@@ -819,7 +543,7 @@ class DataVersionExportApi:
 
 
     @validate_call
-    def get_export(
+    def data_version_export_get_export(
         self,
         export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
         _request_timeout: Union[
@@ -863,7 +587,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_export_serialize(
+        _param = self._data_version_export_get_export_serialize(
             export_uuid=export_uuid,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -880,13 +604,14 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_export_with_http_info(
+    def data_version_export_get_export_with_http_info(
         self,
         export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
         _request_timeout: Union[
@@ -930,7 +655,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_export_serialize(
+        _param = self._data_version_export_get_export_serialize(
             export_uuid=export_uuid,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -947,13 +672,14 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_export_without_preload_content(
+    def data_version_export_get_export_without_preload_content(
         self,
         export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
         _request_timeout: Union[
@@ -997,7 +723,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_export_serialize(
+        _param = self._data_version_export_get_export_serialize(
             export_uuid=export_uuid,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1015,7 +741,7 @@ class DataVersionExportApi:
         return response_data.response
 
 
-    def _get_export_serialize(
+    def _data_version_export_get_export_serialize(
         self,
         export_uuid,
         _request_auth,
@@ -1082,7 +808,7 @@ class DataVersionExportApi:
 
 
     @validate_call
-    def get_export_job_status(
+    def data_version_export_get_export_job_status(
         self,
         job_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export job.")],
         _request_timeout: Union[
@@ -1126,7 +852,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_export_job_status_serialize(
+        _param = self._data_version_export_get_export_job_status_serialize(
             job_uuid=job_uuid,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1143,13 +869,14 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_export_job_status_with_http_info(
+    def data_version_export_get_export_job_status_with_http_info(
         self,
         job_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export job.")],
         _request_timeout: Union[
@@ -1193,7 +920,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_export_job_status_serialize(
+        _param = self._data_version_export_get_export_job_status_serialize(
             job_uuid=job_uuid,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1210,13 +937,14 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_export_job_status_without_preload_content(
+    def data_version_export_get_export_job_status_without_preload_content(
         self,
         job_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export job.")],
         _request_timeout: Union[
@@ -1260,7 +988,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_export_job_status_serialize(
+        _param = self._data_version_export_get_export_job_status_serialize(
             job_uuid=job_uuid,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1278,7 +1006,7 @@ class DataVersionExportApi:
         return response_data.response
 
 
-    def _get_export_job_status_serialize(
+    def _data_version_export_get_export_job_status_serialize(
         self,
         job_uuid,
         _request_auth,
@@ -1345,7 +1073,7 @@ class DataVersionExportApi:
 
 
     @validate_call
-    def schedule_export_job(
+    def data_version_export_schedule_export_job(
         self,
         data_version_export_schedule_job_request_dto: DataVersionExportScheduleJobRequestDTO,
         _request_timeout: Union[
@@ -1389,7 +1117,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._schedule_export_job_serialize(
+        _param = self._data_version_export_schedule_export_job_serialize(
             data_version_export_schedule_job_request_dto=data_version_export_schedule_job_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1406,13 +1134,14 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def schedule_export_job_with_http_info(
+    def data_version_export_schedule_export_job_with_http_info(
         self,
         data_version_export_schedule_job_request_dto: DataVersionExportScheduleJobRequestDTO,
         _request_timeout: Union[
@@ -1456,7 +1185,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._schedule_export_job_serialize(
+        _param = self._data_version_export_schedule_export_job_serialize(
             data_version_export_schedule_job_request_dto=data_version_export_schedule_job_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1473,13 +1202,14 @@ class DataVersionExportApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def schedule_export_job_without_preload_content(
+    def data_version_export_schedule_export_job_without_preload_content(
         self,
         data_version_export_schedule_job_request_dto: DataVersionExportScheduleJobRequestDTO,
         _request_timeout: Union[
@@ -1523,7 +1253,7 @@ class DataVersionExportApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._schedule_export_job_serialize(
+        _param = self._data_version_export_schedule_export_job_serialize(
             data_version_export_schedule_job_request_dto=data_version_export_schedule_job_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1541,7 +1271,7 @@ class DataVersionExportApi:
         return response_data.response
 
 
-    def _schedule_export_job_serialize(
+    def _data_version_export_schedule_export_job_serialize(
         self,
         data_version_export_schedule_job_request_dto,
         _request_auth,
@@ -1605,6 +1335,287 @@ class DataVersionExportApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/v1alpha/data/data-version-exports/jobs',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def data_version_export_v1_alpha_download_file(
+        self,
+        export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
+        file_id: Annotated[StrictInt, Field(description="The unique integer identifier of the file within the data version export.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> bytearray:
+        """Download a file from a data version export.
+
+        This API allows you to download a file from a data version export. Data version export files are in CSV format, compressed with gzip.
+
+        :param export_uuid: The unique identifier of the data version export. (required)
+        :type export_uuid: str
+        :param file_id: The unique integer identifier of the file within the data version export. (required)
+        :type file_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_version_export_v1_alpha_download_file_serialize(
+            export_uuid=export_uuid,
+            file_id=file_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "bytearray",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        ).data
+
+
+    @validate_call
+    def data_version_export_v1_alpha_download_file_with_http_info(
+        self,
+        export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
+        file_id: Annotated[StrictInt, Field(description="The unique integer identifier of the file within the data version export.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[bytearray]:
+        """Download a file from a data version export.
+
+        This API allows you to download a file from a data version export. Data version export files are in CSV format, compressed with gzip.
+
+        :param export_uuid: The unique identifier of the data version export. (required)
+        :type export_uuid: str
+        :param file_id: The unique integer identifier of the file within the data version export. (required)
+        :type file_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_version_export_v1_alpha_download_file_serialize(
+            export_uuid=export_uuid,
+            file_id=file_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "bytearray",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        )
+
+
+    @validate_call
+    def data_version_export_v1_alpha_download_file_without_preload_content(
+        self,
+        export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
+        file_id: Annotated[StrictInt, Field(description="The unique integer identifier of the file within the data version export.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Download a file from a data version export.
+
+        This API allows you to download a file from a data version export. Data version export files are in CSV format, compressed with gzip.
+
+        :param export_uuid: The unique identifier of the data version export. (required)
+        :type export_uuid: str
+        :param file_id: The unique integer identifier of the file within the data version export. (required)
+        :type file_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._data_version_export_v1_alpha_download_file_serialize(
+            export_uuid=export_uuid,
+            file_id=file_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "bytearray",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _data_version_export_v1_alpha_download_file_serialize(
+        self,
+        export_uuid,
+        file_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if export_uuid is not None:
+            _path_params['exportUuid'] = export_uuid
+        if file_id is not None:
+            _path_params['fileId'] = file_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/gzip', 
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1alpha/data/data-version-exports/exports/{exportUuid}/files/{fileId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

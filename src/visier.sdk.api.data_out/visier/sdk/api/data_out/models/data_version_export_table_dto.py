@@ -27,11 +27,11 @@ class DataVersionExportTableDTO(BaseModel):
     """
     DataVersionExportTableDTO
     """ # noqa: E501
-    common_columns: Optional[DataVersionExportFileDTO] = Field(default=None, description="Information about the columns and files that are in both `dataVersionNumber` and `baseDataVersionNumber`. Always empty for full exports where `baseDataVersionNumber` is not specified.", alias="commonColumns")
-    deleted_columns: Optional[List[StrictStr]] = Field(default=None, description="Information about columns that do not exist in `dataVersionNumber` but did exist in `baseDataVersionNumber`.", alias="deletedColumns")
     name: Optional[StrictStr] = Field(default=None, description="The name of a table in the data version export; for example, Employee or Applicant.")
+    common_columns: Optional[DataVersionExportFileDTO] = Field(default=None, description="Information about the columns and files that are in both `dataVersionNumber` and `baseDataVersionNumber`. Always empty for full exports where `baseDataVersionNumber` is not specified.", alias="commonColumns")
     new_columns: Optional[DataVersionExportFileDTO] = Field(default=None, description="Information about new columns and files in the data version.  If full export, lists all columns. If delta export, lists columns that exist in `dataVersionNumber` but not in `baseDataVersionNumber`.", alias="newColumns")
-    __properties: ClassVar[List[str]] = ["commonColumns", "deletedColumns", "name", "newColumns"]
+    deleted_columns: Optional[List[StrictStr]] = Field(default=None, description="Information about columns that do not exist in `dataVersionNumber` but did exist in `baseDataVersionNumber`.", alias="deletedColumns")
+    __properties: ClassVar[List[str]] = ["name", "commonColumns", "newColumns", "deletedColumns"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,10 +90,10 @@ class DataVersionExportTableDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "commonColumns": DataVersionExportFileDTO.from_dict(obj["commonColumns"]) if obj.get("commonColumns") is not None else None,
-            "deletedColumns": obj.get("deletedColumns"),
             "name": obj.get("name"),
-            "newColumns": DataVersionExportFileDTO.from_dict(obj["newColumns"]) if obj.get("newColumns") is not None else None
+            "commonColumns": DataVersionExportFileDTO.from_dict(obj["commonColumns"]) if obj.get("commonColumns") is not None else None,
+            "newColumns": DataVersionExportFileDTO.from_dict(obj["newColumns"]) if obj.get("newColumns") is not None else None,
+            "deletedColumns": obj.get("deletedColumns")
         })
         return _obj
 

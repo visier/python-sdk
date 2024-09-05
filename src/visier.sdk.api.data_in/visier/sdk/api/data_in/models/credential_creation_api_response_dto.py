@@ -27,11 +27,11 @@ class CredentialCreationAPIResponseDTO(BaseModel):
     """
     CredentialCreationAPIResponseDTO
     """ # noqa: E501
-    missing_connection_properties: Optional[List[SubjectMissingAccessDTO]] = Field(default=None, description="The properties that the credential cannot access despite successful authentication.  This is only returned for authentications that do not grant access to all data.", alias="missingConnectionProperties")
-    object_name: Optional[StrictStr] = Field(default=None, description="The object name of the newly created credential.", alias="objectName")
-    symbol_name: Optional[StrictStr] = Field(default=None, description="The symbol name of the newly created credential.", alias="symbolName")
     uuid: Optional[StrictStr] = Field(default=None, description="The unique ID of the newly created credential.")
-    __properties: ClassVar[List[str]] = ["missingConnectionProperties", "objectName", "symbolName", "uuid"]
+    symbol_name: Optional[StrictStr] = Field(default=None, description="The symbol name of the newly created credential.", alias="symbolName")
+    object_name: Optional[StrictStr] = Field(default=None, description="The object name of the newly created credential.", alias="objectName")
+    missing_connection_properties: Optional[List[SubjectMissingAccessDTO]] = Field(default=None, description="The properties that the credential cannot access despite successful authentication.  This is only returned for authentications that do not grant access to all data.", alias="missingConnectionProperties")
+    __properties: ClassVar[List[str]] = ["uuid", "symbolName", "objectName", "missingConnectionProperties"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,10 +91,10 @@ class CredentialCreationAPIResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "missingConnectionProperties": [SubjectMissingAccessDTO.from_dict(_item) for _item in obj["missingConnectionProperties"]] if obj.get("missingConnectionProperties") is not None else None,
-            "objectName": obj.get("objectName"),
+            "uuid": obj.get("uuid"),
             "symbolName": obj.get("symbolName"),
-            "uuid": obj.get("uuid")
+            "objectName": obj.get("objectName"),
+            "missingConnectionProperties": [SubjectMissingAccessDTO.from_dict(_item) for _item in obj["missingConnectionProperties"]] if obj.get("missingConnectionProperties") is not None else None
         })
         return _obj
 

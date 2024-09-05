@@ -26,13 +26,13 @@ class MySqlAuthParamsDTO(BaseModel):
     """
     MySqlAuthParamsDTO
     """ # noqa: E501
-    database: Optional[StrictStr] = None
     host: Optional[StrictStr] = None
-    password: Optional[StrictStr] = None
     port: Optional[StrictStr] = None
-    ssl_mode: Optional[StrictStr] = Field(default=None, alias="sslMode")
     username: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["database", "host", "password", "port", "sslMode", "username"]
+    password: Optional[StrictStr] = None
+    database: Optional[StrictStr] = None
+    ssl_mode: Optional[StrictStr] = Field(default=None, alias="sslMode")
+    __properties: ClassVar[List[str]] = ["host", "port", "username", "password", "database", "sslMode"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,12 +85,12 @@ class MySqlAuthParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "database": obj.get("database"),
             "host": obj.get("host"),
-            "password": obj.get("password"),
             "port": obj.get("port"),
-            "sslMode": obj.get("sslMode"),
-            "username": obj.get("username")
+            "username": obj.get("username"),
+            "password": obj.get("password"),
+            "database": obj.get("database"),
+            "sslMode": obj.get("sslMode")
         })
         return _obj
 

@@ -26,9 +26,9 @@ class CellDistributionBinDTO(BaseModel):
     """
     A cell distribution bin.  Each bin has a metric value (of the bin) and the number of observations contributing to the bin.
     """ # noqa: E501
-    support: Optional[StrictStr] = None
     value: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["support", "value"]
+    support: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["value", "support"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class CellDistributionBinDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "support": obj.get("support"),
-            "value": obj.get("value")
+            "value": obj.get("value"),
+            "support": obj.get("support")
         })
         return _obj
 

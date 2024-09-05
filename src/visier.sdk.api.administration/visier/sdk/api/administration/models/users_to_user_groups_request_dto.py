@@ -28,9 +28,9 @@ class UsersToUserGroupsRequestDTO(BaseModel):
     """
     UsersToUserGroupsRequestDTO
     """ # noqa: E501
-    target_project_for_tenants_list: Optional[TargetProjectForTenantsListDTO] = Field(default=None, description="Administrating tenants can specify the tenants and projects in which to assign users to user groups or remove users from user groups. Specify one `projectId` per `tenantCode`.  If omitted, the request is immediately published to production or applied to the ProjectID in the request header, if available, for the administrating tenant or TargetTenantID, if available.", alias="targetProjectForTenantsList")
     user_groups: Optional[List[UsersToUserGroupRequestDTO]] = Field(default=None, description="A list of objects representing the user groups and users to assign or remove.", alias="userGroups")
-    __properties: ClassVar[List[str]] = ["targetProjectForTenantsList", "userGroups"]
+    target_project_for_tenants_list: Optional[TargetProjectForTenantsListDTO] = Field(default=None, description="Administrating tenants can specify the tenants and projects in which to assign users to user groups or remove users from user groups. Specify one `projectId` per `tenantCode`.  If omitted, the request is immediately published to production or applied to the ProjectID in the request header, if available, for the administrating tenant or TargetTenantID, if available.", alias="targetProjectForTenantsList")
+    __properties: ClassVar[List[str]] = ["userGroups", "targetProjectForTenantsList"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,9 +71,6 @@ class UsersToUserGroupsRequestDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of target_project_for_tenants_list
-        if self.target_project_for_tenants_list:
-            _dict['targetProjectForTenantsList'] = self.target_project_for_tenants_list.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in user_groups (list)
         _items = []
         if self.user_groups:
@@ -81,6 +78,9 @@ class UsersToUserGroupsRequestDTO(BaseModel):
                 if _item_user_groups:
                     _items.append(_item_user_groups.to_dict())
             _dict['userGroups'] = _items
+        # override the default output from pydantic by calling `to_dict()` of target_project_for_tenants_list
+        if self.target_project_for_tenants_list:
+            _dict['targetProjectForTenantsList'] = self.target_project_for_tenants_list.to_dict()
         return _dict
 
     @classmethod
@@ -93,8 +93,8 @@ class UsersToUserGroupsRequestDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "targetProjectForTenantsList": TargetProjectForTenantsListDTO.from_dict(obj["targetProjectForTenantsList"]) if obj.get("targetProjectForTenantsList") is not None else None,
-            "userGroups": [UsersToUserGroupRequestDTO.from_dict(_item) for _item in obj["userGroups"]] if obj.get("userGroups") is not None else None
+            "userGroups": [UsersToUserGroupRequestDTO.from_dict(_item) for _item in obj["userGroups"]] if obj.get("userGroups") is not None else None,
+            "targetProjectForTenantsList": TargetProjectForTenantsListDTO.from_dict(obj["targetProjectForTenantsList"]) if obj.get("targetProjectForTenantsList") is not None else None
         })
         return _obj
 

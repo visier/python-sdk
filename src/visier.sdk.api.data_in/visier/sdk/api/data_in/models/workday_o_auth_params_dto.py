@@ -27,9 +27,9 @@ class WorkdayOAuthParamsDTO(BaseModel):
     WorkdayOAuthParamsDTO
     """ # noqa: E501
     api_client_id: Optional[StrictStr] = Field(default=None, alias="apiClientId")
-    private_x509_key: Optional[StrictStr] = Field(default=None, alias="privateX509Key")
     public_x509_cert: Optional[StrictStr] = Field(default=None, alias="publicX509Cert")
-    __properties: ClassVar[List[str]] = ["apiClientId", "privateX509Key", "publicX509Cert"]
+    private_x509_key: Optional[StrictStr] = Field(default=None, alias="privateX509Key")
+    __properties: ClassVar[List[str]] = ["apiClientId", "publicX509Cert", "privateX509Key"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,8 +83,8 @@ class WorkdayOAuthParamsDTO(BaseModel):
 
         _obj = cls.model_validate({
             "apiClientId": obj.get("apiClientId"),
-            "privateX509Key": obj.get("privateX509Key"),
-            "publicX509Cert": obj.get("publicX509Cert")
+            "publicX509Cert": obj.get("publicX509Cert"),
+            "privateX509Key": obj.get("privateX509Key")
         })
         return _obj
 

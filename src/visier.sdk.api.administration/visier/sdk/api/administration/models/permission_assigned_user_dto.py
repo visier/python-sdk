@@ -26,10 +26,10 @@ class PermissionAssignedUserDTO(BaseModel):
     """
     The user and the method through which the user was assigned the permission.
     """ # noqa: E501
-    permission_from: Optional[StrictStr] = Field(default=None, description="The method through which the user was assigned the permission. The permission may be assigned through  the following options:   - User: The permission was directly assigned to the user.   - UserGroup: The permission was assigned because the user belongs to a user group that is assigned the permission.   - UserAndUserGroup: The permission was directly assigned to the user and assigned because the user belongs to     a user group that is assigned the permission.", alias="permissionFrom")
     user_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the user.", alias="userId")
     username: Optional[StrictStr] = Field(default=None, description="The user's username. This is typically the user's email, such as john@visier.com.")
-    __properties: ClassVar[List[str]] = ["permissionFrom", "userId", "username"]
+    permission_from: Optional[StrictStr] = Field(default=None, description="The method through which the user was assigned the permission. The permission may be assigned through  the following options:   - User: The permission was directly assigned to the user.   - UserGroup: The permission was assigned because the user belongs to a user group that is assigned the permission.   - UserAndUserGroup: The permission was directly assigned to the user and assigned because the user belongs to     a user group that is assigned the permission.", alias="permissionFrom")
+    __properties: ClassVar[List[str]] = ["userId", "username", "permissionFrom"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class PermissionAssignedUserDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "permissionFrom": obj.get("permissionFrom"),
             "userId": obj.get("userId"),
-            "username": obj.get("username")
+            "username": obj.get("username"),
+            "permissionFrom": obj.get("permissionFrom")
         })
         return _obj
 

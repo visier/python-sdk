@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "22222222.99201.1456"
+__version__ = "0.0.200"
 
 # import apis into sdk package
 from visier.sdk.api.administration.api.consolidated_analytics_api import ConsolidatedAnalyticsApi
@@ -30,16 +30,6 @@ from visier.sdk.api.administration.api.user_groups_v2_api import UserGroupsV2Api
 from visier.sdk.api.administration.api.users_v1_api import UsersV1Api
 from visier.sdk.api.administration.api.users_v2_api import UsersV2Api
 
-# import ApiClient
-from visier.sdk.api.administration.api_response import ApiResponse
-from visier.sdk.api.administration.api_client import ApiClient
-from visier.sdk.api.administration.configuration import Configuration
-from visier.sdk.api.administration.exceptions import OpenApiException
-from visier.sdk.api.administration.exceptions import ApiTypeError
-from visier.sdk.api.administration.exceptions import ApiValueError
-from visier.sdk.api.administration.exceptions import ApiKeyError
-from visier.sdk.api.administration.exceptions import ApiAttributeError
-from visier.sdk.api.administration.exceptions import ApiException
 
 # import models into sdk package
 from visier.sdk.api.administration.models.accessible_tenant_profile_assignment_request_dto import AccessibleTenantProfileAssignmentRequestDTO

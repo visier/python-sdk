@@ -26,11 +26,11 @@ class PlanParameterDefinitionDTO(BaseModel):
     """
     The definition of a plan parameter. These parameters resolve planning model metrics to a specific plan and scenario  or snapshot values at query runtime.
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="The localized description of the parameter.")
-    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the parameter.", alias="displayName")
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the parameter.")
+    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the parameter.", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="The localized description of the parameter.")
     model_name: Optional[StrictStr] = Field(default=None, description="The name of the planning model to which the parameter applies.", alias="modelName")
-    __properties: ClassVar[List[str]] = ["description", "displayName", "id", "modelName"]
+    __properties: ClassVar[List[str]] = ["id", "displayName", "description", "modelName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,9 +83,9 @@ class PlanParameterDefinitionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
-            "displayName": obj.get("displayName"),
             "id": obj.get("id"),
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description"),
             "modelName": obj.get("modelName")
         })
         return _obj

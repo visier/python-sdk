@@ -27,11 +27,11 @@ class PushDataSourceDefinitionDTO(BaseModel):
     """
     Details of each existing source.
     """ # noqa: E501
+    source_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the source.", alias="sourceId")
+    name: Optional[StrictStr] = Field(default=None, description="The object name of the source.")
     columns: Optional[List[PushDataColumnDefinitionDTO]] = Field(default=None, description="A list of objects representing the source columns.")
     is_inherited: Optional[StrictBool] = Field(default=None, description="If true, the source is inherited by all analytic tenants.", alias="isInherited")
-    name: Optional[StrictStr] = Field(default=None, description="The object name of the source.")
-    source_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the source.", alias="sourceId")
-    __properties: ClassVar[List[str]] = ["columns", "isInherited", "name", "sourceId"]
+    __properties: ClassVar[List[str]] = ["sourceId", "name", "columns", "isInherited"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,10 +91,10 @@ class PushDataSourceDefinitionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "columns": [PushDataColumnDefinitionDTO.from_dict(_item) for _item in obj["columns"]] if obj.get("columns") is not None else None,
-            "isInherited": obj.get("isInherited"),
+            "sourceId": obj.get("sourceId"),
             "name": obj.get("name"),
-            "sourceId": obj.get("sourceId")
+            "columns": [PushDataColumnDefinitionDTO.from_dict(_item) for _item in obj["columns"]] if obj.get("columns") is not None else None,
+            "isInherited": obj.get("isInherited")
         })
         return _obj
 

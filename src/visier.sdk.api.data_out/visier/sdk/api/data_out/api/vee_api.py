@@ -16,15 +16,14 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from visier.sdk.api.data_out.models.vee_feedback_dto import VeeFeedbackDTO
 from visier.sdk.api.data_out.models.vee_question_dto import VeeQuestionDTO
 from visier.sdk.api.data_out.models.vee_response_dto import VeeResponseDTO
 from visier.sdk.api.data_out.models.vee_sample_question_library_dto import VeeSampleQuestionLibraryDTO
 from visier.sdk.api.data_out.models.vee_status_code_dto import VeeStatusCodeDTO
-
-from visier.sdk.api.data_out.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.data_out.api_response import ApiResponse
-from visier.sdk.api.data_out.rest import RESTResponseType
+import visier.sdk.api.data_out.models
 
 
 class VeeApi:
@@ -41,7 +40,7 @@ class VeeApi:
 
 
     @validate_call
-    def vee_feedback(
+    def vee_vee_feedback(
         self,
         vee_feedback_dto: VeeFeedbackDTO,
         _request_timeout: Union[
@@ -85,7 +84,7 @@ class VeeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._vee_feedback_serialize(
+        _param = self._vee_vee_feedback_serialize(
             vee_feedback_dto=vee_feedback_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -102,13 +101,14 @@ class VeeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def vee_feedback_with_http_info(
+    def vee_vee_feedback_with_http_info(
         self,
         vee_feedback_dto: VeeFeedbackDTO,
         _request_timeout: Union[
@@ -152,7 +152,7 @@ class VeeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._vee_feedback_serialize(
+        _param = self._vee_vee_feedback_serialize(
             vee_feedback_dto=vee_feedback_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -169,13 +169,14 @@ class VeeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def vee_feedback_without_preload_content(
+    def vee_vee_feedback_without_preload_content(
         self,
         vee_feedback_dto: VeeFeedbackDTO,
         _request_timeout: Union[
@@ -219,7 +220,7 @@ class VeeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._vee_feedback_serialize(
+        _param = self._vee_vee_feedback_serialize(
             vee_feedback_dto=vee_feedback_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -237,7 +238,7 @@ class VeeApi:
         return response_data.response
 
 
-    def _vee_feedback_serialize(
+    def _vee_vee_feedback_serialize(
         self,
         vee_feedback_dto,
         _request_auth,
@@ -317,7 +318,7 @@ class VeeApi:
 
 
     @validate_call
-    def vee_question_request(
+    def vee_vee_question_request(
         self,
         vee_question_dto: VeeQuestionDTO,
         _request_timeout: Union[
@@ -361,7 +362,7 @@ class VeeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._vee_question_request_serialize(
+        _param = self._vee_vee_question_request_serialize(
             vee_question_dto=vee_question_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -378,13 +379,14 @@ class VeeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def vee_question_request_with_http_info(
+    def vee_vee_question_request_with_http_info(
         self,
         vee_question_dto: VeeQuestionDTO,
         _request_timeout: Union[
@@ -428,7 +430,7 @@ class VeeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._vee_question_request_serialize(
+        _param = self._vee_vee_question_request_serialize(
             vee_question_dto=vee_question_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -445,13 +447,14 @@ class VeeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def vee_question_request_without_preload_content(
+    def vee_vee_question_request_without_preload_content(
         self,
         vee_question_dto: VeeQuestionDTO,
         _request_timeout: Union[
@@ -495,7 +498,7 @@ class VeeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._vee_question_request_serialize(
+        _param = self._vee_vee_question_request_serialize(
             vee_question_dto=vee_question_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -513,7 +516,7 @@ class VeeApi:
         return response_data.response
 
 
-    def _vee_question_request_serialize(
+    def _vee_vee_question_request_serialize(
         self,
         vee_question_dto,
         _request_auth,
@@ -593,7 +596,7 @@ class VeeApi:
 
 
     @validate_call
-    def vee_sample_questions(
+    def vee_vee_sample_questions(
         self,
         _request_timeout: Union[
             None,
@@ -634,7 +637,7 @@ class VeeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._vee_sample_questions_serialize(
+        _param = self._vee_vee_sample_questions_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -650,13 +653,14 @@ class VeeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def vee_sample_questions_with_http_info(
+    def vee_vee_sample_questions_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -697,7 +701,7 @@ class VeeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._vee_sample_questions_serialize(
+        _param = self._vee_vee_sample_questions_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -713,13 +717,14 @@ class VeeApi:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.data_out.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def vee_sample_questions_without_preload_content(
+    def vee_vee_sample_questions_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -760,7 +765,7 @@ class VeeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._vee_sample_questions_serialize(
+        _param = self._vee_vee_sample_questions_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -777,7 +782,7 @@ class VeeApi:
         return response_data.response
 
 
-    def _vee_sample_questions_serialize(
+    def _vee_vee_sample_questions_serialize(
         self,
         _request_auth,
         _content_type,

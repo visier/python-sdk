@@ -27,9 +27,9 @@ class MultipleTenantDataVersionsDetailsDTO(BaseModel):
     """
     MultipleTenantDataVersionsDetailsDTO
     """ # noqa: E501
-    data_versions: Optional[List[DataVersionAndDateDTO]] = Field(default=None, description="The latest enabled data versions for the given analytic tenant. If the analytic tenant  has no enabled data versions, an empty string \"\" is returned.", alias="dataVersions")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The owner of the data versions.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["dataVersions", "tenantCode"]
+    data_versions: Optional[List[DataVersionAndDateDTO]] = Field(default=None, description="The latest enabled data versions for the given analytic tenant. If the analytic tenant  has no enabled data versions, an empty string \"\" is returned.", alias="dataVersions")
+    __properties: ClassVar[List[str]] = ["tenantCode", "dataVersions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,8 +89,8 @@ class MultipleTenantDataVersionsDetailsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dataVersions": [DataVersionAndDateDTO.from_dict(_item) for _item in obj["dataVersions"]] if obj.get("dataVersions") is not None else None,
-            "tenantCode": obj.get("tenantCode")
+            "tenantCode": obj.get("tenantCode"),
+            "dataVersions": [DataVersionAndDateDTO.from_dict(_item) for _item in obj["dataVersions"]] if obj.get("dataVersions") is not None else None
         })
         return _obj
 

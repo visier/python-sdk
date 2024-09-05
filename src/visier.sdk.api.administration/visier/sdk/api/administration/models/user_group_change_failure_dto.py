@@ -28,10 +28,10 @@ class UserGroupChangeFailureDTO(BaseModel):
     """ # noqa: E501
     display_name: Optional[StrictStr] = Field(default=None, description="The display name of the user group that couldn't be created.", alias="displayName")
     message: Optional[StrictStr] = Field(default=None, description="The error message containing the cause of the failure.")
-    project_id: Optional[StrictStr] = Field(default=None, description="The ID of the project in which the user group could not be created or updated.", alias="projectId")
     rci: Optional[StrictStr] = Field(default=None, description="The root cause identifier to provide to Visier Technical Support if you require further troubleshooting.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The code of the tenant for which the user group could not be created or updated.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["displayName", "message", "projectId", "rci", "tenantCode"]
+    project_id: Optional[StrictStr] = Field(default=None, description="The ID of the project in which the user group could not be created or updated.", alias="projectId")
+    __properties: ClassVar[List[str]] = ["displayName", "message", "rci", "tenantCode", "projectId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,9 +86,9 @@ class UserGroupChangeFailureDTO(BaseModel):
         _obj = cls.model_validate({
             "displayName": obj.get("displayName"),
             "message": obj.get("message"),
-            "projectId": obj.get("projectId"),
             "rci": obj.get("rci"),
-            "tenantCode": obj.get("tenantCode")
+            "tenantCode": obj.get("tenantCode"),
+            "projectId": obj.get("projectId")
         })
         return _obj
 

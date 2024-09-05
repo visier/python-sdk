@@ -28,10 +28,10 @@ class DynamicDimensionFilterDTO(BaseModel):
     DynamicDimensionFilterDTO
     """ # noqa: E501
     dimension_id: Optional[StrictStr] = Field(default=None, description="The dimension ID associated with the filter.", alias="dimensionId")
-    dimension_status: Optional[StrictStr] = Field(default=None, description="The dimension's validity status. Valid values: Valid, NoData, NotFound.  * **Valid**: The object exists and has loaded data.  * **NoData**: The object exists but doesn't have loaded data.  * **NotFound**: The object doesn't exist.", alias="dimensionStatus")
-    dynamic_property_mappings: Optional[List[DynamicPropertyMappingDTO]] = Field(default=None, description="The properties assigned population access in the dynamic filter.", alias="dynamicPropertyMappings")
     subject_reference_path: Optional[List[StrictStr]] = Field(default=None, description="The subject reference path.", alias="subjectReferencePath")
-    __properties: ClassVar[List[str]] = ["dimensionId", "dimensionStatus", "dynamicPropertyMappings", "subjectReferencePath"]
+    dynamic_property_mappings: Optional[List[DynamicPropertyMappingDTO]] = Field(default=None, description="The properties assigned population access in the dynamic filter.", alias="dynamicPropertyMappings")
+    dimension_status: Optional[StrictStr] = Field(default=None, description="The dimension's validity status. Valid values: Valid, NoData, NotFound.  * **Valid**: The object exists and has loaded data.  * **NoData**: The object exists but doesn't have loaded data.  * **NotFound**: The object doesn't exist.", alias="dimensionStatus")
+    __properties: ClassVar[List[str]] = ["dimensionId", "subjectReferencePath", "dynamicPropertyMappings", "dimensionStatus"]
 
     @field_validator('dimension_status')
     def dimension_status_validate_enum(cls, value):
@@ -102,9 +102,9 @@ class DynamicDimensionFilterDTO(BaseModel):
 
         _obj = cls.model_validate({
             "dimensionId": obj.get("dimensionId"),
-            "dimensionStatus": obj.get("dimensionStatus"),
+            "subjectReferencePath": obj.get("subjectReferencePath"),
             "dynamicPropertyMappings": [DynamicPropertyMappingDTO.from_dict(_item) for _item in obj["dynamicPropertyMappings"]] if obj.get("dynamicPropertyMappings") is not None else None,
-            "subjectReferencePath": obj.get("subjectReferencePath")
+            "dimensionStatus": obj.get("dimensionStatus")
         })
         return _obj
 

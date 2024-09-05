@@ -26,10 +26,10 @@ class ExportProductionVersionsAPIOperationParametersDTO(BaseModel):
     """
     ExportProductionVersionsAPIOperationParametersDTO
     """ # noqa: E501
+    start_version: Optional[StrictStr] = Field(default=None, description="The unique identifier of the version to start exporting versions from. The range is inclusive.", alias="startVersion")
     end_version: Optional[StrictStr] = Field(default=None, description="The unique identifier of the version to stop exporting versions at. The range is inclusive.", alias="endVersion")
     excluded_versions: Optional[List[StrictStr]] = Field(default=None, description="A list of versions between `startVersion` and `endVersion` to exclude.", alias="excludedVersions")
-    start_version: Optional[StrictStr] = Field(default=None, description="The unique identifier of the version to start exporting versions from. The range is inclusive.", alias="startVersion")
-    __properties: ClassVar[List[str]] = ["endVersion", "excludedVersions", "startVersion"]
+    __properties: ClassVar[List[str]] = ["startVersion", "endVersion", "excludedVersions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class ExportProductionVersionsAPIOperationParametersDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "startVersion": obj.get("startVersion"),
             "endVersion": obj.get("endVersion"),
-            "excludedVersions": obj.get("excludedVersions"),
-            "startVersion": obj.get("startVersion")
+            "excludedVersions": obj.get("excludedVersions")
         })
         return _obj
 

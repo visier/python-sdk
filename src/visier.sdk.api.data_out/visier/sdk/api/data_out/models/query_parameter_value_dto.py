@@ -30,11 +30,11 @@ class QueryParameterValueDTO(BaseModel):
     """
     An object that contains parameter values for either member or numeric parameters.
     """ # noqa: E501
-    aggregation_type_value: Optional[AggregationTypeParameterValueDTO] = Field(default=None, description="A value for an aggregation parameter.", alias="aggregationTypeValue")
     member_value: Optional[MemberParameterValueDTO] = Field(default=None, description="A value for a member parameter.", alias="memberValue")
     numeric_value: Optional[NumericParameterValueDTO] = Field(default=None, description="A value for a numeric parameter.", alias="numericValue")
     plan_value: Optional[PlanParameterValueDTO] = Field(default=None, description="A value for a plan parameter.", alias="planValue")
-    __properties: ClassVar[List[str]] = ["aggregationTypeValue", "memberValue", "numericValue", "planValue"]
+    aggregation_type_value: Optional[AggregationTypeParameterValueDTO] = Field(default=None, description="A value for an aggregation parameter.", alias="aggregationTypeValue")
+    __properties: ClassVar[List[str]] = ["memberValue", "numericValue", "planValue", "aggregationTypeValue"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,9 +75,6 @@ class QueryParameterValueDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of aggregation_type_value
-        if self.aggregation_type_value:
-            _dict['aggregationTypeValue'] = self.aggregation_type_value.to_dict()
         # override the default output from pydantic by calling `to_dict()` of member_value
         if self.member_value:
             _dict['memberValue'] = self.member_value.to_dict()
@@ -87,6 +84,9 @@ class QueryParameterValueDTO(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of plan_value
         if self.plan_value:
             _dict['planValue'] = self.plan_value.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of aggregation_type_value
+        if self.aggregation_type_value:
+            _dict['aggregationTypeValue'] = self.aggregation_type_value.to_dict()
         return _dict
 
     @classmethod
@@ -99,10 +99,10 @@ class QueryParameterValueDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "aggregationTypeValue": AggregationTypeParameterValueDTO.from_dict(obj["aggregationTypeValue"]) if obj.get("aggregationTypeValue") is not None else None,
             "memberValue": MemberParameterValueDTO.from_dict(obj["memberValue"]) if obj.get("memberValue") is not None else None,
             "numericValue": NumericParameterValueDTO.from_dict(obj["numericValue"]) if obj.get("numericValue") is not None else None,
-            "planValue": PlanParameterValueDTO.from_dict(obj["planValue"]) if obj.get("planValue") is not None else None
+            "planValue": PlanParameterValueDTO.from_dict(obj["planValue"]) if obj.get("planValue") is not None else None,
+            "aggregationTypeValue": AggregationTypeParameterValueDTO.from_dict(obj["aggregationTypeValue"]) if obj.get("aggregationTypeValue") is not None else None
         })
         return _obj
 
