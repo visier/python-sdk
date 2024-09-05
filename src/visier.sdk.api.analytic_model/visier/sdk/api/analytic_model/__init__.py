@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.0.106"
+__version__ = "0.0.108"
 
 # import apis into sdk package
 from visier.sdk.api.analytic_model.api.data_model_api import DataModelApi

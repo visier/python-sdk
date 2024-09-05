@@ -1,1 +1,1 @@
-visier.sdk.api.core == 0.0.106
+visier.sdk.api.core == 0.0.108
