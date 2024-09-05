@@ -28,30 +28,20 @@ class QueryExecutionOptionsDTO(BaseModel):
     """
     A QueryExecutionOptions provides additional instructions to perform a query.
     """ # noqa: E501
-    axis_visibility: Optional[StrictStr] = Field(default=None, description="The amount of information to return about each axis. Default is SIMPLE.", alias="axisVisibility")
     calendar_type: Optional[StrictStr] = Field(default=None, description="The calendar type to use. This will be used for all time calculations unless explicitly overridden in  the calculation itself. Default is TENANT_CALENDAR.", alias="calendarType")
-    cell_distribution_options: Optional[CellDistributionOptionsDTO] = Field(default=None, alias="cellDistributionOptions")
-    currency_conversion_code: Optional[StrictStr] = Field(default=None, description="The target currency for all currency conversions.  If not specified, the tenant default currency will be used.", alias="currencyConversionCode")
-    currency_conversion_date: Optional[StrictStr] = Field(default=None, description="The currency conversion date to use. If defined, the currency conversion will use the exchange rates as of this date.  Default is the exchange rate at the end of the query time interval. Format is the number of milliseconds since  midnight 01 January, 1970 UTC as a string. Note: Epochs are expressed as 64-bit integers and represented as  stringified longs in JSON due to JSON's inherent limitation in representing large numbers.", alias="currencyConversionDate")
     currency_conversion_mode: Optional[StrictStr] = Field(default=None, description="The currency conversion mode to use. This will be used for all currency conversion calculations  unless explicitly overridden in the calculation itself. Default is TENANT_CURRENCY_CONVERSION.", alias="currencyConversionMode")
-    enable_descending_space: Optional[StrictBool] = Field(default=None, description="If true, filter non-time axis member sets to only include members that are in aggregate positions or whose previous position is a leaf", alias="enableDescendingSpace")
+    currency_conversion_date: Optional[StrictStr] = Field(default=None, description="The currency conversion date to use. If defined, the currency conversion will use the exchange rates as of this date.  Default is the exchange rate at the end of the query time interval. Format is the number of milliseconds since  midnight 01 January, 1970 UTC as a string. Note: Epochs are expressed as 64-bit integers and represented as  stringified longs in JSON due to JSON's inherent limitation in representing large numbers.", alias="currencyConversionDate")
+    lineage_depth: Optional[StrictInt] = Field(default=None, description="The max number of levels of nesting to unwind when determining the lineage for a derived metric value.", alias="lineageDepth")
+    zero_visibility: Optional[StrictStr] = Field(default=None, description="Show or hide zeros in the result. Default is SHOW.", alias="zeroVisibility")
+    null_visibility: Optional[StrictStr] = Field(default=None, description="Show or hide null or N/A values in the result. Default is SHOW.", alias="nullVisibility")
+    cell_distribution_options: Optional[CellDistributionOptionsDTO] = Field(default=None, alias="cellDistributionOptions")
+    axis_visibility: Optional[StrictStr] = Field(default=None, description="The amount of information to return about each axis. Default is SIMPLE.", alias="axisVisibility")
     enable_sparse_results: Optional[StrictBool] = Field(default=None, description="Retrieve sparse cell sets. Sparse results only retrieve non-zero and non-null cells. Whether a result is truly sparse  or not is determined by the Visier server.", alias="enableSparseResults")
     internal: Optional[InternalQueryExecutionOptionsDTO] = None
-    lineage_depth: Optional[StrictInt] = Field(default=None, description="The max number of levels of nesting to unwind when determining the lineage for a derived metric value.", alias="lineageDepth")
+    enable_descending_space: Optional[StrictBool] = Field(default=None, description="If true, filter non-time axis member sets to only include members that are in aggregate positions or whose previous position is a leaf", alias="enableDescendingSpace")
+    currency_conversion_code: Optional[StrictStr] = Field(default=None, description="The target currency for all currency conversions.  If not specified, the tenant default currency will be used.", alias="currencyConversionCode")
     member_display_mode: Optional[StrictStr] = Field(default=None, description="Define the `memberDisplayMode` options to control how member values are rendered in the aggregate query result set. You can override the `memberDisplayMode` on a per-axis basis, if required.   Valid values are `DEFAULT`, `COMPACT`, `DISPLAY`, or `MDX`. Default is `DEFAULT`.   * `DEFAULT`: The default member name representation. For non-time members, this means returning the technical member name path.    For time members, this includes a bracketed member index.    For example, Time instant member: `2019-06-01T00:00:00.000Z - [0]`    For example, Time interval member: `2022-06-01T00:00:00.000Z/2022-07-01T00:00:00.000Z - [12]`  * `COMPACT`: Compacts the time member name representation. This also transforms the representation of time intervals to the end time of the interval.     For example, Time instant member: `2019-06-01T00:00:00.000Z`     For example, Time interval member: `2022-07-01T00:00:00.000Z` where the interval member name was `2022-06-01T00:00:00.000Z/2022-07-01T00:00:00.000Z - [12]`  * `DISPLAY`: Emit the members' display names whenever possible. When combined with `axisVisibility = VERBOSE`, the full display name path will be emitted.  * `MDX`: Emit member name paths where each element is enclosed in square brackets, `[]`. Multidimensional expression (MDX) display mode automatically encloses time members in square brackets and puts them in `COMPACT` format.    For example, Location member `North America.United States.California` becomes `[North America].[United States].[California]` in MDX display mode.    For example, Time instant member `2019-06-01T00:00:00.000Z - [0]` becomes `[2019-06-01T00:00:00.000Z]` in MDX display mode.", alias="memberDisplayMode")
-    null_visibility: Optional[StrictStr] = Field(default=None, description="Show or hide null or N/A values in the result. Default is SHOW.", alias="nullVisibility")
-    zero_visibility: Optional[StrictStr] = Field(default=None, description="Show or hide zeros in the result. Default is SHOW.", alias="zeroVisibility")
-    __properties: ClassVar[List[str]] = ["axisVisibility", "calendarType", "cellDistributionOptions", "currencyConversionCode", "currencyConversionDate", "currencyConversionMode", "enableDescendingSpace", "enableSparseResults", "internal", "lineageDepth", "memberDisplayMode", "nullVisibility", "zeroVisibility"]
-
-    @field_validator('axis_visibility')
-    def axis_visibility_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['SIMPLE', 'VERBOSE']):
-            raise ValueError("must be one of enum values ('SIMPLE', 'VERBOSE')")
-        return value
+    __properties: ClassVar[List[str]] = ["calendarType", "currencyConversionMode", "currencyConversionDate", "lineageDepth", "zeroVisibility", "nullVisibility", "cellDistributionOptions", "axisVisibility", "enableSparseResults", "internal", "enableDescendingSpace", "currencyConversionCode", "memberDisplayMode"]
 
     @field_validator('calendar_type')
     def calendar_type_validate_enum(cls, value):
@@ -73,14 +63,14 @@ class QueryExecutionOptionsDTO(BaseModel):
             raise ValueError("must be one of enum values ('TENANT_CURRENCY_CONVERSION', 'VISIER_CURRENCY_CONVERSION')")
         return value
 
-    @field_validator('member_display_mode')
-    def member_display_mode_validate_enum(cls, value):
+    @field_validator('zero_visibility')
+    def zero_visibility_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['DEFAULT', 'COMPACT', 'DISPLAY', 'MDX', 'COMPACT_DISPLAY']):
-            raise ValueError("must be one of enum values ('DEFAULT', 'COMPACT', 'DISPLAY', 'MDX', 'COMPACT_DISPLAY')")
+        if value not in set(['SHOW', 'HIDE', 'ELIMINATE']):
+            raise ValueError("must be one of enum values ('SHOW', 'HIDE', 'ELIMINATE')")
         return value
 
     @field_validator('null_visibility')
@@ -93,14 +83,24 @@ class QueryExecutionOptionsDTO(BaseModel):
             raise ValueError("must be one of enum values ('SHOW', 'HIDE', 'ELIMINATE')")
         return value
 
-    @field_validator('zero_visibility')
-    def zero_visibility_validate_enum(cls, value):
+    @field_validator('axis_visibility')
+    def axis_visibility_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['SHOW', 'HIDE', 'ELIMINATE']):
-            raise ValueError("must be one of enum values ('SHOW', 'HIDE', 'ELIMINATE')")
+        if value not in set(['SIMPLE', 'VERBOSE']):
+            raise ValueError("must be one of enum values ('SIMPLE', 'VERBOSE')")
+        return value
+
+    @field_validator('member_display_mode')
+    def member_display_mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['DEFAULT', 'COMPACT', 'DISPLAY', 'MDX', 'COMPACT_DISPLAY']):
+            raise ValueError("must be one of enum values ('DEFAULT', 'COMPACT', 'DISPLAY', 'MDX', 'COMPACT_DISPLAY')")
         return value
 
     model_config = ConfigDict(
@@ -160,19 +160,19 @@ class QueryExecutionOptionsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "axisVisibility": obj.get("axisVisibility"),
             "calendarType": obj.get("calendarType"),
-            "cellDistributionOptions": CellDistributionOptionsDTO.from_dict(obj["cellDistributionOptions"]) if obj.get("cellDistributionOptions") is not None else None,
-            "currencyConversionCode": obj.get("currencyConversionCode"),
-            "currencyConversionDate": obj.get("currencyConversionDate"),
             "currencyConversionMode": obj.get("currencyConversionMode"),
-            "enableDescendingSpace": obj.get("enableDescendingSpace"),
+            "currencyConversionDate": obj.get("currencyConversionDate"),
+            "lineageDepth": obj.get("lineageDepth"),
+            "zeroVisibility": obj.get("zeroVisibility"),
+            "nullVisibility": obj.get("nullVisibility"),
+            "cellDistributionOptions": CellDistributionOptionsDTO.from_dict(obj["cellDistributionOptions"]) if obj.get("cellDistributionOptions") is not None else None,
+            "axisVisibility": obj.get("axisVisibility"),
             "enableSparseResults": obj.get("enableSparseResults"),
             "internal": InternalQueryExecutionOptionsDTO.from_dict(obj["internal"]) if obj.get("internal") is not None else None,
-            "lineageDepth": obj.get("lineageDepth"),
-            "memberDisplayMode": obj.get("memberDisplayMode"),
-            "nullVisibility": obj.get("nullVisibility"),
-            "zeroVisibility": obj.get("zeroVisibility")
+            "enableDescendingSpace": obj.get("enableDescendingSpace"),
+            "currencyConversionCode": obj.get("currencyConversionCode"),
+            "memberDisplayMode": obj.get("memberDisplayMode")
         })
         return _obj
 

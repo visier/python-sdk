@@ -27,10 +27,10 @@ class PermissionFailureDTO(BaseModel):
     """
     PermissionFailureDTO
     """ # noqa: E501
+    permission_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the permission.", alias="permissionId")
     display_name: Optional[StrictStr] = Field(default=None, description="An identifiable permission name to display in Visier, such as \"Diversity Access\".", alias="displayName")
     error: Optional[PermissionErrorDTO] = Field(default=None, description="The error associated with the failure.")
-    permission_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the permission.", alias="permissionId")
-    __properties: ClassVar[List[str]] = ["displayName", "error", "permissionId"]
+    __properties: ClassVar[List[str]] = ["permissionId", "displayName", "error"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,9 +86,9 @@ class PermissionFailureDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "permissionId": obj.get("permissionId"),
             "displayName": obj.get("displayName"),
-            "error": PermissionErrorDTO.from_dict(obj["error"]) if obj.get("error") is not None else None,
-            "permissionId": obj.get("permissionId")
+            "error": PermissionErrorDTO.from_dict(obj["error"]) if obj.get("error") is not None else None
         })
         return _obj
 

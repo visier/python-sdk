@@ -27,16 +27,16 @@ class MetricDTO(BaseModel):
     """
     A metric is a calculation based on one or more attribute values of analytic objects.
     """ # noqa: E501
-    analytic_object_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the analytic object.", alias="analyticObjectId")
-    category: Optional[StrictStr] = Field(default=None, description="The category of the metric. Will be one of: `REGULAR`, `DERIVED` or `PLANNING`.")
-    data_end_date: Optional[StrictStr] = Field(default=None, description="The date from which data is no longer available for this metric.  Note: Format is the number of milliseconds since midnight 01 January, 1970 UTC as a string.  Epochs are expressed as 64-bit integers and represented as stringified longs in JSON due to JSON's inherent  limitation in representing large numbers.", alias="dataEndDate")
-    data_start_date: Optional[StrictStr] = Field(default=None, description="The date from which data becomes available for this metric.  Note: Format is the number of milliseconds since midnight 01 January, 1970 UTC as a string.  Epochs are expressed as 64-bit integers and represented as stringified longs in JSON due to JSON's inherent  limitation in representing large numbers.", alias="dataStartDate")
-    description: Optional[StrictStr] = Field(default=None, description="The localized description of the metric.")
-    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the metric.", alias="displayName")
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the metric. Note: See `Metrics` to get the ID.")
+    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the metric.", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="The localized description of the metric.")
+    data_start_date: Optional[StrictStr] = Field(default=None, description="The date from which data becomes available for this metric.  Note: Format is the number of milliseconds since midnight 01 January, 1970 UTC as a string.  Epochs are expressed as 64-bit integers and represented as stringified longs in JSON due to JSON's inherent  limitation in representing large numbers.", alias="dataStartDate")
+    data_end_date: Optional[StrictStr] = Field(default=None, description="The date from which data is no longer available for this metric.  Note: Format is the number of milliseconds since midnight 01 January, 1970 UTC as a string.  Epochs are expressed as 64-bit integers and represented as stringified longs in JSON due to JSON's inherent  limitation in representing large numbers.", alias="dataEndDate")
+    analytic_object_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the analytic object.", alias="analyticObjectId")
     parameters: Optional[List[ParameterDefinitionDTO]] = Field(default=None, description="The collection of parameters defined for the metric.")
+    category: Optional[StrictStr] = Field(default=None, description="The category of the metric. Will be one of: `REGULAR`, `DERIVED` or `PLANNING`.")
     visible_in_app: Optional[StrictBool] = Field(default=None, description="// `true` if this metric is set to be visible in your solution.", alias="visibleInApp")
-    __properties: ClassVar[List[str]] = ["analyticObjectId", "category", "dataEndDate", "dataStartDate", "description", "displayName", "id", "parameters", "visibleInApp"]
+    __properties: ClassVar[List[str]] = ["id", "displayName", "description", "dataStartDate", "dataEndDate", "analyticObjectId", "parameters", "category", "visibleInApp"]
 
     @field_validator('category')
     def category_validate_enum(cls, value):
@@ -106,14 +106,14 @@ class MetricDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analyticObjectId": obj.get("analyticObjectId"),
-            "category": obj.get("category"),
-            "dataEndDate": obj.get("dataEndDate"),
-            "dataStartDate": obj.get("dataStartDate"),
-            "description": obj.get("description"),
-            "displayName": obj.get("displayName"),
             "id": obj.get("id"),
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description"),
+            "dataStartDate": obj.get("dataStartDate"),
+            "dataEndDate": obj.get("dataEndDate"),
+            "analyticObjectId": obj.get("analyticObjectId"),
             "parameters": [ParameterDefinitionDTO.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None,
+            "category": obj.get("category"),
             "visibleInApp": obj.get("visibleInApp")
         })
         return _obj

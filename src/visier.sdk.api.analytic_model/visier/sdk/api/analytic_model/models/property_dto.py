@@ -28,14 +28,14 @@ class PropertyDTO(BaseModel):
     """
     Properties are qualities of an analytic object.
     """ # noqa: E501
-    data_type: Optional[StrictStr] = Field(default=None, description="The data type of the property, such as Categorical, HourDuration, or Ratio.", alias="dataType")
-    description: Optional[StrictStr] = Field(default=None, description="The localized description of the property.")
-    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the property.", alias="displayName")
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the property.  **Note:** See `Properties` to get the ID.")
-    parameters: Optional[List[ParameterDefinitionDTO]] = Field(default=None, description="The collection of parameters defined for the property.")
+    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the property.", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="The localized description of the property.")
+    data_type: Optional[StrictStr] = Field(default=None, description="The data type of the property, such as Categorical, HourDuration, or Ratio.", alias="dataType")
     primitive_data_type: Optional[StrictStr] = Field(default=None, description="The primitive data type of the property, such as Number, String, or Boolean.", alias="primitiveDataType")
+    parameters: Optional[List[ParameterDefinitionDTO]] = Field(default=None, description="The collection of parameters defined for the property.")
     tags: Optional[List[TagMapElementDTO]] = Field(default=None, description="The optional collection of tags defined for this element.")
-    __properties: ClassVar[List[str]] = ["dataType", "description", "displayName", "id", "parameters", "primitiveDataType", "tags"]
+    __properties: ClassVar[List[str]] = ["id", "displayName", "description", "dataType", "primitiveDataType", "parameters", "tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -102,12 +102,12 @@ class PropertyDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dataType": obj.get("dataType"),
-            "description": obj.get("description"),
-            "displayName": obj.get("displayName"),
             "id": obj.get("id"),
-            "parameters": [ParameterDefinitionDTO.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None,
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description"),
+            "dataType": obj.get("dataType"),
             "primitiveDataType": obj.get("primitiveDataType"),
+            "parameters": [ParameterDefinitionDTO.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None,
             "tags": [TagMapElementDTO.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None
         })
         return _obj

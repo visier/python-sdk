@@ -27,9 +27,9 @@ class MemberValuesDTO(BaseModel):
     """
     Member filter values are discrete member references in a dimension filter. You can define  included and excluded members simultaneously. This is typically done with filtering applied on  dimensions with multiple levels. For example, a Location parameter may include “South  America” and exclude “Brazil” which results in the metric being evaluated for all South American  countries except Brazil.
     """ # noqa: E501
-    excluded: Optional[List[DimensionMemberReferenceDTO]] = Field(default=None, description="The unique IDs of members to exclude when evaluating the metric.")
     included: Optional[List[DimensionMemberReferenceDTO]] = Field(default=None, description="The unique IDs of members to include when evaluating the metric.")
-    __properties: ClassVar[List[str]] = ["excluded", "included"]
+    excluded: Optional[List[DimensionMemberReferenceDTO]] = Field(default=None, description="The unique IDs of members to exclude when evaluating the metric.")
+    __properties: ClassVar[List[str]] = ["included", "excluded"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,13 +70,6 @@ class MemberValuesDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in excluded (list)
-        _items = []
-        if self.excluded:
-            for _item_excluded in self.excluded:
-                if _item_excluded:
-                    _items.append(_item_excluded.to_dict())
-            _dict['excluded'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in included (list)
         _items = []
         if self.included:
@@ -84,6 +77,13 @@ class MemberValuesDTO(BaseModel):
                 if _item_included:
                     _items.append(_item_included.to_dict())
             _dict['included'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in excluded (list)
+        _items = []
+        if self.excluded:
+            for _item_excluded in self.excluded:
+                if _item_excluded:
+                    _items.append(_item_excluded.to_dict())
+            _dict['excluded'] = _items
         return _dict
 
     @classmethod
@@ -96,8 +96,8 @@ class MemberValuesDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "excluded": [DimensionMemberReferenceDTO.from_dict(_item) for _item in obj["excluded"]] if obj.get("excluded") is not None else None,
-            "included": [DimensionMemberReferenceDTO.from_dict(_item) for _item in obj["included"]] if obj.get("included") is not None else None
+            "included": [DimensionMemberReferenceDTO.from_dict(_item) for _item in obj["included"]] if obj.get("included") is not None else None,
+            "excluded": [DimensionMemberReferenceDTO.from_dict(_item) for _item in obj["excluded"]] if obj.get("excluded") is not None else None
         })
         return _obj
 

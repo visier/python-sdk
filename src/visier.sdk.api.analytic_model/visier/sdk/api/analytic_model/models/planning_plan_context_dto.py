@@ -28,9 +28,9 @@ class PlanningPlanContextDTO(BaseModel):
     """
     The filter context for a plan. Plan contexts are defined using a set of hierarchy members or a concept.
     """ # noqa: E501
-    concept_filter_context: Optional[PlanningConceptFilterContextDTO] = Field(default=None, description="A plan context defined using a selection concept.", alias="conceptFilterContext")
     hierarchy_filter_context: Optional[PlanningHierarchyFilterContextDTO] = Field(default=None, description="A plan context defined using hierarchy members.", alias="hierarchyFilterContext")
-    __properties: ClassVar[List[str]] = ["conceptFilterContext", "hierarchyFilterContext"]
+    concept_filter_context: Optional[PlanningConceptFilterContextDTO] = Field(default=None, description="A plan context defined using a selection concept.", alias="conceptFilterContext")
+    __properties: ClassVar[List[str]] = ["hierarchyFilterContext", "conceptFilterContext"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,12 +71,12 @@ class PlanningPlanContextDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of concept_filter_context
-        if self.concept_filter_context:
-            _dict['conceptFilterContext'] = self.concept_filter_context.to_dict()
         # override the default output from pydantic by calling `to_dict()` of hierarchy_filter_context
         if self.hierarchy_filter_context:
             _dict['hierarchyFilterContext'] = self.hierarchy_filter_context.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of concept_filter_context
+        if self.concept_filter_context:
+            _dict['conceptFilterContext'] = self.concept_filter_context.to_dict()
         return _dict
 
     @classmethod
@@ -89,8 +89,8 @@ class PlanningPlanContextDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "conceptFilterContext": PlanningConceptFilterContextDTO.from_dict(obj["conceptFilterContext"]) if obj.get("conceptFilterContext") is not None else None,
-            "hierarchyFilterContext": PlanningHierarchyFilterContextDTO.from_dict(obj["hierarchyFilterContext"]) if obj.get("hierarchyFilterContext") is not None else None
+            "hierarchyFilterContext": PlanningHierarchyFilterContextDTO.from_dict(obj["hierarchyFilterContext"]) if obj.get("hierarchyFilterContext") is not None else None,
+            "conceptFilterContext": PlanningConceptFilterContextDTO.from_dict(obj["conceptFilterContext"]) if obj.get("conceptFilterContext") is not None else None
         })
         return _obj
 

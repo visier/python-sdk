@@ -26,13 +26,13 @@ class VeeClarificationDTO(BaseModel):
     """
     VeeClarificationDTO
     """ # noqa: E501
-    attributes: Optional[List[StrictStr]] = Field(default=None, description="Suggested attributes to look at, that are similar or related to your question.")
+    message: Optional[StrictStr] = Field(default=None, description="Returned if Vee needs more context to answer your question.")
+    questions: Optional[List[StrictStr]] = Field(default=None, description="Some related questions that could be helpful.")
+    metrics: Optional[List[StrictStr]] = Field(default=None, description="Suggested metrics to look at, that are similar or related to your question.")
     dimensions: Optional[List[StrictStr]] = Field(default=None, description="Suggested dimensions to look at, that are similar or related to your question.")
     filters: Optional[List[StrictStr]] = Field(default=None, description="Suggested filters that could be a better fit for the data.")
-    message: Optional[StrictStr] = Field(default=None, description="Returned if Vee needs more context to answer your question.")
-    metrics: Optional[List[StrictStr]] = Field(default=None, description="Suggested metrics to look at, that are similar or related to your question.")
-    questions: Optional[List[StrictStr]] = Field(default=None, description="Some related questions that could be helpful.")
-    __properties: ClassVar[List[str]] = ["attributes", "dimensions", "filters", "message", "metrics", "questions"]
+    attributes: Optional[List[StrictStr]] = Field(default=None, description="Suggested attributes to look at, that are similar or related to your question.")
+    __properties: ClassVar[List[str]] = ["message", "questions", "metrics", "dimensions", "filters", "attributes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,12 +85,12 @@ class VeeClarificationDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "attributes": obj.get("attributes"),
+            "message": obj.get("message"),
+            "questions": obj.get("questions"),
+            "metrics": obj.get("metrics"),
             "dimensions": obj.get("dimensions"),
             "filters": obj.get("filters"),
-            "message": obj.get("message"),
-            "metrics": obj.get("metrics"),
-            "questions": obj.get("questions")
+            "attributes": obj.get("attributes")
         })
         return _obj
 

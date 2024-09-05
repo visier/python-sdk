@@ -27,11 +27,11 @@ class UsersAPIFailureDTO(BaseModel):
     """
     UsersAPIFailureDTO
     """ # noqa: E501
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable name to display within Visier. For example, \"John Smith\".", alias="displayName")
-    error: Optional[UsersAPIErrorMessageDTO] = Field(default=None, description="The error thrown during creation.")
     user_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the user.", alias="userId")
     user_name: Optional[StrictStr] = Field(default=None, description="The user's username. This is typically the user's email, such as john@jupiter.com.", alias="userName")
-    __properties: ClassVar[List[str]] = ["displayName", "error", "userId", "userName"]
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable name to display within Visier. For example, \"John Smith\".", alias="displayName")
+    error: Optional[UsersAPIErrorMessageDTO] = Field(default=None, description="The error thrown during creation.")
+    __properties: ClassVar[List[str]] = ["userId", "userName", "displayName", "error"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,10 +87,10 @@ class UsersAPIFailureDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "displayName": obj.get("displayName"),
-            "error": UsersAPIErrorMessageDTO.from_dict(obj["error"]) if obj.get("error") is not None else None,
             "userId": obj.get("userId"),
-            "userName": obj.get("userName")
+            "userName": obj.get("userName"),
+            "displayName": obj.get("displayName"),
+            "error": UsersAPIErrorMessageDTO.from_dict(obj["error"]) if obj.get("error") is not None else None
         })
         return _obj
 

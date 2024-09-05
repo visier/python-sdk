@@ -26,9 +26,9 @@ class TenantAndCredential(BaseModel):
     """
     TenantAndCredential
     """ # noqa: E501
-    credential_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the credential.", alias="credentialId")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the tenant.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["credentialId", "tenantCode"]
+    credential_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the credential.", alias="credentialId")
+    __properties: ClassVar[List[str]] = ["tenantCode", "credentialId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class TenantAndCredential(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "credentialId": obj.get("credentialId"),
-            "tenantCode": obj.get("tenantCode")
+            "tenantCode": obj.get("tenantCode"),
+            "credentialId": obj.get("credentialId")
         })
         return _obj
 

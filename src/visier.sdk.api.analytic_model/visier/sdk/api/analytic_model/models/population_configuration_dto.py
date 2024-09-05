@@ -28,10 +28,10 @@ class PopulationConfigurationDTO(BaseModel):
     """
     A set of property and dimension references configured by Visier or an administrator to tell the platform what  properties and dimensions to use when doing population insight calculations. These are the distinguishing properties,  change history properties, and grouping dimensions to use in AI insights.
     """ # noqa: E501
-    change_history_properties: Optional[List[PropertyReferenceDTO]] = Field(default=None, description="Properties that are used by default to compare subject members over time.", alias="changeHistoryProperties")
     distinguishing_properties: Optional[List[PropertyReferenceDTO]] = Field(default=None, description="Properties that are used by default to compare subject members.", alias="distinguishingProperties")
+    change_history_properties: Optional[List[PropertyReferenceDTO]] = Field(default=None, description="Properties that are used by default to compare subject members over time.", alias="changeHistoryProperties")
     grouping_dimensions: Optional[List[DimensionReferenceDTO]] = Field(default=None, description="Dimensions to use for grouping and clustering the population.", alias="groupingDimensions")
-    __properties: ClassVar[List[str]] = ["changeHistoryProperties", "distinguishingProperties", "groupingDimensions"]
+    __properties: ClassVar[List[str]] = ["distinguishingProperties", "changeHistoryProperties", "groupingDimensions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,13 +72,6 @@ class PopulationConfigurationDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in change_history_properties (list)
-        _items = []
-        if self.change_history_properties:
-            for _item_change_history_properties in self.change_history_properties:
-                if _item_change_history_properties:
-                    _items.append(_item_change_history_properties.to_dict())
-            _dict['changeHistoryProperties'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in distinguishing_properties (list)
         _items = []
         if self.distinguishing_properties:
@@ -86,6 +79,13 @@ class PopulationConfigurationDTO(BaseModel):
                 if _item_distinguishing_properties:
                     _items.append(_item_distinguishing_properties.to_dict())
             _dict['distinguishingProperties'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in change_history_properties (list)
+        _items = []
+        if self.change_history_properties:
+            for _item_change_history_properties in self.change_history_properties:
+                if _item_change_history_properties:
+                    _items.append(_item_change_history_properties.to_dict())
+            _dict['changeHistoryProperties'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in grouping_dimensions (list)
         _items = []
         if self.grouping_dimensions:
@@ -105,8 +105,8 @@ class PopulationConfigurationDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "changeHistoryProperties": [PropertyReferenceDTO.from_dict(_item) for _item in obj["changeHistoryProperties"]] if obj.get("changeHistoryProperties") is not None else None,
             "distinguishingProperties": [PropertyReferenceDTO.from_dict(_item) for _item in obj["distinguishingProperties"]] if obj.get("distinguishingProperties") is not None else None,
+            "changeHistoryProperties": [PropertyReferenceDTO.from_dict(_item) for _item in obj["changeHistoryProperties"]] if obj.get("changeHistoryProperties") is not None else None,
             "groupingDimensions": [DimensionReferenceDTO.from_dict(_item) for _item in obj["groupingDimensions"]] if obj.get("groupingDimensions") is not None else None
         })
         return _obj

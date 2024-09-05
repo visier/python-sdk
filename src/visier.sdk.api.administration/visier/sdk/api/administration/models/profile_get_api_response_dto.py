@@ -27,11 +27,11 @@ class ProfileGetAPIResponseDTO(BaseModel):
     """
     ProfileGetAPIResponseDTO
     """ # noqa: E501
-    additional_capabilities: Optional[List[StrictStr]] = Field(default=None, description="A list of the additional capabilities that are assigned to this profile.", alias="additionalCapabilities")
-    capabilities: Optional[List[CapabilitiesDTO]] = Field(default=None, description="A list of objects representing the access that this profile has for the capabilities of this profile.")
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable profile name to display in Visier. For example, \"Partner Service Manager\".", alias="displayName")
     profile_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the profile.", alias="profileId")
-    __properties: ClassVar[List[str]] = ["additionalCapabilities", "capabilities", "displayName", "profileId"]
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable profile name to display in Visier. For example, \"Partner Service Manager\".", alias="displayName")
+    capabilities: Optional[List[CapabilitiesDTO]] = Field(default=None, description="A list of objects representing the access that this profile has for the capabilities of this profile.")
+    additional_capabilities: Optional[List[StrictStr]] = Field(default=None, description="A list of the additional capabilities that are assigned to this profile.", alias="additionalCapabilities")
+    __properties: ClassVar[List[str]] = ["profileId", "displayName", "capabilities", "additionalCapabilities"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,10 +91,10 @@ class ProfileGetAPIResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "additionalCapabilities": obj.get("additionalCapabilities"),
-            "capabilities": [CapabilitiesDTO.from_dict(_item) for _item in obj["capabilities"]] if obj.get("capabilities") is not None else None,
+            "profileId": obj.get("profileId"),
             "displayName": obj.get("displayName"),
-            "profileId": obj.get("profileId")
+            "capabilities": [CapabilitiesDTO.from_dict(_item) for _item in obj["capabilities"]] if obj.get("capabilities") is not None else None,
+            "additionalCapabilities": obj.get("additionalCapabilities")
         })
         return _obj
 

@@ -16,6 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from visier.sdk.api.core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
+
 from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
 from typing import Any, Dict, Optional, Union
 from typing_extensions import Annotated
@@ -33,10 +35,7 @@ from visier.sdk.api.administration.models.user_groups_get_api_response_dto impor
 from visier.sdk.api.administration.models.user_groups_users_dto import UserGroupsUsersDTO
 from visier.sdk.api.administration.models.user_update_api_request_dto import UserUpdateAPIRequestDTO
 from visier.sdk.api.administration.models.users_to_user_groups_request_dto import UsersToUserGroupsRequestDTO
-
-from visier.sdk.api.administration.api_client import ApiClient, RequestSerialized
-from visier.sdk.api.administration.api_response import ApiResponse
-from visier.sdk.api.administration.rest import RESTResponseType
+import visier.sdk.api.administration.models
 
 
 class UsersV1Api:
@@ -53,7 +52,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def add_user(
+    def users_v1_add_user(
         self,
         user_creation_api_request_dto: UserCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
@@ -100,7 +99,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_user_serialize(
+        _param = self._users_v1_add_user_serialize(
             user_creation_api_request_dto=user_creation_api_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -118,13 +117,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def add_user_with_http_info(
+    def users_v1_add_user_with_http_info(
         self,
         user_creation_api_request_dto: UserCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
@@ -171,7 +171,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_user_serialize(
+        _param = self._users_v1_add_user_serialize(
             user_creation_api_request_dto=user_creation_api_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -189,13 +189,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def add_user_without_preload_content(
+    def users_v1_add_user_without_preload_content(
         self,
         user_creation_api_request_dto: UserCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
@@ -242,7 +243,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_user_serialize(
+        _param = self._users_v1_add_user_serialize(
             user_creation_api_request_dto=user_creation_api_request_dto,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -261,7 +262,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _add_user_serialize(
+    def _users_v1_add_user_serialize(
         self,
         user_creation_api_request_dto,
         tenant_code,
@@ -341,7 +342,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def add_users_to_user_group(
+    def users_v1_add_users_to_user_group(
         self,
         users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -391,7 +392,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_users_to_user_group_serialize(
+        _param = self._users_v1_add_users_to_user_group_serialize(
             users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -410,13 +411,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def add_users_to_user_group_with_http_info(
+    def users_v1_add_users_to_user_group_with_http_info(
         self,
         users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -466,7 +468,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_users_to_user_group_serialize(
+        _param = self._users_v1_add_users_to_user_group_serialize(
             users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -485,13 +487,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def add_users_to_user_group_without_preload_content(
+    def users_v1_add_users_to_user_group_without_preload_content(
         self,
         users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -541,7 +544,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._add_users_to_user_group_serialize(
+        _param = self._users_v1_add_users_to_user_group_serialize(
             users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -561,7 +564,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _add_users_to_user_group_serialize(
+    def _users_v1_add_users_to_user_group_serialize(
         self,
         users_to_user_groups_request_dto,
         project_id,
@@ -642,7 +645,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def assign_permissions(
+    def users_v1_assign_permissions(
         self,
         assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -692,7 +695,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._assign_permissions_serialize(
+        _param = self._users_v1_assign_permissions_serialize(
             assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -711,13 +714,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def assign_permissions_with_http_info(
+    def users_v1_assign_permissions_with_http_info(
         self,
         assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -767,7 +771,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._assign_permissions_serialize(
+        _param = self._users_v1_assign_permissions_serialize(
             assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -786,13 +790,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def assign_permissions_without_preload_content(
+    def users_v1_assign_permissions_without_preload_content(
         self,
         assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -842,7 +847,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._assign_permissions_serialize(
+        _param = self._users_v1_assign_permissions_serialize(
             assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -862,7 +867,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _assign_permissions_serialize(
+    def _users_v1_assign_permissions_serialize(
         self,
         assign_revoke_permissions_request_dto,
         project_id,
@@ -943,7 +948,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def assign_permissions_to_user_groups(
+    def users_v1_assign_permissions_to_user_groups(
         self,
         permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -993,7 +998,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._assign_permissions_to_user_groups_serialize(
+        _param = self._users_v1_assign_permissions_to_user_groups_serialize(
             permissions_to_user_groups_request_dto=permissions_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -1012,13 +1017,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def assign_permissions_to_user_groups_with_http_info(
+    def users_v1_assign_permissions_to_user_groups_with_http_info(
         self,
         permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -1068,7 +1074,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._assign_permissions_to_user_groups_serialize(
+        _param = self._users_v1_assign_permissions_to_user_groups_serialize(
             permissions_to_user_groups_request_dto=permissions_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -1087,13 +1093,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def assign_permissions_to_user_groups_without_preload_content(
+    def users_v1_assign_permissions_to_user_groups_without_preload_content(
         self,
         permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -1143,7 +1150,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._assign_permissions_to_user_groups_serialize(
+        _param = self._users_v1_assign_permissions_to_user_groups_serialize(
             permissions_to_user_groups_request_dto=permissions_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -1163,7 +1170,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _assign_permissions_to_user_groups_serialize(
+    def _users_v1_assign_permissions_to_user_groups_serialize(
         self,
         permissions_to_user_groups_request_dto,
         project_id,
@@ -1244,7 +1251,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def delete_user(
+    def users_v1_delete_user(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to delete.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete a user in.")] = None,
@@ -1291,7 +1298,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_user_serialize(
+        _param = self._users_v1_delete_user_serialize(
             user_id=user_id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -1309,13 +1316,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def delete_user_with_http_info(
+    def users_v1_delete_user_with_http_info(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to delete.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete a user in.")] = None,
@@ -1362,7 +1370,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_user_serialize(
+        _param = self._users_v1_delete_user_serialize(
             user_id=user_id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -1380,13 +1388,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def delete_user_without_preload_content(
+    def users_v1_delete_user_without_preload_content(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to delete.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete a user in.")] = None,
@@ -1433,7 +1442,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_user_serialize(
+        _param = self._users_v1_delete_user_serialize(
             user_id=user_id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -1452,7 +1461,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _delete_user_serialize(
+    def _users_v1_delete_user_serialize(
         self,
         user_id,
         tenant_code,
@@ -1519,7 +1528,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def get_all_permissions_xlsx(
+    def users_v1_get_all_permissions_xlsx(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve permissions from.")] = None,
         _request_timeout: Union[
@@ -1563,7 +1572,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_all_permissions_xlsx_serialize(
+        _param = self._users_v1_get_all_permissions_xlsx_serialize(
             tenant_code=tenant_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1580,13 +1589,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_all_permissions_xlsx_with_http_info(
+    def users_v1_get_all_permissions_xlsx_with_http_info(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve permissions from.")] = None,
         _request_timeout: Union[
@@ -1630,7 +1640,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_all_permissions_xlsx_serialize(
+        _param = self._users_v1_get_all_permissions_xlsx_serialize(
             tenant_code=tenant_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1647,13 +1657,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_all_permissions_xlsx_without_preload_content(
+    def users_v1_get_all_permissions_xlsx_without_preload_content(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve permissions from.")] = None,
         _request_timeout: Union[
@@ -1697,7 +1708,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_all_permissions_xlsx_serialize(
+        _param = self._users_v1_get_all_permissions_xlsx_serialize(
             tenant_code=tenant_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1715,7 +1726,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _get_all_permissions_xlsx_serialize(
+    def _users_v1_get_all_permissions_xlsx_serialize(
         self,
         tenant_code,
         _request_auth,
@@ -1780,7 +1791,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def get_all_user_groups(
+    def users_v1_get_all_user_groups(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the list of user groups from.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of results to return. The maximum number of users to retrieve is 1000.")] = None,
@@ -1836,7 +1847,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_all_user_groups_serialize(
+        _param = self._users_v1_get_all_user_groups_serialize(
             tenant_code=tenant_code,
             limit=limit,
             start=start,
@@ -1857,13 +1868,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_all_user_groups_with_http_info(
+    def users_v1_get_all_user_groups_with_http_info(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the list of user groups from.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of results to return. The maximum number of users to retrieve is 1000.")] = None,
@@ -1919,7 +1931,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_all_user_groups_serialize(
+        _param = self._users_v1_get_all_user_groups_serialize(
             tenant_code=tenant_code,
             limit=limit,
             start=start,
@@ -1940,13 +1952,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_all_user_groups_without_preload_content(
+    def users_v1_get_all_user_groups_without_preload_content(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the list of user groups from.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of results to return. The maximum number of users to retrieve is 1000.")] = None,
@@ -2002,7 +2015,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_all_user_groups_serialize(
+        _param = self._users_v1_get_all_user_groups_serialize(
             tenant_code=tenant_code,
             limit=limit,
             start=start,
@@ -2024,7 +2037,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _get_all_user_groups_serialize(
+    def _users_v1_get_all_user_groups_serialize(
         self,
         tenant_code,
         limit,
@@ -2104,7 +2117,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def get_all_users(
+    def users_v1_get_all_users(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a list of users from.")] = None,
         assigned_profiles: Annotated[Optional[StrictBool], Field(description="If true, the response returns a list of the user's assigned profiles.")] = None,
@@ -2169,7 +2182,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_all_users_serialize(
+        _param = self._users_v1_get_all_users_serialize(
             tenant_code=tenant_code,
             assigned_profiles=assigned_profiles,
             assigned_permissions=assigned_permissions,
@@ -2193,13 +2206,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_all_users_with_http_info(
+    def users_v1_get_all_users_with_http_info(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a list of users from.")] = None,
         assigned_profiles: Annotated[Optional[StrictBool], Field(description="If true, the response returns a list of the user's assigned profiles.")] = None,
@@ -2264,7 +2278,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_all_users_serialize(
+        _param = self._users_v1_get_all_users_serialize(
             tenant_code=tenant_code,
             assigned_profiles=assigned_profiles,
             assigned_permissions=assigned_permissions,
@@ -2288,13 +2302,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_all_users_without_preload_content(
+    def users_v1_get_all_users_without_preload_content(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a list of users from.")] = None,
         assigned_profiles: Annotated[Optional[StrictBool], Field(description="If true, the response returns a list of the user's assigned profiles.")] = None,
@@ -2359,7 +2374,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_all_users_serialize(
+        _param = self._users_v1_get_all_users_serialize(
             tenant_code=tenant_code,
             assigned_profiles=assigned_profiles,
             assigned_permissions=assigned_permissions,
@@ -2384,7 +2399,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _get_all_users_serialize(
+    def _users_v1_get_all_users_serialize(
         self,
         tenant_code,
         assigned_profiles,
@@ -2479,7 +2494,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def get_application_logs_xlsx(
+    def users_v1_get_application_logs_xlsx(
         self,
         start_time: Annotated[Optional[StrictStr], Field(description="An inclusive date-time to start retrieving Application Logs from.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="An exclusive date-time to stop retrieving Application Logs from.")] = None,
@@ -2529,7 +2544,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_application_logs_xlsx_serialize(
+        _param = self._users_v1_get_application_logs_xlsx_serialize(
             start_time=start_time,
             end_time=end_time,
             tenant_code=tenant_code,
@@ -2548,13 +2563,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_application_logs_xlsx_with_http_info(
+    def users_v1_get_application_logs_xlsx_with_http_info(
         self,
         start_time: Annotated[Optional[StrictStr], Field(description="An inclusive date-time to start retrieving Application Logs from.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="An exclusive date-time to stop retrieving Application Logs from.")] = None,
@@ -2604,7 +2620,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_application_logs_xlsx_serialize(
+        _param = self._users_v1_get_application_logs_xlsx_serialize(
             start_time=start_time,
             end_time=end_time,
             tenant_code=tenant_code,
@@ -2623,13 +2639,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_application_logs_xlsx_without_preload_content(
+    def users_v1_get_application_logs_xlsx_without_preload_content(
         self,
         start_time: Annotated[Optional[StrictStr], Field(description="An inclusive date-time to start retrieving Application Logs from.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="An exclusive date-time to stop retrieving Application Logs from.")] = None,
@@ -2679,7 +2696,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_application_logs_xlsx_serialize(
+        _param = self._users_v1_get_application_logs_xlsx_serialize(
             start_time=start_time,
             end_time=end_time,
             tenant_code=tenant_code,
@@ -2699,7 +2716,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _get_application_logs_xlsx_serialize(
+    def _users_v1_get_application_logs_xlsx_serialize(
         self,
         start_time,
         end_time,
@@ -2774,7 +2791,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def get_data_security_report_xlsx(
+    def users_v1_get_data_security_report_xlsx(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user to retrieve the report for.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the Data Security Report from.")] = None,
@@ -2821,7 +2838,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_data_security_report_xlsx_serialize(
+        _param = self._users_v1_get_data_security_report_xlsx_serialize(
             user_id=user_id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -2839,13 +2856,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_data_security_report_xlsx_with_http_info(
+    def users_v1_get_data_security_report_xlsx_with_http_info(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user to retrieve the report for.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the Data Security Report from.")] = None,
@@ -2892,7 +2910,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_data_security_report_xlsx_serialize(
+        _param = self._users_v1_get_data_security_report_xlsx_serialize(
             user_id=user_id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -2910,13 +2928,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_data_security_report_xlsx_without_preload_content(
+    def users_v1_get_data_security_report_xlsx_without_preload_content(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user to retrieve the report for.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the Data Security Report from.")] = None,
@@ -2963,7 +2982,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_data_security_report_xlsx_serialize(
+        _param = self._users_v1_get_data_security_report_xlsx_serialize(
             user_id=user_id,
             tenant_code=tenant_code,
             _request_auth=_request_auth,
@@ -2982,7 +3001,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _get_data_security_report_xlsx_serialize(
+    def _users_v1_get_data_security_report_xlsx_serialize(
         self,
         user_id,
         tenant_code,
@@ -3050,7 +3069,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def get_permission_assigned_users(
+    def users_v1_get_permission_assigned_users(
         self,
         permission_id: Annotated[StrictStr, Field(description="The unique identifier of the permission you want to retrieve users for.")],
         include_user_groups: Annotated[Optional[StrictBool], Field(description="If `true`, the response returns a list of all users that are assigned the permission, including users that are  assigned the permission through a user group.  If `false`, the response returns a list of the users that are directly assigned the permission.")] = None,
@@ -3112,7 +3131,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_permission_assigned_users_serialize(
+        _param = self._users_v1_get_permission_assigned_users_serialize(
             permission_id=permission_id,
             include_user_groups=include_user_groups,
             tenant_filter=tenant_filter,
@@ -3135,13 +3154,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_permission_assigned_users_with_http_info(
+    def users_v1_get_permission_assigned_users_with_http_info(
         self,
         permission_id: Annotated[StrictStr, Field(description="The unique identifier of the permission you want to retrieve users for.")],
         include_user_groups: Annotated[Optional[StrictBool], Field(description="If `true`, the response returns a list of all users that are assigned the permission, including users that are  assigned the permission through a user group.  If `false`, the response returns a list of the users that are directly assigned the permission.")] = None,
@@ -3203,7 +3223,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_permission_assigned_users_serialize(
+        _param = self._users_v1_get_permission_assigned_users_serialize(
             permission_id=permission_id,
             include_user_groups=include_user_groups,
             tenant_filter=tenant_filter,
@@ -3226,13 +3246,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_permission_assigned_users_without_preload_content(
+    def users_v1_get_permission_assigned_users_without_preload_content(
         self,
         permission_id: Annotated[StrictStr, Field(description="The unique identifier of the permission you want to retrieve users for.")],
         include_user_groups: Annotated[Optional[StrictBool], Field(description="If `true`, the response returns a list of all users that are assigned the permission, including users that are  assigned the permission through a user group.  If `false`, the response returns a list of the users that are directly assigned the permission.")] = None,
@@ -3294,7 +3315,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_permission_assigned_users_serialize(
+        _param = self._users_v1_get_permission_assigned_users_serialize(
             permission_id=permission_id,
             include_user_groups=include_user_groups,
             tenant_filter=tenant_filter,
@@ -3318,7 +3339,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _get_permission_assigned_users_serialize(
+    def _users_v1_get_permission_assigned_users_serialize(
         self,
         permission_id,
         include_user_groups,
@@ -3406,7 +3427,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def get_profile_assignments_xlsx(
+    def users_v1_get_profile_assignments_xlsx(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve profile assignments from.")] = None,
         _request_timeout: Union[
@@ -3450,7 +3471,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_profile_assignments_xlsx_serialize(
+        _param = self._users_v1_get_profile_assignments_xlsx_serialize(
             tenant_code=tenant_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3467,13 +3488,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_profile_assignments_xlsx_with_http_info(
+    def users_v1_get_profile_assignments_xlsx_with_http_info(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve profile assignments from.")] = None,
         _request_timeout: Union[
@@ -3517,7 +3539,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_profile_assignments_xlsx_serialize(
+        _param = self._users_v1_get_profile_assignments_xlsx_serialize(
             tenant_code=tenant_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3534,13 +3556,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_profile_assignments_xlsx_without_preload_content(
+    def users_v1_get_profile_assignments_xlsx_without_preload_content(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve profile assignments from.")] = None,
         _request_timeout: Union[
@@ -3584,7 +3607,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_profile_assignments_xlsx_serialize(
+        _param = self._users_v1_get_profile_assignments_xlsx_serialize(
             tenant_code=tenant_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3602,7 +3625,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _get_profile_assignments_xlsx_serialize(
+    def _users_v1_get_profile_assignments_xlsx_serialize(
         self,
         tenant_code,
         _request_auth,
@@ -3667,7 +3690,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def get_user_detail(
+    def users_v1_get_user_detail(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a user from.")] = None,
@@ -3729,7 +3752,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_detail_serialize(
+        _param = self._users_v1_get_user_detail_serialize(
             user_id=user_id,
             tenant_code=tenant_code,
             assigned_profiles=assigned_profiles,
@@ -3752,13 +3775,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_user_detail_with_http_info(
+    def users_v1_get_user_detail_with_http_info(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a user from.")] = None,
@@ -3820,7 +3844,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_detail_serialize(
+        _param = self._users_v1_get_user_detail_serialize(
             user_id=user_id,
             tenant_code=tenant_code,
             assigned_profiles=assigned_profiles,
@@ -3843,13 +3867,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_user_detail_without_preload_content(
+    def users_v1_get_user_detail_without_preload_content(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a user from.")] = None,
@@ -3911,7 +3936,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_detail_serialize(
+        _param = self._users_v1_get_user_detail_serialize(
             user_id=user_id,
             tenant_code=tenant_code,
             assigned_profiles=assigned_profiles,
@@ -3935,7 +3960,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _get_user_detail_serialize(
+    def _users_v1_get_user_detail_serialize(
         self,
         user_id,
         tenant_code,
@@ -4023,7 +4048,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def get_user_group_users(
+    def users_v1_get_user_group_users(
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group.")],
         tenant_filter: Annotated[Optional[StrictStr], Field(description="Specifies the tenant to retrieve the list of users from.")] = None,
@@ -4082,7 +4107,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_group_users_serialize(
+        _param = self._users_v1_get_user_group_users_serialize(
             user_group_id=user_group_id,
             tenant_filter=tenant_filter,
             limit=limit,
@@ -4104,13 +4129,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_user_group_users_with_http_info(
+    def users_v1_get_user_group_users_with_http_info(
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group.")],
         tenant_filter: Annotated[Optional[StrictStr], Field(description="Specifies the tenant to retrieve the list of users from.")] = None,
@@ -4169,7 +4195,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_group_users_serialize(
+        _param = self._users_v1_get_user_group_users_serialize(
             user_group_id=user_group_id,
             tenant_filter=tenant_filter,
             limit=limit,
@@ -4191,13 +4217,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_user_group_users_without_preload_content(
+    def users_v1_get_user_group_users_without_preload_content(
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group.")],
         tenant_filter: Annotated[Optional[StrictStr], Field(description="Specifies the tenant to retrieve the list of users from.")] = None,
@@ -4256,7 +4283,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_group_users_serialize(
+        _param = self._users_v1_get_user_group_users_serialize(
             user_group_id=user_group_id,
             tenant_filter=tenant_filter,
             limit=limit,
@@ -4279,7 +4306,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _get_user_group_users_serialize(
+    def _users_v1_get_user_group_users_serialize(
         self,
         user_group_id,
         tenant_filter,
@@ -4362,7 +4389,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def get_user_permissions_xlsx(
+    def users_v1_get_user_permissions_xlsx(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the permission assignments report from.")] = None,
         _request_timeout: Union[
@@ -4406,7 +4433,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_permissions_xlsx_serialize(
+        _param = self._users_v1_get_user_permissions_xlsx_serialize(
             tenant_code=tenant_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4423,13 +4450,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def get_user_permissions_xlsx_with_http_info(
+    def users_v1_get_user_permissions_xlsx_with_http_info(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the permission assignments report from.")] = None,
         _request_timeout: Union[
@@ -4473,7 +4501,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_permissions_xlsx_serialize(
+        _param = self._users_v1_get_user_permissions_xlsx_serialize(
             tenant_code=tenant_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4490,13 +4518,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def get_user_permissions_xlsx_without_preload_content(
+    def users_v1_get_user_permissions_xlsx_without_preload_content(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the permission assignments report from.")] = None,
         _request_timeout: Union[
@@ -4540,7 +4569,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_user_permissions_xlsx_serialize(
+        _param = self._users_v1_get_user_permissions_xlsx_serialize(
             tenant_code=tenant_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4558,7 +4587,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _get_user_permissions_xlsx_serialize(
+    def _users_v1_get_user_permissions_xlsx_serialize(
         self,
         tenant_code,
         _request_auth,
@@ -4623,7 +4652,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def remove_permissions(
+    def users_v1_remove_permissions(
         self,
         assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -4673,7 +4702,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_permissions_serialize(
+        _param = self._users_v1_remove_permissions_serialize(
             assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -4692,13 +4721,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def remove_permissions_with_http_info(
+    def users_v1_remove_permissions_with_http_info(
         self,
         assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -4748,7 +4778,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_permissions_serialize(
+        _param = self._users_v1_remove_permissions_serialize(
             assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -4767,13 +4797,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def remove_permissions_without_preload_content(
+    def users_v1_remove_permissions_without_preload_content(
         self,
         assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -4823,7 +4854,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_permissions_serialize(
+        _param = self._users_v1_remove_permissions_serialize(
             assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -4843,7 +4874,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _remove_permissions_serialize(
+    def _users_v1_remove_permissions_serialize(
         self,
         assign_revoke_permissions_request_dto,
         project_id,
@@ -4924,7 +4955,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def remove_users_from_user_group(
+    def users_v1_remove_users_from_user_group(
         self,
         users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -4974,7 +5005,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_users_from_user_group_serialize(
+        _param = self._users_v1_remove_users_from_user_group_serialize(
             users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -4993,13 +5024,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def remove_users_from_user_group_with_http_info(
+    def users_v1_remove_users_from_user_group_with_http_info(
         self,
         users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -5049,7 +5081,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_users_from_user_group_serialize(
+        _param = self._users_v1_remove_users_from_user_group_serialize(
             users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -5068,13 +5100,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def remove_users_from_user_group_without_preload_content(
+    def users_v1_remove_users_from_user_group_without_preload_content(
         self,
         users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -5124,7 +5157,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._remove_users_from_user_group_serialize(
+        _param = self._users_v1_remove_users_from_user_group_serialize(
             users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -5144,7 +5177,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _remove_users_from_user_group_serialize(
+    def _users_v1_remove_users_from_user_group_serialize(
         self,
         users_to_user_groups_request_dto,
         project_id,
@@ -5225,7 +5258,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def revoke_permissions_from_user_groups(
+    def users_v1_revoke_permissions_from_user_groups(
         self,
         permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -5275,7 +5308,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._revoke_permissions_from_user_groups_serialize(
+        _param = self._users_v1_revoke_permissions_from_user_groups_serialize(
             permissions_to_user_groups_request_dto=permissions_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -5294,13 +5327,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def revoke_permissions_from_user_groups_with_http_info(
+    def users_v1_revoke_permissions_from_user_groups_with_http_info(
         self,
         permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -5350,7 +5384,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._revoke_permissions_from_user_groups_serialize(
+        _param = self._users_v1_revoke_permissions_from_user_groups_serialize(
             permissions_to_user_groups_request_dto=permissions_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -5369,13 +5403,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def revoke_permissions_from_user_groups_without_preload_content(
+    def users_v1_revoke_permissions_from_user_groups_without_preload_content(
         self,
         permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
@@ -5425,7 +5460,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._revoke_permissions_from_user_groups_serialize(
+        _param = self._users_v1_revoke_permissions_from_user_groups_serialize(
             permissions_to_user_groups_request_dto=permissions_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
@@ -5445,7 +5480,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _revoke_permissions_from_user_groups_serialize(
+    def _users_v1_revoke_permissions_from_user_groups_serialize(
         self,
         permissions_to_user_groups_request_dto,
         project_id,
@@ -5526,7 +5561,7 @@ class UsersV1Api:
 
 
     @validate_call
-    def update_user(
+    def users_v1_update_user(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to update.")],
         user_update_api_request_dto: UserUpdateAPIRequestDTO,
@@ -5576,7 +5611,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_user_serialize(
+        _param = self._users_v1_update_user_serialize(
             user_id=user_id,
             user_update_api_request_dto=user_update_api_request_dto,
             tenant_code=tenant_code,
@@ -5595,13 +5630,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         ).data
 
 
     @validate_call
-    def update_user_with_http_info(
+    def users_v1_update_user_with_http_info(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to update.")],
         user_update_api_request_dto: UserUpdateAPIRequestDTO,
@@ -5651,7 +5687,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_user_serialize(
+        _param = self._users_v1_update_user_serialize(
             user_id=user_id,
             user_update_api_request_dto=user_update_api_request_dto,
             tenant_code=tenant_code,
@@ -5670,13 +5706,14 @@ class UsersV1Api:
         )
         response_data.read()
         return self.api_client.response_deserialize(
+            model_package=visier.sdk.api.administration.models,
             response_data=response_data,
-            response_types_map=_response_types_map,
+            response_types_map=_response_types_map
         )
 
 
     @validate_call
-    def update_user_without_preload_content(
+    def users_v1_update_user_without_preload_content(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to update.")],
         user_update_api_request_dto: UserUpdateAPIRequestDTO,
@@ -5726,7 +5763,7 @@ class UsersV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_user_serialize(
+        _param = self._users_v1_update_user_serialize(
             user_id=user_id,
             user_update_api_request_dto=user_update_api_request_dto,
             tenant_code=tenant_code,
@@ -5746,7 +5783,7 @@ class UsersV1Api:
         return response_data.response
 
 
-    def _update_user_serialize(
+    def _users_v1_update_user_serialize(
         self,
         user_id,
         user_update_api_request_dto,

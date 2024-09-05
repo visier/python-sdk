@@ -26,9 +26,9 @@ class DataProviderBasicInformationDTO(BaseModel):
     """
     DataProviderBasicInformationDTO
     """ # noqa: E501
-    description: Optional[StrictStr] = None
     display_name: Optional[StrictStr] = Field(default=None, alias="displayName")
-    __properties: ClassVar[List[str]] = ["description", "displayName"]
+    description: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["displayName", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class DataProviderBasicInformationDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
-            "displayName": obj.get("displayName")
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description")
         })
         return _obj
 

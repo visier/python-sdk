@@ -26,20 +26,10 @@ class TimeShiftDTO(BaseModel):
     """
     The amount of time to shift the time interval by, such as backward by one year.
     """ # noqa: E501
-    direction: Optional[StrictStr] = Field(default=None, description="The direction to extend. Default is BACKWARD.")
-    period_count: Optional[StrictInt] = Field(default=None, description="The number of intervals. Default is 1.", alias="periodCount")
     period_type: Optional[StrictStr] = Field(default=None, description="The time period type for the shift.", alias="periodType")
-    __properties: ClassVar[List[str]] = ["direction", "periodCount", "periodType"]
-
-    @field_validator('direction')
-    def direction_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['BACKWARD', 'FORWARD']):
-            raise ValueError("must be one of enum values ('BACKWARD', 'FORWARD')")
-        return value
+    period_count: Optional[StrictInt] = Field(default=None, description="The number of intervals. Default is 1.", alias="periodCount")
+    direction: Optional[StrictStr] = Field(default=None, description="The direction to extend. Default is BACKWARD.")
+    __properties: ClassVar[List[str]] = ["periodType", "periodCount", "direction"]
 
     @field_validator('period_type')
     def period_type_validate_enum(cls, value):
@@ -49,6 +39,16 @@ class TimeShiftDTO(BaseModel):
 
         if value not in set(['MONTH', 'DAY', 'WEEK', 'QUARTER', 'YEAR']):
             raise ValueError("must be one of enum values ('MONTH', 'DAY', 'WEEK', 'QUARTER', 'YEAR')")
+        return value
+
+    @field_validator('direction')
+    def direction_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['BACKWARD', 'FORWARD']):
+            raise ValueError("must be one of enum values ('BACKWARD', 'FORWARD')")
         return value
 
     model_config = ConfigDict(
@@ -102,9 +102,9 @@ class TimeShiftDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "direction": obj.get("direction"),
+            "periodType": obj.get("periodType"),
             "periodCount": obj.get("periodCount"),
-            "periodType": obj.get("periodType")
+            "direction": obj.get("direction")
         })
         return _obj
 

@@ -26,12 +26,12 @@ class BasicS3AuthParamsDTO(BaseModel):
     """
     BasicS3AuthParamsDTO
     """ # noqa: E501
-    access_key: Optional[StrictStr] = Field(default=None, alias="accessKey")
     bucket_name: Optional[StrictStr] = Field(default=None, alias="bucketName")
     bucket_region: Optional[StrictStr] = Field(default=None, alias="bucketRegion")
-    path: Optional[StrictStr] = None
+    access_key: Optional[StrictStr] = Field(default=None, alias="accessKey")
     secret_key: Optional[StrictStr] = Field(default=None, alias="secretKey")
-    __properties: ClassVar[List[str]] = ["accessKey", "bucketName", "bucketRegion", "path", "secretKey"]
+    path: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["bucketName", "bucketRegion", "accessKey", "secretKey", "path"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,11 +84,11 @@ class BasicS3AuthParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessKey": obj.get("accessKey"),
             "bucketName": obj.get("bucketName"),
             "bucketRegion": obj.get("bucketRegion"),
-            "path": obj.get("path"),
-            "secretKey": obj.get("secretKey")
+            "accessKey": obj.get("accessKey"),
+            "secretKey": obj.get("secretKey"),
+            "path": obj.get("path")
         })
         return _obj
 

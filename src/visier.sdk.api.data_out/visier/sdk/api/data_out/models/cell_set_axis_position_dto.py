@@ -26,10 +26,10 @@ class CellSetAxisPositionDTO(BaseModel):
     """
     The position along the axis of a cell set.
     """ # noqa: E501
+    path: Optional[List[StrictStr]] = Field(default=None, description="A list of strings representing the members within a dimension path. For example,  a dimension for Location may have the paths \"Canada, BC, Vancouver\" and \"US, California, San Francisco\".")
     display_name: Optional[StrictStr] = Field(default=None, description="The display name of the position. This is optional and is omitted if unavailable or not requested.", alias="displayName")
     display_name_path: Optional[List[StrictStr]] = Field(default=None, description="Optional display name path of the member.", alias="displayNamePath")
-    path: Optional[List[StrictStr]] = Field(default=None, description="A list of strings representing the members within a dimension path. For example,  a dimension for Location may have the paths \"Canada, BC, Vancouver\" and \"US, California, San Francisco\".")
-    __properties: ClassVar[List[str]] = ["displayName", "displayNamePath", "path"]
+    __properties: ClassVar[List[str]] = ["path", "displayName", "displayNamePath"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class CellSetAxisPositionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "path": obj.get("path"),
             "displayName": obj.get("displayName"),
-            "displayNamePath": obj.get("displayNamePath"),
-            "path": obj.get("path")
+            "displayNamePath": obj.get("displayNamePath")
         })
         return _obj
 

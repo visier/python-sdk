@@ -26,10 +26,10 @@ class ListQuerySourceDTO(BaseModel):
     """
     A ListQuerySource defines the source data to query in a list query.
     """ # noqa: E501
-    analytic_object: Optional[StrictStr] = Field(default=None, description="The ID of an existing analytic object in your Visier solution.  An analytic object source cannot have filters or time handling.", alias="analyticObject")
     formula: Optional[StrictStr] = Field(default=None, description="An ad-hoc metric formula. The response returns the individual data points that make up the aggregate.")
     metric: Optional[StrictStr] = Field(default=None, description="The ID of an existing metric in your Visier solution.")
-    __properties: ClassVar[List[str]] = ["analyticObject", "formula", "metric"]
+    analytic_object: Optional[StrictStr] = Field(default=None, description="The ID of an existing analytic object in your Visier solution.  An analytic object source cannot have filters or time handling.", alias="analyticObject")
+    __properties: ClassVar[List[str]] = ["formula", "metric", "analyticObject"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class ListQuerySourceDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analyticObject": obj.get("analyticObject"),
             "formula": obj.get("formula"),
-            "metric": obj.get("metric")
+            "metric": obj.get("metric"),
+            "analyticObject": obj.get("analyticObject")
         })
         return _obj
 

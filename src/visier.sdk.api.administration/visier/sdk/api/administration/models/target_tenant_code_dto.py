@@ -26,9 +26,9 @@ class TargetTenantCodeDTO(BaseModel):
     """
     TargetTenantCodeDTO
     """ # noqa: E501
-    for_all_children: Optional[StrictBool] = Field(default=None, description="If true, the assignment is for all the analytic tenants of the specified tenant.", alias="forAllChildren")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["forAllChildren", "tenantCode"]
+    for_all_children: Optional[StrictBool] = Field(default=None, description="If true, the assignment is for all the analytic tenants of the specified tenant.", alias="forAllChildren")
+    __properties: ClassVar[List[str]] = ["tenantCode", "forAllChildren"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class TargetTenantCodeDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "forAllChildren": obj.get("forAllChildren"),
-            "tenantCode": obj.get("tenantCode")
+            "tenantCode": obj.get("tenantCode"),
+            "forAllChildren": obj.get("forAllChildren")
         })
         return _obj
 

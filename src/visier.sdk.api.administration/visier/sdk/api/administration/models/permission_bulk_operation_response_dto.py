@@ -28,9 +28,9 @@ class PermissionBulkOperationResponseDTO(BaseModel):
     """
     PermissionBulkOperationResponseDTO
     """ # noqa: E501
-    failures: Optional[List[PermissionFailureDTO]] = Field(default=None, description="The permissions that did not process and any relevant error information.")
     successes: Optional[List[PermissionSuccessDTO]] = Field(default=None, description="The successfully processed permissions.")
-    __properties: ClassVar[List[str]] = ["failures", "successes"]
+    failures: Optional[List[PermissionFailureDTO]] = Field(default=None, description="The permissions that did not process and any relevant error information.")
+    __properties: ClassVar[List[str]] = ["successes", "failures"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,13 +71,6 @@ class PermissionBulkOperationResponseDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in failures (list)
-        _items = []
-        if self.failures:
-            for _item_failures in self.failures:
-                if _item_failures:
-                    _items.append(_item_failures.to_dict())
-            _dict['failures'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in successes (list)
         _items = []
         if self.successes:
@@ -85,6 +78,13 @@ class PermissionBulkOperationResponseDTO(BaseModel):
                 if _item_successes:
                     _items.append(_item_successes.to_dict())
             _dict['successes'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in failures (list)
+        _items = []
+        if self.failures:
+            for _item_failures in self.failures:
+                if _item_failures:
+                    _items.append(_item_failures.to_dict())
+            _dict['failures'] = _items
         return _dict
 
     @classmethod
@@ -97,8 +97,8 @@ class PermissionBulkOperationResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "failures": [PermissionFailureDTO.from_dict(_item) for _item in obj["failures"]] if obj.get("failures") is not None else None,
-            "successes": [PermissionSuccessDTO.from_dict(_item) for _item in obj["successes"]] if obj.get("successes") is not None else None
+            "successes": [PermissionSuccessDTO.from_dict(_item) for _item in obj["successes"]] if obj.get("successes") is not None else None,
+            "failures": [PermissionFailureDTO.from_dict(_item) for _item in obj["failures"]] if obj.get("failures") is not None else None
         })
         return _obj
 

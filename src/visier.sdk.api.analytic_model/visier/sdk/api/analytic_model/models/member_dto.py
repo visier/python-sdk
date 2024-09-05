@@ -27,13 +27,13 @@ class MemberDTO(BaseModel):
     """
     A member is an element of a dimension. Dimension members are organized hierarchically. For example, Argentina is  a member of the Location dimension at the Country level of the hierarchy Region > Country > Province > City.
     """ # noqa: E501
-    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the member.", alias="displayName")
-    display_name_path: Optional[List[StrictStr]] = Field(default=None, description="The display names for each level in the member's ancestral path.", alias="displayNamePath")
     full_name: Optional[StrictStr] = Field(default=None, description="The fully qualified name of the member. This is the dimension's object name and the member's display name, separated by a period.", alias="fullName")
+    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the member.", alias="displayName")
     level: Optional[StrictInt] = Field(default=None, description="The numeric level of the hierarchy the member belongs to.")
     path: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of identifiers that reference members on the query axis as part of dimensionMemberSelection.")
     validity_ranges: Optional[List[ValidityRangeDTO]] = Field(default=None, description="The validity ranges that exist for this member.", alias="validityRanges")
-    __properties: ClassVar[List[str]] = ["displayName", "displayNamePath", "fullName", "level", "path", "validityRanges"]
+    display_name_path: Optional[List[StrictStr]] = Field(default=None, description="The display names for each level in the member's ancestral path.", alias="displayNamePath")
+    __properties: ClassVar[List[str]] = ["fullName", "displayName", "level", "path", "validityRanges", "displayNamePath"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,12 +93,12 @@ class MemberDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "displayName": obj.get("displayName"),
-            "displayNamePath": obj.get("displayNamePath"),
             "fullName": obj.get("fullName"),
+            "displayName": obj.get("displayName"),
             "level": obj.get("level"),
             "path": obj.get("path"),
-            "validityRanges": [ValidityRangeDTO.from_dict(_item) for _item in obj["validityRanges"]] if obj.get("validityRanges") is not None else None
+            "validityRanges": [ValidityRangeDTO.from_dict(_item) for _item in obj["validityRanges"]] if obj.get("validityRanges") is not None else None,
+            "displayNamePath": obj.get("displayNamePath")
         })
         return _obj
 

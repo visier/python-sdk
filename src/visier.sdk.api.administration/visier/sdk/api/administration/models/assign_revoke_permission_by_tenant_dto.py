@@ -27,12 +27,12 @@ class AssignRevokePermissionByTenantDTO(BaseModel):
     """
     The permissions organized by tenant.
     """ # noqa: E501
-    message: Optional[StrictStr] = Field(default=None, description="A detailed description of the request outcome, if available.")
-    permissions: Optional[List[AssignRevokePermissionByPermissionDTO]] = Field(default=None, description="A list of objects representing the assigned or removed permissions.")
-    project_id: Optional[StrictStr] = Field(default=None, description="The ID of the project that the change was made in, if applicable.", alias="projectId")
-    status: Optional[StrictStr] = Field(default=None, description="The state of the permission assignment. Valid values are Succeed or Failed.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the tenant.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["message", "permissions", "projectId", "status", "tenantCode"]
+    permissions: Optional[List[AssignRevokePermissionByPermissionDTO]] = Field(default=None, description="A list of objects representing the assigned or removed permissions.")
+    status: Optional[StrictStr] = Field(default=None, description="The state of the permission assignment. Valid values are Succeed or Failed.")
+    message: Optional[StrictStr] = Field(default=None, description="A detailed description of the request outcome, if available.")
+    project_id: Optional[StrictStr] = Field(default=None, description="The ID of the project that the change was made in, if applicable.", alias="projectId")
+    __properties: ClassVar[List[str]] = ["tenantCode", "permissions", "status", "message", "projectId"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -102,11 +102,11 @@ class AssignRevokePermissionByTenantDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": obj.get("message"),
+            "tenantCode": obj.get("tenantCode"),
             "permissions": [AssignRevokePermissionByPermissionDTO.from_dict(_item) for _item in obj["permissions"]] if obj.get("permissions") is not None else None,
-            "projectId": obj.get("projectId"),
             "status": obj.get("status"),
-            "tenantCode": obj.get("tenantCode")
+            "message": obj.get("message"),
+            "projectId": obj.get("projectId")
         })
         return _obj
 

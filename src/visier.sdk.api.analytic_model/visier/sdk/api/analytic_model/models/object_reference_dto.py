@@ -26,14 +26,14 @@ class ObjectReferenceDTO(BaseModel):
     """
     A link between one analytic object and another. An ObjectReference allows you to discover the relationships between  analytic objects. In some queries, you may need to provide a qualifyingPath, which is built from ObjectReference information.
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="The localized description of the object reference.")
-    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the object reference.", alias="displayName")
-    from_object: Optional[StrictStr] = Field(default=None, description="The ID of the referencing analytic object.", alias="fromObject")
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the object reference.")
-    is_strong_reference: Optional[StrictBool] = Field(default=None, description="True if this is a strong reference.", alias="isStrongReference")
+    display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the object reference.", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="The localized description of the object reference.")
+    from_object: Optional[StrictStr] = Field(default=None, description="The ID of the referencing analytic object.", alias="fromObject")
     to_object: Optional[StrictStr] = Field(default=None, description="The ID of the referenced analytic object.", alias="toObject")
     type: Optional[StrictStr] = Field(default=None, description="The type of object reference.")
-    __properties: ClassVar[List[str]] = ["description", "displayName", "fromObject", "id", "isStrongReference", "toObject", "type"]
+    is_strong_reference: Optional[StrictBool] = Field(default=None, description="True if this is a strong reference.", alias="isStrongReference")
+    __properties: ClassVar[List[str]] = ["id", "displayName", "description", "fromObject", "toObject", "type", "isStrongReference"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -96,13 +96,13 @@ class ObjectReferenceDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
-            "displayName": obj.get("displayName"),
-            "fromObject": obj.get("fromObject"),
             "id": obj.get("id"),
-            "isStrongReference": obj.get("isStrongReference"),
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description"),
+            "fromObject": obj.get("fromObject"),
             "toObject": obj.get("toObject"),
-            "type": obj.get("type")
+            "type": obj.get("type"),
+            "isStrongReference": obj.get("isStrongReference")
         })
         return _obj
 

@@ -27,10 +27,10 @@ class TenantCodeErrorDTO(BaseModel):
     """
     TenantCodeErrorDTO
     """ # noqa: E501
-    error: Optional[ErrorDTO] = Field(default=None, description="The details about the error.")
-    for_all_children: Optional[StrictBool] = Field(default=None, description="If true, the target assignment is for all analytic tenants.", alias="forAllChildren")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The bad tenant code.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["error", "forAllChildren", "tenantCode"]
+    for_all_children: Optional[StrictBool] = Field(default=None, description="If true, the target assignment is for all analytic tenants.", alias="forAllChildren")
+    error: Optional[ErrorDTO] = Field(default=None, description="The details about the error.")
+    __properties: ClassVar[List[str]] = ["tenantCode", "forAllChildren", "error"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,9 +86,9 @@ class TenantCodeErrorDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "error": ErrorDTO.from_dict(obj["error"]) if obj.get("error") is not None else None,
+            "tenantCode": obj.get("tenantCode"),
             "forAllChildren": obj.get("forAllChildren"),
-            "tenantCode": obj.get("tenantCode")
+            "error": ErrorDTO.from_dict(obj["error"]) if obj.get("error") is not None else None
         })
         return _obj
 

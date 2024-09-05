@@ -27,11 +27,11 @@ class CellDTO(BaseModel):
     """
     An individual value in a cell set.
     """ # noqa: E501
+    value: Optional[StrictStr] = Field(default=None, description="The value of the cell.")
+    support: Optional[StrictStr] = Field(default=None, description="The number of data points contributing to this cell.")
     coordinates: Optional[List[StrictInt]] = Field(default=None, description="A list of integers representing the coordinates of this cell, identifying its position along each axis.")
     distribution: Optional[List[CellDistributionBinDTO]] = Field(default=None, description="The optional distribution of this cell.  This will be populated if distribution calculation is requested, and supported by the query.")
-    support: Optional[StrictStr] = Field(default=None, description="The number of data points contributing to this cell.")
-    value: Optional[StrictStr] = Field(default=None, description="The value of the cell.")
-    __properties: ClassVar[List[str]] = ["coordinates", "distribution", "support", "value"]
+    __properties: ClassVar[List[str]] = ["value", "support", "coordinates", "distribution"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,10 +91,10 @@ class CellDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "coordinates": obj.get("coordinates"),
-            "distribution": [CellDistributionBinDTO.from_dict(_item) for _item in obj["distribution"]] if obj.get("distribution") is not None else None,
+            "value": obj.get("value"),
             "support": obj.get("support"),
-            "value": obj.get("value")
+            "coordinates": obj.get("coordinates"),
+            "distribution": [CellDistributionBinDTO.from_dict(_item) for _item in obj["distribution"]] if obj.get("distribution") is not None else None
         })
         return _obj
 

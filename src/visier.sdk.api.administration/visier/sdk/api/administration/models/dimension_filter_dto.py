@@ -28,9 +28,9 @@ class DimensionFilterDTO(BaseModel):
     """
     DimensionFilterDTO
     """ # noqa: E501
-    dynamic_dimension_filter: Optional[DynamicDimensionFilterDTO] = Field(default=None, alias="dynamicDimensionFilter")
     static_dimension_filter: Optional[StaticDimensionFilterDTO] = Field(default=None, alias="staticDimensionFilter")
-    __properties: ClassVar[List[str]] = ["dynamicDimensionFilter", "staticDimensionFilter"]
+    dynamic_dimension_filter: Optional[DynamicDimensionFilterDTO] = Field(default=None, alias="dynamicDimensionFilter")
+    __properties: ClassVar[List[str]] = ["staticDimensionFilter", "dynamicDimensionFilter"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,12 +71,12 @@ class DimensionFilterDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of dynamic_dimension_filter
-        if self.dynamic_dimension_filter:
-            _dict['dynamicDimensionFilter'] = self.dynamic_dimension_filter.to_dict()
         # override the default output from pydantic by calling `to_dict()` of static_dimension_filter
         if self.static_dimension_filter:
             _dict['staticDimensionFilter'] = self.static_dimension_filter.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of dynamic_dimension_filter
+        if self.dynamic_dimension_filter:
+            _dict['dynamicDimensionFilter'] = self.dynamic_dimension_filter.to_dict()
         return _dict
 
     @classmethod
@@ -89,8 +89,8 @@ class DimensionFilterDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dynamicDimensionFilter": DynamicDimensionFilterDTO.from_dict(obj["dynamicDimensionFilter"]) if obj.get("dynamicDimensionFilter") is not None else None,
-            "staticDimensionFilter": StaticDimensionFilterDTO.from_dict(obj["staticDimensionFilter"]) if obj.get("staticDimensionFilter") is not None else None
+            "staticDimensionFilter": StaticDimensionFilterDTO.from_dict(obj["staticDimensionFilter"]) if obj.get("staticDimensionFilter") is not None else None,
+            "dynamicDimensionFilter": DynamicDimensionFilterDTO.from_dict(obj["dynamicDimensionFilter"]) if obj.get("dynamicDimensionFilter") is not None else None
         })
         return _obj
 

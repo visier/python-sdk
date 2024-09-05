@@ -27,9 +27,9 @@ class PropertyColumnDTO(BaseModel):
     """
     A named, result column of a list query.
     """ # noqa: E501
-    column_definition: Optional[QueryPropertyDTO] = Field(default=None, description="The definition of the property to query on.", alias="columnDefinition")
     column_name: Optional[StrictStr] = Field(default=None, description="The name of the column. This is optional.  If not specified, the name of the property is used, or a generic column name if the property is unnamed.", alias="columnName")
-    __properties: ClassVar[List[str]] = ["columnDefinition", "columnName"]
+    column_definition: Optional[QueryPropertyDTO] = Field(default=None, description="The definition of the property to query on.", alias="columnDefinition")
+    __properties: ClassVar[List[str]] = ["columnName", "columnDefinition"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,8 +85,8 @@ class PropertyColumnDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "columnDefinition": QueryPropertyDTO.from_dict(obj["columnDefinition"]) if obj.get("columnDefinition") is not None else None,
-            "columnName": obj.get("columnName")
+            "columnName": obj.get("columnName"),
+            "columnDefinition": QueryPropertyDTO.from_dict(obj["columnDefinition"]) if obj.get("columnDefinition") is not None else None
         })
         return _obj
 

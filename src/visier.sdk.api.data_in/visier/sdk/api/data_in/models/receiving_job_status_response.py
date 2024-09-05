@@ -28,11 +28,11 @@ class ReceivingJobStatusResponse(BaseModel):
     ReceivingJobStatusResponse
     """ # noqa: E501
     job_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the receiving job.", alias="jobId")
+    status: Optional[StrictStr] = Field(default=None, description="The status of the receiving job.")
     parent_job_id: Optional[StrictStr] = Field(default=None, description="The job ID of the receiving job that spawned this job.", alias="parentJobId")
     parent_tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code of the receiving job that spawned this job.", alias="parentTenantCode")
     receiving_jobs: Optional[List[ReceivingJob]] = Field(default=None, description="A list of objects representing the receiving jobs to retrieve.", alias="receivingJobs")
-    status: Optional[StrictStr] = Field(default=None, description="The status of the receiving job.")
-    __properties: ClassVar[List[str]] = ["jobId", "parentJobId", "parentTenantCode", "receivingJobs", "status"]
+    __properties: ClassVar[List[str]] = ["jobId", "status", "parentJobId", "parentTenantCode", "receivingJobs"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,10 +93,10 @@ class ReceivingJobStatusResponse(BaseModel):
 
         _obj = cls.model_validate({
             "jobId": obj.get("jobId"),
+            "status": obj.get("status"),
             "parentJobId": obj.get("parentJobId"),
             "parentTenantCode": obj.get("parentTenantCode"),
-            "receivingJobs": [ReceivingJob.from_dict(_item) for _item in obj["receivingJobs"]] if obj.get("receivingJobs") is not None else None,
-            "status": obj.get("status")
+            "receivingJobs": [ReceivingJob.from_dict(_item) for _item in obj["receivingJobs"]] if obj.get("receivingJobs") is not None else None
         })
         return _obj
 

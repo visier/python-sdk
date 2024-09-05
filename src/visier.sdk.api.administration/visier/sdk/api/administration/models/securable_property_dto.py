@@ -26,12 +26,12 @@ class SecurablePropertyDTO(BaseModel):
     """
     SecurablePropertyDTO
     """ # noqa: E501
-    analytic_object_id: Optional[StrictStr] = Field(default=None, description="The property's analytic object ID.", alias="analyticObjectId")
-    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable property name to display in Visier, such as \"Job Pay Level\".", alias="displayName")
-    is_primary_key: Optional[StrictBool] = Field(default=None, description="If true, this property is the analytic object's primary key.", alias="isPrimaryKey")
     property_id: Optional[StrictStr] = Field(default=None, description="The property ID.", alias="propertyId")
+    display_name: Optional[StrictStr] = Field(default=None, description="An identifiable property name to display in Visier, such as \"Job Pay Level\".", alias="displayName")
+    analytic_object_id: Optional[StrictStr] = Field(default=None, description="The property's analytic object ID.", alias="analyticObjectId")
+    is_primary_key: Optional[StrictBool] = Field(default=None, description="If true, this property is the analytic object's primary key.", alias="isPrimaryKey")
     reference_symbol_name: Optional[StrictStr] = Field(default=None, description="The reference symbol name.", alias="referenceSymbolName")
-    __properties: ClassVar[List[str]] = ["analyticObjectId", "displayName", "isPrimaryKey", "propertyId", "referenceSymbolName"]
+    __properties: ClassVar[List[str]] = ["propertyId", "displayName", "analyticObjectId", "isPrimaryKey", "referenceSymbolName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,10 +84,10 @@ class SecurablePropertyDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analyticObjectId": obj.get("analyticObjectId"),
-            "displayName": obj.get("displayName"),
-            "isPrimaryKey": obj.get("isPrimaryKey"),
             "propertyId": obj.get("propertyId"),
+            "displayName": obj.get("displayName"),
+            "analyticObjectId": obj.get("analyticObjectId"),
+            "isPrimaryKey": obj.get("isPrimaryKey"),
             "referenceSymbolName": obj.get("referenceSymbolName")
         })
         return _obj

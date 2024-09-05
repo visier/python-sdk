@@ -26,9 +26,9 @@ class QueryAxisOptionsDTO(BaseModel):
     """
     QueryAxisOptions allows you to customize an axis in the query, such as changing the display mode for its cell set values or providing a custom column name.  Only available when the Accept header is a table format, such as text/csv or application/jsonlines.
     """ # noqa: E501
-    column_name: Optional[StrictStr] = Field(default=None, description="If specified, returns the column name of the axis in the response.", alias="columnName")
     member_display_mode: Optional[StrictStr] = Field(default=None, description="Options to override the display mode for the axis. This overrides the query-level `memberDisplayMode` options value in the query.  Only available for non-time axes. Use the QueryAxisMemberDisplayMode `memberDisplayMode` to apply different display modes to different axes.  For example, let's say your query has the `memberDisplayMode` as `DISPLAY` but you want to fetch the object name for a specific dimension.  With QueryAxisMemberDisplayMode `memberDisplayMode`, you can override that dimension's `memberDisplayMode` to `DEFAULT` instead of `DISPLAY`.   Valid values are `UNCHANGED`, `DEFAULT`, `COMPACT`, `DISPLAY`, or `MDX`. Default is `UNCHANGED`.", alias="memberDisplayMode")
-    __properties: ClassVar[List[str]] = ["columnName", "memberDisplayMode"]
+    column_name: Optional[StrictStr] = Field(default=None, description="If specified, returns the column name of the axis in the response.", alias="columnName")
+    __properties: ClassVar[List[str]] = ["memberDisplayMode", "columnName"]
 
     @field_validator('member_display_mode')
     def member_display_mode_validate_enum(cls, value):
@@ -91,8 +91,8 @@ class QueryAxisOptionsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "columnName": obj.get("columnName"),
-            "memberDisplayMode": obj.get("memberDisplayMode")
+            "memberDisplayMode": obj.get("memberDisplayMode"),
+            "columnName": obj.get("columnName")
         })
         return _obj
 

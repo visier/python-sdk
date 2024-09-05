@@ -27,12 +27,12 @@ class TenantAssignmentsDTO(BaseModel):
     """
     TenantAssignmentsDTO
     """ # noqa: E501
-    assignments: Optional[List[UserSecurityAssignmentsDTO]] = Field(default=None, description="A list of objects representing the user group and user assignments.")
-    message: Optional[StrictStr] = Field(default=None, description="A detailed description of the request outcome, if available.")
-    project_id: Optional[StrictStr] = Field(default=None, description="The ID of the project that the change was made in, if applicable.", alias="projectId")
-    status: Optional[StrictStr] = Field(default=None, description="The state of the user group assignment. Valid values are Succeed or Failed.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the tenant.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["assignments", "message", "projectId", "status", "tenantCode"]
+    status: Optional[StrictStr] = Field(default=None, description="The state of the user group assignment. Valid values are Succeed or Failed.")
+    message: Optional[StrictStr] = Field(default=None, description="A detailed description of the request outcome, if available.")
+    assignments: Optional[List[UserSecurityAssignmentsDTO]] = Field(default=None, description="A list of objects representing the user group and user assignments.")
+    project_id: Optional[StrictStr] = Field(default=None, description="The ID of the project that the change was made in, if applicable.", alias="projectId")
+    __properties: ClassVar[List[str]] = ["tenantCode", "status", "message", "assignments", "projectId"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -102,11 +102,11 @@ class TenantAssignmentsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "assignments": [UserSecurityAssignmentsDTO.from_dict(_item) for _item in obj["assignments"]] if obj.get("assignments") is not None else None,
-            "message": obj.get("message"),
-            "projectId": obj.get("projectId"),
+            "tenantCode": obj.get("tenantCode"),
             "status": obj.get("status"),
-            "tenantCode": obj.get("tenantCode")
+            "message": obj.get("message"),
+            "assignments": [UserSecurityAssignmentsDTO.from_dict(_item) for _item in obj["assignments"]] if obj.get("assignments") is not None else None,
+            "projectId": obj.get("projectId")
         })
         return _obj
 

@@ -27,9 +27,9 @@ class JdbcAuthParamsDTO(BaseModel):
     JdbcAuthParamsDTO
     """ # noqa: E501
     jdbc_connect_string: Optional[StrictStr] = Field(default=None, alias="jdbcConnectString")
-    password: Optional[StrictStr] = None
     username: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["jdbcConnectString", "password", "username"]
+    password: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["jdbcConnectString", "username", "password"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,8 +83,8 @@ class JdbcAuthParamsDTO(BaseModel):
 
         _obj = cls.model_validate({
             "jdbcConnectString": obj.get("jdbcConnectString"),
-            "password": obj.get("password"),
-            "username": obj.get("username")
+            "username": obj.get("username"),
+            "password": obj.get("password")
         })
         return _obj
 

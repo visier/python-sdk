@@ -26,16 +26,26 @@ class SnapshotQueryExecutionOptionsDTO(BaseModel):
     """
     A SnapshotQueryExecutionOptions provides additional instructions to perform a snapshot query.
     """ # noqa: E501
-    calendar_type: Optional[StrictStr] = Field(default=None, description="The calendar type to use. This will be used for all time calculations unless explicitly overridden in  the calculation itself. Default is TENANT_CALENDAR.", alias="calendarType")
-    currency_conversion_code: Optional[StrictStr] = Field(default=None, description="The optional target currency for all currency conversions.  If not specified, the tenant default currency will be used.", alias="currencyConversionCode")
-    currency_conversion_date: Optional[StrictStr] = Field(default=None, description="The currency conversion date to use. If defined, the currency conversion will use the exchange rates as of this date.", alias="currencyConversionDate")
-    date_time_display_mode: Optional[StrictStr] = Field(default=None, description="Control how date-time values are displayed in the result set.  Supported values:  * `EPOCH`: The number of elapsed milliseconds since January 1, 1970 in UTC timezone. This is the default.  * `DATETIME`: The date-time value displayed in `yyyy-MM-dd HH:mm:ssZZ` format.", alias="dateTimeDisplayMode")
     limit: Optional[StrictInt] = Field(default=None, description="The maximum number of entries to return. Default is to return all entries. If `page` is defined but  limit is not defined, limit will be set to a default value of 1000.")
-    multiple_tables: Optional[StrictBool] = Field(default=None, description="Option to return multiple table files as zipped archive for derived metrics.  Default is false. If false, one table is returned for the drill-through metric.", alias="multipleTables")
-    omit_header: Optional[StrictBool] = Field(default=None, description="Option to omit the header from the result.  If true, queryMode must be either FILL or FAIL.  Default is false.", alias="omitHeader")
-    page: Optional[StrictInt] = Field(default=None, description="A page defines a subset of the overall result set. The number of rows per page is equal to limit  with the exception of the last page in the result set which may contain fewer rows. `Page` is an index  that begins at 0. The index to start retrieving results is calculated by multiplying `page` by `limit`.")
     query_mode: Optional[StrictStr] = Field(default=None, description="Determines how the query should handle column definitions that the query is unable to resolve. Default is DEFAULT.", alias="queryMode")
-    __properties: ClassVar[List[str]] = ["calendarType", "currencyConversionCode", "currencyConversionDate", "dateTimeDisplayMode", "limit", "multipleTables", "omitHeader", "page", "queryMode"]
+    omit_header: Optional[StrictBool] = Field(default=None, description="Option to omit the header from the result.  If true, queryMode must be either FILL or FAIL.  Default is false.", alias="omitHeader")
+    calendar_type: Optional[StrictStr] = Field(default=None, description="The calendar type to use. This will be used for all time calculations unless explicitly overridden in  the calculation itself. Default is TENANT_CALENDAR.", alias="calendarType")
+    currency_conversion_date: Optional[StrictStr] = Field(default=None, description="The currency conversion date to use. If defined, the currency conversion will use the exchange rates as of this date.", alias="currencyConversionDate")
+    page: Optional[StrictInt] = Field(default=None, description="A page defines a subset of the overall result set. The number of rows per page is equal to limit  with the exception of the last page in the result set which may contain fewer rows. `Page` is an index  that begins at 0. The index to start retrieving results is calculated by multiplying `page` by `limit`.")
+    multiple_tables: Optional[StrictBool] = Field(default=None, description="Option to return multiple table files as zipped archive for derived metrics.  Default is false. If false, one table is returned for the drill-through metric.", alias="multipleTables")
+    currency_conversion_code: Optional[StrictStr] = Field(default=None, description="The optional target currency for all currency conversions.  If not specified, the tenant default currency will be used.", alias="currencyConversionCode")
+    date_time_display_mode: Optional[StrictStr] = Field(default=None, description="Control how date-time values are displayed in the result set.  Supported values:  * `EPOCH`: The number of elapsed milliseconds since January 1, 1970 in UTC timezone. This is the default.  * `DATETIME`: The date-time value displayed in `yyyy-MM-dd HH:mm:ssZZ` format.", alias="dateTimeDisplayMode")
+    __properties: ClassVar[List[str]] = ["limit", "queryMode", "omitHeader", "calendarType", "currencyConversionDate", "page", "multipleTables", "currencyConversionCode", "dateTimeDisplayMode"]
+
+    @field_validator('query_mode')
+    def query_mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['DEFAULT', 'FILL', 'FAIL']):
+            raise ValueError("must be one of enum values ('DEFAULT', 'FILL', 'FAIL')")
+        return value
 
     @field_validator('calendar_type')
     def calendar_type_validate_enum(cls, value):
@@ -55,16 +65,6 @@ class SnapshotQueryExecutionOptionsDTO(BaseModel):
 
         if value not in set(['EPOCH', 'DATETIME']):
             raise ValueError("must be one of enum values ('EPOCH', 'DATETIME')")
-        return value
-
-    @field_validator('query_mode')
-    def query_mode_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['DEFAULT', 'FILL', 'FAIL']):
-            raise ValueError("must be one of enum values ('DEFAULT', 'FILL', 'FAIL')")
         return value
 
     model_config = ConfigDict(
@@ -118,15 +118,15 @@ class SnapshotQueryExecutionOptionsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "calendarType": obj.get("calendarType"),
-            "currencyConversionCode": obj.get("currencyConversionCode"),
-            "currencyConversionDate": obj.get("currencyConversionDate"),
-            "dateTimeDisplayMode": obj.get("dateTimeDisplayMode"),
             "limit": obj.get("limit"),
-            "multipleTables": obj.get("multipleTables"),
+            "queryMode": obj.get("queryMode"),
             "omitHeader": obj.get("omitHeader"),
+            "calendarType": obj.get("calendarType"),
+            "currencyConversionDate": obj.get("currencyConversionDate"),
             "page": obj.get("page"),
-            "queryMode": obj.get("queryMode")
+            "multipleTables": obj.get("multipleTables"),
+            "currencyConversionCode": obj.get("currencyConversionCode"),
+            "dateTimeDisplayMode": obj.get("dateTimeDisplayMode")
         })
         return _obj
 

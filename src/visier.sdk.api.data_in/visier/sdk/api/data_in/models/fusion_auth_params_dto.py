@@ -26,10 +26,10 @@ class FusionAuthParamsDTO(BaseModel):
     """
     FusionAuthParamsDTO
     """ # noqa: E501
-    host_domain_name: Optional[StrictStr] = Field(default=None, alias="hostDomainName")
-    password: Optional[StrictStr] = None
     username: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["hostDomainName", "password", "username"]
+    password: Optional[StrictStr] = None
+    host_domain_name: Optional[StrictStr] = Field(default=None, alias="hostDomainName")
+    __properties: ClassVar[List[str]] = ["username", "password", "hostDomainName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,9 +82,9 @@ class FusionAuthParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "hostDomainName": obj.get("hostDomainName"),
+            "username": obj.get("username"),
             "password": obj.get("password"),
-            "username": obj.get("username")
+            "hostDomainName": obj.get("hostDomainName")
         })
         return _obj
 

@@ -27,10 +27,10 @@ class UserGroupGetAPIResponseDTO(BaseModel):
     """
     UserGroupGetAPIResponseDTO
     """ # noqa: E501
+    user_group_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the user group.", alias="userGroupId")
     display_name: Optional[StrictStr] = Field(default=None, description="An identifiable user group name to display in Visier, such as \"Leadership User Group\".", alias="displayName")
     permissions: Optional[List[PermissionResponseDTO]] = Field(default=None, description="A list of objects representing the user's permissions.")
-    user_group_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the user group.", alias="userGroupId")
-    __properties: ClassVar[List[str]] = ["displayName", "permissions", "userGroupId"]
+    __properties: ClassVar[List[str]] = ["userGroupId", "displayName", "permissions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,9 +90,9 @@ class UserGroupGetAPIResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "userGroupId": obj.get("userGroupId"),
             "displayName": obj.get("displayName"),
-            "permissions": [PermissionResponseDTO.from_dict(_item) for _item in obj["permissions"]] if obj.get("permissions") is not None else None,
-            "userGroupId": obj.get("userGroupId")
+            "permissions": [PermissionResponseDTO.from_dict(_item) for _item in obj["permissions"]] if obj.get("permissions") is not None else None
         })
         return _obj
 

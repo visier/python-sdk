@@ -26,9 +26,9 @@ class ScenarioOrSnapshotDTO(BaseModel):
     """
     The unique identifier and display name for plan scenarios and snapshots.
     """ # noqa: E501
-    display_name: Optional[StrictStr] = Field(default=None, description="The scenario or snapshot display name.", alias="displayName")
     id: Optional[StrictStr] = Field(default=None, description="The identifier of the scenario or snapshot.")
-    __properties: ClassVar[List[str]] = ["displayName", "id"]
+    display_name: Optional[StrictStr] = Field(default=None, description="The scenario or snapshot display name.", alias="displayName")
+    __properties: ClassVar[List[str]] = ["id", "displayName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class ScenarioOrSnapshotDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "displayName": obj.get("displayName"),
-            "id": obj.get("id")
+            "id": obj.get("id"),
+            "displayName": obj.get("displayName")
         })
         return _obj
 

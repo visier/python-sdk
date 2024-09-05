@@ -26,9 +26,9 @@ class AggregationTypeParameterValueDTO(BaseModel):
     """
     The value for an aggregation parameter.
     """ # noqa: E501
-    aggregation_option_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the aggregation option.", alias="aggregationOptionId")
     parameter_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the aggregation parameter.", alias="parameterId")
-    __properties: ClassVar[List[str]] = ["aggregationOptionId", "parameterId"]
+    aggregation_option_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the aggregation option.", alias="aggregationOptionId")
+    __properties: ClassVar[List[str]] = ["parameterId", "aggregationOptionId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,8 +81,8 @@ class AggregationTypeParameterValueDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "aggregationOptionId": obj.get("aggregationOptionId"),
-            "parameterId": obj.get("parameterId")
+            "parameterId": obj.get("parameterId"),
+            "aggregationOptionId": obj.get("aggregationOptionId")
         })
         return _obj
 
