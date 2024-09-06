@@ -1,0 +1,18 @@
+# Ignore folders
+docs/
+.github/
+
+# Ignore core library .py files
+visier_api*/*.py
+!visier_api*/__init__.py
+
+# Ignore files in the root by default
+/*
+
+# Allow specific files for PyPI publishing
+!setup.py
+!setup.cfg
+!requirements.txt
+!test-requirements.txt
+!tox.ini
+!pyproject.toml
