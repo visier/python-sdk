@@ -29,8 +29,8 @@ jobs:
         package_folder:
 #          - visier_api_core
 #          - visier_api_administration
-          - visier_api_analytic_model
-#          - visier_api_data_in
+#          - visier_api_analytic_model
+          - visier_api_data_in
 #          - visier_api_data_out
 
     steps:
