@@ -37,7 +37,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref}}
+          ref: ${{ github.ref }}
 
       - name: Install dependencies
         run: |
@@ -54,17 +54,17 @@ jobs:
         with:
           packages-dir: "src/${{ matrix.package_folder }}/dist"
 
-  merge_pr:
-    needs: publish_package
-    if: needs.publish_package.result == 'success'
-    name: Merge PR
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out before merge
-        uses: actions/checkout@v4
-
-      - name: Merge PR
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh pr merge ${{ github.event.pull_request.number }} --merge --delete-branch
+#  merge_pr:
+#    needs: publish_package
+#    if: needs.publish_package.result == 'success'
+#    name: Merge PR
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Check out before merge
+#        uses: actions/checkout@v4
+#
+#      - name: Merge PR
+#        env:
+#          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        run: |
+#          gh pr merge ${{ github.event.pull_request.number }} --merge --delete-branch
