@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "visier_api_core"
-version = "0.99201.1474"
+version = "0.99201.1475"
 description = "Visier Authentication APIs"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
 license = "Apache License, Version 2.0"
