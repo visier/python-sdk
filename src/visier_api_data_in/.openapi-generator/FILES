@@ -41,6 +41,7 @@ test/test_direct_data_intake_api.py
 test/test_direct_data_job_config_dto.py
 test/test_direct_data_job_status_response_dto.py
 test/test_direct_data_load_config_dto.py
+test/test_direct_data_schema_dto.py
 test/test_direct_data_schema_field_dto.py
 test/test_direct_data_transaction_start_response_dto.py
 test/test_direct_data_upload_file_response_dto.py
@@ -173,6 +174,7 @@ visier_api_data_in/models/dimensions_auth_params_dto.py
 visier_api_data_in/models/direct_data_job_config_dto.py
 visier_api_data_in/models/direct_data_job_status_response_dto.py
 visier_api_data_in/models/direct_data_load_config_dto.py
+visier_api_data_in/models/direct_data_schema_dto.py
 visier_api_data_in/models/direct_data_schema_field_dto.py
 visier_api_data_in/models/direct_data_transaction_start_response_dto.py
 visier_api_data_in/models/direct_data_upload_file_response_dto.py
