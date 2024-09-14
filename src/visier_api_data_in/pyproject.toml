@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "visier_api_data_in"
-version = "22222222.99201.1481"
+version = "22222222.99201.1482"
 description = "Visier Data In APIs"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
 license = "Apache License, Version 2.0"
@@ -12,7 +12,7 @@ include = ["visier_api_data_in/py.typed"]
 [tool.poetry.dependencies]
 python = "^3.8"
 
-visier-api-core = "~= 22222222.99201.1481"
+visier-api-core = "~= 22222222.99201.1482"
 
 [tool.poetry.dev-dependencies]
 pytest = ">=7.2.1"
