@@ -18,7 +18,7 @@ The Visier API is divided into five main categories:
 - [Data Out](https://docs.visier.com/developer/apis/data-out/swagger/current/index.html): Download data from the Visier
   Platform.
 
-The Visier API Python SDK is organized into five main packages corresponding to the API categories:
+The Visier API Python SDK consists of five main packages, each corresponding to a specific API category:
 
 - `visier-api-core` - It contains logic for authenticating, configuring, and contains classes to make requests. 
 This package is required to be installed to use any other package of the SDK.
@@ -31,8 +31,8 @@ Each package except `visier-api-core` contains API classes which are used to int
 
 ## Installation
 
-You can install the packages separately depending on the functionality you need.
-The `visier-api-core` package will be installed automatically as it is a dependency for all other packages.
+Install the packages individually based on the required functionality.
+The `visier-api-core` package is a dependency for all other packages and will be installed automatically.
 
 ```bash
 pip install visier-api-administration
@@ -40,6 +40,7 @@ pip install visier-api-analytic-model
 pip install visier-api-data-in
 pip install visier-api-data-out
 ```
+Note: This SDK supports Python 3.8 and above.
 
 ## Usage
 To use the API, you need to configure the `ApiClient` with a `Configuration` object. 
@@ -120,10 +121,10 @@ You can create the API client using default configuration object.
 from visier_api_data_out import DataQueryApi
 data_query_api = DataQueryApi()
 ```
-Under the hood, it will create the configuration object using the environment variables.
-You can change the default configuration object using `Configuration.set_default` method.
-By default, this default configuration object is used to create default ApiClient object.
-`ApiClient` object also has a method `ApiClient.set_default`.
+Internally, the configuration object is created using environment variables.
+You can change the default configuration object using the `Configuration.set_default` method.
+By default, this configuration object is used to create the default `ApiClient` object.
+The `ApiClient` object also has a `set_default` method. This default `ApiClient` object is used to create API objects implicitly.
 
 ```python
 from dotenv import dotenv_values
@@ -162,7 +163,7 @@ if api_response.status_code == 200:
     properties = api_response.data
 
 # RESTResponseType
-# If you're having some problems with DTO format you can use this method to get raw response
+# If you need to work with raw data, you can use this method to get the raw response.
 rest_response = data_model_api.properties_without_preload_content(analytic_object_id)
 if rest_response.status == 200:
     properties = PropertiesDTO.from_json(rest_response.data.decode())    
@@ -170,8 +171,8 @@ if rest_response.status == 200:
 
 All API DTOs are described in documentation for each API, e.g. [Data Out API DTOs](https://docs.visier.com/developer/apis/data-in/swagger/current/index.html#:~:text=files/%7Bfilename%7D-,Schemas,-Data%20types%20and).
 Each DTOs has a method `from_json` to create DTO object from json string.
-In some cases you need to switch from DTO format to csv format.
-You can do this by setting the `Accept` header to `text/csv` when creating the ApiClient or when making a request.
+In some cases, you may need to switch from DTO format to CSV format.
+To do this, set the `Accept` header to `text/csv` when creating the `ApiClient` or when making a request.
 
 ```python
 from visier_api_core import ApiClient
@@ -193,6 +194,7 @@ response = query_api.aggregate_without_preload_content(aggr_query_dto, _headers=
 with open('data.csv', mode='w') as f:
     f.write(response.data.decode())
 ```
+You can find additional query body examples in the [query_examples](query_examples) directory.
 
 ## Error Handling
 
@@ -238,3 +240,5 @@ except ApiException as e:
     print(f"An error occurred: {e}")
 ```
 
+### More Examples
+You can find more examples at [github.com/visier/api-samples](https://github.com/visier/api-samples).
