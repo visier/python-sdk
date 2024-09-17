@@ -24,10 +24,10 @@ The Visier API Python SDK consists of five main packages, each corresponding to 
 This package is required to be installed to use any other package of the SDK.
 - `visier-api-administration` - for managing your tenant or tenants in Visier. 
 - `visier-api-analytic-model` - to configure and manage the Analytic Model.
-- `visier-api-data-in` - APIs to upload data to Visier Platform.
-- `visier-api-data-out` - APIs to download data to Visier Platform.
+- `visier-api-data-in` - APIs to load data in to the Visier Platform.
+- `visier-api-data-out` - APIs get data out from the Visier Platform.
 
-Each package except `visier-api-core` contains API classes which are used to interact with different APIs in the Visier API.
+Each package, except `visier-api-core`, contains API classes which are used to interact with different APIs in the Visier API.
 
 ## Installation
 
@@ -47,7 +47,7 @@ To use the API, you need to configure the `ApiClient` with a `Configuration` obj
 The configuration can be created in three ways:
 - From environment variables.
 - From dictionary which could be loaded from env file.
-- Explicitly set the configuration parameters.
+- By explicitly setting the configuration parameters.
 
 Configure the environment variables as described below, depending on the type of authentication you want to use:
 ```env
@@ -121,7 +121,7 @@ You can create the API client using default configuration object.
 from visier_api_data_out import DataQueryApi
 data_query_api = DataQueryApi()
 ```
-Internally, the configuration object is created using environment variables.
+Internally, the configuration object is created using values from environment variables.
 You can change the default configuration object using the `Configuration.set_default` method.
 By default, this configuration object is used to create the default `ApiClient` object.
 The `ApiClient` object also has a `set_default` method. This default `ApiClient` object is used to create API objects implicitly.
@@ -163,7 +163,7 @@ if api_response.status_code == 200:
     properties = api_response.data
 
 # RESTResponseType
-# If you need to work with raw data, you can use this method to get the raw response.
+# If you need to work with raw data, you can use this method.
 rest_response = data_model_api.properties_without_preload_content(analytic_object_id)
 if rest_response.status == 200:
     properties = PropertiesDTO.from_json(rest_response.data.decode())    
