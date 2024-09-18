@@ -40,10 +40,10 @@ pip install visier-api-analytic-model
 pip install visier-api-data-in
 pip install visier-api-data-out
 ```
-Note: This SDK supports Python 3.8 and above.
+**Note**: This SDK supports Python 3.8 and above.
 
 ## Usage
-To use the API, you need to configure the `ApiClient` with a `Configuration` object. 
+To use the API, you need to provide the `ApiClient` with a `Configuration` object. 
 The configuration can be created in three ways:
 - From environment variables.
 - From dictionary which could be loaded from env file.
@@ -87,23 +87,25 @@ config_dict = dotenv_values(".env")
 config = Configuration.from_dict(config_dict)
 ```
 
-Also, you can explicitly set the configuration parameters. E.g. for 2-legged OAuth 2.0 authentication:
+Also, you can explicitly set the configuration parameters. E.g. for 3-legged OAuth 2.0 authentication:
 
 ```python
 from visier_api_core import Configuration
 
+def get_secret(secret_name):
+    """Your secret retrieval logic"""
+    pass
+
 config = Configuration(
     host="https://api.visier.com",
-    api_key="api_key",
-    username="your_username",
-    password="your_password",
-    client_id="your_client_id",
-    client_secret="your_client_secret",
-    vanity="your_vanity",
-    access_token="your_access_token",
-    refresh_token="your_refresh_token"
+    api_key=get_secret("api_key"),
+    client_id=get_secret("client_id"),
+    client_secret=get_secret("client_id"),
+    vanity="your_vanity"
 )
 ```
+> **Warning:** Don't store sensitive information in code or in a repository. 
+> Use environment variables or a secure storage solution.
 
 After you have the configuration object you can create the API client and start using the API.
 
@@ -182,8 +184,12 @@ with open('query_examples/aggregate/applicants-source.json') as f:
     headcount_json = f.read()
 aggr_query_dto = AggregationQueryExecutionDTO.from_json(headcount_json)
 
-# Passing 'Accept' header to ApiClient
-api_client = ApiClient(header_name='Accept', header_value='text/csv')
+# Configure the 'Accept' header to 'text/csv' either in the constructor 
+# ApiClient(header_name='Accept', header_value='text/csv') or by using the set_default_header method.
+# The set_default_header method allows you to add additional headers if needed.
+api_client = ApiClient()
+api_client.set_default_header('Accept', 'text/csv')
+
 query_api = DataQueryApi(api_client)
 response = query_api.aggregate_without_preload_content(aggr_query_dto)
 
@@ -201,11 +207,8 @@ You can find additional query body examples in the [query_examples](query_exampl
 This Python SDK handles exceptions using custom exception classes derived from `OpenApiException`. Below are the main exception classes and their usage:
 
 - `OpenApiException`: The base exception class for all API exceptions.
-- `ApiTypeError`: Raised for type errors.
-- `ApiValueError`: Raised for value errors.
-- `ApiAttributeError`: Raised for attribute errors.
-- `ApiKeyError`: Raised for key errors.
-- `ApiException`: Raised for general Http API exceptions. This class subclassed into:
+- `ApiValueError`: Raised when a function receives an argument with an inappropriate value, such as when an authentication token is not set, or when both `body` and `post_params` are provided.
+- `ApiException`: Raised for general HTTP API exceptions. This class is subclassed into:
   - `BadRequestException`: Raised for HTTP 400 errors.
   - `UnauthorizedException`: Raised for HTTP 401 errors.
   - `ForbiddenException`: Raised for HTTP 403 errors.
