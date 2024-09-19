@@ -118,7 +118,7 @@ data_query_api = DataQueryApi()
 ```
 The `Configuration` object is created using the environment variable values. You can change the default configuration object using the `Configuration.set_default` method.
 
-The `Configuration` object creates the default `ApiClient` object. The default `ApiClient` object creates API objects implicitly. You can change the default `ApiClient` object using the `ApiClient.set_default` method.
+The `ApiClient` object is created using the default configuration object. The default `ApiClient` object is used to create API objects implicitly. You can change the default `ApiClient` object using the `ApiClient.set_default` method.
 
 ```python
 from dotenv import dotenv_values
@@ -129,18 +129,18 @@ config_dict = dotenv_values(".env")
 config = Configuration.from_dict(config_dict)
 Configuration.set_default(config)
 
-# The default `Configuration` object creates the `ApiClient` object.
+# The `ApiClient` object is created using the default `Configuration` object.
 api_client = ApiClient()
 data_upload_api = DataUploadApi(api_client)
 
 # You can set the default `ApiClient` using the `ApiClient.set_default` method.
 ApiClient.set_default(ApiClient(config))
 
-# The default `ApiClient` object creates API objects implicitly.
+# The default `ApiClient` object is used to create API objects implicitly.
 data_intake_api = DataIntakeApi()
 ```
 
-You can use DTO format, ApiResponse, or RESTResponseType to call the API methods.
+The API response is returned in DTO format, ApiResponse, or RESTResponseType respectively.
 
 ```python
 from visier_api_analytic_model import DataModelApi, PropertiesDTO
