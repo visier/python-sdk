@@ -1,38 +1,33 @@
 # Visier API Python SDK (Beta)
-Welcome to the Visier API Python SDK! This SDK provides a convenient way to interact with the Visier API. 
+Welcome to the Visier API Python SDK! This SDK provides a convenient way to interact with Visier's public APIs.
 
-**Note: This SDK is currently in beta.**
+**Note:** 
+- This SDK is currently in beta. You may encounter issues while using it.
+- This SDK supports Python 3.8 and above.
 
-## Description
-For detailed documentation of the Visier API, please visit the [Visier API Documentation](https://docs.visier.com/developer/apis/apis.htm).
-The Visier API is divided into five main categories:
+## Overview
+For detailed information about Visier APIs, see [Visier APIs](https://docs.visier.com/developer/Default.htm#cshid=1007).
 
-- [Authentication](https://docs.visier.com/developer/apis/authentication/swagger/current/index.html): Manage user
-  authentication and tokens.
-- [Administration](https://docs.visier.com/developer/apis/administration/swagger/current/index.html): Manage your tenant
-  or tenants in Visier.
-- [Analytic Model](https://docs.visier.com/developer/apis/analytic-model/swagger/current/index.html): Configure and
-  manage the Analytic Model.
-- [Data In](https://docs.visier.com/developer/apis/data-in/swagger/current/index.html): Upload data to the Visier
-  Platform.
-- [Data Out](https://docs.visier.com/developer/apis/data-out/swagger/current/index.html): Download data from the Visier
-  Platform.
+Visier APIs are divided into collections.
+- [Authentication](https://docs.visier.com/developer/Default.htm#cshid=1039): Authenticate yourself as a Visier user who is allowed to use Visier APIs.
+- [Administration](https://docs.visier.com/developer/Default.htm#cshid=1040): Manage your tenant or tenants in Visier.
+- [Analytic Model](https://docs.visier.com/developer/Default.htm#cshid=1041): Retrieve and configure your analytic model in Visier.
+- [Data In](https://docs.visier.com/developer/Default.htm#cshid=1042): Send data to Visier.
+- [Data Out](https://docs.visier.com/developer/Default.htm#cshid=1043): Get data out of Visier.
 
-The Visier API Python SDK consists of five main packages, each corresponding to a specific API category:
+The Visier API Python SDK contains five packages that correspond to the Visier API collections.
 
-- `visier-api-core` - It contains logic for authenticating, configuring, and contains classes to make requests. 
-This package is required to be installed to use any other package of the SDK.
-- `visier-api-administration` - for managing your tenant or tenants in Visier. 
-- `visier-api-analytic-model` - to configure and manage the Analytic Model.
-- `visier-api-data-in` - APIs to load data in to the Visier Platform.
-- `visier-api-data-out` - APIs get data out from the Visier Platform.
+- `visier-api-core`: Contains logic for authenticating and configuring, and contains classes to make requests. Required to use the other packages.
+- `visier-api-administration`: APIs to manage your tenant or tenants in Visier.
+- `visier-api-analytic-model`: APIs to retrieve and configure the analytic model in Visier.
+- `visier-api-data-in`: APIs to send data to Visier.
+- `visier-api-data-out`: APIs get data out of Visier.
 
-Each package, except `visier-api-core`, contains API classes which are used to interact with different APIs in the Visier API.
+The packages, excluding `visier-api-core`, contain API classes to interact with different Visier APIs.
 
 ## Installation
 
-Install the packages individually based on the required functionality.
-The `visier-api-core` package is a dependency for all other packages and will be installed automatically.
+Install the packages according to their required functionality. `visier-api-core` is installed automatically because it's a dependency for the other packages.
 
 ```bash
 pip install visier-api-administration
@@ -40,36 +35,34 @@ pip install visier-api-analytic-model
 pip install visier-api-data-in
 pip install visier-api-data-out
 ```
-**Note**: This SDK supports Python 3.8 and above.
 
 ## Usage
-To use the API, you need to provide the `ApiClient` with a `Configuration` object. 
-The configuration can be created in three ways:
+To use the API, provide the `ApiClient` with a `Configuration` object. You can create the configuration:
 - From environment variables.
-- From dictionary which could be loaded from env file.
+- From a dictionary loaded from the `.env` file.
 - By explicitly setting the configuration parameters.
 
-Configure the environment variables as described below, depending on the type of authentication you want to use:
+Configure the environment variables according to your authentication method:
 ```env
-# Necessary for all types of auth
+# Required for all authentication methods.
 VISIER_HOST=https://customer-specific.api.visier.io
 VISIER_APIKEY='visier-provided-api-key'
 VISIER_VANITY='visier-tenant-vanity-name'
 
-# For OAuth 2.0 authentication
-VISIER_CLIENT_ID='client-id-from-registration'  # OAuth client ID (obtain from Visier app registration)
-VISIER_CLIENT_SECRET='client-secret-from-registration'  # OAuth client secret (obtain from Visier app registration)
+# Required for OAuth 2.0 authentication.
+VISIER_CLIENT_ID='client-id-from-registration'  # Retrieve the client ID from your client registration in Visier.
+VISIER_CLIENT_SECRET='client-secret-from-registration'  # Retrieve the client secret from your client registration in Visier.
 
-# For 3-legged OAuth 2.0, include the redirect URI along with VISIER_CLIENT_ID and VISIER_CLIENT_SECRET.
-# The client will start a local server to handle the callback.
-# Register this redirect URI on the Visier platform. The default is http://localhost:5000/oauth2/callback.
+# For 3-legged OAuth 2.0 authentication, provide a redirect URI in addition to the VISIER_CLIENT_ID and VISIER_CLIENT_SECRET. The redirect URI must be registered in Visier. The client starts a local server to handle the callback. The default is http://localhost:5000/oauth2/callback.
 VISIER_REDIRECT_URI='http://localhost:5000/oauth2/callback'
 
-# For Basic authentication, provide ONLY the following and leave VISIER_CLIENT_ID and VISIER_CLIENT_SECRET blank:
-# For 2-legged OAuth 2.0, provide the following IN ADDITION TO VISIER_CLIENT_ID and VISIER_CLIENT_SECRET
+# For basic authentication, provide only the VISIER_USERNAME and VISIER_PASSWORD. Leave VISIER_CLIENT_ID and VISIER_CLIENT_SECERT blank.
+# For 2-legged OAuth 2.0 authentication, provide the VISIER_USERNAME, VISIER_PASSWORD, VISIER_CLIENT_ID, and VISIER_CLIENT_SECRET.
 VISIER_USERNAME='visier-username'
 VISIER_PASSWORD='visier-password'
 ```
+
+For more information about registering a client ID, client secret, and redirect URIs in Visier, see [Register a Client Application](https://docs.visier.com/developer/Default.htm#cshid=1044).
 
 After setting the environment variables, you can create a `Configuration` object using the `from_env` method:
 ```python
@@ -78,7 +71,7 @@ from visier_api_core import Configuration
 config = Configuration.from_env()
 ```
 
-Another way is to store environment variables in a .env file and load them using dotenv library.
+Alternatively, store the environment variables in a `.env` file and load them using dotenv library.
 ```python
 from dotenv import dotenv_values
 from visier_api_core import Configuration
@@ -87,7 +80,7 @@ config_dict = dotenv_values(".env")
 config = Configuration.from_dict(config_dict)
 ```
 
-Also, you can explicitly set the configuration parameters. E.g. for 3-legged OAuth 2.0 authentication:
+Or, explicitly set the configuration parameters. The following example shows explicitly setting the configuration parameters for 3-legged OAuth 2.0 authentication.
 
 ```python
 from visier_api_core import Configuration
@@ -107,7 +100,7 @@ config = Configuration(
 > **Warning:** Don't store sensitive information in code or in a repository. 
 > Use environment variables or a secure storage solution.
 
-After you have the configuration object you can create the API client and start using the API.
+After you have the `Configuration` object, create the API client and start using the API.
 
 ```python
 from visier_api_core import ApiClient, Configuration
@@ -118,15 +111,14 @@ client = ApiClient(config)
 data_query_api = DataQueryApi(client)
 ```
 
-You can create the API client using default configuration object.
+You can create the API client using the default `Configuration` object.
 ```python
 from visier_api_data_out import DataQueryApi
 data_query_api = DataQueryApi()
 ```
-Internally, the configuration object is created using values from environment variables.
-You can change the default configuration object using the `Configuration.set_default` method.
-By default, this configuration object is used to create the default `ApiClient` object.
-The `ApiClient` object also has a `set_default` method. This default `ApiClient` object is used to create API objects implicitly.
+The `Configuration` object is created using the environment variable values. You can change the default configuration object using the `Configuration.set_default` method.
+
+The `ApiClient` object is created using the default configuration object. The default `ApiClient` object is used to create API objects implicitly. You can change the default `ApiClient` object using the `ApiClient.set_default` method.
 
 ```python
 from dotenv import dotenv_values
@@ -137,18 +129,18 @@ config_dict = dotenv_values(".env")
 config = Configuration.from_dict(config_dict)
 Configuration.set_default(config)
 
-# ApiClient will be created using default configuration object
+# The `ApiClient` object is created using the default `Configuration` object.
 api_client = ApiClient()
 data_upload_api = DataUploadApi(api_client)
 
-# ApiClient also has a method to set default ApiClient
+# You can set the default `ApiClient` using the `ApiClient.set_default` method.
 ApiClient.set_default(ApiClient(config))
 
-# You can create APIs objects implicitly using default ApiClient object
+# The default `ApiClient` object is used to create API objects implicitly.
 data_intake_api = DataIntakeApi()
 ```
 
-Every API method has 3 different ways to be called:
+The API response is returned in DTO format, ApiResponse, or RESTResponseType respectively.
 
 ```python
 from visier_api_analytic_model import DataModelApi, PropertiesDTO
@@ -165,16 +157,14 @@ if api_response.status_code == 200:
     properties = api_response.data
 
 # RESTResponseType
-# If you need to work with raw data, you can use this method.
+# Use this method to work with raw data.
 rest_response = data_model_api.properties_without_preload_content(analytic_object_id)
 if rest_response.status == 200:
     properties = PropertiesDTO.from_json(rest_response.data.decode())    
 ```
 
-All API DTOs are described in documentation for each API, e.g. [Data Out API DTOs](https://docs.visier.com/developer/apis/data-in/swagger/current/index.html#:~:text=files/%7Bfilename%7D-,Schemas,-Data%20types%20and).
-Each DTOs has a method `from_json` to create DTO object from json string.
-In some cases, you may need to switch from DTO format to CSV format.
-To do this, set the `Accept` header to `text/csv` when creating the `ApiClient` or when making a request.
+For full API DTO documentation, see the API references. For example, [Visier Data In APIs](https://docs.visier.com/developer/Default.htm#cshid=1042).
+All DTOs have a `from_json` method to create a DTO object from a JSON string. In some cases, you may need to switch from DTO format to CSV format. To switch, set the `Accept` header to `text/csv` when creating the `ApiClient` or making a request.
 
 ```python
 from visier_api_core import ApiClient
@@ -184,27 +174,26 @@ with open('query_examples/aggregate/applicants-source.json') as f:
     headcount_json = f.read()
 aggr_query_dto = AggregationQueryExecutionDTO.from_json(headcount_json)
 
-# Configure the 'Accept' header to 'text/csv' either in the constructor 
-# ApiClient(header_name='Accept', header_value='text/csv') or by using the set_default_header method.
-# The set_default_header method allows you to add additional headers if needed.
+# Set the `Accept` header to `text/csv` in the constructor ApiClient(header_name='Accept', header_value='text/csv') or by using the `set_default_header` method.
+# The `set_default_header` method allows you to add additional headers as needed.
 api_client = ApiClient()
 api_client.set_default_header('Accept', 'text/csv')
 
 query_api = DataQueryApi(api_client)
 response = query_api.aggregate_without_preload_content(aggr_query_dto)
 
-# Passing 'Accept' header to request
+# Passing `Accept` header to request.
 query_api = DataQueryApi()
 response = query_api.aggregate_without_preload_content(aggr_query_dto, _headers={'Accept': 'text/csv'})
 
 with open('data.csv', mode='w') as f:
     f.write(response.data.decode())
 ```
-You can find additional query body examples in the [query_examples](query_examples) directory.
+For more query body examples, see the [query_examples](query_examples) directory.
 
 ## Error Handling
 
-This Python SDK handles exceptions using custom exception classes derived from `OpenApiException`. Below are the main exception classes and their usage:
+This SDK handles exceptions using custom exception classes derived from `OpenApiException`. The following list describes the main exception classes and their usages.
 
 - `OpenApiException`: The base exception class for all API exceptions.
 - `ApiValueError`: Raised when a function receives an argument with an inappropriate value, such as when an authentication token is not set, or when both `body` and `post_params` are provided.
@@ -215,7 +204,7 @@ This Python SDK handles exceptions using custom exception classes derived from `
   - `NotFoundException`: Raised for HTTP 404 errors.
   - `ServiceException`: Raised for HTTP 500-599 errors.
 
-### Fields in `ApiException`
+### Fields in ApiException
 
 - `status`: The HTTP status code of the response.
 - `reason`: The reason phrase returned by the server.
@@ -223,7 +212,7 @@ This Python SDK handles exceptions using custom exception classes derived from `
 - `data`: The data parsed from the HTTP response.
 - `headers`: The headers of the HTTP response.
 
-Below is an example of how to handle these exceptions:
+The following example shows how to handle exceptions.
 
 ```python
 from visier_api_core.exceptions import ApiException, BadRequestException, UnauthorizedException
@@ -233,7 +222,7 @@ analytic_object_id = 'Employee'
 data_model_api = DataModelApi()
 
 try:
-    # Requesting properties of an analytic object
+    # Requesting properties of an analytic object.
     properties = data_model_api.properties(analytic_object_id)
 except BadRequestException as e:
     print(f"Bad request: {e}")
@@ -244,4 +233,4 @@ except ApiException as e:
 ```
 
 ### More Examples
-You can find more examples at [github.com/visier/api-samples](https://github.com/visier/api-samples).
+For more examples, see [github.com/visier/api-samples](https://github.com/visier/api-samples).
