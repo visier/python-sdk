@@ -1,18 +1,18 @@
 [tool.poetry]
 name = "visier_api_administration"
-version = "22222222.99201.1482"
+version = "0.99201.1489"
 description = "Visier Administration APIs"
-authors = ["OpenAPI Generator Community <team@openapitools.org>"]
+authors = ["Visier <alpine@visier.com>"]
 license = "Apache License, Version 2.0"
 readme = "README.md"
 repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
-keywords = ["OpenAPI", "OpenAPI-Generator", "Visier Administration APIs"]
+keywords = ["Visier", "Visier-SDK", "Visier Administration APIs"]
 include = ["visier_api_administration/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 
-visier-api-core = "~= 22222222.99201.1482"
+visier-api-core = "~= 0.99201.1489"
 
 [tool.poetry.dev-dependencies]
 pytest = ">=7.2.1"
