@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "visier_api_core"
-version = "22222222.99201.1482"
+version = "0.99201.1494"
 description = "Visier Authentication APIs"
-authors = ["OpenAPI Generator Community <team@openapitools.org>"]
+authors = ["Visier <alpine@visier.com>"]
 license = "Apache License, Version 2.0"
 readme = "README.md"
 repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
-keywords = ["OpenAPI", "OpenAPI-Generator", "Visier Authentication APIs"]
+keywords = ["Visier", "Visier-SDK", "Visier Authentication APIs"]
 include = ["visier_api_core/py.typed"]
 
 [tool.poetry.dependencies]
