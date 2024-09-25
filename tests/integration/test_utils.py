@@ -21,4 +21,4 @@ def get_query_content(file_name):
 
 
 load_dotenv(dotenv_path='.env')
-TENANT_CODE = f"WFF_{os.getenv('VISIER_VANITY')}"
+TENANT_CODE = os.getenv('VISIER_TENANT_CODE')
