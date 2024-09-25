@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1494"
+__version__ = "0.0.1001"
 
 # import apis into sdk package
 from visier_api_administration.api.consolidated_analytics_api import ConsolidatedAnalyticsApi

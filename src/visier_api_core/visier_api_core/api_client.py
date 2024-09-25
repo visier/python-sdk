@@ -88,7 +88,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Visier-SDK/0.99201.1494/python'
+        self.user_agent = 'Visier-SDK/0.0.1001/python'
         self.client_side_validation = configuration.client_side_validation
         self.auth_retries = auth_retries
 
