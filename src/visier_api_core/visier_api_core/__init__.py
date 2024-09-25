@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1494"
+__version__ = "0.0.1002"
 
 # import ApiClient
 from visier_api_core.api_response import ApiResponse
