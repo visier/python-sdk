@@ -1,0 +1,44 @@
+{
+  "query": {
+    "source": {
+      "metric": "employeeCount"
+    },
+    "axes": [
+      {
+        "dimensionLevelSelection": {
+          "dimension": {
+            "name": "Function",
+            "qualifyingPath": "Employee"
+          },
+          "levelIds": [
+            "Function"
+          ]
+        }
+      },
+      {
+        "dimensionLevelSelection": {
+          "dimension": {
+            "name": "Pay_Level",
+            "qualifyingPath": "Employee"
+          },
+          "levelIds": [
+            "Pay_Level"
+          ]
+        }
+      }
+    ],
+    "filters": [
+      {
+        "selectionConcept": {
+          "name": "isManager",
+          "qualifyingPath": "Employee"
+        }
+      }
+    ],
+    "timeIntervals": {
+      "fromDateTime": "2021-01-01",
+      "intervalPeriodType": "MONTH",
+      "intervalCount": 6
+    }
+  }
+}

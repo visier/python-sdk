@@ -1,0 +1,46 @@
+{
+  "source": {
+    "analyticObject": "Employee_Exit"
+  },
+  "columns": [
+    {
+      "columnName": "Employee age",
+      "columnDefinition": {
+        "property": {
+          "name": "Employee.Age",
+          "qualifyingPath": "Employee"
+        }
+      }
+    },
+    {
+      "columnName": "Employee ID",
+      "columnDefinition": {
+        "property": {
+          "name": "Employee.EmployeeID",
+          "qualifyingPath": "Employee"
+        }
+      }
+    },
+    {
+      "columnName": "Effective Date",
+      "columnDefinition": {
+        "effectiveDateProperty": {}
+      }
+    }
+  ],
+  "sortOptions": [
+    {
+      "columnIndex": 2,
+      "sortDirection": "SORT_DESCENDING"
+    }
+  ],
+  "timeIntervals": {
+    "fromInstant": "1672531200000",
+    "intervalPeriodType": "MONTH",
+    "intervalPeriodCount": 1,
+    "intervalCount": 3
+  },
+  "options": {
+    "limit": 10
+  }
+}
