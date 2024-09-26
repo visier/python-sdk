@@ -1,1 +1,1 @@
-visier-api-core ~= 0.0.1002
+visier-api-core ~= 0.99201.1494.beta4
