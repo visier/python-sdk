@@ -1,8 +1,15 @@
+import os
 import unittest
 
-from test_utils import create_api, get_query_content
+from test_utils import create_api
 from visier_api_data_out import DataQueryApi, ListQueryExecutionDTO, AggregationQueryExecutionDTO, \
     SnapshotQueryExecutionDTO
+
+
+def get_query_content(file_name):
+    file_path = os.path.join('queries', file_name)
+    with open(file_path, 'r') as file:
+        return file.read()
 
 
 class TestDataQueryApi(unittest.TestCase):
