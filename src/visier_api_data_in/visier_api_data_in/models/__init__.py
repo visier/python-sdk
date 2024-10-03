@@ -6,7 +6,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1494
+    The version of the OpenAPI document: 22222222.99201.1497
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,6 +29,9 @@ from visier_api_data_in.models.big_query_service_account_params_dto import BigQu
 from visier_api_data_in.models.cancel_job_batch_from_job_id_dto import CancelJobBatchFromJobIdDTO
 from visier_api_data_in.models.connector import Connector
 from visier_api_data_in.models.connector_info_response_dto import ConnectorInfoResponseDTO
+from visier_api_data_in.models.connector_setting_request_dto import ConnectorSettingRequestDTO
+from visier_api_data_in.models.connector_setting_response_dto import ConnectorSettingResponseDTO
+from visier_api_data_in.models.connector_settings_response_dto import ConnectorSettingsResponseDTO
 from visier_api_data_in.models.consolidated_analytics_job_request_dto import ConsolidatedAnalyticsJobRequestDTO
 from visier_api_data_in.models.copy_s3_auth_params_dto import CopyS3AuthParamsDTO
 from visier_api_data_in.models.credential_creation_api_response_dto import CredentialCreationAPIResponseDTO
@@ -63,6 +66,9 @@ from visier_api_data_in.models.extraction_job import ExtractionJob
 from visier_api_data_in.models.extraction_job_and_status_response import ExtractionJobAndStatusResponse
 from visier_api_data_in.models.extractor_credential_apidto import ExtractorCredentialAPIDTO
 from visier_api_data_in.models.extractor_credentials_apidto import ExtractorCredentialsAPIDTO
+from visier_api_data_in.models.extractor_setting_apidto import ExtractorSettingAPIDTO
+from visier_api_data_in.models.extractor_setting_key_value_apidto import ExtractorSettingKeyValueAPIDTO
+from visier_api_data_in.models.extractor_settings_apidto import ExtractorSettingsAPIDTO
 from visier_api_data_in.models.fusion_auth_params_dto import FusionAuthParamsDTO
 from visier_api_data_in.models.gong_auth_params_dto import GongAuthParamsDTO
 from visier_api_data_in.models.google_protobuf_any import GoogleProtobufAny
@@ -111,6 +117,10 @@ from visier_api_data_in.models.salesforce_auth_params_dto import SalesforceAuthP
 from visier_api_data_in.models.salesforce_v2_auth_params_dto import SalesforceV2AuthParamsDTO
 from visier_api_data_in.models.service_now_auth_params_dto import ServiceNowAuthParamsDTO
 from visier_api_data_in.models.service_now_v2_auth_params_dto import ServiceNowV2AuthParamsDTO
+from visier_api_data_in.models.set_connector_setting_request_dto import SetConnectorSettingRequestDTO
+from visier_api_data_in.models.set_connector_setting_response_dto import SetConnectorSettingResponseDTO
+from visier_api_data_in.models.set_connector_settings_request_dto import SetConnectorSettingsRequestDTO
+from visier_api_data_in.models.set_connector_settings_response_dto import SetConnectorSettingsResponseDTO
 from visier_api_data_in.models.slack_auth_params_dto import SlackAuthParamsDTO
 from visier_api_data_in.models.snowflake_auth_params_dto import SnowflakeAuthParamsDTO
 from visier_api_data_in.models.source import Source
@@ -125,6 +135,7 @@ from visier_api_data_in.models.success_factors_auth_params_dto import SuccessFac
 from visier_api_data_in.models.success_factors_o_auth_params_dto import SuccessFactorsOAuthParamsDTO
 from visier_api_data_in.models.tenant import Tenant
 from visier_api_data_in.models.tenant_and_credential import TenantAndCredential
+from visier_api_data_in.models.tenant_connector_settings_request_dto import TenantConnectorSettingsRequestDTO
 from visier_api_data_in.models.tenant_data_upload_status_response_dto import TenantDataUploadStatusResponseDTO
 from visier_api_data_in.models.tenant_data_upload_update_status_response_dto import TenantDataUploadUpdateStatusResponseDTO
 from visier_api_data_in.models.tenant_data_uploads_list_response_dto import TenantDataUploadsListResponseDTO
