@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1494
+    The version of the OpenAPI document: 22222222.99201.1497
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.

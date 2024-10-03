@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1494
+    The version of the OpenAPI document: 22222222.99201.1497
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -20,10 +20,11 @@ from typing_extensions import Annotated
 
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
-from pydantic import Field, StrictInt, StrictStr, field_validator
+from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
 from visier_api_administration.models.get_production_versions_api_response_dto import GetProductionVersionsAPIResponseDTO
+from visier_api_administration.models.production_version_api_operation_request_dto import ProductionVersionAPIOperationRequestDTO
 from visier_api_administration.models.production_version_api_operation_response_dto import ProductionVersionAPIOperationResponseDTO
 from visier_api_administration.models.production_versions_api_operation_request_dto import ProductionVersionsAPIOperationRequestDTO
 from visier_api_administration.models.production_versions_api_operation_response_dto import ProductionVersionsAPIOperationResponseDTO
@@ -324,8 +325,8 @@ class ProductionVersionsApi:
     @validate_call
     def post_production_version(
         self,
-        production_version_id: StrictStr,
-        operation: Annotated[Optional[StrictStr], Field(description="The operation to perform. Valid values:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.")] = None,
+        production_version_id: Annotated[StrictStr, Field(description="The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation.")],
+        production_version_api_operation_request_dto: ProductionVersionAPIOperationRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -343,10 +344,10 @@ class ProductionVersionsApi:
 
         Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param production_version_id: (required)
+        :param production_version_id: The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation. (required)
         :type production_version_id: str
-        :param operation: The operation to perform. Valid values:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.
-        :type operation: str
+        :param production_version_api_operation_request_dto: (required)
+        :type production_version_api_operation_request_dto: ProductionVersionAPIOperationRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -371,7 +372,7 @@ class ProductionVersionsApi:
 
         _param = self._post_production_version_serialize(
             production_version_id=production_version_id,
-            operation=operation,
+            production_version_api_operation_request_dto=production_version_api_operation_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -396,8 +397,8 @@ class ProductionVersionsApi:
     @validate_call
     def post_production_version_with_http_info(
         self,
-        production_version_id: StrictStr,
-        operation: Annotated[Optional[StrictStr], Field(description="The operation to perform. Valid values:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.")] = None,
+        production_version_id: Annotated[StrictStr, Field(description="The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation.")],
+        production_version_api_operation_request_dto: ProductionVersionAPIOperationRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -415,10 +416,10 @@ class ProductionVersionsApi:
 
         Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param production_version_id: (required)
+        :param production_version_id: The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation. (required)
         :type production_version_id: str
-        :param operation: The operation to perform. Valid values:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.
-        :type operation: str
+        :param production_version_api_operation_request_dto: (required)
+        :type production_version_api_operation_request_dto: ProductionVersionAPIOperationRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -443,7 +444,7 @@ class ProductionVersionsApi:
 
         _param = self._post_production_version_serialize(
             production_version_id=production_version_id,
-            operation=operation,
+            production_version_api_operation_request_dto=production_version_api_operation_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -468,8 +469,8 @@ class ProductionVersionsApi:
     @validate_call
     def post_production_version_without_preload_content(
         self,
-        production_version_id: StrictStr,
-        operation: Annotated[Optional[StrictStr], Field(description="The operation to perform. Valid values:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.")] = None,
+        production_version_id: Annotated[StrictStr, Field(description="The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation.")],
+        production_version_api_operation_request_dto: ProductionVersionAPIOperationRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -487,10 +488,10 @@ class ProductionVersionsApi:
 
         Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param production_version_id: (required)
+        :param production_version_id: The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation. (required)
         :type production_version_id: str
-        :param operation: The operation to perform. Valid values:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.
-        :type operation: str
+        :param production_version_api_operation_request_dto: (required)
+        :type production_version_api_operation_request_dto: ProductionVersionAPIOperationRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -515,7 +516,7 @@ class ProductionVersionsApi:
 
         _param = self._post_production_version_serialize(
             production_version_id=production_version_id,
-            operation=operation,
+            production_version_api_operation_request_dto=production_version_api_operation_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -535,7 +536,7 @@ class ProductionVersionsApi:
     def _post_production_version_serialize(
         self,
         production_version_id,
-        operation,
+        production_version_api_operation_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -558,13 +559,11 @@ class ProductionVersionsApi:
         if production_version_id is not None:
             _path_params['productionVersionId'] = production_version_id
         # process the query parameters
-        if operation is not None:
-            
-            _query_params.append(('operation', operation))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if production_version_api_operation_request_dto is not None:
+            _body_params = production_version_api_operation_request_dto
 
 
         # set the HTTP header `Accept`

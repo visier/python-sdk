@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1494
+    The version of the OpenAPI document: 22222222.99201.1497
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -147,6 +147,13 @@ class TestDataAndJobHandlingApi(unittest.TestCase):
         """
         pass
 
+    def test_list_connector_settings(self) -> None:
+        """Test case for list_connector_settings
+
+        Retrieve data connector settings
+        """
+        pass
+
     def test_processing_job_and_status(self) -> None:
         """Test case for processing_job_and_status
 
@@ -186,6 +193,13 @@ class TestDataAndJobHandlingApi(unittest.TestCase):
         """Test case for retrieve_data_uploads
 
         Retrieve data uploads
+        """
+        pass
+
+    def test_set_connector_setting(self) -> None:
+        """Test case for set_connector_setting
+
+        Update data connector settings
         """
         pass
 
