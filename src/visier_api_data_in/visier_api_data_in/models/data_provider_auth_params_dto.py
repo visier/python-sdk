@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1497
+    The version of the OpenAPI document: 22222222.99201.1508
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -89,7 +89,7 @@ class DataProviderAuthParamsDTO(BaseModel):
     my_sql_auth_params: Optional[MySqlAuthParamsDTO] = Field(default=None, alias="mySqlAuthParams")
     namely_auth_params: Optional[NamelyAuthParamsDTO] = Field(default=None, alias="namelyAuthParams")
     oracle_db_auth_params: Optional[OracleDbAuthParamsDTO] = Field(default=None, alias="oracleDbAuthParams")
-    provider: Optional[StrictStr] = Field(default=None, description="The data provider associated with the credential.  - Valid values: UKG, Dimensions, Workday, Redshift, BasicS3, CopyS3, SqlServer, Snowflake")
+    provider: Optional[StrictStr] = Field(default=None, description="The data provider associated with the credential.")
     qualtrics_auth_params: Optional[QualtricsAuthParamsDTO] = Field(default=None, alias="qualtricsAuthParams")
     redshift_auth_params: Optional[RedshiftAuthParamsDTO] = Field(default=None, alias="redshiftAuthParams")
     s3_auth_params: Optional[BasicS3AuthParamsDTO] = Field(default=None, alias="s3AuthParams")

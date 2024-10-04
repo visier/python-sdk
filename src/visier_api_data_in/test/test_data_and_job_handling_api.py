@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1497
+    The version of the OpenAPI document: 22222222.99201.1508
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -206,14 +206,14 @@ class TestDataAndJobHandlingApi(unittest.TestCase):
     def test_start_extraction(self) -> None:
         """Test case for start_extraction
 
-        Trigger extraction jobs
+        Trigger data connector extraction jobs
         """
         pass
 
     def test_start_load(self) -> None:
         """Test case for start_load
 
-        Start the data load for an analytic tenant
+        Start the data load for analytic tenants
         """
         pass
 
