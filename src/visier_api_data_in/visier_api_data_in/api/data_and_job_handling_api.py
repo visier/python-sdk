@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1497
+    The version of the OpenAPI document: 22222222.99201.1508
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -1482,7 +1482,7 @@ class DataAndJobHandlingApi:
     ) -> CredentialCreationAPIResponseDTO:
         """Create a connector credential
 
-        Create connector credentials for a specified tenant. Connector credentials allow Visier to  retrieve data from your source systems through an integration user in the source system.
+        Create credentials for a data connector. Connector credentials allow Visier to retrieve data from your source systems through an integration user in the source system.     In the request body, specify one data provider in the `dataProviderAuthParams` parameter. For example, to create connector credentials for a UKG data connector, your request body might look like the following sample.  ```json  {    model={      \"dataProviderAuthParams\": {         \"provider\": \"UKG\",         \"ultimateAuthParams\": {            \"hostDomainName\": \"exampleHostDomain\",            \"apiKey\": \"apiKey1234\",            \"username\": \"username1234\",            \"password\": \"password1234\",            \"userAccessKey\": \"accessKey1234\"         }      },      \"dataProviderBasicInformation\": {         \"displayName\": \"exampleDisplayName\",         \"description\": \"exampleDescription\"      }  }  ```
 
         :param data_provider_auth_information_dto: (required)
         :type data_provider_auth_information_dto: DataProviderAuthInformationDTO
@@ -1554,7 +1554,7 @@ class DataAndJobHandlingApi:
     ) -> ApiResponse[CredentialCreationAPIResponseDTO]:
         """Create a connector credential
 
-        Create connector credentials for a specified tenant. Connector credentials allow Visier to  retrieve data from your source systems through an integration user in the source system.
+        Create credentials for a data connector. Connector credentials allow Visier to retrieve data from your source systems through an integration user in the source system.     In the request body, specify one data provider in the `dataProviderAuthParams` parameter. For example, to create connector credentials for a UKG data connector, your request body might look like the following sample.  ```json  {    model={      \"dataProviderAuthParams\": {         \"provider\": \"UKG\",         \"ultimateAuthParams\": {            \"hostDomainName\": \"exampleHostDomain\",            \"apiKey\": \"apiKey1234\",            \"username\": \"username1234\",            \"password\": \"password1234\",            \"userAccessKey\": \"accessKey1234\"         }      },      \"dataProviderBasicInformation\": {         \"displayName\": \"exampleDisplayName\",         \"description\": \"exampleDescription\"      }  }  ```
 
         :param data_provider_auth_information_dto: (required)
         :type data_provider_auth_information_dto: DataProviderAuthInformationDTO
@@ -1626,7 +1626,7 @@ class DataAndJobHandlingApi:
     ) -> RESTResponseType:
         """Create a connector credential
 
-        Create connector credentials for a specified tenant. Connector credentials allow Visier to  retrieve data from your source systems through an integration user in the source system.
+        Create credentials for a data connector. Connector credentials allow Visier to retrieve data from your source systems through an integration user in the source system.     In the request body, specify one data provider in the `dataProviderAuthParams` parameter. For example, to create connector credentials for a UKG data connector, your request body might look like the following sample.  ```json  {    model={      \"dataProviderAuthParams\": {         \"provider\": \"UKG\",         \"ultimateAuthParams\": {            \"hostDomainName\": \"exampleHostDomain\",            \"apiKey\": \"apiKey1234\",            \"username\": \"username1234\",            \"password\": \"password1234\",            \"userAccessKey\": \"accessKey1234\"         }      },      \"dataProviderBasicInformation\": {         \"displayName\": \"exampleDisplayName\",         \"description\": \"exampleDescription\"      }  }  ```
 
         :param data_provider_auth_information_dto: (required)
         :type data_provider_auth_information_dto: DataProviderAuthInformationDTO
@@ -6212,7 +6212,7 @@ class DataAndJobHandlingApi:
     ) -> ReceivingJobStatusResponse:
         """Retrieve a receiving job's status
 
-        After sending data to Visier, you may want to know the status of the receiving job and the associated tenant  receiving jobs. A receiving job validates the transferred data and adds the transferred data to Visier's data  store.   Retrieve the receiving job status and summary of analytic tenant receiving jobs.
+        After sending data to Visier, you may want to know the status of the receiving job and the associated tenant  receiving jobs. A receiving job validates the transferred data and adds the transferred data to Visier's data  store.    A successful response indicates that the receiving job was successful. To get the status of the jobs spawned by the receiving job, set the `jobs` parameter to `true`.
 
         :param receiving_job_id: The jobId provided after sending data to Visier. (required)
         :type receiving_job_id: str
@@ -6296,7 +6296,7 @@ class DataAndJobHandlingApi:
     ) -> ApiResponse[ReceivingJobStatusResponse]:
         """Retrieve a receiving job's status
 
-        After sending data to Visier, you may want to know the status of the receiving job and the associated tenant  receiving jobs. A receiving job validates the transferred data and adds the transferred data to Visier's data  store.   Retrieve the receiving job status and summary of analytic tenant receiving jobs.
+        After sending data to Visier, you may want to know the status of the receiving job and the associated tenant  receiving jobs. A receiving job validates the transferred data and adds the transferred data to Visier's data  store.    A successful response indicates that the receiving job was successful. To get the status of the jobs spawned by the receiving job, set the `jobs` parameter to `true`.
 
         :param receiving_job_id: The jobId provided after sending data to Visier. (required)
         :type receiving_job_id: str
@@ -6380,7 +6380,7 @@ class DataAndJobHandlingApi:
     ) -> RESTResponseType:
         """Retrieve a receiving job's status
 
-        After sending data to Visier, you may want to know the status of the receiving job and the associated tenant  receiving jobs. A receiving job validates the transferred data and adds the transferred data to Visier's data  store.   Retrieve the receiving job status and summary of analytic tenant receiving jobs.
+        After sending data to Visier, you may want to know the status of the receiving job and the associated tenant  receiving jobs. A receiving job validates the transferred data and adds the transferred data to Visier's data  store.    A successful response indicates that the receiving job was successful. To get the status of the jobs spawned by the receiving job, set the `jobs` parameter to `true`.
 
         :param receiving_job_id: The jobId provided after sending data to Visier. (required)
         :type receiving_job_id: str
@@ -7402,9 +7402,9 @@ class DataAndJobHandlingApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> StartExtractionResponse:
-        """Trigger extraction jobs
+        """Trigger data connector extraction jobs
 
-        Generate extraction jobs for a list of analytic tenants or for the administrating tenant.  This API creates a dispatching job that generates one extraction job per tenant. The extraction jobs retrieve  data from your source systems through data connectors. The dispatching job is the \"parent\" of the extraction  jobs and its job ID is returned in the response.
+        Run data connector extraction jobs for the administrating tenant or a list of analytic tenants.    This API creates a dispatching job that generates one extraction job per tenant. The dispatching job is the \"parent\" of the extraction jobs and the dispatching job ID is returned in the response. Use that ID to monitor the extraction job statuses by calling `GET /v1/op/jobs/dispatching-jobs/{jobId}/extraction-jobs`.   The extraction job generates receiving jobs to validate the data and processing jobs to populate data in the analytic tenants. Use the dispatching job ID to monitor the receiving and processing job statuses by calling `GET /v1/op/jobs/dispatching-jobs/{jobId}/receiving-jobs` or `GET /v1/op/jobs/dispatching-jobs/{jobId}/processing-jobs`.
 
         :param start_extraction_request: (required)
         :type start_extraction_request: StartExtractionRequest
@@ -7470,9 +7470,9 @@ class DataAndJobHandlingApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[StartExtractionResponse]:
-        """Trigger extraction jobs
+        """Trigger data connector extraction jobs
 
-        Generate extraction jobs for a list of analytic tenants or for the administrating tenant.  This API creates a dispatching job that generates one extraction job per tenant. The extraction jobs retrieve  data from your source systems through data connectors. The dispatching job is the \"parent\" of the extraction  jobs and its job ID is returned in the response.
+        Run data connector extraction jobs for the administrating tenant or a list of analytic tenants.    This API creates a dispatching job that generates one extraction job per tenant. The dispatching job is the \"parent\" of the extraction jobs and the dispatching job ID is returned in the response. Use that ID to monitor the extraction job statuses by calling `GET /v1/op/jobs/dispatching-jobs/{jobId}/extraction-jobs`.   The extraction job generates receiving jobs to validate the data and processing jobs to populate data in the analytic tenants. Use the dispatching job ID to monitor the receiving and processing job statuses by calling `GET /v1/op/jobs/dispatching-jobs/{jobId}/receiving-jobs` or `GET /v1/op/jobs/dispatching-jobs/{jobId}/processing-jobs`.
 
         :param start_extraction_request: (required)
         :type start_extraction_request: StartExtractionRequest
@@ -7538,9 +7538,9 @@ class DataAndJobHandlingApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Trigger extraction jobs
+        """Trigger data connector extraction jobs
 
-        Generate extraction jobs for a list of analytic tenants or for the administrating tenant.  This API creates a dispatching job that generates one extraction job per tenant. The extraction jobs retrieve  data from your source systems through data connectors. The dispatching job is the \"parent\" of the extraction  jobs and its job ID is returned in the response.
+        Run data connector extraction jobs for the administrating tenant or a list of analytic tenants.    This API creates a dispatching job that generates one extraction job per tenant. The dispatching job is the \"parent\" of the extraction jobs and the dispatching job ID is returned in the response. Use that ID to monitor the extraction job statuses by calling `GET /v1/op/jobs/dispatching-jobs/{jobId}/extraction-jobs`.   The extraction job generates receiving jobs to validate the data and processing jobs to populate data in the analytic tenants. Use the dispatching job ID to monitor the receiving and processing job statuses by calling `GET /v1/op/jobs/dispatching-jobs/{jobId}/receiving-jobs` or `GET /v1/op/jobs/dispatching-jobs/{jobId}/processing-jobs`.
 
         :param start_extraction_request: (required)
         :type start_extraction_request: StartExtractionRequest
@@ -7680,7 +7680,7 @@ class DataAndJobHandlingApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DataLoadResponse:
-        """Start the data load for an analytic tenant
+        """Start the data load for analytic tenants
 
         This API starts the data load process for all analytic tenants included in the specified data files uploaded  to the Visier SFTP server. On success, you receive a job ID that can be filtered and searched for within the  Jobs room in Visier. This job ID is associated with the receiving job, and related to all processing jobs that  spawn for each analytic tenant.   With the job ID, you can also call the next two APIs to retrieve the status of the receiving job and the status  list of all related processing jobs.   **Prerequisite:** You must first obtain Visier's public encryption key and upload the source data files to Visier's  SFTP server. Files must have a .zip.gpg extension, meaning the files are encrypted using the PGP protocol and compressed.   Visier provides SFTP server credentials and instructions. You can find the encryption key at https://www.visier.com/pgp/visier.public.pgp.asc.  After downloading the file, open the file in a text editor or by dragging it into your browser.   **Note:**   - To see the full status of all analytic tenant data loads, navigate to the Jobs room in a project.   - For performance and efficiency, Visier requires that the uncompressed batch file size is below 5 GB and that no     more than 5000 tenants are included in a batch.
 
@@ -7748,7 +7748,7 @@ class DataAndJobHandlingApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DataLoadResponse]:
-        """Start the data load for an analytic tenant
+        """Start the data load for analytic tenants
 
         This API starts the data load process for all analytic tenants included in the specified data files uploaded  to the Visier SFTP server. On success, you receive a job ID that can be filtered and searched for within the  Jobs room in Visier. This job ID is associated with the receiving job, and related to all processing jobs that  spawn for each analytic tenant.   With the job ID, you can also call the next two APIs to retrieve the status of the receiving job and the status  list of all related processing jobs.   **Prerequisite:** You must first obtain Visier's public encryption key and upload the source data files to Visier's  SFTP server. Files must have a .zip.gpg extension, meaning the files are encrypted using the PGP protocol and compressed.   Visier provides SFTP server credentials and instructions. You can find the encryption key at https://www.visier.com/pgp/visier.public.pgp.asc.  After downloading the file, open the file in a text editor or by dragging it into your browser.   **Note:**   - To see the full status of all analytic tenant data loads, navigate to the Jobs room in a project.   - For performance and efficiency, Visier requires that the uncompressed batch file size is below 5 GB and that no     more than 5000 tenants are included in a batch.
 
@@ -7816,7 +7816,7 @@ class DataAndJobHandlingApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Start the data load for an analytic tenant
+        """Start the data load for analytic tenants
 
         This API starts the data load process for all analytic tenants included in the specified data files uploaded  to the Visier SFTP server. On success, you receive a job ID that can be filtered and searched for within the  Jobs room in Visier. This job ID is associated with the receiving job, and related to all processing jobs that  spawn for each analytic tenant.   With the job ID, you can also call the next two APIs to retrieve the status of the receiving job and the status  list of all related processing jobs.   **Prerequisite:** You must first obtain Visier's public encryption key and upload the source data files to Visier's  SFTP server. Files must have a .zip.gpg extension, meaning the files are encrypted using the PGP protocol and compressed.   Visier provides SFTP server credentials and instructions. You can find the encryption key at https://www.visier.com/pgp/visier.public.pgp.asc.  After downloading the file, open the file in a text editor or by dragging it into your browser.   **Note:**   - To see the full status of all analytic tenant data loads, navigate to the Jobs room in a project.   - For performance and efficiency, Visier requires that the uncompressed batch file size is below 5 GB and that no     more than 5000 tenants are included in a batch.
 
