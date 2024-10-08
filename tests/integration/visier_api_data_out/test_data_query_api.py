@@ -70,7 +70,6 @@ class TestDataQueryApi(unittest.TestCase):
         sqlike_query_dto = SqlLikeQueryExecutionDTO(
             query='SELECT employeeCount() AS "Headcount", Union_Status FROM Employee'
         )
-
         sqlike_response_dto = self.api.sql_like(sqlike_query_dto)
         self.assertIsNotNone(sqlike_response_dto)
         self.assertIsNotNone(sqlike_response_dto.actual_instance)
