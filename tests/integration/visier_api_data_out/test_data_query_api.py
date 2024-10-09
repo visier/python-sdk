@@ -3,7 +3,7 @@ import unittest
 
 from test_utils import create_api
 from visier_api_data_out import DataQueryApi, ListQueryExecutionDTO, AggregationQueryExecutionDTO, \
-    SnapshotQueryExecutionDTO
+    SnapshotQueryExecutionDTO, SqlLikeQueryExecutionDTO, CellSetDTO, TableResponseDTO
 
 
 def get_query_content(file_name):
@@ -60,6 +60,35 @@ class TestDataQueryApi(unittest.TestCase):
 
         self.assertIsNotNone(response_dto)
         self.assertEqual(len(response_dto.rows), snapshot_query_dto.options.limit)
+
+    def test_sql_like_cell_set(self) -> None:
+        """Test case for sql_like
+
+        Should return CellSetDTO
+        """
+
+        sqlike_query_dto = SqlLikeQueryExecutionDTO(
+            query='SELECT employeeCount() AS "Headcount", Union_Status FROM Employee'
+        )
+        sqlike_response_dto = self.api.sql_like(sqlike_query_dto)
+        self.assertIsNotNone(sqlike_response_dto)
+        self.assertIsNotNone(sqlike_response_dto.actual_instance)
+        self.assertIsInstance(sqlike_response_dto.actual_instance, CellSetDTO)
+
+    def test_sql_like(self) -> None:
+        """Test case for sql_like
+
+        Should return TableResponseDTO
+        """
+
+        sqlike_query_dto = SqlLikeQueryExecutionDTO(
+            query="SELECT EmployeeID, First_Name, Last_Name FROM Employee WHERE isFemale=TRUE "
+                  "AND Visier_Time BETWEEN date('2021-01-01') AND date('2022-01-01')"
+        )
+        sqlike_response_dto = self.api.sql_like(sqlike_query_dto)
+        self.assertIsNotNone(sqlike_response_dto)
+        self.assertIsNotNone(sqlike_response_dto.actual_instance)
+        self.assertIsInstance(sqlike_response_dto.actual_instance, TableResponseDTO)
 
 
 if __name__ == '__main__':
