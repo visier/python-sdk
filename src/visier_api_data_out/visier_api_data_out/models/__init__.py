@@ -6,7 +6,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1523
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -81,8 +81,10 @@ from visier_api_data_out.models.simple_document_header_search_result_dto import 
 from visier_api_data_out.models.snapshot_query_execution_dto import SnapshotQueryExecutionDTO
 from visier_api_data_out.models.snapshot_query_execution_options_dto import SnapshotQueryExecutionOptionsDTO
 from visier_api_data_out.models.sort_option_dto import SortOptionDTO
+from visier_api_data_out.models.sql_like200_response import SqlLike200Response
 from visier_api_data_out.models.sql_like_query_execution_dto import SqlLikeQueryExecutionDTO
 from visier_api_data_out.models.status import Status
+from visier_api_data_out.models.table_response_dto import TableResponseDTO
 from visier_api_data_out.models.time_shift_dto import TimeShiftDTO
 from visier_api_data_out.models.vee_clarification_dto import VeeClarificationDTO
 from visier_api_data_out.models.vee_conversation_state_dto import VeeConversationStateDTO

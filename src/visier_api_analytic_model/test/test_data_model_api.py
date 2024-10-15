@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1523
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -214,6 +214,13 @@ class TestDataModelApi(unittest.TestCase):
         """Test case for selection_concepts
 
         Retrieve an analytic object's selection concepts
+        """
+        pass
+
+    def test_update_properties(self) -> None:
+        """Test case for update_properties
+
+        Update properties
         """
         pass
 

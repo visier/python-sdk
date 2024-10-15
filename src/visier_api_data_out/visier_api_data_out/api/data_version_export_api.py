@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1523
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,7 +21,7 @@ from typing_extensions import Annotated
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
 from pydantic import Field, StrictBytes, StrictInt, StrictStr
-from typing import Union
+from typing import Tuple, Union
 from typing_extensions import Annotated
 from visier_api_data_out.models.data_version_export_dto import DataVersionExportDTO
 from visier_api_data_out.models.data_version_export_data_versions_dto import DataVersionExportDataVersionsDTO

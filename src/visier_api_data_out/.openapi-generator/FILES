@@ -74,6 +74,7 @@ test/test_snapshot_query_execution_options_dto.py
 test/test_sort_option_dto.py
 test/test_sql_like_query_execution_dto.py
 test/test_status.py
+test/test_table_response_dto.py
 test/test_time_shift_dto.py
 test/test_vee_api.py
 test/test_vee_clarification_dto.py
@@ -165,8 +166,10 @@ visier_api_data_out/models/simple_document_header_search_result_dto.py
 visier_api_data_out/models/snapshot_query_execution_dto.py
 visier_api_data_out/models/snapshot_query_execution_options_dto.py
 visier_api_data_out/models/sort_option_dto.py
+visier_api_data_out/models/sql_like200_response.py
 visier_api_data_out/models/sql_like_query_execution_dto.py
 visier_api_data_out/models/status.py
+visier_api_data_out/models/table_response_dto.py
 visier_api_data_out/models/time_shift_dto.py
 visier_api_data_out/models/vee_clarification_dto.py
 visier_api_data_out/models/vee_conversation_state_dto.py

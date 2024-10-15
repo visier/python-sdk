@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1523
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,7 +21,7 @@ from typing_extensions import Annotated
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
 from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, Optional, Tuple, Union
 from typing_extensions import Annotated
 from visier_api_administration.models.all_users_get_api_response_dto import AllUsersGetAPIResponseDTO
 from visier_api_administration.models.assign_revoke_permissions_request_dto import AssignRevokePermissionsRequestDTO
@@ -110,7 +110,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserCreationAPIResponseDTO",
+            '201': "UserCreationAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -182,7 +182,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserCreationAPIResponseDTO",
+            '201': "UserCreationAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -254,7 +254,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserCreationAPIResponseDTO",
+            '201': "UserCreationAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

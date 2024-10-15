@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1523
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -20,8 +20,8 @@ from typing_extensions import Annotated
 
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
-from pydantic import Field, StrictInt, StrictStr
-from typing import Optional
+from pydantic import Field, StrictBytes, StrictInt, StrictStr
+from typing import Optional, Tuple, Union
 from typing_extensions import Annotated
 from visier_api_data_in.models.push_data_cancel_response import PushDataCancelResponse
 from visier_api_data_in.models.push_data_complete_request import PushDataCompleteRequest
@@ -1438,6 +1438,7 @@ class DataIntakeApi:
         source_id: Annotated[Optional[StrictStr], Field(description="The unique identifier associated with the source you want to transfer data to.")] = None,
         sequence: Annotated[Optional[StrictStr], Field(description="The unique sequence number associated with a batch of records.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1463,6 +1464,8 @@ class DataIntakeApi:
         :type sequence: str
         :param tenant_code: The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.
         :type tenant_code: str
+        :param file: The file to upload
+        :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1490,6 +1493,7 @@ class DataIntakeApi:
             source_id=source_id,
             sequence=sequence,
             tenant_code=tenant_code,
+            file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1518,6 +1522,7 @@ class DataIntakeApi:
         source_id: Annotated[Optional[StrictStr], Field(description="The unique identifier associated with the source you want to transfer data to.")] = None,
         sequence: Annotated[Optional[StrictStr], Field(description="The unique sequence number associated with a batch of records.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1543,6 +1548,8 @@ class DataIntakeApi:
         :type sequence: str
         :param tenant_code: The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.
         :type tenant_code: str
+        :param file: The file to upload
+        :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1570,6 +1577,7 @@ class DataIntakeApi:
             source_id=source_id,
             sequence=sequence,
             tenant_code=tenant_code,
+            file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1598,6 +1606,7 @@ class DataIntakeApi:
         source_id: Annotated[Optional[StrictStr], Field(description="The unique identifier associated with the source you want to transfer data to.")] = None,
         sequence: Annotated[Optional[StrictStr], Field(description="The unique sequence number associated with a batch of records.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1623,6 +1632,8 @@ class DataIntakeApi:
         :type sequence: str
         :param tenant_code: The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.
         :type tenant_code: str
+        :param file: The file to upload
+        :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1650,6 +1661,7 @@ class DataIntakeApi:
             source_id=source_id,
             sequence=sequence,
             tenant_code=tenant_code,
+            file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1672,6 +1684,7 @@ class DataIntakeApi:
         source_id,
         sequence,
         tenant_code,
+        file,
         _request_auth,
         _content_type,
         _headers,
@@ -1708,6 +1721,8 @@ class DataIntakeApi:
             
         # process the header parameters
         # process the form parameters
+        if file is not None:
+            _files['file'] = file
         # process the body parameter
 
 
@@ -1726,7 +1741,7 @@ class DataIntakeApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'multipart/form-data'
                     ]
                 )
             )
