@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1523
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -20,8 +20,8 @@ from typing_extensions import Annotated
 
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
-from pydantic import Field, StrictBool
-from typing import Any, Dict, Optional
+from pydantic import Field, StrictBool, StrictBytes, StrictStr
+from typing import Any, Dict, Optional, Tuple, Union
 from typing_extensions import Annotated
 from visier_api_administration.models.sources_api_operation_request_dto import SourcesAPIOperationRequestDTO
 from visier_api_administration.models.sources_api_put_response_dto import SourcesAPIPutResponseDTO
@@ -43,6 +43,7 @@ class SourcesApi:
     @validate_call
     def put_sources(
         self,
+        body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         replace_all_existing_sources: Annotated[Optional[StrictBool], Field(description="If `false`, adds the sources from the ZIP to the sources in the target tenant. If `true`, removes all sources in the target tenant and adds the sources from the ZIP. Default is `false`.")] = None,
         _request_timeout: Union[
             None,
@@ -61,6 +62,8 @@ class SourcesApi:
 
         Import a list of sources in ZIP format. The file must be an export from `POST /v1alpha/admin/sources`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
+        :param body: (required)
+        :type body: bytearray
         :param replace_all_existing_sources: If `false`, adds the sources from the ZIP to the sources in the target tenant. If `true`, removes all sources in the target tenant and adds the sources from the ZIP. Default is `false`.
         :type replace_all_existing_sources: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -86,6 +89,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._put_sources_serialize(
+            body=body,
             replace_all_existing_sources=replace_all_existing_sources,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -111,6 +115,7 @@ class SourcesApi:
     @validate_call
     def put_sources_with_http_info(
         self,
+        body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         replace_all_existing_sources: Annotated[Optional[StrictBool], Field(description="If `false`, adds the sources from the ZIP to the sources in the target tenant. If `true`, removes all sources in the target tenant and adds the sources from the ZIP. Default is `false`.")] = None,
         _request_timeout: Union[
             None,
@@ -129,6 +134,8 @@ class SourcesApi:
 
         Import a list of sources in ZIP format. The file must be an export from `POST /v1alpha/admin/sources`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
+        :param body: (required)
+        :type body: bytearray
         :param replace_all_existing_sources: If `false`, adds the sources from the ZIP to the sources in the target tenant. If `true`, removes all sources in the target tenant and adds the sources from the ZIP. Default is `false`.
         :type replace_all_existing_sources: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -154,6 +161,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._put_sources_serialize(
+            body=body,
             replace_all_existing_sources=replace_all_existing_sources,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -179,6 +187,7 @@ class SourcesApi:
     @validate_call
     def put_sources_without_preload_content(
         self,
+        body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         replace_all_existing_sources: Annotated[Optional[StrictBool], Field(description="If `false`, adds the sources from the ZIP to the sources in the target tenant. If `true`, removes all sources in the target tenant and adds the sources from the ZIP. Default is `false`.")] = None,
         _request_timeout: Union[
             None,
@@ -197,6 +206,8 @@ class SourcesApi:
 
         Import a list of sources in ZIP format. The file must be an export from `POST /v1alpha/admin/sources`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
+        :param body: (required)
+        :type body: bytearray
         :param replace_all_existing_sources: If `false`, adds the sources from the ZIP to the sources in the target tenant. If `true`, removes all sources in the target tenant and adds the sources from the ZIP. Default is `false`.
         :type replace_all_existing_sources: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -222,6 +233,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._put_sources_serialize(
+            body=body,
             replace_all_existing_sources=replace_all_existing_sources,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -241,6 +253,7 @@ class SourcesApi:
 
     def _put_sources_serialize(
         self,
+        body,
         replace_all_existing_sources,
         _request_auth,
         _content_type,
@@ -269,6 +282,13 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if body is not None:
+            # convert to byte array if the input is a file name (str)
+            if isinstance(body, str):
+                with open(body, "rb") as _fp:
+                    _body_params = _fp.read()
+            else:
+                _body_params = body
 
 
         # set the HTTP header `Accept`
@@ -286,7 +306,7 @@ class SourcesApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/zip'
                     ]
                 )
             )

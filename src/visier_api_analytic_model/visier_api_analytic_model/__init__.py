@@ -7,7 +7,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1523
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1508"
+__version__ = "0.99201.1523"
 
 # import apis into sdk package
 from visier_api_analytic_model.api.data_model_api import DataModelApi
@@ -70,7 +70,13 @@ from visier_api_analytic_model.models.planning_plans_dto import PlanningPlansDTO
 from visier_api_analytic_model.models.population_configuration_dto import PopulationConfigurationDTO
 from visier_api_analytic_model.models.prediction_dto import PredictionDTO
 from visier_api_analytic_model.models.predictions_dto import PredictionsDTO
+from visier_api_analytic_model.models.properties_bulk_change_response_dto import PropertiesBulkChangeResponseDTO
+from visier_api_analytic_model.models.properties_change_definitions_dto import PropertiesChangeDefinitionsDTO
 from visier_api_analytic_model.models.properties_dto import PropertiesDTO
+from visier_api_analytic_model.models.property_change_definition_dto import PropertyChangeDefinitionDTO
+from visier_api_analytic_model.models.property_change_definitions_by_tenant_dto import PropertyChangeDefinitionsByTenantDTO
+from visier_api_analytic_model.models.property_change_failure_dto import PropertyChangeFailureDTO
+from visier_api_analytic_model.models.property_change_success_dto import PropertyChangeSuccessDTO
 from visier_api_analytic_model.models.property_dto import PropertyDTO
 from visier_api_analytic_model.models.property_reference_dto import PropertyReferenceDTO
 from visier_api_analytic_model.models.scenario_or_snapshot_dto import ScenarioOrSnapshotDTO

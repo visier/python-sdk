@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1523
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,7 +21,7 @@ from typing_extensions import Annotated
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
 from pydantic import Field, StrictBytes, StrictStr
-from typing import Optional, Union
+from typing import Optional, Tuple, Union
 from typing_extensions import Annotated
 from visier_api_data_in.models.direct_data_job_status_response_dto import DirectDataJobStatusResponseDTO
 from visier_api_data_in.models.direct_data_load_config_dto import DirectDataLoadConfigDTO
@@ -1992,7 +1992,7 @@ class DirectDataIntakeApi:
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction to load data files into.")],
         object_name: Annotated[StrictStr, Field(description="The name of the object to upload the data to.  If uploading data to a multi-value property (MVP), specify the property in `{object}--{property}` format; for example, `Employee--Employee_Budgeted_Compensation`.")],
-        file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The file to upload")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2072,7 +2072,7 @@ class DirectDataIntakeApi:
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction to load data files into.")],
         object_name: Annotated[StrictStr, Field(description="The name of the object to upload the data to.  If uploading data to a multi-value property (MVP), specify the property in `{object}--{property}` format; for example, `Employee--Employee_Budgeted_Compensation`.")],
-        file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The file to upload")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2152,7 +2152,7 @@ class DirectDataIntakeApi:
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction to load data files into.")],
         object_name: Annotated[StrictStr, Field(description="The name of the object to upload the data to.  If uploading data to a multi-value property (MVP), specify the property in `{object}--{property}` format; for example, `Employee--Employee_Budgeted_Compensation`.")],
-        file: Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="The file to upload")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
