@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1533
+    The version of the OpenAPI document: 22222222.99201.1534
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -20,8 +20,8 @@ from typing_extensions import Annotated
 
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
-from pydantic import StrictStr
-from typing import Any, Dict
+from pydantic import Field, StrictStr
+from typing_extensions import Annotated
 from visier_api_data_in.models.key_pair_delete_response_dto import KeyPairDeleteResponseDTO
 from visier_api_data_in.models.key_pair_generate_request_dto import KeyPairGenerateRequestDTO
 from visier_api_data_in.models.public_key_dto import PublicKeyDTO
@@ -44,8 +44,7 @@ class PGPKeyApi:
     @validate_call
     def delete_pgp_key_pair(
         self,
-        key_id: StrictStr,
-        body: Dict[str, Any],
+        key_id: Annotated[StrictStr, Field(description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,10 +62,8 @@ class PGPKeyApi:
 
         Delete a PGP key pair using a key ID.
 
-        :param key_id: (required)
+        :param key_id: The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros. (required)
         :type key_id: str
-        :param body: (required)
-        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91,7 +88,6 @@ class PGPKeyApi:
 
         _param = self._delete_pgp_key_pair_serialize(
             key_id=key_id,
-            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -116,8 +112,7 @@ class PGPKeyApi:
     @validate_call
     def delete_pgp_key_pair_with_http_info(
         self,
-        key_id: StrictStr,
-        body: Dict[str, Any],
+        key_id: Annotated[StrictStr, Field(description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -135,10 +130,8 @@ class PGPKeyApi:
 
         Delete a PGP key pair using a key ID.
 
-        :param key_id: (required)
+        :param key_id: The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros. (required)
         :type key_id: str
-        :param body: (required)
-        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -163,7 +156,6 @@ class PGPKeyApi:
 
         _param = self._delete_pgp_key_pair_serialize(
             key_id=key_id,
-            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -188,8 +180,7 @@ class PGPKeyApi:
     @validate_call
     def delete_pgp_key_pair_without_preload_content(
         self,
-        key_id: StrictStr,
-        body: Dict[str, Any],
+        key_id: Annotated[StrictStr, Field(description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -207,10 +198,8 @@ class PGPKeyApi:
 
         Delete a PGP key pair using a key ID.
 
-        :param key_id: (required)
+        :param key_id: The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros. (required)
         :type key_id: str
-        :param body: (required)
-        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -235,7 +224,6 @@ class PGPKeyApi:
 
         _param = self._delete_pgp_key_pair_serialize(
             key_id=key_id,
-            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -255,7 +243,6 @@ class PGPKeyApi:
     def _delete_pgp_key_pair_serialize(
         self,
         key_id,
-        body,
         _request_auth,
         _content_type,
         _headers,
@@ -281,8 +268,6 @@ class PGPKeyApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
 
 
         # set the HTTP header `Accept`
@@ -293,19 +278,6 @@ class PGPKeyApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -318,7 +290,7 @@ class PGPKeyApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/v1/api/pgpkey{keyID}',
+            resource_path='/v1/api/pgpkey/{keyID}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -615,7 +587,6 @@ class PGPKeyApi:
     @validate_call
     def get_all_pgp_public_keys(
         self,
-        body: Dict[str, Any],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -633,8 +604,6 @@ class PGPKeyApi:
 
         Retrieve a list of all PGP public keys in your tenant.
 
-        :param body: (required)
-        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -658,7 +627,6 @@ class PGPKeyApi:
         """ # noqa: E501
 
         _param = self._get_all_pgp_public_keys_serialize(
-            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -683,7 +651,6 @@ class PGPKeyApi:
     @validate_call
     def get_all_pgp_public_keys_with_http_info(
         self,
-        body: Dict[str, Any],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -701,8 +668,6 @@ class PGPKeyApi:
 
         Retrieve a list of all PGP public keys in your tenant.
 
-        :param body: (required)
-        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -726,7 +691,6 @@ class PGPKeyApi:
         """ # noqa: E501
 
         _param = self._get_all_pgp_public_keys_serialize(
-            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -751,7 +715,6 @@ class PGPKeyApi:
     @validate_call
     def get_all_pgp_public_keys_without_preload_content(
         self,
-        body: Dict[str, Any],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -769,8 +732,6 @@ class PGPKeyApi:
 
         Retrieve a list of all PGP public keys in your tenant.
 
-        :param body: (required)
-        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -794,7 +755,6 @@ class PGPKeyApi:
         """ # noqa: E501
 
         _param = self._get_all_pgp_public_keys_serialize(
-            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -813,7 +773,6 @@ class PGPKeyApi:
 
     def _get_all_pgp_public_keys_serialize(
         self,
-        body,
         _request_auth,
         _content_type,
         _headers,
@@ -837,8 +796,6 @@ class PGPKeyApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
 
 
         # set the HTTP header `Accept`
@@ -849,19 +806,6 @@ class PGPKeyApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -893,8 +837,7 @@ class PGPKeyApi:
     @validate_call
     def get_pgp_public_key(
         self,
-        key_id: StrictStr,
-        body: Dict[str, Any],
+        key_id: Annotated[StrictStr, Field(description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -912,10 +855,8 @@ class PGPKeyApi:
 
         If you know your PGP key ID, use it to retrieve the PGP public key. To get a list of all key IDs, see `Retrieve all PGP public keys`.
 
-        :param key_id: (required)
+        :param key_id: The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros. (required)
         :type key_id: str
-        :param body: (required)
-        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -940,7 +881,6 @@ class PGPKeyApi:
 
         _param = self._get_pgp_public_key_serialize(
             key_id=key_id,
-            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -965,8 +905,7 @@ class PGPKeyApi:
     @validate_call
     def get_pgp_public_key_with_http_info(
         self,
-        key_id: StrictStr,
-        body: Dict[str, Any],
+        key_id: Annotated[StrictStr, Field(description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -984,10 +923,8 @@ class PGPKeyApi:
 
         If you know your PGP key ID, use it to retrieve the PGP public key. To get a list of all key IDs, see `Retrieve all PGP public keys`.
 
-        :param key_id: (required)
+        :param key_id: The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros. (required)
         :type key_id: str
-        :param body: (required)
-        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1012,7 +949,6 @@ class PGPKeyApi:
 
         _param = self._get_pgp_public_key_serialize(
             key_id=key_id,
-            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1037,8 +973,7 @@ class PGPKeyApi:
     @validate_call
     def get_pgp_public_key_without_preload_content(
         self,
-        key_id: StrictStr,
-        body: Dict[str, Any],
+        key_id: Annotated[StrictStr, Field(description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1056,10 +991,8 @@ class PGPKeyApi:
 
         If you know your PGP key ID, use it to retrieve the PGP public key. To get a list of all key IDs, see `Retrieve all PGP public keys`.
 
-        :param key_id: (required)
+        :param key_id: The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros. (required)
         :type key_id: str
-        :param body: (required)
-        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1084,7 +1017,6 @@ class PGPKeyApi:
 
         _param = self._get_pgp_public_key_serialize(
             key_id=key_id,
-            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1104,7 +1036,6 @@ class PGPKeyApi:
     def _get_pgp_public_key_serialize(
         self,
         key_id,
-        body,
         _request_auth,
         _content_type,
         _headers,
@@ -1130,8 +1061,6 @@ class PGPKeyApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
 
 
         # set the HTTP header `Accept`
@@ -1142,19 +1071,6 @@ class PGPKeyApi:
                 ]
             )
 
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
