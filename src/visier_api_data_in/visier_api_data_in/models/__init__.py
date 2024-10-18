@@ -6,7 +6,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1531
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -88,6 +88,8 @@ from visier_api_data_in.models.job_cancellation_results_dto import JobCancellati
 from visier_api_data_in.models.job_id_response import JobIdResponse
 from visier_api_data_in.models.job_status_list_response import JobStatusListResponse
 from visier_api_data_in.models.job_status_with_start_time import JobStatusWithStartTime
+from visier_api_data_in.models.key_pair_delete_response_dto import KeyPairDeleteResponseDTO
+from visier_api_data_in.models.key_pair_generate_request_dto import KeyPairGenerateRequestDTO
 from visier_api_data_in.models.lever_auth_params_dto import LeverAuthParamsDTO
 from visier_api_data_in.models.medallia_auth_params_dto import MedalliaAuthParamsDTO
 from visier_api_data_in.models.microsoft365_auth_params_dto import Microsoft365AuthParamsDTO
@@ -100,6 +102,8 @@ from visier_api_data_in.models.processing_job import ProcessingJob
 from visier_api_data_in.models.processing_job_and_status_response import ProcessingJobAndStatusResponse
 from visier_api_data_in.models.processing_job_request_dto import ProcessingJobRequestDTO
 from visier_api_data_in.models.processing_job_status_response import ProcessingJobStatusResponse
+from visier_api_data_in.models.public_key_dto import PublicKeyDTO
+from visier_api_data_in.models.public_keys_dto import PublicKeysDTO
 from visier_api_data_in.models.push_data_cancel_response import PushDataCancelResponse
 from visier_api_data_in.models.push_data_column_definition_dto import PushDataColumnDefinitionDTO
 from visier_api_data_in.models.push_data_complete_request import PushDataCompleteRequest
