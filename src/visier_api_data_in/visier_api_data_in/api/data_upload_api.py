@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1531
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,7 +21,7 @@ from typing_extensions import Annotated
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
 from pydantic import Field, StrictBytes, StrictStr
-from typing import Optional, Union
+from typing import Optional, Tuple, Union
 from typing_extensions import Annotated
 from visier_api_data_in.models.status import Status
 import visier_api_data_in.models
@@ -43,7 +43,7 @@ class DataUploadApi:
     def v1_data_upload_files_filename_put(
         self,
         filename: Annotated[StrictStr, Field(description="The filename of the data file to upload, including the file extension (such as .zip or .csv).")],
-        body: Optional[Union[StrictBytes, StrictStr]] = None,
+        body: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -115,7 +115,7 @@ class DataUploadApi:
     def v1_data_upload_files_filename_put_with_http_info(
         self,
         filename: Annotated[StrictStr, Field(description="The filename of the data file to upload, including the file extension (such as .zip or .csv).")],
-        body: Optional[Union[StrictBytes, StrictStr]] = None,
+        body: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -187,7 +187,7 @@ class DataUploadApi:
     def v1_data_upload_files_filename_put_without_preload_content(
         self,
         filename: Annotated[StrictStr, Field(description="The filename of the data file to upload, including the file extension (such as .zip or .csv).")],
-        body: Optional[Union[StrictBytes, StrictStr]] = None,
+        body: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],

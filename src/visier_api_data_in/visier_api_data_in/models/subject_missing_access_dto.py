@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1531
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,8 +29,9 @@ class SubjectMissingAccessDTO(BaseModel):
     SubjectMissingAccessDTO
     """ # noqa: E501
     attributes: Optional[List[StrictStr]] = Field(default=None, description="The attributes that cannot be accessed.")
+    error_message: Optional[StrictStr] = Field(default=None, description="The error message detailing the access issue.", alias="errorMessage")
     subject: Optional[StrictStr] = Field(default=None, description="The subjects that cannot be accessed.")
-    __properties: ClassVar[List[str]] = ["attributes", "subject"]
+    __properties: ClassVar[List[str]] = ["attributes", "errorMessage", "subject"]
 
     @field_validator('subject')
     def subject_validate_enum(cls, value):
@@ -94,6 +95,7 @@ class SubjectMissingAccessDTO(BaseModel):
 
         _obj = cls.model_validate({
             "attributes": obj.get("attributes"),
+            "errorMessage": obj.get("errorMessage"),
             "subject": obj.get("subject")
         })
         return _obj

@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1531
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -25,6 +25,7 @@ from visier_api_data_out.models.cell_set_dto import CellSetDTO
 from visier_api_data_out.models.list_query_execution_dto import ListQueryExecutionDTO
 from visier_api_data_out.models.list_response import ListResponse
 from visier_api_data_out.models.snapshot_query_execution_dto import SnapshotQueryExecutionDTO
+from visier_api_data_out.models.sql_like200_response import SqlLike200Response
 from visier_api_data_out.models.sql_like_query_execution_dto import SqlLikeQueryExecutionDTO
 import visier_api_data_out.models
 
@@ -895,7 +896,7 @@ class DataQueryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> CellSetDTO:
+    ) -> SqlLike200Response:
         """Query aggregate or list data using SQL-like syntax
 
         To retrieve a list of values for specific objects or aggregate values from metrics, you can write queries using SQL-like syntax.  The response format matches the query type whether aggregate or list. If requested, aggregate query results may be flattened into tabular format.   A SQL-like query is an aggregate if it contains at least one metric. Aggregate queries must specify a time interval divided into periods; for example:  ```sql  SELECT    employeeCount() AS \"Employee Count\",    level(Gender, \"Gender\") AS Gender  FROM    Employee  WHERE   Visier_Time IN periods(date(\"2023-01-01\"), 4, period(3, Month));  ```   A SQL-like query is a list if it does not contain any metrics. List queries define time intervals as simple intervals; for example:  ```sql  SELECT    EmployeeID AS \"Employee ID\",    level(Gender, \"Gender\") AS Gender  FROM    Employee  WHERE   Visier_Time BETWEEN date(\"2022-01-01\") AND date(\"2023-01-01\");  ```
@@ -933,7 +934,7 @@ class DataQueryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "CellSetDTO",
+            '200': "SqlLike200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -963,7 +964,7 @@ class DataQueryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[CellSetDTO]:
+    ) -> ApiResponse[SqlLike200Response]:
         """Query aggregate or list data using SQL-like syntax
 
         To retrieve a list of values for specific objects or aggregate values from metrics, you can write queries using SQL-like syntax.  The response format matches the query type whether aggregate or list. If requested, aggregate query results may be flattened into tabular format.   A SQL-like query is an aggregate if it contains at least one metric. Aggregate queries must specify a time interval divided into periods; for example:  ```sql  SELECT    employeeCount() AS \"Employee Count\",    level(Gender, \"Gender\") AS Gender  FROM    Employee  WHERE   Visier_Time IN periods(date(\"2023-01-01\"), 4, period(3, Month));  ```   A SQL-like query is a list if it does not contain any metrics. List queries define time intervals as simple intervals; for example:  ```sql  SELECT    EmployeeID AS \"Employee ID\",    level(Gender, \"Gender\") AS Gender  FROM    Employee  WHERE   Visier_Time BETWEEN date(\"2022-01-01\") AND date(\"2023-01-01\");  ```
@@ -1001,7 +1002,7 @@ class DataQueryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "CellSetDTO",
+            '200': "SqlLike200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1069,7 +1070,7 @@ class DataQueryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "CellSetDTO",
+            '200': "SqlLike200Response",
         }
         response_data = self.api_client.call_api(
             *_param,

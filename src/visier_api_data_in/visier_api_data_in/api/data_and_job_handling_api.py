@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1531
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -4339,7 +4339,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def job_status(
+    def job_status_0(
         self,
         start_time: Annotated[Optional[StrictStr], Field(description="The start time from which to retrieve job statuses.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The end time from which to retrieve job statuses.")] = None,
@@ -4389,7 +4389,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._job_status_serialize(
+        _param = self._job_status_0_serialize(
             start_time=start_time,
             end_time=end_time,
             status=status,
@@ -4415,7 +4415,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def job_status_with_http_info(
+    def job_status_0_with_http_info(
         self,
         start_time: Annotated[Optional[StrictStr], Field(description="The start time from which to retrieve job statuses.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The end time from which to retrieve job statuses.")] = None,
@@ -4465,7 +4465,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._job_status_serialize(
+        _param = self._job_status_0_serialize(
             start_time=start_time,
             end_time=end_time,
             status=status,
@@ -4491,7 +4491,7 @@ class DataAndJobHandlingApi:
 
 
     @validate_call
-    def job_status_without_preload_content(
+    def job_status_0_without_preload_content(
         self,
         start_time: Annotated[Optional[StrictStr], Field(description="The start time from which to retrieve job statuses.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The end time from which to retrieve job statuses.")] = None,
@@ -4541,7 +4541,7 @@ class DataAndJobHandlingApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._job_status_serialize(
+        _param = self._job_status_0_serialize(
             start_time=start_time,
             end_time=end_time,
             status=status,
@@ -4561,7 +4561,7 @@ class DataAndJobHandlingApi:
         return response_data.response
 
 
-    def _job_status_serialize(
+    def _job_status_0_serialize(
         self,
         start_time,
         end_time,

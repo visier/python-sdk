@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1508
+    The version of the OpenAPI document: 22222222.99201.1531
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -41,6 +41,8 @@ from visier_api_analytic_model.models.planning_plan_dto import PlanningPlanDTO
 from visier_api_analytic_model.models.planning_plans_dto import PlanningPlansDTO
 from visier_api_analytic_model.models.prediction_dto import PredictionDTO
 from visier_api_analytic_model.models.predictions_dto import PredictionsDTO
+from visier_api_analytic_model.models.properties_bulk_change_response_dto import PropertiesBulkChangeResponseDTO
+from visier_api_analytic_model.models.properties_change_definitions_dto import PropertiesChangeDefinitionsDTO
 from visier_api_analytic_model.models.properties_dto import PropertiesDTO
 from visier_api_analytic_model.models.property_dto import PropertyDTO
 from visier_api_analytic_model.models.selection_concept_dto import SelectionConceptDTO
@@ -3513,6 +3515,7 @@ class DataModelApi:
         include_data_members: Annotated[Optional[StrictBool], Field(description="Indicates whether data members are included in the response. Parent-child dimensions only. Default is `false`.")] = None,
         offset: Annotated[Optional[StrictInt], Field(description="For paginated member requests against high-cardinality dimensions, the offset of the first member to retrieve. Default is 0. If the `offset` value is specified to a non-default value, all other non-pagination parameters are ignored.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="For paginated member requests against high-cardinality dimensions, the maximum number of members to retrieve. Default is -1, meaning no limit. If the `limit` value is specified to a non-default value, all other non-pagination parameters are ignored.")] = None,
+        sort_type: Annotated[Optional[StrictStr], Field(description="The order of the members in the response. Valid values:  - **configured**: Sorts the members according to their configuration; for example, the configured order of dimension members in the studio experience.  - **natural**: Sorts the members by their natural order; for example, sorted in ascending order by level in a parent-child dimension.   Default is `natural`.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3548,6 +3551,8 @@ class DataModelApi:
         :type offset: int
         :param limit: For paginated member requests against high-cardinality dimensions, the maximum number of members to retrieve. Default is -1, meaning no limit. If the `limit` value is specified to a non-default value, all other non-pagination parameters are ignored.
         :type limit: int
+        :param sort_type: The order of the members in the response. Valid values:  - **configured**: Sorts the members according to their configuration; for example, the configured order of dimension members in the studio experience.  - **natural**: Sorts the members by their natural order; for example, sorted in ascending order by level in a parent-child dimension.   Default is `natural`.
+        :type sort_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3580,6 +3585,7 @@ class DataModelApi:
             include_data_members=include_data_members,
             offset=offset,
             limit=limit,
+            sort_type=sort_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3613,6 +3619,7 @@ class DataModelApi:
         include_data_members: Annotated[Optional[StrictBool], Field(description="Indicates whether data members are included in the response. Parent-child dimensions only. Default is `false`.")] = None,
         offset: Annotated[Optional[StrictInt], Field(description="For paginated member requests against high-cardinality dimensions, the offset of the first member to retrieve. Default is 0. If the `offset` value is specified to a non-default value, all other non-pagination parameters are ignored.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="For paginated member requests against high-cardinality dimensions, the maximum number of members to retrieve. Default is -1, meaning no limit. If the `limit` value is specified to a non-default value, all other non-pagination parameters are ignored.")] = None,
+        sort_type: Annotated[Optional[StrictStr], Field(description="The order of the members in the response. Valid values:  - **configured**: Sorts the members according to their configuration; for example, the configured order of dimension members in the studio experience.  - **natural**: Sorts the members by their natural order; for example, sorted in ascending order by level in a parent-child dimension.   Default is `natural`.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3648,6 +3655,8 @@ class DataModelApi:
         :type offset: int
         :param limit: For paginated member requests against high-cardinality dimensions, the maximum number of members to retrieve. Default is -1, meaning no limit. If the `limit` value is specified to a non-default value, all other non-pagination parameters are ignored.
         :type limit: int
+        :param sort_type: The order of the members in the response. Valid values:  - **configured**: Sorts the members according to their configuration; for example, the configured order of dimension members in the studio experience.  - **natural**: Sorts the members by their natural order; for example, sorted in ascending order by level in a parent-child dimension.   Default is `natural`.
+        :type sort_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3680,6 +3689,7 @@ class DataModelApi:
             include_data_members=include_data_members,
             offset=offset,
             limit=limit,
+            sort_type=sort_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3713,6 +3723,7 @@ class DataModelApi:
         include_data_members: Annotated[Optional[StrictBool], Field(description="Indicates whether data members are included in the response. Parent-child dimensions only. Default is `false`.")] = None,
         offset: Annotated[Optional[StrictInt], Field(description="For paginated member requests against high-cardinality dimensions, the offset of the first member to retrieve. Default is 0. If the `offset` value is specified to a non-default value, all other non-pagination parameters are ignored.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="For paginated member requests against high-cardinality dimensions, the maximum number of members to retrieve. Default is -1, meaning no limit. If the `limit` value is specified to a non-default value, all other non-pagination parameters are ignored.")] = None,
+        sort_type: Annotated[Optional[StrictStr], Field(description="The order of the members in the response. Valid values:  - **configured**: Sorts the members according to their configuration; for example, the configured order of dimension members in the studio experience.  - **natural**: Sorts the members by their natural order; for example, sorted in ascending order by level in a parent-child dimension.   Default is `natural`.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3748,6 +3759,8 @@ class DataModelApi:
         :type offset: int
         :param limit: For paginated member requests against high-cardinality dimensions, the maximum number of members to retrieve. Default is -1, meaning no limit. If the `limit` value is specified to a non-default value, all other non-pagination parameters are ignored.
         :type limit: int
+        :param sort_type: The order of the members in the response. Valid values:  - **configured**: Sorts the members according to their configuration; for example, the configured order of dimension members in the studio experience.  - **natural**: Sorts the members by their natural order; for example, sorted in ascending order by level in a parent-child dimension.   Default is `natural`.
+        :type sort_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3780,6 +3793,7 @@ class DataModelApi:
             include_data_members=include_data_members,
             offset=offset,
             limit=limit,
+            sort_type=sort_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3807,6 +3821,7 @@ class DataModelApi:
         include_data_members,
         offset,
         limit,
+        sort_type,
         _request_auth,
         _content_type,
         _headers,
@@ -3859,6 +3874,10 @@ class DataModelApi:
         if limit is not None:
             
             _query_params.append(('limit', limit))
+            
+        if sort_type is not None:
+            
+            _query_params.append(('sortType', sort_type))
             
         # process the header parameters
         # process the form parameters
@@ -7742,6 +7761,284 @@ class DataModelApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v1/data/model/analytic-objects/{objectId}/selection-concepts',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_properties(
+        self,
+        properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> PropertiesBulkChangeResponseDTO:
+        """Update properties
+
+        Change the display name, short display name, and description of one or more properties. In each API request, update up to 10 properties per tenant with a maximum of 500 tenants.
+
+        :param properties_change_definitions_dto: (required)
+        :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_properties_serialize(
+            properties_change_definitions_dto=properties_change_definitions_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PropertiesBulkChangeResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier_api_analytic_model.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        ).data
+
+
+    @validate_call
+    def update_properties_with_http_info(
+        self,
+        properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[PropertiesBulkChangeResponseDTO]:
+        """Update properties
+
+        Change the display name, short display name, and description of one or more properties. In each API request, update up to 10 properties per tenant with a maximum of 500 tenants.
+
+        :param properties_change_definitions_dto: (required)
+        :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_properties_serialize(
+            properties_change_definitions_dto=properties_change_definitions_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PropertiesBulkChangeResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier_api_analytic_model.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        )
+
+
+    @validate_call
+    def update_properties_without_preload_content(
+        self,
+        properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update properties
+
+        Change the display name, short display name, and description of one or more properties. In each API request, update up to 10 properties per tenant with a maximum of 500 tenants.
+
+        :param properties_change_definitions_dto: (required)
+        :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_properties_serialize(
+            properties_change_definitions_dto=properties_change_definitions_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PropertiesBulkChangeResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_properties_serialize(
+        self,
+        properties_change_definitions_dto,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if properties_change_definitions_dto is not None:
+            _body_params = properties_change_definitions_dto
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/v1/data/model/properties',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
