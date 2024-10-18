@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1531
+    The version of the OpenAPI document: 22222222.99201.1533
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,6 +21,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from visier_api_data_in.models.icims_basic_auth_params_dto import IcimsBasicAuthParamsDTO
+from visier_api_data_in.models.icims_client_credentials_auth_params_dto import IcimsClientCredentialsAuthParamsDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,10 +30,10 @@ class IcimsAuthParamsDTO(BaseModel):
     """
     IcimsAuthParamsDTO
     """ # noqa: E501
+    basic_auth: Optional[IcimsBasicAuthParamsDTO] = Field(default=None, alias="basicAuth")
+    client_credentials: Optional[IcimsClientCredentialsAuthParamsDTO] = Field(default=None, alias="clientCredentials")
     customer_id: Optional[StrictStr] = Field(default=None, alias="customerId")
-    password: Optional[StrictStr] = None
-    username: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["customerId", "password", "username"]
+    __properties: ClassVar[List[str]] = ["basicAuth", "clientCredentials", "customerId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,6 +74,12 @@ class IcimsAuthParamsDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of basic_auth
+        if self.basic_auth:
+            _dict['basicAuth'] = self.basic_auth.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of client_credentials
+        if self.client_credentials:
+            _dict['clientCredentials'] = self.client_credentials.to_dict()
         return _dict
 
     @classmethod
@@ -84,9 +92,9 @@ class IcimsAuthParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "customerId": obj.get("customerId"),
-            "password": obj.get("password"),
-            "username": obj.get("username")
+            "basicAuth": IcimsBasicAuthParamsDTO.from_dict(obj["basicAuth"]) if obj.get("basicAuth") is not None else None,
+            "clientCredentials": IcimsClientCredentialsAuthParamsDTO.from_dict(obj["clientCredentials"]) if obj.get("clientCredentials") is not None else None,
+            "customerId": obj.get("customerId")
         })
         return _obj
 
