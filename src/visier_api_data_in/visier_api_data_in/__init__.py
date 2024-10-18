@@ -7,7 +7,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1531
+    The version of the OpenAPI document: 22222222.99201.1533
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1531"
+__version__ = "0.99201.1533"
 
 # import apis into sdk package
 from visier_api_data_in.api.data_and_job_handling_api import DataAndJobHandlingApi
@@ -87,6 +87,8 @@ from visier_api_data_in.models.google_sheets_auth_params_dto import GoogleSheets
 from visier_api_data_in.models.google_workspace_auth_params_dto import GoogleWorkspaceAuthParamsDTO
 from visier_api_data_in.models.greenhouse_auth_params_dto import GreenhouseAuthParamsDTO
 from visier_api_data_in.models.icims_auth_params_dto import IcimsAuthParamsDTO
+from visier_api_data_in.models.icims_basic_auth_params_dto import IcimsBasicAuthParamsDTO
+from visier_api_data_in.models.icims_client_credentials_auth_params_dto import IcimsClientCredentialsAuthParamsDTO
 from visier_api_data_in.models.import_definition_apidto import ImportDefinitionAPIDTO
 from visier_api_data_in.models.import_definitions_apidto import ImportDefinitionsAPIDTO
 from visier_api_data_in.models.include_data_uploads_request import IncludeDataUploadsRequest

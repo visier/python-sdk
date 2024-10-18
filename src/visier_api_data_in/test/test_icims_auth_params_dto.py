@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1531
+    The version of the OpenAPI document: 22222222.99201.1533
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,9 +36,14 @@ class TestIcimsAuthParamsDTO(unittest.TestCase):
 
         if include_optional:
             return IcimsAuthParamsDTO(
-                customer_id = '',
-                password = '',
-                username = ''
+                basic_auth = visier_api_data_in.models.icims_basic_auth_params_dto.IcimsBasicAuthParamsDTO(
+                    password = '', 
+                    username = '', ),
+                client_credentials = visier_api_data_in.models.icims_client_credentials_auth_params_dto.IcimsClientCredentialsAuthParamsDTO(
+                    client_id = '', 
+                    client_secret = '', 
+                    region = 'ICIMS_AUTH_REGION_US', ),
+                customer_id = ''
             )
         else:
             return IcimsAuthParamsDTO(
