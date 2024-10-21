@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1534
+    The version of the OpenAPI document: 22222222.99201.1537
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -17,10 +17,10 @@
 import unittest
 
 import visier_api_analytic_model.models
-from visier_api_analytic_model.models.properties_bulk_change_response_dto import PropertiesBulkChangeResponseDTO
+from visier_api_analytic_model.models.objects_bulk_change_response_dto import ObjectsBulkChangeResponseDTO
 
-class TestPropertiesBulkChangeResponseDTO(unittest.TestCase):
-    """PropertiesBulkChangeResponseDTO unit test stubs"""
+class TestObjectsBulkChangeResponseDTO(unittest.TestCase):
+    """ObjectsBulkChangeResponseDTO unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,16 +28,16 @@ class TestPropertiesBulkChangeResponseDTO(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PropertiesBulkChangeResponseDTO:
-        """Test PropertiesBulkChangeResponseDTO
+    def make_instance(self, include_optional) -> ObjectsBulkChangeResponseDTO:
+        """Test ObjectsBulkChangeResponseDTO
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
 
         if include_optional:
-            return PropertiesBulkChangeResponseDTO(
+            return ObjectsBulkChangeResponseDTO(
                 failures = [
-                    visier_api_analytic_model.models.property_change_failure_dto.PropertyChangeFailureDTO(
+                    visier_api_analytic_model.models.object_change_failure_dto.ObjectChangeFailureDTO(
                         display_name = '', 
                         id = '', 
                         message = '', 
@@ -46,7 +46,7 @@ class TestPropertiesBulkChangeResponseDTO(unittest.TestCase):
                         tenant_code = '', )
                     ],
                 successes = [
-                    visier_api_analytic_model.models.property_change_success_dto.PropertyChangeSuccessDTO(
+                    visier_api_analytic_model.models.object_change_success_dto.ObjectChangeSuccessDTO(
                         display_name = '', 
                         id = '', 
                         project_id = '', 
@@ -54,14 +54,14 @@ class TestPropertiesBulkChangeResponseDTO(unittest.TestCase):
                     ]
             )
         else:
-            return PropertiesBulkChangeResponseDTO(
+            return ObjectsBulkChangeResponseDTO(
         )
 
-    def testPropertiesBulkChangeResponseDTO(self):
-        """Test PropertiesBulkChangeResponseDTO"""
+    def testObjectsBulkChangeResponseDTO(self):
+        """Test ObjectsBulkChangeResponseDTO"""
         def validate_instance(instance):
-            PropertiesBulkChangeResponseDTO.model_validate(inst_req_only)
-            instance_deserialized = PropertiesBulkChangeResponseDTO.from_dict(instance.to_dict())
+            ObjectsBulkChangeResponseDTO.model_validate(inst_req_only)
+            instance_deserialized = ObjectsBulkChangeResponseDTO.from_dict(instance.to_dict())
             assert instance == instance_deserialized
 
         inst_req_only = self.make_instance(include_optional=False)

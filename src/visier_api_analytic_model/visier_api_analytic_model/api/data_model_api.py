@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1534
+    The version of the OpenAPI document: 22222222.99201.1537
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -31,17 +31,18 @@ from visier_api_analytic_model.models.currency_rates_dto import CurrencyRatesDTO
 from visier_api_analytic_model.models.dimension_dto import DimensionDTO
 from visier_api_analytic_model.models.dimension_mapping_validation_dto import DimensionMappingValidationDTO
 from visier_api_analytic_model.models.dimension_mapping_validation_execution_dto import DimensionMappingValidationExecutionDTO
+from visier_api_analytic_model.models.dimensions_change_definitions_dto import DimensionsChangeDefinitionsDTO
 from visier_api_analytic_model.models.dimensions_dto import DimensionsDTO
 from visier_api_analytic_model.models.members_dto import MembersDTO
 from visier_api_analytic_model.models.metric_dto import MetricDTO
 from visier_api_analytic_model.models.metrics_dto import MetricsDTO
+from visier_api_analytic_model.models.objects_bulk_change_response_dto import ObjectsBulkChangeResponseDTO
 from visier_api_analytic_model.models.planning_model_dto import PlanningModelDTO
 from visier_api_analytic_model.models.planning_models_dto import PlanningModelsDTO
 from visier_api_analytic_model.models.planning_plan_dto import PlanningPlanDTO
 from visier_api_analytic_model.models.planning_plans_dto import PlanningPlansDTO
 from visier_api_analytic_model.models.prediction_dto import PredictionDTO
 from visier_api_analytic_model.models.predictions_dto import PredictionsDTO
-from visier_api_analytic_model.models.properties_bulk_change_response_dto import PropertiesBulkChangeResponseDTO
 from visier_api_analytic_model.models.properties_change_definitions_dto import PropertiesChangeDefinitionsDTO
 from visier_api_analytic_model.models.properties_dto import PropertiesDTO
 from visier_api_analytic_model.models.property_dto import PropertyDTO
@@ -7777,6 +7778,284 @@ class DataModelApi:
 
 
     @validate_call
+    def update_dimensions(
+        self,
+        dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ObjectsBulkChangeResponseDTO:
+        """Update dimensions
+
+        Change the display name, short display name, and description of one or more dimensions. This API supports updating leveled dimensions.  In each API request, update up to 10 dimensions per tenant with a maximum of 500 tenants.
+
+        :param dimensions_change_definitions_dto: (required)
+        :type dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_dimensions_serialize(
+            dimensions_change_definitions_dto=dimensions_change_definitions_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ObjectsBulkChangeResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier_api_analytic_model.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        ).data
+
+
+    @validate_call
+    def update_dimensions_with_http_info(
+        self,
+        dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ObjectsBulkChangeResponseDTO]:
+        """Update dimensions
+
+        Change the display name, short display name, and description of one or more dimensions. This API supports updating leveled dimensions.  In each API request, update up to 10 dimensions per tenant with a maximum of 500 tenants.
+
+        :param dimensions_change_definitions_dto: (required)
+        :type dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_dimensions_serialize(
+            dimensions_change_definitions_dto=dimensions_change_definitions_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ObjectsBulkChangeResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier_api_analytic_model.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        )
+
+
+    @validate_call
+    def update_dimensions_without_preload_content(
+        self,
+        dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update dimensions
+
+        Change the display name, short display name, and description of one or more dimensions. This API supports updating leveled dimensions.  In each API request, update up to 10 dimensions per tenant with a maximum of 500 tenants.
+
+        :param dimensions_change_definitions_dto: (required)
+        :type dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_dimensions_serialize(
+            dimensions_change_definitions_dto=dimensions_change_definitions_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ObjectsBulkChangeResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_dimensions_serialize(
+        self,
+        dimensions_change_definitions_dto,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if dimensions_change_definitions_dto is not None:
+            _body_params = dimensions_change_definitions_dto
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/v1/data/model/dimensions',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def update_properties(
         self,
         properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
@@ -7792,7 +8071,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PropertiesBulkChangeResponseDTO:
+    ) -> ObjectsBulkChangeResponseDTO:
         """Update properties
 
         Change the display name, short display name, and description of one or more properties. In each API request, update up to 10 properties per tenant with a maximum of 500 tenants.
@@ -7830,7 +8109,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PropertiesBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7860,7 +8139,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PropertiesBulkChangeResponseDTO]:
+    ) -> ApiResponse[ObjectsBulkChangeResponseDTO]:
         """Update properties
 
         Change the display name, short display name, and description of one or more properties. In each API request, update up to 10 properties per tenant with a maximum of 500 tenants.
@@ -7898,7 +8177,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PropertiesBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7966,7 +8245,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PropertiesBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
