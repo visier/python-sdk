@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1534
+    The version of the OpenAPI document: 22222222.99201.1537
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -24,15 +24,15 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PropertyChangeSuccessDTO(BaseModel):
+class DimensionChangeDefinitionDTO(BaseModel):
     """
-    PropertyChangeSuccessDTO
+    DimensionChangeDefinitionDTO
     """ # noqa: E501
-    display_name: Optional[StrictStr] = Field(default=None, description="The display name of the property.", alias="displayName")
-    id: Optional[StrictStr] = Field(default=None, description="The symbol name of the property that was successfully changed.")
-    project_id: Optional[StrictStr] = Field(default=None, description="The project that the property was changed in.", alias="projectId")
-    tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant that the property was changed in.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["displayName", "id", "projectId", "tenantCode"]
+    description: Optional[StrictStr] = Field(default=None, description="A short description of the dimension. Descriptions provide in-context help for your users while working in Visier.")
+    display_name: Optional[StrictStr] = Field(default=None, description="The user-friendly name for the dimension.", alias="displayName")
+    id: Optional[StrictStr] = Field(default=None, description="The symbol name of the dimension; for example, `Career_Level` or `Employee.Vaccination_Status`")
+    short_display_name: Optional[StrictStr] = Field(default=None, description="A shortened version of the display name. If the dimension is visible in the solution experience, this name is displayed in visualization titles.", alias="shortDisplayName")
+    __properties: ClassVar[List[str]] = ["description", "displayName", "id", "shortDisplayName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +52,7 @@ class PropertyChangeSuccessDTO(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PropertyChangeSuccessDTO from a JSON string"""
+        """Create an instance of DimensionChangeDefinitionDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,7 +77,7 @@ class PropertyChangeSuccessDTO(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PropertyChangeSuccessDTO from a dict"""
+        """Create an instance of DimensionChangeDefinitionDTO from a dict"""
         if obj is None:
             return None
 
@@ -85,10 +85,10 @@ class PropertyChangeSuccessDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "description": obj.get("description"),
             "displayName": obj.get("displayName"),
             "id": obj.get("id"),
-            "projectId": obj.get("projectId"),
-            "tenantCode": obj.get("tenantCode")
+            "shortDisplayName": obj.get("shortDisplayName")
         })
         return _obj
 

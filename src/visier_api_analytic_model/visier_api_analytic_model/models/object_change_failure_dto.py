@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1534
+    The version of the OpenAPI document: 22222222.99201.1537
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -24,16 +24,16 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PropertyChangeFailureDTO(BaseModel):
+class ObjectChangeFailureDTO(BaseModel):
     """
-    PropertyChangeFailureDTO
+    ObjectChangeFailureDTO
     """ # noqa: E501
-    display_name: Optional[StrictStr] = Field(default=None, description="The display name of the property.", alias="displayName")
+    display_name: Optional[StrictStr] = Field(default=None, description="The display name of the object.", alias="displayName")
     id: Optional[StrictStr] = Field(default=None, description="The symbol name of the object that was not successfully changed.")
     message: Optional[StrictStr] = Field(default=None, description="An error message describing the cause of the failure.")
-    project_id: Optional[StrictStr] = Field(default=None, description="The project that the property was not successfully changed in.", alias="projectId")
+    project_id: Optional[StrictStr] = Field(default=None, description="The project that the object was not successfully changed in.", alias="projectId")
     rci: Optional[StrictStr] = Field(default=None, description="The root cause identifier to provide to Visier Technical Support if you require further troubleshooting.")
-    tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant that the property was not successfully changed in.", alias="tenantCode")
+    tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant that the object was not successfully changed in.", alias="tenantCode")
     __properties: ClassVar[List[str]] = ["displayName", "id", "message", "projectId", "rci", "tenantCode"]
 
     model_config = ConfigDict(
@@ -54,7 +54,7 @@ class PropertyChangeFailureDTO(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PropertyChangeFailureDTO from a JSON string"""
+        """Create an instance of ObjectChangeFailureDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,7 +79,7 @@ class PropertyChangeFailureDTO(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PropertyChangeFailureDTO from a dict"""
+        """Create an instance of ObjectChangeFailureDTO from a dict"""
         if obj is None:
             return None
 

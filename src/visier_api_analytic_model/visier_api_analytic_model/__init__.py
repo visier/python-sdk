@@ -7,7 +7,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1534
+    The version of the OpenAPI document: 22222222.99201.1537
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1534"
+__version__ = "0.99201.1537"
 
 # import apis into sdk package
 from visier_api_analytic_model.api.data_model_api import DataModelApi
@@ -38,6 +38,8 @@ from visier_api_analytic_model.models.currencies_dto import CurrenciesDTO
 from visier_api_analytic_model.models.currency_dto import CurrencyDTO
 from visier_api_analytic_model.models.currency_rate_dto import CurrencyRateDTO
 from visier_api_analytic_model.models.currency_rates_dto import CurrencyRatesDTO
+from visier_api_analytic_model.models.dimension_change_definition_dto import DimensionChangeDefinitionDTO
+from visier_api_analytic_model.models.dimension_change_definitions_by_tenant_dto import DimensionChangeDefinitionsByTenantDTO
 from visier_api_analytic_model.models.dimension_dto import DimensionDTO
 from visier_api_analytic_model.models.dimension_filter_dto import DimensionFilterDTO
 from visier_api_analytic_model.models.dimension_mapping_validation_dto import DimensionMappingValidationDTO
@@ -45,6 +47,7 @@ from visier_api_analytic_model.models.dimension_mapping_validation_execution_dto
 from visier_api_analytic_model.models.dimension_member_dto import DimensionMemberDTO
 from visier_api_analytic_model.models.dimension_member_reference_dto import DimensionMemberReferenceDTO
 from visier_api_analytic_model.models.dimension_reference_dto import DimensionReferenceDTO
+from visier_api_analytic_model.models.dimensions_change_definitions_dto import DimensionsChangeDefinitionsDTO
 from visier_api_analytic_model.models.dimensions_dto import DimensionsDTO
 from visier_api_analytic_model.models.google_protobuf_any import GoogleProtobufAny
 from visier_api_analytic_model.models.level_dto import LevelDTO
@@ -55,7 +58,10 @@ from visier_api_analytic_model.models.members_dto import MembersDTO
 from visier_api_analytic_model.models.metric_dto import MetricDTO
 from visier_api_analytic_model.models.metrics_dto import MetricsDTO
 from visier_api_analytic_model.models.numeric_parameter_definition_dto import NumericParameterDefinitionDTO
+from visier_api_analytic_model.models.object_change_failure_dto import ObjectChangeFailureDTO
+from visier_api_analytic_model.models.object_change_success_dto import ObjectChangeSuccessDTO
 from visier_api_analytic_model.models.object_reference_dto import ObjectReferenceDTO
+from visier_api_analytic_model.models.objects_bulk_change_response_dto import ObjectsBulkChangeResponseDTO
 from visier_api_analytic_model.models.parameter_definition_dto import ParameterDefinitionDTO
 from visier_api_analytic_model.models.perspective_configuration_dto import PerspectiveConfigurationDTO
 from visier_api_analytic_model.models.perspective_node_dto import PerspectiveNodeDTO
@@ -70,13 +76,10 @@ from visier_api_analytic_model.models.planning_plans_dto import PlanningPlansDTO
 from visier_api_analytic_model.models.population_configuration_dto import PopulationConfigurationDTO
 from visier_api_analytic_model.models.prediction_dto import PredictionDTO
 from visier_api_analytic_model.models.predictions_dto import PredictionsDTO
-from visier_api_analytic_model.models.properties_bulk_change_response_dto import PropertiesBulkChangeResponseDTO
 from visier_api_analytic_model.models.properties_change_definitions_dto import PropertiesChangeDefinitionsDTO
 from visier_api_analytic_model.models.properties_dto import PropertiesDTO
 from visier_api_analytic_model.models.property_change_definition_dto import PropertyChangeDefinitionDTO
 from visier_api_analytic_model.models.property_change_definitions_by_tenant_dto import PropertyChangeDefinitionsByTenantDTO
-from visier_api_analytic_model.models.property_change_failure_dto import PropertyChangeFailureDTO
-from visier_api_analytic_model.models.property_change_success_dto import PropertyChangeSuccessDTO
 from visier_api_analytic_model.models.property_dto import PropertyDTO
 from visier_api_analytic_model.models.property_reference_dto import PropertyReferenceDTO
 from visier_api_analytic_model.models.scenario_or_snapshot_dto import ScenarioOrSnapshotDTO

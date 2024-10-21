@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1534
+    The version of the OpenAPI document: 22222222.99201.1537
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -17,10 +17,10 @@
 import unittest
 
 import visier_api_analytic_model.models
-from visier_api_analytic_model.models.property_change_failure_dto import PropertyChangeFailureDTO
+from visier_api_analytic_model.models.object_change_failure_dto import ObjectChangeFailureDTO
 
-class TestPropertyChangeFailureDTO(unittest.TestCase):
-    """PropertyChangeFailureDTO unit test stubs"""
+class TestObjectChangeFailureDTO(unittest.TestCase):
+    """ObjectChangeFailureDTO unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,14 +28,14 @@ class TestPropertyChangeFailureDTO(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PropertyChangeFailureDTO:
-        """Test PropertyChangeFailureDTO
+    def make_instance(self, include_optional) -> ObjectChangeFailureDTO:
+        """Test ObjectChangeFailureDTO
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
 
         if include_optional:
-            return PropertyChangeFailureDTO(
+            return ObjectChangeFailureDTO(
                 display_name = '',
                 id = '',
                 message = '',
@@ -44,14 +44,14 @@ class TestPropertyChangeFailureDTO(unittest.TestCase):
                 tenant_code = ''
             )
         else:
-            return PropertyChangeFailureDTO(
+            return ObjectChangeFailureDTO(
         )
 
-    def testPropertyChangeFailureDTO(self):
-        """Test PropertyChangeFailureDTO"""
+    def testObjectChangeFailureDTO(self):
+        """Test ObjectChangeFailureDTO"""
         def validate_instance(instance):
-            PropertyChangeFailureDTO.model_validate(inst_req_only)
-            instance_deserialized = PropertyChangeFailureDTO.from_dict(instance.to_dict())
+            ObjectChangeFailureDTO.model_validate(inst_req_only)
+            instance_deserialized = ObjectChangeFailureDTO.from_dict(instance.to_dict())
             assert instance == instance_deserialized
 
         inst_req_only = self.make_instance(include_optional=False)

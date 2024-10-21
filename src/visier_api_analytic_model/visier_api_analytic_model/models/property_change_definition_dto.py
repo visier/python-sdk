@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1534
+    The version of the OpenAPI document: 22222222.99201.1537
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,10 +28,10 @@ class PropertyChangeDefinitionDTO(BaseModel):
     """
     PropertyChangeDefinitionDTO
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="A short description of the object. Descriptions provide in-context help for your users while working in Visier.")
-    display_name: Optional[StrictStr] = Field(default=None, description="The user-friendly name for the object.", alias="displayName")
-    id: Optional[StrictStr] = Field(default=None, description="The symbol name of the object; for example, Employee.Birth_Date")
-    short_display_name: Optional[StrictStr] = Field(default=None, description="A shortened version of the display name. If the object is visible in the solution experience, this name is displayed in visualization titles.", alias="shortDisplayName")
+    description: Optional[StrictStr] = Field(default=None, description="A short description of the property. Descriptions provide in-context help for your users while working in Visier.")
+    display_name: Optional[StrictStr] = Field(default=None, description="The user-friendly name for the property.", alias="displayName")
+    id: Optional[StrictStr] = Field(default=None, description="The symbol name of the property; for example, Employee.Birth_Date")
+    short_display_name: Optional[StrictStr] = Field(default=None, description="A shortened version of the display name. If the property is visible in the solution experience, this name is displayed in visualization titles.", alias="shortDisplayName")
     __properties: ClassVar[List[str]] = ["description", "displayName", "id", "shortDisplayName"]
 
     model_config = ConfigDict(

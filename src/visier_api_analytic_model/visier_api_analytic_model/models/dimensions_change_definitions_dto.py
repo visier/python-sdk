@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1534
+    The version of the OpenAPI document: 22222222.99201.1537
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,18 +21,16 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_api_analytic_model.models.property_change_failure_dto import PropertyChangeFailureDTO
-from visier_api_analytic_model.models.property_change_success_dto import PropertyChangeSuccessDTO
+from visier_api_analytic_model.models.dimension_change_definitions_by_tenant_dto import DimensionChangeDefinitionsByTenantDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PropertiesBulkChangeResponseDTO(BaseModel):
+class DimensionsChangeDefinitionsDTO(BaseModel):
     """
-    PropertiesBulkChangeResponseDTO
+    DimensionsChangeDefinitionsDTO
     """ # noqa: E501
-    failures: Optional[List[PropertyChangeFailureDTO]] = Field(default=None, description="The properties that were not successfully changed.")
-    successes: Optional[List[PropertyChangeSuccessDTO]] = Field(default=None, description="The properties that were successfully changed.")
-    __properties: ClassVar[List[str]] = ["failures", "successes"]
+    dimensions_by_tenant: Optional[List[DimensionChangeDefinitionsByTenantDTO]] = Field(default=None, description="The dimension updates to make in each tenant.", alias="dimensionsByTenant")
+    __properties: ClassVar[List[str]] = ["dimensionsByTenant"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +50,7 @@ class PropertiesBulkChangeResponseDTO(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PropertiesBulkChangeResponseDTO from a JSON string"""
+        """Create an instance of DimensionsChangeDefinitionsDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,25 +71,18 @@ class PropertiesBulkChangeResponseDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in failures (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in dimensions_by_tenant (list)
         _items = []
-        if self.failures:
-            for _item_failures in self.failures:
-                if _item_failures:
-                    _items.append(_item_failures.to_dict())
-            _dict['failures'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in successes (list)
-        _items = []
-        if self.successes:
-            for _item_successes in self.successes:
-                if _item_successes:
-                    _items.append(_item_successes.to_dict())
-            _dict['successes'] = _items
+        if self.dimensions_by_tenant:
+            for _item_dimensions_by_tenant in self.dimensions_by_tenant:
+                if _item_dimensions_by_tenant:
+                    _items.append(_item_dimensions_by_tenant.to_dict())
+            _dict['dimensionsByTenant'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PropertiesBulkChangeResponseDTO from a dict"""
+        """Create an instance of DimensionsChangeDefinitionsDTO from a dict"""
         if obj is None:
             return None
 
@@ -99,8 +90,7 @@ class PropertiesBulkChangeResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "failures": [PropertyChangeFailureDTO.from_dict(_item) for _item in obj["failures"]] if obj.get("failures") is not None else None,
-            "successes": [PropertyChangeSuccessDTO.from_dict(_item) for _item in obj["successes"]] if obj.get("successes") is not None else None
+            "dimensionsByTenant": [DimensionChangeDefinitionsByTenantDTO.from_dict(_item) for _item in obj["dimensionsByTenant"]] if obj.get("dimensionsByTenant") is not None else None
         })
         return _obj
 
