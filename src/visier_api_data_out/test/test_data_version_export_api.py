@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1537
+    The version of the OpenAPI document: 22222222.99201.1542
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -31,7 +31,7 @@ class TestDataVersionExportApi(unittest.TestCase):
     def test_call_1_alpha_download_file(self) -> None:
         """Test case for call_1_alpha_download_file
 
-        Download a file from a data version export.
+        Download a file from a data version export
         """
         pass
 
@@ -52,7 +52,7 @@ class TestDataVersionExportApi(unittest.TestCase):
     def test_get_export(self) -> None:
         """Test case for get_export
 
-        Retrieve the details of a data version export.
+        Retrieve the details of a data version export
         """
         pass
 

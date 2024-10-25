@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1537
+    The version of the OpenAPI document: 22222222.99201.1542
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -53,6 +53,8 @@ class TestExtractDataAndLoadDTO(unittest.TestCase):
                 override_last_extraction_timestamp = '',
                 publish_data_load_artifacts = True,
                 run_processing_job = True,
+                spill_debug_info_detail_level_dto = 'fileAndLine',
+                spill_debug_info_partitions_dto = 'spillNone',
                 sql_batch_size = 56,
                 tenants = [
                     ''

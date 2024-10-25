@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1537
+    The version of the OpenAPI document: 22222222.99201.1542
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -46,7 +46,7 @@ class TenantManagementAPIUpdateRequestDTO(BaseModel):
     tenant_display_name: Optional[StrictStr] = Field(default=None, description="A new display name to assign to the analytic tenant. Required if creating new tenants.", alias="tenantDisplayName")
     tenant_short_name: Optional[StrictStr] = Field(default=None, description="A new short name to assign to the tenant. Required for analytic tenants.", alias="tenantShortName")
     update_action: Optional[StrictStr] = Field(default=None, description="Specifies the way you want to update values. Default is MERGE.  Valid values:  - `MERGE`: Combine the existing values with the new values.  - `REPLACE`: Remove existing values and let the new values take their place.", alias="updateAction")
-    vanity_url_name: Optional[StrictStr] = Field(default=None, description="A new vanity name to assign to the tenant. Required for analytic tenants.", alias="vanityUrlName")
+    vanity_url_name: Optional[StrictStr] = Field(default=None, description="A new vanity name to assign to the tenant. Omit for new Embedded analytic tenants.", alias="vanityUrlName")
     __properties: ClassVar[List[str]] = ["clickThroughLink", "customProperties", "defaultCurrency", "embeddableDomains", "enabled", "homeAnalysisByUserGroup", "homeAnalysisId", "industryCode", "primaryBusinessLocation", "purchasedModules", "ssoInstanceIssuers", "tenantCode", "tenantDisplayName", "tenantShortName", "updateAction", "vanityUrlName"]
 
     @field_validator('update_action')
