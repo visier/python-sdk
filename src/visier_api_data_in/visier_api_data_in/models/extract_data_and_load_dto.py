@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1537
+    The version of the OpenAPI document: 22222222.99201.1542
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -19,7 +19,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -41,9 +41,31 @@ class ExtractDataAndLoadDTO(BaseModel):
     override_last_extraction_timestamp: Optional[StrictStr] = Field(default=None, description="An epoch timestamp in milliseconds from which to retrieve data. This overrides the last extraction date to retrieve more data.", alias="overrideLastExtractionTimestamp")
     publish_data_load_artifacts: Optional[StrictBool] = Field(default=None, description="If \"true\", publishes the project to production.", alias="publishDataLoadArtifacts")
     run_processing_job: Optional[StrictBool] = Field(default=None, description="If \"true\", runs a processing job to generate a data version after the extraction job succeeds.", alias="runProcessingJob")
+    spill_debug_info_detail_level_dto: Optional[StrictStr] = Field(default=None, description="The detail level of the debugging info to be generated", alias="spillDebugInfoDetailLevelDTO")
+    spill_debug_info_partitions_dto: Optional[StrictStr] = Field(default=None, description="The partitioning of debugging info to be generated, if any", alias="spillDebugInfoPartitionsDTO")
     sql_batch_size: Optional[StrictInt] = Field(default=None, description="The maximum amount of SQL table records the job can retrieve in each batch.", alias="sqlBatchSize")
     tenants: Optional[List[StrictStr]] = Field(default=None, description="The unique IDs of the tenants to run an extraction job for.")
-    __properties: ClassVar[List[str]] = ["allTenants", "batchSizeOverride", "connectorIds", "dataCategoryId", "disableArtifactGeneration", "excludedTenants", "extractToTimeOverride", "forceUpdateExistingArtifacts", "lastExtractionTimeOffsetWeeks", "monthsToExtract", "overrideLastExtractionTimestamp", "publishDataLoadArtifacts", "runProcessingJob", "sqlBatchSize", "tenants"]
+    __properties: ClassVar[List[str]] = ["allTenants", "batchSizeOverride", "connectorIds", "dataCategoryId", "disableArtifactGeneration", "excludedTenants", "extractToTimeOverride", "forceUpdateExistingArtifacts", "lastExtractionTimeOffsetWeeks", "monthsToExtract", "overrideLastExtractionTimestamp", "publishDataLoadArtifacts", "runProcessingJob", "spillDebugInfoDetailLevelDTO", "spillDebugInfoPartitionsDTO", "sqlBatchSize", "tenants"]
+
+    @field_validator('spill_debug_info_detail_level_dto')
+    def spill_debug_info_detail_level_dto_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['fileAndLine', 'mappingName']):
+            raise ValueError("must be one of enum values ('fileAndLine', 'mappingName')")
+        return value
+
+    @field_validator('spill_debug_info_partitions_dto')
+    def spill_debug_info_partitions_dto_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['spillNone', 'spillStagesAndRecords', 'spillAll']):
+            raise ValueError("must be one of enum values ('spillNone', 'spillStagesAndRecords', 'spillAll')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -109,6 +131,8 @@ class ExtractDataAndLoadDTO(BaseModel):
             "overrideLastExtractionTimestamp": obj.get("overrideLastExtractionTimestamp"),
             "publishDataLoadArtifacts": obj.get("publishDataLoadArtifacts"),
             "runProcessingJob": obj.get("runProcessingJob"),
+            "spillDebugInfoDetailLevelDTO": obj.get("spillDebugInfoDetailLevelDTO"),
+            "spillDebugInfoPartitionsDTO": obj.get("spillDebugInfoPartitionsDTO"),
             "sqlBatchSize": obj.get("sqlBatchSize"),
             "tenants": obj.get("tenants")
         })

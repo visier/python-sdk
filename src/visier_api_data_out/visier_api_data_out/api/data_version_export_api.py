@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1537
+    The version of the OpenAPI document: 22222222.99201.1542
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -62,7 +62,7 @@ class DataVersionExportApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> bytearray:
-        """Download a file from a data version export.
+        """Download a file from a data version export
 
         This API allows you to download a file from a data version export. Data version export files are in CSV format, compressed with gzip.
 
@@ -134,7 +134,7 @@ class DataVersionExportApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[bytearray]:
-        """Download a file from a data version export.
+        """Download a file from a data version export
 
         This API allows you to download a file from a data version export. Data version export files are in CSV format, compressed with gzip.
 
@@ -206,7 +206,7 @@ class DataVersionExportApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Download a file from a data version export.
+        """Download a file from a data version export
 
         This API allows you to download a file from a data version export. Data version export files are in CSV format, compressed with gzip.
 
@@ -842,7 +842,7 @@ class DataVersionExportApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DataVersionExportDTO:
-        """Retrieve the details of a data version export.
+        """Retrieve the details of a data version export
 
         Retrieve information for a specific data version export.  **Note:** Data version exports are available for 14 days after export job completes.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
@@ -910,7 +910,7 @@ class DataVersionExportApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DataVersionExportDTO]:
-        """Retrieve the details of a data version export.
+        """Retrieve the details of a data version export
 
         Retrieve information for a specific data version export.  **Note:** Data version exports are available for 14 days after export job completes.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
@@ -978,7 +978,7 @@ class DataVersionExportApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieve the details of a data version export.
+        """Retrieve the details of a data version export
 
         Retrieve information for a specific data version export.  **Note:** Data version exports are available for 14 days after export job completes.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
