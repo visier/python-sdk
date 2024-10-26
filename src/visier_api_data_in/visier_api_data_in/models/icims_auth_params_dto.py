@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1542
+    The version of the OpenAPI document: 22222222.99201.1547
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -19,10 +19,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_api_data_in.models.icims_basic_auth_params_dto import IcimsBasicAuthParamsDTO
-from visier_api_data_in.models.icims_client_credentials_auth_params_dto import IcimsClientCredentialsAuthParamsDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,10 +28,23 @@ class IcimsAuthParamsDTO(BaseModel):
     """
     IcimsAuthParamsDTO
     """ # noqa: E501
-    basic_auth: Optional[IcimsBasicAuthParamsDTO] = Field(default=None, alias="basicAuth")
-    client_credentials: Optional[IcimsClientCredentialsAuthParamsDTO] = Field(default=None, alias="clientCredentials")
+    client_id: Optional[StrictStr] = Field(default=None, alias="clientId")
+    client_secret: Optional[StrictStr] = Field(default=None, alias="clientSecret")
     customer_id: Optional[StrictStr] = Field(default=None, alias="customerId")
-    __properties: ClassVar[List[str]] = ["basicAuth", "clientCredentials", "customerId"]
+    password: Optional[StrictStr] = None
+    region: Optional[StrictStr] = None
+    username: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["clientId", "clientSecret", "customerId", "password", "region", "username"]
+
+    @field_validator('region')
+    def region_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['US', 'EU', 'CA', 'ISV']):
+            raise ValueError("must be one of enum values ('US', 'EU', 'CA', 'ISV')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -74,12 +85,6 @@ class IcimsAuthParamsDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of basic_auth
-        if self.basic_auth:
-            _dict['basicAuth'] = self.basic_auth.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of client_credentials
-        if self.client_credentials:
-            _dict['clientCredentials'] = self.client_credentials.to_dict()
         return _dict
 
     @classmethod
@@ -92,9 +97,12 @@ class IcimsAuthParamsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "basicAuth": IcimsBasicAuthParamsDTO.from_dict(obj["basicAuth"]) if obj.get("basicAuth") is not None else None,
-            "clientCredentials": IcimsClientCredentialsAuthParamsDTO.from_dict(obj["clientCredentials"]) if obj.get("clientCredentials") is not None else None,
-            "customerId": obj.get("customerId")
+            "clientId": obj.get("clientId"),
+            "clientSecret": obj.get("clientSecret"),
+            "customerId": obj.get("customerId"),
+            "password": obj.get("password"),
+            "region": obj.get("region"),
+            "username": obj.get("username")
         })
         return _obj
 
