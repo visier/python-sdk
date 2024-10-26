@@ -68,8 +68,6 @@ test/test_google_sheets_auth_params_dto.py
 test/test_google_workspace_auth_params_dto.py
 test/test_greenhouse_auth_params_dto.py
 test/test_icims_auth_params_dto.py
-test/test_icims_basic_auth_params_dto.py
-test/test_icims_client_credentials_auth_params_dto.py
 test/test_import_definition_apidto.py
 test/test_import_definitions_apidto.py
 test/test_include_data_uploads_request.py
@@ -220,8 +218,6 @@ visier_api_data_in/models/google_sheets_auth_params_dto.py
 visier_api_data_in/models/google_workspace_auth_params_dto.py
 visier_api_data_in/models/greenhouse_auth_params_dto.py
 visier_api_data_in/models/icims_auth_params_dto.py
-visier_api_data_in/models/icims_basic_auth_params_dto.py
-visier_api_data_in/models/icims_client_credentials_auth_params_dto.py
 visier_api_data_in/models/import_definition_apidto.py
 visier_api_data_in/models/import_definitions_apidto.py
 visier_api_data_in/models/include_data_uploads_request.py
