@@ -62,6 +62,10 @@ VISIER_USERNAME='visier-username'
 VISIER_PASSWORD='visier-password'
 ```
 
+To find your vanity name:
+1. In Visier, in the global workspace, click **Settings > Single Sign-On** or **Partner Single Sign-On**.
+2. Under **Single Sign-On** or **Bypass Users (Optional)**, find your service provider endpoint; for example, `https://jupiter.visier.com/VServer/auth`. In this example, `jupiter` is the vanity name.
+
 For more information about registering a client ID, client secret, and redirect URIs in Visier, see [Register a Client Application](https://docs.visier.com/developer/Default.htm#cshid=1044).
 
 After setting the environment variables, you can create a `Configuration` object using the `from_env` method:
