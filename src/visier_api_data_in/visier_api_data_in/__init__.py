@@ -7,7 +7,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1547
+    The version of the OpenAPI document: 22222222.99201.1551
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1547"
+__version__ = "0.99201.1551"
 
 # import apis into sdk package
 from visier_api_data_in.api.data_and_job_handling_api import DataAndJobHandlingApi
@@ -71,6 +71,8 @@ from visier_api_data_in.models.disable_dv_model import DisableDVModel
 from visier_api_data_in.models.disable_dv_request import DisableDVRequest
 from visier_api_data_in.models.disable_dv_response import DisableDVResponse
 from visier_api_data_in.models.dispatching_job_status_response import DispatchingJobStatusResponse
+from visier_api_data_in.models.download_source_files_dto import DownloadSourceFilesDTO
+from visier_api_data_in.models.download_source_files_response_dto import DownloadSourceFilesResponseDTO
 from visier_api_data_in.models.exclude_data_uploads_request import ExcludeDataUploadsRequest
 from visier_api_data_in.models.extract_data_and_load_dto import ExtractDataAndLoadDTO
 from visier_api_data_in.models.extraction_job import ExtractionJob
