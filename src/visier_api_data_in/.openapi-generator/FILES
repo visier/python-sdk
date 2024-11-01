@@ -52,6 +52,8 @@ test/test_disable_dv_model.py
 test/test_disable_dv_request.py
 test/test_disable_dv_response.py
 test/test_dispatching_job_status_response.py
+test/test_download_source_files_dto.py
+test/test_download_source_files_response_dto.py
 test/test_exclude_data_uploads_request.py
 test/test_extract_data_and_load_dto.py
 test/test_extraction_job.py
@@ -202,6 +204,8 @@ visier_api_data_in/models/disable_dv_model.py
 visier_api_data_in/models/disable_dv_request.py
 visier_api_data_in/models/disable_dv_response.py
 visier_api_data_in/models/dispatching_job_status_response.py
+visier_api_data_in/models/download_source_files_dto.py
+visier_api_data_in/models/download_source_files_response_dto.py
 visier_api_data_in/models/exclude_data_uploads_request.py
 visier_api_data_in/models/extract_data_and_load_dto.py
 visier_api_data_in/models/extraction_job.py

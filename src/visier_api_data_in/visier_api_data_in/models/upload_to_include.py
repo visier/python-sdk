@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1547
+    The version of the OpenAPI document: 22222222.99201.1551
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,11 +29,11 @@ class UploadToInclude(BaseModel):
     UploadToInclude
     """ # noqa: E501
     include_all: Optional[StrictBool] = Field(default=None, description="If `true`, all data uploads are included for the analytic tenant.", alias="includeAll")
-    max_upload_time: Optional[StrictStr] = Field(default=None, description="An ISO8601 time such as `\"2001-10-25T13:45:35.999\"` for the latest upload time. If defined, omit `uploadTimes`. If omitted and `minUploadTime` is defined, includes files up to latest time available.", alias="maxUploadTime")
-    min_upload_time: Optional[StrictStr] = Field(default=None, description="An ISO8601 time such as `\"2001-10-25T13:45:35.999\"` for the earliest upload time. If defined, omit `uploadTimes`. If omitted and `maxUploadTime` is defined, includes files up to earliest time available.", alias="minUploadTime")
+    max_upload_time: Optional[StrictStr] = Field(default=None, description="An ISO-8601 time such as `\"2001-10-25T13:45:35.999\"` for the latest upload time. If defined, omit `uploadTimes`. If omitted and `minUploadTime` is defined, includes files up to latest time available.", alias="maxUploadTime")
+    min_upload_time: Optional[StrictStr] = Field(default=None, description="An ISO-8601 time such as `\"2001-10-25T13:45:35.999\"` for the earliest upload time. If defined, omit `uploadTimes`. If omitted and `maxUploadTime` is defined, includes files up to earliest time available.", alias="minUploadTime")
     sources: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings representing the object name of each source to include. If `uploadTimes` is omitted, includes files for the given sources for all `uploadTimes`.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code of the analytic tenant you are including a data upload for.", alias="tenantCode")
-    upload_times: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of ISO8601 time strings such as `\"2001-10-25T13:45:35.999\"` representing the upload time of each data upload to include.", alias="uploadTimes")
+    upload_times: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of ISO-8601 time strings such as `\"2001-10-25T13:45:35.999\"` representing the upload time of each data upload to include.", alias="uploadTimes")
     __properties: ClassVar[List[str]] = ["includeAll", "maxUploadTime", "minUploadTime", "sources", "tenantCode", "uploadTimes"]
 
     model_config = ConfigDict(
