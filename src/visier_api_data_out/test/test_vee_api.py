@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1551
+    The version of the OpenAPI document: 22222222.99201.1559
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -46,6 +46,13 @@ class TestVeeApi(unittest.TestCase):
         """Test case for vee_sample_questions
 
         Retrieve a list of sample questions to ask Vee
+        """
+        pass
+
+    def test_vee_status(self) -> None:
+        """Test case for vee_status
+
+        Check the overall current status of Vee
         """
         pass
 

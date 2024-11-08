@@ -5,7 +5,7 @@
 
     Visier APIs for authenticating with Visier. To use Visier's public APIs, you must first authenticate yourself as a Visier user who is allowed to use Visier APIs.
 
-    The version of the OpenAPI document: 22222222.99201.1551
+    The version of the OpenAPI document: 22222222.99201.1559
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -309,14 +309,14 @@ class Configuration:
         """
 
         return Configuration(
-            host=config_dict[VISIER_HOST],
-            api_key=config_dict[VISIER_APIKEY],
-            username=config_dict[VISIER_USERNAME],
-            password=config_dict[VISIER_PASSWORD],
-            client_id=config_dict[VISIER_CLIENT_ID],
-            client_secret=config_dict[VISIER_CLIENT_SECRET],
-            redirect_uri=config_dict[VISIER_REDIRECT_URI],
-            vanity=config_dict[VISIER_VANITY]
+            host=config_dict.get(VISIER_HOST),
+            api_key=config_dict.get(VISIER_APIKEY),
+            username=config_dict.get(VISIER_USERNAME),
+            password=config_dict.get(VISIER_PASSWORD),
+            client_id=config_dict.get(VISIER_CLIENT_ID),
+            client_secret=config_dict.get(VISIER_CLIENT_SECRET),
+            redirect_uri=config_dict.get(VISIER_REDIRECT_URI),
+            vanity=config_dict.get(VISIER_VANITY)
         )
 
     @staticmethod
@@ -478,8 +478,8 @@ class Configuration:
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: 22222222.99201.1551\n"\
-               "SDK Package Version: 0.99201.1551".\
+               "Version of the API: 22222222.99201.1559\n"\
+               "SDK Package Version: 0.99201.1559".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

@@ -91,6 +91,7 @@ test/test_vee_sample_question_dto.py
 test/test_vee_sample_question_library_dto.py
 test/test_vee_sample_question_metadata_dto.py
 test/test_vee_status_code_dto.py
+test/test_vee_status_dto.py
 test/test_vee_visual_dto.py
 test/test_vee_visual_options_dto.py
 tox.ini
@@ -185,6 +186,7 @@ visier_api_data_out/models/vee_sample_question_dto.py
 visier_api_data_out/models/vee_sample_question_library_dto.py
 visier_api_data_out/models/vee_sample_question_metadata_dto.py
 visier_api_data_out/models/vee_status_code_dto.py
+visier_api_data_out/models/vee_status_dto.py
 visier_api_data_out/models/vee_visual_dto.py
 visier_api_data_out/models/vee_visual_options_dto.py
 visier_api_data_out/py.typed
