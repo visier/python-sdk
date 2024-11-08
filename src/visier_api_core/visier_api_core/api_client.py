@@ -5,7 +5,7 @@
 
     Visier APIs for authenticating with Visier. To use Visier's public APIs, you must first authenticate yourself as a Visier user who is allowed to use Visier APIs.
 
-    The version of the OpenAPI document: 22222222.99201.1551
+    The version of the OpenAPI document: 22222222.99201.1559
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -88,7 +88,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Visier-SDK/0.99201.1551/python'
+        self.user_agent = 'Visier-SDK/0.99201.1559/python'
         self.client_side_validation = configuration.client_side_validation
         self.auth_retries = auth_retries
 
@@ -178,7 +178,8 @@ class ApiClient:
 
         # header parameters
         header_params = header_params or {}
-        header_params.update(self.default_headers)
+        for key, value in self.default_headers.items():
+            header_params.setdefault(key, value)
         if self.cookie:
             header_params['Cookie'] = self.cookie
         if header_params:
