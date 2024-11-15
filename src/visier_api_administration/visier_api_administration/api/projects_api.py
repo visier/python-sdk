@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -48,6 +48,7 @@ class ProjectsApi:
     def create_project(
         self,
         project_dto: ProjectDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -67,6 +68,8 @@ class ProjectsApi:
 
         :param project_dto: (required)
         :type project_dto: ProjectDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91,6 +94,7 @@ class ProjectsApi:
 
         _param = self._create_project_serialize(
             project_dto=project_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -116,6 +120,7 @@ class ProjectsApi:
     def create_project_with_http_info(
         self,
         project_dto: ProjectDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -135,6 +140,8 @@ class ProjectsApi:
 
         :param project_dto: (required)
         :type project_dto: ProjectDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -159,6 +166,7 @@ class ProjectsApi:
 
         _param = self._create_project_serialize(
             project_dto=project_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -184,6 +192,7 @@ class ProjectsApi:
     def create_project_without_preload_content(
         self,
         project_dto: ProjectDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -203,6 +212,8 @@ class ProjectsApi:
 
         :param project_dto: (required)
         :type project_dto: ProjectDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -227,6 +238,7 @@ class ProjectsApi:
 
         _param = self._create_project_serialize(
             project_dto=project_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -246,6 +258,7 @@ class ProjectsApi:
     def _create_project_serialize(
         self,
         project_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -267,6 +280,8 @@ class ProjectsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if project_dto is not None:
@@ -321,6 +336,7 @@ class ProjectsApi:
     def delete_project(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique ID of the draft project to be deleted.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -340,6 +356,8 @@ class ProjectsApi:
 
         :param project_id: The unique ID of the draft project to be deleted. (required)
         :type project_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -364,6 +382,7 @@ class ProjectsApi:
 
         _param = self._delete_project_serialize(
             project_id=project_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -389,6 +408,7 @@ class ProjectsApi:
     def delete_project_with_http_info(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique ID of the draft project to be deleted.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -408,6 +428,8 @@ class ProjectsApi:
 
         :param project_id: The unique ID of the draft project to be deleted. (required)
         :type project_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -432,6 +454,7 @@ class ProjectsApi:
 
         _param = self._delete_project_serialize(
             project_id=project_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -457,6 +480,7 @@ class ProjectsApi:
     def delete_project_without_preload_content(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique ID of the draft project to be deleted.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -476,6 +500,8 @@ class ProjectsApi:
 
         :param project_id: The unique ID of the draft project to be deleted. (required)
         :type project_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -500,6 +526,7 @@ class ProjectsApi:
 
         _param = self._delete_project_serialize(
             project_id=project_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -519,6 +546,7 @@ class ProjectsApi:
     def _delete_project_serialize(
         self,
         project_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -542,6 +570,8 @@ class ProjectsApi:
             _path_params['projectId'] = project_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -581,6 +611,7 @@ class ProjectsApi:
     def get_project(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -600,6 +631,8 @@ class ProjectsApi:
 
         :param project_id: The unique identifier of the draft project you want to retrieve. (required)
         :type project_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -624,6 +657,7 @@ class ProjectsApi:
 
         _param = self._get_project_serialize(
             project_id=project_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -649,6 +683,7 @@ class ProjectsApi:
     def get_project_with_http_info(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -668,6 +703,8 @@ class ProjectsApi:
 
         :param project_id: The unique identifier of the draft project you want to retrieve. (required)
         :type project_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -692,6 +729,7 @@ class ProjectsApi:
 
         _param = self._get_project_serialize(
             project_id=project_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -717,6 +755,7 @@ class ProjectsApi:
     def get_project_without_preload_content(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -736,6 +775,8 @@ class ProjectsApi:
 
         :param project_id: The unique identifier of the draft project you want to retrieve. (required)
         :type project_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -760,6 +801,7 @@ class ProjectsApi:
 
         _param = self._get_project_serialize(
             project_id=project_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -779,6 +821,7 @@ class ProjectsApi:
     def _get_project_serialize(
         self,
         project_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -802,6 +845,8 @@ class ProjectsApi:
             _path_params['projectId'] = project_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -843,6 +888,7 @@ class ProjectsApi:
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to retrieve the committed changes for.")],
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of committed changes to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first committed change to return. Default is 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -866,6 +912,8 @@ class ProjectsApi:
         :type limit: int
         :param start: The starting index of the first committed change to return. Default is 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -892,6 +940,7 @@ class ProjectsApi:
             project_id=project_id,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -919,6 +968,7 @@ class ProjectsApi:
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to retrieve the committed changes for.")],
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of committed changes to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first committed change to return. Default is 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -942,6 +992,8 @@ class ProjectsApi:
         :type limit: int
         :param start: The starting index of the first committed change to return. Default is 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -968,6 +1020,7 @@ class ProjectsApi:
             project_id=project_id,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -995,6 +1048,7 @@ class ProjectsApi:
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to retrieve the committed changes for.")],
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of committed changes to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first committed change to return. Default is 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1018,6 +1072,8 @@ class ProjectsApi:
         :type limit: int
         :param start: The starting index of the first committed change to return. Default is 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1044,6 +1100,7 @@ class ProjectsApi:
             project_id=project_id,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1065,6 +1122,7 @@ class ProjectsApi:
         project_id,
         limit,
         start,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1096,6 +1154,8 @@ class ProjectsApi:
             _query_params.append(('start', start))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1136,6 +1196,7 @@ class ProjectsApi:
         self,
         var_with: Annotated[Optional[List[StrictStr]], Field(description="The types of draft projects to include in the request response.  * If empty, returns all the `Open` draft projects.  * If `Open`, returns all Open draft projects.  * If `Approval`, returns all draft projects in the approval stage. Changes cannot made in Approval projects.  * If `Rejected`, returns all draft projects that have been rejected. Changes cannot be committed in Rejected projects.  * If `Archived`, returns all draft projects that have been archived. Changes cannot be committed in Archived projects.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of projects to return per type. The maximum number of projects to retrieve per type is 1000. The default is 100.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1157,6 +1218,8 @@ class ProjectsApi:
         :type var_with: List[str]
         :param limit: The number of projects to return per type. The maximum number of projects to retrieve per type is 1000. The default is 100.
         :type limit: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1182,6 +1245,7 @@ class ProjectsApi:
         _param = self._get_projects_serialize(
             var_with=var_with,
             limit=limit,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1208,6 +1272,7 @@ class ProjectsApi:
         self,
         var_with: Annotated[Optional[List[StrictStr]], Field(description="The types of draft projects to include in the request response.  * If empty, returns all the `Open` draft projects.  * If `Open`, returns all Open draft projects.  * If `Approval`, returns all draft projects in the approval stage. Changes cannot made in Approval projects.  * If `Rejected`, returns all draft projects that have been rejected. Changes cannot be committed in Rejected projects.  * If `Archived`, returns all draft projects that have been archived. Changes cannot be committed in Archived projects.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of projects to return per type. The maximum number of projects to retrieve per type is 1000. The default is 100.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1229,6 +1294,8 @@ class ProjectsApi:
         :type var_with: List[str]
         :param limit: The number of projects to return per type. The maximum number of projects to retrieve per type is 1000. The default is 100.
         :type limit: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1254,6 +1321,7 @@ class ProjectsApi:
         _param = self._get_projects_serialize(
             var_with=var_with,
             limit=limit,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1280,6 +1348,7 @@ class ProjectsApi:
         self,
         var_with: Annotated[Optional[List[StrictStr]], Field(description="The types of draft projects to include in the request response.  * If empty, returns all the `Open` draft projects.  * If `Open`, returns all Open draft projects.  * If `Approval`, returns all draft projects in the approval stage. Changes cannot made in Approval projects.  * If `Rejected`, returns all draft projects that have been rejected. Changes cannot be committed in Rejected projects.  * If `Archived`, returns all draft projects that have been archived. Changes cannot be committed in Archived projects.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of projects to return per type. The maximum number of projects to retrieve per type is 1000. The default is 100.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1301,6 +1370,8 @@ class ProjectsApi:
         :type var_with: List[str]
         :param limit: The number of projects to return per type. The maximum number of projects to retrieve per type is 1000. The default is 100.
         :type limit: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1326,6 +1397,7 @@ class ProjectsApi:
         _param = self._get_projects_serialize(
             var_with=var_with,
             limit=limit,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1346,6 +1418,7 @@ class ProjectsApi:
         self,
         var_with,
         limit,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1376,6 +1449,8 @@ class ProjectsApi:
             _query_params.append(('limit', limit))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1416,6 +1491,7 @@ class ProjectsApi:
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to import committed changes into.")],
         put_project_commits_request: PutProjectCommitsRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1437,6 +1513,8 @@ class ProjectsApi:
         :type project_id: str
         :param put_project_commits_request: (required)
         :type put_project_commits_request: PutProjectCommitsRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1462,6 +1540,7 @@ class ProjectsApi:
         _param = self._put_project_commits_serialize(
             project_id=project_id,
             put_project_commits_request=put_project_commits_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1488,6 +1567,7 @@ class ProjectsApi:
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to import committed changes into.")],
         put_project_commits_request: PutProjectCommitsRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1509,6 +1589,8 @@ class ProjectsApi:
         :type project_id: str
         :param put_project_commits_request: (required)
         :type put_project_commits_request: PutProjectCommitsRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1534,6 +1616,7 @@ class ProjectsApi:
         _param = self._put_project_commits_serialize(
             project_id=project_id,
             put_project_commits_request=put_project_commits_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1560,6 +1643,7 @@ class ProjectsApi:
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to import committed changes into.")],
         put_project_commits_request: PutProjectCommitsRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1581,6 +1665,8 @@ class ProjectsApi:
         :type project_id: str
         :param put_project_commits_request: (required)
         :type put_project_commits_request: PutProjectCommitsRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1606,6 +1692,7 @@ class ProjectsApi:
         _param = self._put_project_commits_serialize(
             project_id=project_id,
             put_project_commits_request=put_project_commits_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1626,6 +1713,7 @@ class ProjectsApi:
         self,
         project_id,
         put_project_commits_request,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1649,6 +1737,8 @@ class ProjectsApi:
             _path_params['projectId'] = project_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if put_project_commits_request is not None:
@@ -1704,6 +1794,7 @@ class ProjectsApi:
         self,
         project_id: StrictStr,
         project_operation_request_dto: ProjectOperationRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1725,6 +1816,8 @@ class ProjectsApi:
         :type project_id: str
         :param project_operation_request_dto: (required)
         :type project_operation_request_dto: ProjectOperationRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1750,6 +1843,7 @@ class ProjectsApi:
         _param = self._run_project_operation_serialize(
             project_id=project_id,
             project_operation_request_dto=project_operation_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1776,6 +1870,7 @@ class ProjectsApi:
         self,
         project_id: StrictStr,
         project_operation_request_dto: ProjectOperationRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1797,6 +1892,8 @@ class ProjectsApi:
         :type project_id: str
         :param project_operation_request_dto: (required)
         :type project_operation_request_dto: ProjectOperationRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1822,6 +1919,7 @@ class ProjectsApi:
         _param = self._run_project_operation_serialize(
             project_id=project_id,
             project_operation_request_dto=project_operation_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1848,6 +1946,7 @@ class ProjectsApi:
         self,
         project_id: StrictStr,
         project_operation_request_dto: ProjectOperationRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1869,6 +1968,8 @@ class ProjectsApi:
         :type project_id: str
         :param project_operation_request_dto: (required)
         :type project_operation_request_dto: ProjectOperationRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1894,6 +1995,7 @@ class ProjectsApi:
         _param = self._run_project_operation_serialize(
             project_id=project_id,
             project_operation_request_dto=project_operation_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1914,6 +2016,7 @@ class ProjectsApi:
         self,
         project_id,
         project_operation_request_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1937,6 +2040,8 @@ class ProjectsApi:
             _path_params['projectId'] = project_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if project_operation_request_dto is not None:

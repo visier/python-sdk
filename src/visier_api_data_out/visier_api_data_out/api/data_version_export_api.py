@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,7 +21,7 @@ from typing_extensions import Annotated
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
 from pydantic import Field, StrictBytes, StrictInt, StrictStr
-from typing import Tuple, Union
+from typing import Optional, Tuple, Union
 from typing_extensions import Annotated
 from visier_api_data_out.models.data_version_export_dto import DataVersionExportDTO
 from visier_api_data_out.models.data_version_export_data_versions_dto import DataVersionExportDataVersionsDTO
@@ -49,6 +49,7 @@ class DataVersionExportApi:
         self,
         export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
         file_id: Annotated[StrictInt, Field(description="The unique integer identifier of the file within the data version export.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -70,6 +71,8 @@ class DataVersionExportApi:
         :type export_uuid: str
         :param file_id: The unique integer identifier of the file within the data version export. (required)
         :type file_id: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -95,6 +98,7 @@ class DataVersionExportApi:
         _param = self._call_1_alpha_download_file_serialize(
             export_uuid=export_uuid,
             file_id=file_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -121,6 +125,7 @@ class DataVersionExportApi:
         self,
         export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
         file_id: Annotated[StrictInt, Field(description="The unique integer identifier of the file within the data version export.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -142,6 +147,8 @@ class DataVersionExportApi:
         :type export_uuid: str
         :param file_id: The unique integer identifier of the file within the data version export. (required)
         :type file_id: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -167,6 +174,7 @@ class DataVersionExportApi:
         _param = self._call_1_alpha_download_file_serialize(
             export_uuid=export_uuid,
             file_id=file_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -193,6 +201,7 @@ class DataVersionExportApi:
         self,
         export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
         file_id: Annotated[StrictInt, Field(description="The unique integer identifier of the file within the data version export.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -214,6 +223,8 @@ class DataVersionExportApi:
         :type export_uuid: str
         :param file_id: The unique integer identifier of the file within the data version export. (required)
         :type file_id: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -239,6 +250,7 @@ class DataVersionExportApi:
         _param = self._call_1_alpha_download_file_serialize(
             export_uuid=export_uuid,
             file_id=file_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -259,6 +271,7 @@ class DataVersionExportApi:
         self,
         export_uuid,
         file_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -284,6 +297,8 @@ class DataVersionExportApi:
             _path_params['fileId'] = file_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -328,6 +343,7 @@ class DataVersionExportApi:
     @validate_call
     def get_available_data_versions(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -345,6 +361,8 @@ class DataVersionExportApi:
 
         Retrieve a list of all data versions in the tenant.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -368,6 +386,7 @@ class DataVersionExportApi:
         """ # noqa: E501
 
         _param = self._get_available_data_versions_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -392,6 +411,7 @@ class DataVersionExportApi:
     @validate_call
     def get_available_data_versions_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -409,6 +429,8 @@ class DataVersionExportApi:
 
         Retrieve a list of all data versions in the tenant.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -432,6 +454,7 @@ class DataVersionExportApi:
         """ # noqa: E501
 
         _param = self._get_available_data_versions_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -456,6 +479,7 @@ class DataVersionExportApi:
     @validate_call
     def get_available_data_versions_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -473,6 +497,8 @@ class DataVersionExportApi:
 
         Retrieve a list of all data versions in the tenant.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -496,6 +522,7 @@ class DataVersionExportApi:
         """ # noqa: E501
 
         _param = self._get_available_data_versions_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -514,6 +541,7 @@ class DataVersionExportApi:
 
     def _get_available_data_versions_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -535,6 +563,8 @@ class DataVersionExportApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -578,6 +608,7 @@ class DataVersionExportApi:
     @validate_call
     def get_available_exports(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -595,6 +626,8 @@ class DataVersionExportApi:
 
         Retrieve the information for all available data version exports.  **Note:** Data version exports are available for 14 days after export job completes.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -618,6 +651,7 @@ class DataVersionExportApi:
         """ # noqa: E501
 
         _param = self._get_available_exports_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -642,6 +676,7 @@ class DataVersionExportApi:
     @validate_call
     def get_available_exports_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -659,6 +694,8 @@ class DataVersionExportApi:
 
         Retrieve the information for all available data version exports.  **Note:** Data version exports are available for 14 days after export job completes.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -682,6 +719,7 @@ class DataVersionExportApi:
         """ # noqa: E501
 
         _param = self._get_available_exports_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -706,6 +744,7 @@ class DataVersionExportApi:
     @validate_call
     def get_available_exports_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -723,6 +762,8 @@ class DataVersionExportApi:
 
         Retrieve the information for all available data version exports.  **Note:** Data version exports are available for 14 days after export job completes.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -746,6 +787,7 @@ class DataVersionExportApi:
         """ # noqa: E501
 
         _param = self._get_available_exports_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -764,6 +806,7 @@ class DataVersionExportApi:
 
     def _get_available_exports_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -785,6 +828,8 @@ class DataVersionExportApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -829,6 +874,7 @@ class DataVersionExportApi:
     def get_export(
         self,
         export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -848,6 +894,8 @@ class DataVersionExportApi:
 
         :param export_uuid: The unique identifier of the data version export. (required)
         :type export_uuid: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -872,6 +920,7 @@ class DataVersionExportApi:
 
         _param = self._get_export_serialize(
             export_uuid=export_uuid,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -897,6 +946,7 @@ class DataVersionExportApi:
     def get_export_with_http_info(
         self,
         export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -916,6 +966,8 @@ class DataVersionExportApi:
 
         :param export_uuid: The unique identifier of the data version export. (required)
         :type export_uuid: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -940,6 +992,7 @@ class DataVersionExportApi:
 
         _param = self._get_export_serialize(
             export_uuid=export_uuid,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -965,6 +1018,7 @@ class DataVersionExportApi:
     def get_export_without_preload_content(
         self,
         export_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -984,6 +1038,8 @@ class DataVersionExportApi:
 
         :param export_uuid: The unique identifier of the data version export. (required)
         :type export_uuid: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1008,6 +1064,7 @@ class DataVersionExportApi:
 
         _param = self._get_export_serialize(
             export_uuid=export_uuid,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1027,6 +1084,7 @@ class DataVersionExportApi:
     def _get_export_serialize(
         self,
         export_uuid,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1050,6 +1108,8 @@ class DataVersionExportApi:
             _path_params['exportUuid'] = export_uuid
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1094,6 +1154,7 @@ class DataVersionExportApi:
     def get_export_job_status(
         self,
         job_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export job.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1113,6 +1174,8 @@ class DataVersionExportApi:
 
         :param job_uuid: The unique identifier of the data version export job. (required)
         :type job_uuid: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1137,6 +1200,7 @@ class DataVersionExportApi:
 
         _param = self._get_export_job_status_serialize(
             job_uuid=job_uuid,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1162,6 +1226,7 @@ class DataVersionExportApi:
     def get_export_job_status_with_http_info(
         self,
         job_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export job.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1181,6 +1246,8 @@ class DataVersionExportApi:
 
         :param job_uuid: The unique identifier of the data version export job. (required)
         :type job_uuid: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1205,6 +1272,7 @@ class DataVersionExportApi:
 
         _param = self._get_export_job_status_serialize(
             job_uuid=job_uuid,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1230,6 +1298,7 @@ class DataVersionExportApi:
     def get_export_job_status_without_preload_content(
         self,
         job_uuid: Annotated[StrictStr, Field(description="The unique identifier of the data version export job.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1249,6 +1318,8 @@ class DataVersionExportApi:
 
         :param job_uuid: The unique identifier of the data version export job. (required)
         :type job_uuid: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1273,6 +1344,7 @@ class DataVersionExportApi:
 
         _param = self._get_export_job_status_serialize(
             job_uuid=job_uuid,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1292,6 +1364,7 @@ class DataVersionExportApi:
     def _get_export_job_status_serialize(
         self,
         job_uuid,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1315,6 +1388,8 @@ class DataVersionExportApi:
             _path_params['jobUuid'] = job_uuid
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1359,6 +1434,7 @@ class DataVersionExportApi:
     def schedule_export_job(
         self,
         data_version_export_schedule_job_request_dto: DataVersionExportScheduleJobRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1378,6 +1454,8 @@ class DataVersionExportApi:
 
         :param data_version_export_schedule_job_request_dto: (required)
         :type data_version_export_schedule_job_request_dto: DataVersionExportScheduleJobRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1402,6 +1480,7 @@ class DataVersionExportApi:
 
         _param = self._schedule_export_job_serialize(
             data_version_export_schedule_job_request_dto=data_version_export_schedule_job_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1427,6 +1506,7 @@ class DataVersionExportApi:
     def schedule_export_job_with_http_info(
         self,
         data_version_export_schedule_job_request_dto: DataVersionExportScheduleJobRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1446,6 +1526,8 @@ class DataVersionExportApi:
 
         :param data_version_export_schedule_job_request_dto: (required)
         :type data_version_export_schedule_job_request_dto: DataVersionExportScheduleJobRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1470,6 +1552,7 @@ class DataVersionExportApi:
 
         _param = self._schedule_export_job_serialize(
             data_version_export_schedule_job_request_dto=data_version_export_schedule_job_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1495,6 +1578,7 @@ class DataVersionExportApi:
     def schedule_export_job_without_preload_content(
         self,
         data_version_export_schedule_job_request_dto: DataVersionExportScheduleJobRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1514,6 +1598,8 @@ class DataVersionExportApi:
 
         :param data_version_export_schedule_job_request_dto: (required)
         :type data_version_export_schedule_job_request_dto: DataVersionExportScheduleJobRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1538,6 +1624,7 @@ class DataVersionExportApi:
 
         _param = self._schedule_export_job_serialize(
             data_version_export_schedule_job_request_dto=data_version_export_schedule_job_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1557,6 +1644,7 @@ class DataVersionExportApi:
     def _schedule_export_job_serialize(
         self,
         data_version_export_schedule_job_request_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1578,6 +1666,8 @@ class DataVersionExportApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if data_version_export_schedule_job_request_dto is not None:

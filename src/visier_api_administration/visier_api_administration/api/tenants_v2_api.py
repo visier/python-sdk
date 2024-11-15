@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -48,6 +48,7 @@ class TenantsV2Api:
     def create_tenant_0(
         self,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -67,6 +68,8 @@ class TenantsV2Api:
 
         :param tenant_management_api_update_request_dto: (required)
         :type tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91,6 +94,7 @@ class TenantsV2Api:
 
         _param = self._create_tenant_0_serialize(
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -116,6 +120,7 @@ class TenantsV2Api:
     def create_tenant_0_with_http_info(
         self,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -135,6 +140,8 @@ class TenantsV2Api:
 
         :param tenant_management_api_update_request_dto: (required)
         :type tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -159,6 +166,7 @@ class TenantsV2Api:
 
         _param = self._create_tenant_0_serialize(
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -184,6 +192,7 @@ class TenantsV2Api:
     def create_tenant_0_without_preload_content(
         self,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -203,6 +212,8 @@ class TenantsV2Api:
 
         :param tenant_management_api_update_request_dto: (required)
         :type tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -227,6 +238,7 @@ class TenantsV2Api:
 
         _param = self._create_tenant_0_serialize(
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -246,6 +258,7 @@ class TenantsV2Api:
     def _create_tenant_0_serialize(
         self,
         tenant_management_api_update_request_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -267,6 +280,8 @@ class TenantsV2Api:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if tenant_management_api_update_request_dto is not None:
@@ -321,6 +336,7 @@ class TenantsV2Api:
     def delete_tenant_0(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~{YYY} where {XXX} is the administrating tenant code and {YYY}  is the analytic tenant code.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -340,6 +356,8 @@ class TenantsV2Api:
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~{YYY} where {XXX} is the administrating tenant code and {YYY}  is the analytic tenant code. (required)
         :type tenant_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -364,6 +382,7 @@ class TenantsV2Api:
 
         _param = self._delete_tenant_0_serialize(
             tenant_id=tenant_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -389,6 +408,7 @@ class TenantsV2Api:
     def delete_tenant_0_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~{YYY} where {XXX} is the administrating tenant code and {YYY}  is the analytic tenant code.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -408,6 +428,8 @@ class TenantsV2Api:
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~{YYY} where {XXX} is the administrating tenant code and {YYY}  is the analytic tenant code. (required)
         :type tenant_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -432,6 +454,7 @@ class TenantsV2Api:
 
         _param = self._delete_tenant_0_serialize(
             tenant_id=tenant_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -457,6 +480,7 @@ class TenantsV2Api:
     def delete_tenant_0_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~{YYY} where {XXX} is the administrating tenant code and {YYY}  is the analytic tenant code.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -476,6 +500,8 @@ class TenantsV2Api:
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~{YYY} where {XXX} is the administrating tenant code and {YYY}  is the analytic tenant code. (required)
         :type tenant_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -500,6 +526,7 @@ class TenantsV2Api:
 
         _param = self._delete_tenant_0_serialize(
             tenant_id=tenant_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -519,6 +546,7 @@ class TenantsV2Api:
     def _delete_tenant_0_serialize(
         self,
         tenant_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -542,6 +570,8 @@ class TenantsV2Api:
             _path_params['tenantId'] = tenant_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -583,6 +613,7 @@ class TenantsV2Api:
         mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -606,6 +637,8 @@ class TenantsV2Api:
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -632,6 +665,7 @@ class TenantsV2Api:
             mask_message=mask_message,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -659,6 +693,7 @@ class TenantsV2Api:
         mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -682,6 +717,8 @@ class TenantsV2Api:
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -708,6 +745,7 @@ class TenantsV2Api:
             mask_message=mask_message,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -735,6 +773,7 @@ class TenantsV2Api:
         mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -758,6 +797,8 @@ class TenantsV2Api:
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -784,6 +825,7 @@ class TenantsV2Api:
             mask_message=mask_message,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -805,6 +847,7 @@ class TenantsV2Api:
         mask_message,
         limit,
         start,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -834,6 +877,8 @@ class TenantsV2Api:
             _query_params.append(('start', start))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if mask_message is not None:
@@ -889,6 +934,7 @@ class TenantsV2Api:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to retrieve.")],
         mask_message: MaskMessage,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -910,6 +956,8 @@ class TenantsV2Api:
         :type tenant_id: str
         :param mask_message: (required)
         :type mask_message: MaskMessage
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -935,6 +983,7 @@ class TenantsV2Api:
         _param = self._tenant_info_serialize(
             tenant_id=tenant_id,
             mask_message=mask_message,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -961,6 +1010,7 @@ class TenantsV2Api:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to retrieve.")],
         mask_message: MaskMessage,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -982,6 +1032,8 @@ class TenantsV2Api:
         :type tenant_id: str
         :param mask_message: (required)
         :type mask_message: MaskMessage
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1007,6 +1059,7 @@ class TenantsV2Api:
         _param = self._tenant_info_serialize(
             tenant_id=tenant_id,
             mask_message=mask_message,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1033,6 +1086,7 @@ class TenantsV2Api:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to retrieve.")],
         mask_message: MaskMessage,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1054,6 +1108,8 @@ class TenantsV2Api:
         :type tenant_id: str
         :param mask_message: (required)
         :type mask_message: MaskMessage
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1079,6 +1135,7 @@ class TenantsV2Api:
         _param = self._tenant_info_serialize(
             tenant_id=tenant_id,
             mask_message=mask_message,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1099,6 +1156,7 @@ class TenantsV2Api:
         self,
         tenant_id,
         mask_message,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1122,6 +1180,8 @@ class TenantsV2Api:
             _path_params['tenantId'] = tenant_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if mask_message is not None:
@@ -1177,6 +1237,7 @@ class TenantsV2Api:
         self,
         tenant_id: StrictStr,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1198,6 +1259,8 @@ class TenantsV2Api:
         :type tenant_id: str
         :param tenant_management_api_update_request_dto: (required)
         :type tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1223,6 +1286,7 @@ class TenantsV2Api:
         _param = self._update_tenant_0_serialize(
             tenant_id=tenant_id,
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1249,6 +1313,7 @@ class TenantsV2Api:
         self,
         tenant_id: StrictStr,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1270,6 +1335,8 @@ class TenantsV2Api:
         :type tenant_id: str
         :param tenant_management_api_update_request_dto: (required)
         :type tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1295,6 +1362,7 @@ class TenantsV2Api:
         _param = self._update_tenant_0_serialize(
             tenant_id=tenant_id,
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1321,6 +1389,7 @@ class TenantsV2Api:
         self,
         tenant_id: StrictStr,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1342,6 +1411,8 @@ class TenantsV2Api:
         :type tenant_id: str
         :param tenant_management_api_update_request_dto: (required)
         :type tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1367,6 +1438,7 @@ class TenantsV2Api:
         _param = self._update_tenant_0_serialize(
             tenant_id=tenant_id,
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1387,6 +1459,7 @@ class TenantsV2Api:
         self,
         tenant_id,
         tenant_management_api_update_request_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1410,6 +1483,8 @@ class TenantsV2Api:
             _path_params['tenantId'] = tenant_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if tenant_management_api_update_request_dto is not None:

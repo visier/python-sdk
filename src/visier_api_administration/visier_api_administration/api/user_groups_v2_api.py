@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -49,6 +49,8 @@ class UserGroupsV2Api:
     def create_user_groups(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,10 +66,14 @@ class UserGroupsV2Api:
     ) -> UserGroupChangeResponseDTO:
         """Create multiple user groups
 
-        Create new user groups. To specify the tenant in which to add new user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to create new user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Create new user groups. To specify the tenant in which to add new user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to create new user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
         :param user_groups_change_dto: (required)
         :type user_groups_change_dto: UserGroupsChangeDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -92,6 +98,8 @@ class UserGroupsV2Api:
 
         _param = self._create_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -117,6 +125,8 @@ class UserGroupsV2Api:
     def create_user_groups_with_http_info(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -132,10 +142,14 @@ class UserGroupsV2Api:
     ) -> ApiResponse[UserGroupChangeResponseDTO]:
         """Create multiple user groups
 
-        Create new user groups. To specify the tenant in which to add new user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to create new user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Create new user groups. To specify the tenant in which to add new user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to create new user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
         :param user_groups_change_dto: (required)
         :type user_groups_change_dto: UserGroupsChangeDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -160,6 +174,8 @@ class UserGroupsV2Api:
 
         _param = self._create_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -185,6 +201,8 @@ class UserGroupsV2Api:
     def create_user_groups_without_preload_content(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -200,10 +218,14 @@ class UserGroupsV2Api:
     ) -> RESTResponseType:
         """Create multiple user groups
 
-        Create new user groups. To specify the tenant in which to add new user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to create new user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Create new user groups. To specify the tenant in which to add new user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to create new user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
         :param user_groups_change_dto: (required)
         :type user_groups_change_dto: UserGroupsChangeDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -228,6 +250,8 @@ class UserGroupsV2Api:
 
         _param = self._create_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -247,6 +271,8 @@ class UserGroupsV2Api:
     def _create_user_groups_serialize(
         self,
         user_groups_change_dto,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -268,6 +294,10 @@ class UserGroupsV2Api:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
         if user_groups_change_dto is not None:
@@ -302,7 +332,7 @@ class UserGroupsV2Api:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/v2beta/admin/user-groups',
+            resource_path='/v2/admin/user-groups',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -323,6 +353,8 @@ class UserGroupsV2Api:
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group to delete.")],
         delete_user_group_v2_request: DeleteUserGroupV2Request,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -338,12 +370,16 @@ class UserGroupsV2Api:
     ) -> UserGroupSingleDeleteResponseDTO:
         """Delete a user group
 
-        Delete a specific user group. To specify the tenant in which to delete a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete a user group, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete a specific user group. To specify the tenant in which to delete a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete a user group, provide a project UUID in the `ProjectID` request header.
 
         :param user_group_id: The ID of user group to delete. (required)
         :type user_group_id: str
         :param delete_user_group_v2_request: (required)
         :type delete_user_group_v2_request: DeleteUserGroupV2Request
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -369,6 +405,8 @@ class UserGroupsV2Api:
         _param = self._delete_user_group_serialize(
             user_group_id=user_group_id,
             delete_user_group_v2_request=delete_user_group_v2_request,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -395,6 +433,8 @@ class UserGroupsV2Api:
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group to delete.")],
         delete_user_group_v2_request: DeleteUserGroupV2Request,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -410,12 +450,16 @@ class UserGroupsV2Api:
     ) -> ApiResponse[UserGroupSingleDeleteResponseDTO]:
         """Delete a user group
 
-        Delete a specific user group. To specify the tenant in which to delete a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete a user group, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete a specific user group. To specify the tenant in which to delete a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete a user group, provide a project UUID in the `ProjectID` request header.
 
         :param user_group_id: The ID of user group to delete. (required)
         :type user_group_id: str
         :param delete_user_group_v2_request: (required)
         :type delete_user_group_v2_request: DeleteUserGroupV2Request
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -441,6 +485,8 @@ class UserGroupsV2Api:
         _param = self._delete_user_group_serialize(
             user_group_id=user_group_id,
             delete_user_group_v2_request=delete_user_group_v2_request,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -467,6 +513,8 @@ class UserGroupsV2Api:
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group to delete.")],
         delete_user_group_v2_request: DeleteUserGroupV2Request,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -482,12 +530,16 @@ class UserGroupsV2Api:
     ) -> RESTResponseType:
         """Delete a user group
 
-        Delete a specific user group. To specify the tenant in which to delete a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete a user group, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete a specific user group. To specify the tenant in which to delete a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete a user group, provide a project UUID in the `ProjectID` request header.
 
         :param user_group_id: The ID of user group to delete. (required)
         :type user_group_id: str
         :param delete_user_group_v2_request: (required)
         :type delete_user_group_v2_request: DeleteUserGroupV2Request
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -513,6 +565,8 @@ class UserGroupsV2Api:
         _param = self._delete_user_group_serialize(
             user_group_id=user_group_id,
             delete_user_group_v2_request=delete_user_group_v2_request,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -533,6 +587,8 @@ class UserGroupsV2Api:
         self,
         user_group_id,
         delete_user_group_v2_request,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -556,6 +612,10 @@ class UserGroupsV2Api:
             _path_params['userGroupId'] = user_group_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
         if delete_user_group_v2_request is not None:
@@ -590,7 +650,7 @@ class UserGroupsV2Api:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/v2beta/admin/user-groups/{userGroupId}',
+            resource_path='/v2/admin/user-groups/{userGroupId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -610,6 +670,8 @@ class UserGroupsV2Api:
     def delete_user_groups(
         self,
         user_groups_delete_request_dto: UserGroupsDeleteRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -625,10 +687,14 @@ class UserGroupsV2Api:
     ) -> UserGroupDeleteResponseDTO:
         """Delete multiple user groups
 
-        Delete user groups in bulk. To specify the tenant in which to delete user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete user groups in bulk. To specify the tenant in which to delete user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
         :param user_groups_delete_request_dto: (required)
         :type user_groups_delete_request_dto: UserGroupsDeleteRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -653,6 +719,8 @@ class UserGroupsV2Api:
 
         _param = self._delete_user_groups_serialize(
             user_groups_delete_request_dto=user_groups_delete_request_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -678,6 +746,8 @@ class UserGroupsV2Api:
     def delete_user_groups_with_http_info(
         self,
         user_groups_delete_request_dto: UserGroupsDeleteRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -693,10 +763,14 @@ class UserGroupsV2Api:
     ) -> ApiResponse[UserGroupDeleteResponseDTO]:
         """Delete multiple user groups
 
-        Delete user groups in bulk. To specify the tenant in which to delete user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete user groups in bulk. To specify the tenant in which to delete user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
         :param user_groups_delete_request_dto: (required)
         :type user_groups_delete_request_dto: UserGroupsDeleteRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -721,6 +795,8 @@ class UserGroupsV2Api:
 
         _param = self._delete_user_groups_serialize(
             user_groups_delete_request_dto=user_groups_delete_request_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -746,6 +822,8 @@ class UserGroupsV2Api:
     def delete_user_groups_without_preload_content(
         self,
         user_groups_delete_request_dto: UserGroupsDeleteRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -761,10 +839,14 @@ class UserGroupsV2Api:
     ) -> RESTResponseType:
         """Delete multiple user groups
 
-        Delete user groups in bulk. To specify the tenant in which to delete user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete user groups in bulk. To specify the tenant in which to delete user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
         :param user_groups_delete_request_dto: (required)
         :type user_groups_delete_request_dto: UserGroupsDeleteRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -789,6 +871,8 @@ class UserGroupsV2Api:
 
         _param = self._delete_user_groups_serialize(
             user_groups_delete_request_dto=user_groups_delete_request_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -808,6 +892,8 @@ class UserGroupsV2Api:
     def _delete_user_groups_serialize(
         self,
         user_groups_delete_request_dto,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -829,6 +915,10 @@ class UserGroupsV2Api:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
         if user_groups_delete_request_dto is not None:
@@ -863,7 +953,7 @@ class UserGroupsV2Api:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/v2beta/admin/user-groups',
+            resource_path='/v2/admin/user-groups',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -884,6 +974,8 @@ class UserGroupsV2Api:
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group.")],
         var_with: Annotated[Optional[StrictStr], Field(description="Controls the amount of detail to return in the response. Omit to return detailed information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -899,12 +991,16 @@ class UserGroupsV2Api:
     ) -> UserGroupChangeDefinitionDTO:
         """Retrieve the details of a user group
 
-        Retrieve all available information about a specific user group.    <br>To specify the tenant in which to retrieve a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to return a user group, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve all available information about a specific user group.    <br>To specify the tenant in which to retrieve a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to return a user group, provide a project UUID in the `ProjectID` request header.
 
         :param user_group_id: The ID of user group. (required)
         :type user_group_id: str
         :param var_with: Controls the amount of detail to return in the response. Omit to return detailed information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.
         :type var_with: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -930,6 +1026,8 @@ class UserGroupsV2Api:
         _param = self._get_user_group_serialize(
             user_group_id=user_group_id,
             var_with=var_with,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -956,6 +1054,8 @@ class UserGroupsV2Api:
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group.")],
         var_with: Annotated[Optional[StrictStr], Field(description="Controls the amount of detail to return in the response. Omit to return detailed information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -971,12 +1071,16 @@ class UserGroupsV2Api:
     ) -> ApiResponse[UserGroupChangeDefinitionDTO]:
         """Retrieve the details of a user group
 
-        Retrieve all available information about a specific user group.    <br>To specify the tenant in which to retrieve a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to return a user group, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve all available information about a specific user group.    <br>To specify the tenant in which to retrieve a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to return a user group, provide a project UUID in the `ProjectID` request header.
 
         :param user_group_id: The ID of user group. (required)
         :type user_group_id: str
         :param var_with: Controls the amount of detail to return in the response. Omit to return detailed information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.
         :type var_with: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1002,6 +1106,8 @@ class UserGroupsV2Api:
         _param = self._get_user_group_serialize(
             user_group_id=user_group_id,
             var_with=var_with,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1028,6 +1134,8 @@ class UserGroupsV2Api:
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group.")],
         var_with: Annotated[Optional[StrictStr], Field(description="Controls the amount of detail to return in the response. Omit to return detailed information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1043,12 +1151,16 @@ class UserGroupsV2Api:
     ) -> RESTResponseType:
         """Retrieve the details of a user group
 
-        Retrieve all available information about a specific user group.    <br>To specify the tenant in which to retrieve a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to return a user group, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve all available information about a specific user group.    <br>To specify the tenant in which to retrieve a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to return a user group, provide a project UUID in the `ProjectID` request header.
 
         :param user_group_id: The ID of user group. (required)
         :type user_group_id: str
         :param var_with: Controls the amount of detail to return in the response. Omit to return detailed information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.
         :type var_with: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1074,6 +1186,8 @@ class UserGroupsV2Api:
         _param = self._get_user_group_serialize(
             user_group_id=user_group_id,
             var_with=var_with,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1094,6 +1208,8 @@ class UserGroupsV2Api:
         self,
         user_group_id,
         var_with,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1121,6 +1237,10 @@ class UserGroupsV2Api:
             _query_params.append(('with', var_with))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
 
@@ -1140,7 +1260,7 @@ class UserGroupsV2Api:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v2beta/admin/user-groups/{userGroupId}',
+            resource_path='/v2/admin/user-groups/{userGroupId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1161,6 +1281,8 @@ class UserGroupsV2Api:
         self,
         var_with: Annotated[Optional[StrictStr], Field(description="Controls the amount of detail to return in the response. Omit to return basic information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of results to return. The maximum number of user groups to retrieve is 1000. The default is 100.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1176,12 +1298,16 @@ class UserGroupsV2Api:
     ) -> UserGroupsChangeDTO:
         """Retrieve a list of user groups
 
-        Retrieve a collection of user groups. Use `with` to control the amount of detail returned in the response.  `with` supports these values:  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.   This API can return a maximum of 1000 user groups. The default number of user groups to return is 100.   To specify the project in which to return user groups, provide a project UUID in the `ProjectID` request header.   <br>To specify the tenant in which to retrieve user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve a collection of user groups. Use `with` to control the amount of detail returned in the response.  `with` supports these values:  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.   This API can return a maximum of 1000 user groups. The default number of user groups to return is 100.   To specify the project in which to return user groups, provide a project UUID in the `ProjectID` request header.   <br>To specify the tenant in which to retrieve user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.
 
         :param var_with: Controls the amount of detail to return in the response. Omit to return basic information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.
         :type var_with: str
         :param limit: The number of results to return. The maximum number of user groups to retrieve is 1000. The default is 100.
         :type limit: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1207,6 +1333,8 @@ class UserGroupsV2Api:
         _param = self._get_user_groups_serialize(
             var_with=var_with,
             limit=limit,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1233,6 +1361,8 @@ class UserGroupsV2Api:
         self,
         var_with: Annotated[Optional[StrictStr], Field(description="Controls the amount of detail to return in the response. Omit to return basic information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of results to return. The maximum number of user groups to retrieve is 1000. The default is 100.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1248,12 +1378,16 @@ class UserGroupsV2Api:
     ) -> ApiResponse[UserGroupsChangeDTO]:
         """Retrieve a list of user groups
 
-        Retrieve a collection of user groups. Use `with` to control the amount of detail returned in the response.  `with` supports these values:  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.   This API can return a maximum of 1000 user groups. The default number of user groups to return is 100.   To specify the project in which to return user groups, provide a project UUID in the `ProjectID` request header.   <br>To specify the tenant in which to retrieve user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve a collection of user groups. Use `with` to control the amount of detail returned in the response.  `with` supports these values:  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.   This API can return a maximum of 1000 user groups. The default number of user groups to return is 100.   To specify the project in which to return user groups, provide a project UUID in the `ProjectID` request header.   <br>To specify the tenant in which to retrieve user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.
 
         :param var_with: Controls the amount of detail to return in the response. Omit to return basic information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.
         :type var_with: str
         :param limit: The number of results to return. The maximum number of user groups to retrieve is 1000. The default is 100.
         :type limit: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1279,6 +1413,8 @@ class UserGroupsV2Api:
         _param = self._get_user_groups_serialize(
             var_with=var_with,
             limit=limit,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1305,6 +1441,8 @@ class UserGroupsV2Api:
         self,
         var_with: Annotated[Optional[StrictStr], Field(description="Controls the amount of detail to return in the response. Omit to return basic information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of results to return. The maximum number of user groups to retrieve is 1000. The default is 100.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1320,12 +1458,16 @@ class UserGroupsV2Api:
     ) -> RESTResponseType:
         """Retrieve a list of user groups
 
-        Retrieve a collection of user groups. Use `with` to control the amount of detail returned in the response.  `with` supports these values:  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.   This API can return a maximum of 1000 user groups. The default number of user groups to return is 100.   To specify the project in which to return user groups, provide a project UUID in the `ProjectID` request header.   <br>To specify the tenant in which to retrieve user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve a collection of user groups. Use `with` to control the amount of detail returned in the response.  `with` supports these values:  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.   This API can return a maximum of 1000 user groups. The default number of user groups to return is 100.   To specify the project in which to return user groups, provide a project UUID in the `ProjectID` request header.   <br>To specify the tenant in which to retrieve user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.
 
         :param var_with: Controls the amount of detail to return in the response. Omit to return basic information.  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.
         :type var_with: str
         :param limit: The number of results to return. The maximum number of user groups to retrieve is 1000. The default is 100.
         :type limit: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1351,6 +1493,8 @@ class UserGroupsV2Api:
         _param = self._get_user_groups_serialize(
             var_with=var_with,
             limit=limit,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1371,6 +1515,8 @@ class UserGroupsV2Api:
         self,
         var_with,
         limit,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1400,6 +1546,10 @@ class UserGroupsV2Api:
             _query_params.append(('limit', limit))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
 
@@ -1419,7 +1569,7 @@ class UserGroupsV2Api:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v2beta/admin/user-groups',
+            resource_path='/v2/admin/user-groups',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1439,6 +1589,7 @@ class UserGroupsV2Api:
     def patch_user_groups(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1454,10 +1605,12 @@ class UserGroupsV2Api:
     ) -> UserGroupChangeResponseDTO:
         """Patch multiple user groups
 
-        Make partial changes to user groups. To specify the tenant in which to patch a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   Unlike `PUT`, which completely replaces the user group definition, use `PATCH` to change specific fields in the user group without affecting omitted fields.   To specify the project in which to patch user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Make partial changes to user groups. To specify the tenant in which to patch a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   Unlike `PUT`, which completely replaces the user group definition, use `PATCH` to change specific fields in the user group without affecting omitted fields.   To specify the project in which to patch user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
         :param user_groups_change_dto: (required)
         :type user_groups_change_dto: UserGroupsChangeDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1482,6 +1635,7 @@ class UserGroupsV2Api:
 
         _param = self._patch_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1507,6 +1661,7 @@ class UserGroupsV2Api:
     def patch_user_groups_with_http_info(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1522,10 +1677,12 @@ class UserGroupsV2Api:
     ) -> ApiResponse[UserGroupChangeResponseDTO]:
         """Patch multiple user groups
 
-        Make partial changes to user groups. To specify the tenant in which to patch a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   Unlike `PUT`, which completely replaces the user group definition, use `PATCH` to change specific fields in the user group without affecting omitted fields.   To specify the project in which to patch user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Make partial changes to user groups. To specify the tenant in which to patch a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   Unlike `PUT`, which completely replaces the user group definition, use `PATCH` to change specific fields in the user group without affecting omitted fields.   To specify the project in which to patch user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
         :param user_groups_change_dto: (required)
         :type user_groups_change_dto: UserGroupsChangeDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1550,6 +1707,7 @@ class UserGroupsV2Api:
 
         _param = self._patch_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1575,6 +1733,7 @@ class UserGroupsV2Api:
     def patch_user_groups_without_preload_content(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1590,10 +1749,12 @@ class UserGroupsV2Api:
     ) -> RESTResponseType:
         """Patch multiple user groups
 
-        Make partial changes to user groups. To specify the tenant in which to patch a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   Unlike `PUT`, which completely replaces the user group definition, use `PATCH` to change specific fields in the user group without affecting omitted fields.   To specify the project in which to patch user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Make partial changes to user groups. To specify the tenant in which to patch a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   Unlike `PUT`, which completely replaces the user group definition, use `PATCH` to change specific fields in the user group without affecting omitted fields.   To specify the project in which to patch user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
         :param user_groups_change_dto: (required)
         :type user_groups_change_dto: UserGroupsChangeDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1618,6 +1779,7 @@ class UserGroupsV2Api:
 
         _param = self._patch_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1637,6 +1799,7 @@ class UserGroupsV2Api:
     def _patch_user_groups_serialize(
         self,
         user_groups_change_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1658,6 +1821,8 @@ class UserGroupsV2Api:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if user_groups_change_dto is not None:
@@ -1692,7 +1857,7 @@ class UserGroupsV2Api:
 
         return self.api_client.param_serialize(
             method='PATCH',
-            resource_path='/v2beta/admin/user-groups',
+            resource_path='/v2/admin/user-groups',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1712,6 +1877,7 @@ class UserGroupsV2Api:
     def put_user_groups(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1727,10 +1893,12 @@ class UserGroupsV2Api:
     ) -> UserGroupChangeResponseDTO:
         """Update multiple user groups
 
-        Update existing user groups. To specify the tenant in which to update a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   When updating user groups, the user group definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the user group. We recommend that you retrieve a user group's details before you update the user group with new values.    To specify the project in which to update user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Update existing user groups. To specify the tenant in which to update a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   When updating user groups, the user group definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the user group. We recommend that you retrieve a user group's details before you update the user group with new values.    To specify the project in which to update user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
         :param user_groups_change_dto: (required)
         :type user_groups_change_dto: UserGroupsChangeDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1755,6 +1923,7 @@ class UserGroupsV2Api:
 
         _param = self._put_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1780,6 +1949,7 @@ class UserGroupsV2Api:
     def put_user_groups_with_http_info(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1795,10 +1965,12 @@ class UserGroupsV2Api:
     ) -> ApiResponse[UserGroupChangeResponseDTO]:
         """Update multiple user groups
 
-        Update existing user groups. To specify the tenant in which to update a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   When updating user groups, the user group definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the user group. We recommend that you retrieve a user group's details before you update the user group with new values.    To specify the project in which to update user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Update existing user groups. To specify the tenant in which to update a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   When updating user groups, the user group definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the user group. We recommend that you retrieve a user group's details before you update the user group with new values.    To specify the project in which to update user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
         :param user_groups_change_dto: (required)
         :type user_groups_change_dto: UserGroupsChangeDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1823,6 +1995,7 @@ class UserGroupsV2Api:
 
         _param = self._put_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1848,6 +2021,7 @@ class UserGroupsV2Api:
     def put_user_groups_without_preload_content(
         self,
         user_groups_change_dto: UserGroupsChangeDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1863,10 +2037,12 @@ class UserGroupsV2Api:
     ) -> RESTResponseType:
         """Update multiple user groups
 
-        Update existing user groups. To specify the tenant in which to update a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   When updating user groups, the user group definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the user group. We recommend that you retrieve a user group's details before you update the user group with new values.    To specify the project in which to update user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Update existing user groups. To specify the tenant in which to update a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   When updating user groups, the user group definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the user group. We recommend that you retrieve a user group's details before you update the user group with new values.    To specify the project in which to update user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
         :param user_groups_change_dto: (required)
         :type user_groups_change_dto: UserGroupsChangeDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1891,6 +2067,7 @@ class UserGroupsV2Api:
 
         _param = self._put_user_groups_serialize(
             user_groups_change_dto=user_groups_change_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1910,6 +2087,7 @@ class UserGroupsV2Api:
     def _put_user_groups_serialize(
         self,
         user_groups_change_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1931,6 +2109,8 @@ class UserGroupsV2Api:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if user_groups_change_dto is not None:
@@ -1965,7 +2145,7 @@ class UserGroupsV2Api:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/v2beta/admin/user-groups',
+            resource_path='/v2/admin/user-groups',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

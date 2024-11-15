@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -45,6 +45,7 @@ class SearchApi:
         q: Annotated[Optional[StrictStr], Field(description="The search query string.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of results to return. Defaults to 100.")] = None,
         offset: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. Defaults to 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -68,6 +69,8 @@ class SearchApi:
         :type limit: int
         :param offset: The index to start retrieving results from, also known as offset. Defaults to 0.
         :type offset: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -94,6 +97,7 @@ class SearchApi:
             q=q,
             limit=limit,
             offset=offset,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -121,6 +125,7 @@ class SearchApi:
         q: Annotated[Optional[StrictStr], Field(description="The search query string.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of results to return. Defaults to 100.")] = None,
         offset: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. Defaults to 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -144,6 +149,8 @@ class SearchApi:
         :type limit: int
         :param offset: The index to start retrieving results from, also known as offset. Defaults to 0.
         :type offset: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -170,6 +177,7 @@ class SearchApi:
             q=q,
             limit=limit,
             offset=offset,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -197,6 +205,7 @@ class SearchApi:
         q: Annotated[Optional[StrictStr], Field(description="The search query string.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of results to return. Defaults to 100.")] = None,
         offset: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. Defaults to 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -220,6 +229,8 @@ class SearchApi:
         :type limit: int
         :param offset: The index to start retrieving results from, also known as offset. Defaults to 0.
         :type offset: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -246,6 +257,7 @@ class SearchApi:
             q=q,
             limit=limit,
             offset=offset,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -267,6 +279,7 @@ class SearchApi:
         q,
         limit,
         offset,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -300,6 +313,8 @@ class SearchApi:
             _query_params.append(('offset', offset))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 

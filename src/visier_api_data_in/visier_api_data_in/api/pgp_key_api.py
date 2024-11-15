@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,6 +21,7 @@ from typing_extensions import Annotated
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
 from pydantic import Field, StrictStr
+from typing import Optional
 from typing_extensions import Annotated
 from visier_api_data_in.models.key_pair_delete_response_dto import KeyPairDeleteResponseDTO
 from visier_api_data_in.models.key_pair_generate_request_dto import KeyPairGenerateRequestDTO
@@ -45,6 +46,7 @@ class PGPKeyApi:
     def delete_pgp_key_pair(
         self,
         key_id: Annotated[StrictStr, Field(description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,6 +66,8 @@ class PGPKeyApi:
 
         :param key_id: The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros. (required)
         :type key_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -88,6 +92,7 @@ class PGPKeyApi:
 
         _param = self._delete_pgp_key_pair_serialize(
             key_id=key_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -113,6 +118,7 @@ class PGPKeyApi:
     def delete_pgp_key_pair_with_http_info(
         self,
         key_id: Annotated[StrictStr, Field(description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -132,6 +138,8 @@ class PGPKeyApi:
 
         :param key_id: The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros. (required)
         :type key_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -156,6 +164,7 @@ class PGPKeyApi:
 
         _param = self._delete_pgp_key_pair_serialize(
             key_id=key_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -181,6 +190,7 @@ class PGPKeyApi:
     def delete_pgp_key_pair_without_preload_content(
         self,
         key_id: Annotated[StrictStr, Field(description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -200,6 +210,8 @@ class PGPKeyApi:
 
         :param key_id: The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros. (required)
         :type key_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -224,6 +236,7 @@ class PGPKeyApi:
 
         _param = self._delete_pgp_key_pair_serialize(
             key_id=key_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -243,6 +256,7 @@ class PGPKeyApi:
     def _delete_pgp_key_pair_serialize(
         self,
         key_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -266,6 +280,8 @@ class PGPKeyApi:
             _path_params['keyID'] = key_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -310,6 +326,7 @@ class PGPKeyApi:
     def generate_pgp_key_pair(
         self,
         key_pair_generate_request_dto: KeyPairGenerateRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -329,6 +346,8 @@ class PGPKeyApi:
 
         :param key_pair_generate_request_dto: (required)
         :type key_pair_generate_request_dto: KeyPairGenerateRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -353,6 +372,7 @@ class PGPKeyApi:
 
         _param = self._generate_pgp_key_pair_serialize(
             key_pair_generate_request_dto=key_pair_generate_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -378,6 +398,7 @@ class PGPKeyApi:
     def generate_pgp_key_pair_with_http_info(
         self,
         key_pair_generate_request_dto: KeyPairGenerateRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -397,6 +418,8 @@ class PGPKeyApi:
 
         :param key_pair_generate_request_dto: (required)
         :type key_pair_generate_request_dto: KeyPairGenerateRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -421,6 +444,7 @@ class PGPKeyApi:
 
         _param = self._generate_pgp_key_pair_serialize(
             key_pair_generate_request_dto=key_pair_generate_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -446,6 +470,7 @@ class PGPKeyApi:
     def generate_pgp_key_pair_without_preload_content(
         self,
         key_pair_generate_request_dto: KeyPairGenerateRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -465,6 +490,8 @@ class PGPKeyApi:
 
         :param key_pair_generate_request_dto: (required)
         :type key_pair_generate_request_dto: KeyPairGenerateRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -489,6 +516,7 @@ class PGPKeyApi:
 
         _param = self._generate_pgp_key_pair_serialize(
             key_pair_generate_request_dto=key_pair_generate_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -508,6 +536,7 @@ class PGPKeyApi:
     def _generate_pgp_key_pair_serialize(
         self,
         key_pair_generate_request_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -529,6 +558,8 @@ class PGPKeyApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if key_pair_generate_request_dto is not None:
@@ -587,6 +618,7 @@ class PGPKeyApi:
     @validate_call
     def get_all_pgp_public_keys(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -604,6 +636,8 @@ class PGPKeyApi:
 
         Retrieve a list of all PGP public keys in your tenant.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -627,6 +661,7 @@ class PGPKeyApi:
         """ # noqa: E501
 
         _param = self._get_all_pgp_public_keys_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -651,6 +686,7 @@ class PGPKeyApi:
     @validate_call
     def get_all_pgp_public_keys_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -668,6 +704,8 @@ class PGPKeyApi:
 
         Retrieve a list of all PGP public keys in your tenant.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -691,6 +729,7 @@ class PGPKeyApi:
         """ # noqa: E501
 
         _param = self._get_all_pgp_public_keys_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -715,6 +754,7 @@ class PGPKeyApi:
     @validate_call
     def get_all_pgp_public_keys_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -732,6 +772,8 @@ class PGPKeyApi:
 
         Retrieve a list of all PGP public keys in your tenant.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -755,6 +797,7 @@ class PGPKeyApi:
         """ # noqa: E501
 
         _param = self._get_all_pgp_public_keys_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -773,6 +816,7 @@ class PGPKeyApi:
 
     def _get_all_pgp_public_keys_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -794,6 +838,8 @@ class PGPKeyApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -838,6 +884,7 @@ class PGPKeyApi:
     def get_pgp_public_key(
         self,
         key_id: Annotated[StrictStr, Field(description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -857,6 +904,8 @@ class PGPKeyApi:
 
         :param key_id: The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros. (required)
         :type key_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -881,6 +930,7 @@ class PGPKeyApi:
 
         _param = self._get_pgp_public_key_serialize(
             key_id=key_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -906,6 +956,7 @@ class PGPKeyApi:
     def get_pgp_public_key_with_http_info(
         self,
         key_id: Annotated[StrictStr, Field(description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -925,6 +976,8 @@ class PGPKeyApi:
 
         :param key_id: The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros. (required)
         :type key_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -949,6 +1002,7 @@ class PGPKeyApi:
 
         _param = self._get_pgp_public_key_serialize(
             key_id=key_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -974,6 +1028,7 @@ class PGPKeyApi:
     def get_pgp_public_key_without_preload_content(
         self,
         key_id: Annotated[StrictStr, Field(description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -993,6 +1048,8 @@ class PGPKeyApi:
 
         :param key_id: The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros. (required)
         :type key_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1017,6 +1074,7 @@ class PGPKeyApi:
 
         _param = self._get_pgp_public_key_serialize(
             key_id=key_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1036,6 +1094,7 @@ class PGPKeyApi:
     def _get_pgp_public_key_serialize(
         self,
         key_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1059,6 +1118,8 @@ class PGPKeyApi:
             _path_params['keyID'] = key_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 

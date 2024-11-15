@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -48,6 +48,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -69,6 +70,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param transaction_id: The unique identifier of the transaction. (required)
         :type transaction_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -94,6 +97,7 @@ class DirectDataIntakeApi:
         _param = self._commit_transaction_serialize(
             draft_id=draft_id,
             transaction_id=transaction_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -120,6 +124,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -141,6 +146,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param transaction_id: The unique identifier of the transaction. (required)
         :type transaction_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -166,6 +173,7 @@ class DirectDataIntakeApi:
         _param = self._commit_transaction_serialize(
             draft_id=draft_id,
             transaction_id=transaction_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -192,6 +200,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -213,6 +222,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param transaction_id: The unique identifier of the transaction. (required)
         :type transaction_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -238,6 +249,7 @@ class DirectDataIntakeApi:
         _param = self._commit_transaction_serialize(
             draft_id=draft_id,
             transaction_id=transaction_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -258,6 +270,7 @@ class DirectDataIntakeApi:
         self,
         draft_id,
         transaction_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -283,6 +296,8 @@ class DirectDataIntakeApi:
             _path_params['transactionId'] = transaction_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -327,6 +342,7 @@ class DirectDataIntakeApi:
     def get_config(
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -346,6 +362,8 @@ class DirectDataIntakeApi:
 
         :param draft_id: The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version. (required)
         :type draft_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -370,6 +388,7 @@ class DirectDataIntakeApi:
 
         _param = self._get_config_serialize(
             draft_id=draft_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -395,6 +414,7 @@ class DirectDataIntakeApi:
     def get_config_with_http_info(
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -414,6 +434,8 @@ class DirectDataIntakeApi:
 
         :param draft_id: The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version. (required)
         :type draft_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -438,6 +460,7 @@ class DirectDataIntakeApi:
 
         _param = self._get_config_serialize(
             draft_id=draft_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -463,6 +486,7 @@ class DirectDataIntakeApi:
     def get_config_without_preload_content(
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -482,6 +506,8 @@ class DirectDataIntakeApi:
 
         :param draft_id: The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version. (required)
         :type draft_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -506,6 +532,7 @@ class DirectDataIntakeApi:
 
         _param = self._get_config_serialize(
             draft_id=draft_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -525,6 +552,7 @@ class DirectDataIntakeApi:
     def _get_config_serialize(
         self,
         draft_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -548,6 +576,8 @@ class DirectDataIntakeApi:
             _path_params['draftId'] = draft_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -593,6 +623,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -614,6 +645,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param transaction_id: The unique identifier of the transaction. (required)
         :type transaction_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -639,6 +672,7 @@ class DirectDataIntakeApi:
         _param = self._job_status_serialize(
             draft_id=draft_id,
             transaction_id=transaction_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -665,6 +699,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -686,6 +721,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param transaction_id: The unique identifier of the transaction. (required)
         :type transaction_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -711,6 +748,7 @@ class DirectDataIntakeApi:
         _param = self._job_status_serialize(
             draft_id=draft_id,
             transaction_id=transaction_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -737,6 +775,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -758,6 +797,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param transaction_id: The unique identifier of the transaction. (required)
         :type transaction_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -783,6 +824,7 @@ class DirectDataIntakeApi:
         _param = self._job_status_serialize(
             draft_id=draft_id,
             transaction_id=transaction_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -803,6 +845,7 @@ class DirectDataIntakeApi:
         self,
         draft_id,
         transaction_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -828,6 +871,8 @@ class DirectDataIntakeApi:
             _path_params['transactionId'] = transaction_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -873,6 +918,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         object_name: Annotated[StrictStr, Field(description="The name of the object to return the load schema for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -894,6 +940,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param object_name: The name of the object to return the load schema for. (required)
         :type object_name: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -919,6 +967,7 @@ class DirectDataIntakeApi:
         _param = self._object_schema_serialize(
             draft_id=draft_id,
             object_name=object_name,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -945,6 +994,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         object_name: Annotated[StrictStr, Field(description="The name of the object to return the load schema for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -966,6 +1016,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param object_name: The name of the object to return the load schema for. (required)
         :type object_name: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -991,6 +1043,7 @@ class DirectDataIntakeApi:
         _param = self._object_schema_serialize(
             draft_id=draft_id,
             object_name=object_name,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1017,6 +1070,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         object_name: Annotated[StrictStr, Field(description="The name of the object to return the load schema for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1038,6 +1092,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param object_name: The name of the object to return the load schema for. (required)
         :type object_name: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1063,6 +1119,7 @@ class DirectDataIntakeApi:
         _param = self._object_schema_serialize(
             draft_id=draft_id,
             object_name=object_name,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1083,6 +1140,7 @@ class DirectDataIntakeApi:
         self,
         draft_id,
         object_name,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1108,6 +1166,8 @@ class DirectDataIntakeApi:
             _path_params['objectName'] = object_name
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1153,6 +1213,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         direct_data_load_config_dto: DirectDataLoadConfigDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1174,6 +1235,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param direct_data_load_config_dto: (required)
         :type direct_data_load_config_dto: DirectDataLoadConfigDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1199,6 +1262,7 @@ class DirectDataIntakeApi:
         _param = self._put_config_serialize(
             draft_id=draft_id,
             direct_data_load_config_dto=direct_data_load_config_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1225,6 +1289,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         direct_data_load_config_dto: DirectDataLoadConfigDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1246,6 +1311,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param direct_data_load_config_dto: (required)
         :type direct_data_load_config_dto: DirectDataLoadConfigDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1271,6 +1338,7 @@ class DirectDataIntakeApi:
         _param = self._put_config_serialize(
             draft_id=draft_id,
             direct_data_load_config_dto=direct_data_load_config_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1297,6 +1365,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         direct_data_load_config_dto: DirectDataLoadConfigDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1318,6 +1387,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param direct_data_load_config_dto: (required)
         :type direct_data_load_config_dto: DirectDataLoadConfigDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1343,6 +1414,7 @@ class DirectDataIntakeApi:
         _param = self._put_config_serialize(
             draft_id=draft_id,
             direct_data_load_config_dto=direct_data_load_config_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1363,6 +1435,7 @@ class DirectDataIntakeApi:
         self,
         draft_id,
         direct_data_load_config_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1386,6 +1459,8 @@ class DirectDataIntakeApi:
             _path_params['draftId'] = draft_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if direct_data_load_config_dto is not None:
@@ -1446,6 +1521,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1467,6 +1543,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param transaction_id: The unique identifier of the transaction. (required)
         :type transaction_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1492,6 +1570,7 @@ class DirectDataIntakeApi:
         _param = self._rollback_transaction_serialize(
             draft_id=draft_id,
             transaction_id=transaction_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1518,6 +1597,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1539,6 +1619,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param transaction_id: The unique identifier of the transaction. (required)
         :type transaction_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1564,6 +1646,7 @@ class DirectDataIntakeApi:
         _param = self._rollback_transaction_serialize(
             draft_id=draft_id,
             transaction_id=transaction_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1590,6 +1673,7 @@ class DirectDataIntakeApi:
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1611,6 +1695,8 @@ class DirectDataIntakeApi:
         :type draft_id: str
         :param transaction_id: The unique identifier of the transaction. (required)
         :type transaction_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1636,6 +1722,7 @@ class DirectDataIntakeApi:
         _param = self._rollback_transaction_serialize(
             draft_id=draft_id,
             transaction_id=transaction_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1656,6 +1743,7 @@ class DirectDataIntakeApi:
         self,
         draft_id,
         transaction_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1681,6 +1769,8 @@ class DirectDataIntakeApi:
             _path_params['transactionId'] = transaction_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1725,6 +1815,7 @@ class DirectDataIntakeApi:
     def start_transaction(
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1744,6 +1835,8 @@ class DirectDataIntakeApi:
 
         :param draft_id: The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version. (required)
         :type draft_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1768,6 +1861,7 @@ class DirectDataIntakeApi:
 
         _param = self._start_transaction_serialize(
             draft_id=draft_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1793,6 +1887,7 @@ class DirectDataIntakeApi:
     def start_transaction_with_http_info(
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1812,6 +1907,8 @@ class DirectDataIntakeApi:
 
         :param draft_id: The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version. (required)
         :type draft_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1836,6 +1933,7 @@ class DirectDataIntakeApi:
 
         _param = self._start_transaction_serialize(
             draft_id=draft_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1861,6 +1959,7 @@ class DirectDataIntakeApi:
     def start_transaction_without_preload_content(
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1880,6 +1979,8 @@ class DirectDataIntakeApi:
 
         :param draft_id: The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version. (required)
         :type draft_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1904,6 +2005,7 @@ class DirectDataIntakeApi:
 
         _param = self._start_transaction_serialize(
             draft_id=draft_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1923,6 +2025,7 @@ class DirectDataIntakeApi:
     def _start_transaction_serialize(
         self,
         draft_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1946,6 +2049,8 @@ class DirectDataIntakeApi:
             _path_params['draftId'] = draft_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1992,6 +2097,7 @@ class DirectDataIntakeApi:
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction to load data files into.")],
         object_name: Annotated[StrictStr, Field(description="The name of the object to upload the data to.  If uploading data to a multi-value property (MVP), specify the property in `{object}--{property}` format; for example, `Employee--Employee_Budgeted_Compensation`.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload")] = None,
         _request_timeout: Union[
             None,
@@ -2016,6 +2122,8 @@ class DirectDataIntakeApi:
         :type transaction_id: str
         :param object_name: The name of the object to upload the data to.  If uploading data to a multi-value property (MVP), specify the property in `{object}--{property}` format; for example, `Employee--Employee_Budgeted_Compensation`. (required)
         :type object_name: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param file: The file to upload
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -2044,6 +2152,7 @@ class DirectDataIntakeApi:
             draft_id=draft_id,
             transaction_id=transaction_id,
             object_name=object_name,
+            target_tenant_id=target_tenant_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2072,6 +2181,7 @@ class DirectDataIntakeApi:
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction to load data files into.")],
         object_name: Annotated[StrictStr, Field(description="The name of the object to upload the data to.  If uploading data to a multi-value property (MVP), specify the property in `{object}--{property}` format; for example, `Employee--Employee_Budgeted_Compensation`.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload")] = None,
         _request_timeout: Union[
             None,
@@ -2096,6 +2206,8 @@ class DirectDataIntakeApi:
         :type transaction_id: str
         :param object_name: The name of the object to upload the data to.  If uploading data to a multi-value property (MVP), specify the property in `{object}--{property}` format; for example, `Employee--Employee_Budgeted_Compensation`. (required)
         :type object_name: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param file: The file to upload
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -2124,6 +2236,7 @@ class DirectDataIntakeApi:
             draft_id=draft_id,
             transaction_id=transaction_id,
             object_name=object_name,
+            target_tenant_id=target_tenant_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2152,6 +2265,7 @@ class DirectDataIntakeApi:
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
         transaction_id: Annotated[StrictStr, Field(description="The unique identifier of the transaction to load data files into.")],
         object_name: Annotated[StrictStr, Field(description="The name of the object to upload the data to.  If uploading data to a multi-value property (MVP), specify the property in `{object}--{property}` format; for example, `Employee--Employee_Budgeted_Compensation`.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload")] = None,
         _request_timeout: Union[
             None,
@@ -2176,6 +2290,8 @@ class DirectDataIntakeApi:
         :type transaction_id: str
         :param object_name: The name of the object to upload the data to.  If uploading data to a multi-value property (MVP), specify the property in `{object}--{property}` format; for example, `Employee--Employee_Budgeted_Compensation`. (required)
         :type object_name: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param file: The file to upload
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -2204,6 +2320,7 @@ class DirectDataIntakeApi:
             draft_id=draft_id,
             transaction_id=transaction_id,
             object_name=object_name,
+            target_tenant_id=target_tenant_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2226,6 +2343,7 @@ class DirectDataIntakeApi:
         draft_id,
         transaction_id,
         object_name,
+        target_tenant_id,
         file,
         _request_auth,
         _content_type,
@@ -2254,6 +2372,8 @@ class DirectDataIntakeApi:
             _path_params['objectName'] = object_name
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         if file is not None:
             _files['file'] = file

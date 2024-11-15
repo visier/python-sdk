@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -43,6 +43,7 @@ class DataUploadApi:
     def v1_data_upload_files_filename_put(
         self,
         filename: Annotated[StrictStr, Field(description="The filename of the data file to upload, including the file extension (such as .zip or .csv).")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         body: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
@@ -63,6 +64,8 @@ class DataUploadApi:
 
         :param filename: The filename of the data file to upload, including the file extension (such as .zip or .csv). (required)
         :type filename: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param body:
         :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -89,6 +92,7 @@ class DataUploadApi:
 
         _param = self._v1_data_upload_files_filename_put_serialize(
             filename=filename,
+            target_tenant_id=target_tenant_id,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -115,6 +119,7 @@ class DataUploadApi:
     def v1_data_upload_files_filename_put_with_http_info(
         self,
         filename: Annotated[StrictStr, Field(description="The filename of the data file to upload, including the file extension (such as .zip or .csv).")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         body: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
@@ -135,6 +140,8 @@ class DataUploadApi:
 
         :param filename: The filename of the data file to upload, including the file extension (such as .zip or .csv). (required)
         :type filename: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param body:
         :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -161,6 +168,7 @@ class DataUploadApi:
 
         _param = self._v1_data_upload_files_filename_put_serialize(
             filename=filename,
+            target_tenant_id=target_tenant_id,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -187,6 +195,7 @@ class DataUploadApi:
     def v1_data_upload_files_filename_put_without_preload_content(
         self,
         filename: Annotated[StrictStr, Field(description="The filename of the data file to upload, including the file extension (such as .zip or .csv).")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         body: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
         _request_timeout: Union[
             None,
@@ -207,6 +216,8 @@ class DataUploadApi:
 
         :param filename: The filename of the data file to upload, including the file extension (such as .zip or .csv). (required)
         :type filename: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param body:
         :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -233,6 +244,7 @@ class DataUploadApi:
 
         _param = self._v1_data_upload_files_filename_put_serialize(
             filename=filename,
+            target_tenant_id=target_tenant_id,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -253,6 +265,7 @@ class DataUploadApi:
     def _v1_data_upload_files_filename_put_serialize(
         self,
         filename,
+        target_tenant_id,
         body,
         _request_auth,
         _content_type,
@@ -277,6 +290,8 @@ class DataUploadApi:
             _path_params['filename'] = filename
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if body is not None:
@@ -327,6 +342,7 @@ class DataUploadApi:
     @validate_call
     def v1alpha_op_data_uploads_download_source_files_get(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -343,6 +359,8 @@ class DataUploadApi:
         """v1alpha_op_data_uploads_download_source_files_get
 
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -366,6 +384,7 @@ class DataUploadApi:
         """ # noqa: E501
 
         _param = self._v1alpha_op_data_uploads_download_source_files_get_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -390,6 +409,7 @@ class DataUploadApi:
     @validate_call
     def v1alpha_op_data_uploads_download_source_files_get_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -406,6 +426,8 @@ class DataUploadApi:
         """v1alpha_op_data_uploads_download_source_files_get
 
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -429,6 +451,7 @@ class DataUploadApi:
         """ # noqa: E501
 
         _param = self._v1alpha_op_data_uploads_download_source_files_get_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -453,6 +476,7 @@ class DataUploadApi:
     @validate_call
     def v1alpha_op_data_uploads_download_source_files_get_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -469,6 +493,8 @@ class DataUploadApi:
         """v1alpha_op_data_uploads_download_source_files_get
 
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -492,6 +518,7 @@ class DataUploadApi:
         """ # noqa: E501
 
         _param = self._v1alpha_op_data_uploads_download_source_files_get_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -510,6 +537,7 @@ class DataUploadApi:
 
     def _v1alpha_op_data_uploads_download_source_files_get_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -531,6 +559,8 @@ class DataUploadApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
