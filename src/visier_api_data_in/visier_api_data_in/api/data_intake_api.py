@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -47,6 +47,7 @@ class DataIntakeApi:
     @validate_call
     def get_sources(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,6 +65,8 @@ class DataIntakeApi:
 
         Prior to transferring data to Visier, you must identify the sources you want to target. Sources store data for  the solution and are used to map data to Visier's data model.   **Note:** To set up sources in your tenant, contact Visier Customer Success.  This API allows you to query the list of available sources, and identify the source schema and required fields.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,6 +90,7 @@ class DataIntakeApi:
         """ # noqa: E501
 
         _param = self._get_sources_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -111,6 +115,7 @@ class DataIntakeApi:
     @validate_call
     def get_sources_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -128,6 +133,8 @@ class DataIntakeApi:
 
         Prior to transferring data to Visier, you must identify the sources you want to target. Sources store data for  the solution and are used to map data to Visier's data model.   **Note:** To set up sources in your tenant, contact Visier Customer Success.  This API allows you to query the list of available sources, and identify the source schema and required fields.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -151,6 +158,7 @@ class DataIntakeApi:
         """ # noqa: E501
 
         _param = self._get_sources_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -175,6 +183,7 @@ class DataIntakeApi:
     @validate_call
     def get_sources_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -192,6 +201,8 @@ class DataIntakeApi:
 
         Prior to transferring data to Visier, you must identify the sources you want to target. Sources store data for  the solution and are used to map data to Visier's data model.   **Note:** To set up sources in your tenant, contact Visier Customer Success.  This API allows you to query the list of available sources, and identify the source schema and required fields.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -215,6 +226,7 @@ class DataIntakeApi:
         """ # noqa: E501
 
         _param = self._get_sources_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -233,6 +245,7 @@ class DataIntakeApi:
 
     def _get_sources_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -254,6 +267,8 @@ class DataIntakeApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -302,6 +317,7 @@ class DataIntakeApi:
         source_id: Annotated[Optional[StrictStr], Field(description="The unique identifier associated with the source you want to transfer data to.")] = None,
         sequence: Annotated[Optional[StrictInt], Field(description="The unique sequence number associated with a batch of records.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -329,6 +345,8 @@ class DataIntakeApi:
         :type sequence: int
         :param tenant_code: The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -357,6 +375,7 @@ class DataIntakeApi:
             source_id=source_id,
             sequence=sequence,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -386,6 +405,7 @@ class DataIntakeApi:
         source_id: Annotated[Optional[StrictStr], Field(description="The unique identifier associated with the source you want to transfer data to.")] = None,
         sequence: Annotated[Optional[StrictInt], Field(description="The unique sequence number associated with a batch of records.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -413,6 +433,8 @@ class DataIntakeApi:
         :type sequence: int
         :param tenant_code: The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -441,6 +463,7 @@ class DataIntakeApi:
             source_id=source_id,
             sequence=sequence,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -470,6 +493,7 @@ class DataIntakeApi:
         source_id: Annotated[Optional[StrictStr], Field(description="The unique identifier associated with the source you want to transfer data to.")] = None,
         sequence: Annotated[Optional[StrictInt], Field(description="The unique sequence number associated with a batch of records.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -497,6 +521,8 @@ class DataIntakeApi:
         :type sequence: int
         :param tenant_code: The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -525,6 +551,7 @@ class DataIntakeApi:
             source_id=source_id,
             sequence=sequence,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -548,6 +575,7 @@ class DataIntakeApi:
         source_id,
         sequence,
         tenant_code,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -583,6 +611,8 @@ class DataIntakeApi:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if body is not None:
@@ -642,6 +672,7 @@ class DataIntakeApi:
     def push_data_cancel(
         self,
         transfer_session_id: Annotated[StrictStr, Field(description="The transfer session ID to cancel.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -661,6 +692,8 @@ class DataIntakeApi:
 
         :param transfer_session_id: The transfer session ID to cancel. (required)
         :type transfer_session_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -685,6 +718,7 @@ class DataIntakeApi:
 
         _param = self._push_data_cancel_serialize(
             transfer_session_id=transfer_session_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -710,6 +744,7 @@ class DataIntakeApi:
     def push_data_cancel_with_http_info(
         self,
         transfer_session_id: Annotated[StrictStr, Field(description="The transfer session ID to cancel.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -729,6 +764,8 @@ class DataIntakeApi:
 
         :param transfer_session_id: The transfer session ID to cancel. (required)
         :type transfer_session_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -753,6 +790,7 @@ class DataIntakeApi:
 
         _param = self._push_data_cancel_serialize(
             transfer_session_id=transfer_session_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -778,6 +816,7 @@ class DataIntakeApi:
     def push_data_cancel_without_preload_content(
         self,
         transfer_session_id: Annotated[StrictStr, Field(description="The transfer session ID to cancel.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -797,6 +836,8 @@ class DataIntakeApi:
 
         :param transfer_session_id: The transfer session ID to cancel. (required)
         :type transfer_session_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -821,6 +862,7 @@ class DataIntakeApi:
 
         _param = self._push_data_cancel_serialize(
             transfer_session_id=transfer_session_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -840,6 +882,7 @@ class DataIntakeApi:
     def _push_data_cancel_serialize(
         self,
         transfer_session_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -863,6 +906,8 @@ class DataIntakeApi:
             _path_params['transferSessionId'] = transfer_session_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -907,6 +952,7 @@ class DataIntakeApi:
     def push_data_complete(
         self,
         push_data_complete_request: PushDataCompleteRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -926,6 +972,8 @@ class DataIntakeApi:
 
         :param push_data_complete_request: (required)
         :type push_data_complete_request: PushDataCompleteRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -950,6 +998,7 @@ class DataIntakeApi:
 
         _param = self._push_data_complete_serialize(
             push_data_complete_request=push_data_complete_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -975,6 +1024,7 @@ class DataIntakeApi:
     def push_data_complete_with_http_info(
         self,
         push_data_complete_request: PushDataCompleteRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -994,6 +1044,8 @@ class DataIntakeApi:
 
         :param push_data_complete_request: (required)
         :type push_data_complete_request: PushDataCompleteRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1018,6 +1070,7 @@ class DataIntakeApi:
 
         _param = self._push_data_complete_serialize(
             push_data_complete_request=push_data_complete_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1043,6 +1096,7 @@ class DataIntakeApi:
     def push_data_complete_without_preload_content(
         self,
         push_data_complete_request: PushDataCompleteRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1062,6 +1116,8 @@ class DataIntakeApi:
 
         :param push_data_complete_request: (required)
         :type push_data_complete_request: PushDataCompleteRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1086,6 +1142,7 @@ class DataIntakeApi:
 
         _param = self._push_data_complete_serialize(
             push_data_complete_request=push_data_complete_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1105,6 +1162,7 @@ class DataIntakeApi:
     def _push_data_complete_serialize(
         self,
         push_data_complete_request,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1126,6 +1184,8 @@ class DataIntakeApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if push_data_complete_request is not None:
@@ -1184,6 +1244,7 @@ class DataIntakeApi:
     @validate_call
     def start_transfer(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1201,6 +1262,8 @@ class DataIntakeApi:
 
         Start a new transfer session. A transfer session can include one or more batches of records to be  sent to Visier. Batches of records may be transferred as JSON or file payloads.   Recommended: For optimal performance, please include all batches of records in a single transfer session.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1224,6 +1287,7 @@ class DataIntakeApi:
         """ # noqa: E501
 
         _param = self._start_transfer_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1248,6 +1312,7 @@ class DataIntakeApi:
     @validate_call
     def start_transfer_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1265,6 +1330,8 @@ class DataIntakeApi:
 
         Start a new transfer session. A transfer session can include one or more batches of records to be  sent to Visier. Batches of records may be transferred as JSON or file payloads.   Recommended: For optimal performance, please include all batches of records in a single transfer session.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1288,6 +1355,7 @@ class DataIntakeApi:
         """ # noqa: E501
 
         _param = self._start_transfer_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1312,6 +1380,7 @@ class DataIntakeApi:
     @validate_call
     def start_transfer_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1329,6 +1398,8 @@ class DataIntakeApi:
 
         Start a new transfer session. A transfer session can include one or more batches of records to be  sent to Visier. Batches of records may be transferred as JSON or file payloads.   Recommended: For optimal performance, please include all batches of records in a single transfer session.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1352,6 +1423,7 @@ class DataIntakeApi:
         """ # noqa: E501
 
         _param = self._start_transfer_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1370,6 +1442,7 @@ class DataIntakeApi:
 
     def _start_transfer_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1391,6 +1464,8 @@ class DataIntakeApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1438,7 +1513,8 @@ class DataIntakeApi:
         source_id: Annotated[Optional[StrictStr], Field(description="The unique identifier associated with the source you want to transfer data to.")] = None,
         sequence: Annotated[Optional[StrictStr], Field(description="The unique sequence number associated with a batch of records.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.")] = None,
-        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload in CSV or ZIP format.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1464,7 +1540,9 @@ class DataIntakeApi:
         :type sequence: str
         :param tenant_code: The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.
         :type tenant_code: str
-        :param file: The file to upload
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param file: The file to upload in CSV or ZIP format.
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1493,6 +1571,7 @@ class DataIntakeApi:
             source_id=source_id,
             sequence=sequence,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1522,7 +1601,8 @@ class DataIntakeApi:
         source_id: Annotated[Optional[StrictStr], Field(description="The unique identifier associated with the source you want to transfer data to.")] = None,
         sequence: Annotated[Optional[StrictStr], Field(description="The unique sequence number associated with a batch of records.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.")] = None,
-        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload in CSV or ZIP format.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1548,7 +1628,9 @@ class DataIntakeApi:
         :type sequence: str
         :param tenant_code: The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.
         :type tenant_code: str
-        :param file: The file to upload
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param file: The file to upload in CSV or ZIP format.
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1577,6 +1659,7 @@ class DataIntakeApi:
             source_id=source_id,
             sequence=sequence,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1606,7 +1689,8 @@ class DataIntakeApi:
         source_id: Annotated[Optional[StrictStr], Field(description="The unique identifier associated with the source you want to transfer data to.")] = None,
         sequence: Annotated[Optional[StrictStr], Field(description="The unique sequence number associated with a batch of records.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.")] = None,
-        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file to upload in CSV or ZIP format.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1632,7 +1716,9 @@ class DataIntakeApi:
         :type sequence: str
         :param tenant_code: The code of the tenant you want to transfer data to. For example, WFF_j1r or WFF_j1r~c7o.
         :type tenant_code: str
-        :param file: The file to upload
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param file: The file to upload in CSV or ZIP format.
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1661,6 +1747,7 @@ class DataIntakeApi:
             source_id=source_id,
             sequence=sequence,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1684,6 +1771,7 @@ class DataIntakeApi:
         source_id,
         sequence,
         tenant_code,
+        target_tenant_id,
         file,
         _request_auth,
         _content_type,
@@ -1720,6 +1808,8 @@ class DataIntakeApi:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         if file is not None:
             _files['file'] = file

@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -67,6 +67,7 @@ class DataModelApi:
     def analytic_metrics(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve metrics for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -86,6 +87,8 @@ class DataModelApi:
 
         :param id: The ID of the analytic object to retrieve metrics for. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -110,6 +113,7 @@ class DataModelApi:
 
         _param = self._analytic_metrics_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -135,6 +139,7 @@ class DataModelApi:
     def analytic_metrics_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve metrics for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -154,6 +159,8 @@ class DataModelApi:
 
         :param id: The ID of the analytic object to retrieve metrics for. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -178,6 +185,7 @@ class DataModelApi:
 
         _param = self._analytic_metrics_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -203,6 +211,7 @@ class DataModelApi:
     def analytic_metrics_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve metrics for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -222,6 +231,8 @@ class DataModelApi:
 
         :param id: The ID of the analytic object to retrieve metrics for. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -246,6 +257,7 @@ class DataModelApi:
 
         _param = self._analytic_metrics_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -265,6 +277,7 @@ class DataModelApi:
     def _analytic_metrics_serialize(
         self,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -288,6 +301,8 @@ class DataModelApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -332,6 +347,7 @@ class DataModelApi:
     def analytic_object(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -351,6 +367,8 @@ class DataModelApi:
 
         :param id: The ID of the analytic object to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -375,6 +393,7 @@ class DataModelApi:
 
         _param = self._analytic_object_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -400,6 +419,7 @@ class DataModelApi:
     def analytic_object_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -419,6 +439,8 @@ class DataModelApi:
 
         :param id: The ID of the analytic object to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -443,6 +465,7 @@ class DataModelApi:
 
         _param = self._analytic_object_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -468,6 +491,7 @@ class DataModelApi:
     def analytic_object_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -487,6 +511,8 @@ class DataModelApi:
 
         :param id: The ID of the analytic object to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -511,6 +537,7 @@ class DataModelApi:
 
         _param = self._analytic_object_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -530,6 +557,7 @@ class DataModelApi:
     def _analytic_object_serialize(
         self,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -553,6 +581,8 @@ class DataModelApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -598,6 +628,7 @@ class DataModelApi:
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the analytic objects to retrieve. Default is all analytic objects.")] = None,
         object_type: Annotated[Optional[StrictStr], Field(description="The object type to filter the returned analytic objects by.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -619,6 +650,8 @@ class DataModelApi:
         :type id: List[str]
         :param object_type: The object type to filter the returned analytic objects by.
         :type object_type: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -644,6 +677,7 @@ class DataModelApi:
         _param = self._analytic_objects_serialize(
             id=id,
             object_type=object_type,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -670,6 +704,7 @@ class DataModelApi:
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the analytic objects to retrieve. Default is all analytic objects.")] = None,
         object_type: Annotated[Optional[StrictStr], Field(description="The object type to filter the returned analytic objects by.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -691,6 +726,8 @@ class DataModelApi:
         :type id: List[str]
         :param object_type: The object type to filter the returned analytic objects by.
         :type object_type: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -716,6 +753,7 @@ class DataModelApi:
         _param = self._analytic_objects_serialize(
             id=id,
             object_type=object_type,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -742,6 +780,7 @@ class DataModelApi:
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the analytic objects to retrieve. Default is all analytic objects.")] = None,
         object_type: Annotated[Optional[StrictStr], Field(description="The object type to filter the returned analytic objects by.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -763,6 +802,8 @@ class DataModelApi:
         :type id: List[str]
         :param object_type: The object type to filter the returned analytic objects by.
         :type object_type: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -788,6 +829,7 @@ class DataModelApi:
         _param = self._analytic_objects_serialize(
             id=id,
             object_type=object_type,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -808,6 +850,7 @@ class DataModelApi:
         self,
         id,
         object_type,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -838,6 +881,8 @@ class DataModelApi:
             _query_params.append(('objectType', object_type))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -883,6 +928,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[List[StrictStr], Field(description="The ID of the property to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -904,6 +950,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The ID of the property to retrieve. (required)
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -929,6 +977,7 @@ class DataModelApi:
         _param = self._call_property_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -955,6 +1004,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[List[StrictStr], Field(description="The ID of the property to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -976,6 +1026,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The ID of the property to retrieve. (required)
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1001,6 +1053,7 @@ class DataModelApi:
         _param = self._call_property_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1027,6 +1080,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[List[StrictStr], Field(description="The ID of the property to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1048,6 +1102,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The ID of the property to retrieve. (required)
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1073,6 +1129,7 @@ class DataModelApi:
         _param = self._call_property_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1093,6 +1150,7 @@ class DataModelApi:
         self,
         object_id,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1119,6 +1177,8 @@ class DataModelApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1162,6 +1222,7 @@ class DataModelApi:
     @validate_call
     def currencies(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1179,6 +1240,8 @@ class DataModelApi:
 
         Retrieve all the available currencies in your Visier solution.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1202,6 +1265,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._currencies_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1226,6 +1290,7 @@ class DataModelApi:
     @validate_call
     def currencies_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1243,6 +1308,8 @@ class DataModelApi:
 
         Retrieve all the available currencies in your Visier solution.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1266,6 +1333,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._currencies_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1290,6 +1358,7 @@ class DataModelApi:
     @validate_call
     def currencies_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1307,6 +1376,8 @@ class DataModelApi:
 
         Retrieve all the available currencies in your Visier solution.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1330,6 +1401,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._currencies_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1348,6 +1420,7 @@ class DataModelApi:
 
     def _currencies_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1369,6 +1442,8 @@ class DataModelApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1413,6 +1488,7 @@ class DataModelApi:
     def currency(
         self,
         id: Annotated[StrictStr, Field(description="The ISO 4217 3-letter code for the currency.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1432,6 +1508,8 @@ class DataModelApi:
 
         :param id: The ISO 4217 3-letter code for the currency. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1456,6 +1534,7 @@ class DataModelApi:
 
         _param = self._currency_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1481,6 +1560,7 @@ class DataModelApi:
     def currency_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ISO 4217 3-letter code for the currency.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1500,6 +1580,8 @@ class DataModelApi:
 
         :param id: The ISO 4217 3-letter code for the currency. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1524,6 +1606,7 @@ class DataModelApi:
 
         _param = self._currency_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1549,6 +1632,7 @@ class DataModelApi:
     def currency_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ISO 4217 3-letter code for the currency.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1568,6 +1652,8 @@ class DataModelApi:
 
         :param id: The ISO 4217 3-letter code for the currency. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1592,6 +1678,7 @@ class DataModelApi:
 
         _param = self._currency_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1611,6 +1698,7 @@ class DataModelApi:
     def _currency_serialize(
         self,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1634,6 +1722,8 @@ class DataModelApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1681,6 +1771,7 @@ class DataModelApi:
         start_time: Annotated[Optional[StrictStr], Field(description="The earliest time instant to retrieve exchange rates from. Default is to use 0 milliseconds.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The latest time instant to retrieve exchange rates from. Default is to use the time of this request in milliseconds.")] = None,
         decimals: Annotated[Optional[StrictStr], Field(description="The number of decimals to round exchange rates to. Default is to round to 2 decimal places.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1706,6 +1797,8 @@ class DataModelApi:
         :type end_time: str
         :param decimals: The number of decimals to round exchange rates to. Default is to round to 2 decimal places.
         :type decimals: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1733,6 +1826,7 @@ class DataModelApi:
             start_time=start_time,
             end_time=end_time,
             decimals=decimals,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1761,6 +1855,7 @@ class DataModelApi:
         start_time: Annotated[Optional[StrictStr], Field(description="The earliest time instant to retrieve exchange rates from. Default is to use 0 milliseconds.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The latest time instant to retrieve exchange rates from. Default is to use the time of this request in milliseconds.")] = None,
         decimals: Annotated[Optional[StrictStr], Field(description="The number of decimals to round exchange rates to. Default is to round to 2 decimal places.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1786,6 +1881,8 @@ class DataModelApi:
         :type end_time: str
         :param decimals: The number of decimals to round exchange rates to. Default is to round to 2 decimal places.
         :type decimals: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1813,6 +1910,7 @@ class DataModelApi:
             start_time=start_time,
             end_time=end_time,
             decimals=decimals,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1841,6 +1939,7 @@ class DataModelApi:
         start_time: Annotated[Optional[StrictStr], Field(description="The earliest time instant to retrieve exchange rates from. Default is to use 0 milliseconds.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The latest time instant to retrieve exchange rates from. Default is to use the time of this request in milliseconds.")] = None,
         decimals: Annotated[Optional[StrictStr], Field(description="The number of decimals to round exchange rates to. Default is to round to 2 decimal places.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1866,6 +1965,8 @@ class DataModelApi:
         :type end_time: str
         :param decimals: The number of decimals to round exchange rates to. Default is to round to 2 decimal places.
         :type decimals: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1893,6 +1994,7 @@ class DataModelApi:
             start_time=start_time,
             end_time=end_time,
             decimals=decimals,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1915,6 +2017,7 @@ class DataModelApi:
         start_time,
         end_time,
         decimals,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1950,6 +2053,8 @@ class DataModelApi:
             _query_params.append(('decimals', decimals))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1998,6 +2103,7 @@ class DataModelApi:
         start_time: Annotated[Optional[StrictStr], Field(description="The earliest time instant to retrieve exchange rates from. Default is to use 0 milliseconds.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The latest time instant to retrieve exchange rates from. Default is to use the time of this request in milliseconds.")] = None,
         decimals: Annotated[Optional[StrictStr], Field(description="The number of decimals to round exchange rates to. Default is to round to 2 decimal places.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2025,6 +2131,8 @@ class DataModelApi:
         :type end_time: str
         :param decimals: The number of decimals to round exchange rates to. Default is to round to 2 decimal places.
         :type decimals: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2053,6 +2161,7 @@ class DataModelApi:
             start_time=start_time,
             end_time=end_time,
             decimals=decimals,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2082,6 +2191,7 @@ class DataModelApi:
         start_time: Annotated[Optional[StrictStr], Field(description="The earliest time instant to retrieve exchange rates from. Default is to use 0 milliseconds.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The latest time instant to retrieve exchange rates from. Default is to use the time of this request in milliseconds.")] = None,
         decimals: Annotated[Optional[StrictStr], Field(description="The number of decimals to round exchange rates to. Default is to round to 2 decimal places.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2109,6 +2219,8 @@ class DataModelApi:
         :type end_time: str
         :param decimals: The number of decimals to round exchange rates to. Default is to round to 2 decimal places.
         :type decimals: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2137,6 +2249,7 @@ class DataModelApi:
             start_time=start_time,
             end_time=end_time,
             decimals=decimals,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2166,6 +2279,7 @@ class DataModelApi:
         start_time: Annotated[Optional[StrictStr], Field(description="The earliest time instant to retrieve exchange rates from. Default is to use 0 milliseconds.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The latest time instant to retrieve exchange rates from. Default is to use the time of this request in milliseconds.")] = None,
         decimals: Annotated[Optional[StrictStr], Field(description="The number of decimals to round exchange rates to. Default is to round to 2 decimal places.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2193,6 +2307,8 @@ class DataModelApi:
         :type end_time: str
         :param decimals: The number of decimals to round exchange rates to. Default is to round to 2 decimal places.
         :type decimals: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2221,6 +2337,7 @@ class DataModelApi:
             start_time=start_time,
             end_time=end_time,
             decimals=decimals,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2244,6 +2361,7 @@ class DataModelApi:
         start_time,
         end_time,
         decimals,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2281,6 +2399,8 @@ class DataModelApi:
             _query_params.append(('decimals', decimals))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -2326,6 +2446,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[StrictStr, Field(description="The ID of the dimension to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2347,6 +2468,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The ID of the dimension to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2372,6 +2495,7 @@ class DataModelApi:
         _param = self._dimension_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2398,6 +2522,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[StrictStr, Field(description="The ID of the dimension to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2419,6 +2544,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The ID of the dimension to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2444,6 +2571,7 @@ class DataModelApi:
         _param = self._dimension_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2470,6 +2598,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[StrictStr, Field(description="The ID of the dimension to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2491,6 +2620,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The ID of the dimension to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2516,6 +2647,7 @@ class DataModelApi:
         _param = self._dimension_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2536,6 +2668,7 @@ class DataModelApi:
         self,
         object_id,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2561,6 +2694,8 @@ class DataModelApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -2607,6 +2742,7 @@ class DataModelApi:
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object.")],
         dimension_id: Annotated[StrictStr, Field(description="The ID of a dimension of the member map.")],
         dimension_mapping_validation_execution_dto: DimensionMappingValidationExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2630,6 +2766,8 @@ class DataModelApi:
         :type dimension_id: str
         :param dimension_mapping_validation_execution_dto: (required)
         :type dimension_mapping_validation_execution_dto: DimensionMappingValidationExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2656,6 +2794,7 @@ class DataModelApi:
             object_id=object_id,
             dimension_id=dimension_id,
             dimension_mapping_validation_execution_dto=dimension_mapping_validation_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2683,6 +2822,7 @@ class DataModelApi:
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object.")],
         dimension_id: Annotated[StrictStr, Field(description="The ID of a dimension of the member map.")],
         dimension_mapping_validation_execution_dto: DimensionMappingValidationExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2706,6 +2846,8 @@ class DataModelApi:
         :type dimension_id: str
         :param dimension_mapping_validation_execution_dto: (required)
         :type dimension_mapping_validation_execution_dto: DimensionMappingValidationExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2732,6 +2874,7 @@ class DataModelApi:
             object_id=object_id,
             dimension_id=dimension_id,
             dimension_mapping_validation_execution_dto=dimension_mapping_validation_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2759,6 +2902,7 @@ class DataModelApi:
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object.")],
         dimension_id: Annotated[StrictStr, Field(description="The ID of a dimension of the member map.")],
         dimension_mapping_validation_execution_dto: DimensionMappingValidationExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2782,6 +2926,8 @@ class DataModelApi:
         :type dimension_id: str
         :param dimension_mapping_validation_execution_dto: (required)
         :type dimension_mapping_validation_execution_dto: DimensionMappingValidationExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2808,6 +2954,7 @@ class DataModelApi:
             object_id=object_id,
             dimension_id=dimension_id,
             dimension_mapping_validation_execution_dto=dimension_mapping_validation_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2829,6 +2976,7 @@ class DataModelApi:
         object_id,
         dimension_id,
         dimension_mapping_validation_execution_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2854,6 +3002,8 @@ class DataModelApi:
             _path_params['dimensionId'] = dimension_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if dimension_mapping_validation_execution_dto is not None:
@@ -2914,6 +3064,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the dimensions to retrieve. Default is all dimensions.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2935,6 +3086,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The IDs of the dimensions to retrieve. Default is all dimensions.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2960,6 +3113,7 @@ class DataModelApi:
         _param = self._dimensions_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2986,6 +3140,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the dimensions to retrieve. Default is all dimensions.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3007,6 +3162,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The IDs of the dimensions to retrieve. Default is all dimensions.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3032,6 +3189,7 @@ class DataModelApi:
         _param = self._dimensions_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3058,6 +3216,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the dimensions to retrieve. Default is all dimensions.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3079,6 +3238,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The IDs of the dimensions to retrieve. Default is all dimensions.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3104,6 +3265,7 @@ class DataModelApi:
         _param = self._dimensions_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3124,6 +3286,7 @@ class DataModelApi:
         self,
         object_id,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3152,6 +3315,8 @@ class DataModelApi:
             _query_params.append(('id', id))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -3199,6 +3364,7 @@ class DataModelApi:
         dimension_id: Annotated[StrictStr, Field(description="The ID of the dimension.")],
         id: StrictStr,
         id2: Annotated[Optional[StrictStr], Field(description="The ID of the member to retrieve.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3224,6 +3390,8 @@ class DataModelApi:
         :type id: str
         :param id2: The ID of the member to retrieve.
         :type id2: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3251,6 +3419,7 @@ class DataModelApi:
             dimension_id=dimension_id,
             id=id,
             id2=id2,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3279,6 +3448,7 @@ class DataModelApi:
         dimension_id: Annotated[StrictStr, Field(description="The ID of the dimension.")],
         id: StrictStr,
         id2: Annotated[Optional[StrictStr], Field(description="The ID of the member to retrieve.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3304,6 +3474,8 @@ class DataModelApi:
         :type id: str
         :param id2: The ID of the member to retrieve.
         :type id2: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3331,6 +3503,7 @@ class DataModelApi:
             dimension_id=dimension_id,
             id=id,
             id2=id2,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3359,6 +3532,7 @@ class DataModelApi:
         dimension_id: Annotated[StrictStr, Field(description="The ID of the dimension.")],
         id: StrictStr,
         id2: Annotated[Optional[StrictStr], Field(description="The ID of the member to retrieve.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3384,6 +3558,8 @@ class DataModelApi:
         :type id: str
         :param id2: The ID of the member to retrieve.
         :type id2: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3411,6 +3587,7 @@ class DataModelApi:
             dimension_id=dimension_id,
             id=id,
             id2=id2,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3433,6 +3610,7 @@ class DataModelApi:
         dimension_id,
         id,
         id2,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3464,6 +3642,8 @@ class DataModelApi:
             _query_params.append(('Id', id2))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -3517,6 +3697,7 @@ class DataModelApi:
         offset: Annotated[Optional[StrictInt], Field(description="For paginated member requests against high-cardinality dimensions, the offset of the first member to retrieve. Default is 0. If the `offset` value is specified to a non-default value, all other non-pagination parameters are ignored.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="For paginated member requests against high-cardinality dimensions, the maximum number of members to retrieve. Default is -1, meaning no limit. If the `limit` value is specified to a non-default value, all other non-pagination parameters are ignored.")] = None,
         sort_type: Annotated[Optional[StrictStr], Field(description="The order of the members in the response. Valid values:  - **configured**: Sorts the members according to their configuration; for example, the configured order of dimension members in the studio experience.  - **natural**: Sorts the members by their natural order; for example, sorted in ascending order by level in a parent-child dimension.   Default is `natural`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3554,6 +3735,8 @@ class DataModelApi:
         :type limit: int
         :param sort_type: The order of the members in the response. Valid values:  - **configured**: Sorts the members according to their configuration; for example, the configured order of dimension members in the studio experience.  - **natural**: Sorts the members by their natural order; for example, sorted in ascending order by level in a parent-child dimension.   Default is `natural`.
         :type sort_type: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3587,6 +3770,7 @@ class DataModelApi:
             offset=offset,
             limit=limit,
             sort_type=sort_type,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3621,6 +3805,7 @@ class DataModelApi:
         offset: Annotated[Optional[StrictInt], Field(description="For paginated member requests against high-cardinality dimensions, the offset of the first member to retrieve. Default is 0. If the `offset` value is specified to a non-default value, all other non-pagination parameters are ignored.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="For paginated member requests against high-cardinality dimensions, the maximum number of members to retrieve. Default is -1, meaning no limit. If the `limit` value is specified to a non-default value, all other non-pagination parameters are ignored.")] = None,
         sort_type: Annotated[Optional[StrictStr], Field(description="The order of the members in the response. Valid values:  - **configured**: Sorts the members according to their configuration; for example, the configured order of dimension members in the studio experience.  - **natural**: Sorts the members by their natural order; for example, sorted in ascending order by level in a parent-child dimension.   Default is `natural`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3658,6 +3843,8 @@ class DataModelApi:
         :type limit: int
         :param sort_type: The order of the members in the response. Valid values:  - **configured**: Sorts the members according to their configuration; for example, the configured order of dimension members in the studio experience.  - **natural**: Sorts the members by their natural order; for example, sorted in ascending order by level in a parent-child dimension.   Default is `natural`.
         :type sort_type: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3691,6 +3878,7 @@ class DataModelApi:
             offset=offset,
             limit=limit,
             sort_type=sort_type,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3725,6 +3913,7 @@ class DataModelApi:
         offset: Annotated[Optional[StrictInt], Field(description="For paginated member requests against high-cardinality dimensions, the offset of the first member to retrieve. Default is 0. If the `offset` value is specified to a non-default value, all other non-pagination parameters are ignored.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="For paginated member requests against high-cardinality dimensions, the maximum number of members to retrieve. Default is -1, meaning no limit. If the `limit` value is specified to a non-default value, all other non-pagination parameters are ignored.")] = None,
         sort_type: Annotated[Optional[StrictStr], Field(description="The order of the members in the response. Valid values:  - **configured**: Sorts the members according to their configuration; for example, the configured order of dimension members in the studio experience.  - **natural**: Sorts the members by their natural order; for example, sorted in ascending order by level in a parent-child dimension.   Default is `natural`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3762,6 +3951,8 @@ class DataModelApi:
         :type limit: int
         :param sort_type: The order of the members in the response. Valid values:  - **configured**: Sorts the members according to their configuration; for example, the configured order of dimension members in the studio experience.  - **natural**: Sorts the members by their natural order; for example, sorted in ascending order by level in a parent-child dimension.   Default is `natural`.
         :type sort_type: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3795,6 +3986,7 @@ class DataModelApi:
             offset=offset,
             limit=limit,
             sort_type=sort_type,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3823,6 +4015,7 @@ class DataModelApi:
         offset,
         limit,
         sort_type,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3881,6 +4074,8 @@ class DataModelApi:
             _query_params.append(('sortType', sort_type))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -3925,6 +4120,7 @@ class DataModelApi:
     def metric(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the metric to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3944,6 +4140,8 @@ class DataModelApi:
 
         :param id: The ID of the metric to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3968,6 +4166,7 @@ class DataModelApi:
 
         _param = self._metric_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3993,6 +4192,7 @@ class DataModelApi:
     def metric_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the metric to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4012,6 +4212,8 @@ class DataModelApi:
 
         :param id: The ID of the metric to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4036,6 +4238,7 @@ class DataModelApi:
 
         _param = self._metric_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4061,6 +4264,7 @@ class DataModelApi:
     def metric_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the metric to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4080,6 +4284,8 @@ class DataModelApi:
 
         :param id: The ID of the metric to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4104,6 +4310,7 @@ class DataModelApi:
 
         _param = self._metric_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4123,6 +4330,7 @@ class DataModelApi:
     def _metric_serialize(
         self,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -4146,6 +4354,8 @@ class DataModelApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -4191,6 +4401,7 @@ class DataModelApi:
         self,
         metric_id: Annotated[StrictStr, Field(description="The ID of the metric to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the dimensions to retrieve. Default is all dimensions.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4212,6 +4423,8 @@ class DataModelApi:
         :type metric_id: str
         :param id: The IDs of the dimensions to retrieve. Default is all dimensions.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4237,6 +4450,7 @@ class DataModelApi:
         _param = self._metric_dimensions_serialize(
             metric_id=metric_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4263,6 +4477,7 @@ class DataModelApi:
         self,
         metric_id: Annotated[StrictStr, Field(description="The ID of the metric to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the dimensions to retrieve. Default is all dimensions.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4284,6 +4499,8 @@ class DataModelApi:
         :type metric_id: str
         :param id: The IDs of the dimensions to retrieve. Default is all dimensions.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4309,6 +4526,7 @@ class DataModelApi:
         _param = self._metric_dimensions_serialize(
             metric_id=metric_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4335,6 +4553,7 @@ class DataModelApi:
         self,
         metric_id: Annotated[StrictStr, Field(description="The ID of the metric to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the dimensions to retrieve. Default is all dimensions.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4356,6 +4575,8 @@ class DataModelApi:
         :type metric_id: str
         :param id: The IDs of the dimensions to retrieve. Default is all dimensions.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4381,6 +4602,7 @@ class DataModelApi:
         _param = self._metric_dimensions_serialize(
             metric_id=metric_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4401,6 +4623,7 @@ class DataModelApi:
         self,
         metric_id,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -4429,6 +4652,8 @@ class DataModelApi:
             _query_params.append(('id', id))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -4474,6 +4699,7 @@ class DataModelApi:
         self,
         metric_id: Annotated[StrictStr, Field(description="The ID of the metric to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the selection concepts to retrieve. Default is all selection concepts.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4495,6 +4721,8 @@ class DataModelApi:
         :type metric_id: str
         :param id: The IDs of the selection concepts to retrieve. Default is all selection concepts.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4520,6 +4748,7 @@ class DataModelApi:
         _param = self._metric_selection_concepts_serialize(
             metric_id=metric_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4546,6 +4775,7 @@ class DataModelApi:
         self,
         metric_id: Annotated[StrictStr, Field(description="The ID of the metric to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the selection concepts to retrieve. Default is all selection concepts.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4567,6 +4797,8 @@ class DataModelApi:
         :type metric_id: str
         :param id: The IDs of the selection concepts to retrieve. Default is all selection concepts.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4592,6 +4824,7 @@ class DataModelApi:
         _param = self._metric_selection_concepts_serialize(
             metric_id=metric_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4618,6 +4851,7 @@ class DataModelApi:
         self,
         metric_id: Annotated[StrictStr, Field(description="The ID of the metric to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the selection concepts to retrieve. Default is all selection concepts.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4639,6 +4873,8 @@ class DataModelApi:
         :type metric_id: str
         :param id: The IDs of the selection concepts to retrieve. Default is all selection concepts.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4664,6 +4900,7 @@ class DataModelApi:
         _param = self._metric_selection_concepts_serialize(
             metric_id=metric_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4684,6 +4921,7 @@ class DataModelApi:
         self,
         metric_id,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -4712,6 +4950,8 @@ class DataModelApi:
             _query_params.append(('id', id))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -4757,6 +4997,7 @@ class DataModelApi:
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the metrics to retrieve. Default is all metrics.")] = None,
         category: Annotated[Optional[StrictStr], Field(description="The category to filter the returned metrics by.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4778,6 +5019,8 @@ class DataModelApi:
         :type id: List[str]
         :param category: The category to filter the returned metrics by.
         :type category: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4803,6 +5046,7 @@ class DataModelApi:
         _param = self._metrics_serialize(
             id=id,
             category=category,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4829,6 +5073,7 @@ class DataModelApi:
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the metrics to retrieve. Default is all metrics.")] = None,
         category: Annotated[Optional[StrictStr], Field(description="The category to filter the returned metrics by.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4850,6 +5095,8 @@ class DataModelApi:
         :type id: List[str]
         :param category: The category to filter the returned metrics by.
         :type category: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4875,6 +5122,7 @@ class DataModelApi:
         _param = self._metrics_serialize(
             id=id,
             category=category,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4901,6 +5149,7 @@ class DataModelApi:
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the metrics to retrieve. Default is all metrics.")] = None,
         category: Annotated[Optional[StrictStr], Field(description="The category to filter the returned metrics by.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4922,6 +5171,8 @@ class DataModelApi:
         :type id: List[str]
         :param category: The category to filter the returned metrics by.
         :type category: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4947,6 +5198,7 @@ class DataModelApi:
         _param = self._metrics_serialize(
             id=id,
             category=category,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4967,6 +5219,7 @@ class DataModelApi:
         self,
         id,
         category,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -4997,6 +5250,8 @@ class DataModelApi:
             _query_params.append(('category', category))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -5041,6 +5296,7 @@ class DataModelApi:
     def planning_metrics(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the planning model to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5060,6 +5316,8 @@ class DataModelApi:
 
         :param id: The ID of the planning model to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5084,6 +5342,7 @@ class DataModelApi:
 
         _param = self._planning_metrics_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5109,6 +5368,7 @@ class DataModelApi:
     def planning_metrics_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the planning model to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5128,6 +5388,8 @@ class DataModelApi:
 
         :param id: The ID of the planning model to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5152,6 +5414,7 @@ class DataModelApi:
 
         _param = self._planning_metrics_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5177,6 +5440,7 @@ class DataModelApi:
     def planning_metrics_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the planning model to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5196,6 +5460,8 @@ class DataModelApi:
 
         :param id: The ID of the planning model to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5220,6 +5486,7 @@ class DataModelApi:
 
         _param = self._planning_metrics_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5239,6 +5506,7 @@ class DataModelApi:
     def _planning_metrics_serialize(
         self,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -5262,6 +5530,8 @@ class DataModelApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -5306,6 +5576,7 @@ class DataModelApi:
     def planning_model(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the planning model to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5325,6 +5596,8 @@ class DataModelApi:
 
         :param id: The ID of the planning model to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5349,6 +5622,7 @@ class DataModelApi:
 
         _param = self._planning_model_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5374,6 +5648,7 @@ class DataModelApi:
     def planning_model_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the planning model to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5393,6 +5668,8 @@ class DataModelApi:
 
         :param id: The ID of the planning model to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5417,6 +5694,7 @@ class DataModelApi:
 
         _param = self._planning_model_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5442,6 +5720,7 @@ class DataModelApi:
     def planning_model_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the planning model to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5461,6 +5740,8 @@ class DataModelApi:
 
         :param id: The ID of the planning model to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5485,6 +5766,7 @@ class DataModelApi:
 
         _param = self._planning_model_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5504,6 +5786,7 @@ class DataModelApi:
     def _planning_model_serialize(
         self,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -5527,6 +5810,8 @@ class DataModelApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -5571,6 +5856,7 @@ class DataModelApi:
     def planning_models(
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the planning models to retrieve. Default is all models.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5590,6 +5876,8 @@ class DataModelApi:
 
         :param id: The IDs of the planning models to retrieve. Default is all models.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5614,6 +5902,7 @@ class DataModelApi:
 
         _param = self._planning_models_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5639,6 +5928,7 @@ class DataModelApi:
     def planning_models_with_http_info(
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the planning models to retrieve. Default is all models.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5658,6 +5948,8 @@ class DataModelApi:
 
         :param id: The IDs of the planning models to retrieve. Default is all models.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5682,6 +5974,7 @@ class DataModelApi:
 
         _param = self._planning_models_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5707,6 +6000,7 @@ class DataModelApi:
     def planning_models_without_preload_content(
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the planning models to retrieve. Default is all models.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5726,6 +6020,8 @@ class DataModelApi:
 
         :param id: The IDs of the planning models to retrieve. Default is all models.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5750,6 +6046,7 @@ class DataModelApi:
 
         _param = self._planning_models_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5769,6 +6066,7 @@ class DataModelApi:
     def _planning_models_serialize(
         self,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -5795,6 +6093,8 @@ class DataModelApi:
             _query_params.append(('id', id))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -5840,6 +6140,7 @@ class DataModelApi:
         self,
         model_id: Annotated[StrictStr, Field(description="The ID of the planning model to retrieve.")],
         id: Annotated[StrictStr, Field(description="The ID of the plan to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5861,6 +6162,8 @@ class DataModelApi:
         :type model_id: str
         :param id: The ID of the plan to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5886,6 +6189,7 @@ class DataModelApi:
         _param = self._planning_plan_serialize(
             model_id=model_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5912,6 +6216,7 @@ class DataModelApi:
         self,
         model_id: Annotated[StrictStr, Field(description="The ID of the planning model to retrieve.")],
         id: Annotated[StrictStr, Field(description="The ID of the plan to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5933,6 +6238,8 @@ class DataModelApi:
         :type model_id: str
         :param id: The ID of the plan to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5958,6 +6265,7 @@ class DataModelApi:
         _param = self._planning_plan_serialize(
             model_id=model_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5984,6 +6292,7 @@ class DataModelApi:
         self,
         model_id: Annotated[StrictStr, Field(description="The ID of the planning model to retrieve.")],
         id: Annotated[StrictStr, Field(description="The ID of the plan to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6005,6 +6314,8 @@ class DataModelApi:
         :type model_id: str
         :param id: The ID of the plan to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6030,6 +6341,7 @@ class DataModelApi:
         _param = self._planning_plan_serialize(
             model_id=model_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6050,6 +6362,7 @@ class DataModelApi:
         self,
         model_id,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -6075,6 +6388,8 @@ class DataModelApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -6120,6 +6435,7 @@ class DataModelApi:
         self,
         model_id: Annotated[StrictStr, Field(description="The ID of the planning model to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the plans to retrieve. Default is all plans.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6141,6 +6457,8 @@ class DataModelApi:
         :type model_id: str
         :param id: The IDs of the plans to retrieve. Default is all plans.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6166,6 +6484,7 @@ class DataModelApi:
         _param = self._planning_plans_serialize(
             model_id=model_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6192,6 +6511,7 @@ class DataModelApi:
         self,
         model_id: Annotated[StrictStr, Field(description="The ID of the planning model to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the plans to retrieve. Default is all plans.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6213,6 +6533,8 @@ class DataModelApi:
         :type model_id: str
         :param id: The IDs of the plans to retrieve. Default is all plans.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6238,6 +6560,7 @@ class DataModelApi:
         _param = self._planning_plans_serialize(
             model_id=model_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6264,6 +6587,7 @@ class DataModelApi:
         self,
         model_id: Annotated[StrictStr, Field(description="The ID of the planning model to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the plans to retrieve. Default is all plans.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6285,6 +6609,8 @@ class DataModelApi:
         :type model_id: str
         :param id: The IDs of the plans to retrieve. Default is all plans.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6310,6 +6636,7 @@ class DataModelApi:
         _param = self._planning_plans_serialize(
             model_id=model_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6330,6 +6657,7 @@ class DataModelApi:
         self,
         model_id,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -6358,6 +6686,8 @@ class DataModelApi:
             _query_params.append(('id', id))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -6402,6 +6732,7 @@ class DataModelApi:
     def prediction(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the prediction to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6421,6 +6752,8 @@ class DataModelApi:
 
         :param id: The ID of the prediction to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6445,6 +6778,7 @@ class DataModelApi:
 
         _param = self._prediction_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6470,6 +6804,7 @@ class DataModelApi:
     def prediction_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the prediction to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6489,6 +6824,8 @@ class DataModelApi:
 
         :param id: The ID of the prediction to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6513,6 +6850,7 @@ class DataModelApi:
 
         _param = self._prediction_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6538,6 +6876,7 @@ class DataModelApi:
     def prediction_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the prediction to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6557,6 +6896,8 @@ class DataModelApi:
 
         :param id: The ID of the prediction to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6581,6 +6922,7 @@ class DataModelApi:
 
         _param = self._prediction_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6600,6 +6942,7 @@ class DataModelApi:
     def _prediction_serialize(
         self,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -6623,6 +6966,8 @@ class DataModelApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -6667,6 +7012,7 @@ class DataModelApi:
     def predictions(
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the predictions to retrieve. Default is all predictions.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6686,6 +7032,8 @@ class DataModelApi:
 
         :param id: The IDs of the predictions to retrieve. Default is all predictions.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6710,6 +7058,7 @@ class DataModelApi:
 
         _param = self._predictions_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6735,6 +7084,7 @@ class DataModelApi:
     def predictions_with_http_info(
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the predictions to retrieve. Default is all predictions.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6754,6 +7104,8 @@ class DataModelApi:
 
         :param id: The IDs of the predictions to retrieve. Default is all predictions.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6778,6 +7130,7 @@ class DataModelApi:
 
         _param = self._predictions_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6803,6 +7156,7 @@ class DataModelApi:
     def predictions_without_preload_content(
         self,
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the predictions to retrieve. Default is all predictions.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6822,6 +7176,8 @@ class DataModelApi:
 
         :param id: The IDs of the predictions to retrieve. Default is all predictions.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6846,6 +7202,7 @@ class DataModelApi:
 
         _param = self._predictions_serialize(
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6865,6 +7222,7 @@ class DataModelApi:
     def _predictions_serialize(
         self,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -6891,6 +7249,8 @@ class DataModelApi:
             _query_params.append(('id', id))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -6936,6 +7296,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the properties to retrieve. Default is all properties.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6957,6 +7318,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The IDs of the properties to retrieve. Default is all properties.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6982,6 +7345,7 @@ class DataModelApi:
         _param = self._properties_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7008,6 +7372,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the properties to retrieve. Default is all properties.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7029,6 +7394,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The IDs of the properties to retrieve. Default is all properties.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7054,6 +7421,7 @@ class DataModelApi:
         _param = self._properties_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7080,6 +7448,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the properties to retrieve. Default is all properties.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7101,6 +7470,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The IDs of the properties to retrieve. Default is all properties.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7126,6 +7497,7 @@ class DataModelApi:
         _param = self._properties_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7146,6 +7518,7 @@ class DataModelApi:
         self,
         object_id,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -7174,6 +7547,8 @@ class DataModelApi:
             _query_params.append(('id', id))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -7219,6 +7594,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[StrictStr, Field(description="The ID of the selection concept to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7240,6 +7616,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The ID of the selection concept to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7265,6 +7643,7 @@ class DataModelApi:
         _param = self._selection_concept_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7291,6 +7670,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[StrictStr, Field(description="The ID of the selection concept to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7312,6 +7692,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The ID of the selection concept to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7337,6 +7719,7 @@ class DataModelApi:
         _param = self._selection_concept_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7363,6 +7746,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[StrictStr, Field(description="The ID of the selection concept to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7384,6 +7768,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The ID of the selection concept to retrieve. (required)
         :type id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7409,6 +7795,7 @@ class DataModelApi:
         _param = self._selection_concept_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7429,6 +7816,7 @@ class DataModelApi:
         self,
         object_id,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -7454,6 +7842,8 @@ class DataModelApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -7499,6 +7889,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the selection concepts to retrieve. Default is all selection concepts.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7520,6 +7911,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The IDs of the selection concepts to retrieve. Default is all selection concepts.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7545,6 +7938,7 @@ class DataModelApi:
         _param = self._selection_concepts_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7571,6 +7965,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the selection concepts to retrieve. Default is all selection concepts.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7592,6 +7987,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The IDs of the selection concepts to retrieve. Default is all selection concepts.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7617,6 +8014,7 @@ class DataModelApi:
         _param = self._selection_concepts_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7643,6 +8041,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object to retrieve.")],
         id: Annotated[Optional[List[StrictStr]], Field(description="The IDs of the selection concepts to retrieve. Default is all selection concepts.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7664,6 +8063,8 @@ class DataModelApi:
         :type object_id: str
         :param id: The IDs of the selection concepts to retrieve. Default is all selection concepts.
         :type id: List[str]
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7689,6 +8090,7 @@ class DataModelApi:
         _param = self._selection_concepts_serialize(
             object_id=object_id,
             id=id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7709,6 +8111,7 @@ class DataModelApi:
         self,
         object_id,
         id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -7737,6 +8140,8 @@ class DataModelApi:
             _query_params.append(('id', id))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -7781,6 +8186,8 @@ class DataModelApi:
     def update_dimensions(
         self,
         dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7800,6 +8207,10 @@ class DataModelApi:
 
         :param dimensions_change_definitions_dto: (required)
         :type dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7824,6 +8235,8 @@ class DataModelApi:
 
         _param = self._update_dimensions_serialize(
             dimensions_change_definitions_dto=dimensions_change_definitions_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7849,6 +8262,8 @@ class DataModelApi:
     def update_dimensions_with_http_info(
         self,
         dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7868,6 +8283,10 @@ class DataModelApi:
 
         :param dimensions_change_definitions_dto: (required)
         :type dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7892,6 +8311,8 @@ class DataModelApi:
 
         _param = self._update_dimensions_serialize(
             dimensions_change_definitions_dto=dimensions_change_definitions_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7917,6 +8338,8 @@ class DataModelApi:
     def update_dimensions_without_preload_content(
         self,
         dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7936,6 +8359,10 @@ class DataModelApi:
 
         :param dimensions_change_definitions_dto: (required)
         :type dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7960,6 +8387,8 @@ class DataModelApi:
 
         _param = self._update_dimensions_serialize(
             dimensions_change_definitions_dto=dimensions_change_definitions_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7979,6 +8408,8 @@ class DataModelApi:
     def _update_dimensions_serialize(
         self,
         dimensions_change_definitions_dto,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -8000,6 +8431,10 @@ class DataModelApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
         if dimensions_change_definitions_dto is not None:
@@ -8059,6 +8494,8 @@ class DataModelApi:
     def update_properties(
         self,
         properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8078,6 +8515,10 @@ class DataModelApi:
 
         :param properties_change_definitions_dto: (required)
         :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8102,6 +8543,8 @@ class DataModelApi:
 
         _param = self._update_properties_serialize(
             properties_change_definitions_dto=properties_change_definitions_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8127,6 +8570,8 @@ class DataModelApi:
     def update_properties_with_http_info(
         self,
         properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8146,6 +8591,10 @@ class DataModelApi:
 
         :param properties_change_definitions_dto: (required)
         :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8170,6 +8619,8 @@ class DataModelApi:
 
         _param = self._update_properties_serialize(
             properties_change_definitions_dto=properties_change_definitions_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8195,6 +8646,8 @@ class DataModelApi:
     def update_properties_without_preload_content(
         self,
         properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8214,6 +8667,10 @@ class DataModelApi:
 
         :param properties_change_definitions_dto: (required)
         :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8238,6 +8695,8 @@ class DataModelApi:
 
         _param = self._update_properties_serialize(
             properties_change_definitions_dto=properties_change_definitions_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8257,6 +8716,8 @@ class DataModelApi:
     def _update_properties_serialize(
         self,
         properties_change_definitions_dto,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -8278,6 +8739,10 @@ class DataModelApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
         if properties_change_definitions_dto is not None:

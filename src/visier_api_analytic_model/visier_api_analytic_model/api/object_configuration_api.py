@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,6 +21,7 @@ from typing_extensions import Annotated
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
 from pydantic import Field, StrictStr
+from typing import Optional
 from typing_extensions import Annotated
 from visier_api_analytic_model.models.calculation_concept_configuration_map_dto import CalculationConceptConfigurationMapDTO
 from visier_api_analytic_model.models.calculation_concept_dto import CalculationConceptDTO
@@ -48,6 +49,7 @@ class ObjectConfigurationApi:
     def get_calculation_concept(
         self,
         concept_id: Annotated[StrictStr, Field(description="The ID of the concept to retrieve the configuration for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -67,6 +69,8 @@ class ObjectConfigurationApi:
 
         :param concept_id: The ID of the concept to retrieve the configuration for. (required)
         :type concept_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91,6 +95,7 @@ class ObjectConfigurationApi:
 
         _param = self._get_calculation_concept_serialize(
             concept_id=concept_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -116,6 +121,7 @@ class ObjectConfigurationApi:
     def get_calculation_concept_with_http_info(
         self,
         concept_id: Annotated[StrictStr, Field(description="The ID of the concept to retrieve the configuration for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -135,6 +141,8 @@ class ObjectConfigurationApi:
 
         :param concept_id: The ID of the concept to retrieve the configuration for. (required)
         :type concept_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -159,6 +167,7 @@ class ObjectConfigurationApi:
 
         _param = self._get_calculation_concept_serialize(
             concept_id=concept_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -184,6 +193,7 @@ class ObjectConfigurationApi:
     def get_calculation_concept_without_preload_content(
         self,
         concept_id: Annotated[StrictStr, Field(description="The ID of the concept to retrieve the configuration for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -203,6 +213,8 @@ class ObjectConfigurationApi:
 
         :param concept_id: The ID of the concept to retrieve the configuration for. (required)
         :type concept_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -227,6 +239,7 @@ class ObjectConfigurationApi:
 
         _param = self._get_calculation_concept_serialize(
             concept_id=concept_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -246,6 +259,7 @@ class ObjectConfigurationApi:
     def _get_calculation_concept_serialize(
         self,
         concept_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -269,6 +283,8 @@ class ObjectConfigurationApi:
             _path_params['conceptId'] = concept_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -312,6 +328,7 @@ class ObjectConfigurationApi:
     @validate_call
     def get_calculation_concepts(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -329,6 +346,8 @@ class ObjectConfigurationApi:
 
         Retrieve the calculation concepts available in production.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -352,6 +371,7 @@ class ObjectConfigurationApi:
         """ # noqa: E501
 
         _param = self._get_calculation_concepts_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -376,6 +396,7 @@ class ObjectConfigurationApi:
     @validate_call
     def get_calculation_concepts_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -393,6 +414,8 @@ class ObjectConfigurationApi:
 
         Retrieve the calculation concepts available in production.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -416,6 +439,7 @@ class ObjectConfigurationApi:
         """ # noqa: E501
 
         _param = self._get_calculation_concepts_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -440,6 +464,7 @@ class ObjectConfigurationApi:
     @validate_call
     def get_calculation_concepts_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -457,6 +482,8 @@ class ObjectConfigurationApi:
 
         Retrieve the calculation concepts available in production.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -480,6 +507,7 @@ class ObjectConfigurationApi:
         """ # noqa: E501
 
         _param = self._get_calculation_concepts_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -498,6 +526,7 @@ class ObjectConfigurationApi:
 
     def _get_calculation_concepts_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -519,6 +548,8 @@ class ObjectConfigurationApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -563,6 +594,7 @@ class ObjectConfigurationApi:
     def get_selection_concept(
         self,
         concept_id: Annotated[StrictStr, Field(description="The ID of the concept to retrieve the configuration for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -582,6 +614,8 @@ class ObjectConfigurationApi:
 
         :param concept_id: The ID of the concept to retrieve the configuration for. (required)
         :type concept_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -606,6 +640,7 @@ class ObjectConfigurationApi:
 
         _param = self._get_selection_concept_serialize(
             concept_id=concept_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -631,6 +666,7 @@ class ObjectConfigurationApi:
     def get_selection_concept_with_http_info(
         self,
         concept_id: Annotated[StrictStr, Field(description="The ID of the concept to retrieve the configuration for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -650,6 +686,8 @@ class ObjectConfigurationApi:
 
         :param concept_id: The ID of the concept to retrieve the configuration for. (required)
         :type concept_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -674,6 +712,7 @@ class ObjectConfigurationApi:
 
         _param = self._get_selection_concept_serialize(
             concept_id=concept_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -699,6 +738,7 @@ class ObjectConfigurationApi:
     def get_selection_concept_without_preload_content(
         self,
         concept_id: Annotated[StrictStr, Field(description="The ID of the concept to retrieve the configuration for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -718,6 +758,8 @@ class ObjectConfigurationApi:
 
         :param concept_id: The ID of the concept to retrieve the configuration for. (required)
         :type concept_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -742,6 +784,7 @@ class ObjectConfigurationApi:
 
         _param = self._get_selection_concept_serialize(
             concept_id=concept_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -761,6 +804,7 @@ class ObjectConfigurationApi:
     def _get_selection_concept_serialize(
         self,
         concept_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -784,6 +828,8 @@ class ObjectConfigurationApi:
             _path_params['conceptId'] = concept_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -827,6 +873,7 @@ class ObjectConfigurationApi:
     @validate_call
     def get_selection_concepts(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -844,6 +891,8 @@ class ObjectConfigurationApi:
 
         Retrieve the selection concepts available in production.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -867,6 +916,7 @@ class ObjectConfigurationApi:
         """ # noqa: E501
 
         _param = self._get_selection_concepts_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -891,6 +941,7 @@ class ObjectConfigurationApi:
     @validate_call
     def get_selection_concepts_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -908,6 +959,8 @@ class ObjectConfigurationApi:
 
         Retrieve the selection concepts available in production.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -931,6 +984,7 @@ class ObjectConfigurationApi:
         """ # noqa: E501
 
         _param = self._get_selection_concepts_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -955,6 +1009,7 @@ class ObjectConfigurationApi:
     @validate_call
     def get_selection_concepts_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -972,6 +1027,8 @@ class ObjectConfigurationApi:
 
         Retrieve the selection concepts available in production.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -995,6 +1052,7 @@ class ObjectConfigurationApi:
         """ # noqa: E501
 
         _param = self._get_selection_concepts_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1013,6 +1071,7 @@ class ObjectConfigurationApi:
 
     def _get_selection_concepts_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1034,6 +1093,8 @@ class ObjectConfigurationApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1079,6 +1140,7 @@ class ObjectConfigurationApi:
         self,
         concept_id: Annotated[StrictStr, Field(description="The UUID of the concept to configure.")],
         calculation_concept_configuration_map_dto: CalculationConceptConfigurationMapDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1100,6 +1162,8 @@ class ObjectConfigurationApi:
         :type concept_id: str
         :param calculation_concept_configuration_map_dto: (required)
         :type calculation_concept_configuration_map_dto: CalculationConceptConfigurationMapDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1125,6 +1189,7 @@ class ObjectConfigurationApi:
         _param = self._map_calculation_concept_serialize(
             concept_id=concept_id,
             calculation_concept_configuration_map_dto=calculation_concept_configuration_map_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1151,6 +1216,7 @@ class ObjectConfigurationApi:
         self,
         concept_id: Annotated[StrictStr, Field(description="The UUID of the concept to configure.")],
         calculation_concept_configuration_map_dto: CalculationConceptConfigurationMapDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1172,6 +1238,8 @@ class ObjectConfigurationApi:
         :type concept_id: str
         :param calculation_concept_configuration_map_dto: (required)
         :type calculation_concept_configuration_map_dto: CalculationConceptConfigurationMapDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1197,6 +1265,7 @@ class ObjectConfigurationApi:
         _param = self._map_calculation_concept_serialize(
             concept_id=concept_id,
             calculation_concept_configuration_map_dto=calculation_concept_configuration_map_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1223,6 +1292,7 @@ class ObjectConfigurationApi:
         self,
         concept_id: Annotated[StrictStr, Field(description="The UUID of the concept to configure.")],
         calculation_concept_configuration_map_dto: CalculationConceptConfigurationMapDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1244,6 +1314,8 @@ class ObjectConfigurationApi:
         :type concept_id: str
         :param calculation_concept_configuration_map_dto: (required)
         :type calculation_concept_configuration_map_dto: CalculationConceptConfigurationMapDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1269,6 +1341,7 @@ class ObjectConfigurationApi:
         _param = self._map_calculation_concept_serialize(
             concept_id=concept_id,
             calculation_concept_configuration_map_dto=calculation_concept_configuration_map_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1289,6 +1362,7 @@ class ObjectConfigurationApi:
         self,
         concept_id,
         calculation_concept_configuration_map_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1312,6 +1386,8 @@ class ObjectConfigurationApi:
             _path_params['conceptId'] = concept_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if calculation_concept_configuration_map_dto is not None:
@@ -1372,6 +1448,7 @@ class ObjectConfigurationApi:
         self,
         concept_id: Annotated[StrictStr, Field(description="The UUID of the concept to configure.")],
         selection_concept_configuration_map_dto: SelectionConceptConfigurationMapDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1393,6 +1470,8 @@ class ObjectConfigurationApi:
         :type concept_id: str
         :param selection_concept_configuration_map_dto: (required)
         :type selection_concept_configuration_map_dto: SelectionConceptConfigurationMapDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1418,6 +1497,7 @@ class ObjectConfigurationApi:
         _param = self._map_selection_concept_serialize(
             concept_id=concept_id,
             selection_concept_configuration_map_dto=selection_concept_configuration_map_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1444,6 +1524,7 @@ class ObjectConfigurationApi:
         self,
         concept_id: Annotated[StrictStr, Field(description="The UUID of the concept to configure.")],
         selection_concept_configuration_map_dto: SelectionConceptConfigurationMapDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1465,6 +1546,8 @@ class ObjectConfigurationApi:
         :type concept_id: str
         :param selection_concept_configuration_map_dto: (required)
         :type selection_concept_configuration_map_dto: SelectionConceptConfigurationMapDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1490,6 +1573,7 @@ class ObjectConfigurationApi:
         _param = self._map_selection_concept_serialize(
             concept_id=concept_id,
             selection_concept_configuration_map_dto=selection_concept_configuration_map_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1516,6 +1600,7 @@ class ObjectConfigurationApi:
         self,
         concept_id: Annotated[StrictStr, Field(description="The UUID of the concept to configure.")],
         selection_concept_configuration_map_dto: SelectionConceptConfigurationMapDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1537,6 +1622,8 @@ class ObjectConfigurationApi:
         :type concept_id: str
         :param selection_concept_configuration_map_dto: (required)
         :type selection_concept_configuration_map_dto: SelectionConceptConfigurationMapDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1562,6 +1649,7 @@ class ObjectConfigurationApi:
         _param = self._map_selection_concept_serialize(
             concept_id=concept_id,
             selection_concept_configuration_map_dto=selection_concept_configuration_map_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1582,6 +1670,7 @@ class ObjectConfigurationApi:
         self,
         concept_id,
         selection_concept_configuration_map_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1605,6 +1694,8 @@ class ObjectConfigurationApi:
             _path_params['conceptId'] = concept_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if selection_concept_configuration_map_dto is not None:

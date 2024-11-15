@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -20,6 +20,9 @@ from typing_extensions import Annotated
 
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
+from pydantic import Field, StrictStr
+from typing import Optional
+from typing_extensions import Annotated
 from visier_api_data_out.models.aggregation_query_execution_dto import AggregationQueryExecutionDTO
 from visier_api_data_out.models.cell_set_dto import CellSetDTO
 from visier_api_data_out.models.list_query_execution_dto import ListQueryExecutionDTO
@@ -46,6 +49,7 @@ class DataQueryApi:
     def aggregate(
         self,
         aggregation_query_execution_dto: AggregationQueryExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -65,6 +69,8 @@ class DataQueryApi:
 
         :param aggregation_query_execution_dto: (required)
         :type aggregation_query_execution_dto: AggregationQueryExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -89,6 +95,7 @@ class DataQueryApi:
 
         _param = self._aggregate_serialize(
             aggregation_query_execution_dto=aggregation_query_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -114,6 +121,7 @@ class DataQueryApi:
     def aggregate_with_http_info(
         self,
         aggregation_query_execution_dto: AggregationQueryExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -133,6 +141,8 @@ class DataQueryApi:
 
         :param aggregation_query_execution_dto: (required)
         :type aggregation_query_execution_dto: AggregationQueryExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -157,6 +167,7 @@ class DataQueryApi:
 
         _param = self._aggregate_serialize(
             aggregation_query_execution_dto=aggregation_query_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -182,6 +193,7 @@ class DataQueryApi:
     def aggregate_without_preload_content(
         self,
         aggregation_query_execution_dto: AggregationQueryExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -201,6 +213,8 @@ class DataQueryApi:
 
         :param aggregation_query_execution_dto: (required)
         :type aggregation_query_execution_dto: AggregationQueryExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -225,6 +239,7 @@ class DataQueryApi:
 
         _param = self._aggregate_serialize(
             aggregation_query_execution_dto=aggregation_query_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -244,6 +259,7 @@ class DataQueryApi:
     def _aggregate_serialize(
         self,
         aggregation_query_execution_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -265,6 +281,8 @@ class DataQueryApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if aggregation_query_execution_dto is not None:
@@ -275,7 +293,9 @@ class DataQueryApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json'
+                    'application/json', 
+                    'application/jsonlines', 
+                    'text/csv'
                 ]
             )
 
@@ -324,6 +344,7 @@ class DataQueryApi:
     def list(
         self,
         list_query_execution_dto: ListQueryExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -343,6 +364,8 @@ class DataQueryApi:
 
         :param list_query_execution_dto: (required)
         :type list_query_execution_dto: ListQueryExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -367,6 +390,7 @@ class DataQueryApi:
 
         _param = self._list_serialize(
             list_query_execution_dto=list_query_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -392,6 +416,7 @@ class DataQueryApi:
     def list_with_http_info(
         self,
         list_query_execution_dto: ListQueryExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -411,6 +436,8 @@ class DataQueryApi:
 
         :param list_query_execution_dto: (required)
         :type list_query_execution_dto: ListQueryExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -435,6 +462,7 @@ class DataQueryApi:
 
         _param = self._list_serialize(
             list_query_execution_dto=list_query_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -460,6 +488,7 @@ class DataQueryApi:
     def list_without_preload_content(
         self,
         list_query_execution_dto: ListQueryExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -479,6 +508,8 @@ class DataQueryApi:
 
         :param list_query_execution_dto: (required)
         :type list_query_execution_dto: ListQueryExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -503,6 +534,7 @@ class DataQueryApi:
 
         _param = self._list_serialize(
             list_query_execution_dto=list_query_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -522,6 +554,7 @@ class DataQueryApi:
     def _list_serialize(
         self,
         list_query_execution_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -543,6 +576,8 @@ class DataQueryApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if list_query_execution_dto is not None:
@@ -554,7 +589,7 @@ class DataQueryApi:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
                     'application/json', 
-                    'application/octet-stream', 
+                    'application/jsonlines', 
                     'text/csv'
                 ]
             )
@@ -604,6 +639,7 @@ class DataQueryApi:
     def query_snapshot(
         self,
         snapshot_query_execution_dto: SnapshotQueryExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -623,6 +659,8 @@ class DataQueryApi:
 
         :param snapshot_query_execution_dto: (required)
         :type snapshot_query_execution_dto: SnapshotQueryExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -647,6 +685,7 @@ class DataQueryApi:
 
         _param = self._query_snapshot_serialize(
             snapshot_query_execution_dto=snapshot_query_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -672,6 +711,7 @@ class DataQueryApi:
     def query_snapshot_with_http_info(
         self,
         snapshot_query_execution_dto: SnapshotQueryExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -691,6 +731,8 @@ class DataQueryApi:
 
         :param snapshot_query_execution_dto: (required)
         :type snapshot_query_execution_dto: SnapshotQueryExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -715,6 +757,7 @@ class DataQueryApi:
 
         _param = self._query_snapshot_serialize(
             snapshot_query_execution_dto=snapshot_query_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -740,6 +783,7 @@ class DataQueryApi:
     def query_snapshot_without_preload_content(
         self,
         snapshot_query_execution_dto: SnapshotQueryExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -759,6 +803,8 @@ class DataQueryApi:
 
         :param snapshot_query_execution_dto: (required)
         :type snapshot_query_execution_dto: SnapshotQueryExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -783,6 +829,7 @@ class DataQueryApi:
 
         _param = self._query_snapshot_serialize(
             snapshot_query_execution_dto=snapshot_query_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -802,6 +849,7 @@ class DataQueryApi:
     def _query_snapshot_serialize(
         self,
         snapshot_query_execution_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -823,6 +871,8 @@ class DataQueryApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if snapshot_query_execution_dto is not None:
@@ -834,7 +884,7 @@ class DataQueryApi:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
                     'application/json', 
-                    'application/octet-stream', 
+                    'application/jsonlines', 
                     'text/csv'
                 ]
             )
@@ -884,6 +934,7 @@ class DataQueryApi:
     def sql_like(
         self,
         sql_like_query_execution_dto: SqlLikeQueryExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -903,6 +954,8 @@ class DataQueryApi:
 
         :param sql_like_query_execution_dto: (required)
         :type sql_like_query_execution_dto: SqlLikeQueryExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -927,6 +980,7 @@ class DataQueryApi:
 
         _param = self._sql_like_serialize(
             sql_like_query_execution_dto=sql_like_query_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -952,6 +1006,7 @@ class DataQueryApi:
     def sql_like_with_http_info(
         self,
         sql_like_query_execution_dto: SqlLikeQueryExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -971,6 +1026,8 @@ class DataQueryApi:
 
         :param sql_like_query_execution_dto: (required)
         :type sql_like_query_execution_dto: SqlLikeQueryExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -995,6 +1052,7 @@ class DataQueryApi:
 
         _param = self._sql_like_serialize(
             sql_like_query_execution_dto=sql_like_query_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1020,6 +1078,7 @@ class DataQueryApi:
     def sql_like_without_preload_content(
         self,
         sql_like_query_execution_dto: SqlLikeQueryExecutionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1039,6 +1098,8 @@ class DataQueryApi:
 
         :param sql_like_query_execution_dto: (required)
         :type sql_like_query_execution_dto: SqlLikeQueryExecutionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1063,6 +1124,7 @@ class DataQueryApi:
 
         _param = self._sql_like_serialize(
             sql_like_query_execution_dto=sql_like_query_execution_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1082,6 +1144,7 @@ class DataQueryApi:
     def _sql_like_serialize(
         self,
         sql_like_query_execution_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1103,6 +1166,8 @@ class DataQueryApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if sql_like_query_execution_dto is not None:
@@ -1114,7 +1179,7 @@ class DataQueryApi:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
                     'application/json', 
-                    'application/octet-stream', 
+                    'application/jsonlines', 
                     'text/csv'
                 ]
             )

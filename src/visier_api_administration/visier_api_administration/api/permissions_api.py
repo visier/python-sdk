@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -56,6 +56,8 @@ class PermissionsApi:
     def create_data_access_sets(
         self,
         create_data_access_set_request_dto: CreateDataAccessSetRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -75,6 +77,10 @@ class PermissionsApi:
 
         :param create_data_access_set_request_dto: (required)
         :type create_data_access_set_request_dto: CreateDataAccessSetRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -99,6 +105,8 @@ class PermissionsApi:
 
         _param = self._create_data_access_sets_serialize(
             create_data_access_set_request_dto=create_data_access_set_request_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -124,6 +132,8 @@ class PermissionsApi:
     def create_data_access_sets_with_http_info(
         self,
         create_data_access_set_request_dto: CreateDataAccessSetRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -143,6 +153,10 @@ class PermissionsApi:
 
         :param create_data_access_set_request_dto: (required)
         :type create_data_access_set_request_dto: CreateDataAccessSetRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -167,6 +181,8 @@ class PermissionsApi:
 
         _param = self._create_data_access_sets_serialize(
             create_data_access_set_request_dto=create_data_access_set_request_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -192,6 +208,8 @@ class PermissionsApi:
     def create_data_access_sets_without_preload_content(
         self,
         create_data_access_set_request_dto: CreateDataAccessSetRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -211,6 +229,10 @@ class PermissionsApi:
 
         :param create_data_access_set_request_dto: (required)
         :type create_data_access_set_request_dto: CreateDataAccessSetRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -235,6 +257,8 @@ class PermissionsApi:
 
         _param = self._create_data_access_sets_serialize(
             create_data_access_set_request_dto=create_data_access_set_request_dto,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -254,6 +278,8 @@ class PermissionsApi:
     def _create_data_access_sets_serialize(
         self,
         create_data_access_set_request_dto,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -275,6 +301,10 @@ class PermissionsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
         if create_data_access_set_request_dto is not None:
@@ -330,6 +360,8 @@ class PermissionsApi:
         self,
         permissions_list_dto: PermissionsListDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create permissions in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -351,6 +383,10 @@ class PermissionsApi:
         :type permissions_list_dto: PermissionsListDTO
         :param tenant_code: Specify the tenant to create permissions in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -376,6 +412,8 @@ class PermissionsApi:
         _param = self._create_permissions_serialize(
             permissions_list_dto=permissions_list_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -402,6 +440,8 @@ class PermissionsApi:
         self,
         permissions_list_dto: PermissionsListDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create permissions in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -423,6 +463,10 @@ class PermissionsApi:
         :type permissions_list_dto: PermissionsListDTO
         :param tenant_code: Specify the tenant to create permissions in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -448,6 +492,8 @@ class PermissionsApi:
         _param = self._create_permissions_serialize(
             permissions_list_dto=permissions_list_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -474,6 +520,8 @@ class PermissionsApi:
         self,
         permissions_list_dto: PermissionsListDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create permissions in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -495,6 +543,10 @@ class PermissionsApi:
         :type permissions_list_dto: PermissionsListDTO
         :param tenant_code: Specify the tenant to create permissions in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -520,6 +572,8 @@ class PermissionsApi:
         _param = self._create_permissions_serialize(
             permissions_list_dto=permissions_list_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -540,6 +594,8 @@ class PermissionsApi:
         self,
         permissions_list_dto,
         tenant_code,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -565,6 +621,10 @@ class PermissionsApi:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
         if permissions_list_dto is not None:
@@ -620,6 +680,8 @@ class PermissionsApi:
         self,
         delete_permissions_request_dto: DeletePermissionsRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete permissions from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -641,6 +703,10 @@ class PermissionsApi:
         :type delete_permissions_request_dto: DeletePermissionsRequestDTO
         :param tenant_code: Specify the tenant to delete permissions from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -666,6 +732,8 @@ class PermissionsApi:
         _param = self._delete_permissions_serialize(
             delete_permissions_request_dto=delete_permissions_request_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -692,6 +760,8 @@ class PermissionsApi:
         self,
         delete_permissions_request_dto: DeletePermissionsRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete permissions from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -713,6 +783,10 @@ class PermissionsApi:
         :type delete_permissions_request_dto: DeletePermissionsRequestDTO
         :param tenant_code: Specify the tenant to delete permissions from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -738,6 +812,8 @@ class PermissionsApi:
         _param = self._delete_permissions_serialize(
             delete_permissions_request_dto=delete_permissions_request_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -764,6 +840,8 @@ class PermissionsApi:
         self,
         delete_permissions_request_dto: DeletePermissionsRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete permissions from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -785,6 +863,10 @@ class PermissionsApi:
         :type delete_permissions_request_dto: DeletePermissionsRequestDTO
         :param tenant_code: Specify the tenant to delete permissions from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -810,6 +892,8 @@ class PermissionsApi:
         _param = self._delete_permissions_serialize(
             delete_permissions_request_dto=delete_permissions_request_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -830,6 +914,8 @@ class PermissionsApi:
         self,
         delete_permissions_request_dto,
         tenant_code,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -855,6 +941,10 @@ class PermissionsApi:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
         if delete_permissions_request_dto is not None:
@@ -909,6 +999,8 @@ class PermissionsApi:
     def get_capabilities(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the capabilities from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -928,6 +1020,10 @@ class PermissionsApi:
 
         :param tenant_code: Specify the tenant to retrieve the capabilities from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -952,6 +1048,8 @@ class PermissionsApi:
 
         _param = self._get_capabilities_serialize(
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -977,6 +1075,8 @@ class PermissionsApi:
     def get_capabilities_with_http_info(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the capabilities from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -996,6 +1096,10 @@ class PermissionsApi:
 
         :param tenant_code: Specify the tenant to retrieve the capabilities from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1020,6 +1124,8 @@ class PermissionsApi:
 
         _param = self._get_capabilities_serialize(
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1045,6 +1151,8 @@ class PermissionsApi:
     def get_capabilities_without_preload_content(
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the capabilities from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1064,6 +1172,10 @@ class PermissionsApi:
 
         :param tenant_code: Specify the tenant to retrieve the capabilities from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1088,6 +1200,8 @@ class PermissionsApi:
 
         _param = self._get_capabilities_serialize(
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1107,6 +1221,8 @@ class PermissionsApi:
     def _get_capabilities_serialize(
         self,
         tenant_code,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1132,6 +1248,10 @@ class PermissionsApi:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
 
@@ -1172,6 +1292,8 @@ class PermissionsApi:
         self,
         capability_id: Annotated[StrictStr, Field(description="The unique identifier of the capability you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a capability from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1193,6 +1315,10 @@ class PermissionsApi:
         :type capability_id: str
         :param tenant_code: Specify the tenant to retrieve a capability from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1218,6 +1344,8 @@ class PermissionsApi:
         _param = self._get_capability_serialize(
             capability_id=capability_id,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1244,6 +1372,8 @@ class PermissionsApi:
         self,
         capability_id: Annotated[StrictStr, Field(description="The unique identifier of the capability you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a capability from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1265,6 +1395,10 @@ class PermissionsApi:
         :type capability_id: str
         :param tenant_code: Specify the tenant to retrieve a capability from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1290,6 +1424,8 @@ class PermissionsApi:
         _param = self._get_capability_serialize(
             capability_id=capability_id,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1316,6 +1452,8 @@ class PermissionsApi:
         self,
         capability_id: Annotated[StrictStr, Field(description="The unique identifier of the capability you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a capability from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1337,6 +1475,10 @@ class PermissionsApi:
         :type capability_id: str
         :param tenant_code: Specify the tenant to retrieve a capability from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1362,6 +1504,8 @@ class PermissionsApi:
         _param = self._get_capability_serialize(
             capability_id=capability_id,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1382,6 +1526,8 @@ class PermissionsApi:
         self,
         capability_id,
         tenant_code,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1409,6 +1555,10 @@ class PermissionsApi:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
 
@@ -1449,6 +1599,8 @@ class PermissionsApi:
         self,
         content_package_id: Annotated[StrictStr, Field(description="The unique identifier of the content package you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a content package from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1470,6 +1622,10 @@ class PermissionsApi:
         :type content_package_id: str
         :param tenant_code: Specify the tenant to retrieve a content package from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1495,6 +1651,8 @@ class PermissionsApi:
         _param = self._get_content_package_serialize(
             content_package_id=content_package_id,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1521,6 +1679,8 @@ class PermissionsApi:
         self,
         content_package_id: Annotated[StrictStr, Field(description="The unique identifier of the content package you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a content package from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1542,6 +1702,10 @@ class PermissionsApi:
         :type content_package_id: str
         :param tenant_code: Specify the tenant to retrieve a content package from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1567,6 +1731,8 @@ class PermissionsApi:
         _param = self._get_content_package_serialize(
             content_package_id=content_package_id,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1593,6 +1759,8 @@ class PermissionsApi:
         self,
         content_package_id: Annotated[StrictStr, Field(description="The unique identifier of the content package you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a content package from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1614,6 +1782,10 @@ class PermissionsApi:
         :type content_package_id: str
         :param tenant_code: Specify the tenant to retrieve a content package from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1639,6 +1811,8 @@ class PermissionsApi:
         _param = self._get_content_package_serialize(
             content_package_id=content_package_id,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1659,6 +1833,8 @@ class PermissionsApi:
         self,
         content_package_id,
         tenant_code,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1686,6 +1862,10 @@ class PermissionsApi:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
 
@@ -1726,6 +1906,8 @@ class PermissionsApi:
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the content packages from.")] = None,
         search_string: Annotated[Optional[StrictStr], Field(description="Optional search string to return only content packages whose display name or description contains that search string.  If searchString is empty or not provided, the response returns a list of all content packages.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1747,6 +1929,10 @@ class PermissionsApi:
         :type tenant_code: str
         :param search_string: Optional search string to return only content packages whose display name or description contains that search string.  If searchString is empty or not provided, the response returns a list of all content packages.
         :type search_string: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1772,6 +1958,8 @@ class PermissionsApi:
         _param = self._get_content_packages_serialize(
             tenant_code=tenant_code,
             search_string=search_string,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1798,6 +1986,8 @@ class PermissionsApi:
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the content packages from.")] = None,
         search_string: Annotated[Optional[StrictStr], Field(description="Optional search string to return only content packages whose display name or description contains that search string.  If searchString is empty or not provided, the response returns a list of all content packages.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1819,6 +2009,10 @@ class PermissionsApi:
         :type tenant_code: str
         :param search_string: Optional search string to return only content packages whose display name or description contains that search string.  If searchString is empty or not provided, the response returns a list of all content packages.
         :type search_string: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1844,6 +2038,8 @@ class PermissionsApi:
         _param = self._get_content_packages_serialize(
             tenant_code=tenant_code,
             search_string=search_string,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1870,6 +2066,8 @@ class PermissionsApi:
         self,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the content packages from.")] = None,
         search_string: Annotated[Optional[StrictStr], Field(description="Optional search string to return only content packages whose display name or description contains that search string.  If searchString is empty or not provided, the response returns a list of all content packages.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1891,6 +2089,10 @@ class PermissionsApi:
         :type tenant_code: str
         :param search_string: Optional search string to return only content packages whose display name or description contains that search string.  If searchString is empty or not provided, the response returns a list of all content packages.
         :type search_string: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1916,6 +2118,8 @@ class PermissionsApi:
         _param = self._get_content_packages_serialize(
             tenant_code=tenant_code,
             search_string=search_string,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1936,6 +2140,8 @@ class PermissionsApi:
         self,
         tenant_code,
         search_string,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1965,6 +2171,10 @@ class PermissionsApi:
             _query_params.append(('searchString', search_string))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
 
@@ -2004,6 +2214,8 @@ class PermissionsApi:
     def get_data_access_set(
         self,
         data_access_set_id: Annotated[StrictStr, Field(description="The unique identifier of the data access set you want to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2023,6 +2235,10 @@ class PermissionsApi:
 
         :param data_access_set_id: The unique identifier of the data access set you want to retrieve. (required)
         :type data_access_set_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2047,6 +2263,8 @@ class PermissionsApi:
 
         _param = self._get_data_access_set_serialize(
             data_access_set_id=data_access_set_id,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2072,6 +2290,8 @@ class PermissionsApi:
     def get_data_access_set_with_http_info(
         self,
         data_access_set_id: Annotated[StrictStr, Field(description="The unique identifier of the data access set you want to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2091,6 +2311,10 @@ class PermissionsApi:
 
         :param data_access_set_id: The unique identifier of the data access set you want to retrieve. (required)
         :type data_access_set_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2115,6 +2339,8 @@ class PermissionsApi:
 
         _param = self._get_data_access_set_serialize(
             data_access_set_id=data_access_set_id,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2140,6 +2366,8 @@ class PermissionsApi:
     def get_data_access_set_without_preload_content(
         self,
         data_access_set_id: Annotated[StrictStr, Field(description="The unique identifier of the data access set you want to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2159,6 +2387,10 @@ class PermissionsApi:
 
         :param data_access_set_id: The unique identifier of the data access set you want to retrieve. (required)
         :type data_access_set_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2183,6 +2415,8 @@ class PermissionsApi:
 
         _param = self._get_data_access_set_serialize(
             data_access_set_id=data_access_set_id,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2202,6 +2436,8 @@ class PermissionsApi:
     def _get_data_access_set_serialize(
         self,
         data_access_set_id,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2225,6 +2461,10 @@ class PermissionsApi:
             _path_params['dataAccessSetId'] = data_access_set_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
 
@@ -2266,6 +2506,8 @@ class PermissionsApi:
         analytic_object_id: Annotated[Optional[StrictStr], Field(description="Specify the analytic object ID to retrieve the shareable data access sets for. Default is all analytic objects.")] = None,
         var_with: Annotated[Optional[List[StrictStr]], Field(description="The information about the data access set to include in the request response.  * If empty, returns basic information for the data access set, including its unique ID, display name, description, and analytic object ID.  * If `details`, returns basic information and property data access information (`propertyAccessConfigs`).")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of data access sets to return. Default is 100. Maximum is 1000.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2289,6 +2531,10 @@ class PermissionsApi:
         :type var_with: List[str]
         :param limit: The maximum number of data access sets to return. Default is 100. Maximum is 1000.
         :type limit: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2315,6 +2561,8 @@ class PermissionsApi:
             analytic_object_id=analytic_object_id,
             var_with=var_with,
             limit=limit,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2342,6 +2590,8 @@ class PermissionsApi:
         analytic_object_id: Annotated[Optional[StrictStr], Field(description="Specify the analytic object ID to retrieve the shareable data access sets for. Default is all analytic objects.")] = None,
         var_with: Annotated[Optional[List[StrictStr]], Field(description="The information about the data access set to include in the request response.  * If empty, returns basic information for the data access set, including its unique ID, display name, description, and analytic object ID.  * If `details`, returns basic information and property data access information (`propertyAccessConfigs`).")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of data access sets to return. Default is 100. Maximum is 1000.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2365,6 +2615,10 @@ class PermissionsApi:
         :type var_with: List[str]
         :param limit: The maximum number of data access sets to return. Default is 100. Maximum is 1000.
         :type limit: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2391,6 +2645,8 @@ class PermissionsApi:
             analytic_object_id=analytic_object_id,
             var_with=var_with,
             limit=limit,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2418,6 +2674,8 @@ class PermissionsApi:
         analytic_object_id: Annotated[Optional[StrictStr], Field(description="Specify the analytic object ID to retrieve the shareable data access sets for. Default is all analytic objects.")] = None,
         var_with: Annotated[Optional[List[StrictStr]], Field(description="The information about the data access set to include in the request response.  * If empty, returns basic information for the data access set, including its unique ID, display name, description, and analytic object ID.  * If `details`, returns basic information and property data access information (`propertyAccessConfigs`).")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of data access sets to return. Default is 100. Maximum is 1000.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2441,6 +2699,10 @@ class PermissionsApi:
         :type var_with: List[str]
         :param limit: The maximum number of data access sets to return. Default is 100. Maximum is 1000.
         :type limit: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2467,6 +2729,8 @@ class PermissionsApi:
             analytic_object_id=analytic_object_id,
             var_with=var_with,
             limit=limit,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2488,6 +2752,8 @@ class PermissionsApi:
         analytic_object_id,
         var_with,
         limit,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2522,6 +2788,10 @@ class PermissionsApi:
             _query_params.append(('limit', limit))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
 
@@ -2563,6 +2833,8 @@ class PermissionsApi:
         id: Annotated[Optional[List[StrictStr]], Field(description="The unique identifiers of the data security objects (analytic objects) to retrieve.  Default is all data security objects.")] = None,
         include_details: Annotated[Optional[StrictBool], Field(description="If `true`, the response includes the analytic objects (display name, ID, and object type), related objects,  securable properties, and securable dimensions. If `false`, the response only includes analytic objects  (display name, ID, and object type). Default is `false`.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve data security objects from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2586,6 +2858,10 @@ class PermissionsApi:
         :type include_details: bool
         :param tenant_code: Specify the tenant to retrieve data security objects from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2612,6 +2888,8 @@ class PermissionsApi:
             id=id,
             include_details=include_details,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2639,6 +2917,8 @@ class PermissionsApi:
         id: Annotated[Optional[List[StrictStr]], Field(description="The unique identifiers of the data security objects (analytic objects) to retrieve.  Default is all data security objects.")] = None,
         include_details: Annotated[Optional[StrictBool], Field(description="If `true`, the response includes the analytic objects (display name, ID, and object type), related objects,  securable properties, and securable dimensions. If `false`, the response only includes analytic objects  (display name, ID, and object type). Default is `false`.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve data security objects from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2662,6 +2942,10 @@ class PermissionsApi:
         :type include_details: bool
         :param tenant_code: Specify the tenant to retrieve data security objects from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2688,6 +2972,8 @@ class PermissionsApi:
             id=id,
             include_details=include_details,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2715,6 +3001,8 @@ class PermissionsApi:
         id: Annotated[Optional[List[StrictStr]], Field(description="The unique identifiers of the data security objects (analytic objects) to retrieve.  Default is all data security objects.")] = None,
         include_details: Annotated[Optional[StrictBool], Field(description="If `true`, the response includes the analytic objects (display name, ID, and object type), related objects,  securable properties, and securable dimensions. If `false`, the response only includes analytic objects  (display name, ID, and object type). Default is `false`.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve data security objects from.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2738,6 +3026,10 @@ class PermissionsApi:
         :type include_details: bool
         :param tenant_code: Specify the tenant to retrieve data security objects from.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2764,6 +3056,8 @@ class PermissionsApi:
             id=id,
             include_details=include_details,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2785,6 +3079,8 @@ class PermissionsApi:
         id,
         include_details,
         tenant_code,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2819,6 +3115,10 @@ class PermissionsApi:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
 
@@ -2860,6 +3160,8 @@ class PermissionsApi:
         permission_id: Annotated[StrictStr, Field(description="The unique identifier of the permission you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a permission from.")] = None,
         include_details_with_status: Annotated[Optional[StrictStr], Field(description="If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2883,6 +3185,10 @@ class PermissionsApi:
         :type tenant_code: str
         :param include_details_with_status: If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.
         :type include_details_with_status: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2909,6 +3215,8 @@ class PermissionsApi:
             permission_id=permission_id,
             tenant_code=tenant_code,
             include_details_with_status=include_details_with_status,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2936,6 +3244,8 @@ class PermissionsApi:
         permission_id: Annotated[StrictStr, Field(description="The unique identifier of the permission you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a permission from.")] = None,
         include_details_with_status: Annotated[Optional[StrictStr], Field(description="If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2959,6 +3269,10 @@ class PermissionsApi:
         :type tenant_code: str
         :param include_details_with_status: If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.
         :type include_details_with_status: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2985,6 +3299,8 @@ class PermissionsApi:
             permission_id=permission_id,
             tenant_code=tenant_code,
             include_details_with_status=include_details_with_status,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3012,6 +3328,8 @@ class PermissionsApi:
         permission_id: Annotated[StrictStr, Field(description="The unique identifier of the permission you want to retrieve.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve a permission from.")] = None,
         include_details_with_status: Annotated[Optional[StrictStr], Field(description="If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3035,6 +3353,10 @@ class PermissionsApi:
         :type tenant_code: str
         :param include_details_with_status: If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.
         :type include_details_with_status: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3061,6 +3383,8 @@ class PermissionsApi:
             permission_id=permission_id,
             tenant_code=tenant_code,
             include_details_with_status=include_details_with_status,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3082,6 +3406,8 @@ class PermissionsApi:
         permission_id,
         tenant_code,
         include_details_with_status,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3113,6 +3439,10 @@ class PermissionsApi:
             _query_params.append(('includeDetailsWithStatus', include_details_with_status))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
 
@@ -3154,6 +3484,8 @@ class PermissionsApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the permissions from.")] = None,
         include_details: Annotated[Optional[StrictBool], Field(description="If `true`, returns the permission's details. If `false`, only returns the permissions' ID, display name,  and description. Default is `false`.")] = None,
         include_details_with_status: Annotated[Optional[StrictBool], Field(description="If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3177,6 +3509,10 @@ class PermissionsApi:
         :type include_details: bool
         :param include_details_with_status: If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.
         :type include_details_with_status: bool
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3203,6 +3539,8 @@ class PermissionsApi:
             tenant_code=tenant_code,
             include_details=include_details,
             include_details_with_status=include_details_with_status,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3230,6 +3568,8 @@ class PermissionsApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the permissions from.")] = None,
         include_details: Annotated[Optional[StrictBool], Field(description="If `true`, returns the permission's details. If `false`, only returns the permissions' ID, display name,  and description. Default is `false`.")] = None,
         include_details_with_status: Annotated[Optional[StrictBool], Field(description="If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3253,6 +3593,10 @@ class PermissionsApi:
         :type include_details: bool
         :param include_details_with_status: If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.
         :type include_details_with_status: bool
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3279,6 +3623,8 @@ class PermissionsApi:
             tenant_code=tenant_code,
             include_details=include_details,
             include_details_with_status=include_details_with_status,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3306,6 +3652,8 @@ class PermissionsApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve the permissions from.")] = None,
         include_details: Annotated[Optional[StrictBool], Field(description="If `true`, returns the permission's details. If `false`, only returns the permissions' ID, display name,  and description. Default is `false`.")] = None,
         include_details_with_status: Annotated[Optional[StrictBool], Field(description="If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3329,6 +3677,10 @@ class PermissionsApi:
         :type include_details: bool
         :param include_details_with_status: If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.
         :type include_details_with_status: bool
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3355,6 +3707,8 @@ class PermissionsApi:
             tenant_code=tenant_code,
             include_details=include_details,
             include_details_with_status=include_details_with_status,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3376,6 +3730,8 @@ class PermissionsApi:
         tenant_code,
         include_details,
         include_details_with_status,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3409,6 +3765,10 @@ class PermissionsApi:
             _query_params.append(('includeDetailsWithStatus', include_details_with_status))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
 
@@ -3449,6 +3809,8 @@ class PermissionsApi:
         self,
         permissions_list_dto: PermissionsListDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update permissions in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3470,6 +3832,10 @@ class PermissionsApi:
         :type permissions_list_dto: PermissionsListDTO
         :param tenant_code: Specify the tenant to update permissions in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3495,6 +3861,8 @@ class PermissionsApi:
         _param = self._update_permissions_serialize(
             permissions_list_dto=permissions_list_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3521,6 +3889,8 @@ class PermissionsApi:
         self,
         permissions_list_dto: PermissionsListDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update permissions in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3542,6 +3912,10 @@ class PermissionsApi:
         :type permissions_list_dto: PermissionsListDTO
         :param tenant_code: Specify the tenant to update permissions in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3567,6 +3941,8 @@ class PermissionsApi:
         _param = self._update_permissions_serialize(
             permissions_list_dto=permissions_list_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3593,6 +3969,8 @@ class PermissionsApi:
         self,
         permissions_list_dto: PermissionsListDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update permissions in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3614,6 +3992,10 @@ class PermissionsApi:
         :type permissions_list_dto: PermissionsListDTO
         :param tenant_code: Specify the tenant to update permissions in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param project_id: Optionally, specify a project in which to make the request.
+        :type project_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3639,6 +4021,8 @@ class PermissionsApi:
         _param = self._update_permissions_serialize(
             permissions_list_dto=permissions_list_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
+            project_id=project_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3659,6 +4043,8 @@ class PermissionsApi:
         self,
         permissions_list_dto,
         tenant_code,
+        target_tenant_id,
+        project_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3684,6 +4070,10 @@ class PermissionsApi:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        if project_id is not None:
+            _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
         if permissions_list_dto is not None:

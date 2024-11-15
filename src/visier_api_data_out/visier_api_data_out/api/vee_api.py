@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -20,6 +20,9 @@ from typing_extensions import Annotated
 
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
+from pydantic import Field, StrictStr
+from typing import Optional
+from typing_extensions import Annotated
 from visier_api_data_out.models.vee_feedback_dto import VeeFeedbackDTO
 from visier_api_data_out.models.vee_question_dto import VeeQuestionDTO
 from visier_api_data_out.models.vee_response_dto import VeeResponseDTO
@@ -45,6 +48,7 @@ class VeeApi:
     def vee_feedback(
         self,
         vee_feedback_dto: VeeFeedbackDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,6 +68,8 @@ class VeeApi:
 
         :param vee_feedback_dto: (required)
         :type vee_feedback_dto: VeeFeedbackDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -88,6 +94,7 @@ class VeeApi:
 
         _param = self._vee_feedback_serialize(
             vee_feedback_dto=vee_feedback_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -113,6 +120,7 @@ class VeeApi:
     def vee_feedback_with_http_info(
         self,
         vee_feedback_dto: VeeFeedbackDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -132,6 +140,8 @@ class VeeApi:
 
         :param vee_feedback_dto: (required)
         :type vee_feedback_dto: VeeFeedbackDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -156,6 +166,7 @@ class VeeApi:
 
         _param = self._vee_feedback_serialize(
             vee_feedback_dto=vee_feedback_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -181,6 +192,7 @@ class VeeApi:
     def vee_feedback_without_preload_content(
         self,
         vee_feedback_dto: VeeFeedbackDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -200,6 +212,8 @@ class VeeApi:
 
         :param vee_feedback_dto: (required)
         :type vee_feedback_dto: VeeFeedbackDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -224,6 +238,7 @@ class VeeApi:
 
         _param = self._vee_feedback_serialize(
             vee_feedback_dto=vee_feedback_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -243,6 +258,7 @@ class VeeApi:
     def _vee_feedback_serialize(
         self,
         vee_feedback_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -264,6 +280,8 @@ class VeeApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if vee_feedback_dto is not None:
@@ -323,6 +341,7 @@ class VeeApi:
     def vee_question_request(
         self,
         vee_question_dto: VeeQuestionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -342,6 +361,8 @@ class VeeApi:
 
         :param vee_question_dto: (required)
         :type vee_question_dto: VeeQuestionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -366,6 +387,7 @@ class VeeApi:
 
         _param = self._vee_question_request_serialize(
             vee_question_dto=vee_question_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -391,6 +413,7 @@ class VeeApi:
     def vee_question_request_with_http_info(
         self,
         vee_question_dto: VeeQuestionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -410,6 +433,8 @@ class VeeApi:
 
         :param vee_question_dto: (required)
         :type vee_question_dto: VeeQuestionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -434,6 +459,7 @@ class VeeApi:
 
         _param = self._vee_question_request_serialize(
             vee_question_dto=vee_question_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -459,6 +485,7 @@ class VeeApi:
     def vee_question_request_without_preload_content(
         self,
         vee_question_dto: VeeQuestionDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -478,6 +505,8 @@ class VeeApi:
 
         :param vee_question_dto: (required)
         :type vee_question_dto: VeeQuestionDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -502,6 +531,7 @@ class VeeApi:
 
         _param = self._vee_question_request_serialize(
             vee_question_dto=vee_question_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -521,6 +551,7 @@ class VeeApi:
     def _vee_question_request_serialize(
         self,
         vee_question_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -542,6 +573,8 @@ class VeeApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if vee_question_dto is not None:
@@ -600,6 +633,7 @@ class VeeApi:
     @validate_call
     def vee_sample_questions(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -617,6 +651,8 @@ class VeeApi:
 
         Get a list of sample questions to help your users start using Vee. The response returns a list of questions, such as \"What is the turnover rate?\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -640,6 +676,7 @@ class VeeApi:
         """ # noqa: E501
 
         _param = self._vee_sample_questions_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -664,6 +701,7 @@ class VeeApi:
     @validate_call
     def vee_sample_questions_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -681,6 +719,8 @@ class VeeApi:
 
         Get a list of sample questions to help your users start using Vee. The response returns a list of questions, such as \"What is the turnover rate?\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -704,6 +744,7 @@ class VeeApi:
         """ # noqa: E501
 
         _param = self._vee_sample_questions_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -728,6 +769,7 @@ class VeeApi:
     @validate_call
     def vee_sample_questions_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -745,6 +787,8 @@ class VeeApi:
 
         Get a list of sample questions to help your users start using Vee. The response returns a list of questions, such as \"What is the turnover rate?\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -768,6 +812,7 @@ class VeeApi:
         """ # noqa: E501
 
         _param = self._vee_sample_questions_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -786,6 +831,7 @@ class VeeApi:
 
     def _vee_sample_questions_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -807,6 +853,8 @@ class VeeApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -850,6 +898,7 @@ class VeeApi:
     @validate_call
     def vee_status(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -867,6 +916,8 @@ class VeeApi:
 
         Check the current overall status of Vee.   The overall status is one of:  * `UP` :  Vee is operational.  * `DOWN`: Vee is not operational.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -890,6 +941,7 @@ class VeeApi:
         """ # noqa: E501
 
         _param = self._vee_status_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -914,6 +966,7 @@ class VeeApi:
     @validate_call
     def vee_status_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -931,6 +984,8 @@ class VeeApi:
 
         Check the current overall status of Vee.   The overall status is one of:  * `UP` :  Vee is operational.  * `DOWN`: Vee is not operational.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -954,6 +1009,7 @@ class VeeApi:
         """ # noqa: E501
 
         _param = self._vee_status_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -978,6 +1034,7 @@ class VeeApi:
     @validate_call
     def vee_status_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -995,6 +1052,8 @@ class VeeApi:
 
         Check the current overall status of Vee.   The overall status is one of:  * `UP` :  Vee is operational.  * `DOWN`: Vee is not operational.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1018,6 +1077,7 @@ class VeeApi:
         """ # noqa: E501
 
         _param = self._vee_status_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1036,6 +1096,7 @@ class VeeApi:
 
     def _vee_status_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1057,6 +1118,8 @@ class VeeApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 

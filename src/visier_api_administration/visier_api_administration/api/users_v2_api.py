@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -47,6 +47,7 @@ class UsersV2Api:
         self,
         users_creation_api_request_dto: UsersCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -68,6 +69,8 @@ class UsersV2Api:
         :type users_creation_api_request_dto: UsersCreationAPIRequestDTO
         :param tenant_code: Specify the tenant to create a user in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -93,6 +96,7 @@ class UsersV2Api:
         _param = self._add_users_serialize(
             users_creation_api_request_dto=users_creation_api_request_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -119,6 +123,7 @@ class UsersV2Api:
         self,
         users_creation_api_request_dto: UsersCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -140,6 +145,8 @@ class UsersV2Api:
         :type users_creation_api_request_dto: UsersCreationAPIRequestDTO
         :param tenant_code: Specify the tenant to create a user in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -165,6 +172,7 @@ class UsersV2Api:
         _param = self._add_users_serialize(
             users_creation_api_request_dto=users_creation_api_request_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -191,6 +199,7 @@ class UsersV2Api:
         self,
         users_creation_api_request_dto: UsersCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -212,6 +221,8 @@ class UsersV2Api:
         :type users_creation_api_request_dto: UsersCreationAPIRequestDTO
         :param tenant_code: Specify the tenant to create a user in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -237,6 +248,7 @@ class UsersV2Api:
         _param = self._add_users_serialize(
             users_creation_api_request_dto=users_creation_api_request_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -257,6 +269,7 @@ class UsersV2Api:
         self,
         users_creation_api_request_dto,
         tenant_code,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -282,6 +295,8 @@ class UsersV2Api:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if users_creation_api_request_dto is not None:
@@ -337,6 +352,7 @@ class UsersV2Api:
         self,
         users_delete_api_request_dto: UsersDeleteAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete a user in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -358,6 +374,8 @@ class UsersV2Api:
         :type users_delete_api_request_dto: UsersDeleteAPIRequestDTO
         :param tenant_code: Specify the tenant to delete a user in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -383,6 +401,7 @@ class UsersV2Api:
         _param = self._delete_users_serialize(
             users_delete_api_request_dto=users_delete_api_request_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -409,6 +428,7 @@ class UsersV2Api:
         self,
         users_delete_api_request_dto: UsersDeleteAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete a user in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -430,6 +450,8 @@ class UsersV2Api:
         :type users_delete_api_request_dto: UsersDeleteAPIRequestDTO
         :param tenant_code: Specify the tenant to delete a user in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -455,6 +477,7 @@ class UsersV2Api:
         _param = self._delete_users_serialize(
             users_delete_api_request_dto=users_delete_api_request_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -481,6 +504,7 @@ class UsersV2Api:
         self,
         users_delete_api_request_dto: UsersDeleteAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete a user in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -502,6 +526,8 @@ class UsersV2Api:
         :type users_delete_api_request_dto: UsersDeleteAPIRequestDTO
         :param tenant_code: Specify the tenant to delete a user in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -527,6 +553,7 @@ class UsersV2Api:
         _param = self._delete_users_serialize(
             users_delete_api_request_dto=users_delete_api_request_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -547,6 +574,7 @@ class UsersV2Api:
         self,
         users_delete_api_request_dto,
         tenant_code,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -572,6 +600,8 @@ class UsersV2Api:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if users_delete_api_request_dto is not None:
@@ -627,6 +657,7 @@ class UsersV2Api:
         self,
         users_update_api_request_dto: UsersUpdateAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update a user in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -648,6 +679,8 @@ class UsersV2Api:
         :type users_update_api_request_dto: UsersUpdateAPIRequestDTO
         :param tenant_code: Specify the tenant to update a user in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -673,6 +706,7 @@ class UsersV2Api:
         _param = self._update_users_serialize(
             users_update_api_request_dto=users_update_api_request_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -699,6 +733,7 @@ class UsersV2Api:
         self,
         users_update_api_request_dto: UsersUpdateAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update a user in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -720,6 +755,8 @@ class UsersV2Api:
         :type users_update_api_request_dto: UsersUpdateAPIRequestDTO
         :param tenant_code: Specify the tenant to update a user in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -745,6 +782,7 @@ class UsersV2Api:
         _param = self._update_users_serialize(
             users_update_api_request_dto=users_update_api_request_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -771,6 +809,7 @@ class UsersV2Api:
         self,
         users_update_api_request_dto: UsersUpdateAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update a user in.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -792,6 +831,8 @@ class UsersV2Api:
         :type users_update_api_request_dto: UsersUpdateAPIRequestDTO
         :param tenant_code: Specify the tenant to update a user in.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -817,6 +858,7 @@ class UsersV2Api:
         _param = self._update_users_serialize(
             users_update_api_request_dto=users_update_api_request_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -837,6 +879,7 @@ class UsersV2Api:
         self,
         users_update_api_request_dto,
         tenant_code,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -862,6 +905,8 @@ class UsersV2Api:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if users_update_api_request_dto is not None:

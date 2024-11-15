@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -78,6 +78,7 @@ class DataAndJobHandlingApi:
     def adhoc_consolidated_analytics_job(
         self,
         consolidated_analytics_job_request_dto: ConsolidatedAnalyticsJobRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -97,6 +98,8 @@ class DataAndJobHandlingApi:
 
         :param consolidated_analytics_job_request_dto: (required)
         :type consolidated_analytics_job_request_dto: ConsolidatedAnalyticsJobRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -121,6 +124,7 @@ class DataAndJobHandlingApi:
 
         _param = self._adhoc_consolidated_analytics_job_serialize(
             consolidated_analytics_job_request_dto=consolidated_analytics_job_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -146,6 +150,7 @@ class DataAndJobHandlingApi:
     def adhoc_consolidated_analytics_job_with_http_info(
         self,
         consolidated_analytics_job_request_dto: ConsolidatedAnalyticsJobRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -165,6 +170,8 @@ class DataAndJobHandlingApi:
 
         :param consolidated_analytics_job_request_dto: (required)
         :type consolidated_analytics_job_request_dto: ConsolidatedAnalyticsJobRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -189,6 +196,7 @@ class DataAndJobHandlingApi:
 
         _param = self._adhoc_consolidated_analytics_job_serialize(
             consolidated_analytics_job_request_dto=consolidated_analytics_job_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -214,6 +222,7 @@ class DataAndJobHandlingApi:
     def adhoc_consolidated_analytics_job_without_preload_content(
         self,
         consolidated_analytics_job_request_dto: ConsolidatedAnalyticsJobRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -233,6 +242,8 @@ class DataAndJobHandlingApi:
 
         :param consolidated_analytics_job_request_dto: (required)
         :type consolidated_analytics_job_request_dto: ConsolidatedAnalyticsJobRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -257,6 +268,7 @@ class DataAndJobHandlingApi:
 
         _param = self._adhoc_consolidated_analytics_job_serialize(
             consolidated_analytics_job_request_dto=consolidated_analytics_job_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -276,6 +288,7 @@ class DataAndJobHandlingApi:
     def _adhoc_consolidated_analytics_job_serialize(
         self,
         consolidated_analytics_job_request_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -297,6 +310,8 @@ class DataAndJobHandlingApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if consolidated_analytics_job_request_dto is not None:
@@ -356,6 +371,7 @@ class DataAndJobHandlingApi:
     def adhoc_extraction_job(
         self,
         extract_data_and_load_dto: ExtractDataAndLoadDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -375,6 +391,8 @@ class DataAndJobHandlingApi:
 
         :param extract_data_and_load_dto: (required)
         :type extract_data_and_load_dto: ExtractDataAndLoadDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -399,6 +417,7 @@ class DataAndJobHandlingApi:
 
         _param = self._adhoc_extraction_job_serialize(
             extract_data_and_load_dto=extract_data_and_load_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -424,6 +443,7 @@ class DataAndJobHandlingApi:
     def adhoc_extraction_job_with_http_info(
         self,
         extract_data_and_load_dto: ExtractDataAndLoadDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -443,6 +463,8 @@ class DataAndJobHandlingApi:
 
         :param extract_data_and_load_dto: (required)
         :type extract_data_and_load_dto: ExtractDataAndLoadDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -467,6 +489,7 @@ class DataAndJobHandlingApi:
 
         _param = self._adhoc_extraction_job_serialize(
             extract_data_and_load_dto=extract_data_and_load_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -492,6 +515,7 @@ class DataAndJobHandlingApi:
     def adhoc_extraction_job_without_preload_content(
         self,
         extract_data_and_load_dto: ExtractDataAndLoadDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -511,6 +535,8 @@ class DataAndJobHandlingApi:
 
         :param extract_data_and_load_dto: (required)
         :type extract_data_and_load_dto: ExtractDataAndLoadDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -535,6 +561,7 @@ class DataAndJobHandlingApi:
 
         _param = self._adhoc_extraction_job_serialize(
             extract_data_and_load_dto=extract_data_and_load_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -554,6 +581,7 @@ class DataAndJobHandlingApi:
     def _adhoc_extraction_job_serialize(
         self,
         extract_data_and_load_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -575,6 +603,8 @@ class DataAndJobHandlingApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if extract_data_and_load_dto is not None:
@@ -634,6 +664,7 @@ class DataAndJobHandlingApi:
     def adhoc_processing_jobs(
         self,
         processing_job_request_dto: ProcessingJobRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -653,6 +684,8 @@ class DataAndJobHandlingApi:
 
         :param processing_job_request_dto: (required)
         :type processing_job_request_dto: ProcessingJobRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -677,6 +710,7 @@ class DataAndJobHandlingApi:
 
         _param = self._adhoc_processing_jobs_serialize(
             processing_job_request_dto=processing_job_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -702,6 +736,7 @@ class DataAndJobHandlingApi:
     def adhoc_processing_jobs_with_http_info(
         self,
         processing_job_request_dto: ProcessingJobRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -721,6 +756,8 @@ class DataAndJobHandlingApi:
 
         :param processing_job_request_dto: (required)
         :type processing_job_request_dto: ProcessingJobRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -745,6 +782,7 @@ class DataAndJobHandlingApi:
 
         _param = self._adhoc_processing_jobs_serialize(
             processing_job_request_dto=processing_job_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -770,6 +808,7 @@ class DataAndJobHandlingApi:
     def adhoc_processing_jobs_without_preload_content(
         self,
         processing_job_request_dto: ProcessingJobRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -789,6 +828,8 @@ class DataAndJobHandlingApi:
 
         :param processing_job_request_dto: (required)
         :type processing_job_request_dto: ProcessingJobRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -813,6 +854,7 @@ class DataAndJobHandlingApi:
 
         _param = self._adhoc_processing_jobs_serialize(
             processing_job_request_dto=processing_job_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -832,6 +874,7 @@ class DataAndJobHandlingApi:
     def _adhoc_processing_jobs_serialize(
         self,
         processing_job_request_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -853,6 +896,8 @@ class DataAndJobHandlingApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if processing_job_request_dto is not None:
@@ -912,6 +957,7 @@ class DataAndJobHandlingApi:
     def assign_connector_credential(
         self,
         assign_connector_credential_request: AssignConnectorCredentialRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -931,6 +977,8 @@ class DataAndJobHandlingApi:
 
         :param assign_connector_credential_request: (required)
         :type assign_connector_credential_request: AssignConnectorCredentialRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -955,6 +1003,7 @@ class DataAndJobHandlingApi:
 
         _param = self._assign_connector_credential_serialize(
             assign_connector_credential_request=assign_connector_credential_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -980,6 +1029,7 @@ class DataAndJobHandlingApi:
     def assign_connector_credential_with_http_info(
         self,
         assign_connector_credential_request: AssignConnectorCredentialRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -999,6 +1049,8 @@ class DataAndJobHandlingApi:
 
         :param assign_connector_credential_request: (required)
         :type assign_connector_credential_request: AssignConnectorCredentialRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1023,6 +1075,7 @@ class DataAndJobHandlingApi:
 
         _param = self._assign_connector_credential_serialize(
             assign_connector_credential_request=assign_connector_credential_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1048,6 +1101,7 @@ class DataAndJobHandlingApi:
     def assign_connector_credential_without_preload_content(
         self,
         assign_connector_credential_request: AssignConnectorCredentialRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1067,6 +1121,8 @@ class DataAndJobHandlingApi:
 
         :param assign_connector_credential_request: (required)
         :type assign_connector_credential_request: AssignConnectorCredentialRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1091,6 +1147,7 @@ class DataAndJobHandlingApi:
 
         _param = self._assign_connector_credential_serialize(
             assign_connector_credential_request=assign_connector_credential_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1110,6 +1167,7 @@ class DataAndJobHandlingApi:
     def _assign_connector_credential_serialize(
         self,
         assign_connector_credential_request,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1131,6 +1189,8 @@ class DataAndJobHandlingApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if assign_connector_credential_request is not None:
@@ -1190,6 +1250,7 @@ class DataAndJobHandlingApi:
     def cancel_jobs(
         self,
         cancel_job_batch_from_job_id_dto: CancelJobBatchFromJobIdDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1209,6 +1270,8 @@ class DataAndJobHandlingApi:
 
         :param cancel_job_batch_from_job_id_dto: (required)
         :type cancel_job_batch_from_job_id_dto: CancelJobBatchFromJobIdDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1233,6 +1296,7 @@ class DataAndJobHandlingApi:
 
         _param = self._cancel_jobs_serialize(
             cancel_job_batch_from_job_id_dto=cancel_job_batch_from_job_id_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1258,6 +1322,7 @@ class DataAndJobHandlingApi:
     def cancel_jobs_with_http_info(
         self,
         cancel_job_batch_from_job_id_dto: CancelJobBatchFromJobIdDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1277,6 +1342,8 @@ class DataAndJobHandlingApi:
 
         :param cancel_job_batch_from_job_id_dto: (required)
         :type cancel_job_batch_from_job_id_dto: CancelJobBatchFromJobIdDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1301,6 +1368,7 @@ class DataAndJobHandlingApi:
 
         _param = self._cancel_jobs_serialize(
             cancel_job_batch_from_job_id_dto=cancel_job_batch_from_job_id_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1326,6 +1394,7 @@ class DataAndJobHandlingApi:
     def cancel_jobs_without_preload_content(
         self,
         cancel_job_batch_from_job_id_dto: CancelJobBatchFromJobIdDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1345,6 +1414,8 @@ class DataAndJobHandlingApi:
 
         :param cancel_job_batch_from_job_id_dto: (required)
         :type cancel_job_batch_from_job_id_dto: CancelJobBatchFromJobIdDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1369,6 +1440,7 @@ class DataAndJobHandlingApi:
 
         _param = self._cancel_jobs_serialize(
             cancel_job_batch_from_job_id_dto=cancel_job_batch_from_job_id_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1388,6 +1460,7 @@ class DataAndJobHandlingApi:
     def _cancel_jobs_serialize(
         self,
         cancel_job_batch_from_job_id_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1409,6 +1482,8 @@ class DataAndJobHandlingApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if cancel_job_batch_from_job_id_dto is not None:
@@ -1469,6 +1544,7 @@ class DataAndJobHandlingApi:
         self,
         data_provider_auth_information_dto: DataProviderAuthInformationDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to create the credential for.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1490,6 +1566,8 @@ class DataAndJobHandlingApi:
         :type data_provider_auth_information_dto: DataProviderAuthInformationDTO
         :param tenant_code: The tenant code of a specific analytic tenant that you want to create the credential for.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1515,6 +1593,7 @@ class DataAndJobHandlingApi:
         _param = self._create_connector_credential_serialize(
             data_provider_auth_information_dto=data_provider_auth_information_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1541,6 +1620,7 @@ class DataAndJobHandlingApi:
         self,
         data_provider_auth_information_dto: DataProviderAuthInformationDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to create the credential for.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1562,6 +1642,8 @@ class DataAndJobHandlingApi:
         :type data_provider_auth_information_dto: DataProviderAuthInformationDTO
         :param tenant_code: The tenant code of a specific analytic tenant that you want to create the credential for.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1587,6 +1669,7 @@ class DataAndJobHandlingApi:
         _param = self._create_connector_credential_serialize(
             data_provider_auth_information_dto=data_provider_auth_information_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1613,6 +1696,7 @@ class DataAndJobHandlingApi:
         self,
         data_provider_auth_information_dto: DataProviderAuthInformationDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to create the credential for.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1634,6 +1718,8 @@ class DataAndJobHandlingApi:
         :type data_provider_auth_information_dto: DataProviderAuthInformationDTO
         :param tenant_code: The tenant code of a specific analytic tenant that you want to create the credential for.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1659,6 +1745,7 @@ class DataAndJobHandlingApi:
         _param = self._create_connector_credential_serialize(
             data_provider_auth_information_dto=data_provider_auth_information_dto,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1679,6 +1766,7 @@ class DataAndJobHandlingApi:
         self,
         data_provider_auth_information_dto,
         tenant_code,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1704,6 +1792,8 @@ class DataAndJobHandlingApi:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if data_provider_auth_information_dto is not None:
@@ -1765,6 +1855,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve for.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1788,6 +1879,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1814,6 +1907,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1841,6 +1935,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve for.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1864,6 +1959,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1890,6 +1987,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1917,6 +2015,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve for.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1940,6 +2039,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1966,6 +2067,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1987,6 +2089,7 @@ class DataAndJobHandlingApi:
         tenant_code,
         limit,
         start,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2020,6 +2123,8 @@ class DataAndJobHandlingApi:
             _query_params.append(('start', start))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -2066,6 +2171,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve for.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2089,6 +2195,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2115,6 +2223,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2142,6 +2251,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve for.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2165,6 +2275,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2191,6 +2303,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2218,6 +2331,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve for.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2241,6 +2355,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2267,6 +2383,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2288,6 +2405,7 @@ class DataAndJobHandlingApi:
         tenant_code,
         limit,
         start,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2321,6 +2439,8 @@ class DataAndJobHandlingApi:
             _query_params.append(('start', start))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -2366,6 +2486,7 @@ class DataAndJobHandlingApi:
         self,
         id: Annotated[StrictStr, Field(description="The credentialId of the credential you want to delete.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the analytic tenant in which the credential you're deleting.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2387,6 +2508,8 @@ class DataAndJobHandlingApi:
         :type id: str
         :param tenant_code: The tenant code of the analytic tenant in which the credential you're deleting.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2412,6 +2535,7 @@ class DataAndJobHandlingApi:
         _param = self._delete_connector_credential_serialize(
             id=id,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2438,6 +2562,7 @@ class DataAndJobHandlingApi:
         self,
         id: Annotated[StrictStr, Field(description="The credentialId of the credential you want to delete.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the analytic tenant in which the credential you're deleting.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2459,6 +2584,8 @@ class DataAndJobHandlingApi:
         :type id: str
         :param tenant_code: The tenant code of the analytic tenant in which the credential you're deleting.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2484,6 +2611,7 @@ class DataAndJobHandlingApi:
         _param = self._delete_connector_credential_serialize(
             id=id,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2510,6 +2638,7 @@ class DataAndJobHandlingApi:
         self,
         id: Annotated[StrictStr, Field(description="The credentialId of the credential you want to delete.")],
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the analytic tenant in which the credential you're deleting.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2531,6 +2660,8 @@ class DataAndJobHandlingApi:
         :type id: str
         :param tenant_code: The tenant code of the analytic tenant in which the credential you're deleting.
         :type tenant_code: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2556,6 +2687,7 @@ class DataAndJobHandlingApi:
         _param = self._delete_connector_credential_serialize(
             id=id,
             tenant_code=tenant_code,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2576,6 +2708,7 @@ class DataAndJobHandlingApi:
         self,
         id,
         tenant_code,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2603,6 +2736,8 @@ class DataAndJobHandlingApi:
             _query_params.append(('tenantCode', tenant_code))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -2647,6 +2782,7 @@ class DataAndJobHandlingApi:
     def disable_dv(
         self,
         disable_dv_request: DisableDVRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2666,6 +2802,8 @@ class DataAndJobHandlingApi:
 
         :param disable_dv_request: (required)
         :type disable_dv_request: DisableDVRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2690,6 +2828,7 @@ class DataAndJobHandlingApi:
 
         _param = self._disable_dv_serialize(
             disable_dv_request=disable_dv_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2715,6 +2854,7 @@ class DataAndJobHandlingApi:
     def disable_dv_with_http_info(
         self,
         disable_dv_request: DisableDVRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2734,6 +2874,8 @@ class DataAndJobHandlingApi:
 
         :param disable_dv_request: (required)
         :type disable_dv_request: DisableDVRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2758,6 +2900,7 @@ class DataAndJobHandlingApi:
 
         _param = self._disable_dv_serialize(
             disable_dv_request=disable_dv_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2783,6 +2926,7 @@ class DataAndJobHandlingApi:
     def disable_dv_without_preload_content(
         self,
         disable_dv_request: DisableDVRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2802,6 +2946,8 @@ class DataAndJobHandlingApi:
 
         :param disable_dv_request: (required)
         :type disable_dv_request: DisableDVRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2826,6 +2972,7 @@ class DataAndJobHandlingApi:
 
         _param = self._disable_dv_serialize(
             disable_dv_request=disable_dv_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2845,6 +2992,7 @@ class DataAndJobHandlingApi:
     def _disable_dv_serialize(
         self,
         disable_dv_request,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2866,6 +3014,8 @@ class DataAndJobHandlingApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if disable_dv_request is not None:
@@ -2925,6 +3075,7 @@ class DataAndJobHandlingApi:
     def dispatching_job_status(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the job you want to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2944,6 +3095,8 @@ class DataAndJobHandlingApi:
 
         :param job_id: The ID of the job you want to retrieve. (required)
         :type job_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2968,6 +3121,7 @@ class DataAndJobHandlingApi:
 
         _param = self._dispatching_job_status_serialize(
             job_id=job_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2993,6 +3147,7 @@ class DataAndJobHandlingApi:
     def dispatching_job_status_with_http_info(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the job you want to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3012,6 +3167,8 @@ class DataAndJobHandlingApi:
 
         :param job_id: The ID of the job you want to retrieve. (required)
         :type job_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3036,6 +3193,7 @@ class DataAndJobHandlingApi:
 
         _param = self._dispatching_job_status_serialize(
             job_id=job_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3061,6 +3219,7 @@ class DataAndJobHandlingApi:
     def dispatching_job_status_without_preload_content(
         self,
         job_id: Annotated[StrictStr, Field(description="The ID of the job you want to retrieve.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3080,6 +3239,8 @@ class DataAndJobHandlingApi:
 
         :param job_id: The ID of the job you want to retrieve. (required)
         :type job_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3104,6 +3265,7 @@ class DataAndJobHandlingApi:
 
         _param = self._dispatching_job_status_serialize(
             job_id=job_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3123,6 +3285,7 @@ class DataAndJobHandlingApi:
     def _dispatching_job_status_serialize(
         self,
         job_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3146,6 +3309,8 @@ class DataAndJobHandlingApi:
             _path_params['jobId'] = job_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -3206,7 +3371,7 @@ class DataAndJobHandlingApi:
     ) -> DownloadSourceFilesResponseDTO:
         """Download source files
 
-        Download a tenant's source files. You can download all source files or specify a list of sources to download. List of sources can be specified by object names or unique identifiers.    If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.    Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.    **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Download a tenant's source files. You can download all source files or specify a list of sources to download. List of sources can be specified by object names or unique identifiers.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param download_source_files_dto: (required)
         :type download_source_files_dto: DownloadSourceFilesDTO
@@ -3278,7 +3443,7 @@ class DataAndJobHandlingApi:
     ) -> ApiResponse[DownloadSourceFilesResponseDTO]:
         """Download source files
 
-        Download a tenant's source files. You can download all source files or specify a list of sources to download. List of sources can be specified by object names or unique identifiers.    If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.    Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.    **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Download a tenant's source files. You can download all source files or specify a list of sources to download. List of sources can be specified by object names or unique identifiers.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param download_source_files_dto: (required)
         :type download_source_files_dto: DownloadSourceFilesDTO
@@ -3350,7 +3515,7 @@ class DataAndJobHandlingApi:
     ) -> RESTResponseType:
         """Download source files
 
-        Download a tenant's source files. You can download all source files or specify a list of sources to download. List of sources can be specified by object names or unique identifiers.    If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.    Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.    **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Download a tenant's source files. You can download all source files or specify a list of sources to download. List of sources can be specified by object names or unique identifiers.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param download_source_files_dto: (required)
         :type download_source_files_dto: DownloadSourceFilesDTO
@@ -3483,6 +3648,7 @@ class DataAndJobHandlingApi:
     def exclude_data_uplaods(
         self,
         exclude_data_uploads_request: ExcludeDataUploadsRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3502,6 +3668,8 @@ class DataAndJobHandlingApi:
 
         :param exclude_data_uploads_request: (required)
         :type exclude_data_uploads_request: ExcludeDataUploadsRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3526,6 +3694,7 @@ class DataAndJobHandlingApi:
 
         _param = self._exclude_data_uplaods_serialize(
             exclude_data_uploads_request=exclude_data_uploads_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3551,6 +3720,7 @@ class DataAndJobHandlingApi:
     def exclude_data_uplaods_with_http_info(
         self,
         exclude_data_uploads_request: ExcludeDataUploadsRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3570,6 +3740,8 @@ class DataAndJobHandlingApi:
 
         :param exclude_data_uploads_request: (required)
         :type exclude_data_uploads_request: ExcludeDataUploadsRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3594,6 +3766,7 @@ class DataAndJobHandlingApi:
 
         _param = self._exclude_data_uplaods_serialize(
             exclude_data_uploads_request=exclude_data_uploads_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3619,6 +3792,7 @@ class DataAndJobHandlingApi:
     def exclude_data_uplaods_without_preload_content(
         self,
         exclude_data_uploads_request: ExcludeDataUploadsRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3638,6 +3812,8 @@ class DataAndJobHandlingApi:
 
         :param exclude_data_uploads_request: (required)
         :type exclude_data_uploads_request: ExcludeDataUploadsRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3662,6 +3838,7 @@ class DataAndJobHandlingApi:
 
         _param = self._exclude_data_uplaods_serialize(
             exclude_data_uploads_request=exclude_data_uploads_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3681,6 +3858,7 @@ class DataAndJobHandlingApi:
     def _exclude_data_uplaods_serialize(
         self,
         exclude_data_uploads_request,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3702,6 +3880,8 @@ class DataAndJobHandlingApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if exclude_data_uploads_request is not None:
@@ -3765,6 +3945,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the extraction job status for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of extraction job statuses to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3792,6 +3973,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3820,6 +4003,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3849,6 +4033,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the extraction job status for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of extraction job statuses to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3876,6 +4061,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3904,6 +4091,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3933,6 +4121,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the extraction job status for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of extraction job statuses to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3960,6 +4149,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3988,6 +4179,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4011,6 +4203,7 @@ class DataAndJobHandlingApi:
         tenant_code,
         limit,
         start,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -4050,6 +4243,8 @@ class DataAndJobHandlingApi:
             _query_params.append(('start', start))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -4094,6 +4289,7 @@ class DataAndJobHandlingApi:
     def include_data_uploads(
         self,
         include_data_uploads_request: IncludeDataUploadsRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4113,6 +4309,8 @@ class DataAndJobHandlingApi:
 
         :param include_data_uploads_request: (required)
         :type include_data_uploads_request: IncludeDataUploadsRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4137,6 +4335,7 @@ class DataAndJobHandlingApi:
 
         _param = self._include_data_uploads_serialize(
             include_data_uploads_request=include_data_uploads_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4162,6 +4361,7 @@ class DataAndJobHandlingApi:
     def include_data_uploads_with_http_info(
         self,
         include_data_uploads_request: IncludeDataUploadsRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4181,6 +4381,8 @@ class DataAndJobHandlingApi:
 
         :param include_data_uploads_request: (required)
         :type include_data_uploads_request: IncludeDataUploadsRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4205,6 +4407,7 @@ class DataAndJobHandlingApi:
 
         _param = self._include_data_uploads_serialize(
             include_data_uploads_request=include_data_uploads_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4230,6 +4433,7 @@ class DataAndJobHandlingApi:
     def include_data_uploads_without_preload_content(
         self,
         include_data_uploads_request: IncludeDataUploadsRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4249,6 +4453,8 @@ class DataAndJobHandlingApi:
 
         :param include_data_uploads_request: (required)
         :type include_data_uploads_request: IncludeDataUploadsRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4273,6 +4479,7 @@ class DataAndJobHandlingApi:
 
         _param = self._include_data_uploads_serialize(
             include_data_uploads_request=include_data_uploads_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4292,6 +4499,7 @@ class DataAndJobHandlingApi:
     def _include_data_uploads_serialize(
         self,
         include_data_uploads_request,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -4313,6 +4521,8 @@ class DataAndJobHandlingApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if include_data_uploads_request is not None:
@@ -4372,6 +4582,7 @@ class DataAndJobHandlingApi:
     def job_id_status(
         self,
         job_id: Annotated[StrictStr, Field(description="The unique ID of the job to retrieve the status for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4391,6 +4602,8 @@ class DataAndJobHandlingApi:
 
         :param job_id: The unique ID of the job to retrieve the status for. (required)
         :type job_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4415,6 +4628,7 @@ class DataAndJobHandlingApi:
 
         _param = self._job_id_status_serialize(
             job_id=job_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4440,6 +4654,7 @@ class DataAndJobHandlingApi:
     def job_id_status_with_http_info(
         self,
         job_id: Annotated[StrictStr, Field(description="The unique ID of the job to retrieve the status for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4459,6 +4674,8 @@ class DataAndJobHandlingApi:
 
         :param job_id: The unique ID of the job to retrieve the status for. (required)
         :type job_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4483,6 +4700,7 @@ class DataAndJobHandlingApi:
 
         _param = self._job_id_status_serialize(
             job_id=job_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4508,6 +4726,7 @@ class DataAndJobHandlingApi:
     def job_id_status_without_preload_content(
         self,
         job_id: Annotated[StrictStr, Field(description="The unique ID of the job to retrieve the status for.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4527,6 +4746,8 @@ class DataAndJobHandlingApi:
 
         :param job_id: The unique ID of the job to retrieve the status for. (required)
         :type job_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4551,6 +4772,7 @@ class DataAndJobHandlingApi:
 
         _param = self._job_id_status_serialize(
             job_id=job_id,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4570,6 +4792,7 @@ class DataAndJobHandlingApi:
     def _job_id_status_serialize(
         self,
         job_id,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -4593,6 +4816,8 @@ class DataAndJobHandlingApi:
             _path_params['jobId'] = job_id
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -4639,6 +4864,7 @@ class DataAndJobHandlingApi:
         start_time: Annotated[Optional[StrictStr], Field(description="The start time from which to retrieve job statuses.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The end time from which to retrieve job statuses.")] = None,
         status: Annotated[Optional[StrictStr], Field(description="The specific status to restrict the list of jobs to.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4662,6 +4888,8 @@ class DataAndJobHandlingApi:
         :type end_time: str
         :param status: The specific status to restrict the list of jobs to.
         :type status: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4688,6 +4916,7 @@ class DataAndJobHandlingApi:
             start_time=start_time,
             end_time=end_time,
             status=status,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4715,6 +4944,7 @@ class DataAndJobHandlingApi:
         start_time: Annotated[Optional[StrictStr], Field(description="The start time from which to retrieve job statuses.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The end time from which to retrieve job statuses.")] = None,
         status: Annotated[Optional[StrictStr], Field(description="The specific status to restrict the list of jobs to.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4738,6 +4968,8 @@ class DataAndJobHandlingApi:
         :type end_time: str
         :param status: The specific status to restrict the list of jobs to.
         :type status: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4764,6 +4996,7 @@ class DataAndJobHandlingApi:
             start_time=start_time,
             end_time=end_time,
             status=status,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4791,6 +5024,7 @@ class DataAndJobHandlingApi:
         start_time: Annotated[Optional[StrictStr], Field(description="The start time from which to retrieve job statuses.")] = None,
         end_time: Annotated[Optional[StrictStr], Field(description="The end time from which to retrieve job statuses.")] = None,
         status: Annotated[Optional[StrictStr], Field(description="The specific status to restrict the list of jobs to.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4814,6 +5048,8 @@ class DataAndJobHandlingApi:
         :type end_time: str
         :param status: The specific status to restrict the list of jobs to.
         :type status: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4840,6 +5076,7 @@ class DataAndJobHandlingApi:
             start_time=start_time,
             end_time=end_time,
             status=status,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4861,6 +5098,7 @@ class DataAndJobHandlingApi:
         start_time,
         end_time,
         status,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -4894,6 +5132,8 @@ class DataAndJobHandlingApi:
             _query_params.append(('status', status))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -4941,6 +5181,7 @@ class DataAndJobHandlingApi:
         limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data versions for.  This parameter is not used if the tenantCode parameter is specified.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
         number_of_versions: Annotated[Optional[StrictInt], Field(description="The number of latest enabled data versions to retrieve. The maximum value is 5.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4966,6 +5207,8 @@ class DataAndJobHandlingApi:
         :type start: int
         :param number_of_versions: The number of latest enabled data versions to retrieve. The maximum value is 5.
         :type number_of_versions: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4993,6 +5236,7 @@ class DataAndJobHandlingApi:
             limit=limit,
             start=start,
             number_of_versions=number_of_versions,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5021,6 +5265,7 @@ class DataAndJobHandlingApi:
         limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data versions for.  This parameter is not used if the tenantCode parameter is specified.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
         number_of_versions: Annotated[Optional[StrictInt], Field(description="The number of latest enabled data versions to retrieve. The maximum value is 5.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5046,6 +5291,8 @@ class DataAndJobHandlingApi:
         :type start: int
         :param number_of_versions: The number of latest enabled data versions to retrieve. The maximum value is 5.
         :type number_of_versions: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5073,6 +5320,7 @@ class DataAndJobHandlingApi:
             limit=limit,
             start=start,
             number_of_versions=number_of_versions,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5101,6 +5349,7 @@ class DataAndJobHandlingApi:
         limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data versions for.  This parameter is not used if the tenantCode parameter is specified.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
         number_of_versions: Annotated[Optional[StrictInt], Field(description="The number of latest enabled data versions to retrieve. The maximum value is 5.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5126,6 +5375,8 @@ class DataAndJobHandlingApi:
         :type start: int
         :param number_of_versions: The number of latest enabled data versions to retrieve. The maximum value is 5.
         :type number_of_versions: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5153,6 +5404,7 @@ class DataAndJobHandlingApi:
             limit=limit,
             start=start,
             number_of_versions=number_of_versions,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5175,6 +5427,7 @@ class DataAndJobHandlingApi:
         limit,
         start,
         number_of_versions,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -5212,6 +5465,8 @@ class DataAndJobHandlingApi:
             _query_params.append(('numberOfVersions', number_of_versions))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -5255,6 +5510,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def list_connector_settings(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5272,6 +5528,8 @@ class DataAndJobHandlingApi:
 
         Get a list of settings for all data connectors. This request retrieves data connectors from the production environment. The response returns a list of settings, if available, for each data connector in the tenant.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5295,6 +5553,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._list_connector_settings_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5319,6 +5578,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def list_connector_settings_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5336,6 +5596,8 @@ class DataAndJobHandlingApi:
 
         Get a list of settings for all data connectors. This request retrieves data connectors from the production environment. The response returns a list of settings, if available, for each data connector in the tenant.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5359,6 +5621,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._list_connector_settings_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5383,6 +5646,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def list_connector_settings_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5400,6 +5664,8 @@ class DataAndJobHandlingApi:
 
         Get a list of settings for all data connectors. This request retrieves data connectors from the production environment. The response returns a list of settings, if available, for each data connector in the tenant.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5423,6 +5689,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._list_connector_settings_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5441,6 +5708,7 @@ class DataAndJobHandlingApi:
 
     def _list_connector_settings_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -5462,6 +5730,8 @@ class DataAndJobHandlingApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -5510,6 +5780,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the extraction job status for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of extraction job statuses to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5537,6 +5808,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5565,6 +5838,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5594,6 +5868,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the extraction job status for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of extraction job statuses to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5621,6 +5896,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5649,6 +5926,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5678,6 +5956,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the extraction job status for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of extraction job statuses to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5705,6 +5984,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5733,6 +6014,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5756,6 +6038,7 @@ class DataAndJobHandlingApi:
         tenant_code,
         limit,
         start,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -5795,6 +6078,8 @@ class DataAndJobHandlingApi:
             _query_params.append(('start', start))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -5842,6 +6127,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the tenant you want to retrieve the processing jobs for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of processing jobs to retrieve per page.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5867,6 +6153,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5894,6 +6182,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5922,6 +6211,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the tenant you want to retrieve the processing jobs for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of processing jobs to retrieve per page.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5947,6 +6237,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5974,6 +6266,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6002,6 +6295,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the tenant you want to retrieve the processing jobs for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of processing jobs to retrieve per page.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6027,6 +6321,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6054,6 +6350,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6076,6 +6373,7 @@ class DataAndJobHandlingApi:
         tenant_code,
         limit,
         start,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -6111,6 +6409,8 @@ class DataAndJobHandlingApi:
             _query_params.append(('start', start))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -6159,6 +6459,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the extraction job status for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of extraction job statuses to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6186,6 +6487,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6214,6 +6517,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6243,6 +6547,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the extraction job status for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of extraction job statuses to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6270,6 +6575,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6298,6 +6605,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6327,6 +6635,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the extraction job status for.  Use this if you are only interested in the results for one analytic tenant.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The limit of extraction job statuses to retrieve.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6354,6 +6663,8 @@ class DataAndJobHandlingApi:
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6382,6 +6693,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             limit=limit,
             start=start,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6405,6 +6717,7 @@ class DataAndJobHandlingApi:
         tenant_code,
         limit,
         start,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -6444,6 +6757,8 @@ class DataAndJobHandlingApi:
             _query_params.append(('start', start))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -6492,6 +6807,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the tenant you want to retrieve the receiving jobs for. Use this if you are only interested  in the results for one analytic tenant.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of job statuses to return per page.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6519,6 +6835,8 @@ class DataAndJobHandlingApi:
         :type start: int
         :param limit: The number of job statuses to return per page.
         :type limit: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6547,6 +6865,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             start=start,
             limit=limit,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6576,6 +6895,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the tenant you want to retrieve the receiving jobs for. Use this if you are only interested  in the results for one analytic tenant.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of job statuses to return per page.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6603,6 +6923,8 @@ class DataAndJobHandlingApi:
         :type start: int
         :param limit: The number of job statuses to return per page.
         :type limit: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6631,6 +6953,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             start=start,
             limit=limit,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6660,6 +6983,7 @@ class DataAndJobHandlingApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of the tenant you want to retrieve the receiving jobs for. Use this if you are only interested  in the results for one analytic tenant.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="The number of job statuses to return per page.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6687,6 +7011,8 @@ class DataAndJobHandlingApi:
         :type start: int
         :param limit: The number of job statuses to return per page.
         :type limit: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6715,6 +7041,7 @@ class DataAndJobHandlingApi:
             tenant_code=tenant_code,
             start=start,
             limit=limit,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6738,6 +7065,7 @@ class DataAndJobHandlingApi:
         tenant_code,
         start,
         limit,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -6777,6 +7105,8 @@ class DataAndJobHandlingApi:
             _query_params.append(('limit', limit))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -6820,6 +7150,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def retrieve_data_categories(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6837,6 +7168,8 @@ class DataAndJobHandlingApi:
 
         Retrieve a list of all available data categories.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6860,6 +7193,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._retrieve_data_categories_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6884,6 +7218,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def retrieve_data_categories_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6901,6 +7236,8 @@ class DataAndJobHandlingApi:
 
         Retrieve a list of all available data categories.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6924,6 +7261,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._retrieve_data_categories_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6948,6 +7286,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def retrieve_data_categories_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6965,6 +7304,8 @@ class DataAndJobHandlingApi:
 
         Retrieve a list of all available data categories.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6988,6 +7329,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._retrieve_data_categories_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7006,6 +7348,7 @@ class DataAndJobHandlingApi:
 
     def _retrieve_data_categories_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -7027,6 +7370,8 @@ class DataAndJobHandlingApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -7075,6 +7420,7 @@ class DataAndJobHandlingApi:
         limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
         number_of_data_uploads: Annotated[Optional[StrictInt], Field(description="The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7102,6 +7448,8 @@ class DataAndJobHandlingApi:
         :type start: int
         :param number_of_data_uploads: The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5.
         :type number_of_data_uploads: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7130,6 +7478,7 @@ class DataAndJobHandlingApi:
             limit=limit,
             start=start,
             number_of_data_uploads=number_of_data_uploads,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7159,6 +7508,7 @@ class DataAndJobHandlingApi:
         limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
         number_of_data_uploads: Annotated[Optional[StrictInt], Field(description="The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7186,6 +7536,8 @@ class DataAndJobHandlingApi:
         :type start: int
         :param number_of_data_uploads: The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5.
         :type number_of_data_uploads: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7214,6 +7566,7 @@ class DataAndJobHandlingApi:
             limit=limit,
             start=start,
             number_of_data_uploads=number_of_data_uploads,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7243,6 +7596,7 @@ class DataAndJobHandlingApi:
         limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
         number_of_data_uploads: Annotated[Optional[StrictInt], Field(description="The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7270,6 +7624,8 @@ class DataAndJobHandlingApi:
         :type start: int
         :param number_of_data_uploads: The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5.
         :type number_of_data_uploads: int
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7298,6 +7654,7 @@ class DataAndJobHandlingApi:
             limit=limit,
             start=start,
             number_of_data_uploads=number_of_data_uploads,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7321,6 +7678,7 @@ class DataAndJobHandlingApi:
         limit,
         start,
         number_of_data_uploads,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -7362,6 +7720,8 @@ class DataAndJobHandlingApi:
             _query_params.append(('numberOfDataUploads', number_of_data_uploads))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -7406,6 +7766,7 @@ class DataAndJobHandlingApi:
     def set_connector_setting(
         self,
         set_connector_settings_request_dto: SetConnectorSettingsRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7425,6 +7786,8 @@ class DataAndJobHandlingApi:
 
         :param set_connector_settings_request_dto: (required)
         :type set_connector_settings_request_dto: SetConnectorSettingsRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7449,6 +7812,7 @@ class DataAndJobHandlingApi:
 
         _param = self._set_connector_setting_serialize(
             set_connector_settings_request_dto=set_connector_settings_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7474,6 +7838,7 @@ class DataAndJobHandlingApi:
     def set_connector_setting_with_http_info(
         self,
         set_connector_settings_request_dto: SetConnectorSettingsRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7493,6 +7858,8 @@ class DataAndJobHandlingApi:
 
         :param set_connector_settings_request_dto: (required)
         :type set_connector_settings_request_dto: SetConnectorSettingsRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7517,6 +7884,7 @@ class DataAndJobHandlingApi:
 
         _param = self._set_connector_setting_serialize(
             set_connector_settings_request_dto=set_connector_settings_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7542,6 +7910,7 @@ class DataAndJobHandlingApi:
     def set_connector_setting_without_preload_content(
         self,
         set_connector_settings_request_dto: SetConnectorSettingsRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7561,6 +7930,8 @@ class DataAndJobHandlingApi:
 
         :param set_connector_settings_request_dto: (required)
         :type set_connector_settings_request_dto: SetConnectorSettingsRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7585,6 +7956,7 @@ class DataAndJobHandlingApi:
 
         _param = self._set_connector_setting_serialize(
             set_connector_settings_request_dto=set_connector_settings_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7604,6 +7976,7 @@ class DataAndJobHandlingApi:
     def _set_connector_setting_serialize(
         self,
         set_connector_settings_request_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -7625,6 +7998,8 @@ class DataAndJobHandlingApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if set_connector_settings_request_dto is not None:
@@ -7684,6 +8059,7 @@ class DataAndJobHandlingApi:
     def start_extraction(
         self,
         start_extraction_request: StartExtractionRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7703,6 +8079,8 @@ class DataAndJobHandlingApi:
 
         :param start_extraction_request: (required)
         :type start_extraction_request: StartExtractionRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7727,6 +8105,7 @@ class DataAndJobHandlingApi:
 
         _param = self._start_extraction_serialize(
             start_extraction_request=start_extraction_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7752,6 +8131,7 @@ class DataAndJobHandlingApi:
     def start_extraction_with_http_info(
         self,
         start_extraction_request: StartExtractionRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7771,6 +8151,8 @@ class DataAndJobHandlingApi:
 
         :param start_extraction_request: (required)
         :type start_extraction_request: StartExtractionRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7795,6 +8177,7 @@ class DataAndJobHandlingApi:
 
         _param = self._start_extraction_serialize(
             start_extraction_request=start_extraction_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7820,6 +8203,7 @@ class DataAndJobHandlingApi:
     def start_extraction_without_preload_content(
         self,
         start_extraction_request: StartExtractionRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7839,6 +8223,8 @@ class DataAndJobHandlingApi:
 
         :param start_extraction_request: (required)
         :type start_extraction_request: StartExtractionRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7863,6 +8249,7 @@ class DataAndJobHandlingApi:
 
         _param = self._start_extraction_serialize(
             start_extraction_request=start_extraction_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7882,6 +8269,7 @@ class DataAndJobHandlingApi:
     def _start_extraction_serialize(
         self,
         start_extraction_request,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -7903,6 +8291,8 @@ class DataAndJobHandlingApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if start_extraction_request is not None:
@@ -7962,6 +8352,7 @@ class DataAndJobHandlingApi:
     def start_load(
         self,
         data_load_request: DataLoadRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7981,6 +8372,8 @@ class DataAndJobHandlingApi:
 
         :param data_load_request: (required)
         :type data_load_request: DataLoadRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8005,6 +8398,7 @@ class DataAndJobHandlingApi:
 
         _param = self._start_load_serialize(
             data_load_request=data_load_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8030,6 +8424,7 @@ class DataAndJobHandlingApi:
     def start_load_with_http_info(
         self,
         data_load_request: DataLoadRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8049,6 +8444,8 @@ class DataAndJobHandlingApi:
 
         :param data_load_request: (required)
         :type data_load_request: DataLoadRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8073,6 +8470,7 @@ class DataAndJobHandlingApi:
 
         _param = self._start_load_serialize(
             data_load_request=data_load_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8098,6 +8496,7 @@ class DataAndJobHandlingApi:
     def start_load_without_preload_content(
         self,
         data_load_request: DataLoadRequest,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8117,6 +8516,8 @@ class DataAndJobHandlingApi:
 
         :param data_load_request: (required)
         :type data_load_request: DataLoadRequest
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8141,6 +8542,7 @@ class DataAndJobHandlingApi:
 
         _param = self._start_load_serialize(
             data_load_request=data_load_request,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8160,6 +8562,7 @@ class DataAndJobHandlingApi:
     def _start_load_serialize(
         self,
         data_load_request,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -8181,6 +8584,8 @@ class DataAndJobHandlingApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if data_load_request is not None:

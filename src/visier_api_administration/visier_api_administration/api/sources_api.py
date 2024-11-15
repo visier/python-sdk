@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -45,6 +45,7 @@ class SourcesApi:
         self,
         body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         replace_all_existing_sources: Annotated[Optional[StrictBool], Field(description="If `false`, adds the sources from the ZIP to the sources in the target tenant. If `true`, removes all sources in the target tenant and adds the sources from the ZIP. Default is `false`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -66,6 +67,8 @@ class SourcesApi:
         :type body: bytearray
         :param replace_all_existing_sources: If `false`, adds the sources from the ZIP to the sources in the target tenant. If `true`, removes all sources in the target tenant and adds the sources from the ZIP. Default is `false`.
         :type replace_all_existing_sources: bool
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91,6 +94,7 @@ class SourcesApi:
         _param = self._put_sources_serialize(
             body=body,
             replace_all_existing_sources=replace_all_existing_sources,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -117,6 +121,7 @@ class SourcesApi:
         self,
         body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         replace_all_existing_sources: Annotated[Optional[StrictBool], Field(description="If `false`, adds the sources from the ZIP to the sources in the target tenant. If `true`, removes all sources in the target tenant and adds the sources from the ZIP. Default is `false`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -138,6 +143,8 @@ class SourcesApi:
         :type body: bytearray
         :param replace_all_existing_sources: If `false`, adds the sources from the ZIP to the sources in the target tenant. If `true`, removes all sources in the target tenant and adds the sources from the ZIP. Default is `false`.
         :type replace_all_existing_sources: bool
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -163,6 +170,7 @@ class SourcesApi:
         _param = self._put_sources_serialize(
             body=body,
             replace_all_existing_sources=replace_all_existing_sources,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -189,6 +197,7 @@ class SourcesApi:
         self,
         body: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         replace_all_existing_sources: Annotated[Optional[StrictBool], Field(description="If `false`, adds the sources from the ZIP to the sources in the target tenant. If `true`, removes all sources in the target tenant and adds the sources from the ZIP. Default is `false`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -210,6 +219,8 @@ class SourcesApi:
         :type body: bytearray
         :param replace_all_existing_sources: If `false`, adds the sources from the ZIP to the sources in the target tenant. If `true`, removes all sources in the target tenant and adds the sources from the ZIP. Default is `false`.
         :type replace_all_existing_sources: bool
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -235,6 +246,7 @@ class SourcesApi:
         _param = self._put_sources_serialize(
             body=body,
             replace_all_existing_sources=replace_all_existing_sources,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -255,6 +267,7 @@ class SourcesApi:
         self,
         body,
         replace_all_existing_sources,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -280,6 +293,8 @@ class SourcesApi:
             _query_params.append(('replaceAllExistingSources', replace_all_existing_sources))
             
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if body is not None:
@@ -339,6 +354,7 @@ class SourcesApi:
     def run_sources_operation(
         self,
         sources_api_operation_request_dto: SourcesAPIOperationRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -358,6 +374,8 @@ class SourcesApi:
 
         :param sources_api_operation_request_dto: (required)
         :type sources_api_operation_request_dto: SourcesAPIOperationRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -382,6 +400,7 @@ class SourcesApi:
 
         _param = self._run_sources_operation_serialize(
             sources_api_operation_request_dto=sources_api_operation_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -407,6 +426,7 @@ class SourcesApi:
     def run_sources_operation_with_http_info(
         self,
         sources_api_operation_request_dto: SourcesAPIOperationRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -426,6 +446,8 @@ class SourcesApi:
 
         :param sources_api_operation_request_dto: (required)
         :type sources_api_operation_request_dto: SourcesAPIOperationRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -450,6 +472,7 @@ class SourcesApi:
 
         _param = self._run_sources_operation_serialize(
             sources_api_operation_request_dto=sources_api_operation_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -475,6 +498,7 @@ class SourcesApi:
     def run_sources_operation_without_preload_content(
         self,
         sources_api_operation_request_dto: SourcesAPIOperationRequestDTO,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -494,6 +518,8 @@ class SourcesApi:
 
         :param sources_api_operation_request_dto: (required)
         :type sources_api_operation_request_dto: SourcesAPIOperationRequestDTO
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -518,6 +544,7 @@ class SourcesApi:
 
         _param = self._run_sources_operation_serialize(
             sources_api_operation_request_dto=sources_api_operation_request_dto,
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -537,6 +564,7 @@ class SourcesApi:
     def _run_sources_operation_serialize(
         self,
         sources_api_operation_request_dto,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -558,6 +586,8 @@ class SourcesApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if sources_api_operation_request_dto is not None:

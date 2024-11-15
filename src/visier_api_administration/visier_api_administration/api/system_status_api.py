@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1559
+    The version of the OpenAPI document: 22222222.99201.1573
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -20,6 +20,9 @@ from typing_extensions import Annotated
 
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
+from pydantic import Field, StrictStr
+from typing import Optional
+from typing_extensions import Annotated
 from visier_api_administration.models.system_status_dto import SystemStatusDTO
 import visier_api_administration.models
 
@@ -39,6 +42,7 @@ class SystemStatusApi:
     @validate_call
     def post_system_status(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -56,6 +60,8 @@ class SystemStatusApi:
 
         Check the current overall status of Visier's systems.   The overall status is one of:  * ``UP`` : All systems are operational.  * `DOWN`: At least one system is not fully operational.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -79,6 +85,7 @@ class SystemStatusApi:
         """ # noqa: E501
 
         _param = self._post_system_status_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -103,6 +110,7 @@ class SystemStatusApi:
     @validate_call
     def post_system_status_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -120,6 +128,8 @@ class SystemStatusApi:
 
         Check the current overall status of Visier's systems.   The overall status is one of:  * ``UP`` : All systems are operational.  * `DOWN`: At least one system is not fully operational.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -143,6 +153,7 @@ class SystemStatusApi:
         """ # noqa: E501
 
         _param = self._post_system_status_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -167,6 +178,7 @@ class SystemStatusApi:
     @validate_call
     def post_system_status_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -184,6 +196,8 @@ class SystemStatusApi:
 
         Check the current overall status of Visier's systems.   The overall status is one of:  * ``UP`` : All systems are operational.  * `DOWN`: At least one system is not fully operational.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -207,6 +221,7 @@ class SystemStatusApi:
         """ # noqa: E501
 
         _param = self._post_system_status_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -225,6 +240,7 @@ class SystemStatusApi:
 
     def _post_system_status_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -246,6 +262,8 @@ class SystemStatusApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -284,6 +302,7 @@ class SystemStatusApi:
     @validate_call
     def system_status(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -301,6 +320,8 @@ class SystemStatusApi:
 
         Check the current overall status of Visier's systems.   The overall status is one of:  * ``UP`` : All systems are operational.  * `DOWN`: At least one system is not fully operational.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -324,6 +345,7 @@ class SystemStatusApi:
         """ # noqa: E501
 
         _param = self._system_status_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -348,6 +370,7 @@ class SystemStatusApi:
     @validate_call
     def system_status_with_http_info(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -365,6 +388,8 @@ class SystemStatusApi:
 
         Check the current overall status of Visier's systems.   The overall status is one of:  * ``UP`` : All systems are operational.  * `DOWN`: At least one system is not fully operational.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -388,6 +413,7 @@ class SystemStatusApi:
         """ # noqa: E501
 
         _param = self._system_status_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -412,6 +438,7 @@ class SystemStatusApi:
     @validate_call
     def system_status_without_preload_content(
         self,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -429,6 +456,8 @@ class SystemStatusApi:
 
         Check the current overall status of Visier's systems.   The overall status is one of:  * ``UP`` : All systems are operational.  * `DOWN`: At least one system is not fully operational.
 
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -452,6 +481,7 @@ class SystemStatusApi:
         """ # noqa: E501
 
         _param = self._system_status_serialize(
+            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -470,6 +500,7 @@ class SystemStatusApi:
 
     def _system_status_serialize(
         self,
+        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -491,6 +522,8 @@ class SystemStatusApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
