@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1573
+    The version of the OpenAPI document: 22222222.99201.1598
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -147,6 +147,20 @@ class TestDataModelApi(unittest.TestCase):
         """
         pass
 
+    def test_plan_data_loadl_list(self) -> None:
+        """Test case for plan_data_loadl_list
+
+        Retrieve a list of plans
+        """
+        pass
+
+    def test_plan_info_with_schema(self) -> None:
+        """Test case for plan_info_with_schema
+
+        Retrieve a plan's details
+        """
+        pass
+
     def test_planning_metrics(self) -> None:
         """Test case for planning_metrics
 
@@ -171,14 +185,14 @@ class TestDataModelApi(unittest.TestCase):
     def test_planning_plan(self) -> None:
         """Test case for planning_plan
 
-        Retrieve a plan by ID
+        Retrieve a plan by planning model ID and plan ID
         """
         pass
 
     def test_planning_plans(self) -> None:
         """Test case for planning_plans
 
-        Retrieve a list of plans
+        Retrieve a list of plans by planning model ID
         """
         pass
 

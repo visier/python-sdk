@@ -6,7 +6,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1573
+    The version of the OpenAPI document: 22222222.99201.1598
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -100,6 +100,11 @@ from visier_api_data_in.models.multiple_tenant_data_versions_list_dto import Mul
 from visier_api_data_in.models.my_sql_auth_params_dto import MySqlAuthParamsDTO
 from visier_api_data_in.models.namely_auth_params_dto import NamelyAuthParamsDTO
 from visier_api_data_in.models.oracle_db_auth_params_dto import OracleDbAuthParamsDTO
+from visier_api_data_in.models.plan_data_load_change_dto import PlanDataLoadChangeDTO
+from visier_api_data_in.models.plan_data_load_change_list_dto import PlanDataLoadChangeListDTO
+from visier_api_data_in.models.plan_data_load_error_dto import PlanDataLoadErrorDTO
+from visier_api_data_in.models.plan_data_upload_response_dto import PlanDataUploadResponseDTO
+from visier_api_data_in.models.plan_row_data_load_response_dto import PlanRowDataLoadResponseDTO
 from visier_api_data_in.models.processing_job import ProcessingJob
 from visier_api_data_in.models.processing_job_and_status_response import ProcessingJobAndStatusResponse
 from visier_api_data_in.models.processing_job_request_dto import ProcessingJobRequestDTO

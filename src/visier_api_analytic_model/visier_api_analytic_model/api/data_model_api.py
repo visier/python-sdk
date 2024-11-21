@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1573
+    The version of the OpenAPI document: 22222222.99201.1598
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -33,10 +33,12 @@ from visier_api_analytic_model.models.dimension_mapping_validation_dto import Di
 from visier_api_analytic_model.models.dimension_mapping_validation_execution_dto import DimensionMappingValidationExecutionDTO
 from visier_api_analytic_model.models.dimensions_change_definitions_dto import DimensionsChangeDefinitionsDTO
 from visier_api_analytic_model.models.dimensions_dto import DimensionsDTO
+from visier_api_analytic_model.models.get_plan_list_response_dto import GetPlanListResponseDTO
 from visier_api_analytic_model.models.members_dto import MembersDTO
 from visier_api_analytic_model.models.metric_dto import MetricDTO
 from visier_api_analytic_model.models.metrics_dto import MetricsDTO
 from visier_api_analytic_model.models.objects_bulk_change_response_dto import ObjectsBulkChangeResponseDTO
+from visier_api_analytic_model.models.plan_with_schema_dto import PlanWithSchemaDTO
 from visier_api_analytic_model.models.planning_model_dto import PlanningModelDTO
 from visier_api_analytic_model.models.planning_models_dto import PlanningModelsDTO
 from visier_api_analytic_model.models.planning_plan_dto import PlanningPlanDTO
@@ -5293,6 +5295,789 @@ class DataModelApi:
 
 
     @validate_call
+    def plan_data_loadl_list(
+        self,
+        display_name: Annotated[Optional[StrictStr], Field(description="Returns plans that match the specified display name. Ignores text case and includes partial matches. For example, `displayName=WFP Plan` returns plans named \"WFP Plan 2024\", \"WFP plan v1\", and \"WFP plan - Product\".")] = None,
+        model: Annotated[Optional[StrictStr], Field(description="Returns plans that belong to the specified planning model ID.")] = None,
+        plan_status: Annotated[Optional[StrictStr], Field(description="Returns plans with the specified plan status. Valid values:  - **ASSIGNED**: The subplan has been assigned to a subplanner.  - **IN_PROGRESS**: The subplanner has opened the subplan.  - **OVERDUE**: The subplan was not completed on time.  - **SUBMITTED**: The subplan has been submitted for review.  - **SENT_BACK**: The subplan was rejected and returned to the subplanner for editing.  - **CONSOLIDATED**: The subplan has been accepted and combined into the primary plan.")] = None,
+        created_start: Annotated[Optional[StrictStr], Field(description="Returns plans created on or after this date. The format is YYYY-MM-DD.")] = None,
+        created_end: Annotated[Optional[StrictStr], Field(description="Return plans created on or before this date. The format is YYYY-MM-DD.")] = None,
+        edited_start: Annotated[Optional[StrictStr], Field(description="Returns plans edited on or after this date. The format is YYYY-MM-DD.")] = None,
+        edited_end: Annotated[Optional[StrictStr], Field(description="Returns plans edited on or before this date. The format is YYYY-MM-DD.")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Orders plan results by the specified value. Valid values:  - **LAST_EDITED_DATE**: Orders plans by the last edited date. This is the default.  - **CREATED_DATE**: Orders plans by the creation date.  - **PLAN_MODEL**: Orders plans alphabetically by planning model.")] = None,
+        sort_order: Annotated[Optional[StrictStr], Field(description="Sorts plan results by the specified value. Valid values are `ASCENDING` or `DESCENDING`. Default is `DESCENDING`.")] = None,
+        exclude_subplans: Annotated[Optional[StrictBool], Field(description="If `true`, the response doesn't return subplans. Default is `true`.")] = None,
+        max_results: Annotated[Optional[StrictStr], Field(description="Sets the maximum number of results to return per page. Default is 50.")] = None,
+        page: Annotated[Optional[StrictStr], Field(description="Sets the results page to return. If undefined, returns the first 50 results. To get the next 50 results, specify `page=2`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GetPlanListResponseDTO:
+        """Retrieve a list of plans
+
+        Retrieve all the plans you have access to. The response returns plan information you can use to call the Planning Data Load API.    <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+        :param display_name: Returns plans that match the specified display name. Ignores text case and includes partial matches. For example, `displayName=WFP Plan` returns plans named \"WFP Plan 2024\", \"WFP plan v1\", and \"WFP plan - Product\".
+        :type display_name: str
+        :param model: Returns plans that belong to the specified planning model ID.
+        :type model: str
+        :param plan_status: Returns plans with the specified plan status. Valid values:  - **ASSIGNED**: The subplan has been assigned to a subplanner.  - **IN_PROGRESS**: The subplanner has opened the subplan.  - **OVERDUE**: The subplan was not completed on time.  - **SUBMITTED**: The subplan has been submitted for review.  - **SENT_BACK**: The subplan was rejected and returned to the subplanner for editing.  - **CONSOLIDATED**: The subplan has been accepted and combined into the primary plan.
+        :type plan_status: str
+        :param created_start: Returns plans created on or after this date. The format is YYYY-MM-DD.
+        :type created_start: str
+        :param created_end: Return plans created on or before this date. The format is YYYY-MM-DD.
+        :type created_end: str
+        :param edited_start: Returns plans edited on or after this date. The format is YYYY-MM-DD.
+        :type edited_start: str
+        :param edited_end: Returns plans edited on or before this date. The format is YYYY-MM-DD.
+        :type edited_end: str
+        :param order_by: Orders plan results by the specified value. Valid values:  - **LAST_EDITED_DATE**: Orders plans by the last edited date. This is the default.  - **CREATED_DATE**: Orders plans by the creation date.  - **PLAN_MODEL**: Orders plans alphabetically by planning model.
+        :type order_by: str
+        :param sort_order: Sorts plan results by the specified value. Valid values are `ASCENDING` or `DESCENDING`. Default is `DESCENDING`.
+        :type sort_order: str
+        :param exclude_subplans: If `true`, the response doesn't return subplans. Default is `true`.
+        :type exclude_subplans: bool
+        :param max_results: Sets the maximum number of results to return per page. Default is 50.
+        :type max_results: str
+        :param page: Sets the results page to return. If undefined, returns the first 50 results. To get the next 50 results, specify `page=2`.
+        :type page: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._plan_data_loadl_list_serialize(
+            display_name=display_name,
+            model=model,
+            plan_status=plan_status,
+            created_start=created_start,
+            created_end=created_end,
+            edited_start=edited_start,
+            edited_end=edited_end,
+            order_by=order_by,
+            sort_order=sort_order,
+            exclude_subplans=exclude_subplans,
+            max_results=max_results,
+            page=page,
+            target_tenant_id=target_tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetPlanListResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier_api_analytic_model.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        ).data
+
+
+    @validate_call
+    def plan_data_loadl_list_with_http_info(
+        self,
+        display_name: Annotated[Optional[StrictStr], Field(description="Returns plans that match the specified display name. Ignores text case and includes partial matches. For example, `displayName=WFP Plan` returns plans named \"WFP Plan 2024\", \"WFP plan v1\", and \"WFP plan - Product\".")] = None,
+        model: Annotated[Optional[StrictStr], Field(description="Returns plans that belong to the specified planning model ID.")] = None,
+        plan_status: Annotated[Optional[StrictStr], Field(description="Returns plans with the specified plan status. Valid values:  - **ASSIGNED**: The subplan has been assigned to a subplanner.  - **IN_PROGRESS**: The subplanner has opened the subplan.  - **OVERDUE**: The subplan was not completed on time.  - **SUBMITTED**: The subplan has been submitted for review.  - **SENT_BACK**: The subplan was rejected and returned to the subplanner for editing.  - **CONSOLIDATED**: The subplan has been accepted and combined into the primary plan.")] = None,
+        created_start: Annotated[Optional[StrictStr], Field(description="Returns plans created on or after this date. The format is YYYY-MM-DD.")] = None,
+        created_end: Annotated[Optional[StrictStr], Field(description="Return plans created on or before this date. The format is YYYY-MM-DD.")] = None,
+        edited_start: Annotated[Optional[StrictStr], Field(description="Returns plans edited on or after this date. The format is YYYY-MM-DD.")] = None,
+        edited_end: Annotated[Optional[StrictStr], Field(description="Returns plans edited on or before this date. The format is YYYY-MM-DD.")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Orders plan results by the specified value. Valid values:  - **LAST_EDITED_DATE**: Orders plans by the last edited date. This is the default.  - **CREATED_DATE**: Orders plans by the creation date.  - **PLAN_MODEL**: Orders plans alphabetically by planning model.")] = None,
+        sort_order: Annotated[Optional[StrictStr], Field(description="Sorts plan results by the specified value. Valid values are `ASCENDING` or `DESCENDING`. Default is `DESCENDING`.")] = None,
+        exclude_subplans: Annotated[Optional[StrictBool], Field(description="If `true`, the response doesn't return subplans. Default is `true`.")] = None,
+        max_results: Annotated[Optional[StrictStr], Field(description="Sets the maximum number of results to return per page. Default is 50.")] = None,
+        page: Annotated[Optional[StrictStr], Field(description="Sets the results page to return. If undefined, returns the first 50 results. To get the next 50 results, specify `page=2`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[GetPlanListResponseDTO]:
+        """Retrieve a list of plans
+
+        Retrieve all the plans you have access to. The response returns plan information you can use to call the Planning Data Load API.    <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+        :param display_name: Returns plans that match the specified display name. Ignores text case and includes partial matches. For example, `displayName=WFP Plan` returns plans named \"WFP Plan 2024\", \"WFP plan v1\", and \"WFP plan - Product\".
+        :type display_name: str
+        :param model: Returns plans that belong to the specified planning model ID.
+        :type model: str
+        :param plan_status: Returns plans with the specified plan status. Valid values:  - **ASSIGNED**: The subplan has been assigned to a subplanner.  - **IN_PROGRESS**: The subplanner has opened the subplan.  - **OVERDUE**: The subplan was not completed on time.  - **SUBMITTED**: The subplan has been submitted for review.  - **SENT_BACK**: The subplan was rejected and returned to the subplanner for editing.  - **CONSOLIDATED**: The subplan has been accepted and combined into the primary plan.
+        :type plan_status: str
+        :param created_start: Returns plans created on or after this date. The format is YYYY-MM-DD.
+        :type created_start: str
+        :param created_end: Return plans created on or before this date. The format is YYYY-MM-DD.
+        :type created_end: str
+        :param edited_start: Returns plans edited on or after this date. The format is YYYY-MM-DD.
+        :type edited_start: str
+        :param edited_end: Returns plans edited on or before this date. The format is YYYY-MM-DD.
+        :type edited_end: str
+        :param order_by: Orders plan results by the specified value. Valid values:  - **LAST_EDITED_DATE**: Orders plans by the last edited date. This is the default.  - **CREATED_DATE**: Orders plans by the creation date.  - **PLAN_MODEL**: Orders plans alphabetically by planning model.
+        :type order_by: str
+        :param sort_order: Sorts plan results by the specified value. Valid values are `ASCENDING` or `DESCENDING`. Default is `DESCENDING`.
+        :type sort_order: str
+        :param exclude_subplans: If `true`, the response doesn't return subplans. Default is `true`.
+        :type exclude_subplans: bool
+        :param max_results: Sets the maximum number of results to return per page. Default is 50.
+        :type max_results: str
+        :param page: Sets the results page to return. If undefined, returns the first 50 results. To get the next 50 results, specify `page=2`.
+        :type page: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._plan_data_loadl_list_serialize(
+            display_name=display_name,
+            model=model,
+            plan_status=plan_status,
+            created_start=created_start,
+            created_end=created_end,
+            edited_start=edited_start,
+            edited_end=edited_end,
+            order_by=order_by,
+            sort_order=sort_order,
+            exclude_subplans=exclude_subplans,
+            max_results=max_results,
+            page=page,
+            target_tenant_id=target_tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetPlanListResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier_api_analytic_model.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        )
+
+
+    @validate_call
+    def plan_data_loadl_list_without_preload_content(
+        self,
+        display_name: Annotated[Optional[StrictStr], Field(description="Returns plans that match the specified display name. Ignores text case and includes partial matches. For example, `displayName=WFP Plan` returns plans named \"WFP Plan 2024\", \"WFP plan v1\", and \"WFP plan - Product\".")] = None,
+        model: Annotated[Optional[StrictStr], Field(description="Returns plans that belong to the specified planning model ID.")] = None,
+        plan_status: Annotated[Optional[StrictStr], Field(description="Returns plans with the specified plan status. Valid values:  - **ASSIGNED**: The subplan has been assigned to a subplanner.  - **IN_PROGRESS**: The subplanner has opened the subplan.  - **OVERDUE**: The subplan was not completed on time.  - **SUBMITTED**: The subplan has been submitted for review.  - **SENT_BACK**: The subplan was rejected and returned to the subplanner for editing.  - **CONSOLIDATED**: The subplan has been accepted and combined into the primary plan.")] = None,
+        created_start: Annotated[Optional[StrictStr], Field(description="Returns plans created on or after this date. The format is YYYY-MM-DD.")] = None,
+        created_end: Annotated[Optional[StrictStr], Field(description="Return plans created on or before this date. The format is YYYY-MM-DD.")] = None,
+        edited_start: Annotated[Optional[StrictStr], Field(description="Returns plans edited on or after this date. The format is YYYY-MM-DD.")] = None,
+        edited_end: Annotated[Optional[StrictStr], Field(description="Returns plans edited on or before this date. The format is YYYY-MM-DD.")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Orders plan results by the specified value. Valid values:  - **LAST_EDITED_DATE**: Orders plans by the last edited date. This is the default.  - **CREATED_DATE**: Orders plans by the creation date.  - **PLAN_MODEL**: Orders plans alphabetically by planning model.")] = None,
+        sort_order: Annotated[Optional[StrictStr], Field(description="Sorts plan results by the specified value. Valid values are `ASCENDING` or `DESCENDING`. Default is `DESCENDING`.")] = None,
+        exclude_subplans: Annotated[Optional[StrictBool], Field(description="If `true`, the response doesn't return subplans. Default is `true`.")] = None,
+        max_results: Annotated[Optional[StrictStr], Field(description="Sets the maximum number of results to return per page. Default is 50.")] = None,
+        page: Annotated[Optional[StrictStr], Field(description="Sets the results page to return. If undefined, returns the first 50 results. To get the next 50 results, specify `page=2`.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Retrieve a list of plans
+
+        Retrieve all the plans you have access to. The response returns plan information you can use to call the Planning Data Load API.    <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+        :param display_name: Returns plans that match the specified display name. Ignores text case and includes partial matches. For example, `displayName=WFP Plan` returns plans named \"WFP Plan 2024\", \"WFP plan v1\", and \"WFP plan - Product\".
+        :type display_name: str
+        :param model: Returns plans that belong to the specified planning model ID.
+        :type model: str
+        :param plan_status: Returns plans with the specified plan status. Valid values:  - **ASSIGNED**: The subplan has been assigned to a subplanner.  - **IN_PROGRESS**: The subplanner has opened the subplan.  - **OVERDUE**: The subplan was not completed on time.  - **SUBMITTED**: The subplan has been submitted for review.  - **SENT_BACK**: The subplan was rejected and returned to the subplanner for editing.  - **CONSOLIDATED**: The subplan has been accepted and combined into the primary plan.
+        :type plan_status: str
+        :param created_start: Returns plans created on or after this date. The format is YYYY-MM-DD.
+        :type created_start: str
+        :param created_end: Return plans created on or before this date. The format is YYYY-MM-DD.
+        :type created_end: str
+        :param edited_start: Returns plans edited on or after this date. The format is YYYY-MM-DD.
+        :type edited_start: str
+        :param edited_end: Returns plans edited on or before this date. The format is YYYY-MM-DD.
+        :type edited_end: str
+        :param order_by: Orders plan results by the specified value. Valid values:  - **LAST_EDITED_DATE**: Orders plans by the last edited date. This is the default.  - **CREATED_DATE**: Orders plans by the creation date.  - **PLAN_MODEL**: Orders plans alphabetically by planning model.
+        :type order_by: str
+        :param sort_order: Sorts plan results by the specified value. Valid values are `ASCENDING` or `DESCENDING`. Default is `DESCENDING`.
+        :type sort_order: str
+        :param exclude_subplans: If `true`, the response doesn't return subplans. Default is `true`.
+        :type exclude_subplans: bool
+        :param max_results: Sets the maximum number of results to return per page. Default is 50.
+        :type max_results: str
+        :param page: Sets the results page to return. If undefined, returns the first 50 results. To get the next 50 results, specify `page=2`.
+        :type page: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._plan_data_loadl_list_serialize(
+            display_name=display_name,
+            model=model,
+            plan_status=plan_status,
+            created_start=created_start,
+            created_end=created_end,
+            edited_start=edited_start,
+            edited_end=edited_end,
+            order_by=order_by,
+            sort_order=sort_order,
+            exclude_subplans=exclude_subplans,
+            max_results=max_results,
+            page=page,
+            target_tenant_id=target_tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetPlanListResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _plan_data_loadl_list_serialize(
+        self,
+        display_name,
+        model,
+        plan_status,
+        created_start,
+        created_end,
+        edited_start,
+        edited_end,
+        order_by,
+        sort_order,
+        exclude_subplans,
+        max_results,
+        page,
+        target_tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if display_name is not None:
+            
+            _query_params.append(('displayName', display_name))
+            
+        if model is not None:
+            
+            _query_params.append(('model', model))
+            
+        if plan_status is not None:
+            
+            _query_params.append(('planStatus', plan_status))
+            
+        if created_start is not None:
+            
+            _query_params.append(('createdStart', created_start))
+            
+        if created_end is not None:
+            
+            _query_params.append(('createdEnd', created_end))
+            
+        if edited_start is not None:
+            
+            _query_params.append(('editedStart', edited_start))
+            
+        if edited_end is not None:
+            
+            _query_params.append(('editedEnd', edited_end))
+            
+        if order_by is not None:
+            
+            _query_params.append(('orderBy', order_by))
+            
+        if sort_order is not None:
+            
+            _query_params.append(('sortOrder', sort_order))
+            
+        if exclude_subplans is not None:
+            
+            _query_params.append(('excludeSubplans', exclude_subplans))
+            
+        if max_results is not None:
+            
+            _query_params.append(('maxResults', max_results))
+            
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1alpha/planning/model/plans',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def plan_info_with_schema(
+        self,
+        id: Annotated[StrictStr, Field(description="The unique identifier of the plan.")],
+        with_schema: Annotated[Optional[StrictBool], Field(description="If `true`, the response returns the plan's schema. Default is `false`.")] = None,
+        segment_id_filter: Annotated[Optional[StrictStr], Field(description="If defined, returns segment levels and members for the specified segment.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> PlanWithSchemaDTO:
+        """Retrieve a plan's details
+
+        Retrieve the details of a specific plan. The response returns plan information you can use to call the Planning Data Load API.     <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+        :param id: The unique identifier of the plan. (required)
+        :type id: str
+        :param with_schema: If `true`, the response returns the plan's schema. Default is `false`.
+        :type with_schema: bool
+        :param segment_id_filter: If defined, returns segment levels and members for the specified segment.
+        :type segment_id_filter: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._plan_info_with_schema_serialize(
+            id=id,
+            with_schema=with_schema,
+            segment_id_filter=segment_id_filter,
+            target_tenant_id=target_tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PlanWithSchemaDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier_api_analytic_model.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        ).data
+
+
+    @validate_call
+    def plan_info_with_schema_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="The unique identifier of the plan.")],
+        with_schema: Annotated[Optional[StrictBool], Field(description="If `true`, the response returns the plan's schema. Default is `false`.")] = None,
+        segment_id_filter: Annotated[Optional[StrictStr], Field(description="If defined, returns segment levels and members for the specified segment.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[PlanWithSchemaDTO]:
+        """Retrieve a plan's details
+
+        Retrieve the details of a specific plan. The response returns plan information you can use to call the Planning Data Load API.     <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+        :param id: The unique identifier of the plan. (required)
+        :type id: str
+        :param with_schema: If `true`, the response returns the plan's schema. Default is `false`.
+        :type with_schema: bool
+        :param segment_id_filter: If defined, returns segment levels and members for the specified segment.
+        :type segment_id_filter: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._plan_info_with_schema_serialize(
+            id=id,
+            with_schema=with_schema,
+            segment_id_filter=segment_id_filter,
+            target_tenant_id=target_tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PlanWithSchemaDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier_api_analytic_model.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        )
+
+
+    @validate_call
+    def plan_info_with_schema_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="The unique identifier of the plan.")],
+        with_schema: Annotated[Optional[StrictBool], Field(description="If `true`, the response returns the plan's schema. Default is `false`.")] = None,
+        segment_id_filter: Annotated[Optional[StrictStr], Field(description="If defined, returns segment levels and members for the specified segment.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Retrieve a plan's details
+
+        Retrieve the details of a specific plan. The response returns plan information you can use to call the Planning Data Load API.     <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+
+        :param id: The unique identifier of the plan. (required)
+        :type id: str
+        :param with_schema: If `true`, the response returns the plan's schema. Default is `false`.
+        :type with_schema: bool
+        :param segment_id_filter: If defined, returns segment levels and members for the specified segment.
+        :type segment_id_filter: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._plan_info_with_schema_serialize(
+            id=id,
+            with_schema=with_schema,
+            segment_id_filter=segment_id_filter,
+            target_tenant_id=target_tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PlanWithSchemaDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _plan_info_with_schema_serialize(
+        self,
+        id,
+        with_schema,
+        segment_id_filter,
+        target_tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        if with_schema is not None:
+            
+            _query_params.append(('withSchema', with_schema))
+            
+        if segment_id_filter is not None:
+            
+            _query_params.append(('segmentIdFilter', segment_id_filter))
+            
+        # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1alpha/planning/model/plans/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def planning_metrics(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the planning model to retrieve.")],
@@ -6154,7 +6939,7 @@ class DataModelApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PlanningPlanDTO:
-        """Retrieve a plan by ID
+        """Retrieve a plan by planning model ID and plan ID
 
         Retrieve a specific plan that you have access to in a planning model.
 
@@ -6230,7 +7015,7 @@ class DataModelApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PlanningPlanDTO]:
-        """Retrieve a plan by ID
+        """Retrieve a plan by planning model ID and plan ID
 
         Retrieve a specific plan that you have access to in a planning model.
 
@@ -6306,7 +7091,7 @@ class DataModelApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieve a plan by ID
+        """Retrieve a plan by planning model ID and plan ID
 
         Retrieve a specific plan that you have access to in a planning model.
 
@@ -6449,7 +7234,7 @@ class DataModelApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PlanningPlansDTO:
-        """Retrieve a list of plans
+        """Retrieve a list of plans by planning model ID
 
         Retrieve all the plans you have access to for a planning model.
 
@@ -6525,7 +7310,7 @@ class DataModelApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PlanningPlansDTO]:
-        """Retrieve a list of plans
+        """Retrieve a list of plans by planning model ID
 
         Retrieve all the plans you have access to for a planning model.
 
@@ -6601,7 +7386,7 @@ class DataModelApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieve a list of plans
+        """Retrieve a list of plans by planning model ID
 
         Retrieve all the plans you have access to for a planning model.
 

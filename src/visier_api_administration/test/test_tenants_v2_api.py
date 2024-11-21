@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1573
+    The version of the OpenAPI document: 22222222.99201.1598
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,22 +28,22 @@ class TestTenantsV2Api(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_create_tenant_0(self) -> None:
-        """Test case for create_tenant_0
+    def test_create_tenant(self) -> None:
+        """Test case for create_tenant
 
         Add an analytic tenant
         """
         pass
 
-    def test_delete_tenant_0(self) -> None:
-        """Test case for delete_tenant_0
+    def test_delete_tenant(self) -> None:
+        """Test case for delete_tenant
 
         Deprovision an analytic tenant
         """
         pass
 
-    def test_list_tenants_0(self) -> None:
-        """Test case for list_tenants_0
+    def test_list_tenants(self) -> None:
+        """Test case for list_tenants
 
         Retrieve a list of all analytic tenants
         """
@@ -56,8 +56,8 @@ class TestTenantsV2Api(unittest.TestCase):
         """
         pass
 
-    def test_update_tenant_0(self) -> None:
-        """Test case for update_tenant_0
+    def test_update_tenant(self) -> None:
+        """Test case for update_tenant
 
         Update an analytic tenant
         """

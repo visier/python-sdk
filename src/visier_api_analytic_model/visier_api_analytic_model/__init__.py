@@ -7,7 +7,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1573
+    The version of the OpenAPI document: 22222222.99201.1598
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1573"
+__version__ = "0.99201.1598"
 
 # import apis into sdk package
 from visier_api_analytic_model.api.data_model_api import DataModelApi
@@ -49,6 +49,7 @@ from visier_api_analytic_model.models.dimension_member_reference_dto import Dime
 from visier_api_analytic_model.models.dimension_reference_dto import DimensionReferenceDTO
 from visier_api_analytic_model.models.dimensions_change_definitions_dto import DimensionsChangeDefinitionsDTO
 from visier_api_analytic_model.models.dimensions_dto import DimensionsDTO
+from visier_api_analytic_model.models.get_plan_list_response_dto import GetPlanListResponseDTO
 from visier_api_analytic_model.models.google_protobuf_any import GoogleProtobufAny
 from visier_api_analytic_model.models.level_dto import LevelDTO
 from visier_api_analytic_model.models.member_dto import MemberDTO
@@ -65,7 +66,15 @@ from visier_api_analytic_model.models.objects_bulk_change_response_dto import Ob
 from visier_api_analytic_model.models.parameter_definition_dto import ParameterDefinitionDTO
 from visier_api_analytic_model.models.perspective_configuration_dto import PerspectiveConfigurationDTO
 from visier_api_analytic_model.models.perspective_node_dto import PerspectiveNodeDTO
+from visier_api_analytic_model.models.plan_info_dto import PlanInfoDTO
+from visier_api_analytic_model.models.plan_item_dto import PlanItemDTO
 from visier_api_analytic_model.models.plan_parameter_definition_dto import PlanParameterDefinitionDTO
+from visier_api_analytic_model.models.plan_schema_dto import PlanSchemaDTO
+from visier_api_analytic_model.models.plan_segment_level_dto import PlanSegmentLevelDTO
+from visier_api_analytic_model.models.plan_segment_level_member_dto import PlanSegmentLevelMemberDTO
+from visier_api_analytic_model.models.plan_segment_level_member_list_dto import PlanSegmentLevelMemberListDTO
+from visier_api_analytic_model.models.plan_time_period_dto import PlanTimePeriodDTO
+from visier_api_analytic_model.models.plan_with_schema_dto import PlanWithSchemaDTO
 from visier_api_analytic_model.models.planning_concept_filter_context_dto import PlanningConceptFilterContextDTO
 from visier_api_analytic_model.models.planning_hierarchy_filter_context_dto import PlanningHierarchyFilterContextDTO
 from visier_api_analytic_model.models.planning_model_dto import PlanningModelDTO
@@ -82,6 +91,7 @@ from visier_api_analytic_model.models.property_change_definition_dto import Prop
 from visier_api_analytic_model.models.property_change_definitions_by_tenant_dto import PropertyChangeDefinitionsByTenantDTO
 from visier_api_analytic_model.models.property_dto import PropertyDTO
 from visier_api_analytic_model.models.property_reference_dto import PropertyReferenceDTO
+from visier_api_analytic_model.models.scenario_info_dto import ScenarioInfoDTO
 from visier_api_analytic_model.models.scenario_or_snapshot_dto import ScenarioOrSnapshotDTO
 from visier_api_analytic_model.models.selection_concept_configuration_map_dto import SelectionConceptConfigurationMapDTO
 from visier_api_analytic_model.models.selection_concept_dto import SelectionConceptDTO
