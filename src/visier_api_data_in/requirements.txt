@@ -1,1 +1,1 @@
-visier-api-core ~= 0.99201.1573
+visier-api-core ~= 0.99201.1598

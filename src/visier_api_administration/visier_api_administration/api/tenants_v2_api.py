@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1573
+    The version of the OpenAPI document: 22222222.99201.1598
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -45,7 +45,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def create_tenant_0(
+    def create_tenant(
         self,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
@@ -92,7 +92,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_tenant_0_serialize(
+        _param = self._create_tenant_serialize(
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -117,7 +117,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def create_tenant_0_with_http_info(
+    def create_tenant_with_http_info(
         self,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
@@ -164,7 +164,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_tenant_0_serialize(
+        _param = self._create_tenant_serialize(
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -189,7 +189,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def create_tenant_0_without_preload_content(
+    def create_tenant_without_preload_content(
         self,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
@@ -236,7 +236,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._create_tenant_0_serialize(
+        _param = self._create_tenant_serialize(
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -255,7 +255,7 @@ class TenantsV2Api:
         return response_data.response
 
 
-    def _create_tenant_0_serialize(
+    def _create_tenant_serialize(
         self,
         tenant_management_api_update_request_dto,
         target_tenant_id,
@@ -333,7 +333,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def delete_tenant_0(
+    def delete_tenant(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~{YYY} where {XXX} is the administrating tenant code and {YYY}  is the analytic tenant code.")],
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
@@ -380,7 +380,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_tenant_0_serialize(
+        _param = self._delete_tenant_serialize(
             tenant_id=tenant_id,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -405,7 +405,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def delete_tenant_0_with_http_info(
+    def delete_tenant_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~{YYY} where {XXX} is the administrating tenant code and {YYY}  is the analytic tenant code.")],
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
@@ -452,7 +452,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_tenant_0_serialize(
+        _param = self._delete_tenant_serialize(
             tenant_id=tenant_id,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -477,7 +477,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def delete_tenant_0_without_preload_content(
+    def delete_tenant_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~{YYY} where {XXX} is the administrating tenant code and {YYY}  is the analytic tenant code.")],
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
@@ -524,7 +524,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_tenant_0_serialize(
+        _param = self._delete_tenant_serialize(
             tenant_id=tenant_id,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -543,7 +543,7 @@ class TenantsV2Api:
         return response_data.response
 
 
-    def _delete_tenant_0_serialize(
+    def _delete_tenant_serialize(
         self,
         tenant_id,
         target_tenant_id,
@@ -608,7 +608,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def list_tenants_0(
+    def list_tenants(
         self,
         mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
@@ -661,7 +661,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_tenants_0_serialize(
+        _param = self._list_tenants_serialize(
             mask_message=mask_message,
             limit=limit,
             start=start,
@@ -688,7 +688,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def list_tenants_0_with_http_info(
+    def list_tenants_with_http_info(
         self,
         mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
@@ -741,7 +741,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_tenants_0_serialize(
+        _param = self._list_tenants_serialize(
             mask_message=mask_message,
             limit=limit,
             start=start,
@@ -768,7 +768,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def list_tenants_0_without_preload_content(
+    def list_tenants_without_preload_content(
         self,
         mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
@@ -821,7 +821,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_tenants_0_serialize(
+        _param = self._list_tenants_serialize(
             mask_message=mask_message,
             limit=limit,
             start=start,
@@ -842,7 +842,7 @@ class TenantsV2Api:
         return response_data.response
 
 
-    def _list_tenants_0_serialize(
+    def _list_tenants_serialize(
         self,
         mask_message,
         limit,
@@ -1233,7 +1233,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def update_tenant_0(
+    def update_tenant(
         self,
         tenant_id: StrictStr,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
@@ -1283,7 +1283,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_tenant_0_serialize(
+        _param = self._update_tenant_serialize(
             tenant_id=tenant_id,
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
             target_tenant_id=target_tenant_id,
@@ -1309,7 +1309,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def update_tenant_0_with_http_info(
+    def update_tenant_with_http_info(
         self,
         tenant_id: StrictStr,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
@@ -1359,7 +1359,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_tenant_0_serialize(
+        _param = self._update_tenant_serialize(
             tenant_id=tenant_id,
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
             target_tenant_id=target_tenant_id,
@@ -1385,7 +1385,7 @@ class TenantsV2Api:
 
 
     @validate_call
-    def update_tenant_0_without_preload_content(
+    def update_tenant_without_preload_content(
         self,
         tenant_id: StrictStr,
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
@@ -1435,7 +1435,7 @@ class TenantsV2Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_tenant_0_serialize(
+        _param = self._update_tenant_serialize(
             tenant_id=tenant_id,
             tenant_management_api_update_request_dto=tenant_management_api_update_request_dto,
             target_tenant_id=target_tenant_id,
@@ -1455,7 +1455,7 @@ class TenantsV2Api:
         return response_data.response
 
 
-    def _update_tenant_0_serialize(
+    def _update_tenant_serialize(
         self,
         tenant_id,
         tenant_management_api_update_request_dto,

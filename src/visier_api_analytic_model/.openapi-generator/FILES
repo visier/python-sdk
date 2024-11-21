@@ -30,6 +30,7 @@ test/test_dimension_member_reference_dto.py
 test/test_dimension_reference_dto.py
 test/test_dimensions_change_definitions_dto.py
 test/test_dimensions_dto.py
+test/test_get_plan_list_response_dto.py
 test/test_google_protobuf_any.py
 test/test_level_dto.py
 test/test_member_dto.py
@@ -47,7 +48,15 @@ test/test_objects_bulk_change_response_dto.py
 test/test_parameter_definition_dto.py
 test/test_perspective_configuration_dto.py
 test/test_perspective_node_dto.py
+test/test_plan_info_dto.py
+test/test_plan_item_dto.py
 test/test_plan_parameter_definition_dto.py
+test/test_plan_schema_dto.py
+test/test_plan_segment_level_dto.py
+test/test_plan_segment_level_member_dto.py
+test/test_plan_segment_level_member_list_dto.py
+test/test_plan_time_period_dto.py
+test/test_plan_with_schema_dto.py
 test/test_planning_concept_filter_context_dto.py
 test/test_planning_hierarchy_filter_context_dto.py
 test/test_planning_model_dto.py
@@ -64,6 +73,7 @@ test/test_property_change_definition_dto.py
 test/test_property_change_definitions_by_tenant_dto.py
 test/test_property_dto.py
 test/test_property_reference_dto.py
+test/test_scenario_info_dto.py
 test/test_scenario_or_snapshot_dto.py
 test/test_selection_concept_configuration_map_dto.py
 test/test_selection_concept_dto.py
@@ -103,6 +113,7 @@ visier_api_analytic_model/models/dimension_member_reference_dto.py
 visier_api_analytic_model/models/dimension_reference_dto.py
 visier_api_analytic_model/models/dimensions_change_definitions_dto.py
 visier_api_analytic_model/models/dimensions_dto.py
+visier_api_analytic_model/models/get_plan_list_response_dto.py
 visier_api_analytic_model/models/google_protobuf_any.py
 visier_api_analytic_model/models/level_dto.py
 visier_api_analytic_model/models/member_dto.py
@@ -119,7 +130,15 @@ visier_api_analytic_model/models/objects_bulk_change_response_dto.py
 visier_api_analytic_model/models/parameter_definition_dto.py
 visier_api_analytic_model/models/perspective_configuration_dto.py
 visier_api_analytic_model/models/perspective_node_dto.py
+visier_api_analytic_model/models/plan_info_dto.py
+visier_api_analytic_model/models/plan_item_dto.py
 visier_api_analytic_model/models/plan_parameter_definition_dto.py
+visier_api_analytic_model/models/plan_schema_dto.py
+visier_api_analytic_model/models/plan_segment_level_dto.py
+visier_api_analytic_model/models/plan_segment_level_member_dto.py
+visier_api_analytic_model/models/plan_segment_level_member_list_dto.py
+visier_api_analytic_model/models/plan_time_period_dto.py
+visier_api_analytic_model/models/plan_with_schema_dto.py
 visier_api_analytic_model/models/planning_concept_filter_context_dto.py
 visier_api_analytic_model/models/planning_hierarchy_filter_context_dto.py
 visier_api_analytic_model/models/planning_model_dto.py
@@ -136,6 +155,7 @@ visier_api_analytic_model/models/property_change_definition_dto.py
 visier_api_analytic_model/models/property_change_definitions_by_tenant_dto.py
 visier_api_analytic_model/models/property_dto.py
 visier_api_analytic_model/models/property_reference_dto.py
+visier_api_analytic_model/models/scenario_info_dto.py
 visier_api_analytic_model/models/scenario_or_snapshot_dto.py
 visier_api_analytic_model/models/selection_concept_configuration_map_dto.py
 visier_api_analytic_model/models/selection_concept_dto.py
