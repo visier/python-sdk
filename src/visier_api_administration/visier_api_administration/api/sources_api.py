@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1598
+    The version of the OpenAPI document: 22222222.99201.1600
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -61,7 +61,7 @@ class SourcesApi:
     ) -> SourcesAPIPutResponseDTO:
         """Import a list of sources
 
-        Import a list of sources in ZIP format. The file must be an export from `POST /v1alpha/admin/sources`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Import a list of sources in ZIP format. The file must be an export from `POST /v1alpha/admin/sources`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.  <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param body: (required)
         :type body: bytearray
@@ -137,7 +137,7 @@ class SourcesApi:
     ) -> ApiResponse[SourcesAPIPutResponseDTO]:
         """Import a list of sources
 
-        Import a list of sources in ZIP format. The file must be an export from `POST /v1alpha/admin/sources`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Import a list of sources in ZIP format. The file must be an export from `POST /v1alpha/admin/sources`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.  <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param body: (required)
         :type body: bytearray
@@ -213,7 +213,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Import a list of sources
 
-        Import a list of sources in ZIP format. The file must be an export from `POST /v1alpha/admin/sources`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Import a list of sources in ZIP format. The file must be an export from `POST /v1alpha/admin/sources`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.  <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param body: (required)
         :type body: bytearray
@@ -334,7 +334,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/v1alpha/admin/sources',
+            resource_path='/v1beta/admin/sources',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -370,7 +370,7 @@ class SourcesApi:
     ) -> object:
         """Perform an operation on all sources
 
-        Perform operations on all sources. The following operations are supported:  * `exportSources`: Export a ZIP file that contains a list of all sources in the application.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on all sources. The following operations are supported:  * `exportSources`: Export a ZIP file that contains a list of all sources in the application.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param sources_api_operation_request_dto: (required)
         :type sources_api_operation_request_dto: SourcesAPIOperationRequestDTO
@@ -442,7 +442,7 @@ class SourcesApi:
     ) -> ApiResponse[object]:
         """Perform an operation on all sources
 
-        Perform operations on all sources. The following operations are supported:  * `exportSources`: Export a ZIP file that contains a list of all sources in the application.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on all sources. The following operations are supported:  * `exportSources`: Export a ZIP file that contains a list of all sources in the application.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param sources_api_operation_request_dto: (required)
         :type sources_api_operation_request_dto: SourcesAPIOperationRequestDTO
@@ -514,7 +514,7 @@ class SourcesApi:
     ) -> RESTResponseType:
         """Perform an operation on all sources
 
-        Perform operations on all sources. The following operations are supported:  * `exportSources`: Export a ZIP file that contains a list of all sources in the application.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on all sources. The following operations are supported:  * `exportSources`: Export a ZIP file that contains a list of all sources in the application.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param sources_api_operation_request_dto: (required)
         :type sources_api_operation_request_dto: SourcesAPIOperationRequestDTO
@@ -622,7 +622,7 @@ class SourcesApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/v1alpha/admin/sources',
+            resource_path='/v1beta/admin/sources',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

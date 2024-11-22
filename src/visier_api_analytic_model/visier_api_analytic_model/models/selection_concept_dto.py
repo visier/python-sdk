@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1598
+    The version of the OpenAPI document: 22222222.99201.1600
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -31,10 +31,11 @@ class SelectionConceptDTO(BaseModel):
     """ # noqa: E501
     description: Optional[StrictStr] = Field(default=None, description="The localized description of the selection concept.")
     display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the selection concept.", alias="displayName")
+    explanation: Optional[StrictStr] = Field(default=None, description="The localized explanation of the selection concept.")
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the selection concept  Note: See `SelectionConcepts` to get the ID.")
     tags: Optional[List[TagMapElementDTO]] = Field(default=None, description="The optional collection of tags defined for this element.")
     visible_in_app: Optional[StrictBool] = Field(default=None, description="`true` if this selection concept is set to be visible in your solution.", alias="visibleInApp")
-    __properties: ClassVar[List[str]] = ["description", "displayName", "id", "tags", "visibleInApp"]
+    __properties: ClassVar[List[str]] = ["description", "displayName", "explanation", "id", "tags", "visibleInApp"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,6 +97,7 @@ class SelectionConceptDTO(BaseModel):
         _obj = cls.model_validate({
             "description": obj.get("description"),
             "displayName": obj.get("displayName"),
+            "explanation": obj.get("explanation"),
             "id": obj.get("id"),
             "tags": [TagMapElementDTO.from_dict(_item) for _item in obj["tags"]] if obj.get("tags") is not None else None,
             "visibleInApp": obj.get("visibleInApp")

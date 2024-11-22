@@ -7,7 +7,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1598
+    The version of the OpenAPI document: 22222222.99201.1600
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1598"
+__version__ = "0.99201.1600"
 
 # import apis into sdk package
 from visier_api_data_out.api.data_query_api import DataQueryApi
@@ -74,6 +74,7 @@ from visier_api_data_out.models.query_axis_dto import QueryAxisDTO
 from visier_api_data_out.models.query_axis_options_dto import QueryAxisOptionsDTO
 from visier_api_data_out.models.query_dimension_data_member_selection_dto import QueryDimensionDataMemberSelectionDTO
 from visier_api_data_out.models.query_dimension_leaf_selection_dto import QueryDimensionLeafSelectionDTO
+from visier_api_data_out.models.query_dimension_level_property_dto import QueryDimensionLevelPropertyDTO
 from visier_api_data_out.models.query_dimension_level_selection_dto import QueryDimensionLevelSelectionDTO
 from visier_api_data_out.models.query_dimension_member_selection_dto import QueryDimensionMemberSelectionDTO
 from visier_api_data_out.models.query_execution_options_dto import QueryExecutionOptionsDTO

@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1598
+    The version of the OpenAPI document: 22222222.99201.1600
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -64,7 +64,7 @@ class ProductionVersionsApi:
     ) -> GetProductionVersionsAPIResponseDTO:
         """Retrieve a list of all production versions
 
-        Retrieve a list of all projects that were published to production, ordered from latest published to earliest published.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve a list of all projects that were published to production, ordered from latest published to earliest published.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param limit: The maximum number of production versions to return. Default is 400.
         :type limit: int
@@ -140,7 +140,7 @@ class ProductionVersionsApi:
     ) -> ApiResponse[GetProductionVersionsAPIResponseDTO]:
         """Retrieve a list of all production versions
 
-        Retrieve a list of all projects that were published to production, ordered from latest published to earliest published.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve a list of all projects that were published to production, ordered from latest published to earliest published.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param limit: The maximum number of production versions to return. Default is 400.
         :type limit: int
@@ -216,7 +216,7 @@ class ProductionVersionsApi:
     ) -> RESTResponseType:
         """Retrieve a list of all production versions
 
-        Retrieve a list of all projects that were published to production, ordered from latest published to earliest published.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve a list of all projects that were published to production, ordered from latest published to earliest published.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param limit: The maximum number of production versions to return. Default is 400.
         :type limit: int
@@ -321,7 +321,7 @@ class ProductionVersionsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v1alpha/admin/production-versions',
+            resource_path='/v1beta/admin/production-versions',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -358,7 +358,7 @@ class ProductionVersionsApi:
     ) -> ProductionVersionAPIOperationResponseDTO:
         """Perform an operation on a production version
 
-        Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param production_version_id: The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation. (required)
         :type production_version_id: str
@@ -434,7 +434,7 @@ class ProductionVersionsApi:
     ) -> ApiResponse[ProductionVersionAPIOperationResponseDTO]:
         """Perform an operation on a production version
 
-        Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param production_version_id: The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation. (required)
         :type production_version_id: str
@@ -510,7 +510,7 @@ class ProductionVersionsApi:
     ) -> RESTResponseType:
         """Perform an operation on a production version
 
-        Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param production_version_id: The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation. (required)
         :type production_version_id: str
@@ -624,7 +624,7 @@ class ProductionVersionsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/v1alpha/admin/production-versions/{productionVersionId}',
+            resource_path='/v1beta/admin/production-versions/{productionVersionId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -660,7 +660,7 @@ class ProductionVersionsApi:
     ) -> ProductionVersionsAPIOperationResponseDTO:
         """Perform an operation on production versions
 
-        Perform operations on production versions, such as exporting a production project's committed changes.     If exporting, please specify `Accept: application/zip, application/json` in the header. The API returns exported changes in ZIP format and error messages in JSON format. If your request returns an error and it doesn't accept `application/json`, you will receive an HTTP 406 status code instead of the appropriate error response body.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on production versions, such as exporting a production project's committed changes.     If exporting, please specify `Accept: application/zip, application/json` in the header. The API returns exported changes in ZIP format and error messages in JSON format. If your request returns an error and it doesn't accept `application/json`, you will receive an HTTP 406 status code instead of the appropriate error response body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param production_versions_api_operation_request_dto: (required)
         :type production_versions_api_operation_request_dto: ProductionVersionsAPIOperationRequestDTO
@@ -732,7 +732,7 @@ class ProductionVersionsApi:
     ) -> ApiResponse[ProductionVersionsAPIOperationResponseDTO]:
         """Perform an operation on production versions
 
-        Perform operations on production versions, such as exporting a production project's committed changes.     If exporting, please specify `Accept: application/zip, application/json` in the header. The API returns exported changes in ZIP format and error messages in JSON format. If your request returns an error and it doesn't accept `application/json`, you will receive an HTTP 406 status code instead of the appropriate error response body.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on production versions, such as exporting a production project's committed changes.     If exporting, please specify `Accept: application/zip, application/json` in the header. The API returns exported changes in ZIP format and error messages in JSON format. If your request returns an error and it doesn't accept `application/json`, you will receive an HTTP 406 status code instead of the appropriate error response body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param production_versions_api_operation_request_dto: (required)
         :type production_versions_api_operation_request_dto: ProductionVersionsAPIOperationRequestDTO
@@ -804,7 +804,7 @@ class ProductionVersionsApi:
     ) -> RESTResponseType:
         """Perform an operation on production versions
 
-        Perform operations on production versions, such as exporting a production project's committed changes.     If exporting, please specify `Accept: application/zip, application/json` in the header. The API returns exported changes in ZIP format and error messages in JSON format. If your request returns an error and it doesn't accept `application/json`, you will receive an HTTP 406 status code instead of the appropriate error response body.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on production versions, such as exporting a production project's committed changes.     If exporting, please specify `Accept: application/zip, application/json` in the header. The API returns exported changes in ZIP format and error messages in JSON format. If your request returns an error and it doesn't accept `application/json`, you will receive an HTTP 406 status code instead of the appropriate error response body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param production_versions_api_operation_request_dto: (required)
         :type production_versions_api_operation_request_dto: ProductionVersionsAPIOperationRequestDTO
@@ -912,7 +912,7 @@ class ProductionVersionsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/v1alpha/admin/production-versions',
+            resource_path='/v1beta/admin/production-versions',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

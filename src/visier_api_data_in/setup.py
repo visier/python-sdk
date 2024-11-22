@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1598
+    The version of the OpenAPI document: 22222222.99201.1600
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,10 +23,10 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "visier-api-data-in"
-VERSION = "0.99201.1598"
+VERSION = "0.99201.1600"
 PYTHON_REQUIRES = ">=3.8"
 REQUIRES = [
-    "visier-api-core ~= 0.99201.1598",
+    "visier-api-core ~= 0.99201.1600",
 ]
 
 setup(

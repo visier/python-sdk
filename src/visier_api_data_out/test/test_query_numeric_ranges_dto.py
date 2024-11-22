@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1598
+    The version of the OpenAPI document: 22222222.99201.1600
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -41,6 +41,7 @@ class TestQueryNumericRangesDTO(unittest.TestCase):
                 include_negative = True,
                 var_property = visier_api_data_out.models.query_property_dto.QueryPropertyDTO(
                     dimension = None, 
+                    dimension_level_selection = None, 
                     effective_date_property = None, 
                     formula = '', 
                     member_map_property = None, 

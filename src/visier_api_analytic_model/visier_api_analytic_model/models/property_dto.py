@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1598
+    The version of the OpenAPI document: 22222222.99201.1600
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -33,11 +33,12 @@ class PropertyDTO(BaseModel):
     data_type: Optional[StrictStr] = Field(default=None, description="The data type of the property, such as Categorical, HourDuration, or Ratio.", alias="dataType")
     description: Optional[StrictStr] = Field(default=None, description="The localized description of the property.")
     display_name: Optional[StrictStr] = Field(default=None, description="The localized display name of the property.", alias="displayName")
+    explanation: Optional[StrictStr] = Field(default=None, description="The localized explanation of the property.")
     id: Optional[StrictStr] = Field(default=None, description="The unique ID of the property.  **Note:** See `Properties` to get the ID.")
     parameters: Optional[List[ParameterDefinitionDTO]] = Field(default=None, description="The collection of parameters defined for the property.")
     primitive_data_type: Optional[StrictStr] = Field(default=None, description="The primitive data type of the property, such as Number, String, or Boolean.", alias="primitiveDataType")
     tags: Optional[List[TagMapElementDTO]] = Field(default=None, description="The optional collection of tags defined for this element.")
-    __properties: ClassVar[List[str]] = ["dataType", "description", "displayName", "id", "parameters", "primitiveDataType", "tags"]
+    __properties: ClassVar[List[str]] = ["dataType", "description", "displayName", "explanation", "id", "parameters", "primitiveDataType", "tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -107,6 +108,7 @@ class PropertyDTO(BaseModel):
             "dataType": obj.get("dataType"),
             "description": obj.get("description"),
             "displayName": obj.get("displayName"),
+            "explanation": obj.get("explanation"),
             "id": obj.get("id"),
             "parameters": [ParameterDefinitionDTO.from_dict(_item) for _item in obj["parameters"]] if obj.get("parameters") is not None else None,
             "primitiveDataType": obj.get("primitiveDataType"),
