@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1598
+    The version of the OpenAPI document: 22222222.99201.1600
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -64,7 +64,7 @@ class ProjectsApi:
     ) -> ProjectDTO:
         """Create a new draft project
 
-        Create a new draft project in the tenant.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Create a new draft project in the tenant.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_dto: (required)
         :type project_dto: ProjectDTO
@@ -136,7 +136,7 @@ class ProjectsApi:
     ) -> ApiResponse[ProjectDTO]:
         """Create a new draft project
 
-        Create a new draft project in the tenant.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Create a new draft project in the tenant.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_dto: (required)
         :type project_dto: ProjectDTO
@@ -208,7 +208,7 @@ class ProjectsApi:
     ) -> RESTResponseType:
         """Create a new draft project
 
-        Create a new draft project in the tenant.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Create a new draft project in the tenant.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_dto: (required)
         :type project_dto: ProjectDTO
@@ -316,7 +316,7 @@ class ProjectsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/v1alpha/admin/projects',
+            resource_path='/v1beta/admin/projects',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -352,7 +352,7 @@ class ProjectsApi:
     ) -> ProjectDTO:
         """Delete a draft project
 
-        Delete a draft project in the tenant. The project will first be archived if applicable.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete a draft project in the tenant. The project will first be archived if applicable.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique ID of the draft project to be deleted. (required)
         :type project_id: str
@@ -424,7 +424,7 @@ class ProjectsApi:
     ) -> ApiResponse[ProjectDTO]:
         """Delete a draft project
 
-        Delete a draft project in the tenant. The project will first be archived if applicable.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete a draft project in the tenant. The project will first be archived if applicable.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique ID of the draft project to be deleted. (required)
         :type project_id: str
@@ -496,7 +496,7 @@ class ProjectsApi:
     ) -> RESTResponseType:
         """Delete a draft project
 
-        Delete a draft project in the tenant. The project will first be archived if applicable.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete a draft project in the tenant. The project will first be archived if applicable.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique ID of the draft project to be deleted. (required)
         :type project_id: str
@@ -591,7 +591,7 @@ class ProjectsApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/v1alpha/admin/projects/{projectId}',
+            resource_path='/v1beta/admin/projects/{projectId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -627,7 +627,7 @@ class ProjectsApi:
     ) -> ProjectDTO:
         """Retrieve a draft project's information
 
-        Retrieve the details of an accessible draft project. You must know the ID of the project to retrieve its details. To retrieve draft project IDs, see `GET v1alpha/admin/projects`.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the details of an accessible draft project. You must know the ID of the project to retrieve its details. To retrieve draft project IDs, see `GET v1beta/admin/projects`.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique identifier of the draft project you want to retrieve. (required)
         :type project_id: str
@@ -699,7 +699,7 @@ class ProjectsApi:
     ) -> ApiResponse[ProjectDTO]:
         """Retrieve a draft project's information
 
-        Retrieve the details of an accessible draft project. You must know the ID of the project to retrieve its details. To retrieve draft project IDs, see `GET v1alpha/admin/projects`.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the details of an accessible draft project. You must know the ID of the project to retrieve its details. To retrieve draft project IDs, see `GET v1beta/admin/projects`.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique identifier of the draft project you want to retrieve. (required)
         :type project_id: str
@@ -771,7 +771,7 @@ class ProjectsApi:
     ) -> RESTResponseType:
         """Retrieve a draft project's information
 
-        Retrieve the details of an accessible draft project. You must know the ID of the project to retrieve its details. To retrieve draft project IDs, see `GET v1alpha/admin/projects`.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the details of an accessible draft project. You must know the ID of the project to retrieve its details. To retrieve draft project IDs, see `GET v1beta/admin/projects`.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique identifier of the draft project you want to retrieve. (required)
         :type project_id: str
@@ -866,7 +866,7 @@ class ProjectsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v1alpha/admin/projects/{projectId}',
+            resource_path='/v1beta/admin/projects/{projectId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -904,7 +904,7 @@ class ProjectsApi:
     ) -> ProjectCommitsAPIResponseDTO:
         """Retrieve a list of all committed changes in a project
 
-        Retrieve the full list of all committed changes in a project.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the full list of all committed changes in a project.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique identifier of the draft project you want to retrieve the committed changes for. (required)
         :type project_id: str
@@ -984,7 +984,7 @@ class ProjectsApi:
     ) -> ApiResponse[ProjectCommitsAPIResponseDTO]:
         """Retrieve a list of all committed changes in a project
 
-        Retrieve the full list of all committed changes in a project.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the full list of all committed changes in a project.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique identifier of the draft project you want to retrieve the committed changes for. (required)
         :type project_id: str
@@ -1064,7 +1064,7 @@ class ProjectsApi:
     ) -> RESTResponseType:
         """Retrieve a list of all committed changes in a project
 
-        Retrieve the full list of all committed changes in a project.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the full list of all committed changes in a project.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique identifier of the draft project you want to retrieve the committed changes for. (required)
         :type project_id: str
@@ -1175,7 +1175,7 @@ class ProjectsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v1alpha/admin/projects/{projectId}/commits',
+            resource_path='/v1beta/admin/projects/{projectId}/commits',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1212,7 +1212,7 @@ class ProjectsApi:
     ) -> GetProjectsAPIResponseDTO:
         """Retrieve a list of draft projects accessible to the user
 
-        Get a list of draft projects accessible to the requesting user in the tenant.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Get a list of draft projects accessible to the requesting user in the tenant.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param var_with: The types of draft projects to include in the request response.  * If empty, returns all the `Open` draft projects.  * If `Open`, returns all Open draft projects.  * If `Approval`, returns all draft projects in the approval stage. Changes cannot made in Approval projects.  * If `Rejected`, returns all draft projects that have been rejected. Changes cannot be committed in Rejected projects.  * If `Archived`, returns all draft projects that have been archived. Changes cannot be committed in Archived projects.
         :type var_with: List[str]
@@ -1288,7 +1288,7 @@ class ProjectsApi:
     ) -> ApiResponse[GetProjectsAPIResponseDTO]:
         """Retrieve a list of draft projects accessible to the user
 
-        Get a list of draft projects accessible to the requesting user in the tenant.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Get a list of draft projects accessible to the requesting user in the tenant.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param var_with: The types of draft projects to include in the request response.  * If empty, returns all the `Open` draft projects.  * If `Open`, returns all Open draft projects.  * If `Approval`, returns all draft projects in the approval stage. Changes cannot made in Approval projects.  * If `Rejected`, returns all draft projects that have been rejected. Changes cannot be committed in Rejected projects.  * If `Archived`, returns all draft projects that have been archived. Changes cannot be committed in Archived projects.
         :type var_with: List[str]
@@ -1364,7 +1364,7 @@ class ProjectsApi:
     ) -> RESTResponseType:
         """Retrieve a list of draft projects accessible to the user
 
-        Get a list of draft projects accessible to the requesting user in the tenant.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Get a list of draft projects accessible to the requesting user in the tenant.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param var_with: The types of draft projects to include in the request response.  * If empty, returns all the `Open` draft projects.  * If `Open`, returns all Open draft projects.  * If `Approval`, returns all draft projects in the approval stage. Changes cannot made in Approval projects.  * If `Rejected`, returns all draft projects that have been rejected. Changes cannot be committed in Rejected projects.  * If `Archived`, returns all draft projects that have been archived. Changes cannot be committed in Archived projects.
         :type var_with: List[str]
@@ -1470,7 +1470,7 @@ class ProjectsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v1alpha/admin/projects',
+            resource_path='/v1beta/admin/projects',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1507,7 +1507,7 @@ class ProjectsApi:
     ) -> ProjectCommitsAPIResponseDTO:
         """Import committed changes into a project
 
-        Import a ZIP file that contains a list of committed changes into a draft project. The file must be an export from `POST /v1alpha/admin/production-versions`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Import a ZIP file that contains a list of committed changes into a draft project. The file must be an export from `POST /v1beta/admin/production-versions`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique identifier of the draft project you want to import committed changes into. (required)
         :type project_id: str
@@ -1583,7 +1583,7 @@ class ProjectsApi:
     ) -> ApiResponse[ProjectCommitsAPIResponseDTO]:
         """Import committed changes into a project
 
-        Import a ZIP file that contains a list of committed changes into a draft project. The file must be an export from `POST /v1alpha/admin/production-versions`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Import a ZIP file that contains a list of committed changes into a draft project. The file must be an export from `POST /v1beta/admin/production-versions`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique identifier of the draft project you want to import committed changes into. (required)
         :type project_id: str
@@ -1659,7 +1659,7 @@ class ProjectsApi:
     ) -> RESTResponseType:
         """Import committed changes into a project
 
-        Import a ZIP file that contains a list of committed changes into a draft project. The file must be an export from `POST /v1alpha/admin/production-versions`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Import a ZIP file that contains a list of committed changes into a draft project. The file must be an export from `POST /v1beta/admin/production-versions`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique identifier of the draft project you want to import committed changes into. (required)
         :type project_id: str
@@ -1773,7 +1773,7 @@ class ProjectsApi:
 
         return self.api_client.param_serialize(
             method='PUT',
-            resource_path='/v1alpha/admin/projects/{projectId}/commits',
+            resource_path='/v1beta/admin/projects/{projectId}/commits',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1810,7 +1810,7 @@ class ProjectsApi:
     ) -> ProjectOperationResponseDTO:
         """Perform an operation on a draft project
 
-        Perform operations on a draft project. The following operations are supported:  * `commitAndPublish`: Commits project changes and publishes the project to production.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on a draft project. The following operations are supported:  * `commitAndPublish`: Commits project changes and publishes the project to production.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: (required)
         :type project_id: str
@@ -1886,7 +1886,7 @@ class ProjectsApi:
     ) -> ApiResponse[ProjectOperationResponseDTO]:
         """Perform an operation on a draft project
 
-        Perform operations on a draft project. The following operations are supported:  * `commitAndPublish`: Commits project changes and publishes the project to production.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on a draft project. The following operations are supported:  * `commitAndPublish`: Commits project changes and publishes the project to production.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: (required)
         :type project_id: str
@@ -1962,7 +1962,7 @@ class ProjectsApi:
     ) -> RESTResponseType:
         """Perform an operation on a draft project
 
-        Perform operations on a draft project. The following operations are supported:  * `commitAndPublish`: Commits project changes and publishes the project to production.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on a draft project. The following operations are supported:  * `commitAndPublish`: Commits project changes and publishes the project to production.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: (required)
         :type project_id: str
@@ -2076,7 +2076,7 @@ class ProjectsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/v1alpha/admin/projects/{projectId}',
+            resource_path='/v1beta/admin/projects/{projectId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

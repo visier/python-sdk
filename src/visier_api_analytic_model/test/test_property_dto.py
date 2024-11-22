@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1598
+    The version of the OpenAPI document: 22222222.99201.1600
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -39,6 +39,7 @@ class TestPropertyDTO(unittest.TestCase):
                 data_type = '',
                 description = '',
                 display_name = '',
+                explanation = '',
                 id = '',
                 parameters = [
                     visier_api_analytic_model.models.parameter_definition_dto.ParameterDefinitionDTO(

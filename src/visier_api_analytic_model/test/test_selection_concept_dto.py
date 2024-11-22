@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1598
+    The version of the OpenAPI document: 22222222.99201.1600
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -38,6 +38,7 @@ class TestSelectionConceptDTO(unittest.TestCase):
             return SelectionConceptDTO(
                 description = '',
                 display_name = '',
+                explanation = '',
                 id = '',
                 tags = [
                     visier_api_analytic_model.models.tag_map_element_dto.TagMapElementDTO(

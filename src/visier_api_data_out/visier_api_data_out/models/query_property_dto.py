@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1598
+    The version of the OpenAPI document: 22222222.99201.1600
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,6 +23,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from visier_api_data_out.models.dimension_reference_dto import DimensionReferenceDTO
 from visier_api_data_out.models.property_reference_dto import PropertyReferenceDTO
+from visier_api_data_out.models.query_dimension_level_property_dto import QueryDimensionLevelPropertyDTO
 from visier_api_data_out.models.query_member_map_property_dto import QueryMemberMapPropertyDTO
 from visier_api_data_out.models.selection_concept_reference_dto import SelectionConceptReferenceDTO
 from typing import Optional, Set
@@ -33,12 +34,13 @@ class QueryPropertyDTO(BaseModel):
     A QueryProperty defines a property of a data point returned from a query.  This is not the same as a `property` in Visier's data mode.
     """ # noqa: E501
     dimension: Optional[DimensionReferenceDTO] = Field(default=None, description="A dimension-based property that returns the full name path of the dimension member that the data point is mapped to.")
+    dimension_level_selection: Optional[QueryDimensionLevelPropertyDTO] = Field(default=None, description="A dimension-based property that returns the member values of the dimension level.", alias="dimensionLevelSelection")
     effective_date_property: Optional[Dict[str, Any]] = Field(default=None, description="A property that yields the effective date for the record", alias="effectiveDateProperty")
     formula: Optional[StrictStr] = Field(default=None, description="A formula-based property.")
     member_map_property: Optional[QueryMemberMapPropertyDTO] = Field(default=None, description="A member map-based property that uses an existing member map in Visier.", alias="memberMapProperty")
     var_property: Optional[PropertyReferenceDTO] = Field(default=None, description="A property reference.", alias="property")
     selection_concept: Optional[SelectionConceptReferenceDTO] = Field(default=None, description="A selection concept-based property that returns true or false.", alias="selectionConcept")
-    __properties: ClassVar[List[str]] = ["dimension", "effectiveDateProperty", "formula", "memberMapProperty", "property", "selectionConcept"]
+    __properties: ClassVar[List[str]] = ["dimension", "dimensionLevelSelection", "effectiveDateProperty", "formula", "memberMapProperty", "property", "selectionConcept"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,6 +84,9 @@ class QueryPropertyDTO(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of dimension
         if self.dimension:
             _dict['dimension'] = self.dimension.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of dimension_level_selection
+        if self.dimension_level_selection:
+            _dict['dimensionLevelSelection'] = self.dimension_level_selection.to_dict()
         # override the default output from pydantic by calling `to_dict()` of member_map_property
         if self.member_map_property:
             _dict['memberMapProperty'] = self.member_map_property.to_dict()
@@ -104,6 +109,7 @@ class QueryPropertyDTO(BaseModel):
 
         _obj = cls.model_validate({
             "dimension": DimensionReferenceDTO.from_dict(obj["dimension"]) if obj.get("dimension") is not None else None,
+            "dimensionLevelSelection": QueryDimensionLevelPropertyDTO.from_dict(obj["dimensionLevelSelection"]) if obj.get("dimensionLevelSelection") is not None else None,
             "effectiveDateProperty": obj.get("effectiveDateProperty"),
             "formula": obj.get("formula"),
             "memberMapProperty": QueryMemberMapPropertyDTO.from_dict(obj["memberMapProperty"]) if obj.get("memberMapProperty") is not None else None,
