@@ -33,6 +33,8 @@ test/test_data_version_exports_dto.py
 test/test_dimension_member_reference_dto.py
 test/test_dimension_reference_dto.py
 test/test_document_search_link_dto.py
+test/test_download_source_files_dto.py
+test/test_download_source_files_response_dto.py
 test/test_dv_export_status.py
 test/test_google_protobuf_any.py
 test/test_internal_query_execution_options_dto.py
@@ -73,6 +75,7 @@ test/test_simple_document_header_search_result_dto.py
 test/test_snapshot_query_execution_dto.py
 test/test_snapshot_query_execution_options_dto.py
 test/test_sort_option_dto.py
+test/test_source_files_download_api.py
 test/test_sql_like_query_execution_dto.py
 test/test_status.py
 test/test_table_response_dto.py
@@ -101,6 +104,7 @@ visier_api_data_out/api/__init__.py
 visier_api_data_out/api/data_query_api.py
 visier_api_data_out/api/data_version_export_api.py
 visier_api_data_out/api/search_api.py
+visier_api_data_out/api/source_files_download_api.py
 visier_api_data_out/api/vee_api.py
 visier_api_data_out/models/__init__.py
 visier_api_data_out/models/aggregation_query_dto.py
@@ -130,6 +134,8 @@ visier_api_data_out/models/data_version_exports_dto.py
 visier_api_data_out/models/dimension_member_reference_dto.py
 visier_api_data_out/models/dimension_reference_dto.py
 visier_api_data_out/models/document_search_link_dto.py
+visier_api_data_out/models/download_source_files_dto.py
+visier_api_data_out/models/download_source_files_response_dto.py
 visier_api_data_out/models/dv_export_status.py
 visier_api_data_out/models/google_protobuf_any.py
 visier_api_data_out/models/internal_query_execution_options_dto.py
