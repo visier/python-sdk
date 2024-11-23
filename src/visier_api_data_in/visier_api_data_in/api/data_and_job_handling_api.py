@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1600
+    The version of the OpenAPI document: 22222222.99201.1603
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -35,8 +35,6 @@ from visier_api_data_in.models.data_provider_auth_information_dto import DataPro
 from visier_api_data_in.models.disable_dv_request import DisableDVRequest
 from visier_api_data_in.models.disable_dv_response import DisableDVResponse
 from visier_api_data_in.models.dispatching_job_status_response import DispatchingJobStatusResponse
-from visier_api_data_in.models.download_source_files_dto import DownloadSourceFilesDTO
-from visier_api_data_in.models.download_source_files_response_dto import DownloadSourceFilesResponseDTO
 from visier_api_data_in.models.exclude_data_uploads_request import ExcludeDataUploadsRequest
 from visier_api_data_in.models.extract_data_and_load_dto import ExtractDataAndLoadDTO
 from visier_api_data_in.models.extraction_job_and_status_response import ExtractionJobAndStatusResponse
@@ -3336,299 +3334,6 @@ class DataAndJobHandlingApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v1/op/jobs/dispatching-jobs/{jobId}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def download_source_files(
-        self,
-        download_source_files_dto: DownloadSourceFilesDTO,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DownloadSourceFilesResponseDTO:
-        """Download source files
-
-        Download a tenant's source files. You can download all source files or specify a list of sources to download. List of sources can be specified by object names or unique identifiers.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
-
-        :param download_source_files_dto: (required)
-        :type download_source_files_dto: DownloadSourceFilesDTO
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._download_source_files_serialize(
-            download_source_files_dto=download_source_files_dto,
-            target_tenant_id=target_tenant_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DownloadSourceFilesResponseDTO",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            model_package=visier_api_data_in.models,
-            response_data=response_data,
-            response_types_map=_response_types_map
-        ).data
-
-
-    @validate_call
-    def download_source_files_with_http_info(
-        self,
-        download_source_files_dto: DownloadSourceFilesDTO,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DownloadSourceFilesResponseDTO]:
-        """Download source files
-
-        Download a tenant's source files. You can download all source files or specify a list of sources to download. List of sources can be specified by object names or unique identifiers.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
-
-        :param download_source_files_dto: (required)
-        :type download_source_files_dto: DownloadSourceFilesDTO
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._download_source_files_serialize(
-            download_source_files_dto=download_source_files_dto,
-            target_tenant_id=target_tenant_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DownloadSourceFilesResponseDTO",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            model_package=visier_api_data_in.models,
-            response_data=response_data,
-            response_types_map=_response_types_map
-        )
-
-
-    @validate_call
-    def download_source_files_without_preload_content(
-        self,
-        download_source_files_dto: DownloadSourceFilesDTO,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Download source files
-
-        Download a tenant's source files. You can download all source files or specify a list of sources to download. List of sources can be specified by object names or unique identifiers.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
-
-        :param download_source_files_dto: (required)
-        :type download_source_files_dto: DownloadSourceFilesDTO
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._download_source_files_serialize(
-            download_source_files_dto=download_source_files_dto,
-            target_tenant_id=target_tenant_id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DownloadSourceFilesResponseDTO",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _download_source_files_serialize(
-        self,
-        download_source_files_dto,
-        target_tenant_id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
-        # process the form parameters
-        # process the body parameter
-        if download_source_files_dto is not None:
-            _body_params = download_source_files_dto
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'CookieAuth', 
-            'ApiKeyAuth', 
-            'OAuth2Auth', 
-            'OAuth2Auth', 
-            'BearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/v1alpha/op/data/uploads/download-source-files',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -7417,9 +7122,9 @@ class DataAndJobHandlingApi:
         self,
         upload_job_id: Annotated[Optional[StrictStr], Field(description="The job ID of an upload job. Use this if you are interested in the data uploads for a specific upload job.")] = None,
         tenant_code: Annotated[Optional[StrictInt], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the data uploads for.")] = None,
-        limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified.")] = None,
+        limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified. Default is 1000.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
-        number_of_data_uploads: Annotated[Optional[StrictInt], Field(description="The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5.")] = None,
+        number_of_data_uploads: Annotated[Optional[StrictInt], Field(description="The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5. Default is 1.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -7442,11 +7147,11 @@ class DataAndJobHandlingApi:
         :type upload_job_id: str
         :param tenant_code: The tenant code of a specific analytic tenant that you want to retrieve the data uploads for.
         :type tenant_code: int
-        :param limit: The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified.
+        :param limit: The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified. Default is 1000.
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
-        :param number_of_data_uploads: The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5.
+        :param number_of_data_uploads: The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5. Default is 1.
         :type number_of_data_uploads: int
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
@@ -7505,9 +7210,9 @@ class DataAndJobHandlingApi:
         self,
         upload_job_id: Annotated[Optional[StrictStr], Field(description="The job ID of an upload job. Use this if you are interested in the data uploads for a specific upload job.")] = None,
         tenant_code: Annotated[Optional[StrictInt], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the data uploads for.")] = None,
-        limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified.")] = None,
+        limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified. Default is 1000.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
-        number_of_data_uploads: Annotated[Optional[StrictInt], Field(description="The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5.")] = None,
+        number_of_data_uploads: Annotated[Optional[StrictInt], Field(description="The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5. Default is 1.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -7530,11 +7235,11 @@ class DataAndJobHandlingApi:
         :type upload_job_id: str
         :param tenant_code: The tenant code of a specific analytic tenant that you want to retrieve the data uploads for.
         :type tenant_code: int
-        :param limit: The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified.
+        :param limit: The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified. Default is 1000.
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
-        :param number_of_data_uploads: The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5.
+        :param number_of_data_uploads: The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5. Default is 1.
         :type number_of_data_uploads: int
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
@@ -7593,9 +7298,9 @@ class DataAndJobHandlingApi:
         self,
         upload_job_id: Annotated[Optional[StrictStr], Field(description="The job ID of an upload job. Use this if you are interested in the data uploads for a specific upload job.")] = None,
         tenant_code: Annotated[Optional[StrictInt], Field(description="The tenant code of a specific analytic tenant that you want to retrieve the data uploads for.")] = None,
-        limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified.")] = None,
+        limit: Annotated[Optional[StrictInt], Field(description="The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified. Default is 1000.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
-        number_of_data_uploads: Annotated[Optional[StrictInt], Field(description="The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5.")] = None,
+        number_of_data_uploads: Annotated[Optional[StrictInt], Field(description="The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5. Default is 1.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -7618,11 +7323,11 @@ class DataAndJobHandlingApi:
         :type upload_job_id: str
         :param tenant_code: The tenant code of a specific analytic tenant that you want to retrieve the data uploads for.
         :type tenant_code: int
-        :param limit: The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified.
+        :param limit: The limit of analytic tenants to retrieve data uploads for. This parameter is not used if the tenantCode parameter is specified. Default is 1000.
         :type limit: int
         :param start: The index to start retrieving results from, also known as offset. The index begins at 0.
         :type start: int
-        :param number_of_data_uploads: The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5.
+        :param number_of_data_uploads: The maximum number of latest enabled data uploads to retrieve for each analytic tenant. The maximum value is 5. Default is 1.
         :type number_of_data_uploads: int
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str

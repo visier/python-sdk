@@ -1,11 +1,11 @@
 # coding: utf-8
 
 """
-    Visier Data In APIs
+    Visier Data Out APIs
 
-    Visier APIs for sending data to Visier and running data load jobs.
+    Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1600
+    The version of the OpenAPI document: 22222222.99201.1603
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -19,21 +19,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DownloadSourceFilesDTO(BaseModel):
+class DownloadSourceFilesResponseDTO(BaseModel):
     """
-    DownloadSourceFilesDTO
+    DownloadSourceFilesResponseDTO
     """ # noqa: E501
-    download_all: Optional[StrictBool] = Field(default=None, description="If `true`, downloads all uploaded files for all sources. Default is `false`.", alias="downloadAll")
-    max_timestamp: Optional[StrictStr] = Field(default=None, description="The latest upload time to download files up to in ISO-8601 format, such as `\"2001-10-25T13:45:35.999\"`. If omitted, downloads files up to the latest available time.", alias="maxTimestamp")
-    min_timestamp: Optional[StrictStr] = Field(default=None, description="The earliest upload time to download files from in ISO-8601 format, such as `\"2001-10-25T13:45:35.999\"`. If omitted, downloads files from the earliest available time.", alias="minTimestamp")
-    source_ids: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings representing the unique identifier of each source to download.", alias="sourceIds")
-    sources: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings representing the object name of each source to download.")
-    __properties: ClassVar[List[str]] = ["downloadAll", "maxTimestamp", "minTimestamp", "sourceIds", "sources"]
+    messages: Optional[StrictStr] = Field(default=None, description="A description of the request status.")
+    status: Optional[StrictStr] = Field(default=None, description="The download request status, such as `Error`.")
+    __properties: ClassVar[List[str]] = ["messages", "status"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +50,7 @@ class DownloadSourceFilesDTO(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DownloadSourceFilesDTO from a JSON string"""
+        """Create an instance of DownloadSourceFilesResponseDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,7 +75,7 @@ class DownloadSourceFilesDTO(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DownloadSourceFilesDTO from a dict"""
+        """Create an instance of DownloadSourceFilesResponseDTO from a dict"""
         if obj is None:
             return None
 
@@ -86,11 +83,8 @@ class DownloadSourceFilesDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "downloadAll": obj.get("downloadAll"),
-            "maxTimestamp": obj.get("maxTimestamp"),
-            "minTimestamp": obj.get("minTimestamp"),
-            "sourceIds": obj.get("sourceIds"),
-            "sources": obj.get("sources")
+            "messages": obj.get("messages"),
+            "status": obj.get("status")
         })
         return _obj
 

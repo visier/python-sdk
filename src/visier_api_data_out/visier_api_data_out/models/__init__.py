@@ -6,7 +6,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1600
+    The version of the OpenAPI document: 22222222.99201.1603
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -43,6 +43,8 @@ from visier_api_data_out.models.data_version_exports_dto import DataVersionExpor
 from visier_api_data_out.models.dimension_member_reference_dto import DimensionMemberReferenceDTO
 from visier_api_data_out.models.dimension_reference_dto import DimensionReferenceDTO
 from visier_api_data_out.models.document_search_link_dto import DocumentSearchLinkDTO
+from visier_api_data_out.models.download_source_files_dto import DownloadSourceFilesDTO
+from visier_api_data_out.models.download_source_files_response_dto import DownloadSourceFilesResponseDTO
 from visier_api_data_out.models.dv_export_status import DvExportStatus
 from visier_api_data_out.models.google_protobuf_any import GoogleProtobufAny
 from visier_api_data_out.models.internal_query_execution_options_dto import InternalQueryExecutionOptionsDTO

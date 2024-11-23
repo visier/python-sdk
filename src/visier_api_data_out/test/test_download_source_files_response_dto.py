@@ -1,11 +1,11 @@
 # coding: utf-8
 
 """
-    Visier Data In APIs
+    Visier Data Out APIs
 
-    Visier APIs for sending data to Visier and running data load jobs.
+    Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1600
+    The version of the OpenAPI document: 22222222.99201.1603
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,8 +16,8 @@
 
 import unittest
 
-import visier_api_data_in.models
-from visier_api_data_in.models.download_source_files_response_dto import DownloadSourceFilesResponseDTO
+import visier_api_data_out.models
+from visier_api_data_out.models.download_source_files_response_dto import DownloadSourceFilesResponseDTO
 
 class TestDownloadSourceFilesResponseDTO(unittest.TestCase):
     """DownloadSourceFilesResponseDTO unit test stubs"""
