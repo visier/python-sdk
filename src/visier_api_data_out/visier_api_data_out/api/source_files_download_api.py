@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1603
+    The version of the OpenAPI document: 22222222.99201.1607
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -60,7 +60,7 @@ class SourceFilesDownloadApi:
     ) -> DownloadSourceFilesResponseDTO:
         """Download source files
 
-        Download a tenant's source files. You can download all source files or specify a list of sources to download. List of sources can be specified by object names or unique identifiers.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Download a tenant's source files. You can download all included source files or specify a list of sources to download. Use object names or unique identifiers to specify the list of sources. Excluded source files will not be downloaded.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param download_source_files_dto: (required)
         :type download_source_files_dto: DownloadSourceFilesDTO
@@ -132,7 +132,7 @@ class SourceFilesDownloadApi:
     ) -> ApiResponse[DownloadSourceFilesResponseDTO]:
         """Download source files
 
-        Download a tenant's source files. You can download all source files or specify a list of sources to download. List of sources can be specified by object names or unique identifiers.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Download a tenant's source files. You can download all included source files or specify a list of sources to download. Use object names or unique identifiers to specify the list of sources. Excluded source files will not be downloaded.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param download_source_files_dto: (required)
         :type download_source_files_dto: DownloadSourceFilesDTO
@@ -204,7 +204,7 @@ class SourceFilesDownloadApi:
     ) -> RESTResponseType:
         """Download source files
 
-        Download a tenant's source files. You can download all source files or specify a list of sources to download. List of sources can be specified by object names or unique identifiers.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Download a tenant's source files. You can download all included source files or specify a list of sources to download. Use object names or unique identifiers to specify the list of sources. Excluded source files will not be downloaded.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param download_source_files_dto: (required)
         :type download_source_files_dto: DownloadSourceFilesDTO
