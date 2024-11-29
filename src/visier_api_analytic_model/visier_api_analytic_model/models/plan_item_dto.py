@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1607
+    The version of the OpenAPI document: 22222222.99201.1614
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,7 +28,7 @@ class PlanItemDTO(BaseModel):
     """
     A plan item is a metric in your plan. The available plan items depend on the planning model.
     """ # noqa: E501
-    data_type: Optional[StrictStr] = Field(default=None, description="The data type of the plan item. The data types are:  - rate    - Converts values into a percentage in the planning grid. The provided value is multiplied by 100 to get the display value.      For example, a provided value of 0.5 is displayed as 50% in the grid.  - number    - Displays values as whole numbers. Decimal values are rounded to a whole number when displayed in the planning grid.  - currency    - Displays values as a currency. Values must not contain thousand separators, currency codes, or currency symbols.  - decimal    - Displays values with decimals.", alias="dataType")
+    data_type: Optional[StrictStr] = Field(default=None, description="The data type of the plan item. The data types are:  - **rate**: Converts values into a percentage in the planning grid. The provided value is multiplied by 100 to get the display value. For example, a provided value of 0.5 is displayed as 50% in the grid.  - **number**: Displays values as whole numbers. Decimal values are rounded to a whole number when displayed in the planning grid.  - **currency**: Displays values as a currency. Values must not contain thousand separators, currency codes, or currency symbols.  - **decimal**: Displays values with decimals.", alias="dataType")
     display_name: Optional[StrictStr] = Field(default=None, description="The display name of the plan item.", alias="displayName")
     id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the plan item.")
     __properties: ClassVar[List[str]] = ["dataType", "displayName", "id"]

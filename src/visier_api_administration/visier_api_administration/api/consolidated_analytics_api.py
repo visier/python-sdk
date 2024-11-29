@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1607
+    The version of the OpenAPI document: 22222222.99201.1614
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -50,7 +50,6 @@ class ConsolidatedAnalyticsApi:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -72,8 +71,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_id: str
         :param excluded_sources_body: (required)
         :type excluded_sources_body: ExcludedSourcesBody
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -99,7 +96,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._add_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -126,7 +122,6 @@ class ConsolidatedAnalyticsApi:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -148,8 +143,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_id: str
         :param excluded_sources_body: (required)
         :type excluded_sources_body: ExcludedSourcesBody
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -175,7 +168,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._add_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -202,7 +194,6 @@ class ConsolidatedAnalyticsApi:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -224,8 +215,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_id: str
         :param excluded_sources_body: (required)
         :type excluded_sources_body: ExcludedSourcesBody
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -251,7 +240,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._add_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -272,7 +260,6 @@ class ConsolidatedAnalyticsApi:
         self,
         tenant_id,
         excluded_sources_body,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -296,8 +283,6 @@ class ConsolidatedAnalyticsApi:
             _path_params['tenantId'] = tenant_id
         # process the query parameters
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if excluded_sources_body is not None:
@@ -354,7 +339,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -378,8 +362,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_code_body: TenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -406,7 +388,6 @@ class ConsolidatedAnalyticsApi:
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -434,7 +415,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -458,8 +438,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_code_body: TenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -486,7 +464,6 @@ class ConsolidatedAnalyticsApi:
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -514,7 +491,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -538,8 +514,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_code_body: TenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -566,7 +540,6 @@ class ConsolidatedAnalyticsApi:
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -588,7 +561,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id,
         tenant_code_body,
         limit,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -616,8 +588,6 @@ class ConsolidatedAnalyticsApi:
             _query_params.append(('limit', limit))
             
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if tenant_code_body is not None:
@@ -672,7 +642,6 @@ class ConsolidatedAnalyticsApi:
     def create_tenant(
         self,
         consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -692,8 +661,6 @@ class ConsolidatedAnalyticsApi:
 
         :param consolidated_analytics_api_tenant_create_request_dto: (required)
         :type consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -718,7 +685,6 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._create_tenant_serialize(
             consolidated_analytics_api_tenant_create_request_dto=consolidated_analytics_api_tenant_create_request_dto,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -744,7 +710,6 @@ class ConsolidatedAnalyticsApi:
     def create_tenant_with_http_info(
         self,
         consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -764,8 +729,6 @@ class ConsolidatedAnalyticsApi:
 
         :param consolidated_analytics_api_tenant_create_request_dto: (required)
         :type consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -790,7 +753,6 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._create_tenant_serialize(
             consolidated_analytics_api_tenant_create_request_dto=consolidated_analytics_api_tenant_create_request_dto,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -816,7 +778,6 @@ class ConsolidatedAnalyticsApi:
     def create_tenant_without_preload_content(
         self,
         consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -836,8 +797,6 @@ class ConsolidatedAnalyticsApi:
 
         :param consolidated_analytics_api_tenant_create_request_dto: (required)
         :type consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -862,7 +821,6 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._create_tenant_serialize(
             consolidated_analytics_api_tenant_create_request_dto=consolidated_analytics_api_tenant_create_request_dto,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -882,7 +840,6 @@ class ConsolidatedAnalyticsApi:
     def _create_tenant_serialize(
         self,
         consolidated_analytics_api_tenant_create_request_dto,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -904,8 +861,6 @@ class ConsolidatedAnalyticsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if consolidated_analytics_api_tenant_create_request_dto is not None:
@@ -960,7 +915,6 @@ class ConsolidatedAnalyticsApi:
     def list_excluded_sources(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -980,8 +934,6 @@ class ConsolidatedAnalyticsApi:
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1006,7 +958,6 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._list_excluded_sources_serialize(
             tenant_id=tenant_id,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1032,7 +983,6 @@ class ConsolidatedAnalyticsApi:
     def list_excluded_sources_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1052,8 +1002,6 @@ class ConsolidatedAnalyticsApi:
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1078,7 +1026,6 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._list_excluded_sources_serialize(
             tenant_id=tenant_id,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1104,7 +1051,6 @@ class ConsolidatedAnalyticsApi:
     def list_excluded_sources_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1124,8 +1070,6 @@ class ConsolidatedAnalyticsApi:
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1150,7 +1094,6 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._list_excluded_sources_serialize(
             tenant_id=tenant_id,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1170,7 +1113,6 @@ class ConsolidatedAnalyticsApi:
     def _list_excluded_sources_serialize(
         self,
         tenant_id,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1194,8 +1136,6 @@ class ConsolidatedAnalyticsApi:
             _path_params['tenantId'] = tenant_id
         # process the query parameters
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1237,7 +1177,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first source tenant to return. Default is 0.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1261,8 +1200,6 @@ class ConsolidatedAnalyticsApi:
         :type limit: int
         :param start: The starting index of the first source tenant to return. Default is 0.
         :type start: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1289,7 +1226,6 @@ class ConsolidatedAnalyticsApi:
             tenant_id=tenant_id,
             limit=limit,
             start=start,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1317,7 +1253,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first source tenant to return. Default is 0.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1341,8 +1276,6 @@ class ConsolidatedAnalyticsApi:
         :type limit: int
         :param start: The starting index of the first source tenant to return. Default is 0.
         :type start: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1369,7 +1302,6 @@ class ConsolidatedAnalyticsApi:
             tenant_id=tenant_id,
             limit=limit,
             start=start,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1397,7 +1329,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first source tenant to return. Default is 0.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1421,8 +1352,6 @@ class ConsolidatedAnalyticsApi:
         :type limit: int
         :param start: The starting index of the first source tenant to return. Default is 0.
         :type start: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1449,7 +1378,6 @@ class ConsolidatedAnalyticsApi:
             tenant_id=tenant_id,
             limit=limit,
             start=start,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1471,7 +1399,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id,
         limit,
         start,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1503,8 +1430,6 @@ class ConsolidatedAnalyticsApi:
             _query_params.append(('start', start))
             
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1545,7 +1470,6 @@ class ConsolidatedAnalyticsApi:
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1567,8 +1491,6 @@ class ConsolidatedAnalyticsApi:
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
         :type start: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1594,7 +1516,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._list_tenants_serialize(
             limit=limit,
             start=start,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1621,7 +1542,6 @@ class ConsolidatedAnalyticsApi:
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1643,8 +1563,6 @@ class ConsolidatedAnalyticsApi:
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
         :type start: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1670,7 +1588,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._list_tenants_serialize(
             limit=limit,
             start=start,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1697,7 +1614,6 @@ class ConsolidatedAnalyticsApi:
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1719,8 +1635,6 @@ class ConsolidatedAnalyticsApi:
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
         :type start: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1746,7 +1660,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._list_tenants_serialize(
             limit=limit,
             start=start,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1767,7 +1680,6 @@ class ConsolidatedAnalyticsApi:
         self,
         limit,
         start,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1797,8 +1709,6 @@ class ConsolidatedAnalyticsApi:
             _query_params.append(('start', start))
             
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1839,7 +1749,6 @@ class ConsolidatedAnalyticsApi:
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1861,8 +1770,6 @@ class ConsolidatedAnalyticsApi:
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
         :type start: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1888,7 +1795,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._list_tenants_with_details_serialize(
             limit=limit,
             start=start,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1915,7 +1821,6 @@ class ConsolidatedAnalyticsApi:
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1937,8 +1842,6 @@ class ConsolidatedAnalyticsApi:
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
         :type start: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1964,7 +1867,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._list_tenants_with_details_serialize(
             limit=limit,
             start=start,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1991,7 +1893,6 @@ class ConsolidatedAnalyticsApi:
         self,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. The maximum value is 1000. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2013,8 +1914,6 @@ class ConsolidatedAnalyticsApi:
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
         :type start: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2040,7 +1939,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._list_tenants_with_details_serialize(
             limit=limit,
             start=start,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2061,7 +1959,6 @@ class ConsolidatedAnalyticsApi:
         self,
         limit,
         start,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2091,8 +1988,6 @@ class ConsolidatedAnalyticsApi:
             _query_params.append(('start', start))
             
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -2133,7 +2028,6 @@ class ConsolidatedAnalyticsApi:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2155,8 +2049,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_id: str
         :param excluded_sources_body: (required)
         :type excluded_sources_body: ExcludedSourcesBody
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2182,7 +2074,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._remove_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2209,7 +2100,6 @@ class ConsolidatedAnalyticsApi:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2231,8 +2121,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_id: str
         :param excluded_sources_body: (required)
         :type excluded_sources_body: ExcludedSourcesBody
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2258,7 +2146,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._remove_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2285,7 +2172,6 @@ class ConsolidatedAnalyticsApi:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2307,8 +2193,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_id: str
         :param excluded_sources_body: (required)
         :type excluded_sources_body: ExcludedSourcesBody
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2334,7 +2218,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._remove_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2355,7 +2238,6 @@ class ConsolidatedAnalyticsApi:
         self,
         tenant_id,
         excluded_sources_body,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2379,8 +2261,6 @@ class ConsolidatedAnalyticsApi:
             _path_params['tenantId'] = tenant_id
         # process the query parameters
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if excluded_sources_body is not None:
@@ -2437,7 +2317,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2461,8 +2340,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_code_body: TenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2489,7 +2366,6 @@ class ConsolidatedAnalyticsApi:
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2517,7 +2393,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2541,8 +2416,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_code_body: TenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2569,7 +2442,6 @@ class ConsolidatedAnalyticsApi:
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2597,7 +2469,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2621,8 +2492,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_code_body: TenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2649,7 +2518,6 @@ class ConsolidatedAnalyticsApi:
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2671,7 +2539,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id,
         tenant_code_body,
         limit,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -2699,8 +2566,6 @@ class ConsolidatedAnalyticsApi:
             _query_params.append(('limit', limit))
             
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if tenant_code_body is not None:
@@ -2756,7 +2621,6 @@ class ConsolidatedAnalyticsApi:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2778,8 +2642,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_id: str
         :param excluded_sources_body: (required)
         :type excluded_sources_body: ExcludedSourcesBody
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2805,7 +2667,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._set_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2832,7 +2693,6 @@ class ConsolidatedAnalyticsApi:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2854,8 +2714,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_id: str
         :param excluded_sources_body: (required)
         :type excluded_sources_body: ExcludedSourcesBody
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2881,7 +2739,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._set_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2908,7 +2765,6 @@ class ConsolidatedAnalyticsApi:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         excluded_sources_body: ExcludedSourcesBody,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2930,8 +2786,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_id: str
         :param excluded_sources_body: (required)
         :type excluded_sources_body: ExcludedSourcesBody
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2957,7 +2811,6 @@ class ConsolidatedAnalyticsApi:
         _param = self._set_excluded_sources_serialize(
             tenant_id=tenant_id,
             excluded_sources_body=excluded_sources_body,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2978,7 +2831,6 @@ class ConsolidatedAnalyticsApi:
         self,
         tenant_id,
         excluded_sources_body,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3002,8 +2854,6 @@ class ConsolidatedAnalyticsApi:
             _path_params['tenantId'] = tenant_id
         # process the query parameters
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if excluded_sources_body is not None:
@@ -3060,7 +2910,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3084,8 +2933,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_code_body: TenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3112,7 +2959,6 @@ class ConsolidatedAnalyticsApi:
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3140,7 +2986,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3164,8 +3009,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_code_body: TenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3192,7 +3035,6 @@ class ConsolidatedAnalyticsApi:
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3220,7 +3062,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
         tenant_code_body: TenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3244,8 +3085,6 @@ class ConsolidatedAnalyticsApi:
         :type tenant_code_body: TenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3272,7 +3111,6 @@ class ConsolidatedAnalyticsApi:
             tenant_id=tenant_id,
             tenant_code_body=tenant_code_body,
             limit=limit,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3294,7 +3132,6 @@ class ConsolidatedAnalyticsApi:
         tenant_id,
         tenant_code_body,
         limit,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -3322,8 +3159,6 @@ class ConsolidatedAnalyticsApi:
             _query_params.append(('limit', limit))
             
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if tenant_code_body is not None:
