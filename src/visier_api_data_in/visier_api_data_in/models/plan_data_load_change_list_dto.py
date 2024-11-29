@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1607
+    The version of the OpenAPI document: 22222222.99201.1614
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -30,7 +30,7 @@ class PlanDataLoadChangeListDTO(BaseModel):
     PlanDataLoadChangeListDTO
     """ # noqa: E501
     changes: Optional[List[PlanDataLoadChangeDTO]] = Field(default=None, description="The collection of changes made for the plan item.")
-    plan_item: Optional[StrictStr] = Field(default=None, description="The id of the plan item.", alias="planItem")
+    plan_item: Optional[StrictStr] = Field(default=None, description="The ID of the plan item.", alias="planItem")
     __properties: ClassVar[List[str]] = ["changes", "planItem"]
 
     model_config = ConfigDict(

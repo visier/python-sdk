@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1607
+    The version of the OpenAPI document: 22222222.99201.1614
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -44,7 +44,7 @@ class PlanningDataLoadApi:
     def plan_data_load_plan_data_upload(
         self,
         plan_id: Annotated[StrictStr, Field(description="The unique identifier of the plan.")],
-        sceanrio_id: Annotated[StrictStr, Field(description="The unique identifier of the plan scenario to load data into.")],
+        scenario_id: Annotated[StrictStr, Field(description="The unique identifier of the plan scenario to load data into.")],
         calculation: Annotated[Optional[StrictStr], Field(description="Sets the plan values to rollup, distribute, or neither. Valid values:   - **ROLLUP**: Roll up children data values to parent data values. If the data provides a parent value and its child value, this method prioritizes the loaded value for the child and and overwrites the parent.   - **DISTRIBUTE**: Distribute parent data values to their children. If the value of the child conflicts with the calculated distribution, this method overrides the loaded child value.   - **NONE**: The loaded values are neither rolled up or distributed. This is the default.")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="The 3-digit ISO 4217 currency code of the data. If undefined, default is the plan's consolidation currency. If the currency is different from the plan's consolidation currency, the values are converted to the consolidation currency using the conversion rates loaded for the plan's baseline period.")] = None,
         method: Annotated[Optional[StrictStr], Field(description="Sets how to validate the data being loaded into Visier. Valid values:   - **VALIDATE**: Runs a test load through all the validation steps without putting the data into the plan. Use `VALIDATE` to find any errors before using `STRICT_UPLOAD` to load the data.   - **SKIP_ERRORS**: Loads all data without errors into the plan. Any rows with errors are excluded from the plan.   - **STRICT_UPLOAD**: Loads data into the plan if there are no errors in any row. If there are errors, the load fails. This is the default.")] = None,
@@ -65,12 +65,12 @@ class PlanningDataLoadApi:
     ) -> PlanDataUploadResponseDTO:
         """Upload plan data
 
-        Send a file to Visier to modify a plan's data. The file must be in CSV format and match the plan's schema. To get the plan's schema, call `GET /v1alpha/planning/model/plans/{id}?withSchema=true`. The data file must contain the following columns: - `periodId`: From the GET response, use the `date` values in the `timePeriods` array as values in this column. - A column for each `id` value in the `planSegmentLevels` object, where the row value is the `segmentId`. - A column for each  `id` value in the `planItems` object that you want to modify data for, where the row value is the data value. <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Send a file to Visier to modify a plan's data. The file must be in CSV format and match the plan's schema. To get the plan's schema, call `GET /v1alpha/planning/model/plans/{id}?withSchema=true`. The data file must contain the following columns:   - `periodId`: From the GET response, use the `date` values in the `timePeriods` array as values in this column.   - A column for each `id` value in the `planSegmentLevels` object, where the row value is the `id` of the `members` in the `planSegmentLevelMembers` object.   - A column for each  `id` value in the `planItems` object that you want to modify data for, where the row value is the data value.  <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param plan_id: The unique identifier of the plan. (required)
         :type plan_id: str
-        :param sceanrio_id: The unique identifier of the plan scenario to load data into. (required)
-        :type sceanrio_id: str
+        :param scenario_id: The unique identifier of the plan scenario to load data into. (required)
+        :type scenario_id: str
         :param calculation: Sets the plan values to rollup, distribute, or neither. Valid values:   - **ROLLUP**: Roll up children data values to parent data values. If the data provides a parent value and its child value, this method prioritizes the loaded value for the child and and overwrites the parent.   - **DISTRIBUTE**: Distribute parent data values to their children. If the value of the child conflicts with the calculated distribution, this method overrides the loaded child value.   - **NONE**: The loaded values are neither rolled up or distributed. This is the default.
         :type calculation: str
         :param currency: The 3-digit ISO 4217 currency code of the data. If undefined, default is the plan's consolidation currency. If the currency is different from the plan's consolidation currency, the values are converted to the consolidation currency using the conversion rates loaded for the plan's baseline period.
@@ -105,7 +105,7 @@ class PlanningDataLoadApi:
 
         _param = self._plan_data_load_plan_data_upload_serialize(
             plan_id=plan_id,
-            sceanrio_id=sceanrio_id,
+            scenario_id=scenario_id,
             calculation=calculation,
             currency=currency,
             method=method,
@@ -136,7 +136,7 @@ class PlanningDataLoadApi:
     def plan_data_load_plan_data_upload_with_http_info(
         self,
         plan_id: Annotated[StrictStr, Field(description="The unique identifier of the plan.")],
-        sceanrio_id: Annotated[StrictStr, Field(description="The unique identifier of the plan scenario to load data into.")],
+        scenario_id: Annotated[StrictStr, Field(description="The unique identifier of the plan scenario to load data into.")],
         calculation: Annotated[Optional[StrictStr], Field(description="Sets the plan values to rollup, distribute, or neither. Valid values:   - **ROLLUP**: Roll up children data values to parent data values. If the data provides a parent value and its child value, this method prioritizes the loaded value for the child and and overwrites the parent.   - **DISTRIBUTE**: Distribute parent data values to their children. If the value of the child conflicts with the calculated distribution, this method overrides the loaded child value.   - **NONE**: The loaded values are neither rolled up or distributed. This is the default.")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="The 3-digit ISO 4217 currency code of the data. If undefined, default is the plan's consolidation currency. If the currency is different from the plan's consolidation currency, the values are converted to the consolidation currency using the conversion rates loaded for the plan's baseline period.")] = None,
         method: Annotated[Optional[StrictStr], Field(description="Sets how to validate the data being loaded into Visier. Valid values:   - **VALIDATE**: Runs a test load through all the validation steps without putting the data into the plan. Use `VALIDATE` to find any errors before using `STRICT_UPLOAD` to load the data.   - **SKIP_ERRORS**: Loads all data without errors into the plan. Any rows with errors are excluded from the plan.   - **STRICT_UPLOAD**: Loads data into the plan if there are no errors in any row. If there are errors, the load fails. This is the default.")] = None,
@@ -157,12 +157,12 @@ class PlanningDataLoadApi:
     ) -> ApiResponse[PlanDataUploadResponseDTO]:
         """Upload plan data
 
-        Send a file to Visier to modify a plan's data. The file must be in CSV format and match the plan's schema. To get the plan's schema, call `GET /v1alpha/planning/model/plans/{id}?withSchema=true`. The data file must contain the following columns: - `periodId`: From the GET response, use the `date` values in the `timePeriods` array as values in this column. - A column for each `id` value in the `planSegmentLevels` object, where the row value is the `segmentId`. - A column for each  `id` value in the `planItems` object that you want to modify data for, where the row value is the data value. <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Send a file to Visier to modify a plan's data. The file must be in CSV format and match the plan's schema. To get the plan's schema, call `GET /v1alpha/planning/model/plans/{id}?withSchema=true`. The data file must contain the following columns:   - `periodId`: From the GET response, use the `date` values in the `timePeriods` array as values in this column.   - A column for each `id` value in the `planSegmentLevels` object, where the row value is the `id` of the `members` in the `planSegmentLevelMembers` object.   - A column for each  `id` value in the `planItems` object that you want to modify data for, where the row value is the data value.  <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param plan_id: The unique identifier of the plan. (required)
         :type plan_id: str
-        :param sceanrio_id: The unique identifier of the plan scenario to load data into. (required)
-        :type sceanrio_id: str
+        :param scenario_id: The unique identifier of the plan scenario to load data into. (required)
+        :type scenario_id: str
         :param calculation: Sets the plan values to rollup, distribute, or neither. Valid values:   - **ROLLUP**: Roll up children data values to parent data values. If the data provides a parent value and its child value, this method prioritizes the loaded value for the child and and overwrites the parent.   - **DISTRIBUTE**: Distribute parent data values to their children. If the value of the child conflicts with the calculated distribution, this method overrides the loaded child value.   - **NONE**: The loaded values are neither rolled up or distributed. This is the default.
         :type calculation: str
         :param currency: The 3-digit ISO 4217 currency code of the data. If undefined, default is the plan's consolidation currency. If the currency is different from the plan's consolidation currency, the values are converted to the consolidation currency using the conversion rates loaded for the plan's baseline period.
@@ -197,7 +197,7 @@ class PlanningDataLoadApi:
 
         _param = self._plan_data_load_plan_data_upload_serialize(
             plan_id=plan_id,
-            sceanrio_id=sceanrio_id,
+            scenario_id=scenario_id,
             calculation=calculation,
             currency=currency,
             method=method,
@@ -228,7 +228,7 @@ class PlanningDataLoadApi:
     def plan_data_load_plan_data_upload_without_preload_content(
         self,
         plan_id: Annotated[StrictStr, Field(description="The unique identifier of the plan.")],
-        sceanrio_id: Annotated[StrictStr, Field(description="The unique identifier of the plan scenario to load data into.")],
+        scenario_id: Annotated[StrictStr, Field(description="The unique identifier of the plan scenario to load data into.")],
         calculation: Annotated[Optional[StrictStr], Field(description="Sets the plan values to rollup, distribute, or neither. Valid values:   - **ROLLUP**: Roll up children data values to parent data values. If the data provides a parent value and its child value, this method prioritizes the loaded value for the child and and overwrites the parent.   - **DISTRIBUTE**: Distribute parent data values to their children. If the value of the child conflicts with the calculated distribution, this method overrides the loaded child value.   - **NONE**: The loaded values are neither rolled up or distributed. This is the default.")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="The 3-digit ISO 4217 currency code of the data. If undefined, default is the plan's consolidation currency. If the currency is different from the plan's consolidation currency, the values are converted to the consolidation currency using the conversion rates loaded for the plan's baseline period.")] = None,
         method: Annotated[Optional[StrictStr], Field(description="Sets how to validate the data being loaded into Visier. Valid values:   - **VALIDATE**: Runs a test load through all the validation steps without putting the data into the plan. Use `VALIDATE` to find any errors before using `STRICT_UPLOAD` to load the data.   - **SKIP_ERRORS**: Loads all data without errors into the plan. Any rows with errors are excluded from the plan.   - **STRICT_UPLOAD**: Loads data into the plan if there are no errors in any row. If there are errors, the load fails. This is the default.")] = None,
@@ -249,12 +249,12 @@ class PlanningDataLoadApi:
     ) -> RESTResponseType:
         """Upload plan data
 
-        Send a file to Visier to modify a plan's data. The file must be in CSV format and match the plan's schema. To get the plan's schema, call `GET /v1alpha/planning/model/plans/{id}?withSchema=true`. The data file must contain the following columns: - `periodId`: From the GET response, use the `date` values in the `timePeriods` array as values in this column. - A column for each `id` value in the `planSegmentLevels` object, where the row value is the `segmentId`. - A column for each  `id` value in the `planItems` object that you want to modify data for, where the row value is the data value. <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Send a file to Visier to modify a plan's data. The file must be in CSV format and match the plan's schema. To get the plan's schema, call `GET /v1alpha/planning/model/plans/{id}?withSchema=true`. The data file must contain the following columns:   - `periodId`: From the GET response, use the `date` values in the `timePeriods` array as values in this column.   - A column for each `id` value in the `planSegmentLevels` object, where the row value is the `id` of the `members` in the `planSegmentLevelMembers` object.   - A column for each  `id` value in the `planItems` object that you want to modify data for, where the row value is the data value.  <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param plan_id: The unique identifier of the plan. (required)
         :type plan_id: str
-        :param sceanrio_id: The unique identifier of the plan scenario to load data into. (required)
-        :type sceanrio_id: str
+        :param scenario_id: The unique identifier of the plan scenario to load data into. (required)
+        :type scenario_id: str
         :param calculation: Sets the plan values to rollup, distribute, or neither. Valid values:   - **ROLLUP**: Roll up children data values to parent data values. If the data provides a parent value and its child value, this method prioritizes the loaded value for the child and and overwrites the parent.   - **DISTRIBUTE**: Distribute parent data values to their children. If the value of the child conflicts with the calculated distribution, this method overrides the loaded child value.   - **NONE**: The loaded values are neither rolled up or distributed. This is the default.
         :type calculation: str
         :param currency: The 3-digit ISO 4217 currency code of the data. If undefined, default is the plan's consolidation currency. If the currency is different from the plan's consolidation currency, the values are converted to the consolidation currency using the conversion rates loaded for the plan's baseline period.
@@ -289,7 +289,7 @@ class PlanningDataLoadApi:
 
         _param = self._plan_data_load_plan_data_upload_serialize(
             plan_id=plan_id,
-            sceanrio_id=sceanrio_id,
+            scenario_id=scenario_id,
             calculation=calculation,
             currency=currency,
             method=method,
@@ -314,7 +314,7 @@ class PlanningDataLoadApi:
     def _plan_data_load_plan_data_upload_serialize(
         self,
         plan_id,
-        sceanrio_id,
+        scenario_id,
         calculation,
         currency,
         method,
@@ -341,8 +341,8 @@ class PlanningDataLoadApi:
         # process the path parameters
         if plan_id is not None:
             _path_params['planId'] = plan_id
-        if sceanrio_id is not None:
-            _path_params['sceanrioId'] = sceanrio_id
+        if scenario_id is not None:
+            _path_params['scenarioId'] = scenario_id
         if calculation is not None:
             _path_params['calculation'] = calculation
         if currency is not None:
@@ -430,7 +430,7 @@ class PlanningDataLoadApi:
     ) -> PlanRowDataLoadResponseDTO:
         """Add or remove plan rows
 
-        Send a file to Visier to modify a plan's rows. The file must be in CSV format and contain the following columns: - Add/Remove: In the column, use the value \"Add\" to add the specified row to the plan or \"Remove\" to remove the specified row from the plan. - A column for each dimension path or `planSegmentLevels` ID.    - If adding rows, use one column per part of the path. For example, to add a new organization under Product, use 3 columns: Organization_Hierarchy.Level_1, Organization_Hierarchy.Level_2, Organization_Hierarchy.Level_3 with 3 segment member values: [Organization_Hierarchy].[Bluesphere], [Organization_Hierarchy].[Product], New Organization.      - If the segment member does not exist, write its display name.     - If the segment member exists, use its `planSegmentLevelMembers` ID. For example, if your plan is segmented by Organization Hierarchy and Location and you want to add a location under your new organization, you would use the columns  Organization_Hierarchy.Level_1, Organization_Hierarchy.Level_2, Organization_Hierarchy.Level_3, Location.Location_1 with the following values: [Organization_Hierarchy].[Bluesphere], [Organization_Hierarchy].[Product], New Organization, [Location].[North America].[United States].   - If removing rows, use one column per plan segment level `segmentId`, where the values are the plan segment levels `id`. To get the IDs, call `GET /v1alpha/planning/model/plans/{id}?withSchema=true`. <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Send a file to Visier to modify a plan's rows. The file must be in CSV format and contain the following columns: - `Add/Remove`: In the column, use the value \"Add\" to add the specified row to the plan or \"Remove\" to remove the specified row from the plan. - A column for each dimension path or `planSegmentLevels` ID.    - If adding rows, use one column per part of the path. For example, to add a new organization under Product, use 3 columns: Organization_Hierarchy.Level_1, Organization_Hierarchy.Level_2, Organization_Hierarchy.Level_3 with 3 segment member values: [Organization_Hierarchy].[Bluesphere], [Organization_Hierarchy].[Product], New Organization.      - If the segment member does not exist, write its display name.     - If the segment member exists, use its `planSegmentLevelMembers` ID. For example, if your plan is segmented by Organization Hierarchy and Location and you want to add a location under your new organization, you would use the columns  Organization_Hierarchy.Level_1, Organization_Hierarchy.Level_2, Organization_Hierarchy.Level_3, Location.Location_1 with the following values: [Organization_Hierarchy].[Bluesphere], [Organization_Hierarchy].[Product], New Organization, [Location].[North America].[United States].   - If removing rows, use one column per plan segment level `segmentId`, where the values are the plan segment levels `id`. To get the IDs, call `GET /v1alpha/planning/model/plans/{id}?withSchema=true`.  <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param plan_id: The unique identifier of the plan. (required)
         :type plan_id: str
@@ -510,7 +510,7 @@ class PlanningDataLoadApi:
     ) -> ApiResponse[PlanRowDataLoadResponseDTO]:
         """Add or remove plan rows
 
-        Send a file to Visier to modify a plan's rows. The file must be in CSV format and contain the following columns: - Add/Remove: In the column, use the value \"Add\" to add the specified row to the plan or \"Remove\" to remove the specified row from the plan. - A column for each dimension path or `planSegmentLevels` ID.    - If adding rows, use one column per part of the path. For example, to add a new organization under Product, use 3 columns: Organization_Hierarchy.Level_1, Organization_Hierarchy.Level_2, Organization_Hierarchy.Level_3 with 3 segment member values: [Organization_Hierarchy].[Bluesphere], [Organization_Hierarchy].[Product], New Organization.      - If the segment member does not exist, write its display name.     - If the segment member exists, use its `planSegmentLevelMembers` ID. For example, if your plan is segmented by Organization Hierarchy and Location and you want to add a location under your new organization, you would use the columns  Organization_Hierarchy.Level_1, Organization_Hierarchy.Level_2, Organization_Hierarchy.Level_3, Location.Location_1 with the following values: [Organization_Hierarchy].[Bluesphere], [Organization_Hierarchy].[Product], New Organization, [Location].[North America].[United States].   - If removing rows, use one column per plan segment level `segmentId`, where the values are the plan segment levels `id`. To get the IDs, call `GET /v1alpha/planning/model/plans/{id}?withSchema=true`. <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Send a file to Visier to modify a plan's rows. The file must be in CSV format and contain the following columns: - `Add/Remove`: In the column, use the value \"Add\" to add the specified row to the plan or \"Remove\" to remove the specified row from the plan. - A column for each dimension path or `planSegmentLevels` ID.    - If adding rows, use one column per part of the path. For example, to add a new organization under Product, use 3 columns: Organization_Hierarchy.Level_1, Organization_Hierarchy.Level_2, Organization_Hierarchy.Level_3 with 3 segment member values: [Organization_Hierarchy].[Bluesphere], [Organization_Hierarchy].[Product], New Organization.      - If the segment member does not exist, write its display name.     - If the segment member exists, use its `planSegmentLevelMembers` ID. For example, if your plan is segmented by Organization Hierarchy and Location and you want to add a location under your new organization, you would use the columns  Organization_Hierarchy.Level_1, Organization_Hierarchy.Level_2, Organization_Hierarchy.Level_3, Location.Location_1 with the following values: [Organization_Hierarchy].[Bluesphere], [Organization_Hierarchy].[Product], New Organization, [Location].[North America].[United States].   - If removing rows, use one column per plan segment level `segmentId`, where the values are the plan segment levels `id`. To get the IDs, call `GET /v1alpha/planning/model/plans/{id}?withSchema=true`.  <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param plan_id: The unique identifier of the plan. (required)
         :type plan_id: str
@@ -590,7 +590,7 @@ class PlanningDataLoadApi:
     ) -> RESTResponseType:
         """Add or remove plan rows
 
-        Send a file to Visier to modify a plan's rows. The file must be in CSV format and contain the following columns: - Add/Remove: In the column, use the value \"Add\" to add the specified row to the plan or \"Remove\" to remove the specified row from the plan. - A column for each dimension path or `planSegmentLevels` ID.    - If adding rows, use one column per part of the path. For example, to add a new organization under Product, use 3 columns: Organization_Hierarchy.Level_1, Organization_Hierarchy.Level_2, Organization_Hierarchy.Level_3 with 3 segment member values: [Organization_Hierarchy].[Bluesphere], [Organization_Hierarchy].[Product], New Organization.      - If the segment member does not exist, write its display name.     - If the segment member exists, use its `planSegmentLevelMembers` ID. For example, if your plan is segmented by Organization Hierarchy and Location and you want to add a location under your new organization, you would use the columns  Organization_Hierarchy.Level_1, Organization_Hierarchy.Level_2, Organization_Hierarchy.Level_3, Location.Location_1 with the following values: [Organization_Hierarchy].[Bluesphere], [Organization_Hierarchy].[Product], New Organization, [Location].[North America].[United States].   - If removing rows, use one column per plan segment level `segmentId`, where the values are the plan segment levels `id`. To get the IDs, call `GET /v1alpha/planning/model/plans/{id}?withSchema=true`. <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Send a file to Visier to modify a plan's rows. The file must be in CSV format and contain the following columns: - `Add/Remove`: In the column, use the value \"Add\" to add the specified row to the plan or \"Remove\" to remove the specified row from the plan. - A column for each dimension path or `planSegmentLevels` ID.    - If adding rows, use one column per part of the path. For example, to add a new organization under Product, use 3 columns: Organization_Hierarchy.Level_1, Organization_Hierarchy.Level_2, Organization_Hierarchy.Level_3 with 3 segment member values: [Organization_Hierarchy].[Bluesphere], [Organization_Hierarchy].[Product], New Organization.      - If the segment member does not exist, write its display name.     - If the segment member exists, use its `planSegmentLevelMembers` ID. For example, if your plan is segmented by Organization Hierarchy and Location and you want to add a location under your new organization, you would use the columns  Organization_Hierarchy.Level_1, Organization_Hierarchy.Level_2, Organization_Hierarchy.Level_3, Location.Location_1 with the following values: [Organization_Hierarchy].[Bluesphere], [Organization_Hierarchy].[Product], New Organization, [Location].[North America].[United States].   - If removing rows, use one column per plan segment level `segmentId`, where the values are the plan segment levels `id`. To get the IDs, call `GET /v1alpha/planning/model/plans/{id}?withSchema=true`.  <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued. If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param plan_id: The unique identifier of the plan. (required)
         :type plan_id: str

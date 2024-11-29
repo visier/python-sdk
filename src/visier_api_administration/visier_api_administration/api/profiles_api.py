@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1607
+    The version of the OpenAPI document: 22222222.99201.1614
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -55,7 +55,6 @@ class ProfilesApi:
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to assign.")],
         accessible_tenant_profile_assignment_request_dto: AccessibleTenantProfileAssignmentRequestDTO,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -77,8 +76,6 @@ class ProfilesApi:
         :type profile_id: str
         :param accessible_tenant_profile_assignment_request_dto: (required)
         :type accessible_tenant_profile_assignment_request_dto: AccessibleTenantProfileAssignmentRequestDTO
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -104,7 +101,6 @@ class ProfilesApi:
         _param = self._assign_analytic_profile_serialize(
             profile_id=profile_id,
             accessible_tenant_profile_assignment_request_dto=accessible_tenant_profile_assignment_request_dto,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -131,7 +127,6 @@ class ProfilesApi:
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to assign.")],
         accessible_tenant_profile_assignment_request_dto: AccessibleTenantProfileAssignmentRequestDTO,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -153,8 +148,6 @@ class ProfilesApi:
         :type profile_id: str
         :param accessible_tenant_profile_assignment_request_dto: (required)
         :type accessible_tenant_profile_assignment_request_dto: AccessibleTenantProfileAssignmentRequestDTO
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -180,7 +173,6 @@ class ProfilesApi:
         _param = self._assign_analytic_profile_serialize(
             profile_id=profile_id,
             accessible_tenant_profile_assignment_request_dto=accessible_tenant_profile_assignment_request_dto,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -207,7 +199,6 @@ class ProfilesApi:
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to assign.")],
         accessible_tenant_profile_assignment_request_dto: AccessibleTenantProfileAssignmentRequestDTO,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -229,8 +220,6 @@ class ProfilesApi:
         :type profile_id: str
         :param accessible_tenant_profile_assignment_request_dto: (required)
         :type accessible_tenant_profile_assignment_request_dto: AccessibleTenantProfileAssignmentRequestDTO
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -256,7 +245,6 @@ class ProfilesApi:
         _param = self._assign_analytic_profile_serialize(
             profile_id=profile_id,
             accessible_tenant_profile_assignment_request_dto=accessible_tenant_profile_assignment_request_dto,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -277,7 +265,6 @@ class ProfilesApi:
         self,
         profile_id,
         accessible_tenant_profile_assignment_request_dto,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -301,8 +288,6 @@ class ProfilesApi:
             _path_params['profileId'] = profile_id
         # process the query parameters
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
         if accessible_tenant_profile_assignment_request_dto is not None:
@@ -920,7 +905,6 @@ class ProfilesApi:
     def get_analytic_profile_detail(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to retrieve details for.")],
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -940,8 +924,6 @@ class ProfilesApi:
 
         :param profile_id: The ID of the profile to retrieve details for. (required)
         :type profile_id: str
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -966,7 +948,6 @@ class ProfilesApi:
 
         _param = self._get_analytic_profile_detail_serialize(
             profile_id=profile_id,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -992,7 +973,6 @@ class ProfilesApi:
     def get_analytic_profile_detail_with_http_info(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to retrieve details for.")],
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1012,8 +992,6 @@ class ProfilesApi:
 
         :param profile_id: The ID of the profile to retrieve details for. (required)
         :type profile_id: str
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1038,7 +1016,6 @@ class ProfilesApi:
 
         _param = self._get_analytic_profile_detail_serialize(
             profile_id=profile_id,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1064,7 +1041,6 @@ class ProfilesApi:
     def get_analytic_profile_detail_without_preload_content(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to retrieve details for.")],
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1084,8 +1060,6 @@ class ProfilesApi:
 
         :param profile_id: The ID of the profile to retrieve details for. (required)
         :type profile_id: str
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1110,7 +1084,6 @@ class ProfilesApi:
 
         _param = self._get_analytic_profile_detail_serialize(
             profile_id=profile_id,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1130,7 +1103,6 @@ class ProfilesApi:
     def _get_analytic_profile_detail_serialize(
         self,
         profile_id,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1154,8 +1126,6 @@ class ProfilesApi:
             _path_params['profileId'] = profile_id
         # process the query parameters
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1194,7 +1164,6 @@ class ProfilesApi:
     @validate_call
     def get_analytic_profiles(
         self,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1212,8 +1181,6 @@ class ProfilesApi:
 
         Retrieve a list of profiles available for analytic tenants.   **Note:** Administrating tenants only.
 
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1237,7 +1204,6 @@ class ProfilesApi:
         """ # noqa: E501
 
         _param = self._get_analytic_profiles_serialize(
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1262,7 +1228,6 @@ class ProfilesApi:
     @validate_call
     def get_analytic_profiles_with_http_info(
         self,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1280,8 +1245,6 @@ class ProfilesApi:
 
         Retrieve a list of profiles available for analytic tenants.   **Note:** Administrating tenants only.
 
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1305,7 +1268,6 @@ class ProfilesApi:
         """ # noqa: E501
 
         _param = self._get_analytic_profiles_serialize(
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1330,7 +1292,6 @@ class ProfilesApi:
     @validate_call
     def get_analytic_profiles_without_preload_content(
         self,
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1348,8 +1309,6 @@ class ProfilesApi:
 
         Retrieve a list of profiles available for analytic tenants.   **Note:** Administrating tenants only.
 
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1373,7 +1332,6 @@ class ProfilesApi:
         """ # noqa: E501
 
         _param = self._get_analytic_profiles_serialize(
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1392,7 +1350,6 @@ class ProfilesApi:
 
     def _get_analytic_profiles_serialize(
         self,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1414,8 +1371,6 @@ class ProfilesApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
@@ -1455,7 +1410,6 @@ class ProfilesApi:
     def get_analytic_user_profile(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to retrieve.")],
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1475,8 +1429,6 @@ class ProfilesApi:
 
         :param user_id: The ID of the user you want to retrieve. (required)
         :type user_id: str
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1501,7 +1453,6 @@ class ProfilesApi:
 
         _param = self._get_analytic_user_profile_serialize(
             user_id=user_id,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1527,7 +1478,6 @@ class ProfilesApi:
     def get_analytic_user_profile_with_http_info(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to retrieve.")],
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1547,8 +1497,6 @@ class ProfilesApi:
 
         :param user_id: The ID of the user you want to retrieve. (required)
         :type user_id: str
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1573,7 +1521,6 @@ class ProfilesApi:
 
         _param = self._get_analytic_user_profile_serialize(
             user_id=user_id,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1599,7 +1546,6 @@ class ProfilesApi:
     def get_analytic_user_profile_without_preload_content(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to retrieve.")],
-        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1619,8 +1565,6 @@ class ProfilesApi:
 
         :param user_id: The ID of the user you want to retrieve. (required)
         :type user_id: str
-        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
-        :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1645,7 +1589,6 @@ class ProfilesApi:
 
         _param = self._get_analytic_user_profile_serialize(
             user_id=user_id,
-            target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1665,7 +1608,6 @@ class ProfilesApi:
     def _get_analytic_user_profile_serialize(
         self,
         user_id,
-        target_tenant_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1689,8 +1631,6 @@ class ProfilesApi:
             _path_params['userId'] = user_id
         # process the query parameters
         # process the header parameters
-        if target_tenant_id is not None:
-            _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
 
