@@ -7,7 +7,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1614
+    The version of the OpenAPI document: 22222222.99201.1622
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1614"
+__version__ = "0.99201.1622"
 
 # import apis into sdk package
 from visier_api_analytic_model.api.data_model_api import DataModelApi
@@ -66,6 +66,7 @@ from visier_api_analytic_model.models.objects_bulk_change_response_dto import Ob
 from visier_api_analytic_model.models.parameter_definition_dto import ParameterDefinitionDTO
 from visier_api_analytic_model.models.perspective_configuration_dto import PerspectiveConfigurationDTO
 from visier_api_analytic_model.models.perspective_node_dto import PerspectiveNodeDTO
+from visier_api_analytic_model.models.plan_data_load_error_dto import PlanDataLoadErrorDTO
 from visier_api_analytic_model.models.plan_info_dto import PlanInfoDTO
 from visier_api_analytic_model.models.plan_item_dto import PlanItemDTO
 from visier_api_analytic_model.models.plan_parameter_definition_dto import PlanParameterDefinitionDTO

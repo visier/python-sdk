@@ -48,6 +48,7 @@ test/test_objects_bulk_change_response_dto.py
 test/test_parameter_definition_dto.py
 test/test_perspective_configuration_dto.py
 test/test_perspective_node_dto.py
+test/test_plan_data_load_error_dto.py
 test/test_plan_info_dto.py
 test/test_plan_item_dto.py
 test/test_plan_parameter_definition_dto.py
@@ -130,6 +131,7 @@ visier_api_analytic_model/models/objects_bulk_change_response_dto.py
 visier_api_analytic_model/models/parameter_definition_dto.py
 visier_api_analytic_model/models/perspective_configuration_dto.py
 visier_api_analytic_model/models/perspective_node_dto.py
+visier_api_analytic_model/models/plan_data_load_error_dto.py
 visier_api_analytic_model/models/plan_info_dto.py
 visier_api_analytic_model/models/plan_item_dto.py
 visier_api_analytic_model/models/plan_parameter_definition_dto.py

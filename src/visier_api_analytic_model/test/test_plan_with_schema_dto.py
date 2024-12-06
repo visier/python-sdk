@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1614
+    The version of the OpenAPI document: 22222222.99201.1622
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,6 +36,12 @@ class TestPlanWithSchemaDTO(unittest.TestCase):
 
         if include_optional:
             return PlanWithSchemaDTO(
+                errors = [
+                    visier_api_analytic_model.models.plan_data_load_error_dto.PlanDataLoadErrorDTO(
+                        error_message = '', 
+                        rci = '', 
+                        row = 56, )
+                    ],
                 plan = visier_api_analytic_model.models.plan_info_dto.PlanInfoDTO(
                     currency_code = '', 
                     display_name = '', 

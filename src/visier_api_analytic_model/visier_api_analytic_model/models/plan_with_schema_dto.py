@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1614
+    The version of the OpenAPI document: 22222222.99201.1622
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,6 +21,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from visier_api_analytic_model.models.plan_data_load_error_dto import PlanDataLoadErrorDTO
 from visier_api_analytic_model.models.plan_info_dto import PlanInfoDTO
 from visier_api_analytic_model.models.plan_schema_dto import PlanSchemaDTO
 from typing import Optional, Set
@@ -30,9 +31,10 @@ class PlanWithSchemaDTO(BaseModel):
     """
     Details about the plan, including its schema.
     """ # noqa: E501
+    errors: Optional[List[PlanDataLoadErrorDTO]] = Field(default=None, description="The errors that occurred while loading the data.")
     plan: Optional[PlanInfoDTO] = None
     var_schema: Optional[PlanSchemaDTO] = Field(default=None, alias="schema")
-    __properties: ClassVar[List[str]] = ["plan", "schema"]
+    __properties: ClassVar[List[str]] = ["errors", "plan", "schema"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -73,6 +75,13 @@ class PlanWithSchemaDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
+        _items = []
+        if self.errors:
+            for _item_errors in self.errors:
+                if _item_errors:
+                    _items.append(_item_errors.to_dict())
+            _dict['errors'] = _items
         # override the default output from pydantic by calling `to_dict()` of plan
         if self.plan:
             _dict['plan'] = self.plan.to_dict()
@@ -91,6 +100,7 @@ class PlanWithSchemaDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "errors": [PlanDataLoadErrorDTO.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
             "plan": PlanInfoDTO.from_dict(obj["plan"]) if obj.get("plan") is not None else None,
             "schema": PlanSchemaDTO.from_dict(obj["schema"]) if obj.get("schema") is not None else None
         })
