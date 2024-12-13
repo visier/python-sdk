@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1622
+    The version of the OpenAPI document: 22222222.99201.1627
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -19,8 +19,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from visier_api_analytic_model.models.property_type_dto import PropertyTypeDTO
+from visier_api_analytic_model.models.tags_dto import TagsDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,10 +31,15 @@ class PropertyChangeDefinitionDTO(BaseModel):
     PropertyChangeDefinitionDTO
     """ # noqa: E501
     description: Optional[StrictStr] = Field(default=None, description="A short description of the property. Descriptions provide in-context help for your users while working in Visier.")
+    designer_notes: Optional[StrictStr] = Field(default=None, description="Notes for the designer. This field is used to provide additional information about the property.", alias="designerNotes")
     display_name: Optional[StrictStr] = Field(default=None, description="The user-friendly name for the property.", alias="displayName")
+    explanation: Optional[StrictStr] = Field(default=None, description="Explanation of the property. This field is used to provide additional information about the property.")
     id: Optional[StrictStr] = Field(default=None, description="The symbol name of the property; for example, Employee.Birth_Date")
+    include_with_vee: Optional[StrictBool] = Field(default=None, description="If 'true', the property is included with Vee.", alias="includeWithVee")
     short_display_name: Optional[StrictStr] = Field(default=None, description="A shortened version of the display name. If the property is visible in the solution experience, this name is displayed in visualization titles.", alias="shortDisplayName")
-    __properties: ClassVar[List[str]] = ["description", "displayName", "id", "shortDisplayName"]
+    tags: Optional[TagsDTO] = Field(default=None, description="The tags associated with the property.")
+    type: Optional[PropertyTypeDTO] = Field(default=None, description="The type of the property.")
+    __properties: ClassVar[List[str]] = ["description", "designerNotes", "displayName", "explanation", "id", "includeWithVee", "shortDisplayName", "tags", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -73,6 +80,12 @@ class PropertyChangeDefinitionDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of tags
+        if self.tags:
+            _dict['tags'] = self.tags.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of type
+        if self.type:
+            _dict['type'] = self.type.to_dict()
         return _dict
 
     @classmethod
@@ -86,9 +99,14 @@ class PropertyChangeDefinitionDTO(BaseModel):
 
         _obj = cls.model_validate({
             "description": obj.get("description"),
+            "designerNotes": obj.get("designerNotes"),
             "displayName": obj.get("displayName"),
+            "explanation": obj.get("explanation"),
             "id": obj.get("id"),
-            "shortDisplayName": obj.get("shortDisplayName")
+            "includeWithVee": obj.get("includeWithVee"),
+            "shortDisplayName": obj.get("shortDisplayName"),
+            "tags": TagsDTO.from_dict(obj["tags"]) if obj.get("tags") is not None else None,
+            "type": PropertyTypeDTO.from_dict(obj["type"]) if obj.get("type") is not None else None
         })
         return _obj
 

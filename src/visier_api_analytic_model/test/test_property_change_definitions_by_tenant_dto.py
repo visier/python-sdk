@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1622
+    The version of the OpenAPI document: 22222222.99201.1627
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -40,9 +40,14 @@ class TestPropertyChangeDefinitionsByTenantDTO(unittest.TestCase):
                 properties = [
                     visier_api_analytic_model.models.property_change_definition_dto.PropertyChangeDefinitionDTO(
                         description = '', 
+                        designer_notes = '', 
                         display_name = '', 
+                        explanation = '', 
                         id = '', 
-                        short_display_name = '', )
+                        include_with_vee = True, 
+                        short_display_name = '', 
+                        tags = None, 
+                        type = None, )
                     ],
                 tenant_code = ''
             )
