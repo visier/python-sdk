@@ -7,7 +7,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1622
+    The version of the OpenAPI document: 22222222.99201.1627
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1622"
+__version__ = "0.99201.1627"
 
 # import apis into sdk package
 from visier_api_analytic_model.api.data_model_api import DataModelApi
@@ -29,6 +29,7 @@ from visier_api_analytic_model.models.aggregation_type_parameter_dto import Aggr
 from visier_api_analytic_model.models.analytic_object_dto import AnalyticObjectDTO
 from visier_api_analytic_model.models.analytic_object_filter_dto import AnalyticObjectFilterDTO
 from visier_api_analytic_model.models.analytic_objects_dto import AnalyticObjectsDTO
+from visier_api_analytic_model.models.calculated_property_type_dto import CalculatedPropertyTypeDTO
 from visier_api_analytic_model.models.calculation_concept_configuration_dto import CalculationConceptConfigurationDTO
 from visier_api_analytic_model.models.calculation_concept_configuration_map_dto import CalculationConceptConfigurationMapDTO
 from visier_api_analytic_model.models.calculation_concept_dto import CalculationConceptDTO
@@ -92,12 +93,15 @@ from visier_api_analytic_model.models.property_change_definition_dto import Prop
 from visier_api_analytic_model.models.property_change_definitions_by_tenant_dto import PropertyChangeDefinitionsByTenantDTO
 from visier_api_analytic_model.models.property_dto import PropertyDTO
 from visier_api_analytic_model.models.property_reference_dto import PropertyReferenceDTO
+from visier_api_analytic_model.models.property_type_dto import PropertyTypeDTO
 from visier_api_analytic_model.models.scenario_info_dto import ScenarioInfoDTO
 from visier_api_analytic_model.models.scenario_or_snapshot_dto import ScenarioOrSnapshotDTO
 from visier_api_analytic_model.models.selection_concept_configuration_map_dto import SelectionConceptConfigurationMapDTO
 from visier_api_analytic_model.models.selection_concept_dto import SelectionConceptDTO
 from visier_api_analytic_model.models.selection_concept_list_dto import SelectionConceptListDTO
 from visier_api_analytic_model.models.selection_concepts_dto import SelectionConceptsDTO
+from visier_api_analytic_model.models.simple_property_type_dto import SimplePropertyTypeDTO
 from visier_api_analytic_model.models.status import Status
 from visier_api_analytic_model.models.tag_map_element_dto import TagMapElementDTO
+from visier_api_analytic_model.models.tags_dto import TagsDTO
 from visier_api_analytic_model.models.validity_range_dto import ValidityRangeDTO
