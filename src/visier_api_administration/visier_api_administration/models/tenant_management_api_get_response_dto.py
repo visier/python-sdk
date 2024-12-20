@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1627
+    The version of the OpenAPI document: 22222222.99201.1641
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -31,6 +31,7 @@ class TenantManagementAPIGetResponseDTO(BaseModel):
     """
     TenantManagementAPIGetResponseDTO
     """ # noqa: E501
+    allowed_o_auth_idp_url_domains: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the URLs, or domains, that are allowed in the idp_url OAuth parameter.", alias="allowedOAuthIdpUrlDomains")
     can_administer_other_tenants: Optional[StrictBool] = Field(default=None, description="If true, the tenant is an administrating tenant.", alias="canAdministerOtherTenants")
     click_through_link: Optional[StrictStr] = Field(default=None, description="The custom URL to redirect users into your portal to see the relevant content. This URL is used for links that are shared by and with your users through the sharing capability or email content.", alias="clickThroughLink")
     click_through_link_enabled: Optional[StrictStr] = Field(default=None, description="Whether the click-through link is enabled or disabled.", alias="clickThroughLinkEnabled")
@@ -50,7 +51,7 @@ class TenantManagementAPIGetResponseDTO(BaseModel):
     tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code of the analytic tenant. For example, \"WFF_j1r~i1o\"", alias="tenantCode")
     tenant_display_name: Optional[StrictStr] = Field(default=None, description="An identifiable tenant name that is displayed within Visier. For example, \"Callisto\".", alias="tenantDisplayName")
     vanity_url_name: Optional[StrictStr] = Field(default=None, description="The name of the administrating tenant used in Visier URLs.", alias="vanityUrlName")
-    __properties: ClassVar[List[str]] = ["canAdministerOtherTenants", "clickThroughLink", "clickThroughLinkEnabled", "currentDataVersion", "customProperties", "dataVersionDate", "defaultCurrency", "embeddableDomains", "homeAnalysisByUserGroup", "homeAnalysisId", "industryCode", "primaryBusinessLocation", "provisionDate", "purchasedModules", "ssoInstanceIssuers", "status", "tenantCode", "tenantDisplayName", "vanityUrlName"]
+    __properties: ClassVar[List[str]] = ["allowedOAuthIdpUrlDomains", "canAdministerOtherTenants", "clickThroughLink", "clickThroughLinkEnabled", "currentDataVersion", "customProperties", "dataVersionDate", "defaultCurrency", "embeddableDomains", "homeAnalysisByUserGroup", "homeAnalysisId", "industryCode", "primaryBusinessLocation", "provisionDate", "purchasedModules", "ssoInstanceIssuers", "status", "tenantCode", "tenantDisplayName", "vanityUrlName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -120,6 +121,7 @@ class TenantManagementAPIGetResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "allowedOAuthIdpUrlDomains": obj.get("allowedOAuthIdpUrlDomains"),
             "canAdministerOtherTenants": obj.get("canAdministerOtherTenants"),
             "clickThroughLink": obj.get("clickThroughLink"),
             "clickThroughLinkEnabled": obj.get("clickThroughLinkEnabled"),

@@ -51,6 +51,8 @@ test/test_dimension_filter_dto.py
 test/test_dynamic_dimension_filter_dto.py
 test/test_dynamic_property_mapping_dto.py
 test/test_element_ids_dto.py
+test/test_email_domains_api.py
+test/test_email_domains_dto.py
 test/test_error_dto.py
 test/test_excluded_sources_body.py
 test/test_export_production_versions_api_operation_parameters_dto.py
@@ -196,6 +198,7 @@ tox.ini
 visier_api_administration/__init__.py
 visier_api_administration/api/__init__.py
 visier_api_administration/api/consolidated_analytics_api.py
+visier_api_administration/api/email_domains_api.py
 visier_api_administration/api/permissions_api.py
 visier_api_administration/api/production_versions_api.py
 visier_api_administration/api/profiles_api.py
@@ -254,6 +257,7 @@ visier_api_administration/models/dimension_filter_dto.py
 visier_api_administration/models/dynamic_dimension_filter_dto.py
 visier_api_administration/models/dynamic_property_mapping_dto.py
 visier_api_administration/models/element_ids_dto.py
+visier_api_administration/models/email_domains_dto.py
 visier_api_administration/models/error_dto.py
 visier_api_administration/models/excluded_sources_body.py
 visier_api_administration/models/export_production_versions_api_operation_parameters_dto.py

@@ -2,6 +2,7 @@
 
 # import apis into api package
 from visier_api_administration.api.consolidated_analytics_api import ConsolidatedAnalyticsApi
+from visier_api_administration.api.email_domains_api import EmailDomainsApi
 from visier_api_administration.api.permissions_api import PermissionsApi
 from visier_api_administration.api.production_versions_api import ProductionVersionsApi
 from visier_api_administration.api.profiles_api import ProfilesApi
