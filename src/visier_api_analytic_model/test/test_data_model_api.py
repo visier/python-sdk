@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1641
+    The version of the OpenAPI document: 22222222.99201.1656
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -88,6 +88,13 @@ class TestDataModelApi(unittest.TestCase):
         """Test case for currency_rates_with_to_currency
 
         Retrieve exchange rates from one currency to another currency
+        """
+        pass
+
+    def test_delete_properties(self) -> None:
+        """Test case for delete_properties
+
+        Delete properties
         """
         pass
 

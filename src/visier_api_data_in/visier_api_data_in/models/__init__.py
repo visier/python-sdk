@@ -6,7 +6,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1641
+    The version of the OpenAPI document: 22222222.99201.1656
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.

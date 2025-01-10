@@ -6,7 +6,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1641
+    The version of the OpenAPI document: 22222222.99201.1656
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -31,6 +31,7 @@ from visier_api_analytic_model.models.currencies_dto import CurrenciesDTO
 from visier_api_analytic_model.models.currency_dto import CurrencyDTO
 from visier_api_analytic_model.models.currency_rate_dto import CurrencyRateDTO
 from visier_api_analytic_model.models.currency_rates_dto import CurrencyRatesDTO
+from visier_api_analytic_model.models.dependent_dto import DependentDTO
 from visier_api_analytic_model.models.dimension_change_definition_dto import DimensionChangeDefinitionDTO
 from visier_api_analytic_model.models.dimension_change_definitions_by_tenant_dto import DimensionChangeDefinitionsByTenantDTO
 from visier_api_analytic_model.models.dimension_dto import DimensionDTO
@@ -81,9 +82,14 @@ from visier_api_analytic_model.models.prediction_dto import PredictionDTO
 from visier_api_analytic_model.models.predictions_dto import PredictionsDTO
 from visier_api_analytic_model.models.properties_change_definitions_dto import PropertiesChangeDefinitionsDTO
 from visier_api_analytic_model.models.properties_dto import PropertiesDTO
+from visier_api_analytic_model.models.properties_delete_definitions_dto import PropertiesDeleteDefinitionsDTO
+from visier_api_analytic_model.models.property_bulk_delete_response_dto import PropertyBulkDeleteResponseDTO
 from visier_api_analytic_model.models.property_change_definition_dto import PropertyChangeDefinitionDTO
 from visier_api_analytic_model.models.property_change_definitions_by_tenant_dto import PropertyChangeDefinitionsByTenantDTO
 from visier_api_analytic_model.models.property_dto import PropertyDTO
+from visier_api_analytic_model.models.property_delete_definitions_by_tenant_dto import PropertyDeleteDefinitionsByTenantDTO
+from visier_api_analytic_model.models.property_delete_failure_dto import PropertyDeleteFailureDTO
+from visier_api_analytic_model.models.property_delete_success_dto import PropertyDeleteSuccessDTO
 from visier_api_analytic_model.models.property_reference_dto import PropertyReferenceDTO
 from visier_api_analytic_model.models.property_type_dto import PropertyTypeDTO
 from visier_api_analytic_model.models.scenario_info_dto import ScenarioInfoDTO

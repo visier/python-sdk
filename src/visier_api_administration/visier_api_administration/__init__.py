@@ -7,7 +7,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1641
+    The version of the OpenAPI document: 22222222.99201.1656
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1641"
+__version__ = "0.99201.1656"
 
 # import apis into sdk package
 from visier_api_administration.api.consolidated_analytics_api import ConsolidatedAnalyticsApi
@@ -54,6 +54,7 @@ from visier_api_administration.models.assign_revoke_permission_by_user_dto impor
 from visier_api_administration.models.assign_revoke_permission_request_dto import AssignRevokePermissionRequestDTO
 from visier_api_administration.models.assign_revoke_permissions_request_dto import AssignRevokePermissionsRequestDTO
 from visier_api_administration.models.assign_revoke_permissions_response_dto import AssignRevokePermissionsResponseDTO
+from visier_api_administration.models.batch_tenant_provision_apidto import BatchTenantProvisionAPIDTO
 from visier_api_administration.models.bulk_data_access_set_response_dto import BulkDataAccessSetResponseDTO
 from visier_api_administration.models.business_location_dto import BusinessLocationDTO
 from visier_api_administration.models.capabilities_dto import CapabilitiesDTO
