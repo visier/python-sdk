@@ -7,7 +7,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1656
+    The version of the OpenAPI document: 22222222.99201.1673
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1656"
+__version__ = "0.99201.1673"
 
 # import apis into sdk package
 from visier_api_data_in.api.data_and_job_handling_api import DataAndJobHandlingApi
@@ -146,8 +146,6 @@ from visier_api_data_in.models.slack_auth_params_dto import SlackAuthParamsDTO
 from visier_api_data_in.models.snowflake_auth_params_dto import SnowflakeAuthParamsDTO
 from visier_api_data_in.models.source import Source
 from visier_api_data_in.models.sql_server_auth_params_dto import SqlServerAuthParamsDTO
-from visier_api_data_in.models.start_extraction_model import StartExtractionModel
-from visier_api_data_in.models.start_extraction_request import StartExtractionRequest
 from visier_api_data_in.models.start_extraction_response import StartExtractionResponse
 from visier_api_data_in.models.start_transfer_response import StartTransferResponse
 from visier_api_data_in.models.status import Status

@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1656
+    The version of the OpenAPI document: 22222222.99201.1673
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -53,7 +53,6 @@ from visier_api_data_in.models.receiving_job_and_status_response import Receivin
 from visier_api_data_in.models.receiving_job_status_response import ReceivingJobStatusResponse
 from visier_api_data_in.models.set_connector_settings_request_dto import SetConnectorSettingsRequestDTO
 from visier_api_data_in.models.set_connector_settings_response_dto import SetConnectorSettingsResponseDTO
-from visier_api_data_in.models.start_extraction_request import StartExtractionRequest
 from visier_api_data_in.models.start_extraction_response import StartExtractionResponse
 from visier_api_data_in.models.tenant_data_uploads_list_response_dto import TenantDataUploadsListResponseDTO
 from visier_api_data_in.models.tenant_data_uploads_update_response_dto import TenantDataUploadsUpdateResponseDTO
@@ -7763,7 +7762,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def start_extraction(
         self,
-        start_extraction_request: StartExtractionRequest,
+        extract_data_and_load_dto: ExtractDataAndLoadDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -7782,8 +7781,8 @@ class DataAndJobHandlingApi:
 
         Run data connector extraction jobs for the administrating tenant or a list of analytic tenants.    This API creates a dispatching job that generates one extraction job per tenant. The dispatching job is the \"parent\" of the extraction jobs and the dispatching job ID is returned in the response. Use that ID to monitor the extraction job statuses by calling `GET /v1/op/jobs/dispatching-jobs/{jobId}/extraction-jobs`.   The extraction job generates receiving jobs to validate the data and processing jobs to populate data in the analytic tenants. Use the dispatching job ID to monitor the receiving and processing job statuses by calling `GET /v1/op/jobs/dispatching-jobs/{jobId}/receiving-jobs` or `GET /v1/op/jobs/dispatching-jobs/{jobId}/processing-jobs`.
 
-        :param start_extraction_request: (required)
-        :type start_extraction_request: StartExtractionRequest
+        :param extract_data_and_load_dto: (required)
+        :type extract_data_and_load_dto: ExtractDataAndLoadDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -7809,7 +7808,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._start_extraction_serialize(
-            start_extraction_request=start_extraction_request,
+            extract_data_and_load_dto=extract_data_and_load_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7835,7 +7834,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def start_extraction_with_http_info(
         self,
-        start_extraction_request: StartExtractionRequest,
+        extract_data_and_load_dto: ExtractDataAndLoadDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -7854,8 +7853,8 @@ class DataAndJobHandlingApi:
 
         Run data connector extraction jobs for the administrating tenant or a list of analytic tenants.    This API creates a dispatching job that generates one extraction job per tenant. The dispatching job is the \"parent\" of the extraction jobs and the dispatching job ID is returned in the response. Use that ID to monitor the extraction job statuses by calling `GET /v1/op/jobs/dispatching-jobs/{jobId}/extraction-jobs`.   The extraction job generates receiving jobs to validate the data and processing jobs to populate data in the analytic tenants. Use the dispatching job ID to monitor the receiving and processing job statuses by calling `GET /v1/op/jobs/dispatching-jobs/{jobId}/receiving-jobs` or `GET /v1/op/jobs/dispatching-jobs/{jobId}/processing-jobs`.
 
-        :param start_extraction_request: (required)
-        :type start_extraction_request: StartExtractionRequest
+        :param extract_data_and_load_dto: (required)
+        :type extract_data_and_load_dto: ExtractDataAndLoadDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -7881,7 +7880,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._start_extraction_serialize(
-            start_extraction_request=start_extraction_request,
+            extract_data_and_load_dto=extract_data_and_load_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7907,7 +7906,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def start_extraction_without_preload_content(
         self,
-        start_extraction_request: StartExtractionRequest,
+        extract_data_and_load_dto: ExtractDataAndLoadDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -7926,8 +7925,8 @@ class DataAndJobHandlingApi:
 
         Run data connector extraction jobs for the administrating tenant or a list of analytic tenants.    This API creates a dispatching job that generates one extraction job per tenant. The dispatching job is the \"parent\" of the extraction jobs and the dispatching job ID is returned in the response. Use that ID to monitor the extraction job statuses by calling `GET /v1/op/jobs/dispatching-jobs/{jobId}/extraction-jobs`.   The extraction job generates receiving jobs to validate the data and processing jobs to populate data in the analytic tenants. Use the dispatching job ID to monitor the receiving and processing job statuses by calling `GET /v1/op/jobs/dispatching-jobs/{jobId}/receiving-jobs` or `GET /v1/op/jobs/dispatching-jobs/{jobId}/processing-jobs`.
 
-        :param start_extraction_request: (required)
-        :type start_extraction_request: StartExtractionRequest
+        :param extract_data_and_load_dto: (required)
+        :type extract_data_and_load_dto: ExtractDataAndLoadDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -7953,7 +7952,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._start_extraction_serialize(
-            start_extraction_request=start_extraction_request,
+            extract_data_and_load_dto=extract_data_and_load_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7973,7 +7972,7 @@ class DataAndJobHandlingApi:
 
     def _start_extraction_serialize(
         self,
-        start_extraction_request,
+        extract_data_and_load_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -8000,8 +7999,8 @@ class DataAndJobHandlingApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if start_extraction_request is not None:
-            _body_params = start_extraction_request
+        if extract_data_and_load_dto is not None:
+            _body_params = extract_data_and_load_dto
 
 
         # set the HTTP header `Accept`

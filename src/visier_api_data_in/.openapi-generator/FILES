@@ -128,8 +128,6 @@ test/test_slack_auth_params_dto.py
 test/test_snowflake_auth_params_dto.py
 test/test_source.py
 test/test_sql_server_auth_params_dto.py
-test/test_start_extraction_model.py
-test/test_start_extraction_request.py
 test/test_start_extraction_response.py
 test/test_start_transfer_response.py
 test/test_status.py
@@ -283,8 +281,6 @@ visier_api_data_in/models/slack_auth_params_dto.py
 visier_api_data_in/models/snowflake_auth_params_dto.py
 visier_api_data_in/models/source.py
 visier_api_data_in/models/sql_server_auth_params_dto.py
-visier_api_data_in/models/start_extraction_model.py
-visier_api_data_in/models/start_extraction_request.py
 visier_api_data_in/models/start_extraction_response.py
 visier_api_data_in/models/start_transfer_response.py
 visier_api_data_in/models/status.py

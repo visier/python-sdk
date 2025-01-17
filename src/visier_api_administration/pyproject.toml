@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "visier_api_administration"
-version = "0.99201.1656"
+version = "0.99201.1673"
 description = "Visier Administration APIs"
 authors = ["Visier <alpine@visier.com>"]
 license = "Apache License, Version 2.0"
@@ -12,7 +12,7 @@ include = ["visier_api_administration/py.typed"]
 [tool.poetry.dependencies]
 python = "^3.8"
 
-visier-api-core = "~= 0.99201.1656"
+visier-api-core = "~= 0.99201.1673"
 
 [tool.poetry.dev-dependencies]
 pytest = ">=7.2.1"
