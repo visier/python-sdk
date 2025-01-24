@@ -5,7 +5,7 @@
 
     Visier APIs for authenticating with Visier. To use Visier's public APIs, you must first authenticate yourself as a Visier user who is allowed to use Visier APIs.
 
-    The version of the OpenAPI document: 22222222.99201.1673
+    The version of the OpenAPI document: 22222222.99201.1687
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -152,6 +152,13 @@ class ApiException(OpenApiException):
         if http_resp.status == 404:
             raise NotFoundException(http_resp=http_resp, body=body, data=data)
 
+        # Added new conditions for 409 and 422
+        if http_resp.status == 409:
+            raise ConflictException(http_resp=http_resp, body=body, data=data)
+
+        if http_resp.status == 422:
+            raise UnprocessableEntityException(http_resp=http_resp, body=body, data=data)
+
         if 500 <= http_resp.status <= 599:
             raise ServiceException(http_resp=http_resp, body=body, data=data)
         raise ApiException(http_resp=http_resp, body=body, data=data)
@@ -187,6 +194,16 @@ class ForbiddenException(ApiException):
 
 
 class ServiceException(ApiException):
+    pass
+
+
+class ConflictException(ApiException):
+    """Exception for HTTP 409 Conflict."""
+    pass
+
+
+class UnprocessableEntityException(ApiException):
+    """Exception for HTTP 422 Unprocessable Entity."""
     pass
 
 

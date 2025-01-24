@@ -96,6 +96,7 @@ test/test_plan_data_load_change_list_dto.py
 test/test_plan_data_load_error_dto.py
 test/test_plan_data_upload_response_dto.py
 test/test_plan_row_data_load_response_dto.py
+test/test_plan_segment_level_member_dto.py
 test/test_planning_data_load_api.py
 test/test_processing_job.py
 test/test_processing_job_and_status_response.py
@@ -144,9 +145,7 @@ test/test_tenant_data_uploads_response_dto.py
 test/test_tenant_data_uploads_update_response_dto.py
 test/test_ultimate_auth_params_dto.py
 test/test_upload_to_exclude.py
-test/test_upload_to_exclude_model.py
 test/test_upload_to_include.py
-test/test_upload_to_include_model.py
 test/test_willow_auth_params_dto.py
 test/test_workday_auth_params_dto.py
 test/test_workday_o_auth_params_dto.py
@@ -250,6 +249,7 @@ visier_api_data_in/models/plan_data_load_change_list_dto.py
 visier_api_data_in/models/plan_data_load_error_dto.py
 visier_api_data_in/models/plan_data_upload_response_dto.py
 visier_api_data_in/models/plan_row_data_load_response_dto.py
+visier_api_data_in/models/plan_segment_level_member_dto.py
 visier_api_data_in/models/processing_job.py
 visier_api_data_in/models/processing_job_and_status_response.py
 visier_api_data_in/models/processing_job_request_dto.py
@@ -297,9 +297,7 @@ visier_api_data_in/models/tenant_data_uploads_response_dto.py
 visier_api_data_in/models/tenant_data_uploads_update_response_dto.py
 visier_api_data_in/models/ultimate_auth_params_dto.py
 visier_api_data_in/models/upload_to_exclude.py
-visier_api_data_in/models/upload_to_exclude_model.py
 visier_api_data_in/models/upload_to_include.py
-visier_api_data_in/models/upload_to_include_model.py
 visier_api_data_in/models/willow_auth_params_dto.py
 visier_api_data_in/models/workday_auth_params_dto.py
 visier_api_data_in/models/workday_o_auth_params_dto.py

@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1673
+    The version of the OpenAPI document: 22222222.99201.1687
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,20 +36,19 @@ class TestExcludeDataUploadsRequest(unittest.TestCase):
 
         if include_optional:
             return ExcludeDataUploadsRequest(
-                model = visier_api_data_in.models.upload_to_exclude_model.UploadToExcludeModel(
-                    uploads = [
-                        visier_api_data_in.models.upload_to_exclude.UploadToExclude(
-                            exclude_all = True, 
-                            max_upload_time = '', 
-                            min_upload_time = '', 
-                            sources = [
-                                ''
-                                ], 
-                            tenant_code = '', 
-                            upload_times = [
-                                ''
-                                ], )
-                        ], )
+                uploads = [
+                    visier_api_data_in.models.upload_to_exclude.UploadToExclude(
+                        exclude_all = True, 
+                        max_upload_time = '', 
+                        min_upload_time = '', 
+                        sources = [
+                            ''
+                            ], 
+                        tenant_code = '', 
+                        upload_times = [
+                            ''
+                            ], )
+                    ]
             )
         else:
             return ExcludeDataUploadsRequest(
