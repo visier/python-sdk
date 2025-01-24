@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1673
+    The version of the OpenAPI document: 22222222.99201.1687
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -19,18 +19,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_api_data_in.models.upload_to_exclude import UploadToExclude
 from typing import Optional, Set
 from typing_extensions import Self
 
-class UploadToExcludeModel(BaseModel):
+class PlanSegmentLevelMemberDTO(BaseModel):
     """
-    UploadToExcludeModel
+    PlanSegmentLevelMemberDTO
     """ # noqa: E501
-    uploads: Optional[List[UploadToExclude]] = Field(default=None, description="A list of objects representing the data uploads to exclude for a particular analytic tenant.")
-    __properties: ClassVar[List[str]] = ["uploads"]
+    display_name: Optional[StrictStr] = Field(default=None, description="The display name of the dimension member.", alias="displayName")
+    id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the dimension member.")
+    is_custom: Optional[StrictBool] = Field(default=None, description="If `true`, this is a custom member created for use in the plan and all its subplans.", alias="isCustom")
+    parent_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the dimension member's parent.", alias="parentId")
+    __properties: ClassVar[List[str]] = ["displayName", "id", "isCustom", "parentId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +52,7 @@ class UploadToExcludeModel(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UploadToExcludeModel from a JSON string"""
+        """Create an instance of PlanSegmentLevelMemberDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,18 +73,11 @@ class UploadToExcludeModel(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in uploads (list)
-        _items = []
-        if self.uploads:
-            for _item_uploads in self.uploads:
-                if _item_uploads:
-                    _items.append(_item_uploads.to_dict())
-            _dict['uploads'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UploadToExcludeModel from a dict"""
+        """Create an instance of PlanSegmentLevelMemberDTO from a dict"""
         if obj is None:
             return None
 
@@ -90,7 +85,10 @@ class UploadToExcludeModel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "uploads": [UploadToExclude.from_dict(_item) for _item in obj["uploads"]] if obj.get("uploads") is not None else None
+            "displayName": obj.get("displayName"),
+            "id": obj.get("id"),
+            "isCustom": obj.get("isCustom"),
+            "parentId": obj.get("parentId")
         })
         return _obj
 

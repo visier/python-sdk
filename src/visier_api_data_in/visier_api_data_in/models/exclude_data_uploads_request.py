@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1673
+    The version of the OpenAPI document: 22222222.99201.1687
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,7 +21,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_api_data_in.models.upload_to_exclude_model import UploadToExcludeModel
+from visier_api_data_in.models.upload_to_exclude import UploadToExclude
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,8 +29,8 @@ class ExcludeDataUploadsRequest(BaseModel):
     """
     ExcludeDataUploadsRequest
     """ # noqa: E501
-    model: Optional[UploadToExcludeModel] = Field(default=None, description="A form body key that contains a collection of key-value pairs.")
-    __properties: ClassVar[List[str]] = ["model"]
+    uploads: Optional[List[UploadToExclude]] = Field(default=None, description="A list of objects representing the data uploads to exclude for a particular analytic tenant.")
+    __properties: ClassVar[List[str]] = ["uploads"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,9 +71,13 @@ class ExcludeDataUploadsRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of model
-        if self.model:
-            _dict['model'] = self.model.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in uploads (list)
+        _items = []
+        if self.uploads:
+            for _item_uploads in self.uploads:
+                if _item_uploads:
+                    _items.append(_item_uploads.to_dict())
+            _dict['uploads'] = _items
         return _dict
 
     @classmethod
@@ -86,7 +90,7 @@ class ExcludeDataUploadsRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "model": UploadToExcludeModel.from_dict(obj["model"]) if obj.get("model") is not None else None
+            "uploads": [UploadToExclude.from_dict(_item) for _item in obj["uploads"]] if obj.get("uploads") is not None else None
         })
         return _obj
 

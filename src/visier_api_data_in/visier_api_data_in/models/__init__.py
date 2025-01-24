@@ -6,7 +6,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1673
+    The version of the OpenAPI document: 22222222.99201.1687
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -103,6 +103,7 @@ from visier_api_data_in.models.plan_data_load_change_list_dto import PlanDataLoa
 from visier_api_data_in.models.plan_data_load_error_dto import PlanDataLoadErrorDTO
 from visier_api_data_in.models.plan_data_upload_response_dto import PlanDataUploadResponseDTO
 from visier_api_data_in.models.plan_row_data_load_response_dto import PlanRowDataLoadResponseDTO
+from visier_api_data_in.models.plan_segment_level_member_dto import PlanSegmentLevelMemberDTO
 from visier_api_data_in.models.processing_job import ProcessingJob
 from visier_api_data_in.models.processing_job_and_status_response import ProcessingJobAndStatusResponse
 from visier_api_data_in.models.processing_job_request_dto import ProcessingJobRequestDTO
@@ -150,9 +151,7 @@ from visier_api_data_in.models.tenant_data_uploads_response_dto import TenantDat
 from visier_api_data_in.models.tenant_data_uploads_update_response_dto import TenantDataUploadsUpdateResponseDTO
 from visier_api_data_in.models.ultimate_auth_params_dto import UltimateAuthParamsDTO
 from visier_api_data_in.models.upload_to_exclude import UploadToExclude
-from visier_api_data_in.models.upload_to_exclude_model import UploadToExcludeModel
 from visier_api_data_in.models.upload_to_include import UploadToInclude
-from visier_api_data_in.models.upload_to_include_model import UploadToIncludeModel
 from visier_api_data_in.models.willow_auth_params_dto import WillowAuthParamsDTO
 from visier_api_data_in.models.workday_auth_params_dto import WorkdayAuthParamsDTO
 from visier_api_data_in.models.workday_o_auth_params_dto import WorkdayOAuthParamsDTO
