@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1673
+    The version of the OpenAPI document: 22222222.99201.1686
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -37,6 +37,9 @@ class TestPlanRowDataLoadResponseDTO(unittest.TestCase):
         if include_optional:
             return PlanRowDataLoadResponseDTO(
                 added_rows_count = 56,
+                custom_members = [
+                    None
+                    ],
                 errors = [
                     visier_api_data_in.models.plan_data_load_error_dto.PlanDataLoadErrorDTO(
                         error_message = '', 

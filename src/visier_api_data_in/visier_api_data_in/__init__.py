@@ -7,7 +7,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1673
+    The version of the OpenAPI document: 22222222.99201.1686
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1673"
+__version__ = "0.99201.1686"
 
 # import apis into sdk package
 from visier_api_data_in.api.data_and_job_handling_api import DataAndJobHandlingApi
@@ -162,9 +162,7 @@ from visier_api_data_in.models.tenant_data_uploads_response_dto import TenantDat
 from visier_api_data_in.models.tenant_data_uploads_update_response_dto import TenantDataUploadsUpdateResponseDTO
 from visier_api_data_in.models.ultimate_auth_params_dto import UltimateAuthParamsDTO
 from visier_api_data_in.models.upload_to_exclude import UploadToExclude
-from visier_api_data_in.models.upload_to_exclude_model import UploadToExcludeModel
 from visier_api_data_in.models.upload_to_include import UploadToInclude
-from visier_api_data_in.models.upload_to_include_model import UploadToIncludeModel
 from visier_api_data_in.models.willow_auth_params_dto import WillowAuthParamsDTO
 from visier_api_data_in.models.workday_auth_params_dto import WorkdayAuthParamsDTO
 from visier_api_data_in.models.workday_o_auth_params_dto import WorkdayOAuthParamsDTO
