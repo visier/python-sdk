@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1687
+    The version of the OpenAPI document: 22222222.99201.1694
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,8 +36,12 @@ class ExtractDataAndLoadDTO(BaseModel):
     excluded_tenants: Optional[List[StrictStr]] = Field(default=None, description="The unique identifiers of the tenants to exclude from the extraction job. Only valid if `allTenants` is `true`. Only valid for requests from an administrating tenant.", alias="excludedTenants")
     extract_to_time_override: Optional[StrictStr] = Field(default=None, description="An epoch timestamp in milliseconds for the end time up to which to retrieve data.", alias="extractToTimeOverride")
     force_update_existing_artifacts: Optional[StrictBool] = Field(default=None, description="If `true` and `disableArtifactGeneration` is `false`, updates extractor artifacts, which may overwrite the artifacts' manual overrides. Ignored if `disableArtifactGeneration` is `true`.", alias="forceUpdateExistingArtifacts")
+    last_extraction_time_offset_mode: Optional[StrictStr] = Field(default=None, description="The mode used to offset the last extraction time (weeks vs months)", alias="lastExtractionTimeOffsetMode")
+    last_extraction_time_offset_months: Optional[StrictInt] = Field(default=None, description="The number of months to offset the last extraction time. This overrides the last extraction date backward to retrieve more data.", alias="lastExtractionTimeOffsetMonths")
     last_extraction_time_offset_weeks: Optional[StrictInt] = Field(default=None, description="The number of weeks in the past to retrieve data. This overrides the last extraction date to retrieve more data.", alias="lastExtractionTimeOffsetWeeks")
     months_to_extract: Optional[StrictInt] = Field(default=None, description="The number of months to retrieve snapshot data.", alias="monthsToExtract")
+    offset_month_option: Optional[StrictStr] = Field(default=None, description="The month options used to offset the last extraction time (first of month / last of month)", alias="offsetMonthOption")
+    offset_week_option: Optional[StrictStr] = Field(default=None, description="The week options used to offset the last extraction time (first of day / last of day)", alias="offsetWeekOption")
     override_last_extraction_timestamp: Optional[StrictStr] = Field(default=None, description="An epoch timestamp in milliseconds from which to retrieve data. This overrides the last extraction date to retrieve more data.", alias="overrideLastExtractionTimestamp")
     publish_data_load_artifacts: Optional[StrictBool] = Field(default=None, description="If `true`, the generated data load artifacts are published to production immediately.", alias="publishDataLoadArtifacts")
     run_processing_job: Optional[StrictBool] = Field(default=None, description="If `true`, a processing job is spawned after a dispatched extraction job runs successfully.", alias="runProcessingJob")
@@ -45,7 +49,7 @@ class ExtractDataAndLoadDTO(BaseModel):
     spill_debug_info_partitions_dto: Optional[StrictStr] = Field(default=None, description="The partitioning of debugging info to be generated, if any. Valid values are:  - `spillNone`: No debugging info is generated.  - `spillStagesAndRecords`: Debugging info is generated for stages and records.  - `spillAll`: Debugging info is generated for all partitions.", alias="spillDebugInfoPartitionsDTO")
     sql_batch_size: Optional[StrictInt] = Field(default=None, description="The maximum number of SQL table records the job can retrieve in each batch.", alias="sqlBatchSize")
     tenants: Optional[List[StrictStr]] = Field(default=None, description="A list of analytic tenants to dispatch extraction jobs for. One extraction job is dispatched per tenant. Only valid for requests from an administrating tenant.")
-    __properties: ClassVar[List[str]] = ["allTenants", "batchSizeOverride", "connectorIds", "dataCategoryId", "disableArtifactGeneration", "excludedTenants", "extractToTimeOverride", "forceUpdateExistingArtifacts", "lastExtractionTimeOffsetWeeks", "monthsToExtract", "overrideLastExtractionTimestamp", "publishDataLoadArtifacts", "runProcessingJob", "spillDebugInfoDetailLevelDTO", "spillDebugInfoPartitionsDTO", "sqlBatchSize", "tenants"]
+    __properties: ClassVar[List[str]] = ["allTenants", "batchSizeOverride", "connectorIds", "dataCategoryId", "disableArtifactGeneration", "excludedTenants", "extractToTimeOverride", "forceUpdateExistingArtifacts", "lastExtractionTimeOffsetMode", "lastExtractionTimeOffsetMonths", "lastExtractionTimeOffsetWeeks", "monthsToExtract", "offsetMonthOption", "offsetWeekOption", "overrideLastExtractionTimestamp", "publishDataLoadArtifacts", "runProcessingJob", "spillDebugInfoDetailLevelDTO", "spillDebugInfoPartitionsDTO", "sqlBatchSize", "tenants"]
 
     @field_validator('spill_debug_info_detail_level_dto')
     def spill_debug_info_detail_level_dto_validate_enum(cls, value):
@@ -126,8 +130,12 @@ class ExtractDataAndLoadDTO(BaseModel):
             "excludedTenants": obj.get("excludedTenants"),
             "extractToTimeOverride": obj.get("extractToTimeOverride"),
             "forceUpdateExistingArtifacts": obj.get("forceUpdateExistingArtifacts"),
+            "lastExtractionTimeOffsetMode": obj.get("lastExtractionTimeOffsetMode"),
+            "lastExtractionTimeOffsetMonths": obj.get("lastExtractionTimeOffsetMonths"),
             "lastExtractionTimeOffsetWeeks": obj.get("lastExtractionTimeOffsetWeeks"),
             "monthsToExtract": obj.get("monthsToExtract"),
+            "offsetMonthOption": obj.get("offsetMonthOption"),
+            "offsetWeekOption": obj.get("offsetWeekOption"),
             "overrideLastExtractionTimestamp": obj.get("overrideLastExtractionTimestamp"),
             "publishDataLoadArtifacts": obj.get("publishDataLoadArtifacts"),
             "runProcessingJob": obj.get("runProcessingJob"),
