@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1694
+    The version of the OpenAPI document: 22222222.99201.1697
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -19,8 +19,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,8 +28,8 @@ class PlanDataLoadChangeDTO(BaseModel):
     """
     PlanDataLoadChangeDTO
     """ # noqa: E501
-    new_value: Optional[StrictInt] = Field(default=None, description="The new value loaded into the plan from the data load.", alias="newValue")
-    old_value: Optional[StrictInt] = Field(default=None, description="The value that was replaced.", alias="oldValue")
+    new_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The new value loaded into the plan from the data load.", alias="newValue")
+    old_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The value that was replaced.", alias="oldValue")
     period: Optional[StrictStr] = Field(default=None, description="The display name of the time period.")
     row_members: Optional[List[StrictStr]] = Field(default=None, description="The collection of member ids that describe the row in the plan.", alias="rowMembers")
     __properties: ClassVar[List[str]] = ["newValue", "oldValue", "period", "rowMembers"]
