@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1697
+    The version of the OpenAPI document: 22222222.99201.1701
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -613,6 +613,7 @@ class TenantsV2Api:
         mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
+        mask: Annotated[Optional[StrictStr], Field(description="A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -637,6 +638,8 @@ class TenantsV2Api:
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
         :type start: int
+        :param mask: A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"
+        :type mask: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -665,6 +668,7 @@ class TenantsV2Api:
             mask_message=mask_message,
             limit=limit,
             start=start,
+            mask=mask,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -693,6 +697,7 @@ class TenantsV2Api:
         mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
+        mask: Annotated[Optional[StrictStr], Field(description="A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -717,6 +722,8 @@ class TenantsV2Api:
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
         :type start: int
+        :param mask: A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"
+        :type mask: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -745,6 +752,7 @@ class TenantsV2Api:
             mask_message=mask_message,
             limit=limit,
             start=start,
+            mask=mask,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -773,6 +781,7 @@ class TenantsV2Api:
         mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
+        mask: Annotated[Optional[StrictStr], Field(description="A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -797,6 +806,8 @@ class TenantsV2Api:
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
         :type start: int
+        :param mask: A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"
+        :type mask: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -825,6 +836,7 @@ class TenantsV2Api:
             mask_message=mask_message,
             limit=limit,
             start=start,
+            mask=mask,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -847,6 +859,7 @@ class TenantsV2Api:
         mask_message,
         limit,
         start,
+        mask,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -875,6 +888,10 @@ class TenantsV2Api:
         if start is not None:
             
             _query_params.append(('start', start))
+            
+        if mask is not None:
+            
+            _query_params.append(('mask', mask))
             
         # process the header parameters
         if target_tenant_id is not None:
@@ -934,6 +951,7 @@ class TenantsV2Api:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to retrieve.")],
         mask_message: MaskMessage,
+        mask: Annotated[Optional[StrictStr], Field(description="A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -956,6 +974,8 @@ class TenantsV2Api:
         :type tenant_id: str
         :param mask_message: (required)
         :type mask_message: MaskMessage
+        :param mask: A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"
+        :type mask: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -983,6 +1003,7 @@ class TenantsV2Api:
         _param = self._tenant_info_serialize(
             tenant_id=tenant_id,
             mask_message=mask_message,
+            mask=mask,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1010,6 +1031,7 @@ class TenantsV2Api:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to retrieve.")],
         mask_message: MaskMessage,
+        mask: Annotated[Optional[StrictStr], Field(description="A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1032,6 +1054,8 @@ class TenantsV2Api:
         :type tenant_id: str
         :param mask_message: (required)
         :type mask_message: MaskMessage
+        :param mask: A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"
+        :type mask: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1059,6 +1083,7 @@ class TenantsV2Api:
         _param = self._tenant_info_serialize(
             tenant_id=tenant_id,
             mask_message=mask_message,
+            mask=mask,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1086,6 +1111,7 @@ class TenantsV2Api:
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to retrieve.")],
         mask_message: MaskMessage,
+        mask: Annotated[Optional[StrictStr], Field(description="A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1108,6 +1134,8 @@ class TenantsV2Api:
         :type tenant_id: str
         :param mask_message: (required)
         :type mask_message: MaskMessage
+        :param mask: A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"
+        :type mask: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1135,6 +1163,7 @@ class TenantsV2Api:
         _param = self._tenant_info_serialize(
             tenant_id=tenant_id,
             mask_message=mask_message,
+            mask=mask,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1156,6 +1185,7 @@ class TenantsV2Api:
         self,
         tenant_id,
         mask_message,
+        mask,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -1179,6 +1209,10 @@ class TenantsV2Api:
         if tenant_id is not None:
             _path_params['tenantId'] = tenant_id
         # process the query parameters
+        if mask is not None:
+            
+            _query_params.append(('mask', mask))
+            
         # process the header parameters
         if target_tenant_id is not None:
             _header_params['TargetTenantID'] = target_tenant_id

@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1697
+    The version of the OpenAPI document: 22222222.99201.1701
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -343,13 +343,19 @@ class PlanningDataLoadApi:
             _path_params['planId'] = plan_id
         if scenario_id is not None:
             _path_params['scenarioId'] = scenario_id
-        if calculation is not None:
-            _path_params['calculation'] = calculation
-        if currency is not None:
-            _path_params['currency'] = currency
-        if method is not None:
-            _path_params['method'] = method
         # process the query parameters
+        if calculation is not None:
+            
+            _query_params.append(('calculation', calculation))
+            
+        if currency is not None:
+            
+            _query_params.append(('currency', currency))
+            
+        if method is not None:
+            
+            _query_params.append(('method', method))
+            
         # process the header parameters
         if target_tenant_id is not None:
             _header_params['TargetTenantID'] = target_tenant_id
@@ -670,9 +676,11 @@ class PlanningDataLoadApi:
         # process the path parameters
         if plan_id is not None:
             _path_params['planId'] = plan_id
-        if method is not None:
-            _path_params['method'] = method
         # process the query parameters
+        if method is not None:
+            
+            _query_params.append(('method', method))
+            
         # process the header parameters
         if target_tenant_id is not None:
             _header_params['TargetTenantID'] = target_tenant_id

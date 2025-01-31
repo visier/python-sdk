@@ -6,7 +6,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1697
+    The version of the OpenAPI document: 22222222.99201.1701
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -78,6 +78,10 @@ from visier_api_data_out.models.query_parameter_value_dto import QueryParameterV
 from visier_api_data_out.models.query_property_dto import QueryPropertyDTO
 from visier_api_data_out.models.query_time_interval_dto import QueryTimeIntervalDTO
 from visier_api_data_out.models.query_time_intervals_dto import QueryTimeIntervalsDTO
+from visier_api_data_out.models.report_create_request_dto import ReportCreateRequestDTO
+from visier_api_data_out.models.report_dto import ReportDTO
+from visier_api_data_out.models.report_delete_success_dto import ReportDeleteSuccessDTO
+from visier_api_data_out.models.report_list_response_dto import ReportListResponseDTO
 from visier_api_data_out.models.selection_concept_reference_dto import SelectionConceptReferenceDTO
 from visier_api_data_out.models.simple_document_header_search_response_dto import SimpleDocumentHeaderSearchResponseDTO
 from visier_api_data_out.models.simple_document_header_search_result_dto import SimpleDocumentHeaderSearchResultDTO
@@ -101,7 +105,6 @@ from visier_api_data_out.models.vee_response_schema_dto import VeeResponseSchema
 from visier_api_data_out.models.vee_response_schema_reference_dto import VeeResponseSchemaReferenceDTO
 from visier_api_data_out.models.vee_sample_question_dto import VeeSampleQuestionDTO
 from visier_api_data_out.models.vee_sample_question_library_dto import VeeSampleQuestionLibraryDTO
-from visier_api_data_out.models.vee_sample_question_metadata_dto import VeeSampleQuestionMetadataDTO
 from visier_api_data_out.models.vee_status_code_dto import VeeStatusCodeDTO
 from visier_api_data_out.models.vee_status_dto import VeeStatusDTO
 from visier_api_data_out.models.vee_visual_dto import VeeVisualDTO

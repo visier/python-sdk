@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1697
+    The version of the OpenAPI document: 22222222.99201.1701
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -649,7 +649,7 @@ class VeeApi:
     ) -> VeeSampleQuestionLibraryDTO:
         """Retrieve a list of sample questions to ask Vee
 
-        Get a list of sample questions to help your users start using Vee. The response returns a list of questions, such as \"What is the turnover rate?\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Get a list of sample questions to help you start using Vee. The response returns a list of questions that you can ask Vee, such as \"What is the turnover rate?\".  You may occasionally encounter a sample question that can't be answered due to data availability or your data access   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
@@ -717,7 +717,7 @@ class VeeApi:
     ) -> ApiResponse[VeeSampleQuestionLibraryDTO]:
         """Retrieve a list of sample questions to ask Vee
 
-        Get a list of sample questions to help your users start using Vee. The response returns a list of questions, such as \"What is the turnover rate?\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Get a list of sample questions to help you start using Vee. The response returns a list of questions that you can ask Vee, such as \"What is the turnover rate?\".  You may occasionally encounter a sample question that can't be answered due to data availability or your data access   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
@@ -785,7 +785,7 @@ class VeeApi:
     ) -> RESTResponseType:
         """Retrieve a list of sample questions to ask Vee
 
-        Get a list of sample questions to help your users start using Vee. The response returns a list of questions, such as \"What is the turnover rate?\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Get a list of sample questions to help you start using Vee. The response returns a list of questions that you can ask Vee, such as \"What is the turnover rate?\".  You may occasionally encounter a sample question that can't be answered due to data availability or your data access   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str

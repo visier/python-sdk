@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1697
+    The version of the OpenAPI document: 22222222.99201.1701
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,7 +21,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_api_data_out.models.vee_sample_question_metadata_dto import VeeSampleQuestionMetadataDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,9 +28,10 @@ class VeeSampleQuestionDTO(BaseModel):
     """
     VeeSampleQuestionDTO
     """ # noqa: E501
-    metadata: Optional[VeeSampleQuestionMetadataDTO] = Field(default=None, description="Details about the sample question, such as what categories the question belongs to.")
+    category_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the question category.", alias="categoryId")
     question: Optional[StrictStr] = Field(default=None, description="A question in plain language.")
-    __properties: ClassVar[List[str]] = ["metadata", "question"]
+    question_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the sample question.", alias="questionId")
+    __properties: ClassVar[List[str]] = ["categoryId", "question", "questionId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,9 +72,6 @@ class VeeSampleQuestionDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of metadata
-        if self.metadata:
-            _dict['metadata'] = self.metadata.to_dict()
         return _dict
 
     @classmethod
@@ -87,8 +84,9 @@ class VeeSampleQuestionDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "metadata": VeeSampleQuestionMetadataDTO.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None,
-            "question": obj.get("question")
+            "categoryId": obj.get("categoryId"),
+            "question": obj.get("question"),
+            "questionId": obj.get("questionId")
         })
         return _obj
 
