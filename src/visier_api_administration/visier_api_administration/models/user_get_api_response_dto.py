@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1697
+    The version of the OpenAPI document: 22222222.99201.1701
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -38,7 +38,7 @@ class UserGetAPIResponseDTO(BaseModel):
     employee_id: Optional[StrictStr] = Field(default=None, description="If applicable, and if available, the user employee ID in the data.", alias="employeeId")
     last_login: Optional[LastLoginDTO] = Field(default=None, description="An object that represents the time that the user last logged into Visier.", alias="lastLogin")
     permissions: Optional[AllPermissionsAssignedForLocalTenantDTO] = Field(default=None, description="A list of objects representing the user's permissions.")
-    profiles: Optional[AllProfileAssignedForLocalTenantDTO] = Field(default=None, description="A list of objects representing the list of available profiles.")
+    profiles: Optional[AllProfileAssignedForLocalTenantDTO] = Field(default=None, description="A list of objects representing the list of available profiles. Not returned if the user has no profiles.")
     user_groups: Optional[AllUserGroupsAssignedForLocalTenantDTO] = Field(default=None, description="A list of objects representing the available user groups.", alias="userGroups")
     user_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the user.", alias="userId")
     username: Optional[StrictStr] = Field(default=None, description="The user's username. This is typically the user's email, such as john@jupiter.com.")

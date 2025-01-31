@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1697
+    The version of the OpenAPI document: 22222222.99201.1701
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -17,10 +17,10 @@
 import unittest
 
 import visier_api_data_out.models
-from visier_api_data_out.models.vee_sample_question_metadata_dto import VeeSampleQuestionMetadataDTO
+from visier_api_data_out.models.report_create_request_dto import ReportCreateRequestDTO
 
-class TestVeeSampleQuestionMetadataDTO(unittest.TestCase):
-    """VeeSampleQuestionMetadataDTO unit test stubs"""
+class TestReportCreateRequestDTO(unittest.TestCase):
+    """ReportCreateRequestDTO unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,27 +28,26 @@ class TestVeeSampleQuestionMetadataDTO(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> VeeSampleQuestionMetadataDTO:
-        """Test VeeSampleQuestionMetadataDTO
+    def make_instance(self, include_optional) -> ReportCreateRequestDTO:
+        """Test ReportCreateRequestDTO
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
 
         if include_optional:
-            return VeeSampleQuestionMetadataDTO(
-                categories = [
-                    ''
-                    ]
+            return ReportCreateRequestDTO(
+                description = '',
+                title = ''
             )
         else:
-            return VeeSampleQuestionMetadataDTO(
+            return ReportCreateRequestDTO(
         )
 
-    def testVeeSampleQuestionMetadataDTO(self):
-        """Test VeeSampleQuestionMetadataDTO"""
+    def testReportCreateRequestDTO(self):
+        """Test ReportCreateRequestDTO"""
         def validate_instance(instance):
-            VeeSampleQuestionMetadataDTO.model_validate(inst_req_only)
-            instance_deserialized = VeeSampleQuestionMetadataDTO.from_dict(instance.to_dict())
+            ReportCreateRequestDTO.model_validate(inst_req_only)
+            instance_deserialized = ReportCreateRequestDTO.from_dict(instance.to_dict())
             assert instance == instance_deserialized
 
         inst_req_only = self.make_instance(include_optional=False)

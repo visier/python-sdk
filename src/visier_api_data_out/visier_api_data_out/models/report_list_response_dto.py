@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1697
+    The version of the OpenAPI document: 22222222.99201.1701
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -19,17 +19,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from visier_api_data_out.models.report_dto import ReportDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
-class VeeSampleQuestionMetadataDTO(BaseModel):
+class ReportListResponseDTO(BaseModel):
     """
-    VeeSampleQuestionMetadataDTO
+    The information of all the reports you have access to in your tenant.
     """ # noqa: E501
-    categories: Optional[List[StrictStr]] = Field(default=None, description="A list of topics that the sample question relates to.")
-    __properties: ClassVar[List[str]] = ["categories"]
+    reports: Optional[List[ReportDTO]] = Field(default=None, description="A list of reports.")
+    __properties: ClassVar[List[str]] = ["reports"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +50,7 @@ class VeeSampleQuestionMetadataDTO(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of VeeSampleQuestionMetadataDTO from a JSON string"""
+        """Create an instance of ReportListResponseDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,11 +71,18 @@ class VeeSampleQuestionMetadataDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in reports (list)
+        _items = []
+        if self.reports:
+            for _item_reports in self.reports:
+                if _item_reports:
+                    _items.append(_item_reports.to_dict())
+            _dict['reports'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of VeeSampleQuestionMetadataDTO from a dict"""
+        """Create an instance of ReportListResponseDTO from a dict"""
         if obj is None:
             return None
 
@@ -82,7 +90,7 @@ class VeeSampleQuestionMetadataDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "categories": obj.get("categories")
+            "reports": [ReportDTO.from_dict(_item) for _item in obj["reports"]] if obj.get("reports") is not None else None
         })
         return _obj
 
