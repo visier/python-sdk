@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1701
+    The version of the OpenAPI document: 22222222.99201.1725
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -363,6 +363,7 @@ class UsersV1Api:
         users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -378,7 +379,7 @@ class UsersV1Api:
     ) -> SecurityAssignmentResponseDTO:
         """Assign users to user groups
 
-        This API allows you to assign users to specific user groups.   To assign users to user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can assign users to user groups in analytic tenants by providing a tenant code and project ID in the request body.
+        This API allows you to assign users to specific user groups.   To assign users to user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can assign users to user groups in multiple analytic tenants by providing a tenant code and project ID in the request body.   We recommend that administrating tenants set the analytic tenant in which to execute the API call using the `TargetTenantID` request header.
 
         :param users_to_user_groups_request_dto: (required)
         :type users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO
@@ -386,6 +387,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -412,6 +415,7 @@ class UsersV1Api:
             users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -439,6 +443,7 @@ class UsersV1Api:
         users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -454,7 +459,7 @@ class UsersV1Api:
     ) -> ApiResponse[SecurityAssignmentResponseDTO]:
         """Assign users to user groups
 
-        This API allows you to assign users to specific user groups.   To assign users to user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can assign users to user groups in analytic tenants by providing a tenant code and project ID in the request body.
+        This API allows you to assign users to specific user groups.   To assign users to user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can assign users to user groups in multiple analytic tenants by providing a tenant code and project ID in the request body.   We recommend that administrating tenants set the analytic tenant in which to execute the API call using the `TargetTenantID` request header.
 
         :param users_to_user_groups_request_dto: (required)
         :type users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO
@@ -462,6 +467,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -488,6 +495,7 @@ class UsersV1Api:
             users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -515,6 +523,7 @@ class UsersV1Api:
         users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -530,7 +539,7 @@ class UsersV1Api:
     ) -> RESTResponseType:
         """Assign users to user groups
 
-        This API allows you to assign users to specific user groups.   To assign users to user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can assign users to user groups in analytic tenants by providing a tenant code and project ID in the request body.
+        This API allows you to assign users to specific user groups.   To assign users to user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can assign users to user groups in multiple analytic tenants by providing a tenant code and project ID in the request body.   We recommend that administrating tenants set the analytic tenant in which to execute the API call using the `TargetTenantID` request header.
 
         :param users_to_user_groups_request_dto: (required)
         :type users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO
@@ -538,6 +547,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -564,6 +575,7 @@ class UsersV1Api:
             users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -585,6 +597,7 @@ class UsersV1Api:
         users_to_user_groups_request_dto,
         project_id,
         target_tenant_id,
+        non_versioned,
         _request_auth,
         _content_type,
         _headers,
@@ -610,6 +623,8 @@ class UsersV1Api:
             _header_params['ProjectID'] = project_id
         if target_tenant_id is not None:
             _header_params['TargetTenantID'] = target_tenant_id
+        if non_versioned is not None:
+            _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
         if users_to_user_groups_request_dto is not None:
@@ -666,6 +681,7 @@ class UsersV1Api:
         assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -689,6 +705,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -715,6 +733,7 @@ class UsersV1Api:
             assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -742,6 +761,7 @@ class UsersV1Api:
         assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -765,6 +785,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -791,6 +813,7 @@ class UsersV1Api:
             assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -818,6 +841,7 @@ class UsersV1Api:
         assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -841,6 +865,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -867,6 +893,7 @@ class UsersV1Api:
             assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -888,6 +915,7 @@ class UsersV1Api:
         assign_revoke_permissions_request_dto,
         project_id,
         target_tenant_id,
+        non_versioned,
         _request_auth,
         _content_type,
         _headers,
@@ -913,6 +941,8 @@ class UsersV1Api:
             _header_params['ProjectID'] = project_id
         if target_tenant_id is not None:
             _header_params['TargetTenantID'] = target_tenant_id
+        if non_versioned is not None:
+            _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
         if assign_revoke_permissions_request_dto is not None:
@@ -3154,6 +3184,7 @@ class UsersV1Api:
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3185,6 +3216,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3215,6 +3248,7 @@ class UsersV1Api:
             start=start,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3246,6 +3280,7 @@ class UsersV1Api:
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3277,6 +3312,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3307,6 +3344,7 @@ class UsersV1Api:
             start=start,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3338,6 +3376,7 @@ class UsersV1Api:
         start: Annotated[Optional[StrictInt], Field(description="The index to start retrieving results from, also known as offset. The index begins at 0.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3369,6 +3408,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3399,6 +3440,7 @@ class UsersV1Api:
             start=start,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3424,6 +3466,7 @@ class UsersV1Api:
         start,
         project_id,
         target_tenant_id,
+        non_versioned,
         _request_auth,
         _content_type,
         _headers,
@@ -3467,6 +3510,8 @@ class UsersV1Api:
             _header_params['ProjectID'] = project_id
         if target_tenant_id is not None:
             _header_params['TargetTenantID'] = target_tenant_id
+        if non_versioned is not None:
+            _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
 
@@ -4763,6 +4808,7 @@ class UsersV1Api:
         assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4786,6 +4832,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4812,6 +4860,7 @@ class UsersV1Api:
             assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4839,6 +4888,7 @@ class UsersV1Api:
         assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4862,6 +4912,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4888,6 +4940,7 @@ class UsersV1Api:
             assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4915,6 +4968,7 @@ class UsersV1Api:
         assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4938,6 +4992,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4964,6 +5020,7 @@ class UsersV1Api:
             assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4985,6 +5042,7 @@ class UsersV1Api:
         assign_revoke_permissions_request_dto,
         project_id,
         target_tenant_id,
+        non_versioned,
         _request_auth,
         _content_type,
         _headers,
@@ -5010,6 +5068,8 @@ class UsersV1Api:
             _header_params['ProjectID'] = project_id
         if target_tenant_id is not None:
             _header_params['TargetTenantID'] = target_tenant_id
+        if non_versioned is not None:
+            _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
         if assign_revoke_permissions_request_dto is not None:
@@ -5066,6 +5126,7 @@ class UsersV1Api:
         users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5081,7 +5142,7 @@ class UsersV1Api:
     ) -> SecurityAssignmentResponseDTO:
         """Remove users from user groups
 
-        This API allows you to remove users from specific user groups.   To remove users from user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can remove users to user groups in analytic tenants by providing a tenant code and project ID in the request body.
+        This API allows you to remove users from specific user groups.   To remove users from user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can remove users to user groups in multiple analytic tenants by providing a tenant code and project ID in the request body.   We recommend that administrating tenants set the analytic tenant in which to execute the API call using the `TargetTenantID` request header.
 
         :param users_to_user_groups_request_dto: (required)
         :type users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO
@@ -5089,6 +5150,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5115,6 +5178,7 @@ class UsersV1Api:
             users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5142,6 +5206,7 @@ class UsersV1Api:
         users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5157,7 +5222,7 @@ class UsersV1Api:
     ) -> ApiResponse[SecurityAssignmentResponseDTO]:
         """Remove users from user groups
 
-        This API allows you to remove users from specific user groups.   To remove users from user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can remove users to user groups in analytic tenants by providing a tenant code and project ID in the request body.
+        This API allows you to remove users from specific user groups.   To remove users from user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can remove users to user groups in multiple analytic tenants by providing a tenant code and project ID in the request body.   We recommend that administrating tenants set the analytic tenant in which to execute the API call using the `TargetTenantID` request header.
 
         :param users_to_user_groups_request_dto: (required)
         :type users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO
@@ -5165,6 +5230,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5191,6 +5258,7 @@ class UsersV1Api:
             users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5218,6 +5286,7 @@ class UsersV1Api:
         users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5233,7 +5302,7 @@ class UsersV1Api:
     ) -> RESTResponseType:
         """Remove users from user groups
 
-        This API allows you to remove users from specific user groups.   To remove users from user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can remove users to user groups in analytic tenants by providing a tenant code and project ID in the request body.
+        This API allows you to remove users from specific user groups.   To remove users from user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can remove users to user groups in multiple analytic tenants by providing a tenant code and project ID in the request body.   We recommend that administrating tenants set the analytic tenant in which to execute the API call using the `TargetTenantID` request header.
 
         :param users_to_user_groups_request_dto: (required)
         :type users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO
@@ -5241,6 +5310,8 @@ class UsersV1Api:
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5267,6 +5338,7 @@ class UsersV1Api:
             users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5288,6 +5360,7 @@ class UsersV1Api:
         users_to_user_groups_request_dto,
         project_id,
         target_tenant_id,
+        non_versioned,
         _request_auth,
         _content_type,
         _headers,
@@ -5313,6 +5386,8 @@ class UsersV1Api:
             _header_params['ProjectID'] = project_id
         if target_tenant_id is not None:
             _header_params['TargetTenantID'] = target_tenant_id
+        if non_versioned is not None:
+            _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
         if users_to_user_groups_request_dto is not None:

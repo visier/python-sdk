@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1701
+    The version of the OpenAPI document: 22222222.99201.1725
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -58,6 +58,7 @@ class PermissionsApi:
         create_data_access_set_request_dto: CreateDataAccessSetRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -81,6 +82,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -107,6 +110,7 @@ class PermissionsApi:
             create_data_access_set_request_dto=create_data_access_set_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -134,6 +138,7 @@ class PermissionsApi:
         create_data_access_set_request_dto: CreateDataAccessSetRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -157,6 +162,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -183,6 +190,7 @@ class PermissionsApi:
             create_data_access_set_request_dto=create_data_access_set_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -210,6 +218,7 @@ class PermissionsApi:
         create_data_access_set_request_dto: CreateDataAccessSetRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -233,6 +242,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -259,6 +270,7 @@ class PermissionsApi:
             create_data_access_set_request_dto=create_data_access_set_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -280,6 +292,7 @@ class PermissionsApi:
         create_data_access_set_request_dto,
         target_tenant_id,
         project_id,
+        non_versioned,
         _request_auth,
         _content_type,
         _headers,
@@ -305,6 +318,8 @@ class PermissionsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         if project_id is not None:
             _header_params['ProjectID'] = project_id
+        if non_versioned is not None:
+            _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
         if create_data_access_set_request_dto is not None:
@@ -362,6 +377,7 @@ class PermissionsApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create permissions in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -387,6 +403,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -414,6 +432,7 @@ class PermissionsApi:
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -442,6 +461,7 @@ class PermissionsApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create permissions in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -467,6 +487,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -494,6 +516,7 @@ class PermissionsApi:
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -522,6 +545,7 @@ class PermissionsApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create permissions in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -547,6 +571,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -574,6 +600,7 @@ class PermissionsApi:
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -596,6 +623,7 @@ class PermissionsApi:
         tenant_code,
         target_tenant_id,
         project_id,
+        non_versioned,
         _request_auth,
         _content_type,
         _headers,
@@ -625,6 +653,8 @@ class PermissionsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         if project_id is not None:
             _header_params['ProjectID'] = project_id
+        if non_versioned is not None:
+            _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
         if permissions_list_dto is not None:
@@ -2216,6 +2246,7 @@ class PermissionsApi:
         data_access_set_id: Annotated[StrictStr, Field(description="The unique identifier of the data access set you want to retrieve.")],
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2239,6 +2270,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2265,6 +2298,7 @@ class PermissionsApi:
             data_access_set_id=data_access_set_id,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2292,6 +2326,7 @@ class PermissionsApi:
         data_access_set_id: Annotated[StrictStr, Field(description="The unique identifier of the data access set you want to retrieve.")],
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2315,6 +2350,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2341,6 +2378,7 @@ class PermissionsApi:
             data_access_set_id=data_access_set_id,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2368,6 +2406,7 @@ class PermissionsApi:
         data_access_set_id: Annotated[StrictStr, Field(description="The unique identifier of the data access set you want to retrieve.")],
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2391,6 +2430,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2417,6 +2458,7 @@ class PermissionsApi:
             data_access_set_id=data_access_set_id,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2438,6 +2480,7 @@ class PermissionsApi:
         data_access_set_id,
         target_tenant_id,
         project_id,
+        non_versioned,
         _request_auth,
         _content_type,
         _headers,
@@ -2465,6 +2508,8 @@ class PermissionsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         if project_id is not None:
             _header_params['ProjectID'] = project_id
+        if non_versioned is not None:
+            _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
 
@@ -2508,6 +2553,7 @@ class PermissionsApi:
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of data access sets to return. Default is 100. Maximum is 1000.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2535,6 +2581,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2563,6 +2611,7 @@ class PermissionsApi:
             limit=limit,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2592,6 +2641,7 @@ class PermissionsApi:
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of data access sets to return. Default is 100. Maximum is 1000.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2619,6 +2669,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2647,6 +2699,7 @@ class PermissionsApi:
             limit=limit,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2676,6 +2729,7 @@ class PermissionsApi:
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of data access sets to return. Default is 100. Maximum is 1000.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2703,6 +2757,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2731,6 +2787,7 @@ class PermissionsApi:
             limit=limit,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2754,6 +2811,7 @@ class PermissionsApi:
         limit,
         target_tenant_id,
         project_id,
+        non_versioned,
         _request_auth,
         _content_type,
         _headers,
@@ -2792,6 +2850,8 @@ class PermissionsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         if project_id is not None:
             _header_params['ProjectID'] = project_id
+        if non_versioned is not None:
+            _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
 
@@ -3162,6 +3222,7 @@ class PermissionsApi:
         include_details_with_status: Annotated[Optional[StrictStr], Field(description="If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3189,6 +3250,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3217,6 +3280,7 @@ class PermissionsApi:
             include_details_with_status=include_details_with_status,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3246,6 +3310,7 @@ class PermissionsApi:
         include_details_with_status: Annotated[Optional[StrictStr], Field(description="If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3273,6 +3338,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3301,6 +3368,7 @@ class PermissionsApi:
             include_details_with_status=include_details_with_status,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3330,6 +3398,7 @@ class PermissionsApi:
         include_details_with_status: Annotated[Optional[StrictStr], Field(description="If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3357,6 +3426,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3385,6 +3456,7 @@ class PermissionsApi:
             include_details_with_status=include_details_with_status,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3408,6 +3480,7 @@ class PermissionsApi:
         include_details_with_status,
         target_tenant_id,
         project_id,
+        non_versioned,
         _request_auth,
         _content_type,
         _headers,
@@ -3443,6 +3516,8 @@ class PermissionsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         if project_id is not None:
             _header_params['ProjectID'] = project_id
+        if non_versioned is not None:
+            _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
 
@@ -3486,6 +3561,7 @@ class PermissionsApi:
         include_details_with_status: Annotated[Optional[StrictBool], Field(description="If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3513,6 +3589,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3541,6 +3619,7 @@ class PermissionsApi:
             include_details_with_status=include_details_with_status,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3570,6 +3649,7 @@ class PermissionsApi:
         include_details_with_status: Annotated[Optional[StrictBool], Field(description="If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3597,6 +3677,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3625,6 +3707,7 @@ class PermissionsApi:
             include_details_with_status=include_details_with_status,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3654,6 +3737,7 @@ class PermissionsApi:
         include_details_with_status: Annotated[Optional[StrictBool], Field(description="If `true`, returns the validity statuses for the permission's properties in data access sets and the  permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,  doesn't return validity status information. Default is `false`.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3681,6 +3765,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3709,6 +3795,7 @@ class PermissionsApi:
             include_details_with_status=include_details_with_status,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3732,6 +3819,7 @@ class PermissionsApi:
         include_details_with_status,
         target_tenant_id,
         project_id,
+        non_versioned,
         _request_auth,
         _content_type,
         _headers,
@@ -3769,6 +3857,8 @@ class PermissionsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         if project_id is not None:
             _header_params['ProjectID'] = project_id
+        if non_versioned is not None:
+            _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
 
@@ -3811,6 +3901,7 @@ class PermissionsApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update permissions in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3836,6 +3927,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3863,6 +3956,7 @@ class PermissionsApi:
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3891,6 +3985,7 @@ class PermissionsApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update permissions in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3916,6 +4011,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3943,6 +4040,7 @@ class PermissionsApi:
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3971,6 +4069,7 @@ class PermissionsApi:
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update permissions in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
+        non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3996,6 +4095,8 @@ class PermissionsApi:
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
         :type project_id: str
+        :param non_versioned: If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        :type non_versioned: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4023,6 +4124,7 @@ class PermissionsApi:
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
+            non_versioned=non_versioned,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4045,6 +4147,7 @@ class PermissionsApi:
         tenant_code,
         target_tenant_id,
         project_id,
+        non_versioned,
         _request_auth,
         _content_type,
         _headers,
@@ -4074,6 +4177,8 @@ class PermissionsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         if project_id is not None:
             _header_params['ProjectID'] = project_id
+        if non_versioned is not None:
+            _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
         if permissions_list_dto is not None:

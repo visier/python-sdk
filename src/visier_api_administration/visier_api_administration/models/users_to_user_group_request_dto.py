@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1701
+    The version of the OpenAPI document: 22222222.99201.1725
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,7 +29,7 @@ class UsersToUserGroupRequestDTO(BaseModel):
     UsersToUserGroupRequestDTO
     """ # noqa: E501
     user_group_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the user group.", alias="userGroupId")
-    user_ids: Optional[List[StrictStr]] = Field(default=None, description="A list of strings representing unique user IDs to assign to or remove from the user group.", alias="userIds")
+    user_ids: Optional[List[StrictStr]] = Field(default=None, description="A list of strings representing unique user IDs to assign to or remove from the user group. The maximum number of `userIds` per user group is 100.", alias="userIds")
     __properties: ClassVar[List[str]] = ["userGroupId", "userIds"]
 
     model_config = ConfigDict(

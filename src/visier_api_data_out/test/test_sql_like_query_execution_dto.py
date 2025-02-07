@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1701
+    The version of the OpenAPI document: 22222222.99201.1725
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -37,6 +37,7 @@ class TestSqlLikeQueryExecutionDTO(unittest.TestCase):
         if include_optional:
             return SqlLikeQueryExecutionDTO(
                 options = visier_api_data_out.models.query_execution_options_dto.QueryExecutionOptionsDTO(
+                    axes_overall_value_mode = 'NONE', 
                     axis_visibility = 'SIMPLE', 
                     calendar_type = 'TENANT_CALENDAR', 
                     cell_distribution_options = visier_api_data_out.models.cell_distribution_options_dto.CellDistributionOptionsDTO(
