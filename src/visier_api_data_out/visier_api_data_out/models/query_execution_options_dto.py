@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1701
+    The version of the OpenAPI document: 22222222.99201.1725
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -30,6 +30,7 @@ class QueryExecutionOptionsDTO(BaseModel):
     """
     A QueryExecutionOptions provides additional instructions to perform a query.
     """ # noqa: E501
+    axes_overall_value_mode: Optional[StrictStr] = Field(default=None, description="If `axes` is defined, use `axesOverallValueMode` to specify the type of overall values to return across the axes. Valid values:   * `NONE`: Returns the metric's values for the selected axes and doesn't return overall values. This is the default.  * `AGGREGATE`: Returns the metric's overall values for the selected axes members.  * `OVERALL`: Returns the metric's overall values for all axes members.   **Note**: `AGGREGATE` is not supported for lookup overlays because the overall values of selected members cannot be calculated directly from the data.   Example: Let's say you want to know the Headcount of the locations Canada and US and the genders Male and Female.    When `axesOverallValueMode` is `NONE`, the query returns these values:  * 100 (Canada, Male)  * 100 (US, Male)  * 100 (Canada, Female)  * 100 (US, Female)    When `axesOverallValueMode` is `AGGREGATE`, the query returns these values:  * 100 (Canada, Male)  * 100 (US, Male)  * 100 (Canada, Female)  * 100 (US, Female)  * 400 (Overall, Overall)  * 200 (Overall, Male)  * 200 (Overall, Female)  * 200 (Canada, Overall)  * 200 (US, Overall)   When `axesOverallValueMode` is `OVERALL`, the query returns these values:  * 100 (Canada, Male)  * 100 (US, Male)  * 100 (Canada, Female)  * 100 (US, Female)  * 800 (Overall, Overall)  * 400 (Overall, Male)  * 400 (Overall, Female)  * 400 (Canada, Overall)  * 400 (US, Overall)    In this example, `OVERALL` returns higher overall values than `AGGREGATE` because `AGGREGATE` returns the overall values for the selected locations (Canada, US) and genders (Male, Female), whereas `OVERALL` returns the overall values across all locations and genders in the data.", alias="axesOverallValueMode")
     axis_visibility: Optional[StrictStr] = Field(default=None, description="The amount of information to return about each axis. Default is SIMPLE.", alias="axisVisibility")
     calendar_type: Optional[StrictStr] = Field(default=None, description="The calendar type to use. This will be used for all time calculations unless explicitly overridden in  the calculation itself. Default is TENANT_CALENDAR.", alias="calendarType")
     cell_distribution_options: Optional[CellDistributionOptionsDTO] = Field(default=None, alias="cellDistributionOptions")
@@ -43,7 +44,17 @@ class QueryExecutionOptionsDTO(BaseModel):
     member_display_mode: Optional[StrictStr] = Field(default=None, description="Control how member values are displayed. You can override the `memberDisplayMode` on a per-axis basis, if required.   Valid values are `DEFAULT`, `COMPACT`, `DISPLAY`, or `MDX`. Default is `DEFAULT`.   * `DEFAULT`: The default member name representation. For non-time members, this returns the technical member name path.    For time members, this includes a bracketed member index.    For example, Time instant member: `2019-06-01T00:00:00.000Z - [0]`    For example, Time interval member: `2022-06-01T00:00:00.000Z/2022-07-01T00:00:00.000Z - [12]`  * `COMPACT`: Shortens the member name representation. For time intervals, the member name is the end time of the interval.     For example, Time instant member: `2019-06-01T00:00:00.000Z`     For example, Time interval member: `2022-07-01T00:00:00.000Z` where the interval member name was `2022-06-01T00:00:00.000Z/2022-07-01T00:00:00.000Z - [12]`  * `DISPLAY`: Emits the members' display names whenever possible. When combined with `axisVisibility = VERBOSE`, the full display name path will be emitted.  * `MDX`: Emits member name paths where each element is enclosed in square brackets, `[]`. Multidimensional expression (MDX) display mode automatically encloses time members in square brackets and puts them in `COMPACT` format.    For example, Location member `North America.United States.California` becomes `[North America].[United States].[California]` in MDX display mode.    For example, Time instant member `2019-06-01T00:00:00.000Z - [0]` becomes `[2019-06-01T00:00:00.000Z]` in MDX display mode.  * `COMPACT_DISPLAY`: Emit the members' display names after compacting. This applies primarily to time members for event-based metrics. Compact display is required when    running multi-metric queries containing both event-based and subject-based metrics. Multi-metric queries with `DISPLAY` mode are changed    automatically to `COMPACT_DISPLAY`.    For example, Time interval member `2022-06-01T00:00:00.000Z/2022-07-01T00:00:00.000Z - [12]` becomes `Jun 30, 2022` in `COMPACT_DISPLAY` mode.    The exact format of the compacted time member display name depends on the the user's locale.", alias="memberDisplayMode")
     null_visibility: Optional[StrictStr] = Field(default=None, description="Show or hide null or N/A values in the result. Default is SHOW.", alias="nullVisibility")
     zero_visibility: Optional[StrictStr] = Field(default=None, description="Show or hide zeros in the result. Default is SHOW.", alias="zeroVisibility")
-    __properties: ClassVar[List[str]] = ["axisVisibility", "calendarType", "cellDistributionOptions", "currencyConversionCode", "currencyConversionDate", "currencyConversionMode", "enableDescendingSpace", "enableSparseResults", "internal", "lineageDepth", "memberDisplayMode", "nullVisibility", "zeroVisibility"]
+    __properties: ClassVar[List[str]] = ["axesOverallValueMode", "axisVisibility", "calendarType", "cellDistributionOptions", "currencyConversionCode", "currencyConversionDate", "currencyConversionMode", "enableDescendingSpace", "enableSparseResults", "internal", "lineageDepth", "memberDisplayMode", "nullVisibility", "zeroVisibility"]
+
+    @field_validator('axes_overall_value_mode')
+    def axes_overall_value_mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['NONE', 'AGGREGATE', 'OVERALL']):
+            raise ValueError("must be one of enum values ('NONE', 'AGGREGATE', 'OVERALL')")
+        return value
 
     @field_validator('axis_visibility')
     def axis_visibility_validate_enum(cls, value):
@@ -162,6 +173,7 @@ class QueryExecutionOptionsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "axesOverallValueMode": obj.get("axesOverallValueMode"),
             "axisVisibility": obj.get("axisVisibility"),
             "calendarType": obj.get("calendarType"),
             "cellDistributionOptions": CellDistributionOptionsDTO.from_dict(obj["cellDistributionOptions"]) if obj.get("cellDistributionOptions") is not None else None,
