@@ -7,7 +7,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1725
+    The version of the OpenAPI document: 22222222.99201.1739
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,11 +16,12 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1725"
+__version__ = "0.99201.1739"
 
 # import apis into sdk package
 from visier_api_administration.api.consolidated_analytics_api import ConsolidatedAnalyticsApi
 from visier_api_administration.api.email_domains_api import EmailDomainsApi
+from visier_api_administration.api.encryption_keys_api import EncryptionKeysApi
 from visier_api_administration.api.permissions_api import PermissionsApi
 from visier_api_administration.api.production_versions_api import ProductionVersionsApi
 from visier_api_administration.api.profiles_api import ProfilesApi
@@ -89,6 +90,7 @@ from visier_api_administration.models.export_production_versions_api_operation_p
 from visier_api_administration.models.failed_accessible_tenant_profile_assignment_dto import FailedAccessibleTenantProfileAssignmentDTO
 from visier_api_administration.models.failed_local_tenant_profile_assignment_dto import FailedLocalTenantProfileAssignmentDTO
 from visier_api_administration.models.failed_local_tenant_profile_revoke_dto import FailedLocalTenantProfileRevokeDTO
+from visier_api_administration.models.generate_key_request_dto import GenerateKeyRequestDTO
 from visier_api_administration.models.get_capabilities_api_response_dto import GetCapabilitiesAPIResponseDTO
 from visier_api_administration.models.get_content_packages_api_response_dto import GetContentPackagesAPIResponseDTO
 from visier_api_administration.models.get_data_access_sets_api_response_dto import GetDataAccessSetsAPIResponseDTO
@@ -101,6 +103,7 @@ from visier_api_administration.models.hierarchy_property_dto import HierarchyPro
 from visier_api_administration.models.home_analysis_by_user_group_dto import HomeAnalysisByUserGroupDTO
 from visier_api_administration.models.inherited_access_config_dto import InheritedAccessConfigDTO
 from visier_api_administration.models.inherited_reference_member_filter_config_dto import InheritedReferenceMemberFilterConfigDTO
+from visier_api_administration.models.key_name import KeyName
 from visier_api_administration.models.last_login_dto import LastLoginDTO
 from visier_api_administration.models.local_tenant_profile_assignment_request_dto import LocalTenantProfileAssignmentRequestDTO
 from visier_api_administration.models.local_tenant_profile_assignment_response_dto import LocalTenantProfileAssignmentResponseDTO
@@ -165,6 +168,8 @@ from visier_api_administration.models.tenant_assignments_dto import TenantAssign
 from visier_api_administration.models.tenant_code_body import TenantCodeBody
 from visier_api_administration.models.tenant_code_error_dto import TenantCodeErrorDTO
 from visier_api_administration.models.tenant_detail_apidto import TenantDetailAPIDTO
+from visier_api_administration.models.tenant_encryption_key_dto import TenantEncryptionKeyDTO
+from visier_api_administration.models.tenant_encryption_key_details_dto import TenantEncryptionKeyDetailsDTO
 from visier_api_administration.models.tenant_management_api_get_response_dto import TenantManagementAPIGetResponseDTO
 from visier_api_administration.models.tenant_management_api_list_response_dto import TenantManagementAPIListResponseDTO
 from visier_api_administration.models.tenant_management_api_update_request_dto import TenantManagementAPIUpdateRequestDTO
