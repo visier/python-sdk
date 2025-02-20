@@ -23,10 +23,10 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "visier-api-core"
-VERSION = "0.99201.1739"
+VERSION = "0.99201.1739.post1"
 PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
-    "urllib3 >= 1.25.3, < 2.1.0",
+    "urllib3 >= 1.25.3, < 3.0.0",
     "python-dateutil",
     "Flask >= 3.0.0",
     "pydantic >= 2",
