@@ -23,10 +23,10 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "visier-api-administration"
-VERSION = "0.99201.1739"
+VERSION = "0.99201.1739.post1"
 PYTHON_REQUIRES = ">=3.8"
 REQUIRES = [
-    "visier-api-core ~= 0.99201.1739",
+    "visier-api-core ~= 0.99201.1739.post1",
 ]
 
 setup(
