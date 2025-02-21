@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1739
+    The version of the OpenAPI document: 22222222.99201.1744
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -63,7 +63,7 @@ class UsersV2Api:
     ) -> UsersAPIResponseDTO:
         """Add users
 
-        Create new users. Administrating tenant users can specify the tenant in which to add these users.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Create new users. Administrating tenant users can specify the tenant in which to add these users.
 
         :param users_creation_api_request_dto: (required)
         :type users_creation_api_request_dto: UsersCreationAPIRequestDTO
@@ -139,7 +139,7 @@ class UsersV2Api:
     ) -> ApiResponse[UsersAPIResponseDTO]:
         """Add users
 
-        Create new users. Administrating tenant users can specify the tenant in which to add these users.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Create new users. Administrating tenant users can specify the tenant in which to add these users.
 
         :param users_creation_api_request_dto: (required)
         :type users_creation_api_request_dto: UsersCreationAPIRequestDTO
@@ -215,7 +215,7 @@ class UsersV2Api:
     ) -> RESTResponseType:
         """Add users
 
-        Create new users. Administrating tenant users can specify the tenant in which to add these users.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Create new users. Administrating tenant users can specify the tenant in which to add these users.
 
         :param users_creation_api_request_dto: (required)
         :type users_creation_api_request_dto: UsersCreationAPIRequestDTO
@@ -368,7 +368,7 @@ class UsersV2Api:
     ) -> UsersAPIResponseDTO:
         """Delete users
 
-        Delete an existing user. Administrating tenant users can specify the tenant from which to delete a user.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Delete an existing user. Administrating tenant users can specify the tenant from which to delete a user.
 
         :param users_delete_api_request_dto: (required)
         :type users_delete_api_request_dto: UsersDeleteAPIRequestDTO
@@ -444,7 +444,7 @@ class UsersV2Api:
     ) -> ApiResponse[UsersAPIResponseDTO]:
         """Delete users
 
-        Delete an existing user. Administrating tenant users can specify the tenant from which to delete a user.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Delete an existing user. Administrating tenant users can specify the tenant from which to delete a user.
 
         :param users_delete_api_request_dto: (required)
         :type users_delete_api_request_dto: UsersDeleteAPIRequestDTO
@@ -520,7 +520,7 @@ class UsersV2Api:
     ) -> RESTResponseType:
         """Delete users
 
-        Delete an existing user. Administrating tenant users can specify the tenant from which to delete a user.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Delete an existing user. Administrating tenant users can specify the tenant from which to delete a user.
 
         :param users_delete_api_request_dto: (required)
         :type users_delete_api_request_dto: UsersDeleteAPIRequestDTO
@@ -673,7 +673,7 @@ class UsersV2Api:
     ) -> UsersAPIResponseDTO:
         """Update users
 
-        Update an existing user's information, such as their display name or if the user is enabled in Visier.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Update an existing user's information, such as their display name or if the user is enabled in Visier.
 
         :param users_update_api_request_dto: (required)
         :type users_update_api_request_dto: UsersUpdateAPIRequestDTO
@@ -749,7 +749,7 @@ class UsersV2Api:
     ) -> ApiResponse[UsersAPIResponseDTO]:
         """Update users
 
-        Update an existing user's information, such as their display name or if the user is enabled in Visier.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Update an existing user's information, such as their display name or if the user is enabled in Visier.
 
         :param users_update_api_request_dto: (required)
         :type users_update_api_request_dto: UsersUpdateAPIRequestDTO
@@ -825,7 +825,7 @@ class UsersV2Api:
     ) -> RESTResponseType:
         """Update users
 
-        Update an existing user's information, such as their display name or if the user is enabled in Visier.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Update an existing user's information, such as their display name or if the user is enabled in Visier.
 
         :param users_update_api_request_dto: (required)
         :type users_update_api_request_dto: UsersUpdateAPIRequestDTO

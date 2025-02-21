@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1739
+    The version of the OpenAPI document: 22222222.99201.1744
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -881,7 +881,7 @@ class ReportingApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v1alpha/reporting/reports/report-data/{reportId}',
+            resource_path='/v1alpha/reporting/report-data/{reportId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
