@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1739
+    The version of the OpenAPI document: 22222222.99201.1744
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -74,7 +74,7 @@ class PermissionsApi:
     ) -> BulkDataAccessSetResponseDTO:
         """Create shareable data access sets
 
-        Create shareable data access sets. Shareable data access sets let you reuse common data access configurations in multiple permissions.   To specify the project in which to create shareable data access sets, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Create shareable data access sets. Shareable data access sets let you reuse common data access configurations in multiple permissions.   To specify the project in which to create shareable data access sets, provide a project UUID in the `ProjectID` request header.
 
         :param create_data_access_set_request_dto: (required)
         :type create_data_access_set_request_dto: CreateDataAccessSetRequestDTO
@@ -154,7 +154,7 @@ class PermissionsApi:
     ) -> ApiResponse[BulkDataAccessSetResponseDTO]:
         """Create shareable data access sets
 
-        Create shareable data access sets. Shareable data access sets let you reuse common data access configurations in multiple permissions.   To specify the project in which to create shareable data access sets, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Create shareable data access sets. Shareable data access sets let you reuse common data access configurations in multiple permissions.   To specify the project in which to create shareable data access sets, provide a project UUID in the `ProjectID` request header.
 
         :param create_data_access_set_request_dto: (required)
         :type create_data_access_set_request_dto: CreateDataAccessSetRequestDTO
@@ -234,7 +234,7 @@ class PermissionsApi:
     ) -> RESTResponseType:
         """Create shareable data access sets
 
-        Create shareable data access sets. Shareable data access sets let you reuse common data access configurations in multiple permissions.   To specify the project in which to create shareable data access sets, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Create shareable data access sets. Shareable data access sets let you reuse common data access configurations in multiple permissions.   To specify the project in which to create shareable data access sets, provide a project UUID in the `ProjectID` request header.
 
         :param create_data_access_set_request_dto: (required)
         :type create_data_access_set_request_dto: CreateDataAccessSetRequestDTO
@@ -393,7 +393,7 @@ class PermissionsApi:
     ) -> PermissionBulkOperationResponseDTO:
         """Create permissions
 
-        Create new permissions. Administrating tenant users can specify the tenant in which to add these permissions.   To specify the project in which to create permissions, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Create new permissions. Administrating tenant users can specify the tenant in which to add these permissions.   To specify the project in which to create permissions, provide a project UUID in the `ProjectID` request header.
 
         :param permissions_list_dto: (required)
         :type permissions_list_dto: PermissionsListDTO
@@ -477,7 +477,7 @@ class PermissionsApi:
     ) -> ApiResponse[PermissionBulkOperationResponseDTO]:
         """Create permissions
 
-        Create new permissions. Administrating tenant users can specify the tenant in which to add these permissions.   To specify the project in which to create permissions, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Create new permissions. Administrating tenant users can specify the tenant in which to add these permissions.   To specify the project in which to create permissions, provide a project UUID in the `ProjectID` request header.
 
         :param permissions_list_dto: (required)
         :type permissions_list_dto: PermissionsListDTO
@@ -561,7 +561,7 @@ class PermissionsApi:
     ) -> RESTResponseType:
         """Create permissions
 
-        Create new permissions. Administrating tenant users can specify the tenant in which to add these permissions.   To specify the project in which to create permissions, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Create new permissions. Administrating tenant users can specify the tenant in which to add these permissions.   To specify the project in which to create permissions, provide a project UUID in the `ProjectID` request header.
 
         :param permissions_list_dto: (required)
         :type permissions_list_dto: PermissionsListDTO
@@ -727,7 +727,7 @@ class PermissionsApi:
     ) -> PermissionBulkOperationResponseDTO:
         """Delete permissions
 
-        Delete existing permissions.   To specify the project in which to delete permissions, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Delete existing permissions.   To specify the project in which to delete permissions, provide a project UUID in the `ProjectID` request header.
 
         :param delete_permissions_request_dto: (required)
         :type delete_permissions_request_dto: DeletePermissionsRequestDTO
@@ -807,7 +807,7 @@ class PermissionsApi:
     ) -> ApiResponse[PermissionBulkOperationResponseDTO]:
         """Delete permissions
 
-        Delete existing permissions.   To specify the project in which to delete permissions, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Delete existing permissions.   To specify the project in which to delete permissions, provide a project UUID in the `ProjectID` request header.
 
         :param delete_permissions_request_dto: (required)
         :type delete_permissions_request_dto: DeletePermissionsRequestDTO
@@ -887,7 +887,7 @@ class PermissionsApi:
     ) -> RESTResponseType:
         """Delete permissions
 
-        Delete existing permissions.   To specify the project in which to delete permissions, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Delete existing permissions.   To specify the project in which to delete permissions, provide a project UUID in the `ProjectID` request header.
 
         :param delete_permissions_request_dto: (required)
         :type delete_permissions_request_dto: DeletePermissionsRequestDTO
@@ -1046,7 +1046,7 @@ class PermissionsApi:
     ) -> GetCapabilitiesAPIResponseDTO:
         """Retrieve a list of all permission capabilities
 
-        Retrieve all the permission capabilities in your tenant.  You can use the returned capabilities in other API calls when creating or updating permissions to assign the capability to the permission.   To specify the project in which to retrieve the permission capabilities, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve all the permission capabilities in your tenant.  You can use the returned capabilities in other API calls when creating or updating permissions to assign the capability to the permission.   To specify the project in which to retrieve the permission capabilities, provide a project UUID in the `ProjectID` request header.
 
         :param tenant_code: Specify the tenant to retrieve the capabilities from.
         :type tenant_code: str
@@ -1122,7 +1122,7 @@ class PermissionsApi:
     ) -> ApiResponse[GetCapabilitiesAPIResponseDTO]:
         """Retrieve a list of all permission capabilities
 
-        Retrieve all the permission capabilities in your tenant.  You can use the returned capabilities in other API calls when creating or updating permissions to assign the capability to the permission.   To specify the project in which to retrieve the permission capabilities, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve all the permission capabilities in your tenant.  You can use the returned capabilities in other API calls when creating or updating permissions to assign the capability to the permission.   To specify the project in which to retrieve the permission capabilities, provide a project UUID in the `ProjectID` request header.
 
         :param tenant_code: Specify the tenant to retrieve the capabilities from.
         :type tenant_code: str
@@ -1198,7 +1198,7 @@ class PermissionsApi:
     ) -> RESTResponseType:
         """Retrieve a list of all permission capabilities
 
-        Retrieve all the permission capabilities in your tenant.  You can use the returned capabilities in other API calls when creating or updating permissions to assign the capability to the permission.   To specify the project in which to retrieve the permission capabilities, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve all the permission capabilities in your tenant.  You can use the returned capabilities in other API calls when creating or updating permissions to assign the capability to the permission.   To specify the project in which to retrieve the permission capabilities, provide a project UUID in the `ProjectID` request header.
 
         :param tenant_code: Specify the tenant to retrieve the capabilities from.
         :type tenant_code: str
@@ -1339,7 +1339,7 @@ class PermissionsApi:
     ) -> CapabilityDTO:
         """Retrieve a permission capability's details
 
-        Retrieve the details of a specific capability.   To specify the project in which to retrieve the permission capability, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the details of a specific capability.   To specify the project in which to retrieve the permission capability, provide a project UUID in the `ProjectID` request header.
 
         :param capability_id: The unique identifier of the capability you want to retrieve. (required)
         :type capability_id: str
@@ -1419,7 +1419,7 @@ class PermissionsApi:
     ) -> ApiResponse[CapabilityDTO]:
         """Retrieve a permission capability's details
 
-        Retrieve the details of a specific capability.   To specify the project in which to retrieve the permission capability, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the details of a specific capability.   To specify the project in which to retrieve the permission capability, provide a project UUID in the `ProjectID` request header.
 
         :param capability_id: The unique identifier of the capability you want to retrieve. (required)
         :type capability_id: str
@@ -1499,7 +1499,7 @@ class PermissionsApi:
     ) -> RESTResponseType:
         """Retrieve a permission capability's details
 
-        Retrieve the details of a specific capability.   To specify the project in which to retrieve the permission capability, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the details of a specific capability.   To specify the project in which to retrieve the permission capability, provide a project UUID in the `ProjectID` request header.
 
         :param capability_id: The unique identifier of the capability you want to retrieve. (required)
         :type capability_id: str
@@ -1646,7 +1646,7 @@ class PermissionsApi:
     ) -> ContentPackageDTO:
         """Retrieve a content package's details
 
-        Retrieve the details of a specific content package.   To specify the project in which to retrieve a content package, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the details of a specific content package.   To specify the project in which to retrieve a content package, provide a project UUID in the `ProjectID` request header.
 
         :param content_package_id: The unique identifier of the content package you want to retrieve. (required)
         :type content_package_id: str
@@ -1726,7 +1726,7 @@ class PermissionsApi:
     ) -> ApiResponse[ContentPackageDTO]:
         """Retrieve a content package's details
 
-        Retrieve the details of a specific content package.   To specify the project in which to retrieve a content package, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the details of a specific content package.   To specify the project in which to retrieve a content package, provide a project UUID in the `ProjectID` request header.
 
         :param content_package_id: The unique identifier of the content package you want to retrieve. (required)
         :type content_package_id: str
@@ -1806,7 +1806,7 @@ class PermissionsApi:
     ) -> RESTResponseType:
         """Retrieve a content package's details
 
-        Retrieve the details of a specific content package.   To specify the project in which to retrieve a content package, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the details of a specific content package.   To specify the project in which to retrieve a content package, provide a project UUID in the `ProjectID` request header.
 
         :param content_package_id: The unique identifier of the content package you want to retrieve. (required)
         :type content_package_id: str
@@ -1953,7 +1953,7 @@ class PermissionsApi:
     ) -> GetContentPackagesAPIResponseDTO:
         """Retrieve a list of all content packages
 
-        Retrieve the list of available content packages.  You can use the returned content packages in other API calls when creating or updating permissions to add the content package to the permission.   To specify the project in which to retrieve the available content packages, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the list of available content packages.  You can use the returned content packages in other API calls when creating or updating permissions to add the content package to the permission.   To specify the project in which to retrieve the available content packages, provide a project UUID in the `ProjectID` request header.
 
         :param tenant_code: Specify the tenant to retrieve the content packages from.
         :type tenant_code: str
@@ -2033,7 +2033,7 @@ class PermissionsApi:
     ) -> ApiResponse[GetContentPackagesAPIResponseDTO]:
         """Retrieve a list of all content packages
 
-        Retrieve the list of available content packages.  You can use the returned content packages in other API calls when creating or updating permissions to add the content package to the permission.   To specify the project in which to retrieve the available content packages, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the list of available content packages.  You can use the returned content packages in other API calls when creating or updating permissions to add the content package to the permission.   To specify the project in which to retrieve the available content packages, provide a project UUID in the `ProjectID` request header.
 
         :param tenant_code: Specify the tenant to retrieve the content packages from.
         :type tenant_code: str
@@ -2113,7 +2113,7 @@ class PermissionsApi:
     ) -> RESTResponseType:
         """Retrieve a list of all content packages
 
-        Retrieve the list of available content packages.  You can use the returned content packages in other API calls when creating or updating permissions to add the content package to the permission.   To specify the project in which to retrieve the available content packages, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the list of available content packages.  You can use the returned content packages in other API calls when creating or updating permissions to add the content package to the permission.   To specify the project in which to retrieve the available content packages, provide a project UUID in the `ProjectID` request header.
 
         :param tenant_code: Specify the tenant to retrieve the content packages from.
         :type tenant_code: str
@@ -2262,7 +2262,7 @@ class PermissionsApi:
     ) -> DataAccessSetDTO:
         """Retrieve a data access set's details
 
-        Retrieve the details of a specific shareable data access set. You must know the ID of the data access set to retrieve its details. To retrieve data access set IDs, see `GET v1/admin/data-access-sets`.   To specify the project in which to retrieve the shareable data access set, provide a project UUID in the `ProjectID` request header.   **Note:** This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).
+        Retrieve the details of a specific shareable data access set. You must know the ID of the data access set to retrieve its details. To retrieve data access set IDs, see `GET v1/admin/data-access-sets`.   To specify the project in which to retrieve the shareable data access set, provide a project UUID in the `ProjectID` request header.
 
         :param data_access_set_id: The unique identifier of the data access set you want to retrieve. (required)
         :type data_access_set_id: str
@@ -2342,7 +2342,7 @@ class PermissionsApi:
     ) -> ApiResponse[DataAccessSetDTO]:
         """Retrieve a data access set's details
 
-        Retrieve the details of a specific shareable data access set. You must know the ID of the data access set to retrieve its details. To retrieve data access set IDs, see `GET v1/admin/data-access-sets`.   To specify the project in which to retrieve the shareable data access set, provide a project UUID in the `ProjectID` request header.   **Note:** This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).
+        Retrieve the details of a specific shareable data access set. You must know the ID of the data access set to retrieve its details. To retrieve data access set IDs, see `GET v1/admin/data-access-sets`.   To specify the project in which to retrieve the shareable data access set, provide a project UUID in the `ProjectID` request header.
 
         :param data_access_set_id: The unique identifier of the data access set you want to retrieve. (required)
         :type data_access_set_id: str
@@ -2422,7 +2422,7 @@ class PermissionsApi:
     ) -> RESTResponseType:
         """Retrieve a data access set's details
 
-        Retrieve the details of a specific shareable data access set. You must know the ID of the data access set to retrieve its details. To retrieve data access set IDs, see `GET v1/admin/data-access-sets`.   To specify the project in which to retrieve the shareable data access set, provide a project UUID in the `ProjectID` request header.   **Note:** This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).
+        Retrieve the details of a specific shareable data access set. You must know the ID of the data access set to retrieve its details. To retrieve data access set IDs, see `GET v1/admin/data-access-sets`.   To specify the project in which to retrieve the shareable data access set, provide a project UUID in the `ProjectID` request header.
 
         :param data_access_set_id: The unique identifier of the data access set you want to retrieve. (required)
         :type data_access_set_id: str
@@ -2569,7 +2569,7 @@ class PermissionsApi:
     ) -> GetDataAccessSetsAPIResponseDTO:
         """Retrieve a list of all data access sets
 
-        Retrieve a list of all shareable data access sets. Data access sets define the level of access that users have to properties and property values for the analytic object in a permission. Data access sets also grant access to properties of subjects that are referenced by the analytic object in the permission.  You can assign data access sets to a permission when creating or updating permissions.   To specify the project in which to retrieve the shareable data access sets, provide a project UUID in the `ProjectID` request header.   **Note:**   * If the number of valid data access sets exceeds the default limit of 100, the response status code is 206. To retrieve more than 100 data access sets, set `limit` to a higher number.  * This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).
+        Retrieve a list of all shareable data access sets. Data access sets define the level of access that users have to properties and property values for the analytic object in a permission. Data access sets also grant access to properties of subjects that are referenced by the analytic object in the permission.  You can assign data access sets to a permission when creating or updating permissions.   To specify the project in which to retrieve the shareable data access sets, provide a project UUID in the `ProjectID` request header.   **Note:** If the number of valid data access sets exceeds the default limit of 100, the response status code is 206. To retrieve more than 100 data access sets, set `limit` to a higher number.
 
         :param analytic_object_id: Specify the analytic object ID to retrieve the shareable data access sets for. Default is all analytic objects.
         :type analytic_object_id: str
@@ -2657,7 +2657,7 @@ class PermissionsApi:
     ) -> ApiResponse[GetDataAccessSetsAPIResponseDTO]:
         """Retrieve a list of all data access sets
 
-        Retrieve a list of all shareable data access sets. Data access sets define the level of access that users have to properties and property values for the analytic object in a permission. Data access sets also grant access to properties of subjects that are referenced by the analytic object in the permission.  You can assign data access sets to a permission when creating or updating permissions.   To specify the project in which to retrieve the shareable data access sets, provide a project UUID in the `ProjectID` request header.   **Note:**   * If the number of valid data access sets exceeds the default limit of 100, the response status code is 206. To retrieve more than 100 data access sets, set `limit` to a higher number.  * This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).
+        Retrieve a list of all shareable data access sets. Data access sets define the level of access that users have to properties and property values for the analytic object in a permission. Data access sets also grant access to properties of subjects that are referenced by the analytic object in the permission.  You can assign data access sets to a permission when creating or updating permissions.   To specify the project in which to retrieve the shareable data access sets, provide a project UUID in the `ProjectID` request header.   **Note:** If the number of valid data access sets exceeds the default limit of 100, the response status code is 206. To retrieve more than 100 data access sets, set `limit` to a higher number.
 
         :param analytic_object_id: Specify the analytic object ID to retrieve the shareable data access sets for. Default is all analytic objects.
         :type analytic_object_id: str
@@ -2745,7 +2745,7 @@ class PermissionsApi:
     ) -> RESTResponseType:
         """Retrieve a list of all data access sets
 
-        Retrieve a list of all shareable data access sets. Data access sets define the level of access that users have to properties and property values for the analytic object in a permission. Data access sets also grant access to properties of subjects that are referenced by the analytic object in the permission.  You can assign data access sets to a permission when creating or updating permissions.   To specify the project in which to retrieve the shareable data access sets, provide a project UUID in the `ProjectID` request header.   **Note:**   * If the number of valid data access sets exceeds the default limit of 100, the response status code is 206. To retrieve more than 100 data access sets, set `limit` to a higher number.  * This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).
+        Retrieve a list of all shareable data access sets. Data access sets define the level of access that users have to properties and property values for the analytic object in a permission. Data access sets also grant access to properties of subjects that are referenced by the analytic object in the permission.  You can assign data access sets to a permission when creating or updating permissions.   To specify the project in which to retrieve the shareable data access sets, provide a project UUID in the `ProjectID` request header.   **Note:** If the number of valid data access sets exceeds the default limit of 100, the response status code is 206. To retrieve more than 100 data access sets, set `limit` to a higher number.
 
         :param analytic_object_id: Specify the analytic object ID to retrieve the shareable data access sets for. Default is all analytic objects.
         :type analytic_object_id: str
@@ -2910,7 +2910,7 @@ class PermissionsApi:
     ) -> GetDataSecurityObjectsAPIResponseDTO:
         """Retrieve a list of data security objects
 
-        Retrieve the list of available data security objects.  Data security objects are analytic objects and their related objects that are available to define  permissions' data security profiles.   To specify the project in which to retrieve the available data security objects, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the list of available data security objects.  Data security objects are analytic objects and their related objects that are available to define  permissions' data security profiles.   To specify the project in which to retrieve the available data security objects, provide a project UUID in the `ProjectID` request header.
 
         :param id: The unique identifiers of the data security objects (analytic objects) to retrieve.  Default is all data security objects.
         :type id: List[str]
@@ -2994,7 +2994,7 @@ class PermissionsApi:
     ) -> ApiResponse[GetDataSecurityObjectsAPIResponseDTO]:
         """Retrieve a list of data security objects
 
-        Retrieve the list of available data security objects.  Data security objects are analytic objects and their related objects that are available to define  permissions' data security profiles.   To specify the project in which to retrieve the available data security objects, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the list of available data security objects.  Data security objects are analytic objects and their related objects that are available to define  permissions' data security profiles.   To specify the project in which to retrieve the available data security objects, provide a project UUID in the `ProjectID` request header.
 
         :param id: The unique identifiers of the data security objects (analytic objects) to retrieve.  Default is all data security objects.
         :type id: List[str]
@@ -3078,7 +3078,7 @@ class PermissionsApi:
     ) -> RESTResponseType:
         """Retrieve a list of data security objects
 
-        Retrieve the list of available data security objects.  Data security objects are analytic objects and their related objects that are available to define  permissions' data security profiles.   To specify the project in which to retrieve the available data security objects, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the list of available data security objects.  Data security objects are analytic objects and their related objects that are available to define  permissions' data security profiles.   To specify the project in which to retrieve the available data security objects, provide a project UUID in the `ProjectID` request header.
 
         :param id: The unique identifiers of the data security objects (analytic objects) to retrieve.  Default is all data security objects.
         :type id: List[str]
@@ -3238,7 +3238,7 @@ class PermissionsApi:
     ) -> PermissionDTO:
         """Retrieve a permission's details
 
-        Retrieve the details for a specified permission.   To specify the project in which to retrieve the permission, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the details for a specified permission.   To specify the project in which to retrieve the permission, provide a project UUID in the `ProjectID` request header.
 
         :param permission_id: The unique identifier of the permission you want to retrieve. (required)
         :type permission_id: str
@@ -3326,7 +3326,7 @@ class PermissionsApi:
     ) -> ApiResponse[PermissionDTO]:
         """Retrieve a permission's details
 
-        Retrieve the details for a specified permission.   To specify the project in which to retrieve the permission, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the details for a specified permission.   To specify the project in which to retrieve the permission, provide a project UUID in the `ProjectID` request header.
 
         :param permission_id: The unique identifier of the permission you want to retrieve. (required)
         :type permission_id: str
@@ -3414,7 +3414,7 @@ class PermissionsApi:
     ) -> RESTResponseType:
         """Retrieve a permission's details
 
-        Retrieve the details for a specified permission.   To specify the project in which to retrieve the permission, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the details for a specified permission.   To specify the project in which to retrieve the permission, provide a project UUID in the `ProjectID` request header.
 
         :param permission_id: The unique identifier of the permission you want to retrieve. (required)
         :type permission_id: str
@@ -3577,7 +3577,7 @@ class PermissionsApi:
     ) -> GetPermissionsAPIResponseDTO:
         """Retrieve a list of all permissions
 
-        Retrieve the full list of user permissions in your tenant.   To specify the project in which to retrieve permissions, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the full list of user permissions in your tenant.   To specify the project in which to retrieve permissions, provide a project UUID in the `ProjectID` request header.
 
         :param tenant_code: Specify the tenant to retrieve the permissions from.
         :type tenant_code: str
@@ -3665,7 +3665,7 @@ class PermissionsApi:
     ) -> ApiResponse[GetPermissionsAPIResponseDTO]:
         """Retrieve a list of all permissions
 
-        Retrieve the full list of user permissions in your tenant.   To specify the project in which to retrieve permissions, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the full list of user permissions in your tenant.   To specify the project in which to retrieve permissions, provide a project UUID in the `ProjectID` request header.
 
         :param tenant_code: Specify the tenant to retrieve the permissions from.
         :type tenant_code: str
@@ -3753,7 +3753,7 @@ class PermissionsApi:
     ) -> RESTResponseType:
         """Retrieve a list of all permissions
 
-        Retrieve the full list of user permissions in your tenant.   To specify the project in which to retrieve permissions, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Retrieve the full list of user permissions in your tenant.   To specify the project in which to retrieve permissions, provide a project UUID in the `ProjectID` request header.
 
         :param tenant_code: Specify the tenant to retrieve the permissions from.
         :type tenant_code: str
@@ -3917,7 +3917,7 @@ class PermissionsApi:
     ) -> PermissionBulkOperationResponseDTO:
         """Update permissions
 
-        Update existing permissions.   To specify the project in which to update permissions, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Update existing permissions.   To specify the project in which to update permissions, provide a project UUID in the `ProjectID` request header.
 
         :param permissions_list_dto: (required)
         :type permissions_list_dto: PermissionsListDTO
@@ -4001,7 +4001,7 @@ class PermissionsApi:
     ) -> ApiResponse[PermissionBulkOperationResponseDTO]:
         """Update permissions
 
-        Update existing permissions.   To specify the project in which to update permissions, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Update existing permissions.   To specify the project in which to update permissions, provide a project UUID in the `ProjectID` request header.
 
         :param permissions_list_dto: (required)
         :type permissions_list_dto: PermissionsListDTO
@@ -4085,7 +4085,7 @@ class PermissionsApi:
     ) -> RESTResponseType:
         """Update permissions
 
-        Update existing permissions.   To specify the project in which to update permissions, provide a project UUID in the `ProjectID` request header.   <br>**Note:** <em>This API is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>
+        Update existing permissions.   To specify the project in which to update permissions, provide a project UUID in the `ProjectID` request header.
 
         :param permissions_list_dto: (required)
         :type permissions_list_dto: PermissionsListDTO
