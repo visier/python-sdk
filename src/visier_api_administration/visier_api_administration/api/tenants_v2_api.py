@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1744
+    The version of the OpenAPI document: 22222222.99201.1760
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -610,11 +610,11 @@ class TenantsV2Api:
     @validate_call
     def list_tenants(
         self,
-        mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
         mask: Annotated[Optional[StrictStr], Field(description="A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        mask_message: Optional[MaskMessage] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -632,8 +632,6 @@ class TenantsV2Api:
 
         Retrieve the full list of analytic tenants managed by you with their current states and the content  modules assigned to them, and all other relevant details for the tenants if requested.
 
-        :param mask_message: (required)
-        :type mask_message: MaskMessage
         :param limit: The maximum number of tenants to return. Default is 400.
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
@@ -642,6 +640,8 @@ class TenantsV2Api:
         :type mask: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param mask_message:
+        :type mask_message: MaskMessage
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -665,11 +665,11 @@ class TenantsV2Api:
         """ # noqa: E501
 
         _param = self._list_tenants_serialize(
-            mask_message=mask_message,
             limit=limit,
             start=start,
             mask=mask,
             target_tenant_id=target_tenant_id,
+            mask_message=mask_message,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -694,11 +694,11 @@ class TenantsV2Api:
     @validate_call
     def list_tenants_with_http_info(
         self,
-        mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
         mask: Annotated[Optional[StrictStr], Field(description="A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        mask_message: Optional[MaskMessage] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -716,8 +716,6 @@ class TenantsV2Api:
 
         Retrieve the full list of analytic tenants managed by you with their current states and the content  modules assigned to them, and all other relevant details for the tenants if requested.
 
-        :param mask_message: (required)
-        :type mask_message: MaskMessage
         :param limit: The maximum number of tenants to return. Default is 400.
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
@@ -726,6 +724,8 @@ class TenantsV2Api:
         :type mask: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param mask_message:
+        :type mask_message: MaskMessage
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -749,11 +749,11 @@ class TenantsV2Api:
         """ # noqa: E501
 
         _param = self._list_tenants_serialize(
-            mask_message=mask_message,
             limit=limit,
             start=start,
             mask=mask,
             target_tenant_id=target_tenant_id,
+            mask_message=mask_message,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -778,11 +778,11 @@ class TenantsV2Api:
     @validate_call
     def list_tenants_without_preload_content(
         self,
-        mask_message: MaskMessage,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of tenants to return. Default is 400.")] = None,
         start: Annotated[Optional[StrictInt], Field(description="The starting index of the first tenant to return. Default is 0.")] = None,
         mask: Annotated[Optional[StrictStr], Field(description="A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        mask_message: Optional[MaskMessage] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -800,8 +800,6 @@ class TenantsV2Api:
 
         Retrieve the full list of analytic tenants managed by you with their current states and the content  modules assigned to them, and all other relevant details for the tenants if requested.
 
-        :param mask_message: (required)
-        :type mask_message: MaskMessage
         :param limit: The maximum number of tenants to return. Default is 400.
         :type limit: int
         :param start: The starting index of the first tenant to return. Default is 0.
@@ -810,6 +808,8 @@ class TenantsV2Api:
         :type mask: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param mask_message:
+        :type mask_message: MaskMessage
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -833,11 +833,11 @@ class TenantsV2Api:
         """ # noqa: E501
 
         _param = self._list_tenants_serialize(
-            mask_message=mask_message,
             limit=limit,
             start=start,
             mask=mask,
             target_tenant_id=target_tenant_id,
+            mask_message=mask_message,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -856,11 +856,11 @@ class TenantsV2Api:
 
     def _list_tenants_serialize(
         self,
-        mask_message,
         limit,
         start,
         mask,
         target_tenant_id,
+        mask_message,
         _request_auth,
         _content_type,
         _headers,
@@ -950,9 +950,9 @@ class TenantsV2Api:
     def tenant_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to retrieve.")],
-        mask_message: MaskMessage,
         mask: Annotated[Optional[StrictStr], Field(description="A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        mask_message: Optional[MaskMessage] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -972,12 +972,12 @@ class TenantsV2Api:
 
         :param tenant_id: The ID of the tenant to retrieve. (required)
         :type tenant_id: str
-        :param mask_message: (required)
-        :type mask_message: MaskMessage
         :param mask: A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"
         :type mask: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param mask_message:
+        :type mask_message: MaskMessage
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1002,9 +1002,9 @@ class TenantsV2Api:
 
         _param = self._tenant_info_serialize(
             tenant_id=tenant_id,
-            mask_message=mask_message,
             mask=mask,
             target_tenant_id=target_tenant_id,
+            mask_message=mask_message,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1030,9 +1030,9 @@ class TenantsV2Api:
     def tenant_info_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to retrieve.")],
-        mask_message: MaskMessage,
         mask: Annotated[Optional[StrictStr], Field(description="A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        mask_message: Optional[MaskMessage] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1052,12 +1052,12 @@ class TenantsV2Api:
 
         :param tenant_id: The ID of the tenant to retrieve. (required)
         :type tenant_id: str
-        :param mask_message: (required)
-        :type mask_message: MaskMessage
         :param mask: A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"
         :type mask: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param mask_message:
+        :type mask_message: MaskMessage
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1082,9 +1082,9 @@ class TenantsV2Api:
 
         _param = self._tenant_info_serialize(
             tenant_id=tenant_id,
-            mask_message=mask_message,
             mask=mask,
             target_tenant_id=target_tenant_id,
+            mask_message=mask_message,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1110,9 +1110,9 @@ class TenantsV2Api:
     def tenant_info_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to retrieve.")],
-        mask_message: MaskMessage,
         mask: Annotated[Optional[StrictStr], Field(description="A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        mask_message: Optional[MaskMessage] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1132,12 +1132,12 @@ class TenantsV2Api:
 
         :param tenant_id: The ID of the tenant to retrieve. (required)
         :type tenant_id: str
-        :param mask_message: (required)
-        :type mask_message: MaskMessage
         :param mask: A list of fields to include in the response, separated by commas. E.g., \"displayName,purchasedModules\"
         :type mask: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
+        :param mask_message:
+        :type mask_message: MaskMessage
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1162,9 +1162,9 @@ class TenantsV2Api:
 
         _param = self._tenant_info_serialize(
             tenant_id=tenant_id,
-            mask_message=mask_message,
             mask=mask,
             target_tenant_id=target_tenant_id,
+            mask_message=mask_message,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1184,9 +1184,9 @@ class TenantsV2Api:
     def _tenant_info_serialize(
         self,
         tenant_id,
-        mask_message,
         mask,
         target_tenant_id,
+        mask_message,
         _request_auth,
         _content_type,
         _headers,
@@ -1269,7 +1269,7 @@ class TenantsV2Api:
     @validate_call
     def update_tenant(
         self,
-        tenant_id: StrictStr,
+        tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to update.")],
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -1289,7 +1289,7 @@ class TenantsV2Api:
 
         You may need to update analytic tenants as they grow and as your organization upgrades the content available to them.  You may also encounter a scenario where an analytic tenant transitions across different industries. To make updates  to your tenants, use this API.   * To ensure that the analytic tenant receives accurate benchmarks and predictive functionality, update their industry code in the Visier system.  * To programmatically assign the Home analysis that analytic tenants see at login, use this API to set the default Home analysis for a tenant and specific user groups of that tenant.   You can use this API to update any field on an analytic tenant, except `tenantCode`.   **Note:** API requests that contain `homeAnalysisId`, `homeAnalysisByUserGroup`, `clickThroughLink`, or  `defaultCurrency` take longer to run because they require publishing a project to production.
 
-        :param tenant_id: (required)
+        :param tenant_id: The ID of the tenant to update. (required)
         :type tenant_id: str
         :param tenant_management_api_update_request_dto: (required)
         :type tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO
@@ -1345,7 +1345,7 @@ class TenantsV2Api:
     @validate_call
     def update_tenant_with_http_info(
         self,
-        tenant_id: StrictStr,
+        tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to update.")],
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -1365,7 +1365,7 @@ class TenantsV2Api:
 
         You may need to update analytic tenants as they grow and as your organization upgrades the content available to them.  You may also encounter a scenario where an analytic tenant transitions across different industries. To make updates  to your tenants, use this API.   * To ensure that the analytic tenant receives accurate benchmarks and predictive functionality, update their industry code in the Visier system.  * To programmatically assign the Home analysis that analytic tenants see at login, use this API to set the default Home analysis for a tenant and specific user groups of that tenant.   You can use this API to update any field on an analytic tenant, except `tenantCode`.   **Note:** API requests that contain `homeAnalysisId`, `homeAnalysisByUserGroup`, `clickThroughLink`, or  `defaultCurrency` take longer to run because they require publishing a project to production.
 
-        :param tenant_id: (required)
+        :param tenant_id: The ID of the tenant to update. (required)
         :type tenant_id: str
         :param tenant_management_api_update_request_dto: (required)
         :type tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO
@@ -1421,7 +1421,7 @@ class TenantsV2Api:
     @validate_call
     def update_tenant_without_preload_content(
         self,
-        tenant_id: StrictStr,
+        tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant to update.")],
         tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -1441,7 +1441,7 @@ class TenantsV2Api:
 
         You may need to update analytic tenants as they grow and as your organization upgrades the content available to them.  You may also encounter a scenario where an analytic tenant transitions across different industries. To make updates  to your tenants, use this API.   * To ensure that the analytic tenant receives accurate benchmarks and predictive functionality, update their industry code in the Visier system.  * To programmatically assign the Home analysis that analytic tenants see at login, use this API to set the default Home analysis for a tenant and specific user groups of that tenant.   You can use this API to update any field on an analytic tenant, except `tenantCode`.   **Note:** API requests that contain `homeAnalysisId`, `homeAnalysisByUserGroup`, `clickThroughLink`, or  `defaultCurrency` take longer to run because they require publishing a project to production.
 
-        :param tenant_id: (required)
+        :param tenant_id: The ID of the tenant to update. (required)
         :type tenant_id: str
         :param tenant_management_api_update_request_dto: (required)
         :type tenant_management_api_update_request_dto: TenantManagementAPIUpdateRequestDTO
