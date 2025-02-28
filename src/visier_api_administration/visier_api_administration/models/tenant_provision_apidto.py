@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1744
+    The version of the OpenAPI document: 22222222.99201.1760
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -32,7 +32,7 @@ class TenantProvisionAPIDTO(BaseModel):
     allowed_o_auth_idp_url_domains: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the URLs, or domains, which can be used as values for the idp_url  OAuth parameter.", alias="allowedOAuthIdpUrlDomains")
     custom_properties: Optional[List[CustomTenantPropertyDTO]] = Field(default=None, description="A set of key-value pairs that represent different customizable properties for the analytic tenant.", alias="customProperties")
     embeddable_domains: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the URLs, or domains, in which Visier can be embedded. If  domains at the administrating tenant level match the domains at the analytic tenant level, you do not need  to include a domain for each analytic tenant.", alias="embeddableDomains")
-    industry_code: Optional[StrictInt] = Field(default=None, description="The 6-digit NAICS code for the industry to which the analytic tenant belongs. If the code is unknown, type 000000.   For 2-digit codes, add trailing zeros at the end to reach 6 digits, such as 620000.", alias="industryCode")
+    industry_code: Optional[StrictInt] = Field(default=None, description="The 6-digit NAICS code for the industry to which the analytic tenant belongs. If the code is unknown, type 0.   For 2-digit codes, add trailing zeros at the end to reach 6 digits, such as 620000.", alias="industryCode")
     purchased_modules: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the Visier modules assigned to the analytic tenant.", alias="purchasedModules")
     sso_instance_issuers: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the issuers for the SSO providers that can authenticate this tenant.", alias="ssoInstanceIssuers")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The unique identifier of the analytic tenant.", alias="tenantCode")
