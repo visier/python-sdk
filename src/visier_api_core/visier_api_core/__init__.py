@@ -7,7 +7,7 @@
 
     Visier APIs for authenticating with Visier. To use Visier's public APIs, you must first authenticate yourself as a Visier user who is allowed to use Visier APIs.
 
-    The version of the OpenAPI document: 22222222.99201.1760
+    The version of the OpenAPI document: 22222222.99201.1772
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1760"
+__version__ = "0.99201.1772"
 
 # import ApiClient
 from visier_api_core.api_response import ApiResponse

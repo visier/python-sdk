@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1760
+    The version of the OpenAPI document: 22222222.99201.1772
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -31,7 +31,8 @@ class ListQuerySourceDTO(BaseModel):
     analytic_object: Optional[StrictStr] = Field(default=None, description="The ID of an existing analytic object in your Visier solution.  An analytic object source cannot have filters or time handling.", alias="analyticObject")
     formula: Optional[StrictStr] = Field(default=None, description="An ad-hoc metric formula. The response returns the individual data points that make up the aggregate.")
     metric: Optional[StrictStr] = Field(default=None, description="The ID of an existing metric in your Visier solution.")
-    __properties: ClassVar[List[str]] = ["analyticObject", "formula", "metric"]
+    text_concept: Optional[StrictStr] = Field(default=None, description="The ID of an existing text concept in your Visier solution.  A concept that defines the text properties of an analytic object and includes filters to enforce aggregate thresholds.  <br>**Note:** <em>This field is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>", alias="textConcept")
+    __properties: ClassVar[List[str]] = ["analyticObject", "formula", "metric", "textConcept"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,7 +87,8 @@ class ListQuerySourceDTO(BaseModel):
         _obj = cls.model_validate({
             "analyticObject": obj.get("analyticObject"),
             "formula": obj.get("formula"),
-            "metric": obj.get("metric")
+            "metric": obj.get("metric"),
+            "textConcept": obj.get("textConcept")
         })
         return _obj
 

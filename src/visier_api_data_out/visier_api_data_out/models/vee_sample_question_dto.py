@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1760
+    The version of the OpenAPI document: 22222222.99201.1772
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -19,7 +19,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,9 +29,10 @@ class VeeSampleQuestionDTO(BaseModel):
     VeeSampleQuestionDTO
     """ # noqa: E501
     category_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the question category.", alias="categoryId")
+    is_assigned_to_user: Optional[StrictBool] = Field(default=None, description="If `true`, the sample question is assigned to at least one of the user's user groups.", alias="isAssignedToUser")
     question: Optional[StrictStr] = Field(default=None, description="A question in plain language.")
     question_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the sample question.", alias="questionId")
-    __properties: ClassVar[List[str]] = ["categoryId", "question", "questionId"]
+    __properties: ClassVar[List[str]] = ["categoryId", "isAssignedToUser", "question", "questionId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,6 +86,7 @@ class VeeSampleQuestionDTO(BaseModel):
 
         _obj = cls.model_validate({
             "categoryId": obj.get("categoryId"),
+            "isAssignedToUser": obj.get("isAssignedToUser"),
             "question": obj.get("question"),
             "questionId": obj.get("questionId")
         })
