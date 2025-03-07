@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1760
+    The version of the OpenAPI document: 22222222.99201.1772
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -75,7 +75,8 @@ class TestListQueryExecutionDTO(unittest.TestCase):
                 source = visier_api_data_out.models.list_query_source_dto.ListQuerySourceDTO(
                     analytic_object = '', 
                     formula = '', 
-                    metric = '', ),
+                    metric = '', 
+                    text_concept = '', ),
                 time_interval = visier_api_data_out.models.query_time_interval_dto.QueryTimeIntervalDTO(
                     direction = 'BACKWARD', 
                     dynamic_date_from = 'SOURCE', 

@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1760
+    The version of the OpenAPI document: 22222222.99201.1772
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -37,6 +37,7 @@ class TestVeeSampleQuestionDTO(unittest.TestCase):
         if include_optional:
             return VeeSampleQuestionDTO(
                 category_id = '',
+                is_assigned_to_user = True,
                 question = '',
                 question_id = ''
             )
