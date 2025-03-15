@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1772
+    The version of the OpenAPI document: 22222222.99201.1793
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,9 +36,11 @@ class TestStatus(unittest.TestCase):
 
         if include_optional:
             return Status(
-                error_code = '',
+                code = '',
+                localized_message = '',
                 message = '',
-                rci = ''
+                rci = '',
+                user_error = True
             )
         else:
             return Status(

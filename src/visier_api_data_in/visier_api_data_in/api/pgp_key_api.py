@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1772
+    The version of the OpenAPI document: 22222222.99201.1793
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,10 +23,10 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_api_data_in.models.key_pair_delete_response_dto import KeyPairDeleteResponseDTO
-from visier_api_data_in.models.key_pair_generate_request_dto import KeyPairGenerateRequestDTO
-from visier_api_data_in.models.public_key_dto import PublicKeyDTO
-from visier_api_data_in.models.public_keys_dto import PublicKeysDTO
+from visier_api_data_in.models.designer_crypto_key_pair_delete_response_dto import DesignerCryptoKeyPairDeleteResponseDTO
+from visier_api_data_in.models.designer_crypto_key_pair_generate_request_dto import DesignerCryptoKeyPairGenerateRequestDTO
+from visier_api_data_in.models.designer_crypto_public_key_dto import DesignerCryptoPublicKeyDTO
+from visier_api_data_in.models.designer_crypto_public_keys_dto import DesignerCryptoPublicKeysDTO
 import visier_api_data_in.models
 
 
@@ -59,7 +59,7 @@ class PGPKeyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> KeyPairDeleteResponseDTO:
+    ) -> DesignerCryptoKeyPairDeleteResponseDTO:
         """Delete a PGP key pair
 
         Delete a PGP key pair using a key ID.
@@ -100,7 +100,7 @@ class PGPKeyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "KeyPairDeleteResponseDTO",
+            '200': "DesignerCryptoKeyPairDeleteResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -131,7 +131,7 @@ class PGPKeyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[KeyPairDeleteResponseDTO]:
+    ) -> ApiResponse[DesignerCryptoKeyPairDeleteResponseDTO]:
         """Delete a PGP key pair
 
         Delete a PGP key pair using a key ID.
@@ -172,7 +172,7 @@ class PGPKeyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "KeyPairDeleteResponseDTO",
+            '200': "DesignerCryptoKeyPairDeleteResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -244,7 +244,7 @@ class PGPKeyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "KeyPairDeleteResponseDTO",
+            '200': "DesignerCryptoKeyPairDeleteResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -325,7 +325,7 @@ class PGPKeyApi:
     @validate_call
     def generate_pgp_key_pair(
         self,
-        key_pair_generate_request_dto: KeyPairGenerateRequestDTO,
+        designer_crypto_key_pair_generate_request_dto: DesignerCryptoKeyPairGenerateRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -339,13 +339,13 @@ class PGPKeyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PublicKeyDTO:
+    ) -> DesignerCryptoPublicKeyDTO:
         """Download a public encryption key
 
         Generate a key pair and retrieve the public key that you can use to encrypt your data to send to Visier.     In the request body, optionally set the UTC expiration date for the key pair in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.
 
-        :param key_pair_generate_request_dto: (required)
-        :type key_pair_generate_request_dto: KeyPairGenerateRequestDTO
+        :param designer_crypto_key_pair_generate_request_dto: (required)
+        :type designer_crypto_key_pair_generate_request_dto: DesignerCryptoKeyPairGenerateRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -371,7 +371,7 @@ class PGPKeyApi:
         """ # noqa: E501
 
         _param = self._generate_pgp_key_pair_serialize(
-            key_pair_generate_request_dto=key_pair_generate_request_dto,
+            designer_crypto_key_pair_generate_request_dto=designer_crypto_key_pair_generate_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -380,7 +380,7 @@ class PGPKeyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PublicKeyDTO",
+            '200': "DesignerCryptoPublicKeyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -397,7 +397,7 @@ class PGPKeyApi:
     @validate_call
     def generate_pgp_key_pair_with_http_info(
         self,
-        key_pair_generate_request_dto: KeyPairGenerateRequestDTO,
+        designer_crypto_key_pair_generate_request_dto: DesignerCryptoKeyPairGenerateRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -411,13 +411,13 @@ class PGPKeyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PublicKeyDTO]:
+    ) -> ApiResponse[DesignerCryptoPublicKeyDTO]:
         """Download a public encryption key
 
         Generate a key pair and retrieve the public key that you can use to encrypt your data to send to Visier.     In the request body, optionally set the UTC expiration date for the key pair in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.
 
-        :param key_pair_generate_request_dto: (required)
-        :type key_pair_generate_request_dto: KeyPairGenerateRequestDTO
+        :param designer_crypto_key_pair_generate_request_dto: (required)
+        :type designer_crypto_key_pair_generate_request_dto: DesignerCryptoKeyPairGenerateRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -443,7 +443,7 @@ class PGPKeyApi:
         """ # noqa: E501
 
         _param = self._generate_pgp_key_pair_serialize(
-            key_pair_generate_request_dto=key_pair_generate_request_dto,
+            designer_crypto_key_pair_generate_request_dto=designer_crypto_key_pair_generate_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -452,7 +452,7 @@ class PGPKeyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PublicKeyDTO",
+            '200': "DesignerCryptoPublicKeyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -469,7 +469,7 @@ class PGPKeyApi:
     @validate_call
     def generate_pgp_key_pair_without_preload_content(
         self,
-        key_pair_generate_request_dto: KeyPairGenerateRequestDTO,
+        designer_crypto_key_pair_generate_request_dto: DesignerCryptoKeyPairGenerateRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -488,8 +488,8 @@ class PGPKeyApi:
 
         Generate a key pair and retrieve the public key that you can use to encrypt your data to send to Visier.     In the request body, optionally set the UTC expiration date for the key pair in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.
 
-        :param key_pair_generate_request_dto: (required)
-        :type key_pair_generate_request_dto: KeyPairGenerateRequestDTO
+        :param designer_crypto_key_pair_generate_request_dto: (required)
+        :type designer_crypto_key_pair_generate_request_dto: DesignerCryptoKeyPairGenerateRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -515,7 +515,7 @@ class PGPKeyApi:
         """ # noqa: E501
 
         _param = self._generate_pgp_key_pair_serialize(
-            key_pair_generate_request_dto=key_pair_generate_request_dto,
+            designer_crypto_key_pair_generate_request_dto=designer_crypto_key_pair_generate_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -524,7 +524,7 @@ class PGPKeyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PublicKeyDTO",
+            '200': "DesignerCryptoPublicKeyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -535,7 +535,7 @@ class PGPKeyApi:
 
     def _generate_pgp_key_pair_serialize(
         self,
-        key_pair_generate_request_dto,
+        designer_crypto_key_pair_generate_request_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -562,8 +562,8 @@ class PGPKeyApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if key_pair_generate_request_dto is not None:
-            _body_params = key_pair_generate_request_dto
+        if designer_crypto_key_pair_generate_request_dto is not None:
+            _body_params = designer_crypto_key_pair_generate_request_dto
 
 
         # set the HTTP header `Accept`
@@ -631,7 +631,7 @@ class PGPKeyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PublicKeysDTO:
+    ) -> DesignerCryptoPublicKeysDTO:
         """Retrieve all PGP public keys
 
         Retrieve a list of all PGP public keys in your tenant.
@@ -669,7 +669,7 @@ class PGPKeyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PublicKeysDTO",
+            '200': "DesignerCryptoPublicKeysDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -699,7 +699,7 @@ class PGPKeyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PublicKeysDTO]:
+    ) -> ApiResponse[DesignerCryptoPublicKeysDTO]:
         """Retrieve all PGP public keys
 
         Retrieve a list of all PGP public keys in your tenant.
@@ -737,7 +737,7 @@ class PGPKeyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PublicKeysDTO",
+            '200': "DesignerCryptoPublicKeysDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -805,7 +805,7 @@ class PGPKeyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PublicKeysDTO",
+            '200': "DesignerCryptoPublicKeysDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -897,7 +897,7 @@ class PGPKeyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PublicKeyDTO:
+    ) -> DesignerCryptoPublicKeyDTO:
         """Retrieve a PGP public key using the key ID
 
         If you know your PGP key ID, use it to retrieve the PGP public key. To get a list of all key IDs, see `Retrieve all PGP public keys`.
@@ -938,7 +938,7 @@ class PGPKeyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PublicKeyDTO",
+            '200': "DesignerCryptoPublicKeyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -969,7 +969,7 @@ class PGPKeyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PublicKeyDTO]:
+    ) -> ApiResponse[DesignerCryptoPublicKeyDTO]:
         """Retrieve a PGP public key using the key ID
 
         If you know your PGP key ID, use it to retrieve the PGP public key. To get a list of all key IDs, see `Retrieve all PGP public keys`.
@@ -1010,7 +1010,7 @@ class PGPKeyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PublicKeyDTO",
+            '200': "DesignerCryptoPublicKeyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1082,7 +1082,7 @@ class PGPKeyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PublicKeyDTO",
+            '200': "DesignerCryptoPublicKeyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

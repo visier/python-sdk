@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1772
+    The version of the OpenAPI document: 22222222.99201.1793
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,12 +23,12 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from visier_api_administration.models.get_projects_api_response_dto import GetProjectsAPIResponseDTO
-from visier_api_administration.models.project_commits_api_response_dto import ProjectCommitsAPIResponseDTO
-from visier_api_administration.models.project_dto import ProjectDTO
-from visier_api_administration.models.project_operation_request_dto import ProjectOperationRequestDTO
-from visier_api_administration.models.project_operation_response_dto import ProjectOperationResponseDTO
-from visier_api_administration.models.put_project_commits_request import PutProjectCommitsRequest
+from visier_api_administration.models.admin_put_project_commits_request import AdminPutProjectCommitsRequest
+from visier_api_administration.models.servicing_publicapi_transfers_get_projects_api_response_dto import ServicingPublicapiTransfersGetProjectsAPIResponseDTO
+from visier_api_administration.models.servicing_publicapi_transfers_project_commits_api_response_dto import ServicingPublicapiTransfersProjectCommitsAPIResponseDTO
+from visier_api_administration.models.servicing_publicapi_transfers_project_dto import ServicingPublicapiTransfersProjectDTO
+from visier_api_administration.models.servicing_publicapi_transfers_project_operation_request_dto import ServicingPublicapiTransfersProjectOperationRequestDTO
+from visier_api_administration.models.servicing_publicapi_transfers_project_operation_response_dto import ServicingPublicapiTransfersProjectOperationResponseDTO
 import visier_api_administration.models
 
 
@@ -47,7 +47,7 @@ class ProjectsApi:
     @validate_call
     def create_project(
         self,
-        project_dto: ProjectDTO,
+        servicing_publicapi_transfers_project_dto: ServicingPublicapiTransfersProjectDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -61,13 +61,13 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ProjectDTO:
+    ) -> ServicingPublicapiTransfersProjectDTO:
         """Create a new draft project
 
         Create a new draft project in the tenant.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param project_dto: (required)
-        :type project_dto: ProjectDTO
+        :param servicing_publicapi_transfers_project_dto: (required)
+        :type servicing_publicapi_transfers_project_dto: ServicingPublicapiTransfersProjectDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -93,7 +93,7 @@ class ProjectsApi:
         """ # noqa: E501
 
         _param = self._create_project_serialize(
-            project_dto=project_dto,
+            servicing_publicapi_transfers_project_dto=servicing_publicapi_transfers_project_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -102,7 +102,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectDTO",
+            '200': "ServicingPublicapiTransfersProjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -119,7 +119,7 @@ class ProjectsApi:
     @validate_call
     def create_project_with_http_info(
         self,
-        project_dto: ProjectDTO,
+        servicing_publicapi_transfers_project_dto: ServicingPublicapiTransfersProjectDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -133,13 +133,13 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ProjectDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersProjectDTO]:
         """Create a new draft project
 
         Create a new draft project in the tenant.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param project_dto: (required)
-        :type project_dto: ProjectDTO
+        :param servicing_publicapi_transfers_project_dto: (required)
+        :type servicing_publicapi_transfers_project_dto: ServicingPublicapiTransfersProjectDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -165,7 +165,7 @@ class ProjectsApi:
         """ # noqa: E501
 
         _param = self._create_project_serialize(
-            project_dto=project_dto,
+            servicing_publicapi_transfers_project_dto=servicing_publicapi_transfers_project_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -174,7 +174,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectDTO",
+            '200': "ServicingPublicapiTransfersProjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -191,7 +191,7 @@ class ProjectsApi:
     @validate_call
     def create_project_without_preload_content(
         self,
-        project_dto: ProjectDTO,
+        servicing_publicapi_transfers_project_dto: ServicingPublicapiTransfersProjectDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -210,8 +210,8 @@ class ProjectsApi:
 
         Create a new draft project in the tenant.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param project_dto: (required)
-        :type project_dto: ProjectDTO
+        :param servicing_publicapi_transfers_project_dto: (required)
+        :type servicing_publicapi_transfers_project_dto: ServicingPublicapiTransfersProjectDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -237,7 +237,7 @@ class ProjectsApi:
         """ # noqa: E501
 
         _param = self._create_project_serialize(
-            project_dto=project_dto,
+            servicing_publicapi_transfers_project_dto=servicing_publicapi_transfers_project_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -246,7 +246,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectDTO",
+            '200': "ServicingPublicapiTransfersProjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -257,7 +257,7 @@ class ProjectsApi:
 
     def _create_project_serialize(
         self,
-        project_dto,
+        servicing_publicapi_transfers_project_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -284,8 +284,8 @@ class ProjectsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if project_dto is not None:
-            _body_params = project_dto
+        if servicing_publicapi_transfers_project_dto is not None:
+            _body_params = servicing_publicapi_transfers_project_dto
 
 
         # set the HTTP header `Accept`
@@ -312,6 +312,11 @@ class ProjectsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -349,7 +354,7 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ProjectDTO:
+    ) -> ServicingPublicapiTransfersProjectDTO:
         """Delete a draft project
 
         Delete a draft project in the tenant. The project will first be archived if applicable.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -390,7 +395,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectDTO",
+            '200': "ServicingPublicapiTransfersProjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -421,7 +426,7 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ProjectDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersProjectDTO]:
         """Delete a draft project
 
         Delete a draft project in the tenant. The project will first be archived if applicable.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -462,7 +467,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectDTO",
+            '200': "ServicingPublicapiTransfersProjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -534,7 +539,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectDTO",
+            '200': "ServicingPublicapiTransfersProjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -587,6 +592,11 @@ class ProjectsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -624,7 +634,7 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ProjectDTO:
+    ) -> ServicingPublicapiTransfersProjectDTO:
         """Retrieve a draft project's information
 
         Retrieve the details of an accessible draft project. You must know the ID of the project to retrieve its details. To retrieve draft project IDs, see `GET v1beta/admin/projects`.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -665,7 +675,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectDTO",
+            '200': "ServicingPublicapiTransfersProjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -696,7 +706,7 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ProjectDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersProjectDTO]:
         """Retrieve a draft project's information
 
         Retrieve the details of an accessible draft project. You must know the ID of the project to retrieve its details. To retrieve draft project IDs, see `GET v1beta/admin/projects`.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -737,7 +747,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectDTO",
+            '200': "ServicingPublicapiTransfersProjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -809,7 +819,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectDTO",
+            '200': "ServicingPublicapiTransfersProjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -862,6 +872,11 @@ class ProjectsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -901,7 +916,7 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ProjectCommitsAPIResponseDTO:
+    ) -> ServicingPublicapiTransfersProjectCommitsAPIResponseDTO:
         """Retrieve a list of all committed changes in a project
 
         Retrieve the full list of all committed changes in a project.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -948,7 +963,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectCommitsAPIResponseDTO",
+            '200': "ServicingPublicapiTransfersProjectCommitsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -981,7 +996,7 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ProjectCommitsAPIResponseDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersProjectCommitsAPIResponseDTO]:
         """Retrieve a list of all committed changes in a project
 
         Retrieve the full list of all committed changes in a project.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1028,7 +1043,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectCommitsAPIResponseDTO",
+            '200': "ServicingPublicapiTransfersProjectCommitsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1108,7 +1123,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectCommitsAPIResponseDTO",
+            '200': "ServicingPublicapiTransfersProjectCommitsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1171,6 +1186,11 @@ class ProjectsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1209,7 +1229,7 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> GetProjectsAPIResponseDTO:
+    ) -> ServicingPublicapiTransfersGetProjectsAPIResponseDTO:
         """Retrieve a list of draft projects accessible to the user
 
         Get a list of draft projects accessible to the requesting user in the tenant.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1253,7 +1273,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetProjectsAPIResponseDTO",
+            '200': "ServicingPublicapiTransfersGetProjectsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1285,7 +1305,7 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[GetProjectsAPIResponseDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersGetProjectsAPIResponseDTO]:
         """Retrieve a list of draft projects accessible to the user
 
         Get a list of draft projects accessible to the requesting user in the tenant.   A project is accessible if it is owned by the user or shared to the user.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1329,7 +1349,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetProjectsAPIResponseDTO",
+            '200': "ServicingPublicapiTransfersGetProjectsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1405,7 +1425,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetProjectsAPIResponseDTO",
+            '200': "ServicingPublicapiTransfersGetProjectsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1466,6 +1486,11 @@ class ProjectsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1490,7 +1515,7 @@ class ProjectsApi:
     def put_project_commits(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to import committed changes into.")],
-        put_project_commits_request: PutProjectCommitsRequest,
+        admin_put_project_commits_request: AdminPutProjectCommitsRequest,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1504,15 +1529,15 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ProjectCommitsAPIResponseDTO:
+    ) -> ServicingPublicapiTransfersProjectCommitsAPIResponseDTO:
         """Import committed changes into a project
 
         Import a ZIP file that contains a list of committed changes into a draft project. The file must be an export from `POST /v1beta/admin/production-versions`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique identifier of the draft project you want to import committed changes into. (required)
         :type project_id: str
-        :param put_project_commits_request: (required)
-        :type put_project_commits_request: PutProjectCommitsRequest
+        :param admin_put_project_commits_request: (required)
+        :type admin_put_project_commits_request: AdminPutProjectCommitsRequest
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1539,7 +1564,7 @@ class ProjectsApi:
 
         _param = self._put_project_commits_serialize(
             project_id=project_id,
-            put_project_commits_request=put_project_commits_request,
+            admin_put_project_commits_request=admin_put_project_commits_request,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1548,7 +1573,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectCommitsAPIResponseDTO",
+            '200': "ServicingPublicapiTransfersProjectCommitsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1566,7 +1591,7 @@ class ProjectsApi:
     def put_project_commits_with_http_info(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to import committed changes into.")],
-        put_project_commits_request: PutProjectCommitsRequest,
+        admin_put_project_commits_request: AdminPutProjectCommitsRequest,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1580,15 +1605,15 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ProjectCommitsAPIResponseDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersProjectCommitsAPIResponseDTO]:
         """Import committed changes into a project
 
         Import a ZIP file that contains a list of committed changes into a draft project. The file must be an export from `POST /v1beta/admin/production-versions`. Use this API after making changes in a development environment to copy the changes to a draft project in your production environment.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: The unique identifier of the draft project you want to import committed changes into. (required)
         :type project_id: str
-        :param put_project_commits_request: (required)
-        :type put_project_commits_request: PutProjectCommitsRequest
+        :param admin_put_project_commits_request: (required)
+        :type admin_put_project_commits_request: AdminPutProjectCommitsRequest
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1615,7 +1640,7 @@ class ProjectsApi:
 
         _param = self._put_project_commits_serialize(
             project_id=project_id,
-            put_project_commits_request=put_project_commits_request,
+            admin_put_project_commits_request=admin_put_project_commits_request,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1624,7 +1649,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectCommitsAPIResponseDTO",
+            '200': "ServicingPublicapiTransfersProjectCommitsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1642,7 +1667,7 @@ class ProjectsApi:
     def put_project_commits_without_preload_content(
         self,
         project_id: Annotated[StrictStr, Field(description="The unique identifier of the draft project you want to import committed changes into.")],
-        put_project_commits_request: PutProjectCommitsRequest,
+        admin_put_project_commits_request: AdminPutProjectCommitsRequest,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1663,8 +1688,8 @@ class ProjectsApi:
 
         :param project_id: The unique identifier of the draft project you want to import committed changes into. (required)
         :type project_id: str
-        :param put_project_commits_request: (required)
-        :type put_project_commits_request: PutProjectCommitsRequest
+        :param admin_put_project_commits_request: (required)
+        :type admin_put_project_commits_request: AdminPutProjectCommitsRequest
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1691,7 +1716,7 @@ class ProjectsApi:
 
         _param = self._put_project_commits_serialize(
             project_id=project_id,
-            put_project_commits_request=put_project_commits_request,
+            admin_put_project_commits_request=admin_put_project_commits_request,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1700,7 +1725,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectCommitsAPIResponseDTO",
+            '200': "ServicingPublicapiTransfersProjectCommitsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1712,7 +1737,7 @@ class ProjectsApi:
     def _put_project_commits_serialize(
         self,
         project_id,
-        put_project_commits_request,
+        admin_put_project_commits_request,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -1741,8 +1766,8 @@ class ProjectsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if put_project_commits_request is not None:
-            _body_params = put_project_commits_request
+        if admin_put_project_commits_request is not None:
+            _body_params = admin_put_project_commits_request
 
 
         # set the HTTP header `Accept`
@@ -1769,6 +1794,11 @@ class ProjectsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1793,7 +1823,7 @@ class ProjectsApi:
     def run_project_operation(
         self,
         project_id: StrictStr,
-        project_operation_request_dto: ProjectOperationRequestDTO,
+        servicing_publicapi_transfers_project_operation_request_dto: ServicingPublicapiTransfersProjectOperationRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1807,15 +1837,15 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ProjectOperationResponseDTO:
+    ) -> ServicingPublicapiTransfersProjectOperationResponseDTO:
         """Perform an operation on a draft project
 
         Perform operations on a draft project. The following operations are supported:  * `commitAndPublish`: Commits project changes and publishes the project to production.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: (required)
         :type project_id: str
-        :param project_operation_request_dto: (required)
-        :type project_operation_request_dto: ProjectOperationRequestDTO
+        :param servicing_publicapi_transfers_project_operation_request_dto: (required)
+        :type servicing_publicapi_transfers_project_operation_request_dto: ServicingPublicapiTransfersProjectOperationRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1842,7 +1872,7 @@ class ProjectsApi:
 
         _param = self._run_project_operation_serialize(
             project_id=project_id,
-            project_operation_request_dto=project_operation_request_dto,
+            servicing_publicapi_transfers_project_operation_request_dto=servicing_publicapi_transfers_project_operation_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1851,7 +1881,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectOperationResponseDTO",
+            '200': "ServicingPublicapiTransfersProjectOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1869,7 +1899,7 @@ class ProjectsApi:
     def run_project_operation_with_http_info(
         self,
         project_id: StrictStr,
-        project_operation_request_dto: ProjectOperationRequestDTO,
+        servicing_publicapi_transfers_project_operation_request_dto: ServicingPublicapiTransfersProjectOperationRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1883,15 +1913,15 @@ class ProjectsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ProjectOperationResponseDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersProjectOperationResponseDTO]:
         """Perform an operation on a draft project
 
         Perform operations on a draft project. The following operations are supported:  * `commitAndPublish`: Commits project changes and publishes the project to production.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param project_id: (required)
         :type project_id: str
-        :param project_operation_request_dto: (required)
-        :type project_operation_request_dto: ProjectOperationRequestDTO
+        :param servicing_publicapi_transfers_project_operation_request_dto: (required)
+        :type servicing_publicapi_transfers_project_operation_request_dto: ServicingPublicapiTransfersProjectOperationRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1918,7 +1948,7 @@ class ProjectsApi:
 
         _param = self._run_project_operation_serialize(
             project_id=project_id,
-            project_operation_request_dto=project_operation_request_dto,
+            servicing_publicapi_transfers_project_operation_request_dto=servicing_publicapi_transfers_project_operation_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1927,7 +1957,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectOperationResponseDTO",
+            '200': "ServicingPublicapiTransfersProjectOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1945,7 +1975,7 @@ class ProjectsApi:
     def run_project_operation_without_preload_content(
         self,
         project_id: StrictStr,
-        project_operation_request_dto: ProjectOperationRequestDTO,
+        servicing_publicapi_transfers_project_operation_request_dto: ServicingPublicapiTransfersProjectOperationRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1966,8 +1996,8 @@ class ProjectsApi:
 
         :param project_id: (required)
         :type project_id: str
-        :param project_operation_request_dto: (required)
-        :type project_operation_request_dto: ProjectOperationRequestDTO
+        :param servicing_publicapi_transfers_project_operation_request_dto: (required)
+        :type servicing_publicapi_transfers_project_operation_request_dto: ServicingPublicapiTransfersProjectOperationRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1994,7 +2024,7 @@ class ProjectsApi:
 
         _param = self._run_project_operation_serialize(
             project_id=project_id,
-            project_operation_request_dto=project_operation_request_dto,
+            servicing_publicapi_transfers_project_operation_request_dto=servicing_publicapi_transfers_project_operation_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2003,7 +2033,7 @@ class ProjectsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ProjectOperationResponseDTO",
+            '200': "ServicingPublicapiTransfersProjectOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2015,7 +2045,7 @@ class ProjectsApi:
     def _run_project_operation_serialize(
         self,
         project_id,
-        project_operation_request_dto,
+        servicing_publicapi_transfers_project_operation_request_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -2044,8 +2074,8 @@ class ProjectsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if project_operation_request_dto is not None:
-            _body_params = project_operation_request_dto
+        if servicing_publicapi_transfers_project_operation_request_dto is not None:
+            _body_params = servicing_publicapi_transfers_project_operation_request_dto
 
 
         # set the HTTP header `Accept`
@@ -2072,6 +2102,11 @@ class ProjectsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(

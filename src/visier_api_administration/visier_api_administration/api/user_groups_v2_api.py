@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1772
+    The version of the OpenAPI document: 22222222.99201.1793
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,13 +23,13 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
-from visier_api_administration.models.delete_user_group_v2_request import DeleteUserGroupV2Request
-from visier_api_administration.models.user_group_change_definition_dto import UserGroupChangeDefinitionDTO
-from visier_api_administration.models.user_group_change_response_dto import UserGroupChangeResponseDTO
-from visier_api_administration.models.user_group_delete_response_dto import UserGroupDeleteResponseDTO
-from visier_api_administration.models.user_group_single_delete_response_dto import UserGroupSingleDeleteResponseDTO
-from visier_api_administration.models.user_groups_change_dto import UserGroupsChangeDTO
-from visier_api_administration.models.user_groups_delete_request_dto import UserGroupsDeleteRequestDTO
+from visier_api_administration.models.admin_delete_user_group_v2_request import AdminDeleteUserGroupV2Request
+from visier_api_administration.models.admin_publicapi_transfers_user_group_change_definition_dto import AdminPublicapiTransfersUserGroupChangeDefinitionDTO
+from visier_api_administration.models.admin_publicapi_transfers_user_group_change_response_dto import AdminPublicapiTransfersUserGroupChangeResponseDTO
+from visier_api_administration.models.admin_publicapi_transfers_user_group_delete_response_dto import AdminPublicapiTransfersUserGroupDeleteResponseDTO
+from visier_api_administration.models.admin_publicapi_transfers_user_group_single_delete_response_dto import AdminPublicapiTransfersUserGroupSingleDeleteResponseDTO
+from visier_api_administration.models.admin_publicapi_transfers_user_groups_change_dto import AdminPublicapiTransfersUserGroupsChangeDTO
+from visier_api_administration.models.admin_publicapi_transfers_user_groups_delete_request_dto import AdminPublicapiTransfersUserGroupsDeleteRequestDTO
 import visier_api_administration.models
 
 
@@ -48,7 +48,7 @@ class UserGroupsV2Api:
     @validate_call
     def create_user_groups(
         self,
-        user_groups_change_dto: UserGroupsChangeDTO,
+        admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -64,13 +64,13 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> UserGroupChangeResponseDTO:
+    ) -> AdminPublicapiTransfersUserGroupChangeResponseDTO:
         """Create multiple user groups
 
         Create new user groups. To specify the tenant in which to add new user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to create new user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
-        :param user_groups_change_dto: (required)
-        :type user_groups_change_dto: UserGroupsChangeDTO
+        :param admin_publicapi_transfers_user_groups_change_dto: (required)
+        :type admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -100,7 +100,7 @@ class UserGroupsV2Api:
         """ # noqa: E501
 
         _param = self._create_user_groups_serialize(
-            user_groups_change_dto=user_groups_change_dto,
+            admin_publicapi_transfers_user_groups_change_dto=admin_publicapi_transfers_user_groups_change_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -111,7 +111,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupChangeResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -128,7 +128,7 @@ class UserGroupsV2Api:
     @validate_call
     def create_user_groups_with_http_info(
         self,
-        user_groups_change_dto: UserGroupsChangeDTO,
+        admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -144,13 +144,13 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[UserGroupChangeResponseDTO]:
+    ) -> ApiResponse[AdminPublicapiTransfersUserGroupChangeResponseDTO]:
         """Create multiple user groups
 
         Create new user groups. To specify the tenant in which to add new user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to create new user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
-        :param user_groups_change_dto: (required)
-        :type user_groups_change_dto: UserGroupsChangeDTO
+        :param admin_publicapi_transfers_user_groups_change_dto: (required)
+        :type admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -180,7 +180,7 @@ class UserGroupsV2Api:
         """ # noqa: E501
 
         _param = self._create_user_groups_serialize(
-            user_groups_change_dto=user_groups_change_dto,
+            admin_publicapi_transfers_user_groups_change_dto=admin_publicapi_transfers_user_groups_change_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -191,7 +191,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupChangeResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -208,7 +208,7 @@ class UserGroupsV2Api:
     @validate_call
     def create_user_groups_without_preload_content(
         self,
-        user_groups_change_dto: UserGroupsChangeDTO,
+        admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -229,8 +229,8 @@ class UserGroupsV2Api:
 
         Create new user groups. To specify the tenant in which to add new user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to create new user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
-        :param user_groups_change_dto: (required)
-        :type user_groups_change_dto: UserGroupsChangeDTO
+        :param admin_publicapi_transfers_user_groups_change_dto: (required)
+        :type admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -260,7 +260,7 @@ class UserGroupsV2Api:
         """ # noqa: E501
 
         _param = self._create_user_groups_serialize(
-            user_groups_change_dto=user_groups_change_dto,
+            admin_publicapi_transfers_user_groups_change_dto=admin_publicapi_transfers_user_groups_change_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -271,7 +271,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupChangeResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -282,7 +282,7 @@ class UserGroupsV2Api:
 
     def _create_user_groups_serialize(
         self,
-        user_groups_change_dto,
+        admin_publicapi_transfers_user_groups_change_dto,
         target_tenant_id,
         project_id,
         non_versioned,
@@ -315,8 +315,8 @@ class UserGroupsV2Api:
             _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
-        if user_groups_change_dto is not None:
-            _body_params = user_groups_change_dto
+        if admin_publicapi_transfers_user_groups_change_dto is not None:
+            _body_params = admin_publicapi_transfers_user_groups_change_dto
 
 
         # set the HTTP header `Accept`
@@ -343,6 +343,11 @@ class UserGroupsV2Api:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -367,7 +372,7 @@ class UserGroupsV2Api:
     def delete_user_group(
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group to delete.")],
-        delete_user_group_v2_request: DeleteUserGroupV2Request,
+        admin_delete_user_group_v2_request: AdminDeleteUserGroupV2Request,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -383,15 +388,15 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> UserGroupSingleDeleteResponseDTO:
+    ) -> AdminPublicapiTransfersUserGroupSingleDeleteResponseDTO:
         """Delete a user group
 
         Delete a specific user group. To specify the tenant in which to delete a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete a user group, provide a project UUID in the `ProjectID` request header.
 
         :param user_group_id: The ID of user group to delete. (required)
         :type user_group_id: str
-        :param delete_user_group_v2_request: (required)
-        :type delete_user_group_v2_request: DeleteUserGroupV2Request
+        :param admin_delete_user_group_v2_request: (required)
+        :type admin_delete_user_group_v2_request: AdminDeleteUserGroupV2Request
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -422,7 +427,7 @@ class UserGroupsV2Api:
 
         _param = self._delete_user_group_serialize(
             user_group_id=user_group_id,
-            delete_user_group_v2_request=delete_user_group_v2_request,
+            admin_delete_user_group_v2_request=admin_delete_user_group_v2_request,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -433,7 +438,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupSingleDeleteResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupSingleDeleteResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -451,7 +456,7 @@ class UserGroupsV2Api:
     def delete_user_group_with_http_info(
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group to delete.")],
-        delete_user_group_v2_request: DeleteUserGroupV2Request,
+        admin_delete_user_group_v2_request: AdminDeleteUserGroupV2Request,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -467,15 +472,15 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[UserGroupSingleDeleteResponseDTO]:
+    ) -> ApiResponse[AdminPublicapiTransfersUserGroupSingleDeleteResponseDTO]:
         """Delete a user group
 
         Delete a specific user group. To specify the tenant in which to delete a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete a user group, provide a project UUID in the `ProjectID` request header.
 
         :param user_group_id: The ID of user group to delete. (required)
         :type user_group_id: str
-        :param delete_user_group_v2_request: (required)
-        :type delete_user_group_v2_request: DeleteUserGroupV2Request
+        :param admin_delete_user_group_v2_request: (required)
+        :type admin_delete_user_group_v2_request: AdminDeleteUserGroupV2Request
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -506,7 +511,7 @@ class UserGroupsV2Api:
 
         _param = self._delete_user_group_serialize(
             user_group_id=user_group_id,
-            delete_user_group_v2_request=delete_user_group_v2_request,
+            admin_delete_user_group_v2_request=admin_delete_user_group_v2_request,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -517,7 +522,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupSingleDeleteResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupSingleDeleteResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -535,7 +540,7 @@ class UserGroupsV2Api:
     def delete_user_group_without_preload_content(
         self,
         user_group_id: Annotated[StrictStr, Field(description="The ID of user group to delete.")],
-        delete_user_group_v2_request: DeleteUserGroupV2Request,
+        admin_delete_user_group_v2_request: AdminDeleteUserGroupV2Request,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -558,8 +563,8 @@ class UserGroupsV2Api:
 
         :param user_group_id: The ID of user group to delete. (required)
         :type user_group_id: str
-        :param delete_user_group_v2_request: (required)
-        :type delete_user_group_v2_request: DeleteUserGroupV2Request
+        :param admin_delete_user_group_v2_request: (required)
+        :type admin_delete_user_group_v2_request: AdminDeleteUserGroupV2Request
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -590,7 +595,7 @@ class UserGroupsV2Api:
 
         _param = self._delete_user_group_serialize(
             user_group_id=user_group_id,
-            delete_user_group_v2_request=delete_user_group_v2_request,
+            admin_delete_user_group_v2_request=admin_delete_user_group_v2_request,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -601,7 +606,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupSingleDeleteResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupSingleDeleteResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -613,7 +618,7 @@ class UserGroupsV2Api:
     def _delete_user_group_serialize(
         self,
         user_group_id,
-        delete_user_group_v2_request,
+        admin_delete_user_group_v2_request,
         target_tenant_id,
         project_id,
         non_versioned,
@@ -648,8 +653,8 @@ class UserGroupsV2Api:
             _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
-        if delete_user_group_v2_request is not None:
-            _body_params = delete_user_group_v2_request
+        if admin_delete_user_group_v2_request is not None:
+            _body_params = admin_delete_user_group_v2_request
 
 
         # set the HTTP header `Accept`
@@ -676,6 +681,11 @@ class UserGroupsV2Api:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -699,7 +709,7 @@ class UserGroupsV2Api:
     @validate_call
     def delete_user_groups(
         self,
-        user_groups_delete_request_dto: UserGroupsDeleteRequestDTO,
+        admin_publicapi_transfers_user_groups_delete_request_dto: AdminPublicapiTransfersUserGroupsDeleteRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -715,13 +725,13 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> UserGroupDeleteResponseDTO:
+    ) -> AdminPublicapiTransfersUserGroupDeleteResponseDTO:
         """Delete multiple user groups
 
         Delete user groups in bulk. To specify the tenant in which to delete user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
-        :param user_groups_delete_request_dto: (required)
-        :type user_groups_delete_request_dto: UserGroupsDeleteRequestDTO
+        :param admin_publicapi_transfers_user_groups_delete_request_dto: (required)
+        :type admin_publicapi_transfers_user_groups_delete_request_dto: AdminPublicapiTransfersUserGroupsDeleteRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -751,7 +761,7 @@ class UserGroupsV2Api:
         """ # noqa: E501
 
         _param = self._delete_user_groups_serialize(
-            user_groups_delete_request_dto=user_groups_delete_request_dto,
+            admin_publicapi_transfers_user_groups_delete_request_dto=admin_publicapi_transfers_user_groups_delete_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -762,7 +772,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupDeleteResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupDeleteResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -779,7 +789,7 @@ class UserGroupsV2Api:
     @validate_call
     def delete_user_groups_with_http_info(
         self,
-        user_groups_delete_request_dto: UserGroupsDeleteRequestDTO,
+        admin_publicapi_transfers_user_groups_delete_request_dto: AdminPublicapiTransfersUserGroupsDeleteRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -795,13 +805,13 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[UserGroupDeleteResponseDTO]:
+    ) -> ApiResponse[AdminPublicapiTransfersUserGroupDeleteResponseDTO]:
         """Delete multiple user groups
 
         Delete user groups in bulk. To specify the tenant in which to delete user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
-        :param user_groups_delete_request_dto: (required)
-        :type user_groups_delete_request_dto: UserGroupsDeleteRequestDTO
+        :param admin_publicapi_transfers_user_groups_delete_request_dto: (required)
+        :type admin_publicapi_transfers_user_groups_delete_request_dto: AdminPublicapiTransfersUserGroupsDeleteRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -831,7 +841,7 @@ class UserGroupsV2Api:
         """ # noqa: E501
 
         _param = self._delete_user_groups_serialize(
-            user_groups_delete_request_dto=user_groups_delete_request_dto,
+            admin_publicapi_transfers_user_groups_delete_request_dto=admin_publicapi_transfers_user_groups_delete_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -842,7 +852,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupDeleteResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupDeleteResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -859,7 +869,7 @@ class UserGroupsV2Api:
     @validate_call
     def delete_user_groups_without_preload_content(
         self,
-        user_groups_delete_request_dto: UserGroupsDeleteRequestDTO,
+        admin_publicapi_transfers_user_groups_delete_request_dto: AdminPublicapiTransfersUserGroupsDeleteRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -880,8 +890,8 @@ class UserGroupsV2Api:
 
         Delete user groups in bulk. To specify the tenant in which to delete user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to delete user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
-        :param user_groups_delete_request_dto: (required)
-        :type user_groups_delete_request_dto: UserGroupsDeleteRequestDTO
+        :param admin_publicapi_transfers_user_groups_delete_request_dto: (required)
+        :type admin_publicapi_transfers_user_groups_delete_request_dto: AdminPublicapiTransfersUserGroupsDeleteRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -911,7 +921,7 @@ class UserGroupsV2Api:
         """ # noqa: E501
 
         _param = self._delete_user_groups_serialize(
-            user_groups_delete_request_dto=user_groups_delete_request_dto,
+            admin_publicapi_transfers_user_groups_delete_request_dto=admin_publicapi_transfers_user_groups_delete_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -922,7 +932,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupDeleteResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupDeleteResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -933,7 +943,7 @@ class UserGroupsV2Api:
 
     def _delete_user_groups_serialize(
         self,
-        user_groups_delete_request_dto,
+        admin_publicapi_transfers_user_groups_delete_request_dto,
         target_tenant_id,
         project_id,
         non_versioned,
@@ -966,8 +976,8 @@ class UserGroupsV2Api:
             _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
-        if user_groups_delete_request_dto is not None:
-            _body_params = user_groups_delete_request_dto
+        if admin_publicapi_transfers_user_groups_delete_request_dto is not None:
+            _body_params = admin_publicapi_transfers_user_groups_delete_request_dto
 
 
         # set the HTTP header `Accept`
@@ -994,6 +1004,11 @@ class UserGroupsV2Api:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1034,7 +1049,7 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> UserGroupChangeDefinitionDTO:
+    ) -> AdminPublicapiTransfersUserGroupChangeDefinitionDTO:
         """Retrieve the details of a user group
 
         Retrieve all available information about a specific user group.    <br>To specify the tenant in which to retrieve a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to return a user group, provide a project UUID in the `ProjectID` request header.
@@ -1084,7 +1099,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupChangeDefinitionDTO",
+            '200': "AdminPublicapiTransfersUserGroupChangeDefinitionDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1118,7 +1133,7 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[UserGroupChangeDefinitionDTO]:
+    ) -> ApiResponse[AdminPublicapiTransfersUserGroupChangeDefinitionDTO]:
         """Retrieve the details of a user group
 
         Retrieve all available information about a specific user group.    <br>To specify the tenant in which to retrieve a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.   To specify the project in which to return a user group, provide a project UUID in the `ProjectID` request header.
@@ -1168,7 +1183,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupChangeDefinitionDTO",
+            '200': "AdminPublicapiTransfersUserGroupChangeDefinitionDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1252,7 +1267,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupChangeDefinitionDTO",
+            '200': "AdminPublicapiTransfersUserGroupChangeDefinitionDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1316,6 +1331,11 @@ class UserGroupsV2Api:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1356,7 +1376,7 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> UserGroupsChangeDTO:
+    ) -> AdminPublicapiTransfersUserGroupsChangeDTO:
         """Retrieve a list of user groups
 
         Retrieve a collection of user groups. Use `with` to control the amount of detail returned in the response.  `with` supports these values:  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.   This API can return a maximum of 1000 user groups. The default number of user groups to return is 100.   To specify the project in which to return user groups, provide a project UUID in the `ProjectID` request header.   <br>To specify the tenant in which to retrieve user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.
@@ -1406,7 +1426,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupsChangeDTO",
+            '200': "AdminPublicapiTransfersUserGroupsChangeDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1440,7 +1460,7 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[UserGroupsChangeDTO]:
+    ) -> ApiResponse[AdminPublicapiTransfersUserGroupsChangeDTO]:
         """Retrieve a list of user groups
 
         Retrieve a collection of user groups. Use `with` to control the amount of detail returned in the response.  `with` supports these values:  * **permissions**: Include the user group's permissions.  * **users**: Include the users in the user group.  * **details**: Include all available information.   This API can return a maximum of 1000 user groups. The default number of user groups to return is 100.   To specify the project in which to return user groups, provide a project UUID in the `ProjectID` request header.   <br>To specify the tenant in which to retrieve user groups, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header.
@@ -1490,7 +1510,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupsChangeDTO",
+            '200': "AdminPublicapiTransfersUserGroupsChangeDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1574,7 +1594,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupsChangeDTO",
+            '200': "AdminPublicapiTransfersUserGroupsChangeDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1640,6 +1660,11 @@ class UserGroupsV2Api:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1663,7 +1688,7 @@ class UserGroupsV2Api:
     @validate_call
     def patch_user_groups(
         self,
-        user_groups_change_dto: UserGroupsChangeDTO,
+        admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -1679,13 +1704,13 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> UserGroupChangeResponseDTO:
+    ) -> AdminPublicapiTransfersUserGroupChangeResponseDTO:
         """Patch multiple user groups
 
         Make partial changes to user groups. To specify the tenant in which to patch a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   Unlike `PUT`, which completely replaces the user group definition, use `PATCH` to change specific fields in the user group without affecting omitted fields.   To specify the project in which to patch user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
-        :param user_groups_change_dto: (required)
-        :type user_groups_change_dto: UserGroupsChangeDTO
+        :param admin_publicapi_transfers_user_groups_change_dto: (required)
+        :type admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -1715,7 +1740,7 @@ class UserGroupsV2Api:
         """ # noqa: E501
 
         _param = self._patch_user_groups_serialize(
-            user_groups_change_dto=user_groups_change_dto,
+            admin_publicapi_transfers_user_groups_change_dto=admin_publicapi_transfers_user_groups_change_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -1726,7 +1751,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupChangeResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1743,7 +1768,7 @@ class UserGroupsV2Api:
     @validate_call
     def patch_user_groups_with_http_info(
         self,
-        user_groups_change_dto: UserGroupsChangeDTO,
+        admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -1759,13 +1784,13 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[UserGroupChangeResponseDTO]:
+    ) -> ApiResponse[AdminPublicapiTransfersUserGroupChangeResponseDTO]:
         """Patch multiple user groups
 
         Make partial changes to user groups. To specify the tenant in which to patch a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   Unlike `PUT`, which completely replaces the user group definition, use `PATCH` to change specific fields in the user group without affecting omitted fields.   To specify the project in which to patch user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
-        :param user_groups_change_dto: (required)
-        :type user_groups_change_dto: UserGroupsChangeDTO
+        :param admin_publicapi_transfers_user_groups_change_dto: (required)
+        :type admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -1795,7 +1820,7 @@ class UserGroupsV2Api:
         """ # noqa: E501
 
         _param = self._patch_user_groups_serialize(
-            user_groups_change_dto=user_groups_change_dto,
+            admin_publicapi_transfers_user_groups_change_dto=admin_publicapi_transfers_user_groups_change_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -1806,7 +1831,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupChangeResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1823,7 +1848,7 @@ class UserGroupsV2Api:
     @validate_call
     def patch_user_groups_without_preload_content(
         self,
-        user_groups_change_dto: UserGroupsChangeDTO,
+        admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -1844,8 +1869,8 @@ class UserGroupsV2Api:
 
         Make partial changes to user groups. To specify the tenant in which to patch a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   Unlike `PUT`, which completely replaces the user group definition, use `PATCH` to change specific fields in the user group without affecting omitted fields.   To specify the project in which to patch user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
-        :param user_groups_change_dto: (required)
-        :type user_groups_change_dto: UserGroupsChangeDTO
+        :param admin_publicapi_transfers_user_groups_change_dto: (required)
+        :type admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -1875,7 +1900,7 @@ class UserGroupsV2Api:
         """ # noqa: E501
 
         _param = self._patch_user_groups_serialize(
-            user_groups_change_dto=user_groups_change_dto,
+            admin_publicapi_transfers_user_groups_change_dto=admin_publicapi_transfers_user_groups_change_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -1886,7 +1911,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupChangeResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1897,7 +1922,7 @@ class UserGroupsV2Api:
 
     def _patch_user_groups_serialize(
         self,
-        user_groups_change_dto,
+        admin_publicapi_transfers_user_groups_change_dto,
         target_tenant_id,
         project_id,
         non_versioned,
@@ -1930,8 +1955,8 @@ class UserGroupsV2Api:
             _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
-        if user_groups_change_dto is not None:
-            _body_params = user_groups_change_dto
+        if admin_publicapi_transfers_user_groups_change_dto is not None:
+            _body_params = admin_publicapi_transfers_user_groups_change_dto
 
 
         # set the HTTP header `Accept`
@@ -1958,6 +1983,11 @@ class UserGroupsV2Api:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1981,7 +2011,7 @@ class UserGroupsV2Api:
     @validate_call
     def put_user_groups(
         self,
-        user_groups_change_dto: UserGroupsChangeDTO,
+        admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -1997,13 +2027,13 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> UserGroupChangeResponseDTO:
+    ) -> AdminPublicapiTransfersUserGroupChangeResponseDTO:
         """Update multiple user groups
 
         Update existing user groups. To specify the tenant in which to update a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   When updating user groups, the user group definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the user group. We recommend that you retrieve a user group's details before you update the user group with new values.    To specify the project in which to update user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
-        :param user_groups_change_dto: (required)
-        :type user_groups_change_dto: UserGroupsChangeDTO
+        :param admin_publicapi_transfers_user_groups_change_dto: (required)
+        :type admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -2033,7 +2063,7 @@ class UserGroupsV2Api:
         """ # noqa: E501
 
         _param = self._put_user_groups_serialize(
-            user_groups_change_dto=user_groups_change_dto,
+            admin_publicapi_transfers_user_groups_change_dto=admin_publicapi_transfers_user_groups_change_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -2044,7 +2074,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupChangeResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2061,7 +2091,7 @@ class UserGroupsV2Api:
     @validate_call
     def put_user_groups_with_http_info(
         self,
-        user_groups_change_dto: UserGroupsChangeDTO,
+        admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -2077,13 +2107,13 @@ class UserGroupsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[UserGroupChangeResponseDTO]:
+    ) -> ApiResponse[AdminPublicapiTransfersUserGroupChangeResponseDTO]:
         """Update multiple user groups
 
         Update existing user groups. To specify the tenant in which to update a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   When updating user groups, the user group definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the user group. We recommend that you retrieve a user group's details before you update the user group with new values.    To specify the project in which to update user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
-        :param user_groups_change_dto: (required)
-        :type user_groups_change_dto: UserGroupsChangeDTO
+        :param admin_publicapi_transfers_user_groups_change_dto: (required)
+        :type admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -2113,7 +2143,7 @@ class UserGroupsV2Api:
         """ # noqa: E501
 
         _param = self._put_user_groups_serialize(
-            user_groups_change_dto=user_groups_change_dto,
+            admin_publicapi_transfers_user_groups_change_dto=admin_publicapi_transfers_user_groups_change_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -2124,7 +2154,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupChangeResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2141,7 +2171,7 @@ class UserGroupsV2Api:
     @validate_call
     def put_user_groups_without_preload_content(
         self,
-        user_groups_change_dto: UserGroupsChangeDTO,
+        admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -2162,8 +2192,8 @@ class UserGroupsV2Api:
 
         Update existing user groups. To specify the tenant in which to update a user group, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each user group in the request body.   When updating user groups, the user group definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the user group. We recommend that you retrieve a user group's details before you update the user group with new values.    To specify the project in which to update user groups, provide a project UUID in the `ProjectID` request header or `projectId` for each user group in the request body.
 
-        :param user_groups_change_dto: (required)
-        :type user_groups_change_dto: UserGroupsChangeDTO
+        :param admin_publicapi_transfers_user_groups_change_dto: (required)
+        :type admin_publicapi_transfers_user_groups_change_dto: AdminPublicapiTransfersUserGroupsChangeDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -2193,7 +2223,7 @@ class UserGroupsV2Api:
         """ # noqa: E501
 
         _param = self._put_user_groups_serialize(
-            user_groups_change_dto=user_groups_change_dto,
+            admin_publicapi_transfers_user_groups_change_dto=admin_publicapi_transfers_user_groups_change_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -2204,7 +2234,7 @@ class UserGroupsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UserGroupChangeResponseDTO",
+            '200': "AdminPublicapiTransfersUserGroupChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2215,7 +2245,7 @@ class UserGroupsV2Api:
 
     def _put_user_groups_serialize(
         self,
-        user_groups_change_dto,
+        admin_publicapi_transfers_user_groups_change_dto,
         target_tenant_id,
         project_id,
         non_versioned,
@@ -2248,8 +2278,8 @@ class UserGroupsV2Api:
             _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
-        if user_groups_change_dto is not None:
-            _body_params = user_groups_change_dto
+        if admin_publicapi_transfers_user_groups_change_dto is not None:
+            _body_params = admin_publicapi_transfers_user_groups_change_dto
 
 
         # set the HTTP header `Accept`
@@ -2276,6 +2306,11 @@ class UserGroupsV2Api:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(

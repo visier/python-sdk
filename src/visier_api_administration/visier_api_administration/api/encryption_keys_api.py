@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1772
+    The version of the OpenAPI document: 22222222.99201.1793
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -22,10 +22,10 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 
 from pydantic import Field, StrictStr
 from typing_extensions import Annotated
-from visier_api_administration.models.generate_key_request_dto import GenerateKeyRequestDTO
-from visier_api_administration.models.key_name import KeyName
-from visier_api_administration.models.tenant_encryption_key_dto import TenantEncryptionKeyDTO
-from visier_api_administration.models.tenant_encryption_key_details_dto import TenantEncryptionKeyDetailsDTO
+from visier_api_administration.models.admin_key_name import AdminKeyName
+from visier_api_administration.models.designer_crypto_generate_key_request_dto import DesignerCryptoGenerateKeyRequestDTO
+from visier_api_administration.models.designer_crypto_tenant_encryption_key_dto import DesignerCryptoTenantEncryptionKeyDTO
+from visier_api_administration.models.designer_crypto_tenant_encryption_key_details_dto import DesignerCryptoTenantEncryptionKeyDetailsDTO
 import visier_api_administration.models
 
 
@@ -57,7 +57,7 @@ class EncryptionKeysApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> KeyName:
+    ) -> AdminKeyName:
         """Delete an encryption key
 
         Delete a specific encryption key.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -95,7 +95,7 @@ class EncryptionKeysApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "KeyName",
+            '200': "AdminKeyName",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -125,7 +125,7 @@ class EncryptionKeysApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[KeyName]:
+    ) -> ApiResponse[AdminKeyName]:
         """Delete an encryption key
 
         Delete a specific encryption key.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -163,7 +163,7 @@ class EncryptionKeysApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "KeyName",
+            '200': "AdminKeyName",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -231,7 +231,7 @@ class EncryptionKeysApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "KeyName",
+            '200': "AdminKeyName",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -281,6 +281,11 @@ class EncryptionKeysApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -304,7 +309,7 @@ class EncryptionKeysApi:
     @validate_call
     def generate_encryption_keys(
         self,
-        generate_key_request_dto: GenerateKeyRequestDTO,
+        designer_crypto_generate_key_request_dto: DesignerCryptoGenerateKeyRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -317,13 +322,13 @@ class EncryptionKeysApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TenantEncryptionKeyDTO:
+    ) -> DesignerCryptoTenantEncryptionKeyDTO:
         """Generate an encryption key
 
         Create an encryption key using a specific algorithm. The algorithm must be one of `HmacSHA224`, `HmacSHA256`, `HmacSHA384`, or `HmacSHA512`.    In the request body, set the algorithm, give the key a display name and, optionally, set the UTC expiration date for the key pair in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.    The maximum number of encryption keys per tenant is 5.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param generate_key_request_dto: (required)
-        :type generate_key_request_dto: GenerateKeyRequestDTO
+        :param designer_crypto_generate_key_request_dto: (required)
+        :type designer_crypto_generate_key_request_dto: DesignerCryptoGenerateKeyRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -347,7 +352,7 @@ class EncryptionKeysApi:
         """ # noqa: E501
 
         _param = self._generate_encryption_keys_serialize(
-            generate_key_request_dto=generate_key_request_dto,
+            designer_crypto_generate_key_request_dto=designer_crypto_generate_key_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -355,7 +360,7 @@ class EncryptionKeysApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TenantEncryptionKeyDTO",
+            '200': "DesignerCryptoTenantEncryptionKeyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -372,7 +377,7 @@ class EncryptionKeysApi:
     @validate_call
     def generate_encryption_keys_with_http_info(
         self,
-        generate_key_request_dto: GenerateKeyRequestDTO,
+        designer_crypto_generate_key_request_dto: DesignerCryptoGenerateKeyRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -385,13 +390,13 @@ class EncryptionKeysApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TenantEncryptionKeyDTO]:
+    ) -> ApiResponse[DesignerCryptoTenantEncryptionKeyDTO]:
         """Generate an encryption key
 
         Create an encryption key using a specific algorithm. The algorithm must be one of `HmacSHA224`, `HmacSHA256`, `HmacSHA384`, or `HmacSHA512`.    In the request body, set the algorithm, give the key a display name and, optionally, set the UTC expiration date for the key pair in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.    The maximum number of encryption keys per tenant is 5.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param generate_key_request_dto: (required)
-        :type generate_key_request_dto: GenerateKeyRequestDTO
+        :param designer_crypto_generate_key_request_dto: (required)
+        :type designer_crypto_generate_key_request_dto: DesignerCryptoGenerateKeyRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -415,7 +420,7 @@ class EncryptionKeysApi:
         """ # noqa: E501
 
         _param = self._generate_encryption_keys_serialize(
-            generate_key_request_dto=generate_key_request_dto,
+            designer_crypto_generate_key_request_dto=designer_crypto_generate_key_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -423,7 +428,7 @@ class EncryptionKeysApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TenantEncryptionKeyDTO",
+            '200': "DesignerCryptoTenantEncryptionKeyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -440,7 +445,7 @@ class EncryptionKeysApi:
     @validate_call
     def generate_encryption_keys_without_preload_content(
         self,
-        generate_key_request_dto: GenerateKeyRequestDTO,
+        designer_crypto_generate_key_request_dto: DesignerCryptoGenerateKeyRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -458,8 +463,8 @@ class EncryptionKeysApi:
 
         Create an encryption key using a specific algorithm. The algorithm must be one of `HmacSHA224`, `HmacSHA256`, `HmacSHA384`, or `HmacSHA512`.    In the request body, set the algorithm, give the key a display name and, optionally, set the UTC expiration date for the key pair in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.    The maximum number of encryption keys per tenant is 5.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param generate_key_request_dto: (required)
-        :type generate_key_request_dto: GenerateKeyRequestDTO
+        :param designer_crypto_generate_key_request_dto: (required)
+        :type designer_crypto_generate_key_request_dto: DesignerCryptoGenerateKeyRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -483,7 +488,7 @@ class EncryptionKeysApi:
         """ # noqa: E501
 
         _param = self._generate_encryption_keys_serialize(
-            generate_key_request_dto=generate_key_request_dto,
+            designer_crypto_generate_key_request_dto=designer_crypto_generate_key_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -491,7 +496,7 @@ class EncryptionKeysApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TenantEncryptionKeyDTO",
+            '200': "DesignerCryptoTenantEncryptionKeyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -502,7 +507,7 @@ class EncryptionKeysApi:
 
     def _generate_encryption_keys_serialize(
         self,
-        generate_key_request_dto,
+        designer_crypto_generate_key_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -526,8 +531,8 @@ class EncryptionKeysApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if generate_key_request_dto is not None:
-            _body_params = generate_key_request_dto
+        if designer_crypto_generate_key_request_dto is not None:
+            _body_params = designer_crypto_generate_key_request_dto
 
 
         # set the HTTP header `Accept`
@@ -554,6 +559,11 @@ class EncryptionKeysApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -589,7 +599,7 @@ class EncryptionKeysApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TenantEncryptionKeyDetailsDTO:
+    ) -> DesignerCryptoTenantEncryptionKeyDetailsDTO:
         """Retrieve a list of all encryption keys
 
         Retrieve a list of all encryption keys. The response returns information about each key, including the key name, algorithm, user who generated the key, the generation date, and expiration date.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -624,7 +634,7 @@ class EncryptionKeysApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TenantEncryptionKeyDetailsDTO",
+            '200': "DesignerCryptoTenantEncryptionKeyDetailsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -653,7 +663,7 @@ class EncryptionKeysApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TenantEncryptionKeyDetailsDTO]:
+    ) -> ApiResponse[DesignerCryptoTenantEncryptionKeyDetailsDTO]:
         """Retrieve a list of all encryption keys
 
         Retrieve a list of all encryption keys. The response returns information about each key, including the key name, algorithm, user who generated the key, the generation date, and expiration date.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -688,7 +698,7 @@ class EncryptionKeysApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TenantEncryptionKeyDetailsDTO",
+            '200': "DesignerCryptoTenantEncryptionKeyDetailsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -752,7 +762,7 @@ class EncryptionKeysApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TenantEncryptionKeyDetailsDTO",
+            '200': "DesignerCryptoTenantEncryptionKeyDetailsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -799,6 +809,11 @@ class EncryptionKeysApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(

@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1772
+    The version of the OpenAPI document: 22222222.99201.1793
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,12 +23,12 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictBytes, StrictInt, StrictStr
 from typing import Optional, Tuple, Union
 from typing_extensions import Annotated
-from visier_api_data_in.models.push_data_cancel_response import PushDataCancelResponse
-from visier_api_data_in.models.push_data_complete_request import PushDataCompleteRequest
-from visier_api_data_in.models.push_data_complete_response import PushDataCompleteResponse
-from visier_api_data_in.models.push_data_response import PushDataResponse
-from visier_api_data_in.models.push_data_source_definitions_dto import PushDataSourceDefinitionsDTO
-from visier_api_data_in.models.start_transfer_response import StartTransferResponse
+from visier_api_data_in.models.data_in_push_data_cancel_response import DataInPushDataCancelResponse
+from visier_api_data_in.models.data_in_push_data_complete_request import DataInPushDataCompleteRequest
+from visier_api_data_in.models.data_in_push_data_complete_response import DataInPushDataCompleteResponse
+from visier_api_data_in.models.data_in_push_data_response import DataInPushDataResponse
+from visier_api_data_in.models.data_in_start_transfer_response import DataInStartTransferResponse
+from visier_api_data_in.models.designer_transfers_push_data_source_definitions_dto import DesignerTransfersPushDataSourceDefinitionsDTO
 import visier_api_data_in.models
 
 
@@ -60,7 +60,7 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PushDataSourceDefinitionsDTO:
+    ) -> DesignerTransfersPushDataSourceDefinitionsDTO:
         """Retrieve a list of sources
 
         Prior to transferring data to Visier, you must identify the sources you want to target. Sources store data for  the solution and are used to map data to Visier's data model.   **Note:** To set up sources in your tenant, contact Visier Customer Success.  This API allows you to query the list of available sources, and identify the source schema and required fields.
@@ -98,7 +98,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataSourceDefinitionsDTO",
+            '200': "DesignerTransfersPushDataSourceDefinitionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -128,7 +128,7 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PushDataSourceDefinitionsDTO]:
+    ) -> ApiResponse[DesignerTransfersPushDataSourceDefinitionsDTO]:
         """Retrieve a list of sources
 
         Prior to transferring data to Visier, you must identify the sources you want to target. Sources store data for  the solution and are used to map data to Visier's data model.   **Note:** To set up sources in your tenant, contact Visier Customer Success.  This API allows you to query the list of available sources, and identify the source schema and required fields.
@@ -166,7 +166,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataSourceDefinitionsDTO",
+            '200': "DesignerTransfersPushDataSourceDefinitionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -234,7 +234,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataSourceDefinitionsDTO",
+            '200': "DesignerTransfersPushDataSourceDefinitionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -330,7 +330,7 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PushDataResponse:
+    ) -> DataInPushDataResponse:
         """Transfer data to sources via JSON
 
         Transfer data to Visier in batches of records. Each request includes a batch of records  formatted as a comma separated array with the first row containing the column headers in the request body. Each  subsequent request should also include the first row as a header.   Each request transfers a batch of records to a single source. Transfer sessions may include one or more batches before completion.   Each batch is identified by a sequence number. Sequence numbers help identify any batches  that were delivered incorrectly.   Each batch is limited to the following request size:  - Batch size limit: 10 MB  - Record count limit: 300,000 rows
@@ -383,7 +383,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataResponse",
+            '200': "DataInPushDataResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -418,7 +418,7 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PushDataResponse]:
+    ) -> ApiResponse[DataInPushDataResponse]:
         """Transfer data to sources via JSON
 
         Transfer data to Visier in batches of records. Each request includes a batch of records  formatted as a comma separated array with the first row containing the column headers in the request body. Each  subsequent request should also include the first row as a header.   Each request transfers a batch of records to a single source. Transfer sessions may include one or more batches before completion.   Each batch is identified by a sequence number. Sequence numbers help identify any batches  that were delivered incorrectly.   Each batch is limited to the following request size:  - Batch size limit: 10 MB  - Record count limit: 300,000 rows
@@ -471,7 +471,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataResponse",
+            '200': "DataInPushDataResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -559,7 +559,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataResponse",
+            '200': "DataInPushDataResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -685,7 +685,7 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PushDataCancelResponse:
+    ) -> DataInPushDataCancelResponse:
         """Cancel a transfer session
 
         Cancel a transfer session after starting it. If a transfer session is cancelled, all  records within the transfer session do not persist in Visier's data store.   If you cancel a transfer session, please start a new transfer session and resend the complete data set.   You might cancel a transfer session if:  - A request to send a batch of records failed.  - The original set of records is incomplete.  - An infrastructure error occurs.
@@ -726,7 +726,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataCancelResponse",
+            '200': "DataInPushDataCancelResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -757,7 +757,7 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PushDataCancelResponse]:
+    ) -> ApiResponse[DataInPushDataCancelResponse]:
         """Cancel a transfer session
 
         Cancel a transfer session after starting it. If a transfer session is cancelled, all  records within the transfer session do not persist in Visier's data store.   If you cancel a transfer session, please start a new transfer session and resend the complete data set.   You might cancel a transfer session if:  - A request to send a batch of records failed.  - The original set of records is incomplete.  - An infrastructure error occurs.
@@ -798,7 +798,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataCancelResponse",
+            '200': "DataInPushDataCancelResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -870,7 +870,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataCancelResponse",
+            '200': "DataInPushDataCancelResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -951,7 +951,7 @@ class DataIntakeApi:
     @validate_call
     def push_data_complete(
         self,
-        push_data_complete_request: PushDataCompleteRequest,
+        data_in_push_data_complete_request: DataInPushDataCompleteRequest,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -965,13 +965,13 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PushDataCompleteResponse:
+    ) -> DataInPushDataCompleteResponse:
         """Complete a transfer session
 
         Complete the specified transfer session by triggering a receiving job. A receiving job  validates the transferred data and adds the transferred data to Visier's data store.   You can set an optional parameter to generate a data version through a processing job immediately after the receiving job completes.
 
-        :param push_data_complete_request: (required)
-        :type push_data_complete_request: PushDataCompleteRequest
+        :param data_in_push_data_complete_request: (required)
+        :type data_in_push_data_complete_request: DataInPushDataCompleteRequest
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -997,7 +997,7 @@ class DataIntakeApi:
         """ # noqa: E501
 
         _param = self._push_data_complete_serialize(
-            push_data_complete_request=push_data_complete_request,
+            data_in_push_data_complete_request=data_in_push_data_complete_request,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1006,7 +1006,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataCompleteResponse",
+            '200': "DataInPushDataCompleteResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1023,7 +1023,7 @@ class DataIntakeApi:
     @validate_call
     def push_data_complete_with_http_info(
         self,
-        push_data_complete_request: PushDataCompleteRequest,
+        data_in_push_data_complete_request: DataInPushDataCompleteRequest,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1037,13 +1037,13 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PushDataCompleteResponse]:
+    ) -> ApiResponse[DataInPushDataCompleteResponse]:
         """Complete a transfer session
 
         Complete the specified transfer session by triggering a receiving job. A receiving job  validates the transferred data and adds the transferred data to Visier's data store.   You can set an optional parameter to generate a data version through a processing job immediately after the receiving job completes.
 
-        :param push_data_complete_request: (required)
-        :type push_data_complete_request: PushDataCompleteRequest
+        :param data_in_push_data_complete_request: (required)
+        :type data_in_push_data_complete_request: DataInPushDataCompleteRequest
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1069,7 +1069,7 @@ class DataIntakeApi:
         """ # noqa: E501
 
         _param = self._push_data_complete_serialize(
-            push_data_complete_request=push_data_complete_request,
+            data_in_push_data_complete_request=data_in_push_data_complete_request,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1078,7 +1078,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataCompleteResponse",
+            '200': "DataInPushDataCompleteResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1095,7 +1095,7 @@ class DataIntakeApi:
     @validate_call
     def push_data_complete_without_preload_content(
         self,
-        push_data_complete_request: PushDataCompleteRequest,
+        data_in_push_data_complete_request: DataInPushDataCompleteRequest,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1114,8 +1114,8 @@ class DataIntakeApi:
 
         Complete the specified transfer session by triggering a receiving job. A receiving job  validates the transferred data and adds the transferred data to Visier's data store.   You can set an optional parameter to generate a data version through a processing job immediately after the receiving job completes.
 
-        :param push_data_complete_request: (required)
-        :type push_data_complete_request: PushDataCompleteRequest
+        :param data_in_push_data_complete_request: (required)
+        :type data_in_push_data_complete_request: DataInPushDataCompleteRequest
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1141,7 +1141,7 @@ class DataIntakeApi:
         """ # noqa: E501
 
         _param = self._push_data_complete_serialize(
-            push_data_complete_request=push_data_complete_request,
+            data_in_push_data_complete_request=data_in_push_data_complete_request,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1150,7 +1150,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataCompleteResponse",
+            '200': "DataInPushDataCompleteResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1161,7 +1161,7 @@ class DataIntakeApi:
 
     def _push_data_complete_serialize(
         self,
-        push_data_complete_request,
+        data_in_push_data_complete_request,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -1188,8 +1188,8 @@ class DataIntakeApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if push_data_complete_request is not None:
-            _body_params = push_data_complete_request
+        if data_in_push_data_complete_request is not None:
+            _body_params = data_in_push_data_complete_request
 
 
         # set the HTTP header `Accept`
@@ -1257,7 +1257,7 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> StartTransferResponse:
+    ) -> DataInStartTransferResponse:
         """Start a transfer session
 
         Start a new transfer session. A transfer session can include one or more batches of records to be  sent to Visier. Batches of records may be transferred as JSON or file payloads.   Recommended: For optimal performance, please include all batches of records in a single transfer session.
@@ -1295,7 +1295,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "StartTransferResponse",
+            '200': "DataInStartTransferResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1325,7 +1325,7 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[StartTransferResponse]:
+    ) -> ApiResponse[DataInStartTransferResponse]:
         """Start a transfer session
 
         Start a new transfer session. A transfer session can include one or more batches of records to be  sent to Visier. Batches of records may be transferred as JSON or file payloads.   Recommended: For optimal performance, please include all batches of records in a single transfer session.
@@ -1363,7 +1363,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "StartTransferResponse",
+            '200': "DataInStartTransferResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1431,7 +1431,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "StartTransferResponse",
+            '200': "DataInStartTransferResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1527,7 +1527,7 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PushDataResponse:
+    ) -> DataInPushDataResponse:
         """Transfer data to sources via file upload
 
         Upload data to Visier as CSV or ZIP files. Each request transfers a single file. If the  data intended for Visier is stored in multiple files, you may compress them into a single ZIP file or make  multiple requests within the same transfer session.   File size limit: 3 GB   Each file is identified by a sequence number. Sequence numbers help identify any batches that were delivered incorrectly.   If you define a specific source in the request, all files within the request will target the declared source. If  a source is not defined, the filenames are matched against the source regex to correctly assign each file to a  source. To find out the source regex, please contact Visier Customer Success.   **Note:** If you include files that should target multiple sources in one ZIP file, do not define a source in the request.   Analytic tenants: For optimal transfer speed, provide one ZIP file per source.  Administrating tenants: For optimal transfer speed, provide one ZIP file containing all the required data files for your analytic tenants.  In the ZIP file, use one folder per analytic tenant. The ZIP file must adhere to the following file structure:   File1.zip  - Folder1: WFF_tenantCode1     - Filename1.csv     - Filename2.csv  - Folder2: WFF_tenantCode2     - Filename3.csv     - Filename4.csv
@@ -1580,7 +1580,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataResponse",
+            '200': "DataInPushDataResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1615,7 +1615,7 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PushDataResponse]:
+    ) -> ApiResponse[DataInPushDataResponse]:
         """Transfer data to sources via file upload
 
         Upload data to Visier as CSV or ZIP files. Each request transfers a single file. If the  data intended for Visier is stored in multiple files, you may compress them into a single ZIP file or make  multiple requests within the same transfer session.   File size limit: 3 GB   Each file is identified by a sequence number. Sequence numbers help identify any batches that were delivered incorrectly.   If you define a specific source in the request, all files within the request will target the declared source. If  a source is not defined, the filenames are matched against the source regex to correctly assign each file to a  source. To find out the source regex, please contact Visier Customer Success.   **Note:** If you include files that should target multiple sources in one ZIP file, do not define a source in the request.   Analytic tenants: For optimal transfer speed, provide one ZIP file per source.  Administrating tenants: For optimal transfer speed, provide one ZIP file containing all the required data files for your analytic tenants.  In the ZIP file, use one folder per analytic tenant. The ZIP file must adhere to the following file structure:   File1.zip  - Folder1: WFF_tenantCode1     - Filename1.csv     - Filename2.csv  - Folder2: WFF_tenantCode2     - Filename3.csv     - Filename4.csv
@@ -1668,7 +1668,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataResponse",
+            '200': "DataInPushDataResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1756,7 +1756,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PushDataResponse",
+            '200': "DataInPushDataResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
