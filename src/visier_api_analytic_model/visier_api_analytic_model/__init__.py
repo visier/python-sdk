@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.99201.1772"
+__version__ = "0.99201.1772.beta1"
 
 # import apis into sdk package
 from visier_api_analytic_model.api.data_model_api import DataModelApi
