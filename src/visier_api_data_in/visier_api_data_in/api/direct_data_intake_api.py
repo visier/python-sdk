@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1772
+    The version of the OpenAPI document: 22222222.99201.1793
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,11 +23,12 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictBytes, StrictStr
 from typing import Optional, Tuple, Union
 from typing_extensions import Annotated
-from visier_api_data_in.models.direct_data_job_status_response_dto import DirectDataJobStatusResponseDTO
-from visier_api_data_in.models.direct_data_load_config_dto import DirectDataLoadConfigDTO
-from visier_api_data_in.models.direct_data_schema_dto import DirectDataSchemaDTO
-from visier_api_data_in.models.direct_data_transaction_start_response_dto import DirectDataTransactionStartResponseDTO
 from visier_api_data_in.models.direct_data_upload_file_response_dto import DirectDataUploadFileResponseDTO
+from visier_api_data_in.models.servicing_publicapi_transfers_direct_data_job_status_response_dto import ServicingPublicapiTransfersDirectDataJobStatusResponseDTO
+from visier_api_data_in.models.servicing_publicapi_transfers_direct_data_load_config_dto import ServicingPublicapiTransfersDirectDataLoadConfigDTO
+from visier_api_data_in.models.servicing_publicapi_transfers_direct_data_schema_dto import ServicingPublicapiTransfersDirectDataSchemaDTO
+from visier_api_data_in.models.servicing_publicapi_transfers_direct_data_transaction_start_response_dto import ServicingPublicapiTransfersDirectDataTransactionStartResponseDTO
+from visier_api_data_in.models.servicing_publicapi_transfers_direct_data_upload_file_response_dto import ServicingPublicapiTransfersDirectDataUploadFileResponseDTO
 import visier_api_data_in.models
 
 
@@ -61,7 +62,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DirectDataUploadFileResponseDTO:
+    ) -> ServicingPublicapiTransfersDirectDataUploadFileResponseDTO:
         """Commit a transaction
 
         Process a transaction and its uploaded data files. This starts a processing job to load the data files into Visier.   After committing a transaction, you cannot upload additional files to the transaction. Use the `Check transaction status` endpoint to monitor the progress of the processing job.
@@ -105,7 +106,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataUploadFileResponseDTO",
+            '200': "ServicingPublicapiTransfersDirectDataUploadFileResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -137,7 +138,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DirectDataUploadFileResponseDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataUploadFileResponseDTO]:
         """Commit a transaction
 
         Process a transaction and its uploaded data files. This starts a processing job to load the data files into Visier.   After committing a transaction, you cannot upload additional files to the transaction. Use the `Check transaction status` endpoint to monitor the progress of the processing job.
@@ -181,7 +182,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataUploadFileResponseDTO",
+            '200': "ServicingPublicapiTransfersDirectDataUploadFileResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -257,7 +258,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataUploadFileResponseDTO",
+            '200': "ServicingPublicapiTransfersDirectDataUploadFileResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -355,7 +356,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DirectDataLoadConfigDTO:
+    ) -> ServicingPublicapiTransfersDirectDataLoadConfigDTO:
         """Get the direct data intake configuration
 
         Get the direct data intake configuration.
@@ -396,7 +397,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataLoadConfigDTO",
+            '200': "ServicingPublicapiTransfersDirectDataLoadConfigDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -427,7 +428,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DirectDataLoadConfigDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataLoadConfigDTO]:
         """Get the direct data intake configuration
 
         Get the direct data intake configuration.
@@ -468,7 +469,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataLoadConfigDTO",
+            '200': "ServicingPublicapiTransfersDirectDataLoadConfigDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -540,7 +541,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataLoadConfigDTO",
+            '200': "ServicingPublicapiTransfersDirectDataLoadConfigDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -636,7 +637,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DirectDataJobStatusResponseDTO:
+    ) -> ServicingPublicapiTransfersDirectDataJobStatusResponseDTO:
         """Check transaction status
 
         Retrieve the status of a committed transaction's processing job.
@@ -680,7 +681,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataJobStatusResponseDTO",
+            '200': "ServicingPublicapiTransfersDirectDataJobStatusResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -712,7 +713,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DirectDataJobStatusResponseDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataJobStatusResponseDTO]:
         """Check transaction status
 
         Retrieve the status of a committed transaction's processing job.
@@ -756,7 +757,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataJobStatusResponseDTO",
+            '200': "ServicingPublicapiTransfersDirectDataJobStatusResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -832,7 +833,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataJobStatusResponseDTO",
+            '200': "ServicingPublicapiTransfersDirectDataJobStatusResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -931,7 +932,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DirectDataSchemaDTO:
+    ) -> ServicingPublicapiTransfersDirectDataSchemaDTO:
         """Retrieve an object's data load schema
 
         Gets the load schema for a specified object. The object's load schema represents the structure that the data upload file must follow to upload data to the object.   In the load schema, the listed columns must be present in the data file as column headers and exactly match the load schema (case sensitive), however,  only the columns whose `isMandatory` field is `true` must contain values in the data file.
@@ -975,7 +976,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataSchemaDTO",
+            '200': "ServicingPublicapiTransfersDirectDataSchemaDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1007,7 +1008,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DirectDataSchemaDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataSchemaDTO]:
         """Retrieve an object's data load schema
 
         Gets the load schema for a specified object. The object's load schema represents the structure that the data upload file must follow to upload data to the object.   In the load schema, the listed columns must be present in the data file as column headers and exactly match the load schema (case sensitive), however,  only the columns whose `isMandatory` field is `true` must contain values in the data file.
@@ -1051,7 +1052,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataSchemaDTO",
+            '200': "ServicingPublicapiTransfersDirectDataSchemaDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1127,7 +1128,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataSchemaDTO",
+            '200': "ServicingPublicapiTransfersDirectDataSchemaDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1212,7 +1213,7 @@ class DirectDataIntakeApi:
     def put_config(
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
-        direct_data_load_config_dto: DirectDataLoadConfigDTO,
+        servicing_publicapi_transfers_direct_data_load_config_dto: ServicingPublicapiTransfersDirectDataLoadConfigDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1226,15 +1227,15 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DirectDataLoadConfigDTO:
+    ) -> ServicingPublicapiTransfersDirectDataLoadConfigDTO:
         """Update the direct data intake configuration
 
         Configure the data intake settings, such as the direct data intake job type. Only provide values for the configuration options that should change.   Configuration options that are not present in the PUT request are ignored and left unchanged.
 
         :param draft_id: The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version. (required)
         :type draft_id: str
-        :param direct_data_load_config_dto: (required)
-        :type direct_data_load_config_dto: DirectDataLoadConfigDTO
+        :param servicing_publicapi_transfers_direct_data_load_config_dto: (required)
+        :type servicing_publicapi_transfers_direct_data_load_config_dto: ServicingPublicapiTransfersDirectDataLoadConfigDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1261,7 +1262,7 @@ class DirectDataIntakeApi:
 
         _param = self._put_config_serialize(
             draft_id=draft_id,
-            direct_data_load_config_dto=direct_data_load_config_dto,
+            servicing_publicapi_transfers_direct_data_load_config_dto=servicing_publicapi_transfers_direct_data_load_config_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1270,7 +1271,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataLoadConfigDTO",
+            '200': "ServicingPublicapiTransfersDirectDataLoadConfigDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1288,7 +1289,7 @@ class DirectDataIntakeApi:
     def put_config_with_http_info(
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
-        direct_data_load_config_dto: DirectDataLoadConfigDTO,
+        servicing_publicapi_transfers_direct_data_load_config_dto: ServicingPublicapiTransfersDirectDataLoadConfigDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1302,15 +1303,15 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DirectDataLoadConfigDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataLoadConfigDTO]:
         """Update the direct data intake configuration
 
         Configure the data intake settings, such as the direct data intake job type. Only provide values for the configuration options that should change.   Configuration options that are not present in the PUT request are ignored and left unchanged.
 
         :param draft_id: The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version. (required)
         :type draft_id: str
-        :param direct_data_load_config_dto: (required)
-        :type direct_data_load_config_dto: DirectDataLoadConfigDTO
+        :param servicing_publicapi_transfers_direct_data_load_config_dto: (required)
+        :type servicing_publicapi_transfers_direct_data_load_config_dto: ServicingPublicapiTransfersDirectDataLoadConfigDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1337,7 +1338,7 @@ class DirectDataIntakeApi:
 
         _param = self._put_config_serialize(
             draft_id=draft_id,
-            direct_data_load_config_dto=direct_data_load_config_dto,
+            servicing_publicapi_transfers_direct_data_load_config_dto=servicing_publicapi_transfers_direct_data_load_config_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1346,7 +1347,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataLoadConfigDTO",
+            '200': "ServicingPublicapiTransfersDirectDataLoadConfigDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1364,7 +1365,7 @@ class DirectDataIntakeApi:
     def put_config_without_preload_content(
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
-        direct_data_load_config_dto: DirectDataLoadConfigDTO,
+        servicing_publicapi_transfers_direct_data_load_config_dto: ServicingPublicapiTransfersDirectDataLoadConfigDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1385,8 +1386,8 @@ class DirectDataIntakeApi:
 
         :param draft_id: The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version. (required)
         :type draft_id: str
-        :param direct_data_load_config_dto: (required)
-        :type direct_data_load_config_dto: DirectDataLoadConfigDTO
+        :param servicing_publicapi_transfers_direct_data_load_config_dto: (required)
+        :type servicing_publicapi_transfers_direct_data_load_config_dto: ServicingPublicapiTransfersDirectDataLoadConfigDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1413,7 +1414,7 @@ class DirectDataIntakeApi:
 
         _param = self._put_config_serialize(
             draft_id=draft_id,
-            direct_data_load_config_dto=direct_data_load_config_dto,
+            servicing_publicapi_transfers_direct_data_load_config_dto=servicing_publicapi_transfers_direct_data_load_config_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1422,7 +1423,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataLoadConfigDTO",
+            '200': "ServicingPublicapiTransfersDirectDataLoadConfigDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1434,7 +1435,7 @@ class DirectDataIntakeApi:
     def _put_config_serialize(
         self,
         draft_id,
-        direct_data_load_config_dto,
+        servicing_publicapi_transfers_direct_data_load_config_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -1463,8 +1464,8 @@ class DirectDataIntakeApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if direct_data_load_config_dto is not None:
-            _body_params = direct_data_load_config_dto
+        if servicing_publicapi_transfers_direct_data_load_config_dto is not None:
+            _body_params = servicing_publicapi_transfers_direct_data_load_config_dto
 
 
         # set the HTTP header `Accept`
@@ -1534,7 +1535,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DirectDataUploadFileResponseDTO:
+    ) -> ServicingPublicapiTransfersDirectDataUploadFileResponseDTO:
         """Roll back a transaction
 
         Rolls back the specified transaction. This discards all files uploaded within the transaction and deletes the transaction.   After rolling back a transaction, you cannot use the transaction to upload data files.
@@ -1578,7 +1579,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataUploadFileResponseDTO",
+            '200': "ServicingPublicapiTransfersDirectDataUploadFileResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1610,7 +1611,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DirectDataUploadFileResponseDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataUploadFileResponseDTO]:
         """Roll back a transaction
 
         Rolls back the specified transaction. This discards all files uploaded within the transaction and deletes the transaction.   After rolling back a transaction, you cannot use the transaction to upload data files.
@@ -1654,7 +1655,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataUploadFileResponseDTO",
+            '200': "ServicingPublicapiTransfersDirectDataUploadFileResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1730,7 +1731,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataUploadFileResponseDTO",
+            '200': "ServicingPublicapiTransfersDirectDataUploadFileResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1828,7 +1829,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DirectDataTransactionStartResponseDTO:
+    ) -> ServicingPublicapiTransfersDirectDataTransactionStartResponseDTO:
         """Start a direct data intake transaction
 
         Create a transaction to contain your data files. To upload files to objects in Visier, you must first start a transaction.   After starting a transaction and uploading files to the transaction, you can commit the transaction to process the uploaded files or roll back the transaction to discard the uploaded files.
@@ -1869,7 +1870,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataTransactionStartResponseDTO",
+            '200': "ServicingPublicapiTransfersDirectDataTransactionStartResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1900,7 +1901,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DirectDataTransactionStartResponseDTO]:
+    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataTransactionStartResponseDTO]:
         """Start a direct data intake transaction
 
         Create a transaction to contain your data files. To upload files to objects in Visier, you must first start a transaction.   After starting a transaction and uploading files to the transaction, you can commit the transaction to process the uploaded files or roll back the transaction to discard the uploaded files.
@@ -1941,7 +1942,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataTransactionStartResponseDTO",
+            '200': "ServicingPublicapiTransfersDirectDataTransactionStartResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2013,7 +2014,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DirectDataTransactionStartResponseDTO",
+            '200': "ServicingPublicapiTransfersDirectDataTransactionStartResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1772
+    The version of the OpenAPI document: 22222222.99201.1793
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,12 +23,12 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_api_data_out.models.vee_feedback_dto import VeeFeedbackDTO
-from visier_api_data_out.models.vee_question_dto import VeeQuestionDTO
-from visier_api_data_out.models.vee_response_dto import VeeResponseDTO
-from visier_api_data_out.models.vee_sample_question_library_dto import VeeSampleQuestionLibraryDTO
-from visier_api_data_out.models.vee_status_code_dto import VeeStatusCodeDTO
-from visier_api_data_out.models.vee_status_dto import VeeStatusDTO
+from visier_api_data_out.models.analysis_common_transfers_vee_feedback_dto import AnalysisCommonTransfersVeeFeedbackDTO
+from visier_api_data_out.models.analysis_common_transfers_vee_question_dto import AnalysisCommonTransfersVeeQuestionDTO
+from visier_api_data_out.models.analysis_common_transfers_vee_response_dto import AnalysisCommonTransfersVeeResponseDTO
+from visier_api_data_out.models.analysis_common_transfers_vee_sample_question_library_dto import AnalysisCommonTransfersVeeSampleQuestionLibraryDTO
+from visier_api_data_out.models.analysis_common_transfers_vee_status_code_dto import AnalysisCommonTransfersVeeStatusCodeDTO
+from visier_api_data_out.models.systemstatus_publicapi_transfers_vee_status_dto import SystemstatusPublicapiTransfersVeeStatusDTO
 import visier_api_data_out.models
 
 
@@ -47,7 +47,7 @@ class VeeApi:
     @validate_call
     def vee_feedback(
         self,
-        vee_feedback_dto: VeeFeedbackDTO,
+        analysis_common_transfers_vee_feedback_dto: AnalysisCommonTransfersVeeFeedbackDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -61,13 +61,13 @@ class VeeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> VeeStatusCodeDTO:
+    ) -> AnalysisCommonTransfersVeeStatusCodeDTO:
         """Submit Vee feedback
 
         Give Vee feedback for a previous answer. To submit feedback, include:  * The response object from the `/question` response.  * A rating of Vee's answer. If `isApproved` is `true`, Vee answered the question correctly. If `isApproved` is `false`, Vee's answer was incorrect or lacked details.  * A description of how Vee should have answered the question or how Vee can improve the answer, such as \"Expected Headcount metric, but Vee returned Average Headcount\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param vee_feedback_dto: (required)
-        :type vee_feedback_dto: VeeFeedbackDTO
+        :param analysis_common_transfers_vee_feedback_dto: (required)
+        :type analysis_common_transfers_vee_feedback_dto: AnalysisCommonTransfersVeeFeedbackDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -93,7 +93,7 @@ class VeeApi:
         """ # noqa: E501
 
         _param = self._vee_feedback_serialize(
-            vee_feedback_dto=vee_feedback_dto,
+            analysis_common_transfers_vee_feedback_dto=analysis_common_transfers_vee_feedback_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -102,7 +102,7 @@ class VeeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "VeeStatusCodeDTO",
+            '200': "AnalysisCommonTransfersVeeStatusCodeDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -119,7 +119,7 @@ class VeeApi:
     @validate_call
     def vee_feedback_with_http_info(
         self,
-        vee_feedback_dto: VeeFeedbackDTO,
+        analysis_common_transfers_vee_feedback_dto: AnalysisCommonTransfersVeeFeedbackDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -133,13 +133,13 @@ class VeeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[VeeStatusCodeDTO]:
+    ) -> ApiResponse[AnalysisCommonTransfersVeeStatusCodeDTO]:
         """Submit Vee feedback
 
         Give Vee feedback for a previous answer. To submit feedback, include:  * The response object from the `/question` response.  * A rating of Vee's answer. If `isApproved` is `true`, Vee answered the question correctly. If `isApproved` is `false`, Vee's answer was incorrect or lacked details.  * A description of how Vee should have answered the question or how Vee can improve the answer, such as \"Expected Headcount metric, but Vee returned Average Headcount\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param vee_feedback_dto: (required)
-        :type vee_feedback_dto: VeeFeedbackDTO
+        :param analysis_common_transfers_vee_feedback_dto: (required)
+        :type analysis_common_transfers_vee_feedback_dto: AnalysisCommonTransfersVeeFeedbackDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -165,7 +165,7 @@ class VeeApi:
         """ # noqa: E501
 
         _param = self._vee_feedback_serialize(
-            vee_feedback_dto=vee_feedback_dto,
+            analysis_common_transfers_vee_feedback_dto=analysis_common_transfers_vee_feedback_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -174,7 +174,7 @@ class VeeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "VeeStatusCodeDTO",
+            '200': "AnalysisCommonTransfersVeeStatusCodeDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -191,7 +191,7 @@ class VeeApi:
     @validate_call
     def vee_feedback_without_preload_content(
         self,
-        vee_feedback_dto: VeeFeedbackDTO,
+        analysis_common_transfers_vee_feedback_dto: AnalysisCommonTransfersVeeFeedbackDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -210,8 +210,8 @@ class VeeApi:
 
         Give Vee feedback for a previous answer. To submit feedback, include:  * The response object from the `/question` response.  * A rating of Vee's answer. If `isApproved` is `true`, Vee answered the question correctly. If `isApproved` is `false`, Vee's answer was incorrect or lacked details.  * A description of how Vee should have answered the question or how Vee can improve the answer, such as \"Expected Headcount metric, but Vee returned Average Headcount\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param vee_feedback_dto: (required)
-        :type vee_feedback_dto: VeeFeedbackDTO
+        :param analysis_common_transfers_vee_feedback_dto: (required)
+        :type analysis_common_transfers_vee_feedback_dto: AnalysisCommonTransfersVeeFeedbackDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -237,7 +237,7 @@ class VeeApi:
         """ # noqa: E501
 
         _param = self._vee_feedback_serialize(
-            vee_feedback_dto=vee_feedback_dto,
+            analysis_common_transfers_vee_feedback_dto=analysis_common_transfers_vee_feedback_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -246,7 +246,7 @@ class VeeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "VeeStatusCodeDTO",
+            '200': "AnalysisCommonTransfersVeeStatusCodeDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -257,7 +257,7 @@ class VeeApi:
 
     def _vee_feedback_serialize(
         self,
-        vee_feedback_dto,
+        analysis_common_transfers_vee_feedback_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -284,8 +284,8 @@ class VeeApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if vee_feedback_dto is not None:
-            _body_params = vee_feedback_dto
+        if analysis_common_transfers_vee_feedback_dto is not None:
+            _body_params = analysis_common_transfers_vee_feedback_dto
 
 
         # set the HTTP header `Accept`
@@ -340,7 +340,7 @@ class VeeApi:
     @validate_call
     def vee_question_request(
         self,
-        vee_question_dto: VeeQuestionDTO,
+        analysis_common_transfers_vee_question_dto: AnalysisCommonTransfersVeeQuestionDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -354,13 +354,13 @@ class VeeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> VeeResponseDTO:
+    ) -> AnalysisCommonTransfersVeeResponseDTO:
         """Ask Vee a question
 
         Use plain language to ask Vee a people question. Use body parameters to specify how Vee should respond, such as returning a visualization, data, or rewording the question.   The response always returns a `conversationState` object containing a unique ID for the conversation. To ask a follow-up question or continue the conversation with Vee, include the `conversationState` from the response in your next `/question` call. To submit feedback about Vee's answer, copy the entire response into your `/feedback` call.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param vee_question_dto: (required)
-        :type vee_question_dto: VeeQuestionDTO
+        :param analysis_common_transfers_vee_question_dto: (required)
+        :type analysis_common_transfers_vee_question_dto: AnalysisCommonTransfersVeeQuestionDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -386,7 +386,7 @@ class VeeApi:
         """ # noqa: E501
 
         _param = self._vee_question_request_serialize(
-            vee_question_dto=vee_question_dto,
+            analysis_common_transfers_vee_question_dto=analysis_common_transfers_vee_question_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -395,7 +395,7 @@ class VeeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "VeeResponseDTO",
+            '200': "AnalysisCommonTransfersVeeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -412,7 +412,7 @@ class VeeApi:
     @validate_call
     def vee_question_request_with_http_info(
         self,
-        vee_question_dto: VeeQuestionDTO,
+        analysis_common_transfers_vee_question_dto: AnalysisCommonTransfersVeeQuestionDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -426,13 +426,13 @@ class VeeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[VeeResponseDTO]:
+    ) -> ApiResponse[AnalysisCommonTransfersVeeResponseDTO]:
         """Ask Vee a question
 
         Use plain language to ask Vee a people question. Use body parameters to specify how Vee should respond, such as returning a visualization, data, or rewording the question.   The response always returns a `conversationState` object containing a unique ID for the conversation. To ask a follow-up question or continue the conversation with Vee, include the `conversationState` from the response in your next `/question` call. To submit feedback about Vee's answer, copy the entire response into your `/feedback` call.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param vee_question_dto: (required)
-        :type vee_question_dto: VeeQuestionDTO
+        :param analysis_common_transfers_vee_question_dto: (required)
+        :type analysis_common_transfers_vee_question_dto: AnalysisCommonTransfersVeeQuestionDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -458,7 +458,7 @@ class VeeApi:
         """ # noqa: E501
 
         _param = self._vee_question_request_serialize(
-            vee_question_dto=vee_question_dto,
+            analysis_common_transfers_vee_question_dto=analysis_common_transfers_vee_question_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -467,7 +467,7 @@ class VeeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "VeeResponseDTO",
+            '200': "AnalysisCommonTransfersVeeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -484,7 +484,7 @@ class VeeApi:
     @validate_call
     def vee_question_request_without_preload_content(
         self,
-        vee_question_dto: VeeQuestionDTO,
+        analysis_common_transfers_vee_question_dto: AnalysisCommonTransfersVeeQuestionDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -503,8 +503,8 @@ class VeeApi:
 
         Use plain language to ask Vee a people question. Use body parameters to specify how Vee should respond, such as returning a visualization, data, or rewording the question.   The response always returns a `conversationState` object containing a unique ID for the conversation. To ask a follow-up question or continue the conversation with Vee, include the `conversationState` from the response in your next `/question` call. To submit feedback about Vee's answer, copy the entire response into your `/feedback` call.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param vee_question_dto: (required)
-        :type vee_question_dto: VeeQuestionDTO
+        :param analysis_common_transfers_vee_question_dto: (required)
+        :type analysis_common_transfers_vee_question_dto: AnalysisCommonTransfersVeeQuestionDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -530,7 +530,7 @@ class VeeApi:
         """ # noqa: E501
 
         _param = self._vee_question_request_serialize(
-            vee_question_dto=vee_question_dto,
+            analysis_common_transfers_vee_question_dto=analysis_common_transfers_vee_question_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -539,7 +539,7 @@ class VeeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "VeeResponseDTO",
+            '200': "AnalysisCommonTransfersVeeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -550,7 +550,7 @@ class VeeApi:
 
     def _vee_question_request_serialize(
         self,
-        vee_question_dto,
+        analysis_common_transfers_vee_question_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -577,8 +577,8 @@ class VeeApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if vee_question_dto is not None:
-            _body_params = vee_question_dto
+        if analysis_common_transfers_vee_question_dto is not None:
+            _body_params = analysis_common_transfers_vee_question_dto
 
 
         # set the HTTP header `Accept`
@@ -646,7 +646,7 @@ class VeeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> VeeSampleQuestionLibraryDTO:
+    ) -> AnalysisCommonTransfersVeeSampleQuestionLibraryDTO:
         """Retrieve a list of sample questions to ask Vee
 
         Get a list of sample questions to help you start using Vee. The response returns a list of questions that you can ask Vee, such as \"What is the turnover rate?\".  You may occasionally encounter a sample question that can't be answered due to data availability or your data access   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -684,7 +684,7 @@ class VeeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "VeeSampleQuestionLibraryDTO",
+            '200': "AnalysisCommonTransfersVeeSampleQuestionLibraryDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -714,7 +714,7 @@ class VeeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[VeeSampleQuestionLibraryDTO]:
+    ) -> ApiResponse[AnalysisCommonTransfersVeeSampleQuestionLibraryDTO]:
         """Retrieve a list of sample questions to ask Vee
 
         Get a list of sample questions to help you start using Vee. The response returns a list of questions that you can ask Vee, such as \"What is the turnover rate?\".  You may occasionally encounter a sample question that can't be answered due to data availability or your data access   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -752,7 +752,7 @@ class VeeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "VeeSampleQuestionLibraryDTO",
+            '200': "AnalysisCommonTransfersVeeSampleQuestionLibraryDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -820,7 +820,7 @@ class VeeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "VeeSampleQuestionLibraryDTO",
+            '200': "AnalysisCommonTransfersVeeSampleQuestionLibraryDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -911,7 +911,7 @@ class VeeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> VeeStatusDTO:
+    ) -> SystemstatusPublicapiTransfersVeeStatusDTO:
         """Check the overall current status of Vee
 
         Check the current overall status of Vee.   The overall status is one of:  * `UP` :  Vee is operational.  * `DOWN`: Vee is not operational.
@@ -949,7 +949,7 @@ class VeeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "VeeStatusDTO",
+            '200': "SystemstatusPublicapiTransfersVeeStatusDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -979,7 +979,7 @@ class VeeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[VeeStatusDTO]:
+    ) -> ApiResponse[SystemstatusPublicapiTransfersVeeStatusDTO]:
         """Check the overall current status of Vee
 
         Check the current overall status of Vee.   The overall status is one of:  * `UP` :  Vee is operational.  * `DOWN`: Vee is not operational.
@@ -1017,7 +1017,7 @@ class VeeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "VeeStatusDTO",
+            '200': "SystemstatusPublicapiTransfersVeeStatusDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1085,7 +1085,7 @@ class VeeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "VeeStatusDTO",
+            '200': "SystemstatusPublicapiTransfersVeeStatusDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

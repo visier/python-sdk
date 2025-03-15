@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1772
+    The version of the OpenAPI document: 22222222.99201.1793
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,13 +23,13 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_api_administration.models.consolidated_analytics_api_excluded_source_list_dto import ConsolidatedAnalyticsAPIExcludedSourceListDTO
-from visier_api_administration.models.consolidated_analytics_api_source_tenant_list_dto import ConsolidatedAnalyticsAPISourceTenantListDTO
-from visier_api_administration.models.consolidated_analytics_api_tenant_create_request_dto import ConsolidatedAnalyticsAPITenantCreateRequestDTO
-from visier_api_administration.models.consolidated_analytics_api_tenant_list_response_dto import ConsolidatedAnalyticsAPITenantListResponseDTO
-from visier_api_administration.models.consolidated_analytics_api_tenant_with_details_list_response_dto import ConsolidatedAnalyticsAPITenantWithDetailsListResponseDTO
-from visier_api_administration.models.excluded_sources_body import ExcludedSourcesBody
-from visier_api_administration.models.tenant_code_body import TenantCodeBody
+from visier_api_administration.models.admin_excluded_sources_body import AdminExcludedSourcesBody
+from visier_api_administration.models.admin_tenant_code_body import AdminTenantCodeBody
+from visier_api_administration.models.admin_transfers_consolidated_analytics_api_excluded_source_list_dto import AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO
+from visier_api_administration.models.admin_transfers_consolidated_analytics_api_source_tenant_list_dto import AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO
+from visier_api_administration.models.admin_transfers_consolidated_analytics_api_tenant_create_request_dto import AdminTransfersConsolidatedAnalyticsAPITenantCreateRequestDTO
+from visier_api_administration.models.admin_transfers_consolidated_analytics_api_tenant_list_response_dto import AdminTransfersConsolidatedAnalyticsAPITenantListResponseDTO
+from visier_api_administration.models.admin_transfers_consolidated_analytics_api_tenant_with_details_list_response_dto import AdminTransfersConsolidatedAnalyticsAPITenantWithDetailsListResponseDTO
 import visier_api_administration.models
 
 
@@ -49,7 +49,7 @@ class ConsolidatedAnalyticsApi:
     def add_excluded_sources(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        excluded_sources_body: ExcludedSourcesBody,
+        admin_excluded_sources_body: AdminExcludedSourcesBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62,15 +62,15 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ConsolidatedAnalyticsAPIExcludedSourceListDTO:
+    ) -> AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO:
         """Add excluded sources to a consolidated analytics tenant
 
         Add excluded sources to the list of excluded sources for a consolidated analytics tenant.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param excluded_sources_body: (required)
-        :type excluded_sources_body: ExcludedSourcesBody
+        :param admin_excluded_sources_body: (required)
+        :type admin_excluded_sources_body: AdminExcludedSourcesBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -95,7 +95,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._add_excluded_sources_serialize(
             tenant_id=tenant_id,
-            excluded_sources_body=excluded_sources_body,
+            admin_excluded_sources_body=admin_excluded_sources_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -103,7 +103,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPIExcludedSourceListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -121,7 +121,7 @@ class ConsolidatedAnalyticsApi:
     def add_excluded_sources_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        excluded_sources_body: ExcludedSourcesBody,
+        admin_excluded_sources_body: AdminExcludedSourcesBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -134,15 +134,15 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ConsolidatedAnalyticsAPIExcludedSourceListDTO]:
+    ) -> ApiResponse[AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO]:
         """Add excluded sources to a consolidated analytics tenant
 
         Add excluded sources to the list of excluded sources for a consolidated analytics tenant.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param excluded_sources_body: (required)
-        :type excluded_sources_body: ExcludedSourcesBody
+        :param admin_excluded_sources_body: (required)
+        :type admin_excluded_sources_body: AdminExcludedSourcesBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -167,7 +167,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._add_excluded_sources_serialize(
             tenant_id=tenant_id,
-            excluded_sources_body=excluded_sources_body,
+            admin_excluded_sources_body=admin_excluded_sources_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -175,7 +175,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPIExcludedSourceListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -193,7 +193,7 @@ class ConsolidatedAnalyticsApi:
     def add_excluded_sources_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        excluded_sources_body: ExcludedSourcesBody,
+        admin_excluded_sources_body: AdminExcludedSourcesBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -213,8 +213,8 @@ class ConsolidatedAnalyticsApi:
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param excluded_sources_body: (required)
-        :type excluded_sources_body: ExcludedSourcesBody
+        :param admin_excluded_sources_body: (required)
+        :type admin_excluded_sources_body: AdminExcludedSourcesBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -239,7 +239,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._add_excluded_sources_serialize(
             tenant_id=tenant_id,
-            excluded_sources_body=excluded_sources_body,
+            admin_excluded_sources_body=admin_excluded_sources_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -247,7 +247,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPIExcludedSourceListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -259,7 +259,7 @@ class ConsolidatedAnalyticsApi:
     def _add_excluded_sources_serialize(
         self,
         tenant_id,
-        excluded_sources_body,
+        admin_excluded_sources_body,
         _request_auth,
         _content_type,
         _headers,
@@ -285,8 +285,8 @@ class ConsolidatedAnalyticsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if excluded_sources_body is not None:
-            _body_params = excluded_sources_body
+        if admin_excluded_sources_body is not None:
+            _body_params = admin_excluded_sources_body
 
 
         # set the HTTP header `Accept`
@@ -313,6 +313,11 @@ class ConsolidatedAnalyticsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -337,7 +342,7 @@ class ConsolidatedAnalyticsApi:
     def add_source_tenants(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        tenant_code_body: TenantCodeBody,
+        admin_tenant_code_body: AdminTenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
         _request_timeout: Union[
             None,
@@ -351,15 +356,15 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ConsolidatedAnalyticsAPISourceTenantListDTO:
+    ) -> AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO:
         """Add source tenants to a consolidated analytics tenant
 
         Add source tenants to the list of source tenants for a consolidated analytics tenant.   If successful, the response returns an updated list of source tenants.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param tenant_code_body: (required)
-        :type tenant_code_body: TenantCodeBody
+        :param admin_tenant_code_body: (required)
+        :type admin_tenant_code_body: AdminTenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
         :param _request_timeout: timeout setting for this request. If one
@@ -386,7 +391,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._add_source_tenants_serialize(
             tenant_id=tenant_id,
-            tenant_code_body=tenant_code_body,
+            admin_tenant_code_body=admin_tenant_code_body,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -395,7 +400,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPISourceTenantListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -413,7 +418,7 @@ class ConsolidatedAnalyticsApi:
     def add_source_tenants_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        tenant_code_body: TenantCodeBody,
+        admin_tenant_code_body: AdminTenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
         _request_timeout: Union[
             None,
@@ -427,15 +432,15 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ConsolidatedAnalyticsAPISourceTenantListDTO]:
+    ) -> ApiResponse[AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO]:
         """Add source tenants to a consolidated analytics tenant
 
         Add source tenants to the list of source tenants for a consolidated analytics tenant.   If successful, the response returns an updated list of source tenants.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param tenant_code_body: (required)
-        :type tenant_code_body: TenantCodeBody
+        :param admin_tenant_code_body: (required)
+        :type admin_tenant_code_body: AdminTenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
         :param _request_timeout: timeout setting for this request. If one
@@ -462,7 +467,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._add_source_tenants_serialize(
             tenant_id=tenant_id,
-            tenant_code_body=tenant_code_body,
+            admin_tenant_code_body=admin_tenant_code_body,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -471,7 +476,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPISourceTenantListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -489,7 +494,7 @@ class ConsolidatedAnalyticsApi:
     def add_source_tenants_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        tenant_code_body: TenantCodeBody,
+        admin_tenant_code_body: AdminTenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
         _request_timeout: Union[
             None,
@@ -510,8 +515,8 @@ class ConsolidatedAnalyticsApi:
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param tenant_code_body: (required)
-        :type tenant_code_body: TenantCodeBody
+        :param admin_tenant_code_body: (required)
+        :type admin_tenant_code_body: AdminTenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
         :param _request_timeout: timeout setting for this request. If one
@@ -538,7 +543,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._add_source_tenants_serialize(
             tenant_id=tenant_id,
-            tenant_code_body=tenant_code_body,
+            admin_tenant_code_body=admin_tenant_code_body,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -547,7 +552,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPISourceTenantListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -559,7 +564,7 @@ class ConsolidatedAnalyticsApi:
     def _add_source_tenants_serialize(
         self,
         tenant_id,
-        tenant_code_body,
+        admin_tenant_code_body,
         limit,
         _request_auth,
         _content_type,
@@ -590,8 +595,8 @@ class ConsolidatedAnalyticsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if tenant_code_body is not None:
-            _body_params = tenant_code_body
+        if admin_tenant_code_body is not None:
+            _body_params = admin_tenant_code_body
 
 
         # set the HTTP header `Accept`
@@ -618,6 +623,11 @@ class ConsolidatedAnalyticsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -641,7 +651,7 @@ class ConsolidatedAnalyticsApi:
     @validate_call
     def create_tenant(
         self,
-        consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO,
+        admin_transfers_consolidated_analytics_api_tenant_create_request_dto: AdminTransfersConsolidatedAnalyticsAPITenantCreateRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -654,13 +664,13 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ConsolidatedAnalyticsAPITenantCreateRequestDTO:
+    ) -> AdminTransfersConsolidatedAnalyticsAPITenantCreateRequestDTO:
         """Create a consolidated analytics tenant
 
         Create a consolidated analytics tenant.   A new CA tenant has no source tenants and no excluded sources.   **Note:** CA tenant codes must have a prefix of CA. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param consolidated_analytics_api_tenant_create_request_dto: (required)
-        :type consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO
+        :param admin_transfers_consolidated_analytics_api_tenant_create_request_dto: (required)
+        :type admin_transfers_consolidated_analytics_api_tenant_create_request_dto: AdminTransfersConsolidatedAnalyticsAPITenantCreateRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -684,7 +694,7 @@ class ConsolidatedAnalyticsApi:
         """ # noqa: E501
 
         _param = self._create_tenant_serialize(
-            consolidated_analytics_api_tenant_create_request_dto=consolidated_analytics_api_tenant_create_request_dto,
+            admin_transfers_consolidated_analytics_api_tenant_create_request_dto=admin_transfers_consolidated_analytics_api_tenant_create_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -692,7 +702,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPITenantCreateRequestDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPITenantCreateRequestDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -709,7 +719,7 @@ class ConsolidatedAnalyticsApi:
     @validate_call
     def create_tenant_with_http_info(
         self,
-        consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO,
+        admin_transfers_consolidated_analytics_api_tenant_create_request_dto: AdminTransfersConsolidatedAnalyticsAPITenantCreateRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -722,13 +732,13 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ConsolidatedAnalyticsAPITenantCreateRequestDTO]:
+    ) -> ApiResponse[AdminTransfersConsolidatedAnalyticsAPITenantCreateRequestDTO]:
         """Create a consolidated analytics tenant
 
         Create a consolidated analytics tenant.   A new CA tenant has no source tenants and no excluded sources.   **Note:** CA tenant codes must have a prefix of CA. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param consolidated_analytics_api_tenant_create_request_dto: (required)
-        :type consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO
+        :param admin_transfers_consolidated_analytics_api_tenant_create_request_dto: (required)
+        :type admin_transfers_consolidated_analytics_api_tenant_create_request_dto: AdminTransfersConsolidatedAnalyticsAPITenantCreateRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -752,7 +762,7 @@ class ConsolidatedAnalyticsApi:
         """ # noqa: E501
 
         _param = self._create_tenant_serialize(
-            consolidated_analytics_api_tenant_create_request_dto=consolidated_analytics_api_tenant_create_request_dto,
+            admin_transfers_consolidated_analytics_api_tenant_create_request_dto=admin_transfers_consolidated_analytics_api_tenant_create_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -760,7 +770,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPITenantCreateRequestDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPITenantCreateRequestDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -777,7 +787,7 @@ class ConsolidatedAnalyticsApi:
     @validate_call
     def create_tenant_without_preload_content(
         self,
-        consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO,
+        admin_transfers_consolidated_analytics_api_tenant_create_request_dto: AdminTransfersConsolidatedAnalyticsAPITenantCreateRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -795,8 +805,8 @@ class ConsolidatedAnalyticsApi:
 
         Create a consolidated analytics tenant.   A new CA tenant has no source tenants and no excluded sources.   **Note:** CA tenant codes must have a prefix of CA. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param consolidated_analytics_api_tenant_create_request_dto: (required)
-        :type consolidated_analytics_api_tenant_create_request_dto: ConsolidatedAnalyticsAPITenantCreateRequestDTO
+        :param admin_transfers_consolidated_analytics_api_tenant_create_request_dto: (required)
+        :type admin_transfers_consolidated_analytics_api_tenant_create_request_dto: AdminTransfersConsolidatedAnalyticsAPITenantCreateRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -820,7 +830,7 @@ class ConsolidatedAnalyticsApi:
         """ # noqa: E501
 
         _param = self._create_tenant_serialize(
-            consolidated_analytics_api_tenant_create_request_dto=consolidated_analytics_api_tenant_create_request_dto,
+            admin_transfers_consolidated_analytics_api_tenant_create_request_dto=admin_transfers_consolidated_analytics_api_tenant_create_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -828,7 +838,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPITenantCreateRequestDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPITenantCreateRequestDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -839,7 +849,7 @@ class ConsolidatedAnalyticsApi:
 
     def _create_tenant_serialize(
         self,
-        consolidated_analytics_api_tenant_create_request_dto,
+        admin_transfers_consolidated_analytics_api_tenant_create_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -863,8 +873,8 @@ class ConsolidatedAnalyticsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if consolidated_analytics_api_tenant_create_request_dto is not None:
-            _body_params = consolidated_analytics_api_tenant_create_request_dto
+        if admin_transfers_consolidated_analytics_api_tenant_create_request_dto is not None:
+            _body_params = admin_transfers_consolidated_analytics_api_tenant_create_request_dto
 
 
         # set the HTTP header `Accept`
@@ -891,6 +901,11 @@ class ConsolidatedAnalyticsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -927,7 +942,7 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ConsolidatedAnalyticsAPIExcludedSourceListDTO:
+    ) -> AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO:
         """Retrieve a consolidated analytics tenant's excluded sources
 
         Retrieve a CA tenant's excluded sources.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -965,7 +980,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPIExcludedSourceListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -995,7 +1010,7 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ConsolidatedAnalyticsAPIExcludedSourceListDTO]:
+    ) -> ApiResponse[AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO]:
         """Retrieve a consolidated analytics tenant's excluded sources
 
         Retrieve a CA tenant's excluded sources.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1033,7 +1048,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPIExcludedSourceListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1101,7 +1116,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPIExcludedSourceListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1151,6 +1166,11 @@ class ConsolidatedAnalyticsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1189,7 +1209,7 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ConsolidatedAnalyticsAPISourceTenantListDTO:
+    ) -> AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO:
         """Retrieve a consolidated analytics tenant's source tenants
 
         Retrieve a CA tenant's source tenants.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1233,7 +1253,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPISourceTenantListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1265,7 +1285,7 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ConsolidatedAnalyticsAPISourceTenantListDTO]:
+    ) -> ApiResponse[AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO]:
         """Retrieve a consolidated analytics tenant's source tenants
 
         Retrieve a CA tenant's source tenants.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1309,7 +1329,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPISourceTenantListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1385,7 +1405,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPISourceTenantListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1445,6 +1465,11 @@ class ConsolidatedAnalyticsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1482,7 +1507,7 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ConsolidatedAnalyticsAPITenantListResponseDTO:
+    ) -> AdminTransfersConsolidatedAnalyticsAPITenantListResponseDTO:
         """Retrieve a list of all consolidated analytics tenants
 
         Retrieve the full list of consolidated analytics tenants in your administrating tenant.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1523,7 +1548,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPITenantListResponseDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPITenantListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1554,7 +1579,7 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ConsolidatedAnalyticsAPITenantListResponseDTO]:
+    ) -> ApiResponse[AdminTransfersConsolidatedAnalyticsAPITenantListResponseDTO]:
         """Retrieve a list of all consolidated analytics tenants
 
         Retrieve the full list of consolidated analytics tenants in your administrating tenant.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1595,7 +1620,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPITenantListResponseDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPITenantListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1667,7 +1692,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPITenantListResponseDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPITenantListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1724,6 +1749,11 @@ class ConsolidatedAnalyticsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1761,7 +1791,7 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ConsolidatedAnalyticsAPITenantWithDetailsListResponseDTO:
+    ) -> AdminTransfersConsolidatedAnalyticsAPITenantWithDetailsListResponseDTO:
         """Retrieve the details of all consolidated analytics tenants
 
         Retrieve the full list of consolidated analytics tenants and their details in your administrating tenant.   **Note:** If your consolidated analytics tenants have thousands of source tenants, we recommend that you use the `GET /admin/consolidated-analytics/tenants` endpoint to get all CA tenants and then use the `GET /admin/consolidated-analytics/tenants/{tenantId}/source-tenants` and `GET /admin/consolidated-analytics/tenants/{tenantId}/excluded-sources` endpoints to retrieve information about specific CA tenants.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1802,7 +1832,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPITenantWithDetailsListResponseDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPITenantWithDetailsListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1833,7 +1863,7 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ConsolidatedAnalyticsAPITenantWithDetailsListResponseDTO]:
+    ) -> ApiResponse[AdminTransfersConsolidatedAnalyticsAPITenantWithDetailsListResponseDTO]:
         """Retrieve the details of all consolidated analytics tenants
 
         Retrieve the full list of consolidated analytics tenants and their details in your administrating tenant.   **Note:** If your consolidated analytics tenants have thousands of source tenants, we recommend that you use the `GET /admin/consolidated-analytics/tenants` endpoint to get all CA tenants and then use the `GET /admin/consolidated-analytics/tenants/{tenantId}/source-tenants` and `GET /admin/consolidated-analytics/tenants/{tenantId}/excluded-sources` endpoints to retrieve information about specific CA tenants.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1874,7 +1904,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPITenantWithDetailsListResponseDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPITenantWithDetailsListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1946,7 +1976,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPITenantWithDetailsListResponseDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPITenantWithDetailsListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2003,6 +2033,11 @@ class ConsolidatedAnalyticsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -2027,7 +2062,7 @@ class ConsolidatedAnalyticsApi:
     def remove_excluded_sources(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        excluded_sources_body: ExcludedSourcesBody,
+        admin_excluded_sources_body: AdminExcludedSourcesBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2040,15 +2075,15 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ConsolidatedAnalyticsAPIExcludedSourceListDTO:
+    ) -> AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO:
         """Remove excluded sources from a consolidated analytics tenants
 
         Remove excluded sources from the list of excluded sources for a consolidated analytics tenant.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param excluded_sources_body: (required)
-        :type excluded_sources_body: ExcludedSourcesBody
+        :param admin_excluded_sources_body: (required)
+        :type admin_excluded_sources_body: AdminExcludedSourcesBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2073,7 +2108,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._remove_excluded_sources_serialize(
             tenant_id=tenant_id,
-            excluded_sources_body=excluded_sources_body,
+            admin_excluded_sources_body=admin_excluded_sources_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2081,7 +2116,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPIExcludedSourceListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2099,7 +2134,7 @@ class ConsolidatedAnalyticsApi:
     def remove_excluded_sources_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        excluded_sources_body: ExcludedSourcesBody,
+        admin_excluded_sources_body: AdminExcludedSourcesBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2112,15 +2147,15 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ConsolidatedAnalyticsAPIExcludedSourceListDTO]:
+    ) -> ApiResponse[AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO]:
         """Remove excluded sources from a consolidated analytics tenants
 
         Remove excluded sources from the list of excluded sources for a consolidated analytics tenant.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param excluded_sources_body: (required)
-        :type excluded_sources_body: ExcludedSourcesBody
+        :param admin_excluded_sources_body: (required)
+        :type admin_excluded_sources_body: AdminExcludedSourcesBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2145,7 +2180,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._remove_excluded_sources_serialize(
             tenant_id=tenant_id,
-            excluded_sources_body=excluded_sources_body,
+            admin_excluded_sources_body=admin_excluded_sources_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2153,7 +2188,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPIExcludedSourceListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2171,7 +2206,7 @@ class ConsolidatedAnalyticsApi:
     def remove_excluded_sources_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        excluded_sources_body: ExcludedSourcesBody,
+        admin_excluded_sources_body: AdminExcludedSourcesBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2191,8 +2226,8 @@ class ConsolidatedAnalyticsApi:
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param excluded_sources_body: (required)
-        :type excluded_sources_body: ExcludedSourcesBody
+        :param admin_excluded_sources_body: (required)
+        :type admin_excluded_sources_body: AdminExcludedSourcesBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2217,7 +2252,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._remove_excluded_sources_serialize(
             tenant_id=tenant_id,
-            excluded_sources_body=excluded_sources_body,
+            admin_excluded_sources_body=admin_excluded_sources_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2225,7 +2260,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPIExcludedSourceListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2237,7 +2272,7 @@ class ConsolidatedAnalyticsApi:
     def _remove_excluded_sources_serialize(
         self,
         tenant_id,
-        excluded_sources_body,
+        admin_excluded_sources_body,
         _request_auth,
         _content_type,
         _headers,
@@ -2263,8 +2298,8 @@ class ConsolidatedAnalyticsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if excluded_sources_body is not None:
-            _body_params = excluded_sources_body
+        if admin_excluded_sources_body is not None:
+            _body_params = admin_excluded_sources_body
 
 
         # set the HTTP header `Accept`
@@ -2291,6 +2326,11 @@ class ConsolidatedAnalyticsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -2315,7 +2355,7 @@ class ConsolidatedAnalyticsApi:
     def remove_source_tenants(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        tenant_code_body: TenantCodeBody,
+        admin_tenant_code_body: AdminTenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
         _request_timeout: Union[
             None,
@@ -2329,15 +2369,15 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ConsolidatedAnalyticsAPISourceTenantListDTO:
+    ) -> AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO:
         """Remove source tenants from a consolidated analytics tenants
 
         Remove source tenants from the list of source tenants for a consolidated analytics tenant.   If successful, the response returns an updated list of source tenants.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param tenant_code_body: (required)
-        :type tenant_code_body: TenantCodeBody
+        :param admin_tenant_code_body: (required)
+        :type admin_tenant_code_body: AdminTenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
         :param _request_timeout: timeout setting for this request. If one
@@ -2364,7 +2404,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._remove_source_tenants_serialize(
             tenant_id=tenant_id,
-            tenant_code_body=tenant_code_body,
+            admin_tenant_code_body=admin_tenant_code_body,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2373,7 +2413,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPISourceTenantListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2391,7 +2431,7 @@ class ConsolidatedAnalyticsApi:
     def remove_source_tenants_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        tenant_code_body: TenantCodeBody,
+        admin_tenant_code_body: AdminTenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
         _request_timeout: Union[
             None,
@@ -2405,15 +2445,15 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ConsolidatedAnalyticsAPISourceTenantListDTO]:
+    ) -> ApiResponse[AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO]:
         """Remove source tenants from a consolidated analytics tenants
 
         Remove source tenants from the list of source tenants for a consolidated analytics tenant.   If successful, the response returns an updated list of source tenants.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param tenant_code_body: (required)
-        :type tenant_code_body: TenantCodeBody
+        :param admin_tenant_code_body: (required)
+        :type admin_tenant_code_body: AdminTenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
         :param _request_timeout: timeout setting for this request. If one
@@ -2440,7 +2480,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._remove_source_tenants_serialize(
             tenant_id=tenant_id,
-            tenant_code_body=tenant_code_body,
+            admin_tenant_code_body=admin_tenant_code_body,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2449,7 +2489,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPISourceTenantListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2467,7 +2507,7 @@ class ConsolidatedAnalyticsApi:
     def remove_source_tenants_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        tenant_code_body: TenantCodeBody,
+        admin_tenant_code_body: AdminTenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
         _request_timeout: Union[
             None,
@@ -2488,8 +2528,8 @@ class ConsolidatedAnalyticsApi:
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param tenant_code_body: (required)
-        :type tenant_code_body: TenantCodeBody
+        :param admin_tenant_code_body: (required)
+        :type admin_tenant_code_body: AdminTenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
         :param _request_timeout: timeout setting for this request. If one
@@ -2516,7 +2556,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._remove_source_tenants_serialize(
             tenant_id=tenant_id,
-            tenant_code_body=tenant_code_body,
+            admin_tenant_code_body=admin_tenant_code_body,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2525,7 +2565,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPISourceTenantListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2537,7 +2577,7 @@ class ConsolidatedAnalyticsApi:
     def _remove_source_tenants_serialize(
         self,
         tenant_id,
-        tenant_code_body,
+        admin_tenant_code_body,
         limit,
         _request_auth,
         _content_type,
@@ -2568,8 +2608,8 @@ class ConsolidatedAnalyticsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if tenant_code_body is not None:
-            _body_params = tenant_code_body
+        if admin_tenant_code_body is not None:
+            _body_params = admin_tenant_code_body
 
 
         # set the HTTP header `Accept`
@@ -2596,6 +2636,11 @@ class ConsolidatedAnalyticsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -2620,7 +2665,7 @@ class ConsolidatedAnalyticsApi:
     def set_excluded_sources(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        excluded_sources_body: ExcludedSourcesBody,
+        admin_excluded_sources_body: AdminExcludedSourcesBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2633,15 +2678,15 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ConsolidatedAnalyticsAPIExcludedSourceListDTO:
+    ) -> AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO:
         """Set a consolidated analytics tenant's excluded sources
 
         Define the excluded sources for a consolidated analytics tenant.   After you create a CA tenant, you may optionally define a list of excluded sources. The excluded sources are the sources whose data is excluded from the CA tenant.  You can also use this API to replace the list of excluded sources for an existing CA tenant.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param excluded_sources_body: (required)
-        :type excluded_sources_body: ExcludedSourcesBody
+        :param admin_excluded_sources_body: (required)
+        :type admin_excluded_sources_body: AdminExcludedSourcesBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2666,7 +2711,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._set_excluded_sources_serialize(
             tenant_id=tenant_id,
-            excluded_sources_body=excluded_sources_body,
+            admin_excluded_sources_body=admin_excluded_sources_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2674,7 +2719,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPIExcludedSourceListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2692,7 +2737,7 @@ class ConsolidatedAnalyticsApi:
     def set_excluded_sources_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        excluded_sources_body: ExcludedSourcesBody,
+        admin_excluded_sources_body: AdminExcludedSourcesBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2705,15 +2750,15 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ConsolidatedAnalyticsAPIExcludedSourceListDTO]:
+    ) -> ApiResponse[AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO]:
         """Set a consolidated analytics tenant's excluded sources
 
         Define the excluded sources for a consolidated analytics tenant.   After you create a CA tenant, you may optionally define a list of excluded sources. The excluded sources are the sources whose data is excluded from the CA tenant.  You can also use this API to replace the list of excluded sources for an existing CA tenant.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param excluded_sources_body: (required)
-        :type excluded_sources_body: ExcludedSourcesBody
+        :param admin_excluded_sources_body: (required)
+        :type admin_excluded_sources_body: AdminExcludedSourcesBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2738,7 +2783,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._set_excluded_sources_serialize(
             tenant_id=tenant_id,
-            excluded_sources_body=excluded_sources_body,
+            admin_excluded_sources_body=admin_excluded_sources_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2746,7 +2791,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPIExcludedSourceListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2764,7 +2809,7 @@ class ConsolidatedAnalyticsApi:
     def set_excluded_sources_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        excluded_sources_body: ExcludedSourcesBody,
+        admin_excluded_sources_body: AdminExcludedSourcesBody,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2784,8 +2829,8 @@ class ConsolidatedAnalyticsApi:
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param excluded_sources_body: (required)
-        :type excluded_sources_body: ExcludedSourcesBody
+        :param admin_excluded_sources_body: (required)
+        :type admin_excluded_sources_body: AdminExcludedSourcesBody
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2810,7 +2855,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._set_excluded_sources_serialize(
             tenant_id=tenant_id,
-            excluded_sources_body=excluded_sources_body,
+            admin_excluded_sources_body=admin_excluded_sources_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2818,7 +2863,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPIExcludedSourceListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPIExcludedSourceListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2830,7 +2875,7 @@ class ConsolidatedAnalyticsApi:
     def _set_excluded_sources_serialize(
         self,
         tenant_id,
-        excluded_sources_body,
+        admin_excluded_sources_body,
         _request_auth,
         _content_type,
         _headers,
@@ -2856,8 +2901,8 @@ class ConsolidatedAnalyticsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if excluded_sources_body is not None:
-            _body_params = excluded_sources_body
+        if admin_excluded_sources_body is not None:
+            _body_params = admin_excluded_sources_body
 
 
         # set the HTTP header `Accept`
@@ -2884,6 +2929,11 @@ class ConsolidatedAnalyticsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -2908,7 +2958,7 @@ class ConsolidatedAnalyticsApi:
     def set_source_tenants(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        tenant_code_body: TenantCodeBody,
+        admin_tenant_code_body: AdminTenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
         _request_timeout: Union[
             None,
@@ -2922,15 +2972,15 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ConsolidatedAnalyticsAPISourceTenantListDTO:
+    ) -> AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO:
         """Set a consolidated analytics tenant's source tenants
 
         Define the source tenants for a consolidated analytics tenant.   After you create a CA tenant, you must define a list of its source tenants. The source tenants are the tenants whose data is aggregated in the CA tenant.  You can also use this API to replace the list of source tenants for an existing CA tenant.   If successful, the response returns an updated list of source tenants.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param tenant_code_body: (required)
-        :type tenant_code_body: TenantCodeBody
+        :param admin_tenant_code_body: (required)
+        :type admin_tenant_code_body: AdminTenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
         :param _request_timeout: timeout setting for this request. If one
@@ -2957,7 +3007,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._set_source_tenants_serialize(
             tenant_id=tenant_id,
-            tenant_code_body=tenant_code_body,
+            admin_tenant_code_body=admin_tenant_code_body,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2966,7 +3016,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPISourceTenantListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2984,7 +3034,7 @@ class ConsolidatedAnalyticsApi:
     def set_source_tenants_with_http_info(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        tenant_code_body: TenantCodeBody,
+        admin_tenant_code_body: AdminTenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
         _request_timeout: Union[
             None,
@@ -2998,15 +3048,15 @@ class ConsolidatedAnalyticsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ConsolidatedAnalyticsAPISourceTenantListDTO]:
+    ) -> ApiResponse[AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO]:
         """Set a consolidated analytics tenant's source tenants
 
         Define the source tenants for a consolidated analytics tenant.   After you create a CA tenant, you must define a list of its source tenants. The source tenants are the tenants whose data is aggregated in the CA tenant.  You can also use this API to replace the list of source tenants for an existing CA tenant.   If successful, the response returns an updated list of source tenants.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param tenant_code_body: (required)
-        :type tenant_code_body: TenantCodeBody
+        :param admin_tenant_code_body: (required)
+        :type admin_tenant_code_body: AdminTenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
         :param _request_timeout: timeout setting for this request. If one
@@ -3033,7 +3083,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._set_source_tenants_serialize(
             tenant_id=tenant_id,
-            tenant_code_body=tenant_code_body,
+            admin_tenant_code_body=admin_tenant_code_body,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3042,7 +3092,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPISourceTenantListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3060,7 +3110,7 @@ class ConsolidatedAnalyticsApi:
     def set_source_tenants_without_preload_content(
         self,
         tenant_id: Annotated[StrictStr, Field(description="The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code.")],
-        tenant_code_body: TenantCodeBody,
+        admin_tenant_code_body: AdminTenantCodeBody,
         limit: Annotated[Optional[StrictInt], Field(description="The maximum number of source tenants to return. The maximum value is 1000. Default is 400.")] = None,
         _request_timeout: Union[
             None,
@@ -3081,8 +3131,8 @@ class ConsolidatedAnalyticsApi:
 
         :param tenant_id: The ID of the tenant. For example, WFF_{XXX}~CA{YYY} where {XXX} is the administrating tenant code and {YYY}  is the consolidated analytic tenant code. (required)
         :type tenant_id: str
-        :param tenant_code_body: (required)
-        :type tenant_code_body: TenantCodeBody
+        :param admin_tenant_code_body: (required)
+        :type admin_tenant_code_body: AdminTenantCodeBody
         :param limit: The maximum number of source tenants to return. The maximum value is 1000. Default is 400.
         :type limit: int
         :param _request_timeout: timeout setting for this request. If one
@@ -3109,7 +3159,7 @@ class ConsolidatedAnalyticsApi:
 
         _param = self._set_source_tenants_serialize(
             tenant_id=tenant_id,
-            tenant_code_body=tenant_code_body,
+            admin_tenant_code_body=admin_tenant_code_body,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3118,7 +3168,7 @@ class ConsolidatedAnalyticsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ConsolidatedAnalyticsAPISourceTenantListDTO",
+            '200': "AdminTransfersConsolidatedAnalyticsAPISourceTenantListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3130,7 +3180,7 @@ class ConsolidatedAnalyticsApi:
     def _set_source_tenants_serialize(
         self,
         tenant_id,
-        tenant_code_body,
+        admin_tenant_code_body,
         limit,
         _request_auth,
         _content_type,
@@ -3161,8 +3211,8 @@ class ConsolidatedAnalyticsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if tenant_code_body is not None:
-            _body_params = tenant_code_body
+        if admin_tenant_code_body is not None:
+            _body_params = admin_tenant_code_body
 
 
         # set the HTTP header `Accept`
@@ -3189,6 +3239,11 @@ class ConsolidatedAnalyticsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
         ]
 
         return self.api_client.param_serialize(

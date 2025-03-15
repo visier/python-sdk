@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1772
+    The version of the OpenAPI document: 22222222.99201.1793
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,12 +28,12 @@ class Status(BaseModel):
     """
     The response structure for errors.
     """ # noqa: E501
-    error_code: Optional[StrictStr] = Field(default=None, description="Error classification.", alias="errorCode")
+    code: Optional[StrictStr] = Field(default=None, description="Error classification.")
     localized_message: Optional[StrictStr] = Field(default=None, description="Localized error message describing the root cause of the error.", alias="localizedMessage")
     message: Optional[StrictStr] = Field(default=None, description="Not used.")
     rci: Optional[StrictStr] = Field(default=None, description="Optional root cause identifier.")
     user_error: Optional[StrictBool] = Field(default=None, description="Indicates whether the error is a user error.", alias="userError")
-    __properties: ClassVar[List[str]] = ["errorCode", "localizedMessage", "message", "rci", "userError"]
+    __properties: ClassVar[List[str]] = ["code", "localizedMessage", "message", "rci", "userError"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,7 +86,7 @@ class Status(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "errorCode": obj.get("errorCode"),
+            "code": obj.get("code"),
             "localizedMessage": obj.get("localizedMessage"),
             "message": obj.get("message"),
             "rci": obj.get("rci"),
