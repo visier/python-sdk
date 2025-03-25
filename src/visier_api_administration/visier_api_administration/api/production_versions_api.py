@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1808
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,11 +23,11 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_api_administration.models.servicing_publicapi_transfers_get_production_versions_api_response_dto import ServicingPublicapiTransfersGetProductionVersionsAPIResponseDTO
-from visier_api_administration.models.servicing_publicapi_transfers_production_version_api_operation_request_dto import ServicingPublicapiTransfersProductionVersionAPIOperationRequestDTO
-from visier_api_administration.models.servicing_publicapi_transfers_production_version_api_operation_response_dto import ServicingPublicapiTransfersProductionVersionAPIOperationResponseDTO
-from visier_api_administration.models.servicing_publicapi_transfers_production_versions_api_operation_request_dto import ServicingPublicapiTransfersProductionVersionsAPIOperationRequestDTO
-from visier_api_administration.models.servicing_publicapi_transfers_production_versions_api_operation_response_dto import ServicingPublicapiTransfersProductionVersionsAPIOperationResponseDTO
+from visier_api_administration.models.servicing_get_production_versions_api_response_dto import ServicingGetProductionVersionsAPIResponseDTO
+from visier_api_administration.models.servicing_production_version_api_operation_request_dto import ServicingProductionVersionAPIOperationRequestDTO
+from visier_api_administration.models.servicing_production_version_api_operation_response_dto import ServicingProductionVersionAPIOperationResponseDTO
+from visier_api_administration.models.servicing_production_versions_api_operation_request_dto import ServicingProductionVersionsAPIOperationRequestDTO
+from visier_api_administration.models.servicing_production_versions_api_operation_response_dto import ServicingProductionVersionsAPIOperationResponseDTO
 import visier_api_administration.models
 
 
@@ -61,10 +61,10 @@ class ProductionVersionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersGetProductionVersionsAPIResponseDTO:
+    ) -> ServicingGetProductionVersionsAPIResponseDTO:
         """Retrieve a list of all production versions
 
-        Retrieve a list of all projects that were published to production, ordered from latest published to earliest published.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve a list of all projects that were published to production, ordered from latest published to earliest published.
 
         :param limit: The maximum number of production versions to return. Default is 400.
         :type limit: int
@@ -105,7 +105,7 @@ class ProductionVersionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetProductionVersionsAPIResponseDTO",
+            '200': "ServicingGetProductionVersionsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -137,10 +137,10 @@ class ProductionVersionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersGetProductionVersionsAPIResponseDTO]:
+    ) -> ApiResponse[ServicingGetProductionVersionsAPIResponseDTO]:
         """Retrieve a list of all production versions
 
-        Retrieve a list of all projects that were published to production, ordered from latest published to earliest published.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve a list of all projects that were published to production, ordered from latest published to earliest published.
 
         :param limit: The maximum number of production versions to return. Default is 400.
         :type limit: int
@@ -181,7 +181,7 @@ class ProductionVersionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetProductionVersionsAPIResponseDTO",
+            '200': "ServicingGetProductionVersionsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -216,7 +216,7 @@ class ProductionVersionsApi:
     ) -> RESTResponseType:
         """Retrieve a list of all production versions
 
-        Retrieve a list of all projects that were published to production, ordered from latest published to earliest published.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve a list of all projects that were published to production, ordered from latest published to earliest published.
 
         :param limit: The maximum number of production versions to return. Default is 400.
         :type limit: int
@@ -257,7 +257,7 @@ class ProductionVersionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetProductionVersionsAPIResponseDTO",
+            '200': "ServicingGetProductionVersionsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -326,7 +326,7 @@ class ProductionVersionsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v1beta/admin/production-versions',
+            resource_path='/v1/admin/production-versions',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -346,7 +346,7 @@ class ProductionVersionsApi:
     def post_production_version(
         self,
         production_version_id: Annotated[StrictStr, Field(description="The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation.")],
-        servicing_publicapi_transfers_production_version_api_operation_request_dto: ServicingPublicapiTransfersProductionVersionAPIOperationRequestDTO,
+        servicing_production_version_api_operation_request_dto: ServicingProductionVersionAPIOperationRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -360,15 +360,15 @@ class ProductionVersionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersProductionVersionAPIOperationResponseDTO:
+    ) -> ServicingProductionVersionAPIOperationResponseDTO:
         """Perform an operation on a production version
 
-        Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.
 
         :param production_version_id: The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation. (required)
         :type production_version_id: str
-        :param servicing_publicapi_transfers_production_version_api_operation_request_dto: (required)
-        :type servicing_publicapi_transfers_production_version_api_operation_request_dto: ServicingPublicapiTransfersProductionVersionAPIOperationRequestDTO
+        :param servicing_production_version_api_operation_request_dto: (required)
+        :type servicing_production_version_api_operation_request_dto: ServicingProductionVersionAPIOperationRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -395,7 +395,7 @@ class ProductionVersionsApi:
 
         _param = self._post_production_version_serialize(
             production_version_id=production_version_id,
-            servicing_publicapi_transfers_production_version_api_operation_request_dto=servicing_publicapi_transfers_production_version_api_operation_request_dto,
+            servicing_production_version_api_operation_request_dto=servicing_production_version_api_operation_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -404,7 +404,7 @@ class ProductionVersionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersProductionVersionAPIOperationResponseDTO",
+            '200': "ServicingProductionVersionAPIOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -422,7 +422,7 @@ class ProductionVersionsApi:
     def post_production_version_with_http_info(
         self,
         production_version_id: Annotated[StrictStr, Field(description="The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation.")],
-        servicing_publicapi_transfers_production_version_api_operation_request_dto: ServicingPublicapiTransfersProductionVersionAPIOperationRequestDTO,
+        servicing_production_version_api_operation_request_dto: ServicingProductionVersionAPIOperationRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -436,15 +436,15 @@ class ProductionVersionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersProductionVersionAPIOperationResponseDTO]:
+    ) -> ApiResponse[ServicingProductionVersionAPIOperationResponseDTO]:
         """Perform an operation on a production version
 
-        Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.
 
         :param production_version_id: The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation. (required)
         :type production_version_id: str
-        :param servicing_publicapi_transfers_production_version_api_operation_request_dto: (required)
-        :type servicing_publicapi_transfers_production_version_api_operation_request_dto: ServicingPublicapiTransfersProductionVersionAPIOperationRequestDTO
+        :param servicing_production_version_api_operation_request_dto: (required)
+        :type servicing_production_version_api_operation_request_dto: ServicingProductionVersionAPIOperationRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -471,7 +471,7 @@ class ProductionVersionsApi:
 
         _param = self._post_production_version_serialize(
             production_version_id=production_version_id,
-            servicing_publicapi_transfers_production_version_api_operation_request_dto=servicing_publicapi_transfers_production_version_api_operation_request_dto,
+            servicing_production_version_api_operation_request_dto=servicing_production_version_api_operation_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -480,7 +480,7 @@ class ProductionVersionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersProductionVersionAPIOperationResponseDTO",
+            '200': "ServicingProductionVersionAPIOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -498,7 +498,7 @@ class ProductionVersionsApi:
     def post_production_version_without_preload_content(
         self,
         production_version_id: Annotated[StrictStr, Field(description="The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation.")],
-        servicing_publicapi_transfers_production_version_api_operation_request_dto: ServicingPublicapiTransfersProductionVersionAPIOperationRequestDTO,
+        servicing_production_version_api_operation_request_dto: ServicingProductionVersionAPIOperationRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -515,12 +515,12 @@ class ProductionVersionsApi:
     ) -> RESTResponseType:
         """Perform an operation on a production version
 
-        Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on a specific production version. The following operations are supported:  * `rollBackTo`: Create a project that rolls back the production version to the specified version. The project contains uncommitted changes that reverse the published versions after the target production version.
 
         :param production_version_id: The production version to use as the target of the operation; for example, the production version to roll back to for the `rollBackTo` operation. (required)
         :type production_version_id: str
-        :param servicing_publicapi_transfers_production_version_api_operation_request_dto: (required)
-        :type servicing_publicapi_transfers_production_version_api_operation_request_dto: ServicingPublicapiTransfersProductionVersionAPIOperationRequestDTO
+        :param servicing_production_version_api_operation_request_dto: (required)
+        :type servicing_production_version_api_operation_request_dto: ServicingProductionVersionAPIOperationRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -547,7 +547,7 @@ class ProductionVersionsApi:
 
         _param = self._post_production_version_serialize(
             production_version_id=production_version_id,
-            servicing_publicapi_transfers_production_version_api_operation_request_dto=servicing_publicapi_transfers_production_version_api_operation_request_dto,
+            servicing_production_version_api_operation_request_dto=servicing_production_version_api_operation_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -556,7 +556,7 @@ class ProductionVersionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersProductionVersionAPIOperationResponseDTO",
+            '200': "ServicingProductionVersionAPIOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -568,7 +568,7 @@ class ProductionVersionsApi:
     def _post_production_version_serialize(
         self,
         production_version_id,
-        servicing_publicapi_transfers_production_version_api_operation_request_dto,
+        servicing_production_version_api_operation_request_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -597,8 +597,8 @@ class ProductionVersionsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if servicing_publicapi_transfers_production_version_api_operation_request_dto is not None:
-            _body_params = servicing_publicapi_transfers_production_version_api_operation_request_dto
+        if servicing_production_version_api_operation_request_dto is not None:
+            _body_params = servicing_production_version_api_operation_request_dto
 
 
         # set the HTTP header `Accept`
@@ -634,7 +634,7 @@ class ProductionVersionsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/v1beta/admin/production-versions/{productionVersionId}',
+            resource_path='/v1/admin/production-versions/{productionVersionId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -653,7 +653,7 @@ class ProductionVersionsApi:
     @validate_call
     def post_production_versions(
         self,
-        servicing_publicapi_transfers_production_versions_api_operation_request_dto: ServicingPublicapiTransfersProductionVersionsAPIOperationRequestDTO,
+        servicing_production_versions_api_operation_request_dto: ServicingProductionVersionsAPIOperationRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -667,13 +667,13 @@ class ProductionVersionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersProductionVersionsAPIOperationResponseDTO:
+    ) -> ServicingProductionVersionsAPIOperationResponseDTO:
         """Perform an operation on production versions
 
-        Perform operations on production versions, such as exporting a production project's committed changes.     If exporting, please specify `Accept: application/zip, application/json` in the header. The API returns exported changes in ZIP format and error messages in JSON format. If your request returns an error and it doesn't accept `application/json`, you will receive an HTTP 406 status code instead of the appropriate error response body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on production versions, such as exporting a production project's committed changes.     If exporting, please specify `Accept: application/zip, application/json` in the header. The API returns exported changes in ZIP format and error messages in JSON format. If your request returns an error and it doesn't accept `application/json`, you will receive an HTTP 406 status code instead of the appropriate error response body.
 
-        :param servicing_publicapi_transfers_production_versions_api_operation_request_dto: (required)
-        :type servicing_publicapi_transfers_production_versions_api_operation_request_dto: ServicingPublicapiTransfersProductionVersionsAPIOperationRequestDTO
+        :param servicing_production_versions_api_operation_request_dto: (required)
+        :type servicing_production_versions_api_operation_request_dto: ServicingProductionVersionsAPIOperationRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -699,7 +699,7 @@ class ProductionVersionsApi:
         """ # noqa: E501
 
         _param = self._post_production_versions_serialize(
-            servicing_publicapi_transfers_production_versions_api_operation_request_dto=servicing_publicapi_transfers_production_versions_api_operation_request_dto,
+            servicing_production_versions_api_operation_request_dto=servicing_production_versions_api_operation_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -708,7 +708,7 @@ class ProductionVersionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersProductionVersionsAPIOperationResponseDTO",
+            '200': "ServicingProductionVersionsAPIOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -725,7 +725,7 @@ class ProductionVersionsApi:
     @validate_call
     def post_production_versions_with_http_info(
         self,
-        servicing_publicapi_transfers_production_versions_api_operation_request_dto: ServicingPublicapiTransfersProductionVersionsAPIOperationRequestDTO,
+        servicing_production_versions_api_operation_request_dto: ServicingProductionVersionsAPIOperationRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -739,13 +739,13 @@ class ProductionVersionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersProductionVersionsAPIOperationResponseDTO]:
+    ) -> ApiResponse[ServicingProductionVersionsAPIOperationResponseDTO]:
         """Perform an operation on production versions
 
-        Perform operations on production versions, such as exporting a production project's committed changes.     If exporting, please specify `Accept: application/zip, application/json` in the header. The API returns exported changes in ZIP format and error messages in JSON format. If your request returns an error and it doesn't accept `application/json`, you will receive an HTTP 406 status code instead of the appropriate error response body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on production versions, such as exporting a production project's committed changes.     If exporting, please specify `Accept: application/zip, application/json` in the header. The API returns exported changes in ZIP format and error messages in JSON format. If your request returns an error and it doesn't accept `application/json`, you will receive an HTTP 406 status code instead of the appropriate error response body.
 
-        :param servicing_publicapi_transfers_production_versions_api_operation_request_dto: (required)
-        :type servicing_publicapi_transfers_production_versions_api_operation_request_dto: ServicingPublicapiTransfersProductionVersionsAPIOperationRequestDTO
+        :param servicing_production_versions_api_operation_request_dto: (required)
+        :type servicing_production_versions_api_operation_request_dto: ServicingProductionVersionsAPIOperationRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -771,7 +771,7 @@ class ProductionVersionsApi:
         """ # noqa: E501
 
         _param = self._post_production_versions_serialize(
-            servicing_publicapi_transfers_production_versions_api_operation_request_dto=servicing_publicapi_transfers_production_versions_api_operation_request_dto,
+            servicing_production_versions_api_operation_request_dto=servicing_production_versions_api_operation_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -780,7 +780,7 @@ class ProductionVersionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersProductionVersionsAPIOperationResponseDTO",
+            '200': "ServicingProductionVersionsAPIOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -797,7 +797,7 @@ class ProductionVersionsApi:
     @validate_call
     def post_production_versions_without_preload_content(
         self,
-        servicing_publicapi_transfers_production_versions_api_operation_request_dto: ServicingPublicapiTransfersProductionVersionsAPIOperationRequestDTO,
+        servicing_production_versions_api_operation_request_dto: ServicingProductionVersionsAPIOperationRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -814,10 +814,10 @@ class ProductionVersionsApi:
     ) -> RESTResponseType:
         """Perform an operation on production versions
 
-        Perform operations on production versions, such as exporting a production project's committed changes.     If exporting, please specify `Accept: application/zip, application/json` in the header. The API returns exported changes in ZIP format and error messages in JSON format. If your request returns an error and it doesn't accept `application/json`, you will receive an HTTP 406 status code instead of the appropriate error response body.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Perform operations on production versions, such as exporting a production project's committed changes.     If exporting, please specify `Accept: application/zip, application/json` in the header. The API returns exported changes in ZIP format and error messages in JSON format. If your request returns an error and it doesn't accept `application/json`, you will receive an HTTP 406 status code instead of the appropriate error response body.
 
-        :param servicing_publicapi_transfers_production_versions_api_operation_request_dto: (required)
-        :type servicing_publicapi_transfers_production_versions_api_operation_request_dto: ServicingPublicapiTransfersProductionVersionsAPIOperationRequestDTO
+        :param servicing_production_versions_api_operation_request_dto: (required)
+        :type servicing_production_versions_api_operation_request_dto: ServicingProductionVersionsAPIOperationRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -843,7 +843,7 @@ class ProductionVersionsApi:
         """ # noqa: E501
 
         _param = self._post_production_versions_serialize(
-            servicing_publicapi_transfers_production_versions_api_operation_request_dto=servicing_publicapi_transfers_production_versions_api_operation_request_dto,
+            servicing_production_versions_api_operation_request_dto=servicing_production_versions_api_operation_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -852,7 +852,7 @@ class ProductionVersionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersProductionVersionsAPIOperationResponseDTO",
+            '200': "ServicingProductionVersionsAPIOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -863,7 +863,7 @@ class ProductionVersionsApi:
 
     def _post_production_versions_serialize(
         self,
-        servicing_publicapi_transfers_production_versions_api_operation_request_dto,
+        servicing_production_versions_api_operation_request_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -890,8 +890,8 @@ class ProductionVersionsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if servicing_publicapi_transfers_production_versions_api_operation_request_dto is not None:
-            _body_params = servicing_publicapi_transfers_production_versions_api_operation_request_dto
+        if servicing_production_versions_api_operation_request_dto is not None:
+            _body_params = servicing_production_versions_api_operation_request_dto
 
 
         # set the HTTP header `Accept`
@@ -927,7 +927,7 @@ class ProductionVersionsApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/v1beta/admin/production-versions',
+            resource_path='/v1/admin/production-versions',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

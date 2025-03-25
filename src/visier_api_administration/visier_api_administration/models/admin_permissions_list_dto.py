@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1808
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,7 +21,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_api_administration.models.servicing_publicapi_transfers_permission_dto import ServicingPublicapiTransfersPermissionDTO
+from visier_api_administration.models.servicing_permission_dto import ServicingPermissionDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class AdminPermissionsListDTO(BaseModel):
     """
     AdminPermissionsListDTO
     """ # noqa: E501
-    permissions: Optional[List[ServicingPublicapiTransfersPermissionDTO]] = Field(default=None, description="The list of permissions that will be created or updated")
+    permissions: Optional[List[ServicingPermissionDTO]] = Field(default=None, description="The list of permissions that will be created or updated")
     __properties: ClassVar[List[str]] = ["permissions"]
 
     model_config = ConfigDict(
@@ -90,7 +90,7 @@ class AdminPermissionsListDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "permissions": [ServicingPublicapiTransfersPermissionDTO.from_dict(_item) for _item in obj["permissions"]] if obj.get("permissions") is not None else None
+            "permissions": [ServicingPermissionDTO.from_dict(_item) for _item in obj["permissions"]] if obj.get("permissions") is not None else None
         })
         return _obj
 
