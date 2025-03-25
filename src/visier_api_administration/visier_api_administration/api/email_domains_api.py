@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1808
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,7 +23,7 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictBool, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_api_administration.models.admin_transfers_email_domains_dto import AdminTransfersEmailDomainsDTO
+from visier_api_administration.models.admin_email_domains_dto import AdminEmailDomainsDTO
 import visier_api_administration.models
 
 
@@ -56,7 +56,7 @@ class EmailDomainsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminTransfersEmailDomainsDTO:
+    ) -> AdminEmailDomainsDTO:
         """Add domains to the list of allowed domains
 
         Add email address domains to the allowed domains list.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -97,7 +97,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersEmailDomainsDTO",
+            '200': "AdminEmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -128,7 +128,7 @@ class EmailDomainsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminTransfersEmailDomainsDTO]:
+    ) -> ApiResponse[AdminEmailDomainsDTO]:
         """Add domains to the list of allowed domains
 
         Add email address domains to the allowed domains list.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -169,7 +169,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersEmailDomainsDTO",
+            '200': "AdminEmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -241,7 +241,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersEmailDomainsDTO",
+            '200': "AdminEmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -351,7 +351,7 @@ class EmailDomainsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminTransfersEmailDomainsDTO:
+    ) -> AdminEmailDomainsDTO:
         """Remove domains from the list of allowed domains
 
         Delete email address domains from the allowed domains list.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -392,7 +392,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersEmailDomainsDTO",
+            '200': "AdminEmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -423,7 +423,7 @@ class EmailDomainsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminTransfersEmailDomainsDTO]:
+    ) -> ApiResponse[AdminEmailDomainsDTO]:
         """Remove domains from the list of allowed domains
 
         Delete email address domains from the allowed domains list.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -464,7 +464,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersEmailDomainsDTO",
+            '200': "AdminEmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -536,7 +536,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersEmailDomainsDTO",
+            '200': "AdminEmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -644,7 +644,7 @@ class EmailDomainsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminTransfersEmailDomainsDTO:
+    ) -> AdminEmailDomainsDTO:
         """Retrieve a list of allowed email domains
 
         Retrieve the full list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -679,7 +679,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersEmailDomainsDTO",
+            '200': "AdminEmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -708,7 +708,7 @@ class EmailDomainsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminTransfersEmailDomainsDTO]:
+    ) -> ApiResponse[AdminEmailDomainsDTO]:
         """Retrieve a list of allowed email domains
 
         Retrieve the full list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -743,7 +743,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersEmailDomainsDTO",
+            '200': "AdminEmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -807,7 +807,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersEmailDomainsDTO",
+            '200': "AdminEmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
