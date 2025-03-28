@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1813
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -30,7 +30,7 @@ class PlanDataUploadResponseDTO(BaseModel):
     PlanDataUploadResponseDTO
     """ # noqa: E501
     changelists: Optional[List[PlanDataLoadChangeListDTO]] = Field(default=None, description="The collection of changes grouped by plan item made during the data load process. This list only contains the changes specified by the load. If you indicated in the request that the changes are to be rolled up or distributed, the values modified as a result of the calculations are not listed here.")
-    errors: Optional[List[PlanningTransfersPlanDataLoadErrorDTO]] = Field(default=None, description="The collection of errors encountered during the data load process.")
+    errors: Optional[List[PlanningPlanDataLoadErrorDTO]] = Field(default=None, description="The collection of errors encountered during the data load process.")
     potential_updated_cells_count: Optional[StrictInt] = Field(default=None, description="The number of cells that would have been updated if all changes were saved.", alias="potentialUpdatedCellsCount")
     updated_cells_count: Optional[StrictInt] = Field(default=None, description="The number of cells that were updated from the data load process.", alias="updatedCellsCount")
     __properties: ClassVar[List[str]] = ["changelists", "errors", "potentialUpdatedCellsCount", "updatedCellsCount"]
@@ -101,7 +101,7 @@ class PlanDataUploadResponseDTO(BaseModel):
 
         _obj = cls.model_validate({
             "changelists": [PlanDataLoadChangeListDTO.from_dict(_item) for _item in obj["changelists"]] if obj.get("changelists") is not None else None,
-            "errors": [PlanningTransfersPlanDataLoadErrorDTO.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
+            "errors": [PlanningPlanDataLoadErrorDTO.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
             "potentialUpdatedCellsCount": obj.get("potentialUpdatedCellsCount"),
             "updatedCellsCount": obj.get("updatedCellsCount")
         })

@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1813
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -40,7 +40,7 @@ class DataUploadApi:
 
 
     @validate_call
-    def v1_data_upload_files_filename_put(
+    def file_upload(
         self,
         filename: Annotated[StrictStr, Field(description="The filename of the data file to upload, including the file extension (such as .zip or .csv).")],
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
@@ -90,7 +90,7 @@ class DataUploadApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v1_data_upload_files_filename_put_serialize(
+        _param = self._file_upload_serialize(
             filename=filename,
             target_tenant_id=target_tenant_id,
             body=body,
@@ -116,7 +116,7 @@ class DataUploadApi:
 
 
     @validate_call
-    def v1_data_upload_files_filename_put_with_http_info(
+    def file_upload_with_http_info(
         self,
         filename: Annotated[StrictStr, Field(description="The filename of the data file to upload, including the file extension (such as .zip or .csv).")],
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
@@ -166,7 +166,7 @@ class DataUploadApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v1_data_upload_files_filename_put_serialize(
+        _param = self._file_upload_serialize(
             filename=filename,
             target_tenant_id=target_tenant_id,
             body=body,
@@ -192,7 +192,7 @@ class DataUploadApi:
 
 
     @validate_call
-    def v1_data_upload_files_filename_put_without_preload_content(
+    def file_upload_without_preload_content(
         self,
         filename: Annotated[StrictStr, Field(description="The filename of the data file to upload, including the file extension (such as .zip or .csv).")],
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
@@ -242,7 +242,7 @@ class DataUploadApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v1_data_upload_files_filename_put_serialize(
+        _param = self._file_upload_serialize(
             filename=filename,
             target_tenant_id=target_tenant_id,
             body=body,
@@ -262,7 +262,7 @@ class DataUploadApi:
         return response_data.response
 
 
-    def _v1_data_upload_files_filename_put_serialize(
+    def _file_upload_serialize(
         self,
         filename,
         target_tenant_id,

@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1813
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,12 +23,12 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictBytes, StrictInt, StrictStr
 from typing import Optional, Tuple, Union
 from typing_extensions import Annotated
-from visier_api_data_out.models.designer_transfers_data_version_export_dto import DesignerTransfersDataVersionExportDTO
-from visier_api_data_out.models.designer_transfers_data_version_export_data_versions_dto import DesignerTransfersDataVersionExportDataVersionsDTO
-from visier_api_data_out.models.designer_transfers_data_version_export_job_status_dto import DesignerTransfersDataVersionExportJobStatusDTO
-from visier_api_data_out.models.designer_transfers_data_version_export_schedule_job_request_dto import DesignerTransfersDataVersionExportScheduleJobRequestDTO
-from visier_api_data_out.models.designer_transfers_data_version_export_schedule_job_response_dto import DesignerTransfersDataVersionExportScheduleJobResponseDTO
-from visier_api_data_out.models.designer_transfers_data_version_exports_dto import DesignerTransfersDataVersionExportsDTO
+from visier_api_data_out.models.designer_data_version_export_dto import DesignerDataVersionExportDTO
+from visier_api_data_out.models.designer_data_version_export_data_versions_dto import DesignerDataVersionExportDataVersionsDTO
+from visier_api_data_out.models.designer_data_version_export_job_status_dto import DesignerDataVersionExportJobStatusDTO
+from visier_api_data_out.models.designer_data_version_export_schedule_job_request_dto import DesignerDataVersionExportScheduleJobRequestDTO
+from visier_api_data_out.models.designer_data_version_export_schedule_job_response_dto import DesignerDataVersionExportScheduleJobResponseDTO
+from visier_api_data_out.models.designer_data_version_exports_dto import DesignerDataVersionExportsDTO
 import visier_api_data_out.models
 
 
@@ -356,7 +356,7 @@ class DataVersionExportApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerTransfersDataVersionExportDataVersionsDTO:
+    ) -> DesignerDataVersionExportDataVersionsDTO:
         """Retrieve a list of all data versions
 
         Retrieve a list of all data versions in the tenant.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -394,7 +394,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportDataVersionsDTO",
+            '200': "DesignerDataVersionExportDataVersionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -424,7 +424,7 @@ class DataVersionExportApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerTransfersDataVersionExportDataVersionsDTO]:
+    ) -> ApiResponse[DesignerDataVersionExportDataVersionsDTO]:
         """Retrieve a list of all data versions
 
         Retrieve a list of all data versions in the tenant.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -462,7 +462,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportDataVersionsDTO",
+            '200': "DesignerDataVersionExportDataVersionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -530,7 +530,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportDataVersionsDTO",
+            '200': "DesignerDataVersionExportDataVersionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -621,7 +621,7 @@ class DataVersionExportApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerTransfersDataVersionExportsDTO:
+    ) -> DesignerDataVersionExportsDTO:
         """Retrieve the details of all data version exports
 
         Retrieve the information for all available data version exports.  **Note:** Data version exports are available for 14 days after export job completes.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -659,7 +659,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportsDTO",
+            '200': "DesignerDataVersionExportsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -689,7 +689,7 @@ class DataVersionExportApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerTransfersDataVersionExportsDTO]:
+    ) -> ApiResponse[DesignerDataVersionExportsDTO]:
         """Retrieve the details of all data version exports
 
         Retrieve the information for all available data version exports.  **Note:** Data version exports are available for 14 days after export job completes.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -727,7 +727,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportsDTO",
+            '200': "DesignerDataVersionExportsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -795,7 +795,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportsDTO",
+            '200': "DesignerDataVersionExportsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -887,7 +887,7 @@ class DataVersionExportApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerTransfersDataVersionExportDTO:
+    ) -> DesignerDataVersionExportDTO:
         """Retrieve the details of a data version export
 
         Retrieve information for a specific data version export.  **Note:** Data version exports are available for 14 days after export job completes.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -928,7 +928,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportDTO",
+            '200': "DesignerDataVersionExportDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -959,7 +959,7 @@ class DataVersionExportApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerTransfersDataVersionExportDTO]:
+    ) -> ApiResponse[DesignerDataVersionExportDTO]:
         """Retrieve the details of a data version export
 
         Retrieve information for a specific data version export.  **Note:** Data version exports are available for 14 days after export job completes.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1000,7 +1000,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportDTO",
+            '200': "DesignerDataVersionExportDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1072,7 +1072,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportDTO",
+            '200': "DesignerDataVersionExportDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1167,7 +1167,7 @@ class DataVersionExportApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerTransfersDataVersionExportJobStatusDTO:
+    ) -> DesignerDataVersionExportJobStatusDTO:
         """Retrieve a data version export job's status
 
         Retrieve the status of a data version export job. After the job completes successfully, this endpoint returns an `exportUuid` that you can use to retrieve the export information and download export files.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1208,7 +1208,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportJobStatusDTO",
+            '200': "DesignerDataVersionExportJobStatusDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1239,7 +1239,7 @@ class DataVersionExportApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerTransfersDataVersionExportJobStatusDTO]:
+    ) -> ApiResponse[DesignerDataVersionExportJobStatusDTO]:
         """Retrieve a data version export job's status
 
         Retrieve the status of a data version export job. After the job completes successfully, this endpoint returns an `exportUuid` that you can use to retrieve the export information and download export files.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1280,7 +1280,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportJobStatusDTO",
+            '200': "DesignerDataVersionExportJobStatusDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1352,7 +1352,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportJobStatusDTO",
+            '200': "DesignerDataVersionExportJobStatusDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1433,7 +1433,7 @@ class DataVersionExportApi:
     @validate_call
     def schedule_export_job(
         self,
-        designer_transfers_data_version_export_schedule_job_request_dto: DesignerTransfersDataVersionExportScheduleJobRequestDTO,
+        designer_data_version_export_schedule_job_request_dto: DesignerDataVersionExportScheduleJobRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1447,13 +1447,13 @@ class DataVersionExportApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerTransfersDataVersionExportScheduleJobResponseDTO:
+    ) -> DesignerDataVersionExportScheduleJobResponseDTO:
         """Schedule a data version export job
 
         Schedule a data version export job. The job schedules immediately and will begin when resources are available. The response returns a `jobUuid` that you can use to check the export job status.   **Note:** There is a limit of 10 export jobs per tenant per day.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param designer_transfers_data_version_export_schedule_job_request_dto: (required)
-        :type designer_transfers_data_version_export_schedule_job_request_dto: DesignerTransfersDataVersionExportScheduleJobRequestDTO
+        :param designer_data_version_export_schedule_job_request_dto: (required)
+        :type designer_data_version_export_schedule_job_request_dto: DesignerDataVersionExportScheduleJobRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1479,7 +1479,7 @@ class DataVersionExportApi:
         """ # noqa: E501
 
         _param = self._schedule_export_job_serialize(
-            designer_transfers_data_version_export_schedule_job_request_dto=designer_transfers_data_version_export_schedule_job_request_dto,
+            designer_data_version_export_schedule_job_request_dto=designer_data_version_export_schedule_job_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1488,7 +1488,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportScheduleJobResponseDTO",
+            '200': "DesignerDataVersionExportScheduleJobResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1505,7 +1505,7 @@ class DataVersionExportApi:
     @validate_call
     def schedule_export_job_with_http_info(
         self,
-        designer_transfers_data_version_export_schedule_job_request_dto: DesignerTransfersDataVersionExportScheduleJobRequestDTO,
+        designer_data_version_export_schedule_job_request_dto: DesignerDataVersionExportScheduleJobRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1519,13 +1519,13 @@ class DataVersionExportApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerTransfersDataVersionExportScheduleJobResponseDTO]:
+    ) -> ApiResponse[DesignerDataVersionExportScheduleJobResponseDTO]:
         """Schedule a data version export job
 
         Schedule a data version export job. The job schedules immediately and will begin when resources are available. The response returns a `jobUuid` that you can use to check the export job status.   **Note:** There is a limit of 10 export jobs per tenant per day.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param designer_transfers_data_version_export_schedule_job_request_dto: (required)
-        :type designer_transfers_data_version_export_schedule_job_request_dto: DesignerTransfersDataVersionExportScheduleJobRequestDTO
+        :param designer_data_version_export_schedule_job_request_dto: (required)
+        :type designer_data_version_export_schedule_job_request_dto: DesignerDataVersionExportScheduleJobRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1551,7 +1551,7 @@ class DataVersionExportApi:
         """ # noqa: E501
 
         _param = self._schedule_export_job_serialize(
-            designer_transfers_data_version_export_schedule_job_request_dto=designer_transfers_data_version_export_schedule_job_request_dto,
+            designer_data_version_export_schedule_job_request_dto=designer_data_version_export_schedule_job_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1560,7 +1560,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportScheduleJobResponseDTO",
+            '200': "DesignerDataVersionExportScheduleJobResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1577,7 +1577,7 @@ class DataVersionExportApi:
     @validate_call
     def schedule_export_job_without_preload_content(
         self,
-        designer_transfers_data_version_export_schedule_job_request_dto: DesignerTransfersDataVersionExportScheduleJobRequestDTO,
+        designer_data_version_export_schedule_job_request_dto: DesignerDataVersionExportScheduleJobRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1596,8 +1596,8 @@ class DataVersionExportApi:
 
         Schedule a data version export job. The job schedules immediately and will begin when resources are available. The response returns a `jobUuid` that you can use to check the export job status.   **Note:** There is a limit of 10 export jobs per tenant per day.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param designer_transfers_data_version_export_schedule_job_request_dto: (required)
-        :type designer_transfers_data_version_export_schedule_job_request_dto: DesignerTransfersDataVersionExportScheduleJobRequestDTO
+        :param designer_data_version_export_schedule_job_request_dto: (required)
+        :type designer_data_version_export_schedule_job_request_dto: DesignerDataVersionExportScheduleJobRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1623,7 +1623,7 @@ class DataVersionExportApi:
         """ # noqa: E501
 
         _param = self._schedule_export_job_serialize(
-            designer_transfers_data_version_export_schedule_job_request_dto=designer_transfers_data_version_export_schedule_job_request_dto,
+            designer_data_version_export_schedule_job_request_dto=designer_data_version_export_schedule_job_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1632,7 +1632,7 @@ class DataVersionExportApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersDataVersionExportScheduleJobResponseDTO",
+            '200': "DesignerDataVersionExportScheduleJobResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1643,7 +1643,7 @@ class DataVersionExportApi:
 
     def _schedule_export_job_serialize(
         self,
-        designer_transfers_data_version_export_schedule_job_request_dto,
+        designer_data_version_export_schedule_job_request_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -1670,8 +1670,8 @@ class DataVersionExportApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if designer_transfers_data_version_export_schedule_job_request_dto is not None:
-            _body_params = designer_transfers_data_version_export_schedule_job_request_dto
+        if designer_data_version_export_schedule_job_request_dto is not None:
+            _body_params = designer_data_version_export_schedule_job_request_dto
 
 
         # set the HTTP header `Accept`
