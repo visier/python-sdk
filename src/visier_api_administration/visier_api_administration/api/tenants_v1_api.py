@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1823
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,14 +23,14 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_api_administration.models.admin_publicapi_transfers_all_tenants_status_apidto import AdminPublicapiTransfersAllTenantsStatusAPIDTO
-from visier_api_administration.models.admin_publicapi_transfers_batch_tenant_provision_apidto import AdminPublicapiTransfersBatchTenantProvisionAPIDTO
-from visier_api_administration.models.admin_publicapi_transfers_tenant_detail_apidto import AdminPublicapiTransfersTenantDetailAPIDTO
-from visier_api_administration.models.admin_publicapi_transfers_tenant_provision_apidto import AdminPublicapiTransfersTenantProvisionAPIDTO
-from visier_api_administration.models.admin_publicapi_transfers_tenant_status_apidto import AdminPublicapiTransfersTenantStatusAPIDTO
+from visier_api_administration.models.admin_all_tenants_status_apidto import AdminAllTenantsStatusAPIDTO
+from visier_api_administration.models.admin_batch_tenant_provision_apidto import AdminBatchTenantProvisionAPIDTO
+from visier_api_administration.models.admin_tenant_detail_apidto import AdminTenantDetailAPIDTO
+from visier_api_administration.models.admin_tenant_provision_apidto import AdminTenantProvisionAPIDTO
+from visier_api_administration.models.admin_tenant_status_apidto import AdminTenantStatusAPIDTO
 from visier_api_administration.models.admin_update_tenant_model import AdminUpdateTenantModel
-from visier_api_administration.models.dp_automation_transfers_tenant_preview_entries_summary_dto import DpAutomationTransfersTenantPreviewEntriesSummaryDTO
-from visier_api_administration.models.dp_automation_transfers_tenant_preview_entries_summary_list_dto import DpAutomationTransfersTenantPreviewEntriesSummaryListDTO
+from visier_api_administration.models.dp_automation_tenant_preview_entries_summary_dto import DpAutomationTenantPreviewEntriesSummaryDTO
+from visier_api_administration.models.dp_automation_tenant_preview_entries_summary_list_dto import DpAutomationTenantPreviewEntriesSummaryListDTO
 import visier_api_administration.models
 
 
@@ -49,7 +49,7 @@ class TenantsV1Api:
     @validate_call
     def add_tenant(
         self,
-        admin_publicapi_transfers_tenant_provision_apidto: AdminPublicapiTransfersTenantProvisionAPIDTO,
+        admin_tenant_provision_apidto: AdminTenantProvisionAPIDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62,13 +62,13 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminPublicapiTransfersTenantProvisionAPIDTO:
+    ) -> AdminTenantProvisionAPIDTO:
         """Add an analytic tenant
 
         Prior to processing and loading an analytic tenant's data files, you must provision, or create, that tenant.  A provisioned analytic tenant is automatically enabled. If the tenant's data is loaded after provisioning, that  data is immediately accessible by their users.   Create an analytic tenant and identify the applications assigned to the tenant. Visier  organizes content under a set of modules.   Contact Visier Support to determine the list of modules allocated to you.
 
-        :param admin_publicapi_transfers_tenant_provision_apidto: (required)
-        :type admin_publicapi_transfers_tenant_provision_apidto: AdminPublicapiTransfersTenantProvisionAPIDTO
+        :param admin_tenant_provision_apidto: (required)
+        :type admin_tenant_provision_apidto: AdminTenantProvisionAPIDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -92,7 +92,7 @@ class TenantsV1Api:
         """ # noqa: E501
 
         _param = self._add_tenant_serialize(
-            admin_publicapi_transfers_tenant_provision_apidto=admin_publicapi_transfers_tenant_provision_apidto,
+            admin_tenant_provision_apidto=admin_tenant_provision_apidto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -100,7 +100,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantProvisionAPIDTO",
+            '200': "AdminTenantProvisionAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -117,7 +117,7 @@ class TenantsV1Api:
     @validate_call
     def add_tenant_with_http_info(
         self,
-        admin_publicapi_transfers_tenant_provision_apidto: AdminPublicapiTransfersTenantProvisionAPIDTO,
+        admin_tenant_provision_apidto: AdminTenantProvisionAPIDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -130,13 +130,13 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminPublicapiTransfersTenantProvisionAPIDTO]:
+    ) -> ApiResponse[AdminTenantProvisionAPIDTO]:
         """Add an analytic tenant
 
         Prior to processing and loading an analytic tenant's data files, you must provision, or create, that tenant.  A provisioned analytic tenant is automatically enabled. If the tenant's data is loaded after provisioning, that  data is immediately accessible by their users.   Create an analytic tenant and identify the applications assigned to the tenant. Visier  organizes content under a set of modules.   Contact Visier Support to determine the list of modules allocated to you.
 
-        :param admin_publicapi_transfers_tenant_provision_apidto: (required)
-        :type admin_publicapi_transfers_tenant_provision_apidto: AdminPublicapiTransfersTenantProvisionAPIDTO
+        :param admin_tenant_provision_apidto: (required)
+        :type admin_tenant_provision_apidto: AdminTenantProvisionAPIDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -160,7 +160,7 @@ class TenantsV1Api:
         """ # noqa: E501
 
         _param = self._add_tenant_serialize(
-            admin_publicapi_transfers_tenant_provision_apidto=admin_publicapi_transfers_tenant_provision_apidto,
+            admin_tenant_provision_apidto=admin_tenant_provision_apidto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -168,7 +168,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantProvisionAPIDTO",
+            '200': "AdminTenantProvisionAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -185,7 +185,7 @@ class TenantsV1Api:
     @validate_call
     def add_tenant_without_preload_content(
         self,
-        admin_publicapi_transfers_tenant_provision_apidto: AdminPublicapiTransfersTenantProvisionAPIDTO,
+        admin_tenant_provision_apidto: AdminTenantProvisionAPIDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -203,8 +203,8 @@ class TenantsV1Api:
 
         Prior to processing and loading an analytic tenant's data files, you must provision, or create, that tenant.  A provisioned analytic tenant is automatically enabled. If the tenant's data is loaded after provisioning, that  data is immediately accessible by their users.   Create an analytic tenant and identify the applications assigned to the tenant. Visier  organizes content under a set of modules.   Contact Visier Support to determine the list of modules allocated to you.
 
-        :param admin_publicapi_transfers_tenant_provision_apidto: (required)
-        :type admin_publicapi_transfers_tenant_provision_apidto: AdminPublicapiTransfersTenantProvisionAPIDTO
+        :param admin_tenant_provision_apidto: (required)
+        :type admin_tenant_provision_apidto: AdminTenantProvisionAPIDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -228,7 +228,7 @@ class TenantsV1Api:
         """ # noqa: E501
 
         _param = self._add_tenant_serialize(
-            admin_publicapi_transfers_tenant_provision_apidto=admin_publicapi_transfers_tenant_provision_apidto,
+            admin_tenant_provision_apidto=admin_tenant_provision_apidto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -236,7 +236,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantProvisionAPIDTO",
+            '200': "AdminTenantProvisionAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -247,7 +247,7 @@ class TenantsV1Api:
 
     def _add_tenant_serialize(
         self,
-        admin_publicapi_transfers_tenant_provision_apidto,
+        admin_tenant_provision_apidto,
         _request_auth,
         _content_type,
         _headers,
@@ -271,8 +271,8 @@ class TenantsV1Api:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if admin_publicapi_transfers_tenant_provision_apidto is not None:
-            _body_params = admin_publicapi_transfers_tenant_provision_apidto
+        if admin_tenant_provision_apidto is not None:
+            _body_params = admin_tenant_provision_apidto
 
 
         # set the HTTP header `Accept`
@@ -327,7 +327,7 @@ class TenantsV1Api:
     @validate_call
     def add_tenants(
         self,
-        admin_publicapi_transfers_batch_tenant_provision_apidto: AdminPublicapiTransfersBatchTenantProvisionAPIDTO,
+        admin_batch_tenant_provision_apidto: AdminBatchTenantProvisionAPIDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -340,13 +340,13 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminPublicapiTransfersBatchTenantProvisionAPIDTO:
+    ) -> AdminBatchTenantProvisionAPIDTO:
         """Add analytic tenants
 
         Prior to processing and loading an analytic tenant's data files, you must provision, or create, that tenant.  A provisioned analytic tenant is automatically enabled. If the tenant's data is loaded after provisioning, that  data is immediately accessible by their users.   Create one or more analytic tenants and identify the applications assigned to the tenants. The maximum number of tenants to create in one request is 200.   Contact Visier Support to determine the list of modules allocated to you.
 
-        :param admin_publicapi_transfers_batch_tenant_provision_apidto: (required)
-        :type admin_publicapi_transfers_batch_tenant_provision_apidto: AdminPublicapiTransfersBatchTenantProvisionAPIDTO
+        :param admin_batch_tenant_provision_apidto: (required)
+        :type admin_batch_tenant_provision_apidto: AdminBatchTenantProvisionAPIDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -370,7 +370,7 @@ class TenantsV1Api:
         """ # noqa: E501
 
         _param = self._add_tenants_serialize(
-            admin_publicapi_transfers_batch_tenant_provision_apidto=admin_publicapi_transfers_batch_tenant_provision_apidto,
+            admin_batch_tenant_provision_apidto=admin_batch_tenant_provision_apidto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -378,7 +378,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersBatchTenantProvisionAPIDTO",
+            '200': "AdminBatchTenantProvisionAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -395,7 +395,7 @@ class TenantsV1Api:
     @validate_call
     def add_tenants_with_http_info(
         self,
-        admin_publicapi_transfers_batch_tenant_provision_apidto: AdminPublicapiTransfersBatchTenantProvisionAPIDTO,
+        admin_batch_tenant_provision_apidto: AdminBatchTenantProvisionAPIDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -408,13 +408,13 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminPublicapiTransfersBatchTenantProvisionAPIDTO]:
+    ) -> ApiResponse[AdminBatchTenantProvisionAPIDTO]:
         """Add analytic tenants
 
         Prior to processing and loading an analytic tenant's data files, you must provision, or create, that tenant.  A provisioned analytic tenant is automatically enabled. If the tenant's data is loaded after provisioning, that  data is immediately accessible by their users.   Create one or more analytic tenants and identify the applications assigned to the tenants. The maximum number of tenants to create in one request is 200.   Contact Visier Support to determine the list of modules allocated to you.
 
-        :param admin_publicapi_transfers_batch_tenant_provision_apidto: (required)
-        :type admin_publicapi_transfers_batch_tenant_provision_apidto: AdminPublicapiTransfersBatchTenantProvisionAPIDTO
+        :param admin_batch_tenant_provision_apidto: (required)
+        :type admin_batch_tenant_provision_apidto: AdminBatchTenantProvisionAPIDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -438,7 +438,7 @@ class TenantsV1Api:
         """ # noqa: E501
 
         _param = self._add_tenants_serialize(
-            admin_publicapi_transfers_batch_tenant_provision_apidto=admin_publicapi_transfers_batch_tenant_provision_apidto,
+            admin_batch_tenant_provision_apidto=admin_batch_tenant_provision_apidto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -446,7 +446,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersBatchTenantProvisionAPIDTO",
+            '200': "AdminBatchTenantProvisionAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -463,7 +463,7 @@ class TenantsV1Api:
     @validate_call
     def add_tenants_without_preload_content(
         self,
-        admin_publicapi_transfers_batch_tenant_provision_apidto: AdminPublicapiTransfersBatchTenantProvisionAPIDTO,
+        admin_batch_tenant_provision_apidto: AdminBatchTenantProvisionAPIDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -481,8 +481,8 @@ class TenantsV1Api:
 
         Prior to processing and loading an analytic tenant's data files, you must provision, or create, that tenant.  A provisioned analytic tenant is automatically enabled. If the tenant's data is loaded after provisioning, that  data is immediately accessible by their users.   Create one or more analytic tenants and identify the applications assigned to the tenants. The maximum number of tenants to create in one request is 200.   Contact Visier Support to determine the list of modules allocated to you.
 
-        :param admin_publicapi_transfers_batch_tenant_provision_apidto: (required)
-        :type admin_publicapi_transfers_batch_tenant_provision_apidto: AdminPublicapiTransfersBatchTenantProvisionAPIDTO
+        :param admin_batch_tenant_provision_apidto: (required)
+        :type admin_batch_tenant_provision_apidto: AdminBatchTenantProvisionAPIDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -506,7 +506,7 @@ class TenantsV1Api:
         """ # noqa: E501
 
         _param = self._add_tenants_serialize(
-            admin_publicapi_transfers_batch_tenant_provision_apidto=admin_publicapi_transfers_batch_tenant_provision_apidto,
+            admin_batch_tenant_provision_apidto=admin_batch_tenant_provision_apidto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -514,7 +514,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersBatchTenantProvisionAPIDTO",
+            '200': "AdminBatchTenantProvisionAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -525,7 +525,7 @@ class TenantsV1Api:
 
     def _add_tenants_serialize(
         self,
-        admin_publicapi_transfers_batch_tenant_provision_apidto,
+        admin_batch_tenant_provision_apidto,
         _request_auth,
         _content_type,
         _headers,
@@ -549,8 +549,8 @@ class TenantsV1Api:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if admin_publicapi_transfers_batch_tenant_provision_apidto is not None:
-            _body_params = admin_publicapi_transfers_batch_tenant_provision_apidto
+        if admin_batch_tenant_provision_apidto is not None:
+            _body_params = admin_batch_tenant_provision_apidto
 
 
         # set the HTTP header `Accept`
@@ -618,7 +618,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminPublicapiTransfersTenantStatusAPIDTO:
+    ) -> AdminTenantStatusAPIDTO:
         """Deprovision an analytic tenant
 
         Warning! Deprovisioning an analytic tenant is not reversible.  Before deprovisioning, you must disable an analytic tenant. For more information, see **`/v1/admin/tenants/{tenantId}/disable`**.   This API removes an analytic tenant permanently from the Visier system. If you are unsure whether an analytic tenant  may be re-enabled on any of the Visier modules at any time, you may instead want to disable the analytic tenant.   If successful, the response returns the status \"Deprovisioned\". This indicates that the tenant is scheduled for  deprovisioning, which may take several days to complete.
@@ -656,7 +656,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantStatusAPIDTO",
+            '200': "AdminTenantStatusAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -686,7 +686,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminPublicapiTransfersTenantStatusAPIDTO]:
+    ) -> ApiResponse[AdminTenantStatusAPIDTO]:
         """Deprovision an analytic tenant
 
         Warning! Deprovisioning an analytic tenant is not reversible.  Before deprovisioning, you must disable an analytic tenant. For more information, see **`/v1/admin/tenants/{tenantId}/disable`**.   This API removes an analytic tenant permanently from the Visier system. If you are unsure whether an analytic tenant  may be re-enabled on any of the Visier modules at any time, you may instead want to disable the analytic tenant.   If successful, the response returns the status \"Deprovisioned\". This indicates that the tenant is scheduled for  deprovisioning, which may take several days to complete.
@@ -724,7 +724,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantStatusAPIDTO",
+            '200': "AdminTenantStatusAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -792,7 +792,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantStatusAPIDTO",
+            '200': "AdminTenantStatusAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -883,7 +883,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminPublicapiTransfersTenantStatusAPIDTO:
+    ) -> AdminTenantStatusAPIDTO:
         """Disable an analytic tenant
 
         Disable an analytic tenant and remove access to Visier visualizations for the tenant's users.   You must disable an analytic tenant before deprovisioning, or removing, it from the system.
@@ -921,7 +921,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantStatusAPIDTO",
+            '200': "AdminTenantStatusAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -951,7 +951,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminPublicapiTransfersTenantStatusAPIDTO]:
+    ) -> ApiResponse[AdminTenantStatusAPIDTO]:
         """Disable an analytic tenant
 
         Disable an analytic tenant and remove access to Visier visualizations for the tenant's users.   You must disable an analytic tenant before deprovisioning, or removing, it from the system.
@@ -989,7 +989,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantStatusAPIDTO",
+            '200': "AdminTenantStatusAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1057,7 +1057,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantStatusAPIDTO",
+            '200': "AdminTenantStatusAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1148,7 +1148,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminPublicapiTransfersTenantStatusAPIDTO:
+    ) -> AdminTenantStatusAPIDTO:
         """Enable an analytic tenant
 
         An analytic tenant is enabled when you provision or create the tenant.   Use this API to enable a tenant that you have specifically disabled; for example, if you previously did not  want that tenant to have access to Visier visualizations, but now do.
@@ -1186,7 +1186,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantStatusAPIDTO",
+            '200': "AdminTenantStatusAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1216,7 +1216,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminPublicapiTransfersTenantStatusAPIDTO]:
+    ) -> ApiResponse[AdminTenantStatusAPIDTO]:
         """Enable an analytic tenant
 
         An analytic tenant is enabled when you provision or create the tenant.   Use this API to enable a tenant that you have specifically disabled; for example, if you previously did not  want that tenant to have access to Visier visualizations, but now do.
@@ -1254,7 +1254,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantStatusAPIDTO",
+            '200': "AdminTenantStatusAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1322,7 +1322,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantStatusAPIDTO",
+            '200': "AdminTenantStatusAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1413,7 +1413,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminPublicapiTransfersTenantDetailAPIDTO:
+    ) -> AdminTenantDetailAPIDTO:
         """Retrieve an analytic tenant's details
 
         Retrieve all details for a specified analytic tenant. Doing so allows you to see the current state  of the tenant, the content modules assigned to it, and all other relevant details for the tenant.
@@ -1451,7 +1451,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantDetailAPIDTO",
+            '200': "AdminTenantDetailAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1481,7 +1481,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminPublicapiTransfersTenantDetailAPIDTO]:
+    ) -> ApiResponse[AdminTenantDetailAPIDTO]:
         """Retrieve an analytic tenant's details
 
         Retrieve all details for a specified analytic tenant. Doing so allows you to see the current state  of the tenant, the content modules assigned to it, and all other relevant details for the tenant.
@@ -1519,7 +1519,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantDetailAPIDTO",
+            '200': "AdminTenantDetailAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1587,7 +1587,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantDetailAPIDTO",
+            '200': "AdminTenantDetailAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1680,7 +1680,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminPublicapiTransfersAllTenantsStatusAPIDTO:
+    ) -> AdminAllTenantsStatusAPIDTO:
         """Retrieve a list of all analytic tenants
 
         Retrieve the full list of analytic tenants managed by you with their current states and the  content modules assigned to them, and all other relevant details for the tenants if requested.
@@ -1724,7 +1724,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersAllTenantsStatusAPIDTO",
+            '200': "AdminAllTenantsStatusAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1756,7 +1756,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminPublicapiTransfersAllTenantsStatusAPIDTO]:
+    ) -> ApiResponse[AdminAllTenantsStatusAPIDTO]:
         """Retrieve a list of all analytic tenants
 
         Retrieve the full list of analytic tenants managed by you with their current states and the  content modules assigned to them, and all other relevant details for the tenants if requested.
@@ -1800,7 +1800,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersAllTenantsStatusAPIDTO",
+            '200': "AdminAllTenantsStatusAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1876,7 +1876,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersAllTenantsStatusAPIDTO",
+            '200': "AdminAllTenantsStatusAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1980,7 +1980,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminPublicapiTransfersTenantProvisionAPIDTO:
+    ) -> AdminTenantProvisionAPIDTO:
         """Update an analytic tenant
 
         You may need to update analytic tenants as they grow and as your organization upgrades the content available to  them. You may also encounter a scenario where an analytic tenant transitions across different industries.   To ensure that the analytic tenant receives accurate benchmarks and predictive functionality, update their  industry code in the Visier system.   You can use this API to update any field on an analytic tenant, except `tenantCode`.
@@ -2021,7 +2021,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantProvisionAPIDTO",
+            '200': "AdminTenantProvisionAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2052,7 +2052,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminPublicapiTransfersTenantProvisionAPIDTO]:
+    ) -> ApiResponse[AdminTenantProvisionAPIDTO]:
         """Update an analytic tenant
 
         You may need to update analytic tenants as they grow and as your organization upgrades the content available to  them. You may also encounter a scenario where an analytic tenant transitions across different industries.   To ensure that the analytic tenant receives accurate benchmarks and predictive functionality, update their  industry code in the Visier system.   You can use this API to update any field on an analytic tenant, except `tenantCode`.
@@ -2093,7 +2093,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantProvisionAPIDTO",
+            '200': "AdminTenantProvisionAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2165,7 +2165,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPublicapiTransfersTenantProvisionAPIDTO",
+            '200': "AdminTenantProvisionAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2273,7 +2273,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DpAutomationTransfersTenantPreviewEntriesSummaryDTO:
+    ) -> DpAutomationTenantPreviewEntriesSummaryDTO:
         """Validate an analytic tenant's metric values
 
         Retrieve the metric values for an individual analytic tenant. The metric values included in the  response are the tenant's configured summary metrics. Administrators can configure summary metrics in a project:  - Sign in to Visier as an administrator.  - In a project, on the navigation bar, click the **Home button**.  - Click **Dashboard**, and then click **Edit Summary Metrics**.  - Select the metrics that you want to validate, and then close the **Summary Metrics** dialog.  - Publish the project to production.
@@ -2314,7 +2314,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DpAutomationTransfersTenantPreviewEntriesSummaryDTO",
+            '200': "DpAutomationTenantPreviewEntriesSummaryDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2345,7 +2345,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DpAutomationTransfersTenantPreviewEntriesSummaryDTO]:
+    ) -> ApiResponse[DpAutomationTenantPreviewEntriesSummaryDTO]:
         """Validate an analytic tenant's metric values
 
         Retrieve the metric values for an individual analytic tenant. The metric values included in the  response are the tenant's configured summary metrics. Administrators can configure summary metrics in a project:  - Sign in to Visier as an administrator.  - In a project, on the navigation bar, click the **Home button**.  - Click **Dashboard**, and then click **Edit Summary Metrics**.  - Select the metrics that you want to validate, and then close the **Summary Metrics** dialog.  - Publish the project to production.
@@ -2386,7 +2386,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DpAutomationTransfersTenantPreviewEntriesSummaryDTO",
+            '200': "DpAutomationTenantPreviewEntriesSummaryDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2458,7 +2458,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DpAutomationTransfersTenantPreviewEntriesSummaryDTO",
+            '200': "DpAutomationTenantPreviewEntriesSummaryDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2554,7 +2554,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DpAutomationTransfersTenantPreviewEntriesSummaryListDTO:
+    ) -> DpAutomationTenantPreviewEntriesSummaryListDTO:
         """Validate metric values for all analytic tenants
 
         As you onboard more analytic tenants, you can validate the data visible to your users to ensure it matches the  source systems from which it was exported and that it matches what your expectations are for this data.   The metric values included in the response are the tenant's configured summary metrics. Administrators can  configure summary metrics in a project:  - Sign in to Visier as an administrator.  - In a project, on the navigation bar, click the **Home** button.  - Click **Dashboard**, and then click **Edit Summary Metrics**.  - Select the metrics that you want to validate, and then close the **Summary Metrics** dialog.  - Publish the project to production.
@@ -2598,7 +2598,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DpAutomationTransfersTenantPreviewEntriesSummaryListDTO",
+            '200': "DpAutomationTenantPreviewEntriesSummaryListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2630,7 +2630,7 @@ class TenantsV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DpAutomationTransfersTenantPreviewEntriesSummaryListDTO]:
+    ) -> ApiResponse[DpAutomationTenantPreviewEntriesSummaryListDTO]:
         """Validate metric values for all analytic tenants
 
         As you onboard more analytic tenants, you can validate the data visible to your users to ensure it matches the  source systems from which it was exported and that it matches what your expectations are for this data.   The metric values included in the response are the tenant's configured summary metrics. Administrators can  configure summary metrics in a project:  - Sign in to Visier as an administrator.  - In a project, on the navigation bar, click the **Home** button.  - Click **Dashboard**, and then click **Edit Summary Metrics**.  - Select the metrics that you want to validate, and then close the **Summary Metrics** dialog.  - Publish the project to production.
@@ -2674,7 +2674,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DpAutomationTransfersTenantPreviewEntriesSummaryListDTO",
+            '200': "DpAutomationTenantPreviewEntriesSummaryListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2750,7 +2750,7 @@ class TenantsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DpAutomationTransfersTenantPreviewEntriesSummaryListDTO",
+            '200': "DpAutomationTenantPreviewEntriesSummaryListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
