@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1823
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,15 +23,15 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_api_data_in.models.admin_data_transfers_import_definitions_apidto import AdminDataTransfersImportDefinitionsAPIDTO
+from visier_api_data_in.models.admin_assign_connector_credentials_response_dto import AdminAssignConnectorCredentialsResponseDTO
+from visier_api_data_in.models.admin_data_import_definitions_apidto import AdminDataImportDefinitionsAPIDTO
+from visier_api_data_in.models.admin_extractor_settings_apidto import AdminExtractorSettingsAPIDTO
 from visier_api_data_in.models.admin_jobs_consolidated_analytics_job_request_dto import AdminJobsConsolidatedAnalyticsJobRequestDTO
 from visier_api_data_in.models.admin_jobs_extract_data_and_load_dto import AdminJobsExtractDataAndLoadDTO
 from visier_api_data_in.models.admin_jobs_processing_job_request_dto import AdminJobsProcessingJobRequestDTO
-from visier_api_data_in.models.admin_transfers_assign_connector_credentials_response_dto import AdminTransfersAssignConnectorCredentialsResponseDTO
-from visier_api_data_in.models.admin_transfers_extractor_settings_apidto import AdminTransfersExtractorSettingsAPIDTO
-from visier_api_data_in.models.admin_transfers_multiple_tenant_data_versions_list_dto import AdminTransfersMultipleTenantDataVersionsListDTO
-from visier_api_data_in.models.admin_transfers_set_connector_settings_request_dto import AdminTransfersSetConnectorSettingsRequestDTO
-from visier_api_data_in.models.admin_transfers_set_connector_settings_response_dto import AdminTransfersSetConnectorSettingsResponseDTO
+from visier_api_data_in.models.admin_multiple_tenant_data_versions_list_dto import AdminMultipleTenantDataVersionsListDTO
+from visier_api_data_in.models.admin_set_connector_settings_request_dto import AdminSetConnectorSettingsRequestDTO
+from visier_api_data_in.models.admin_set_connector_settings_response_dto import AdminSetConnectorSettingsResponseDTO
 from visier_api_data_in.models.data_in_assign_connector_credential_request import DataInAssignConnectorCredentialRequest
 from visier_api_data_in.models.data_in_data_load_request import DataInDataLoadRequest
 from visier_api_data_in.models.data_in_data_load_response import DataInDataLoadResponse
@@ -47,15 +47,15 @@ from visier_api_data_in.models.data_in_processing_job_status_response import Dat
 from visier_api_data_in.models.data_in_receiving_job_and_status_response import DataInReceivingJobAndStatusResponse
 from visier_api_data_in.models.data_in_receiving_job_status_response import DataInReceivingJobStatusResponse
 from visier_api_data_in.models.data_in_start_extraction_response import DataInStartExtractionResponse
-from visier_api_data_in.models.designer_transfers_credential_creation_api_response_dto import DesignerTransfersCredentialCreationAPIResponseDTO
-from visier_api_data_in.models.designer_transfers_data_provider_auth_information_dto import DesignerTransfersDataProviderAuthInformationDTO
-from visier_api_data_in.models.designer_transfers_extractor_credentials_apidto import DesignerTransfersExtractorCredentialsAPIDTO
-from visier_api_data_in.models.dp_transfers_cancel_job_batch_from_job_id_dto import DpTransfersCancelJobBatchFromJobIdDTO
-from visier_api_data_in.models.dp_transfers_job_cancellation_results_dto import DpTransfersJobCancellationResultsDTO
-from visier_api_data_in.models.servicing_publicapi_transfers_data_categories_response_dto import ServicingPublicapiTransfersDataCategoriesResponseDTO
-from visier_api_data_in.models.servicing_publicapi_transfers_job_id_response import ServicingPublicapiTransfersJobIdResponse
-from visier_api_data_in.models.servicing_publicapi_transfers_tenant_data_uploads_list_response_dto import ServicingPublicapiTransfersTenantDataUploadsListResponseDTO
-from visier_api_data_in.models.servicing_publicapi_transfers_tenant_data_uploads_update_response_dto import ServicingPublicapiTransfersTenantDataUploadsUpdateResponseDTO
+from visier_api_data_in.models.designer_credential_creation_api_response_dto import DesignerCredentialCreationAPIResponseDTO
+from visier_api_data_in.models.designer_data_provider_auth_information_dto import DesignerDataProviderAuthInformationDTO
+from visier_api_data_in.models.designer_extractor_credentials_apidto import DesignerExtractorCredentialsAPIDTO
+from visier_api_data_in.models.dp_cancel_job_batch_from_job_id_dto import DpCancelJobBatchFromJobIdDTO
+from visier_api_data_in.models.dp_job_cancellation_results_dto import DpJobCancellationResultsDTO
+from visier_api_data_in.models.servicing_data_categories_response_dto import ServicingDataCategoriesResponseDTO
+from visier_api_data_in.models.servicing_job_id_response import ServicingJobIdResponse
+from visier_api_data_in.models.servicing_tenant_data_uploads_list_response_dto import ServicingTenantDataUploadsListResponseDTO
+from visier_api_data_in.models.servicing_tenant_data_uploads_update_response_dto import ServicingTenantDataUploadsUpdateResponseDTO
 import visier_api_data_in.models
 
 
@@ -88,7 +88,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersJobIdResponse:
+    ) -> ServicingJobIdResponse:
         """Run a consolidated analytics job
 
         Run a job for a consolidated analytics tenant. This request retrieves data for all source tenants in a consolidated analytics tenant. After the job completes, you can run a processing job to generate a data version for the consolidated analytics tenant. To run a processing job, see `POST /v1alpha/op/jobs/processing-jobs`.
@@ -129,7 +129,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersJobIdResponse",
+            '200': "ServicingJobIdResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -160,7 +160,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersJobIdResponse]:
+    ) -> ApiResponse[ServicingJobIdResponse]:
         """Run a consolidated analytics job
 
         Run a job for a consolidated analytics tenant. This request retrieves data for all source tenants in a consolidated analytics tenant. After the job completes, you can run a processing job to generate a data version for the consolidated analytics tenant. To run a processing job, see `POST /v1alpha/op/jobs/processing-jobs`.
@@ -201,7 +201,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersJobIdResponse",
+            '200': "ServicingJobIdResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -273,7 +273,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersJobIdResponse",
+            '200': "ServicingJobIdResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -381,7 +381,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersJobIdResponse:
+    ) -> ServicingJobIdResponse:
         """Run a data connector extraction job
 
         Run an extraction job to retrieve data through a Visier data connector and generate a new data version. Administrating tenants can run extraction jobs for all analytic tenants, a list of analytic tenants, or the administrating tenant.  If running extraction jobs for an administrating tenant or their analytic tenants, this request starts a dispatching job that generates one extraction job per tenant. The response returns the job ID of the extraction job or dispatching job.
@@ -422,7 +422,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersJobIdResponse",
+            '200': "ServicingJobIdResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -453,7 +453,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersJobIdResponse]:
+    ) -> ApiResponse[ServicingJobIdResponse]:
         """Run a data connector extraction job
 
         Run an extraction job to retrieve data through a Visier data connector and generate a new data version. Administrating tenants can run extraction jobs for all analytic tenants, a list of analytic tenants, or the administrating tenant.  If running extraction jobs for an administrating tenant or their analytic tenants, this request starts a dispatching job that generates one extraction job per tenant. The response returns the job ID of the extraction job or dispatching job.
@@ -494,7 +494,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersJobIdResponse",
+            '200': "ServicingJobIdResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -566,7 +566,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersJobIdResponse",
+            '200': "ServicingJobIdResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -674,7 +674,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersJobIdResponse:
+    ) -> ServicingJobIdResponse:
         """Run a processing job
 
         Run a processing job to generate a new data version. Administrating tenants can run processing jobs for all analytic tenants, a list of analytic tenants, or the administrating tenant.  If running processing jobs for an administrating tenant or their analytic tenants, this request starts a dispatching job that generates one processing job per tenant. The response returns the job ID of the processing job or dispatching job.
@@ -715,7 +715,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersJobIdResponse",
+            '200': "ServicingJobIdResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -746,7 +746,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersJobIdResponse]:
+    ) -> ApiResponse[ServicingJobIdResponse]:
         """Run a processing job
 
         Run a processing job to generate a new data version. Administrating tenants can run processing jobs for all analytic tenants, a list of analytic tenants, or the administrating tenant.  If running processing jobs for an administrating tenant or their analytic tenants, this request starts a dispatching job that generates one processing job per tenant. The response returns the job ID of the processing job or dispatching job.
@@ -787,7 +787,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersJobIdResponse",
+            '200': "ServicingJobIdResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -859,7 +859,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersJobIdResponse",
+            '200': "ServicingJobIdResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -967,7 +967,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminTransfersAssignConnectorCredentialsResponseDTO:
+    ) -> AdminAssignConnectorCredentialsResponseDTO:
         """Assign connector credentials to data connectors
 
         Assign a connector credential to a data connector.
@@ -1008,7 +1008,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersAssignConnectorCredentialsResponseDTO",
+            '200': "AdminAssignConnectorCredentialsResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1039,7 +1039,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminTransfersAssignConnectorCredentialsResponseDTO]:
+    ) -> ApiResponse[AdminAssignConnectorCredentialsResponseDTO]:
         """Assign connector credentials to data connectors
 
         Assign a connector credential to a data connector.
@@ -1080,7 +1080,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersAssignConnectorCredentialsResponseDTO",
+            '200': "AdminAssignConnectorCredentialsResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1152,7 +1152,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersAssignConnectorCredentialsResponseDTO",
+            '200': "AdminAssignConnectorCredentialsResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1246,7 +1246,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def cancel_jobs(
         self,
-        dp_transfers_cancel_job_batch_from_job_id_dto: DpTransfersCancelJobBatchFromJobIdDTO,
+        dp_cancel_job_batch_from_job_id_dto: DpCancelJobBatchFromJobIdDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1260,13 +1260,13 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DpTransfersJobCancellationResultsDTO:
+    ) -> DpJobCancellationResultsDTO:
         """Cancel a list of jobs
 
         Cancel a list of processing jobs, upload jobs, receiving jobs, and extraction jobs.   **Note:** Receiving jobs with the Running status cannot be cancelled.
 
-        :param dp_transfers_cancel_job_batch_from_job_id_dto: (required)
-        :type dp_transfers_cancel_job_batch_from_job_id_dto: DpTransfersCancelJobBatchFromJobIdDTO
+        :param dp_cancel_job_batch_from_job_id_dto: (required)
+        :type dp_cancel_job_batch_from_job_id_dto: DpCancelJobBatchFromJobIdDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1292,7 +1292,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._cancel_jobs_serialize(
-            dp_transfers_cancel_job_batch_from_job_id_dto=dp_transfers_cancel_job_batch_from_job_id_dto,
+            dp_cancel_job_batch_from_job_id_dto=dp_cancel_job_batch_from_job_id_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1301,7 +1301,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DpTransfersJobCancellationResultsDTO",
+            '200': "DpJobCancellationResultsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1318,7 +1318,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def cancel_jobs_with_http_info(
         self,
-        dp_transfers_cancel_job_batch_from_job_id_dto: DpTransfersCancelJobBatchFromJobIdDTO,
+        dp_cancel_job_batch_from_job_id_dto: DpCancelJobBatchFromJobIdDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1332,13 +1332,13 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DpTransfersJobCancellationResultsDTO]:
+    ) -> ApiResponse[DpJobCancellationResultsDTO]:
         """Cancel a list of jobs
 
         Cancel a list of processing jobs, upload jobs, receiving jobs, and extraction jobs.   **Note:** Receiving jobs with the Running status cannot be cancelled.
 
-        :param dp_transfers_cancel_job_batch_from_job_id_dto: (required)
-        :type dp_transfers_cancel_job_batch_from_job_id_dto: DpTransfersCancelJobBatchFromJobIdDTO
+        :param dp_cancel_job_batch_from_job_id_dto: (required)
+        :type dp_cancel_job_batch_from_job_id_dto: DpCancelJobBatchFromJobIdDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1364,7 +1364,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._cancel_jobs_serialize(
-            dp_transfers_cancel_job_batch_from_job_id_dto=dp_transfers_cancel_job_batch_from_job_id_dto,
+            dp_cancel_job_batch_from_job_id_dto=dp_cancel_job_batch_from_job_id_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1373,7 +1373,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DpTransfersJobCancellationResultsDTO",
+            '200': "DpJobCancellationResultsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1390,7 +1390,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def cancel_jobs_without_preload_content(
         self,
-        dp_transfers_cancel_job_batch_from_job_id_dto: DpTransfersCancelJobBatchFromJobIdDTO,
+        dp_cancel_job_batch_from_job_id_dto: DpCancelJobBatchFromJobIdDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1409,8 +1409,8 @@ class DataAndJobHandlingApi:
 
         Cancel a list of processing jobs, upload jobs, receiving jobs, and extraction jobs.   **Note:** Receiving jobs with the Running status cannot be cancelled.
 
-        :param dp_transfers_cancel_job_batch_from_job_id_dto: (required)
-        :type dp_transfers_cancel_job_batch_from_job_id_dto: DpTransfersCancelJobBatchFromJobIdDTO
+        :param dp_cancel_job_batch_from_job_id_dto: (required)
+        :type dp_cancel_job_batch_from_job_id_dto: DpCancelJobBatchFromJobIdDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1436,7 +1436,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._cancel_jobs_serialize(
-            dp_transfers_cancel_job_batch_from_job_id_dto=dp_transfers_cancel_job_batch_from_job_id_dto,
+            dp_cancel_job_batch_from_job_id_dto=dp_cancel_job_batch_from_job_id_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1445,7 +1445,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DpTransfersJobCancellationResultsDTO",
+            '200': "DpJobCancellationResultsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1456,7 +1456,7 @@ class DataAndJobHandlingApi:
 
     def _cancel_jobs_serialize(
         self,
-        dp_transfers_cancel_job_batch_from_job_id_dto,
+        dp_cancel_job_batch_from_job_id_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -1483,8 +1483,8 @@ class DataAndJobHandlingApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if dp_transfers_cancel_job_batch_from_job_id_dto is not None:
-            _body_params = dp_transfers_cancel_job_batch_from_job_id_dto
+        if dp_cancel_job_batch_from_job_id_dto is not None:
+            _body_params = dp_cancel_job_batch_from_job_id_dto
 
 
         # set the HTTP header `Accept`
@@ -1539,7 +1539,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def create_connector_credential(
         self,
-        designer_transfers_data_provider_auth_information_dto: DesignerTransfersDataProviderAuthInformationDTO,
+        designer_data_provider_auth_information_dto: DesignerDataProviderAuthInformationDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to create the credential for.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -1554,13 +1554,13 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerTransfersCredentialCreationAPIResponseDTO:
+    ) -> DesignerCredentialCreationAPIResponseDTO:
         """Create a connector credential
 
         Create credentials for a data connector. Connector credentials allow Visier to retrieve data from your source systems through an integration user in the source system.     In the request body, specify one data provider in the `dataProviderAuthParams` parameter. For example, to create connector credentials for a UKG data connector, your request body might look like the following sample.  ```json  {    model={      \"dataProviderAuthParams\": {         \"provider\": \"UKG\",         \"ultimateAuthParams\": {            \"hostDomainName\": \"exampleHostDomain\",            \"apiKey\": \"apiKey1234\",            \"username\": \"username1234\",            \"password\": \"password1234\",            \"userAccessKey\": \"accessKey1234\"         }      },      \"dataProviderBasicInformation\": {         \"displayName\": \"exampleDisplayName\",         \"description\": \"exampleDescription\"      }  }  ```
 
-        :param designer_transfers_data_provider_auth_information_dto: (required)
-        :type designer_transfers_data_provider_auth_information_dto: DesignerTransfersDataProviderAuthInformationDTO
+        :param designer_data_provider_auth_information_dto: (required)
+        :type designer_data_provider_auth_information_dto: DesignerDataProviderAuthInformationDTO
         :param tenant_code: The tenant code of a specific analytic tenant that you want to create the credential for.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -1588,7 +1588,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._create_connector_credential_serialize(
-            designer_transfers_data_provider_auth_information_dto=designer_transfers_data_provider_auth_information_dto,
+            designer_data_provider_auth_information_dto=designer_data_provider_auth_information_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -1598,7 +1598,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersCredentialCreationAPIResponseDTO",
+            '200': "DesignerCredentialCreationAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1615,7 +1615,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def create_connector_credential_with_http_info(
         self,
-        designer_transfers_data_provider_auth_information_dto: DesignerTransfersDataProviderAuthInformationDTO,
+        designer_data_provider_auth_information_dto: DesignerDataProviderAuthInformationDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to create the credential for.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -1630,13 +1630,13 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerTransfersCredentialCreationAPIResponseDTO]:
+    ) -> ApiResponse[DesignerCredentialCreationAPIResponseDTO]:
         """Create a connector credential
 
         Create credentials for a data connector. Connector credentials allow Visier to retrieve data from your source systems through an integration user in the source system.     In the request body, specify one data provider in the `dataProviderAuthParams` parameter. For example, to create connector credentials for a UKG data connector, your request body might look like the following sample.  ```json  {    model={      \"dataProviderAuthParams\": {         \"provider\": \"UKG\",         \"ultimateAuthParams\": {            \"hostDomainName\": \"exampleHostDomain\",            \"apiKey\": \"apiKey1234\",            \"username\": \"username1234\",            \"password\": \"password1234\",            \"userAccessKey\": \"accessKey1234\"         }      },      \"dataProviderBasicInformation\": {         \"displayName\": \"exampleDisplayName\",         \"description\": \"exampleDescription\"      }  }  ```
 
-        :param designer_transfers_data_provider_auth_information_dto: (required)
-        :type designer_transfers_data_provider_auth_information_dto: DesignerTransfersDataProviderAuthInformationDTO
+        :param designer_data_provider_auth_information_dto: (required)
+        :type designer_data_provider_auth_information_dto: DesignerDataProviderAuthInformationDTO
         :param tenant_code: The tenant code of a specific analytic tenant that you want to create the credential for.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -1664,7 +1664,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._create_connector_credential_serialize(
-            designer_transfers_data_provider_auth_information_dto=designer_transfers_data_provider_auth_information_dto,
+            designer_data_provider_auth_information_dto=designer_data_provider_auth_information_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -1674,7 +1674,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersCredentialCreationAPIResponseDTO",
+            '200': "DesignerCredentialCreationAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1691,7 +1691,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def create_connector_credential_without_preload_content(
         self,
-        designer_transfers_data_provider_auth_information_dto: DesignerTransfersDataProviderAuthInformationDTO,
+        designer_data_provider_auth_information_dto: DesignerDataProviderAuthInformationDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="The tenant code of a specific analytic tenant that you want to create the credential for.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -1711,8 +1711,8 @@ class DataAndJobHandlingApi:
 
         Create credentials for a data connector. Connector credentials allow Visier to retrieve data from your source systems through an integration user in the source system.     In the request body, specify one data provider in the `dataProviderAuthParams` parameter. For example, to create connector credentials for a UKG data connector, your request body might look like the following sample.  ```json  {    model={      \"dataProviderAuthParams\": {         \"provider\": \"UKG\",         \"ultimateAuthParams\": {            \"hostDomainName\": \"exampleHostDomain\",            \"apiKey\": \"apiKey1234\",            \"username\": \"username1234\",            \"password\": \"password1234\",            \"userAccessKey\": \"accessKey1234\"         }      },      \"dataProviderBasicInformation\": {         \"displayName\": \"exampleDisplayName\",         \"description\": \"exampleDescription\"      }  }  ```
 
-        :param designer_transfers_data_provider_auth_information_dto: (required)
-        :type designer_transfers_data_provider_auth_information_dto: DesignerTransfersDataProviderAuthInformationDTO
+        :param designer_data_provider_auth_information_dto: (required)
+        :type designer_data_provider_auth_information_dto: DesignerDataProviderAuthInformationDTO
         :param tenant_code: The tenant code of a specific analytic tenant that you want to create the credential for.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -1740,7 +1740,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._create_connector_credential_serialize(
-            designer_transfers_data_provider_auth_information_dto=designer_transfers_data_provider_auth_information_dto,
+            designer_data_provider_auth_information_dto=designer_data_provider_auth_information_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -1750,7 +1750,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersCredentialCreationAPIResponseDTO",
+            '200': "DesignerCredentialCreationAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1761,7 +1761,7 @@ class DataAndJobHandlingApi:
 
     def _create_connector_credential_serialize(
         self,
-        designer_transfers_data_provider_auth_information_dto,
+        designer_data_provider_auth_information_dto,
         tenant_code,
         target_tenant_id,
         _request_auth,
@@ -1793,8 +1793,8 @@ class DataAndJobHandlingApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if designer_transfers_data_provider_auth_information_dto is not None:
-            _body_params = designer_transfers_data_provider_auth_information_dto
+        if designer_data_provider_auth_information_dto is not None:
+            _body_params = designer_data_provider_auth_information_dto
 
 
         # set the HTTP header `Accept`
@@ -1865,7 +1865,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerTransfersExtractorCredentialsAPIDTO:
+    ) -> DesignerExtractorCredentialsAPIDTO:
         """Retrieve a list of all data connector credentials
 
         Retrieve a list of the connector credentials in a specified tenant. Connector credentials allow  Visier to retrieve data from your source systems through an integration user in the source system.
@@ -1912,7 +1912,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersExtractorCredentialsAPIDTO",
+            '200': "DesignerExtractorCredentialsAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1945,7 +1945,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerTransfersExtractorCredentialsAPIDTO]:
+    ) -> ApiResponse[DesignerExtractorCredentialsAPIDTO]:
         """Retrieve a list of all data connector credentials
 
         Retrieve a list of the connector credentials in a specified tenant. Connector credentials allow  Visier to retrieve data from your source systems through an integration user in the source system.
@@ -1992,7 +1992,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersExtractorCredentialsAPIDTO",
+            '200': "DesignerExtractorCredentialsAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2072,7 +2072,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersExtractorCredentialsAPIDTO",
+            '200': "DesignerExtractorCredentialsAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2181,7 +2181,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminDataTransfersImportDefinitionsAPIDTO:
+    ) -> AdminDataImportDefinitionsAPIDTO:
         """Retrieve a list of all data connectors
 
         Retrieve a list of the data connectors in a specified tenant. Data connectors are an alternative  to generating flat files and transferring them to Visier via SFTP.
@@ -2228,7 +2228,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminDataTransfersImportDefinitionsAPIDTO",
+            '200': "AdminDataImportDefinitionsAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2261,7 +2261,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminDataTransfersImportDefinitionsAPIDTO]:
+    ) -> ApiResponse[AdminDataImportDefinitionsAPIDTO]:
         """Retrieve a list of all data connectors
 
         Retrieve a list of the data connectors in a specified tenant. Data connectors are an alternative  to generating flat files and transferring them to Visier via SFTP.
@@ -2308,7 +2308,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminDataTransfersImportDefinitionsAPIDTO",
+            '200': "AdminDataImportDefinitionsAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2388,7 +2388,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminDataTransfersImportDefinitionsAPIDTO",
+            '200': "AdminDataImportDefinitionsAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3365,7 +3365,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersTenantDataUploadsUpdateResponseDTO:
+    ) -> ServicingTenantDataUploadsUpdateResponseDTO:
         """Exclude data uploads
 
         Exclude either a specified list of data uploads or all data uploads for each analytic tenant.
@@ -3406,7 +3406,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersTenantDataUploadsUpdateResponseDTO",
+            '200': "ServicingTenantDataUploadsUpdateResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3437,7 +3437,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersTenantDataUploadsUpdateResponseDTO]:
+    ) -> ApiResponse[ServicingTenantDataUploadsUpdateResponseDTO]:
         """Exclude data uploads
 
         Exclude either a specified list of data uploads or all data uploads for each analytic tenant.
@@ -3478,7 +3478,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersTenantDataUploadsUpdateResponseDTO",
+            '200': "ServicingTenantDataUploadsUpdateResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3550,7 +3550,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersTenantDataUploadsUpdateResponseDTO",
+            '200': "ServicingTenantDataUploadsUpdateResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4006,7 +4006,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersTenantDataUploadsUpdateResponseDTO:
+    ) -> ServicingTenantDataUploadsUpdateResponseDTO:
         """Include data uploads
 
         Include either the specified list of data uploads or all data uploads for each analytic tenant.
@@ -4047,7 +4047,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersTenantDataUploadsUpdateResponseDTO",
+            '200': "ServicingTenantDataUploadsUpdateResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4078,7 +4078,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersTenantDataUploadsUpdateResponseDTO]:
+    ) -> ApiResponse[ServicingTenantDataUploadsUpdateResponseDTO]:
         """Include data uploads
 
         Include either the specified list of data uploads or all data uploads for each analytic tenant.
@@ -4119,7 +4119,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersTenantDataUploadsUpdateResponseDTO",
+            '200': "ServicingTenantDataUploadsUpdateResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4191,7 +4191,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersTenantDataUploadsUpdateResponseDTO",
+            '200': "ServicingTenantDataUploadsUpdateResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4898,7 +4898,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminTransfersMultipleTenantDataVersionsListDTO:
+    ) -> AdminMultipleTenantDataVersionsListDTO:
         """Retrieve the latest enabled data versions for all analytic tenants
 
         If you discover any inconsistencies after running metric value validation, you may want to find the data versions  causing inconsistencies so you can later disable them.   Retrieve up to five (5) of the latest enabled data versions for all your analytic tenants or a  single specified analytic tenant.
@@ -4948,7 +4948,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersMultipleTenantDataVersionsListDTO",
+            '200': "AdminMultipleTenantDataVersionsListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4982,7 +4982,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminTransfersMultipleTenantDataVersionsListDTO]:
+    ) -> ApiResponse[AdminMultipleTenantDataVersionsListDTO]:
         """Retrieve the latest enabled data versions for all analytic tenants
 
         If you discover any inconsistencies after running metric value validation, you may want to find the data versions  causing inconsistencies so you can later disable them.   Retrieve up to five (5) of the latest enabled data versions for all your analytic tenants or a  single specified analytic tenant.
@@ -5032,7 +5032,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersMultipleTenantDataVersionsListDTO",
+            '200': "AdminMultipleTenantDataVersionsListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5116,7 +5116,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersMultipleTenantDataVersionsListDTO",
+            '200': "AdminMultipleTenantDataVersionsListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5227,7 +5227,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminTransfersExtractorSettingsAPIDTO:
+    ) -> AdminExtractorSettingsAPIDTO:
         """Retrieve data connector settings
 
         Get a list of settings for all data connectors. This request retrieves data connectors from the production environment. The response returns a list of settings, if available, for each data connector in the tenant.
@@ -5265,7 +5265,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersExtractorSettingsAPIDTO",
+            '200': "AdminExtractorSettingsAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5295,7 +5295,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminTransfersExtractorSettingsAPIDTO]:
+    ) -> ApiResponse[AdminExtractorSettingsAPIDTO]:
         """Retrieve data connector settings
 
         Get a list of settings for all data connectors. This request retrieves data connectors from the production environment. The response returns a list of settings, if available, for each data connector in the tenant.
@@ -5333,7 +5333,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersExtractorSettingsAPIDTO",
+            '200': "AdminExtractorSettingsAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5401,7 +5401,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersExtractorSettingsAPIDTO",
+            '200': "AdminExtractorSettingsAPIDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6867,7 +6867,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersDataCategoriesResponseDTO:
+    ) -> ServicingDataCategoriesResponseDTO:
         """Retrieve a list of all data categories
 
         Retrieve a list of all available data categories.
@@ -6905,7 +6905,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDataCategoriesResponseDTO",
+            '200': "ServicingDataCategoriesResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6935,7 +6935,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersDataCategoriesResponseDTO]:
+    ) -> ApiResponse[ServicingDataCategoriesResponseDTO]:
         """Retrieve a list of all data categories
 
         Retrieve a list of all available data categories.
@@ -6973,7 +6973,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDataCategoriesResponseDTO",
+            '200': "ServicingDataCategoriesResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7041,7 +7041,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDataCategoriesResponseDTO",
+            '200': "ServicingDataCategoriesResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7137,7 +7137,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersTenantDataUploadsListResponseDTO:
+    ) -> ServicingTenantDataUploadsListResponseDTO:
         """Retrieve data uploads
 
         Retrieve the data uploads and whether they're included in one of:  - A list of analytic tenants managed by you.  - A single specified analytic tenant.  - An upload job.
@@ -7190,7 +7190,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersTenantDataUploadsListResponseDTO",
+            '200': "ServicingTenantDataUploadsListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7225,7 +7225,7 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersTenantDataUploadsListResponseDTO]:
+    ) -> ApiResponse[ServicingTenantDataUploadsListResponseDTO]:
         """Retrieve data uploads
 
         Retrieve the data uploads and whether they're included in one of:  - A list of analytic tenants managed by you.  - A single specified analytic tenant.  - An upload job.
@@ -7278,7 +7278,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersTenantDataUploadsListResponseDTO",
+            '200': "ServicingTenantDataUploadsListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7366,7 +7366,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersTenantDataUploadsListResponseDTO",
+            '200': "ServicingTenantDataUploadsListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7469,7 +7469,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def set_connector_setting(
         self,
-        admin_transfers_set_connector_settings_request_dto: AdminTransfersSetConnectorSettingsRequestDTO,
+        admin_set_connector_settings_request_dto: AdminSetConnectorSettingsRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -7483,13 +7483,13 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminTransfersSetConnectorSettingsResponseDTO:
+    ) -> AdminSetConnectorSettingsResponseDTO:
         """Update data connector settings
 
         Define the settings for one or more data connectors. To find the available settings, see `Retrieve data connector settings`.
 
-        :param admin_transfers_set_connector_settings_request_dto: (required)
-        :type admin_transfers_set_connector_settings_request_dto: AdminTransfersSetConnectorSettingsRequestDTO
+        :param admin_set_connector_settings_request_dto: (required)
+        :type admin_set_connector_settings_request_dto: AdminSetConnectorSettingsRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -7515,7 +7515,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._set_connector_setting_serialize(
-            admin_transfers_set_connector_settings_request_dto=admin_transfers_set_connector_settings_request_dto,
+            admin_set_connector_settings_request_dto=admin_set_connector_settings_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7524,7 +7524,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersSetConnectorSettingsResponseDTO",
+            '200': "AdminSetConnectorSettingsResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7541,7 +7541,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def set_connector_setting_with_http_info(
         self,
-        admin_transfers_set_connector_settings_request_dto: AdminTransfersSetConnectorSettingsRequestDTO,
+        admin_set_connector_settings_request_dto: AdminSetConnectorSettingsRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -7555,13 +7555,13 @@ class DataAndJobHandlingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminTransfersSetConnectorSettingsResponseDTO]:
+    ) -> ApiResponse[AdminSetConnectorSettingsResponseDTO]:
         """Update data connector settings
 
         Define the settings for one or more data connectors. To find the available settings, see `Retrieve data connector settings`.
 
-        :param admin_transfers_set_connector_settings_request_dto: (required)
-        :type admin_transfers_set_connector_settings_request_dto: AdminTransfersSetConnectorSettingsRequestDTO
+        :param admin_set_connector_settings_request_dto: (required)
+        :type admin_set_connector_settings_request_dto: AdminSetConnectorSettingsRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -7587,7 +7587,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._set_connector_setting_serialize(
-            admin_transfers_set_connector_settings_request_dto=admin_transfers_set_connector_settings_request_dto,
+            admin_set_connector_settings_request_dto=admin_set_connector_settings_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7596,7 +7596,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersSetConnectorSettingsResponseDTO",
+            '200': "AdminSetConnectorSettingsResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7613,7 +7613,7 @@ class DataAndJobHandlingApi:
     @validate_call
     def set_connector_setting_without_preload_content(
         self,
-        admin_transfers_set_connector_settings_request_dto: AdminTransfersSetConnectorSettingsRequestDTO,
+        admin_set_connector_settings_request_dto: AdminSetConnectorSettingsRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -7632,8 +7632,8 @@ class DataAndJobHandlingApi:
 
         Define the settings for one or more data connectors. To find the available settings, see `Retrieve data connector settings`.
 
-        :param admin_transfers_set_connector_settings_request_dto: (required)
-        :type admin_transfers_set_connector_settings_request_dto: AdminTransfersSetConnectorSettingsRequestDTO
+        :param admin_set_connector_settings_request_dto: (required)
+        :type admin_set_connector_settings_request_dto: AdminSetConnectorSettingsRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -7659,7 +7659,7 @@ class DataAndJobHandlingApi:
         """ # noqa: E501
 
         _param = self._set_connector_setting_serialize(
-            admin_transfers_set_connector_settings_request_dto=admin_transfers_set_connector_settings_request_dto,
+            admin_set_connector_settings_request_dto=admin_set_connector_settings_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -7668,7 +7668,7 @@ class DataAndJobHandlingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminTransfersSetConnectorSettingsResponseDTO",
+            '200': "AdminSetConnectorSettingsResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7679,7 +7679,7 @@ class DataAndJobHandlingApi:
 
     def _set_connector_setting_serialize(
         self,
-        admin_transfers_set_connector_settings_request_dto,
+        admin_set_connector_settings_request_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -7706,8 +7706,8 @@ class DataAndJobHandlingApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if admin_transfers_set_connector_settings_request_dto is not None:
-            _body_params = admin_transfers_set_connector_settings_request_dto
+        if admin_set_connector_settings_request_dto is not None:
+            _body_params = admin_set_connector_settings_request_dto
 
 
         # set the HTTP header `Accept`

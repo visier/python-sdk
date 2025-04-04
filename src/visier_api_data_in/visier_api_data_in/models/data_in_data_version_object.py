@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1823
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,9 +28,9 @@ class DataInDataVersionObject(BaseModel):
     """
     DataInDataVersionObject
     """ # noqa: E501
-    data_versions: Optional[StrictStr] = Field(default=None, description="The data version to disable for a particular analytic tenant.", alias="dataVersions")
+    data_version: Optional[StrictStr] = Field(default=None, description="The data version to disable for a particular analytic tenant.  If not specified, disables the latest enabled data version for the analytic tenant.", alias="dataVersion")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code for the analytic tenant that you are disabling a data version.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["dataVersions", "tenantCode"]
+    __properties: ClassVar[List[str]] = ["dataVersion", "tenantCode"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,7 +83,7 @@ class DataInDataVersionObject(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dataVersions": obj.get("dataVersions"),
+            "dataVersion": obj.get("dataVersion"),
             "tenantCode": obj.get("tenantCode")
         })
         return _obj
