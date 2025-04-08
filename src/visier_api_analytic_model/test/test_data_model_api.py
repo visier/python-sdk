@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1828
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -63,6 +63,13 @@ class TestDataModelApi(unittest.TestCase):
         """
         pass
 
+    def test_create_vee_sample_questions(self) -> None:
+        """Test case for create_vee_sample_questions
+
+        Add Vee sample questions
+        """
+        pass
+
     def test_currencies(self) -> None:
         """Test case for currencies
 
@@ -98,6 +105,13 @@ class TestDataModelApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_vee_sample_questions(self) -> None:
+        """Test case for delete_vee_sample_questions
+
+        Delete Vee sample questions
+        """
+        pass
+
     def test_dimension(self) -> None:
         """Test case for dimension
 
@@ -116,6 +130,34 @@ class TestDataModelApi(unittest.TestCase):
         """Test case for dimensions
 
         Retrieve a list of dimensions
+        """
+        pass
+
+    def test_get_vee_sample_question(self) -> None:
+        """Test case for get_vee_sample_question
+
+        Retrieve a Vee sample question's details
+        """
+        pass
+
+    def test_get_vee_sample_question_categories(self) -> None:
+        """Test case for get_vee_sample_question_categories
+
+        Retrieve a list of all Vee question categories
+        """
+        pass
+
+    def test_get_vee_sample_question_category(self) -> None:
+        """Test case for get_vee_sample_question_category
+
+        Retrieve a Vee question category's details
+        """
+        pass
+
+    def test_get_vee_sample_questions(self) -> None:
+        """Test case for get_vee_sample_questions
+
+        Retrieve a list of all Vee sample questions
         """
         pass
 
@@ -238,6 +280,13 @@ class TestDataModelApi(unittest.TestCase):
         """
         pass
 
+    def test_put_vee_sample_questions(self) -> None:
+        """Test case for put_vee_sample_questions
+
+        Update Vee sample questions
+        """
+        pass
+
     def test_selection_concept(self) -> None:
         """Test case for selection_concept
 
@@ -252,6 +301,13 @@ class TestDataModelApi(unittest.TestCase):
         """
         pass
 
+    def test_update_analytic_objects(self) -> None:
+        """Test case for update_analytic_objects
+
+        Update analytic objects
+        """
+        pass
+
     def test_update_dimensions(self) -> None:
         """Test case for update_dimensions
 
@@ -263,6 +319,13 @@ class TestDataModelApi(unittest.TestCase):
         """Test case for update_properties
 
         Update properties
+        """
+        pass
+
+    def test_update_vee_sample_questions(self) -> None:
+        """Test case for update_vee_sample_questions
+
+        Patch Vee sample questions
         """
         pass
 
