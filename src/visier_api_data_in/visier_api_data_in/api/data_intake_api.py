@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1828
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,7 +28,7 @@ from visier_api_data_in.models.data_in_push_data_complete_request import DataInP
 from visier_api_data_in.models.data_in_push_data_complete_response import DataInPushDataCompleteResponse
 from visier_api_data_in.models.data_in_push_data_response import DataInPushDataResponse
 from visier_api_data_in.models.data_in_start_transfer_response import DataInStartTransferResponse
-from visier_api_data_in.models.designer_transfers_push_data_source_definitions_dto import DesignerTransfersPushDataSourceDefinitionsDTO
+from visier_api_data_in.models.designer_push_data_source_definitions_dto import DesignerPushDataSourceDefinitionsDTO
 import visier_api_data_in.models
 
 
@@ -60,7 +60,7 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerTransfersPushDataSourceDefinitionsDTO:
+    ) -> DesignerPushDataSourceDefinitionsDTO:
         """Retrieve a list of sources
 
         Prior to transferring data to Visier, you must identify the sources you want to target. Sources store data for  the solution and are used to map data to Visier's data model.   **Note:** To set up sources in your tenant, contact Visier Customer Success.  This API allows you to query the list of available sources, and identify the source schema and required fields.
@@ -98,7 +98,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersPushDataSourceDefinitionsDTO",
+            '200': "DesignerPushDataSourceDefinitionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -128,7 +128,7 @@ class DataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerTransfersPushDataSourceDefinitionsDTO]:
+    ) -> ApiResponse[DesignerPushDataSourceDefinitionsDTO]:
         """Retrieve a list of sources
 
         Prior to transferring data to Visier, you must identify the sources you want to target. Sources store data for  the solution and are used to map data to Visier's data model.   **Note:** To set up sources in your tenant, contact Visier Customer Success.  This API allows you to query the list of available sources, and identify the source schema and required fields.
@@ -166,7 +166,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersPushDataSourceDefinitionsDTO",
+            '200': "DesignerPushDataSourceDefinitionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -234,7 +234,7 @@ class DataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerTransfersPushDataSourceDefinitionsDTO",
+            '200': "DesignerPushDataSourceDefinitionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

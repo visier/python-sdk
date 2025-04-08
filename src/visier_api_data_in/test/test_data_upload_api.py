@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1828
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,8 +28,8 @@ class TestDataUploadApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_v1_data_upload_files_filename_put(self) -> None:
-        """Test case for v1_data_upload_files_filename_put
+    def test_file_upload(self) -> None:
+        """Test case for file_upload
 
         Upload a data file to Visier
         """

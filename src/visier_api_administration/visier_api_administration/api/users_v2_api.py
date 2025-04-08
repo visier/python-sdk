@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1828
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,10 +23,10 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_api_administration.models.servicing_publicapi_transfers_users_api_response_dto import ServicingPublicapiTransfersUsersAPIResponseDTO
-from visier_api_administration.models.servicing_publicapi_transfers_users_creation_api_request_dto import ServicingPublicapiTransfersUsersCreationAPIRequestDTO
-from visier_api_administration.models.servicing_publicapi_transfers_users_delete_api_request_dto import ServicingPublicapiTransfersUsersDeleteAPIRequestDTO
-from visier_api_administration.models.servicing_publicapi_transfers_users_update_api_request_dto import ServicingPublicapiTransfersUsersUpdateAPIRequestDTO
+from visier_api_administration.models.servicing_users_api_response_dto import ServicingUsersAPIResponseDTO
+from visier_api_administration.models.servicing_users_creation_api_request_dto import ServicingUsersCreationAPIRequestDTO
+from visier_api_administration.models.servicing_users_delete_api_request_dto import ServicingUsersDeleteAPIRequestDTO
+from visier_api_administration.models.servicing_users_update_api_request_dto import ServicingUsersUpdateAPIRequestDTO
 import visier_api_administration.models
 
 
@@ -45,7 +45,7 @@ class UsersV2Api:
     @validate_call
     def add_users(
         self,
-        servicing_publicapi_transfers_users_creation_api_request_dto: ServicingPublicapiTransfersUsersCreationAPIRequestDTO,
+        servicing_users_creation_api_request_dto: ServicingUsersCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -60,13 +60,13 @@ class UsersV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersUsersAPIResponseDTO:
+    ) -> ServicingUsersAPIResponseDTO:
         """Add users
 
         Create new users. Administrating tenant users can specify the tenant in which to add these users.
 
-        :param servicing_publicapi_transfers_users_creation_api_request_dto: (required)
-        :type servicing_publicapi_transfers_users_creation_api_request_dto: ServicingPublicapiTransfersUsersCreationAPIRequestDTO
+        :param servicing_users_creation_api_request_dto: (required)
+        :type servicing_users_creation_api_request_dto: ServicingUsersCreationAPIRequestDTO
         :param tenant_code: Specify the tenant to create a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -94,7 +94,7 @@ class UsersV2Api:
         """ # noqa: E501
 
         _param = self._add_users_serialize(
-            servicing_publicapi_transfers_users_creation_api_request_dto=servicing_publicapi_transfers_users_creation_api_request_dto,
+            servicing_users_creation_api_request_dto=servicing_users_creation_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -104,7 +104,7 @@ class UsersV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersUsersAPIResponseDTO",
+            '200': "ServicingUsersAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -121,7 +121,7 @@ class UsersV2Api:
     @validate_call
     def add_users_with_http_info(
         self,
-        servicing_publicapi_transfers_users_creation_api_request_dto: ServicingPublicapiTransfersUsersCreationAPIRequestDTO,
+        servicing_users_creation_api_request_dto: ServicingUsersCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -136,13 +136,13 @@ class UsersV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersUsersAPIResponseDTO]:
+    ) -> ApiResponse[ServicingUsersAPIResponseDTO]:
         """Add users
 
         Create new users. Administrating tenant users can specify the tenant in which to add these users.
 
-        :param servicing_publicapi_transfers_users_creation_api_request_dto: (required)
-        :type servicing_publicapi_transfers_users_creation_api_request_dto: ServicingPublicapiTransfersUsersCreationAPIRequestDTO
+        :param servicing_users_creation_api_request_dto: (required)
+        :type servicing_users_creation_api_request_dto: ServicingUsersCreationAPIRequestDTO
         :param tenant_code: Specify the tenant to create a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -170,7 +170,7 @@ class UsersV2Api:
         """ # noqa: E501
 
         _param = self._add_users_serialize(
-            servicing_publicapi_transfers_users_creation_api_request_dto=servicing_publicapi_transfers_users_creation_api_request_dto,
+            servicing_users_creation_api_request_dto=servicing_users_creation_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -180,7 +180,7 @@ class UsersV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersUsersAPIResponseDTO",
+            '200': "ServicingUsersAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -197,7 +197,7 @@ class UsersV2Api:
     @validate_call
     def add_users_without_preload_content(
         self,
-        servicing_publicapi_transfers_users_creation_api_request_dto: ServicingPublicapiTransfersUsersCreationAPIRequestDTO,
+        servicing_users_creation_api_request_dto: ServicingUsersCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -217,8 +217,8 @@ class UsersV2Api:
 
         Create new users. Administrating tenant users can specify the tenant in which to add these users.
 
-        :param servicing_publicapi_transfers_users_creation_api_request_dto: (required)
-        :type servicing_publicapi_transfers_users_creation_api_request_dto: ServicingPublicapiTransfersUsersCreationAPIRequestDTO
+        :param servicing_users_creation_api_request_dto: (required)
+        :type servicing_users_creation_api_request_dto: ServicingUsersCreationAPIRequestDTO
         :param tenant_code: Specify the tenant to create a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -246,7 +246,7 @@ class UsersV2Api:
         """ # noqa: E501
 
         _param = self._add_users_serialize(
-            servicing_publicapi_transfers_users_creation_api_request_dto=servicing_publicapi_transfers_users_creation_api_request_dto,
+            servicing_users_creation_api_request_dto=servicing_users_creation_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -256,7 +256,7 @@ class UsersV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersUsersAPIResponseDTO",
+            '200': "ServicingUsersAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -267,7 +267,7 @@ class UsersV2Api:
 
     def _add_users_serialize(
         self,
-        servicing_publicapi_transfers_users_creation_api_request_dto,
+        servicing_users_creation_api_request_dto,
         tenant_code,
         target_tenant_id,
         _request_auth,
@@ -299,8 +299,8 @@ class UsersV2Api:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if servicing_publicapi_transfers_users_creation_api_request_dto is not None:
-            _body_params = servicing_publicapi_transfers_users_creation_api_request_dto
+        if servicing_users_creation_api_request_dto is not None:
+            _body_params = servicing_users_creation_api_request_dto
 
 
         # set the HTTP header `Accept`
@@ -355,7 +355,7 @@ class UsersV2Api:
     @validate_call
     def delete_users(
         self,
-        servicing_publicapi_transfers_users_delete_api_request_dto: ServicingPublicapiTransfersUsersDeleteAPIRequestDTO,
+        servicing_users_delete_api_request_dto: ServicingUsersDeleteAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -370,13 +370,13 @@ class UsersV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersUsersAPIResponseDTO:
+    ) -> ServicingUsersAPIResponseDTO:
         """Delete users
 
         Delete an existing user. Administrating tenant users can specify the tenant from which to delete a user.
 
-        :param servicing_publicapi_transfers_users_delete_api_request_dto: (required)
-        :type servicing_publicapi_transfers_users_delete_api_request_dto: ServicingPublicapiTransfersUsersDeleteAPIRequestDTO
+        :param servicing_users_delete_api_request_dto: (required)
+        :type servicing_users_delete_api_request_dto: ServicingUsersDeleteAPIRequestDTO
         :param tenant_code: Specify the tenant to delete a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -404,7 +404,7 @@ class UsersV2Api:
         """ # noqa: E501
 
         _param = self._delete_users_serialize(
-            servicing_publicapi_transfers_users_delete_api_request_dto=servicing_publicapi_transfers_users_delete_api_request_dto,
+            servicing_users_delete_api_request_dto=servicing_users_delete_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -414,7 +414,7 @@ class UsersV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersUsersAPIResponseDTO",
+            '200': "ServicingUsersAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -431,7 +431,7 @@ class UsersV2Api:
     @validate_call
     def delete_users_with_http_info(
         self,
-        servicing_publicapi_transfers_users_delete_api_request_dto: ServicingPublicapiTransfersUsersDeleteAPIRequestDTO,
+        servicing_users_delete_api_request_dto: ServicingUsersDeleteAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -446,13 +446,13 @@ class UsersV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersUsersAPIResponseDTO]:
+    ) -> ApiResponse[ServicingUsersAPIResponseDTO]:
         """Delete users
 
         Delete an existing user. Administrating tenant users can specify the tenant from which to delete a user.
 
-        :param servicing_publicapi_transfers_users_delete_api_request_dto: (required)
-        :type servicing_publicapi_transfers_users_delete_api_request_dto: ServicingPublicapiTransfersUsersDeleteAPIRequestDTO
+        :param servicing_users_delete_api_request_dto: (required)
+        :type servicing_users_delete_api_request_dto: ServicingUsersDeleteAPIRequestDTO
         :param tenant_code: Specify the tenant to delete a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -480,7 +480,7 @@ class UsersV2Api:
         """ # noqa: E501
 
         _param = self._delete_users_serialize(
-            servicing_publicapi_transfers_users_delete_api_request_dto=servicing_publicapi_transfers_users_delete_api_request_dto,
+            servicing_users_delete_api_request_dto=servicing_users_delete_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -490,7 +490,7 @@ class UsersV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersUsersAPIResponseDTO",
+            '200': "ServicingUsersAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -507,7 +507,7 @@ class UsersV2Api:
     @validate_call
     def delete_users_without_preload_content(
         self,
-        servicing_publicapi_transfers_users_delete_api_request_dto: ServicingPublicapiTransfersUsersDeleteAPIRequestDTO,
+        servicing_users_delete_api_request_dto: ServicingUsersDeleteAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -527,8 +527,8 @@ class UsersV2Api:
 
         Delete an existing user. Administrating tenant users can specify the tenant from which to delete a user.
 
-        :param servicing_publicapi_transfers_users_delete_api_request_dto: (required)
-        :type servicing_publicapi_transfers_users_delete_api_request_dto: ServicingPublicapiTransfersUsersDeleteAPIRequestDTO
+        :param servicing_users_delete_api_request_dto: (required)
+        :type servicing_users_delete_api_request_dto: ServicingUsersDeleteAPIRequestDTO
         :param tenant_code: Specify the tenant to delete a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -556,7 +556,7 @@ class UsersV2Api:
         """ # noqa: E501
 
         _param = self._delete_users_serialize(
-            servicing_publicapi_transfers_users_delete_api_request_dto=servicing_publicapi_transfers_users_delete_api_request_dto,
+            servicing_users_delete_api_request_dto=servicing_users_delete_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -566,7 +566,7 @@ class UsersV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersUsersAPIResponseDTO",
+            '200': "ServicingUsersAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -577,7 +577,7 @@ class UsersV2Api:
 
     def _delete_users_serialize(
         self,
-        servicing_publicapi_transfers_users_delete_api_request_dto,
+        servicing_users_delete_api_request_dto,
         tenant_code,
         target_tenant_id,
         _request_auth,
@@ -609,8 +609,8 @@ class UsersV2Api:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if servicing_publicapi_transfers_users_delete_api_request_dto is not None:
-            _body_params = servicing_publicapi_transfers_users_delete_api_request_dto
+        if servicing_users_delete_api_request_dto is not None:
+            _body_params = servicing_users_delete_api_request_dto
 
 
         # set the HTTP header `Accept`
@@ -665,7 +665,7 @@ class UsersV2Api:
     @validate_call
     def update_users(
         self,
-        servicing_publicapi_transfers_users_update_api_request_dto: ServicingPublicapiTransfersUsersUpdateAPIRequestDTO,
+        servicing_users_update_api_request_dto: ServicingUsersUpdateAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -680,13 +680,13 @@ class UsersV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersUsersAPIResponseDTO:
+    ) -> ServicingUsersAPIResponseDTO:
         """Update users
 
         Update an existing user's information, such as their display name or if the user is enabled in Visier.
 
-        :param servicing_publicapi_transfers_users_update_api_request_dto: (required)
-        :type servicing_publicapi_transfers_users_update_api_request_dto: ServicingPublicapiTransfersUsersUpdateAPIRequestDTO
+        :param servicing_users_update_api_request_dto: (required)
+        :type servicing_users_update_api_request_dto: ServicingUsersUpdateAPIRequestDTO
         :param tenant_code: Specify the tenant to update a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -714,7 +714,7 @@ class UsersV2Api:
         """ # noqa: E501
 
         _param = self._update_users_serialize(
-            servicing_publicapi_transfers_users_update_api_request_dto=servicing_publicapi_transfers_users_update_api_request_dto,
+            servicing_users_update_api_request_dto=servicing_users_update_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -724,7 +724,7 @@ class UsersV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersUsersAPIResponseDTO",
+            '200': "ServicingUsersAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -741,7 +741,7 @@ class UsersV2Api:
     @validate_call
     def update_users_with_http_info(
         self,
-        servicing_publicapi_transfers_users_update_api_request_dto: ServicingPublicapiTransfersUsersUpdateAPIRequestDTO,
+        servicing_users_update_api_request_dto: ServicingUsersUpdateAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -756,13 +756,13 @@ class UsersV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersUsersAPIResponseDTO]:
+    ) -> ApiResponse[ServicingUsersAPIResponseDTO]:
         """Update users
 
         Update an existing user's information, such as their display name or if the user is enabled in Visier.
 
-        :param servicing_publicapi_transfers_users_update_api_request_dto: (required)
-        :type servicing_publicapi_transfers_users_update_api_request_dto: ServicingPublicapiTransfersUsersUpdateAPIRequestDTO
+        :param servicing_users_update_api_request_dto: (required)
+        :type servicing_users_update_api_request_dto: ServicingUsersUpdateAPIRequestDTO
         :param tenant_code: Specify the tenant to update a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -790,7 +790,7 @@ class UsersV2Api:
         """ # noqa: E501
 
         _param = self._update_users_serialize(
-            servicing_publicapi_transfers_users_update_api_request_dto=servicing_publicapi_transfers_users_update_api_request_dto,
+            servicing_users_update_api_request_dto=servicing_users_update_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -800,7 +800,7 @@ class UsersV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersUsersAPIResponseDTO",
+            '200': "ServicingUsersAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -817,7 +817,7 @@ class UsersV2Api:
     @validate_call
     def update_users_without_preload_content(
         self,
-        servicing_publicapi_transfers_users_update_api_request_dto: ServicingPublicapiTransfersUsersUpdateAPIRequestDTO,
+        servicing_users_update_api_request_dto: ServicingUsersUpdateAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -837,8 +837,8 @@ class UsersV2Api:
 
         Update an existing user's information, such as their display name or if the user is enabled in Visier.
 
-        :param servicing_publicapi_transfers_users_update_api_request_dto: (required)
-        :type servicing_publicapi_transfers_users_update_api_request_dto: ServicingPublicapiTransfersUsersUpdateAPIRequestDTO
+        :param servicing_users_update_api_request_dto: (required)
+        :type servicing_users_update_api_request_dto: ServicingUsersUpdateAPIRequestDTO
         :param tenant_code: Specify the tenant to update a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -866,7 +866,7 @@ class UsersV2Api:
         """ # noqa: E501
 
         _param = self._update_users_serialize(
-            servicing_publicapi_transfers_users_update_api_request_dto=servicing_publicapi_transfers_users_update_api_request_dto,
+            servicing_users_update_api_request_dto=servicing_users_update_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -876,7 +876,7 @@ class UsersV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersUsersAPIResponseDTO",
+            '200': "ServicingUsersAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -887,7 +887,7 @@ class UsersV2Api:
 
     def _update_users_serialize(
         self,
-        servicing_publicapi_transfers_users_update_api_request_dto,
+        servicing_users_update_api_request_dto,
         tenant_code,
         target_tenant_id,
         _request_auth,
@@ -919,8 +919,8 @@ class UsersV2Api:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if servicing_publicapi_transfers_users_update_api_request_dto is not None:
-            _body_params = servicing_publicapi_transfers_users_update_api_request_dto
+        if servicing_users_update_api_request_dto is not None:
+            _body_params = servicing_users_update_api_request_dto
 
 
         # set the HTTP header `Accept`
