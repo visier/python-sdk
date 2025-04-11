@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1830
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -38,7 +38,7 @@ class TestDataInDisableDVModel(unittest.TestCase):
             return DataInDisableDVModel(
                 data_version_objects = [
                     visier_api_data_in.models.data_in/data_version_object.data_in.DataVersionObject(
-                        data_versions = '', 
+                        data_version = '', 
                         tenant_code = '', )
                     ]
             )

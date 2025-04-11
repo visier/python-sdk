@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1830
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -24,11 +24,12 @@ from pydantic import Field, StrictBytes, StrictStr
 from typing import Optional, Tuple, Union
 from typing_extensions import Annotated
 from visier_api_data_in.models.direct_data_upload_file_response_dto import DirectDataUploadFileResponseDTO
-from visier_api_data_in.models.servicing_publicapi_transfers_direct_data_job_status_response_dto import ServicingPublicapiTransfersDirectDataJobStatusResponseDTO
-from visier_api_data_in.models.servicing_publicapi_transfers_direct_data_load_config_dto import ServicingPublicapiTransfersDirectDataLoadConfigDTO
-from visier_api_data_in.models.servicing_publicapi_transfers_direct_data_schema_dto import ServicingPublicapiTransfersDirectDataSchemaDTO
-from visier_api_data_in.models.servicing_publicapi_transfers_direct_data_transaction_start_response_dto import ServicingPublicapiTransfersDirectDataTransactionStartResponseDTO
-from visier_api_data_in.models.servicing_publicapi_transfers_direct_data_upload_file_response_dto import ServicingPublicapiTransfersDirectDataUploadFileResponseDTO
+from visier_api_data_in.models.servicing_direct_data_job_status_response_dto import ServicingDirectDataJobStatusResponseDTO
+from visier_api_data_in.models.servicing_direct_data_list_transactions_response_dto import ServicingDirectDataListTransactionsResponseDTO
+from visier_api_data_in.models.servicing_direct_data_load_config_dto import ServicingDirectDataLoadConfigDTO
+from visier_api_data_in.models.servicing_direct_data_schema_dto import ServicingDirectDataSchemaDTO
+from visier_api_data_in.models.servicing_direct_data_transaction_start_response_dto import ServicingDirectDataTransactionStartResponseDTO
+from visier_api_data_in.models.servicing_direct_data_upload_file_response_dto import ServicingDirectDataUploadFileResponseDTO
 import visier_api_data_in.models
 
 
@@ -62,7 +63,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersDirectDataUploadFileResponseDTO:
+    ) -> ServicingDirectDataUploadFileResponseDTO:
         """Commit a transaction
 
         Process a transaction and its uploaded data files. This starts a processing job to load the data files into Visier.   After committing a transaction, you cannot upload additional files to the transaction. Use the `Check transaction status` endpoint to monitor the progress of the processing job.
@@ -106,7 +107,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataUploadFileResponseDTO",
+            '200': "ServicingDirectDataUploadFileResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -138,7 +139,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataUploadFileResponseDTO]:
+    ) -> ApiResponse[ServicingDirectDataUploadFileResponseDTO]:
         """Commit a transaction
 
         Process a transaction and its uploaded data files. This starts a processing job to load the data files into Visier.   After committing a transaction, you cannot upload additional files to the transaction. Use the `Check transaction status` endpoint to monitor the progress of the processing job.
@@ -182,7 +183,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataUploadFileResponseDTO",
+            '200': "ServicingDirectDataUploadFileResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -258,7 +259,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataUploadFileResponseDTO",
+            '200': "ServicingDirectDataUploadFileResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -356,7 +357,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersDirectDataLoadConfigDTO:
+    ) -> ServicingDirectDataLoadConfigDTO:
         """Get the direct data intake configuration
 
         Get the direct data intake configuration.
@@ -397,7 +398,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataLoadConfigDTO",
+            '200': "ServicingDirectDataLoadConfigDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -428,7 +429,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataLoadConfigDTO]:
+    ) -> ApiResponse[ServicingDirectDataLoadConfigDTO]:
         """Get the direct data intake configuration
 
         Get the direct data intake configuration.
@@ -469,7 +470,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataLoadConfigDTO",
+            '200': "ServicingDirectDataLoadConfigDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -541,7 +542,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataLoadConfigDTO",
+            '200': "ServicingDirectDataLoadConfigDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -637,7 +638,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersDirectDataJobStatusResponseDTO:
+    ) -> ServicingDirectDataJobStatusResponseDTO:
         """Check transaction status
 
         Retrieve the status of a committed transaction's processing job.
@@ -681,7 +682,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataJobStatusResponseDTO",
+            '200': "ServicingDirectDataJobStatusResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -713,7 +714,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataJobStatusResponseDTO]:
+    ) -> ApiResponse[ServicingDirectDataJobStatusResponseDTO]:
         """Check transaction status
 
         Retrieve the status of a committed transaction's processing job.
@@ -757,7 +758,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataJobStatusResponseDTO",
+            '200': "ServicingDirectDataJobStatusResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -833,7 +834,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataJobStatusResponseDTO",
+            '200': "ServicingDirectDataJobStatusResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -915,6 +916,613 @@ class DirectDataIntakeApi:
 
 
     @validate_call
+    def list_transactions(
+        self,
+        draft_id: Annotated[StrictStr, Field(description="Optionally specify the unique identifier of a project to retrieve open transactions from. Currently, the only supported value is `prod` to retrieve open transactions for the production version.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ServicingDirectDataListTransactionsResponseDTO:
+        """Retrieve a list of open transactions
+
+        Get a list of all open transactions. Doesn't return committed transactions or rolled back transactions.
+
+        :param draft_id: Optionally specify the unique identifier of a project to retrieve open transactions from. Currently, the only supported value is `prod` to retrieve open transactions for the production version. (required)
+        :type draft_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_transactions_serialize(
+            draft_id=draft_id,
+            target_tenant_id=target_tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ServicingDirectDataListTransactionsResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier_api_data_in.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        ).data
+
+
+    @validate_call
+    def list_transactions_with_http_info(
+        self,
+        draft_id: Annotated[StrictStr, Field(description="Optionally specify the unique identifier of a project to retrieve open transactions from. Currently, the only supported value is `prod` to retrieve open transactions for the production version.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ServicingDirectDataListTransactionsResponseDTO]:
+        """Retrieve a list of open transactions
+
+        Get a list of all open transactions. Doesn't return committed transactions or rolled back transactions.
+
+        :param draft_id: Optionally specify the unique identifier of a project to retrieve open transactions from. Currently, the only supported value is `prod` to retrieve open transactions for the production version. (required)
+        :type draft_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_transactions_serialize(
+            draft_id=draft_id,
+            target_tenant_id=target_tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ServicingDirectDataListTransactionsResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier_api_data_in.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        )
+
+
+    @validate_call
+    def list_transactions_without_preload_content(
+        self,
+        draft_id: Annotated[StrictStr, Field(description="Optionally specify the unique identifier of a project to retrieve open transactions from. Currently, the only supported value is `prod` to retrieve open transactions for the production version.")],
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Retrieve a list of open transactions
+
+        Get a list of all open transactions. Doesn't return committed transactions or rolled back transactions.
+
+        :param draft_id: Optionally specify the unique identifier of a project to retrieve open transactions from. Currently, the only supported value is `prod` to retrieve open transactions for the production version. (required)
+        :type draft_id: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_transactions_serialize(
+            draft_id=draft_id,
+            target_tenant_id=target_tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ServicingDirectDataListTransactionsResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_transactions_serialize(
+        self,
+        draft_id,
+        target_tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if draft_id is not None:
+            _path_params['draftId'] = draft_id
+        # process the query parameters
+        # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/data/directloads/{draftId}/transactions',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def load_sample_data(
+        self,
+        draft_id: StrictStr,
+        transaction_id: StrictStr,
+        object_name: StrictStr,
+        sample_name: Annotated[Optional[StrictStr], Field(description="The name of the target object to load sample data. Sample data is available for:  * `employee`: The Employee subject.  * `employee_exit`: The Employee Exit event.  * `employment_start`: The Employment Start event.  * `organization_hierarchy`: The Organization Hierarchy dimension.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ServicingDirectDataUploadFileResponseDTO:
+        """Load sample data
+
+        Load sample data in a previously-created transaction. The data is not processed in Visier until you commit the transaction. Sample data is available for `employee`, `employee_exit`, `employment_start`, and `organization_hierarchy`.
+
+        :param draft_id: (required)
+        :type draft_id: str
+        :param transaction_id: (required)
+        :type transaction_id: str
+        :param object_name: (required)
+        :type object_name: str
+        :param sample_name: The name of the target object to load sample data. Sample data is available for:  * `employee`: The Employee subject.  * `employee_exit`: The Employee Exit event.  * `employment_start`: The Employment Start event.  * `organization_hierarchy`: The Organization Hierarchy dimension.
+        :type sample_name: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._load_sample_data_serialize(
+            draft_id=draft_id,
+            transaction_id=transaction_id,
+            object_name=object_name,
+            sample_name=sample_name,
+            target_tenant_id=target_tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ServicingDirectDataUploadFileResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier_api_data_in.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        ).data
+
+
+    @validate_call
+    def load_sample_data_with_http_info(
+        self,
+        draft_id: StrictStr,
+        transaction_id: StrictStr,
+        object_name: StrictStr,
+        sample_name: Annotated[Optional[StrictStr], Field(description="The name of the target object to load sample data. Sample data is available for:  * `employee`: The Employee subject.  * `employee_exit`: The Employee Exit event.  * `employment_start`: The Employment Start event.  * `organization_hierarchy`: The Organization Hierarchy dimension.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ServicingDirectDataUploadFileResponseDTO]:
+        """Load sample data
+
+        Load sample data in a previously-created transaction. The data is not processed in Visier until you commit the transaction. Sample data is available for `employee`, `employee_exit`, `employment_start`, and `organization_hierarchy`.
+
+        :param draft_id: (required)
+        :type draft_id: str
+        :param transaction_id: (required)
+        :type transaction_id: str
+        :param object_name: (required)
+        :type object_name: str
+        :param sample_name: The name of the target object to load sample data. Sample data is available for:  * `employee`: The Employee subject.  * `employee_exit`: The Employee Exit event.  * `employment_start`: The Employment Start event.  * `organization_hierarchy`: The Organization Hierarchy dimension.
+        :type sample_name: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._load_sample_data_serialize(
+            draft_id=draft_id,
+            transaction_id=transaction_id,
+            object_name=object_name,
+            sample_name=sample_name,
+            target_tenant_id=target_tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ServicingDirectDataUploadFileResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            model_package=visier_api_data_in.models,
+            response_data=response_data,
+            response_types_map=_response_types_map
+        )
+
+
+    @validate_call
+    def load_sample_data_without_preload_content(
+        self,
+        draft_id: StrictStr,
+        transaction_id: StrictStr,
+        object_name: StrictStr,
+        sample_name: Annotated[Optional[StrictStr], Field(description="The name of the target object to load sample data. Sample data is available for:  * `employee`: The Employee subject.  * `employee_exit`: The Employee Exit event.  * `employment_start`: The Employment Start event.  * `organization_hierarchy`: The Organization Hierarchy dimension.")] = None,
+        target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Load sample data
+
+        Load sample data in a previously-created transaction. The data is not processed in Visier until you commit the transaction. Sample data is available for `employee`, `employee_exit`, `employment_start`, and `organization_hierarchy`.
+
+        :param draft_id: (required)
+        :type draft_id: str
+        :param transaction_id: (required)
+        :type transaction_id: str
+        :param object_name: (required)
+        :type object_name: str
+        :param sample_name: The name of the target object to load sample data. Sample data is available for:  * `employee`: The Employee subject.  * `employee_exit`: The Employee Exit event.  * `employment_start`: The Employment Start event.  * `organization_hierarchy`: The Organization Hierarchy dimension.
+        :type sample_name: str
+        :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
+        :type target_tenant_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._load_sample_data_serialize(
+            draft_id=draft_id,
+            transaction_id=transaction_id,
+            object_name=object_name,
+            sample_name=sample_name,
+            target_tenant_id=target_tenant_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ServicingDirectDataUploadFileResponseDTO",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _load_sample_data_serialize(
+        self,
+        draft_id,
+        transaction_id,
+        object_name,
+        sample_name,
+        target_tenant_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, Union[str, bytes]] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if draft_id is not None:
+            _path_params['draftId'] = draft_id
+        if transaction_id is not None:
+            _path_params['transactionId'] = transaction_id
+        if object_name is not None:
+            _path_params['objectName'] = object_name
+        # process the query parameters
+        if sample_name is not None:
+            
+            _query_params.append(('sampleName', sample_name))
+            
+        # process the header parameters
+        if target_tenant_id is not None:
+            _header_params['TargetTenantID'] = target_tenant_id
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'CookieAuth', 
+            'ApiKeyAuth', 
+            'OAuth2Auth', 
+            'OAuth2Auth', 
+            'BearerAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v1/data/directloads/{draftId}/transactions/{transactionId}/{objectName}/sample-data',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def object_schema(
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
@@ -932,7 +1540,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersDirectDataSchemaDTO:
+    ) -> ServicingDirectDataSchemaDTO:
         """Retrieve an object's data load schema
 
         Gets the load schema for a specified object. The object's load schema represents the structure that the data upload file must follow to upload data to the object.   In the load schema, the listed columns must be present in the data file as column headers and exactly match the load schema (case sensitive), however,  only the columns whose `isMandatory` field is `true` must contain values in the data file.
@@ -976,7 +1584,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataSchemaDTO",
+            '200': "ServicingDirectDataSchemaDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1008,7 +1616,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataSchemaDTO]:
+    ) -> ApiResponse[ServicingDirectDataSchemaDTO]:
         """Retrieve an object's data load schema
 
         Gets the load schema for a specified object. The object's load schema represents the structure that the data upload file must follow to upload data to the object.   In the load schema, the listed columns must be present in the data file as column headers and exactly match the load schema (case sensitive), however,  only the columns whose `isMandatory` field is `true` must contain values in the data file.
@@ -1052,7 +1660,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataSchemaDTO",
+            '200': "ServicingDirectDataSchemaDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1128,7 +1736,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataSchemaDTO",
+            '200': "ServicingDirectDataSchemaDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1213,7 +1821,7 @@ class DirectDataIntakeApi:
     def put_config(
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
-        servicing_publicapi_transfers_direct_data_load_config_dto: ServicingPublicapiTransfersDirectDataLoadConfigDTO,
+        servicing_direct_data_load_config_dto: ServicingDirectDataLoadConfigDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1227,15 +1835,15 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersDirectDataLoadConfigDTO:
+    ) -> ServicingDirectDataLoadConfigDTO:
         """Update the direct data intake configuration
 
         Configure the data intake settings, such as the direct data intake job type. Only provide values for the configuration options that should change.   Configuration options that are not present in the PUT request are ignored and left unchanged.
 
         :param draft_id: The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version. (required)
         :type draft_id: str
-        :param servicing_publicapi_transfers_direct_data_load_config_dto: (required)
-        :type servicing_publicapi_transfers_direct_data_load_config_dto: ServicingPublicapiTransfersDirectDataLoadConfigDTO
+        :param servicing_direct_data_load_config_dto: (required)
+        :type servicing_direct_data_load_config_dto: ServicingDirectDataLoadConfigDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1262,7 +1870,7 @@ class DirectDataIntakeApi:
 
         _param = self._put_config_serialize(
             draft_id=draft_id,
-            servicing_publicapi_transfers_direct_data_load_config_dto=servicing_publicapi_transfers_direct_data_load_config_dto,
+            servicing_direct_data_load_config_dto=servicing_direct_data_load_config_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1271,7 +1879,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataLoadConfigDTO",
+            '200': "ServicingDirectDataLoadConfigDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1289,7 +1897,7 @@ class DirectDataIntakeApi:
     def put_config_with_http_info(
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
-        servicing_publicapi_transfers_direct_data_load_config_dto: ServicingPublicapiTransfersDirectDataLoadConfigDTO,
+        servicing_direct_data_load_config_dto: ServicingDirectDataLoadConfigDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1303,15 +1911,15 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataLoadConfigDTO]:
+    ) -> ApiResponse[ServicingDirectDataLoadConfigDTO]:
         """Update the direct data intake configuration
 
         Configure the data intake settings, such as the direct data intake job type. Only provide values for the configuration options that should change.   Configuration options that are not present in the PUT request are ignored and left unchanged.
 
         :param draft_id: The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version. (required)
         :type draft_id: str
-        :param servicing_publicapi_transfers_direct_data_load_config_dto: (required)
-        :type servicing_publicapi_transfers_direct_data_load_config_dto: ServicingPublicapiTransfersDirectDataLoadConfigDTO
+        :param servicing_direct_data_load_config_dto: (required)
+        :type servicing_direct_data_load_config_dto: ServicingDirectDataLoadConfigDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1338,7 +1946,7 @@ class DirectDataIntakeApi:
 
         _param = self._put_config_serialize(
             draft_id=draft_id,
-            servicing_publicapi_transfers_direct_data_load_config_dto=servicing_publicapi_transfers_direct_data_load_config_dto,
+            servicing_direct_data_load_config_dto=servicing_direct_data_load_config_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1347,7 +1955,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataLoadConfigDTO",
+            '200': "ServicingDirectDataLoadConfigDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1365,7 +1973,7 @@ class DirectDataIntakeApi:
     def put_config_without_preload_content(
         self,
         draft_id: Annotated[StrictStr, Field(description="The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version.")],
-        servicing_publicapi_transfers_direct_data_load_config_dto: ServicingPublicapiTransfersDirectDataLoadConfigDTO,
+        servicing_direct_data_load_config_dto: ServicingDirectDataLoadConfigDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1386,8 +1994,8 @@ class DirectDataIntakeApi:
 
         :param draft_id: The unique identifier of the project to load data into. Currently, the only supported value is `prod` to update the production version. (required)
         :type draft_id: str
-        :param servicing_publicapi_transfers_direct_data_load_config_dto: (required)
-        :type servicing_publicapi_transfers_direct_data_load_config_dto: ServicingPublicapiTransfersDirectDataLoadConfigDTO
+        :param servicing_direct_data_load_config_dto: (required)
+        :type servicing_direct_data_load_config_dto: ServicingDirectDataLoadConfigDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1414,7 +2022,7 @@ class DirectDataIntakeApi:
 
         _param = self._put_config_serialize(
             draft_id=draft_id,
-            servicing_publicapi_transfers_direct_data_load_config_dto=servicing_publicapi_transfers_direct_data_load_config_dto,
+            servicing_direct_data_load_config_dto=servicing_direct_data_load_config_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1423,7 +2031,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataLoadConfigDTO",
+            '200': "ServicingDirectDataLoadConfigDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1435,7 +2043,7 @@ class DirectDataIntakeApi:
     def _put_config_serialize(
         self,
         draft_id,
-        servicing_publicapi_transfers_direct_data_load_config_dto,
+        servicing_direct_data_load_config_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -1464,8 +2072,8 @@ class DirectDataIntakeApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if servicing_publicapi_transfers_direct_data_load_config_dto is not None:
-            _body_params = servicing_publicapi_transfers_direct_data_load_config_dto
+        if servicing_direct_data_load_config_dto is not None:
+            _body_params = servicing_direct_data_load_config_dto
 
 
         # set the HTTP header `Accept`
@@ -1535,7 +2143,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersDirectDataUploadFileResponseDTO:
+    ) -> ServicingDirectDataUploadFileResponseDTO:
         """Roll back a transaction
 
         Rolls back the specified transaction. This discards all files uploaded within the transaction and deletes the transaction.   After rolling back a transaction, you cannot use the transaction to upload data files.
@@ -1579,7 +2187,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataUploadFileResponseDTO",
+            '200': "ServicingDirectDataUploadFileResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1611,7 +2219,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataUploadFileResponseDTO]:
+    ) -> ApiResponse[ServicingDirectDataUploadFileResponseDTO]:
         """Roll back a transaction
 
         Rolls back the specified transaction. This discards all files uploaded within the transaction and deletes the transaction.   After rolling back a transaction, you cannot use the transaction to upload data files.
@@ -1655,7 +2263,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataUploadFileResponseDTO",
+            '200': "ServicingDirectDataUploadFileResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1731,7 +2339,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataUploadFileResponseDTO",
+            '200': "ServicingDirectDataUploadFileResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1829,7 +2437,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersDirectDataTransactionStartResponseDTO:
+    ) -> ServicingDirectDataTransactionStartResponseDTO:
         """Start a direct data intake transaction
 
         Create a transaction to contain your data files. To upload files to objects in Visier, you must first start a transaction.   After starting a transaction and uploading files to the transaction, you can commit the transaction to process the uploaded files or roll back the transaction to discard the uploaded files.
@@ -1870,7 +2478,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataTransactionStartResponseDTO",
+            '200': "ServicingDirectDataTransactionStartResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1901,7 +2509,7 @@ class DirectDataIntakeApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersDirectDataTransactionStartResponseDTO]:
+    ) -> ApiResponse[ServicingDirectDataTransactionStartResponseDTO]:
         """Start a direct data intake transaction
 
         Create a transaction to contain your data files. To upload files to objects in Visier, you must first start a transaction.   After starting a transaction and uploading files to the transaction, you can commit the transaction to process the uploaded files or roll back the transaction to discard the uploaded files.
@@ -1942,7 +2550,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataTransactionStartResponseDTO",
+            '200': "ServicingDirectDataTransactionStartResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2014,7 +2622,7 @@ class DirectDataIntakeApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDirectDataTransactionStartResponseDTO",
+            '200': "ServicingDirectDataTransactionStartResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

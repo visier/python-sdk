@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1830
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,10 +23,10 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "visier-api-data-out"
-VERSION = "0.99201.1793"
+VERSION = "0.99201.1830"
 PYTHON_REQUIRES = ">=3.8"
 REQUIRES = [
-    "visier-api-core ~= 0.99201.1793",
+    "visier-api-core ~= 0.99201.1830",
 ]
 
 setup(
