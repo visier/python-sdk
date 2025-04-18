@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1842
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,7 +23,7 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_api_data_out.models.servicing_publicapi_transfers_simple_document_header_search_response_dto import ServicingPublicapiTransfersSimpleDocumentHeaderSearchResponseDTO
+from visier_api_data_out.models.servicing_simple_document_header_search_response_dto import ServicingSimpleDocumentHeaderSearchResponseDTO
 import visier_api_data_out.models
 
 
@@ -58,7 +58,7 @@ class SearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersSimpleDocumentHeaderSearchResponseDTO:
+    ) -> ServicingSimpleDocumentHeaderSearchResponseDTO:
         """Perform a simple search for Visier document headers
 
         Perform a simple search for Visier document headers, such as analysis titles. Simple search doesn't support keywords, Boolean expressions, or any other advanced search features.  Example: `GET /v1alpha/search/simple/document-headers?q=My+Query&limit=10` returns the first 10 document headers that best match the query string `My Query`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -105,7 +105,7 @@ class SearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersSimpleDocumentHeaderSearchResponseDTO",
+            '200': "ServicingSimpleDocumentHeaderSearchResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -138,7 +138,7 @@ class SearchApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersSimpleDocumentHeaderSearchResponseDTO]:
+    ) -> ApiResponse[ServicingSimpleDocumentHeaderSearchResponseDTO]:
         """Perform a simple search for Visier document headers
 
         Perform a simple search for Visier document headers, such as analysis titles. Simple search doesn't support keywords, Boolean expressions, or any other advanced search features.  Example: `GET /v1alpha/search/simple/document-headers?q=My+Query&limit=10` returns the first 10 document headers that best match the query string `My Query`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -185,7 +185,7 @@ class SearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersSimpleDocumentHeaderSearchResponseDTO",
+            '200': "ServicingSimpleDocumentHeaderSearchResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -265,7 +265,7 @@ class SearchApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersSimpleDocumentHeaderSearchResponseDTO",
+            '200': "ServicingSimpleDocumentHeaderSearchResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

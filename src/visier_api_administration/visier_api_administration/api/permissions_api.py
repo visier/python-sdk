@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1842
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -24,19 +24,19 @@ from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from visier_api_administration.models.admin_permissions_list_dto import AdminPermissionsListDTO
-from visier_api_administration.models.servicing_publicapi_transfers_bulk_data_access_set_response_dto import ServicingPublicapiTransfersBulkDataAccessSetResponseDTO
-from visier_api_administration.models.servicing_publicapi_transfers_capability_dto import ServicingPublicapiTransfersCapabilityDTO
-from visier_api_administration.models.servicing_publicapi_transfers_content_package_dto import ServicingPublicapiTransfersContentPackageDTO
-from visier_api_administration.models.servicing_publicapi_transfers_create_data_access_set_request_dto import ServicingPublicapiTransfersCreateDataAccessSetRequestDTO
-from visier_api_administration.models.servicing_publicapi_transfers_data_access_set_dto import ServicingPublicapiTransfersDataAccessSetDTO
-from visier_api_administration.models.servicing_publicapi_transfers_delete_permissions_request_dto import ServicingPublicapiTransfersDeletePermissionsRequestDTO
-from visier_api_administration.models.servicing_publicapi_transfers_get_capabilities_api_response_dto import ServicingPublicapiTransfersGetCapabilitiesAPIResponseDTO
-from visier_api_administration.models.servicing_publicapi_transfers_get_content_packages_api_response_dto import ServicingPublicapiTransfersGetContentPackagesAPIResponseDTO
-from visier_api_administration.models.servicing_publicapi_transfers_get_data_access_sets_api_response_dto import ServicingPublicapiTransfersGetDataAccessSetsAPIResponseDTO
-from visier_api_administration.models.servicing_publicapi_transfers_get_data_security_objects_api_response_dto import ServicingPublicapiTransfersGetDataSecurityObjectsAPIResponseDTO
-from visier_api_administration.models.servicing_publicapi_transfers_get_permissions_api_response_dto import ServicingPublicapiTransfersGetPermissionsAPIResponseDTO
-from visier_api_administration.models.servicing_publicapi_transfers_permission_bulk_operation_response_dto import ServicingPublicapiTransfersPermissionBulkOperationResponseDTO
-from visier_api_administration.models.servicing_publicapi_transfers_permission_dto import ServicingPublicapiTransfersPermissionDTO
+from visier_api_administration.models.servicing_bulk_data_access_set_response_dto import ServicingBulkDataAccessSetResponseDTO
+from visier_api_administration.models.servicing_capability_dto import ServicingCapabilityDTO
+from visier_api_administration.models.servicing_content_package_dto import ServicingContentPackageDTO
+from visier_api_administration.models.servicing_create_data_access_set_request_dto import ServicingCreateDataAccessSetRequestDTO
+from visier_api_administration.models.servicing_data_access_set_dto import ServicingDataAccessSetDTO
+from visier_api_administration.models.servicing_delete_permissions_request_dto import ServicingDeletePermissionsRequestDTO
+from visier_api_administration.models.servicing_get_capabilities_api_response_dto import ServicingGetCapabilitiesAPIResponseDTO
+from visier_api_administration.models.servicing_get_content_packages_api_response_dto import ServicingGetContentPackagesAPIResponseDTO
+from visier_api_administration.models.servicing_get_data_access_sets_api_response_dto import ServicingGetDataAccessSetsAPIResponseDTO
+from visier_api_administration.models.servicing_get_data_security_objects_api_response_dto import ServicingGetDataSecurityObjectsAPIResponseDTO
+from visier_api_administration.models.servicing_get_permissions_api_response_dto import ServicingGetPermissionsAPIResponseDTO
+from visier_api_administration.models.servicing_permission_bulk_operation_response_dto import ServicingPermissionBulkOperationResponseDTO
+from visier_api_administration.models.servicing_permission_dto import ServicingPermissionDTO
 import visier_api_administration.models
 
 
@@ -55,7 +55,7 @@ class PermissionsApi:
     @validate_call
     def create_data_access_sets(
         self,
-        servicing_publicapi_transfers_create_data_access_set_request_dto: ServicingPublicapiTransfersCreateDataAccessSetRequestDTO,
+        servicing_create_data_access_set_request_dto: ServicingCreateDataAccessSetRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -71,13 +71,13 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersBulkDataAccessSetResponseDTO:
+    ) -> ServicingBulkDataAccessSetResponseDTO:
         """Create shareable data access sets
 
         Create shareable data access sets. Shareable data access sets let you reuse common data access configurations in multiple permissions.   To specify the project in which to create shareable data access sets, provide a project UUID in the `ProjectID` request header.
 
-        :param servicing_publicapi_transfers_create_data_access_set_request_dto: (required)
-        :type servicing_publicapi_transfers_create_data_access_set_request_dto: ServicingPublicapiTransfersCreateDataAccessSetRequestDTO
+        :param servicing_create_data_access_set_request_dto: (required)
+        :type servicing_create_data_access_set_request_dto: ServicingCreateDataAccessSetRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -107,7 +107,7 @@ class PermissionsApi:
         """ # noqa: E501
 
         _param = self._create_data_access_sets_serialize(
-            servicing_publicapi_transfers_create_data_access_set_request_dto=servicing_publicapi_transfers_create_data_access_set_request_dto,
+            servicing_create_data_access_set_request_dto=servicing_create_data_access_set_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -118,7 +118,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersBulkDataAccessSetResponseDTO",
+            '200': "ServicingBulkDataAccessSetResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -135,7 +135,7 @@ class PermissionsApi:
     @validate_call
     def create_data_access_sets_with_http_info(
         self,
-        servicing_publicapi_transfers_create_data_access_set_request_dto: ServicingPublicapiTransfersCreateDataAccessSetRequestDTO,
+        servicing_create_data_access_set_request_dto: ServicingCreateDataAccessSetRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -151,13 +151,13 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersBulkDataAccessSetResponseDTO]:
+    ) -> ApiResponse[ServicingBulkDataAccessSetResponseDTO]:
         """Create shareable data access sets
 
         Create shareable data access sets. Shareable data access sets let you reuse common data access configurations in multiple permissions.   To specify the project in which to create shareable data access sets, provide a project UUID in the `ProjectID` request header.
 
-        :param servicing_publicapi_transfers_create_data_access_set_request_dto: (required)
-        :type servicing_publicapi_transfers_create_data_access_set_request_dto: ServicingPublicapiTransfersCreateDataAccessSetRequestDTO
+        :param servicing_create_data_access_set_request_dto: (required)
+        :type servicing_create_data_access_set_request_dto: ServicingCreateDataAccessSetRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -187,7 +187,7 @@ class PermissionsApi:
         """ # noqa: E501
 
         _param = self._create_data_access_sets_serialize(
-            servicing_publicapi_transfers_create_data_access_set_request_dto=servicing_publicapi_transfers_create_data_access_set_request_dto,
+            servicing_create_data_access_set_request_dto=servicing_create_data_access_set_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -198,7 +198,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersBulkDataAccessSetResponseDTO",
+            '200': "ServicingBulkDataAccessSetResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -215,7 +215,7 @@ class PermissionsApi:
     @validate_call
     def create_data_access_sets_without_preload_content(
         self,
-        servicing_publicapi_transfers_create_data_access_set_request_dto: ServicingPublicapiTransfersCreateDataAccessSetRequestDTO,
+        servicing_create_data_access_set_request_dto: ServicingCreateDataAccessSetRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -236,8 +236,8 @@ class PermissionsApi:
 
         Create shareable data access sets. Shareable data access sets let you reuse common data access configurations in multiple permissions.   To specify the project in which to create shareable data access sets, provide a project UUID in the `ProjectID` request header.
 
-        :param servicing_publicapi_transfers_create_data_access_set_request_dto: (required)
-        :type servicing_publicapi_transfers_create_data_access_set_request_dto: ServicingPublicapiTransfersCreateDataAccessSetRequestDTO
+        :param servicing_create_data_access_set_request_dto: (required)
+        :type servicing_create_data_access_set_request_dto: ServicingCreateDataAccessSetRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -267,7 +267,7 @@ class PermissionsApi:
         """ # noqa: E501
 
         _param = self._create_data_access_sets_serialize(
-            servicing_publicapi_transfers_create_data_access_set_request_dto=servicing_publicapi_transfers_create_data_access_set_request_dto,
+            servicing_create_data_access_set_request_dto=servicing_create_data_access_set_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             non_versioned=non_versioned,
@@ -278,7 +278,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersBulkDataAccessSetResponseDTO",
+            '200': "ServicingBulkDataAccessSetResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -289,7 +289,7 @@ class PermissionsApi:
 
     def _create_data_access_sets_serialize(
         self,
-        servicing_publicapi_transfers_create_data_access_set_request_dto,
+        servicing_create_data_access_set_request_dto,
         target_tenant_id,
         project_id,
         non_versioned,
@@ -322,8 +322,8 @@ class PermissionsApi:
             _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
-        if servicing_publicapi_transfers_create_data_access_set_request_dto is not None:
-            _body_params = servicing_publicapi_transfers_create_data_access_set_request_dto
+        if servicing_create_data_access_set_request_dto is not None:
+            _body_params = servicing_create_data_access_set_request_dto
 
 
         # set the HTTP header `Accept`
@@ -395,7 +395,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersPermissionBulkOperationResponseDTO:
+    ) -> ServicingPermissionBulkOperationResponseDTO:
         """Create permissions
 
         Create new permissions. Administrating tenant users can specify the tenant in which to add these permissions.   To specify the project in which to create permissions, provide a project UUID in the `ProjectID` request header.
@@ -445,7 +445,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersPermissionBulkOperationResponseDTO",
+            '200': "ServicingPermissionBulkOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -479,7 +479,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersPermissionBulkOperationResponseDTO]:
+    ) -> ApiResponse[ServicingPermissionBulkOperationResponseDTO]:
         """Create permissions
 
         Create new permissions. Administrating tenant users can specify the tenant in which to add these permissions.   To specify the project in which to create permissions, provide a project UUID in the `ProjectID` request header.
@@ -529,7 +529,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersPermissionBulkOperationResponseDTO",
+            '200': "ServicingPermissionBulkOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -613,7 +613,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersPermissionBulkOperationResponseDTO",
+            '200': "ServicingPermissionBulkOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -718,7 +718,7 @@ class PermissionsApi:
     @validate_call
     def delete_permissions(
         self,
-        servicing_publicapi_transfers_delete_permissions_request_dto: ServicingPublicapiTransfersDeletePermissionsRequestDTO,
+        servicing_delete_permissions_request_dto: ServicingDeletePermissionsRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete permissions from.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
@@ -734,13 +734,13 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersPermissionBulkOperationResponseDTO:
+    ) -> ServicingPermissionBulkOperationResponseDTO:
         """Delete permissions
 
         Delete existing permissions.   To specify the project in which to delete permissions, provide a project UUID in the `ProjectID` request header.
 
-        :param servicing_publicapi_transfers_delete_permissions_request_dto: (required)
-        :type servicing_publicapi_transfers_delete_permissions_request_dto: ServicingPublicapiTransfersDeletePermissionsRequestDTO
+        :param servicing_delete_permissions_request_dto: (required)
+        :type servicing_delete_permissions_request_dto: ServicingDeletePermissionsRequestDTO
         :param tenant_code: Specify the tenant to delete permissions from.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -770,7 +770,7 @@ class PermissionsApi:
         """ # noqa: E501
 
         _param = self._delete_permissions_serialize(
-            servicing_publicapi_transfers_delete_permissions_request_dto=servicing_publicapi_transfers_delete_permissions_request_dto,
+            servicing_delete_permissions_request_dto=servicing_delete_permissions_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
@@ -781,7 +781,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersPermissionBulkOperationResponseDTO",
+            '200': "ServicingPermissionBulkOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -798,7 +798,7 @@ class PermissionsApi:
     @validate_call
     def delete_permissions_with_http_info(
         self,
-        servicing_publicapi_transfers_delete_permissions_request_dto: ServicingPublicapiTransfersDeletePermissionsRequestDTO,
+        servicing_delete_permissions_request_dto: ServicingDeletePermissionsRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete permissions from.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
@@ -814,13 +814,13 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersPermissionBulkOperationResponseDTO]:
+    ) -> ApiResponse[ServicingPermissionBulkOperationResponseDTO]:
         """Delete permissions
 
         Delete existing permissions.   To specify the project in which to delete permissions, provide a project UUID in the `ProjectID` request header.
 
-        :param servicing_publicapi_transfers_delete_permissions_request_dto: (required)
-        :type servicing_publicapi_transfers_delete_permissions_request_dto: ServicingPublicapiTransfersDeletePermissionsRequestDTO
+        :param servicing_delete_permissions_request_dto: (required)
+        :type servicing_delete_permissions_request_dto: ServicingDeletePermissionsRequestDTO
         :param tenant_code: Specify the tenant to delete permissions from.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -850,7 +850,7 @@ class PermissionsApi:
         """ # noqa: E501
 
         _param = self._delete_permissions_serialize(
-            servicing_publicapi_transfers_delete_permissions_request_dto=servicing_publicapi_transfers_delete_permissions_request_dto,
+            servicing_delete_permissions_request_dto=servicing_delete_permissions_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
@@ -861,7 +861,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersPermissionBulkOperationResponseDTO",
+            '200': "ServicingPermissionBulkOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -878,7 +878,7 @@ class PermissionsApi:
     @validate_call
     def delete_permissions_without_preload_content(
         self,
-        servicing_publicapi_transfers_delete_permissions_request_dto: ServicingPublicapiTransfersDeletePermissionsRequestDTO,
+        servicing_delete_permissions_request_dto: ServicingDeletePermissionsRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to delete permissions from.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
@@ -899,8 +899,8 @@ class PermissionsApi:
 
         Delete existing permissions.   To specify the project in which to delete permissions, provide a project UUID in the `ProjectID` request header.
 
-        :param servicing_publicapi_transfers_delete_permissions_request_dto: (required)
-        :type servicing_publicapi_transfers_delete_permissions_request_dto: ServicingPublicapiTransfersDeletePermissionsRequestDTO
+        :param servicing_delete_permissions_request_dto: (required)
+        :type servicing_delete_permissions_request_dto: ServicingDeletePermissionsRequestDTO
         :param tenant_code: Specify the tenant to delete permissions from.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -930,7 +930,7 @@ class PermissionsApi:
         """ # noqa: E501
 
         _param = self._delete_permissions_serialize(
-            servicing_publicapi_transfers_delete_permissions_request_dto=servicing_publicapi_transfers_delete_permissions_request_dto,
+            servicing_delete_permissions_request_dto=servicing_delete_permissions_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
@@ -941,7 +941,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersPermissionBulkOperationResponseDTO",
+            '200': "ServicingPermissionBulkOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -952,7 +952,7 @@ class PermissionsApi:
 
     def _delete_permissions_serialize(
         self,
-        servicing_publicapi_transfers_delete_permissions_request_dto,
+        servicing_delete_permissions_request_dto,
         tenant_code,
         target_tenant_id,
         project_id,
@@ -987,8 +987,8 @@ class PermissionsApi:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_publicapi_transfers_delete_permissions_request_dto is not None:
-            _body_params = servicing_publicapi_transfers_delete_permissions_request_dto
+        if servicing_delete_permissions_request_dto is not None:
+            _body_params = servicing_delete_permissions_request_dto
 
 
         # set the HTTP header `Accept`
@@ -1058,7 +1058,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersGetCapabilitiesAPIResponseDTO:
+    ) -> ServicingGetCapabilitiesAPIResponseDTO:
         """Retrieve a list of all permission capabilities
 
         Retrieve all the permission capabilities in your tenant.  You can use the returned capabilities in other API calls when creating or updating permissions to assign the capability to the permission.   To specify the project in which to retrieve the permission capabilities, provide a project UUID in the `ProjectID` request header.
@@ -1102,7 +1102,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetCapabilitiesAPIResponseDTO",
+            '200': "ServicingGetCapabilitiesAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1134,7 +1134,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersGetCapabilitiesAPIResponseDTO]:
+    ) -> ApiResponse[ServicingGetCapabilitiesAPIResponseDTO]:
         """Retrieve a list of all permission capabilities
 
         Retrieve all the permission capabilities in your tenant.  You can use the returned capabilities in other API calls when creating or updating permissions to assign the capability to the permission.   To specify the project in which to retrieve the permission capabilities, provide a project UUID in the `ProjectID` request header.
@@ -1178,7 +1178,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetCapabilitiesAPIResponseDTO",
+            '200': "ServicingGetCapabilitiesAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1254,7 +1254,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetCapabilitiesAPIResponseDTO",
+            '200': "ServicingGetCapabilitiesAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1356,7 +1356,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersCapabilityDTO:
+    ) -> ServicingCapabilityDTO:
         """Retrieve a permission capability's details
 
         Retrieve the details of a specific capability.   To specify the project in which to retrieve the permission capability, provide a project UUID in the `ProjectID` request header.
@@ -1403,7 +1403,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersCapabilityDTO",
+            '200': "ServicingCapabilityDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1436,7 +1436,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersCapabilityDTO]:
+    ) -> ApiResponse[ServicingCapabilityDTO]:
         """Retrieve a permission capability's details
 
         Retrieve the details of a specific capability.   To specify the project in which to retrieve the permission capability, provide a project UUID in the `ProjectID` request header.
@@ -1483,7 +1483,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersCapabilityDTO",
+            '200': "ServicingCapabilityDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1563,7 +1563,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersCapabilityDTO",
+            '200': "ServicingCapabilityDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1668,7 +1668,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersContentPackageDTO:
+    ) -> ServicingContentPackageDTO:
         """Retrieve a content package's details
 
         Retrieve the details of a specific content package.   To specify the project in which to retrieve a content package, provide a project UUID in the `ProjectID` request header.
@@ -1715,7 +1715,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersContentPackageDTO",
+            '200': "ServicingContentPackageDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1748,7 +1748,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersContentPackageDTO]:
+    ) -> ApiResponse[ServicingContentPackageDTO]:
         """Retrieve a content package's details
 
         Retrieve the details of a specific content package.   To specify the project in which to retrieve a content package, provide a project UUID in the `ProjectID` request header.
@@ -1795,7 +1795,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersContentPackageDTO",
+            '200': "ServicingContentPackageDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1875,7 +1875,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersContentPackageDTO",
+            '200': "ServicingContentPackageDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1980,7 +1980,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersGetContentPackagesAPIResponseDTO:
+    ) -> ServicingGetContentPackagesAPIResponseDTO:
         """Retrieve a list of all content packages
 
         Retrieve the list of available content packages.  You can use the returned content packages in other API calls when creating or updating permissions to add the content package to the permission.   To specify the project in which to retrieve the available content packages, provide a project UUID in the `ProjectID` request header.
@@ -2027,7 +2027,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetContentPackagesAPIResponseDTO",
+            '200': "ServicingGetContentPackagesAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2060,7 +2060,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersGetContentPackagesAPIResponseDTO]:
+    ) -> ApiResponse[ServicingGetContentPackagesAPIResponseDTO]:
         """Retrieve a list of all content packages
 
         Retrieve the list of available content packages.  You can use the returned content packages in other API calls when creating or updating permissions to add the content package to the permission.   To specify the project in which to retrieve the available content packages, provide a project UUID in the `ProjectID` request header.
@@ -2107,7 +2107,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetContentPackagesAPIResponseDTO",
+            '200': "ServicingGetContentPackagesAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2187,7 +2187,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetContentPackagesAPIResponseDTO",
+            '200': "ServicingGetContentPackagesAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2294,7 +2294,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersDataAccessSetDTO:
+    ) -> ServicingDataAccessSetDTO:
         """Retrieve a data access set's details
 
         Retrieve the details of a specific shareable data access set. You must know the ID of the data access set to retrieve its details. To retrieve data access set IDs, see `GET v1/admin/data-access-sets`.   To specify the project in which to retrieve the shareable data access set, provide a project UUID in the `ProjectID` request header.
@@ -2341,7 +2341,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDataAccessSetDTO",
+            '200': "ServicingDataAccessSetDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2374,7 +2374,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersDataAccessSetDTO]:
+    ) -> ApiResponse[ServicingDataAccessSetDTO]:
         """Retrieve a data access set's details
 
         Retrieve the details of a specific shareable data access set. You must know the ID of the data access set to retrieve its details. To retrieve data access set IDs, see `GET v1/admin/data-access-sets`.   To specify the project in which to retrieve the shareable data access set, provide a project UUID in the `ProjectID` request header.
@@ -2421,7 +2421,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDataAccessSetDTO",
+            '200': "ServicingDataAccessSetDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2501,7 +2501,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersDataAccessSetDTO",
+            '200': "ServicingDataAccessSetDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2606,7 +2606,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersGetDataAccessSetsAPIResponseDTO:
+    ) -> ServicingGetDataAccessSetsAPIResponseDTO:
         """Retrieve a list of all data access sets
 
         Retrieve a list of all shareable data access sets. Data access sets define the level of access that users have to properties and property values for the analytic object in a permission. Data access sets also grant access to properties of subjects that are referenced by the analytic object in the permission.  You can assign data access sets to a permission when creating or updating permissions.   To specify the project in which to retrieve the shareable data access sets, provide a project UUID in the `ProjectID` request header.   **Note:** If the number of valid data access sets exceeds the default limit of 100, the response status code is 206. To retrieve more than 100 data access sets, set `limit` to a higher number.
@@ -2659,7 +2659,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetDataAccessSetsAPIResponseDTO",
+            '200': "ServicingGetDataAccessSetsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2694,7 +2694,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersGetDataAccessSetsAPIResponseDTO]:
+    ) -> ApiResponse[ServicingGetDataAccessSetsAPIResponseDTO]:
         """Retrieve a list of all data access sets
 
         Retrieve a list of all shareable data access sets. Data access sets define the level of access that users have to properties and property values for the analytic object in a permission. Data access sets also grant access to properties of subjects that are referenced by the analytic object in the permission.  You can assign data access sets to a permission when creating or updating permissions.   To specify the project in which to retrieve the shareable data access sets, provide a project UUID in the `ProjectID` request header.   **Note:** If the number of valid data access sets exceeds the default limit of 100, the response status code is 206. To retrieve more than 100 data access sets, set `limit` to a higher number.
@@ -2747,7 +2747,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetDataAccessSetsAPIResponseDTO",
+            '200': "ServicingGetDataAccessSetsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2835,7 +2835,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetDataAccessSetsAPIResponseDTO",
+            '200': "ServicingGetDataAccessSetsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2952,7 +2952,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersGetDataSecurityObjectsAPIResponseDTO:
+    ) -> ServicingGetDataSecurityObjectsAPIResponseDTO:
         """Retrieve a list of data security objects
 
         Retrieve the list of available data security objects.  Data security objects are analytic objects and their related objects that are available to define  permissions' data security profiles.   To specify the project in which to retrieve the available data security objects, provide a project UUID in the `ProjectID` request header.
@@ -3002,7 +3002,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetDataSecurityObjectsAPIResponseDTO",
+            '200': "ServicingGetDataSecurityObjectsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3036,7 +3036,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersGetDataSecurityObjectsAPIResponseDTO]:
+    ) -> ApiResponse[ServicingGetDataSecurityObjectsAPIResponseDTO]:
         """Retrieve a list of data security objects
 
         Retrieve the list of available data security objects.  Data security objects are analytic objects and their related objects that are available to define  permissions' data security profiles.   To specify the project in which to retrieve the available data security objects, provide a project UUID in the `ProjectID` request header.
@@ -3086,7 +3086,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetDataSecurityObjectsAPIResponseDTO",
+            '200': "ServicingGetDataSecurityObjectsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3170,7 +3170,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetDataSecurityObjectsAPIResponseDTO",
+            '200': "ServicingGetDataSecurityObjectsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3285,7 +3285,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersPermissionDTO:
+    ) -> ServicingPermissionDTO:
         """Retrieve a permission's details
 
         Retrieve the details for a specified permission.   To specify the project in which to retrieve the permission, provide a project UUID in the `ProjectID` request header.
@@ -3338,7 +3338,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersPermissionDTO",
+            '200': "ServicingPermissionDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3373,7 +3373,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersPermissionDTO]:
+    ) -> ApiResponse[ServicingPermissionDTO]:
         """Retrieve a permission's details
 
         Retrieve the details for a specified permission.   To specify the project in which to retrieve the permission, provide a project UUID in the `ProjectID` request header.
@@ -3426,7 +3426,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersPermissionDTO",
+            '200': "ServicingPermissionDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3514,7 +3514,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersPermissionDTO",
+            '200': "ServicingPermissionDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3629,7 +3629,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersGetPermissionsAPIResponseDTO:
+    ) -> ServicingGetPermissionsAPIResponseDTO:
         """Retrieve a list of all permissions
 
         Retrieve the full list of user permissions in your tenant.   To specify the project in which to retrieve permissions, provide a project UUID in the `ProjectID` request header.
@@ -3682,7 +3682,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetPermissionsAPIResponseDTO",
+            '200': "ServicingGetPermissionsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3717,7 +3717,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersGetPermissionsAPIResponseDTO]:
+    ) -> ApiResponse[ServicingGetPermissionsAPIResponseDTO]:
         """Retrieve a list of all permissions
 
         Retrieve the full list of user permissions in your tenant.   To specify the project in which to retrieve permissions, provide a project UUID in the `ProjectID` request header.
@@ -3770,7 +3770,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetPermissionsAPIResponseDTO",
+            '200': "ServicingGetPermissionsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3858,7 +3858,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersGetPermissionsAPIResponseDTO",
+            '200': "ServicingGetPermissionsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3974,7 +3974,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPublicapiTransfersPermissionBulkOperationResponseDTO:
+    ) -> ServicingPermissionBulkOperationResponseDTO:
         """Update permissions
 
         Update existing permissions.   To specify the project in which to update permissions, provide a project UUID in the `ProjectID` request header.
@@ -4024,7 +4024,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersPermissionBulkOperationResponseDTO",
+            '200': "ServicingPermissionBulkOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4058,7 +4058,7 @@ class PermissionsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPublicapiTransfersPermissionBulkOperationResponseDTO]:
+    ) -> ApiResponse[ServicingPermissionBulkOperationResponseDTO]:
         """Update permissions
 
         Update existing permissions.   To specify the project in which to update permissions, provide a project UUID in the `ProjectID` request header.
@@ -4108,7 +4108,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersPermissionBulkOperationResponseDTO",
+            '200': "ServicingPermissionBulkOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4192,7 +4192,7 @@ class PermissionsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPublicapiTransfersPermissionBulkOperationResponseDTO",
+            '200': "ServicingPermissionBulkOperationResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

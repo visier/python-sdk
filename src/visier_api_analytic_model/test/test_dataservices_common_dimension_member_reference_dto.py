@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1842
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,6 +36,7 @@ class TestDataservicesCommonDimensionMemberReferenceDTO(unittest.TestCase):
 
         if include_optional:
             return DataservicesCommonDimensionMemberReferenceDTO(
+                member_id = '',
                 path = [
                     ''
                     ]

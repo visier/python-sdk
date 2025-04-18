@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1842
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,8 +29,8 @@ class PlanRowDataLoadResponseDTO(BaseModel):
     PlanRowDataLoadResponseDTO
     """ # noqa: E501
     added_rows_count: Optional[StrictInt] = Field(default=None, description="The number of rows added to the plan.", alias="addedRowsCount")
-    custom_members: Optional[List[PlanningTransfersPlanSegmentLevelMemberDTO]] = Field(default=None, description="The custom members and their corresponding IDs in the plan.", alias="customMembers")
-    errors: Optional[List[PlanningTransfersPlanDataLoadErrorDTO]] = Field(default=None, description="The errors that occurred while loading the data.")
+    custom_members: Optional[List[PlanningPlanSegmentLevelMemberDTO]] = Field(default=None, description="The custom members and their corresponding IDs in the plan.", alias="customMembers")
+    errors: Optional[List[PlanningPlanDataLoadErrorDTO]] = Field(default=None, description="The errors that occurred while loading the data.")
     potential_added_rows_count: Optional[StrictInt] = Field(default=None, description="The number of rows that could have been added to the plan.", alias="potentialAddedRowsCount")
     potential_removed_rows_count: Optional[StrictInt] = Field(default=None, description="The number of rows that could have been removed from the plan.", alias="potentialRemovedRowsCount")
     removed_rows_count: Optional[StrictInt] = Field(default=None, description="The number of rows removed from the plan.", alias="removedRowsCount")
@@ -102,8 +102,8 @@ class PlanRowDataLoadResponseDTO(BaseModel):
 
         _obj = cls.model_validate({
             "addedRowsCount": obj.get("addedRowsCount"),
-            "customMembers": [PlanningTransfersPlanSegmentLevelMemberDTO.from_dict(_item) for _item in obj["customMembers"]] if obj.get("customMembers") is not None else None,
-            "errors": [PlanningTransfersPlanDataLoadErrorDTO.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
+            "customMembers": [PlanningPlanSegmentLevelMemberDTO.from_dict(_item) for _item in obj["customMembers"]] if obj.get("customMembers") is not None else None,
+            "errors": [PlanningPlanDataLoadErrorDTO.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
             "potentialAddedRowsCount": obj.get("potentialAddedRowsCount"),
             "potentialRemovedRowsCount": obj.get("potentialRemovedRowsCount"),
             "removedRowsCount": obj.get("removedRowsCount")
