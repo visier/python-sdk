@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1842
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,7 +23,7 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictBool, StrictBytes, StrictStr
 from typing import Any, Dict, Optional, Tuple, Union
 from typing_extensions import Annotated
-from visier_api_administration.models.servicing_publicapi_transfers_sources_api_operation_request_dto import ServicingPublicapiTransfersSourcesAPIOperationRequestDTO
+from visier_api_administration.models.servicing_sources_api_operation_request_dto import ServicingSourcesAPIOperationRequestDTO
 from visier_api_administration.models.sources_api_put_response_dto import SourcesAPIPutResponseDTO
 import visier_api_administration.models
 
@@ -358,7 +358,7 @@ class SourcesApi:
     @validate_call
     def run_sources_operation(
         self,
-        servicing_publicapi_transfers_sources_api_operation_request_dto: ServicingPublicapiTransfersSourcesAPIOperationRequestDTO,
+        servicing_sources_api_operation_request_dto: ServicingSourcesAPIOperationRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -377,8 +377,8 @@ class SourcesApi:
 
         Perform operations on all sources. The following operations are supported:  * `exportSources`: Export a ZIP file that contains a list of all sources in the application.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_publicapi_transfers_sources_api_operation_request_dto: (required)
-        :type servicing_publicapi_transfers_sources_api_operation_request_dto: ServicingPublicapiTransfersSourcesAPIOperationRequestDTO
+        :param servicing_sources_api_operation_request_dto: (required)
+        :type servicing_sources_api_operation_request_dto: ServicingSourcesAPIOperationRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -404,7 +404,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._run_sources_operation_serialize(
-            servicing_publicapi_transfers_sources_api_operation_request_dto=servicing_publicapi_transfers_sources_api_operation_request_dto,
+            servicing_sources_api_operation_request_dto=servicing_sources_api_operation_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -430,7 +430,7 @@ class SourcesApi:
     @validate_call
     def run_sources_operation_with_http_info(
         self,
-        servicing_publicapi_transfers_sources_api_operation_request_dto: ServicingPublicapiTransfersSourcesAPIOperationRequestDTO,
+        servicing_sources_api_operation_request_dto: ServicingSourcesAPIOperationRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -449,8 +449,8 @@ class SourcesApi:
 
         Perform operations on all sources. The following operations are supported:  * `exportSources`: Export a ZIP file that contains a list of all sources in the application.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_publicapi_transfers_sources_api_operation_request_dto: (required)
-        :type servicing_publicapi_transfers_sources_api_operation_request_dto: ServicingPublicapiTransfersSourcesAPIOperationRequestDTO
+        :param servicing_sources_api_operation_request_dto: (required)
+        :type servicing_sources_api_operation_request_dto: ServicingSourcesAPIOperationRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -476,7 +476,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._run_sources_operation_serialize(
-            servicing_publicapi_transfers_sources_api_operation_request_dto=servicing_publicapi_transfers_sources_api_operation_request_dto,
+            servicing_sources_api_operation_request_dto=servicing_sources_api_operation_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -502,7 +502,7 @@ class SourcesApi:
     @validate_call
     def run_sources_operation_without_preload_content(
         self,
-        servicing_publicapi_transfers_sources_api_operation_request_dto: ServicingPublicapiTransfersSourcesAPIOperationRequestDTO,
+        servicing_sources_api_operation_request_dto: ServicingSourcesAPIOperationRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -521,8 +521,8 @@ class SourcesApi:
 
         Perform operations on all sources. The following operations are supported:  * `exportSources`: Export a ZIP file that contains a list of all sources in the application.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_publicapi_transfers_sources_api_operation_request_dto: (required)
-        :type servicing_publicapi_transfers_sources_api_operation_request_dto: ServicingPublicapiTransfersSourcesAPIOperationRequestDTO
+        :param servicing_sources_api_operation_request_dto: (required)
+        :type servicing_sources_api_operation_request_dto: ServicingSourcesAPIOperationRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -548,7 +548,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._run_sources_operation_serialize(
-            servicing_publicapi_transfers_sources_api_operation_request_dto=servicing_publicapi_transfers_sources_api_operation_request_dto,
+            servicing_sources_api_operation_request_dto=servicing_sources_api_operation_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -568,7 +568,7 @@ class SourcesApi:
 
     def _run_sources_operation_serialize(
         self,
-        servicing_publicapi_transfers_sources_api_operation_request_dto,
+        servicing_sources_api_operation_request_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -595,8 +595,8 @@ class SourcesApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if servicing_publicapi_transfers_sources_api_operation_request_dto is not None:
-            _body_params = servicing_publicapi_transfers_sources_api_operation_request_dto
+        if servicing_sources_api_operation_request_dto is not None:
+            _body_params = servicing_sources_api_operation_request_dto
 
 
         # set the HTTP header `Accept`

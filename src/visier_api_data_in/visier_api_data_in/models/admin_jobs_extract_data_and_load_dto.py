@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1842
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -31,6 +31,7 @@ class AdminJobsExtractDataAndLoadDTO(BaseModel):
     all_tenants: Optional[StrictBool] = Field(default=None, description="If `true`, one extraction job is dispatched for each accessible analytic tenant. Only valid for requests from an administrating tenant.", alias="allTenants")
     batch_size_override: Optional[StrictInt] = Field(default=None, description="The maximum number of subjects the job can retrieve in each batch.", alias="batchSizeOverride")
     connector_ids: Optional[List[StrictStr]] = Field(default=None, description="The unique identifiers of the connectors to run extraction jobs.", alias="connectorIds")
+    credential_id: Optional[StrictStr] = Field(default=None, alias="credentialId")
     data_category_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the data category on which to trigger the extraction job. Default is the tenant's primary data category.", alias="dataCategoryId")
     disable_artifact_generation: Optional[StrictBool] = Field(default=None, description="If `true`, the job does not generate data load artifacts. If unspecified, the default is `false`.", alias="disableArtifactGeneration")
     excluded_tenants: Optional[List[StrictStr]] = Field(default=None, description="The unique identifiers of the tenants to exclude from the extraction job. Only valid if `allTenants` is `true`. Only valid for requests from an administrating tenant.", alias="excludedTenants")
@@ -49,7 +50,7 @@ class AdminJobsExtractDataAndLoadDTO(BaseModel):
     spill_debug_info_partitions_dto: Optional[StrictStr] = Field(default=None, description="The partitioning of debugging info to be generated, if any. Valid values are:  - `spillNone`: No debugging info is generated.  - `spillStagesAndRecords`: Debugging info is generated for stages and records.  - `spillAll`: Debugging info is generated for all partitions.", alias="spillDebugInfoPartitionsDTO")
     sql_batch_size: Optional[StrictInt] = Field(default=None, description="The maximum number of SQL table records the job can retrieve in each batch.", alias="sqlBatchSize")
     tenants: Optional[List[StrictStr]] = Field(default=None, description="A list of analytic tenants to dispatch extraction jobs for. One extraction job is dispatched per tenant. Only valid for requests from an administrating tenant.")
-    __properties: ClassVar[List[str]] = ["allTenants", "batchSizeOverride", "connectorIds", "dataCategoryId", "disableArtifactGeneration", "excludedTenants", "extractToTimeOverride", "forceUpdateExistingArtifacts", "lastExtractionTimeOffsetMode", "lastExtractionTimeOffsetMonths", "lastExtractionTimeOffsetWeeks", "monthsToExtract", "offsetMonthOption", "offsetWeekOption", "overrideLastExtractionTimestamp", "publishDataLoadArtifacts", "runProcessingJob", "spillDebugInfoDetailLevelDTO", "spillDebugInfoPartitionsDTO", "sqlBatchSize", "tenants"]
+    __properties: ClassVar[List[str]] = ["allTenants", "batchSizeOverride", "connectorIds", "credentialId", "dataCategoryId", "disableArtifactGeneration", "excludedTenants", "extractToTimeOverride", "forceUpdateExistingArtifacts", "lastExtractionTimeOffsetMode", "lastExtractionTimeOffsetMonths", "lastExtractionTimeOffsetWeeks", "monthsToExtract", "offsetMonthOption", "offsetWeekOption", "overrideLastExtractionTimestamp", "publishDataLoadArtifacts", "runProcessingJob", "spillDebugInfoDetailLevelDTO", "spillDebugInfoPartitionsDTO", "sqlBatchSize", "tenants"]
 
     @field_validator('spill_debug_info_detail_level_dto')
     def spill_debug_info_detail_level_dto_validate_enum(cls, value):
@@ -125,6 +126,7 @@ class AdminJobsExtractDataAndLoadDTO(BaseModel):
             "allTenants": obj.get("allTenants"),
             "batchSizeOverride": obj.get("batchSizeOverride"),
             "connectorIds": obj.get("connectorIds"),
+            "credentialId": obj.get("credentialId"),
             "dataCategoryId": obj.get("dataCategoryId"),
             "disableArtifactGeneration": obj.get("disableArtifactGeneration"),
             "excludedTenants": obj.get("excludedTenants"),
