@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,8 +36,8 @@ class TestDataInPushDataCompleteRequest(unittest.TestCase):
 
         if include_optional:
             return DataInPushDataCompleteRequest(
-                processing_data = True,
-                transfer_session_id = ''
+                transfer_session_id = '',
+                processing_data = True
             )
         else:
             return DataInPushDataCompleteRequest(

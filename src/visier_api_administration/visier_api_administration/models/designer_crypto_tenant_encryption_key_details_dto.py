@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,12 +28,12 @@ class DesignerCryptoTenantEncryptionKeyDetailsDTO(BaseModel):
     """
     Information about who generated an encryption key, its key name, algorithm, generation date, and expiration date.
     """ # noqa: E501
+    key_name: Optional[StrictStr] = Field(default=None, description="The encryption key's display name. The name may only contain alphanumeric or dash (-) characters and must be between 6 and 36 characters long.", alias="keyName")
     algorithm: Optional[StrictStr] = Field(default=None, description="The hash-based message authentication code and cryptographic hash function associated with the encryption key.")
+    generated_by: Optional[StrictStr] = Field(default=None, description="The user who generated the key.", alias="generatedBy")
     date_generated: Optional[StrictStr] = Field(default=None, description="The UTC date that the key was generated in milliseconds since the Unix epoch.", alias="dateGenerated")
     expiry_date: Optional[StrictStr] = Field(default=None, description="The UTC expiration date of the key in milliseconds since the Unix epoch.", alias="expiryDate")
-    generated_by: Optional[StrictStr] = Field(default=None, description="The user who generated the key.", alias="generatedBy")
-    key_name: Optional[StrictStr] = Field(default=None, description="The encryption key's display name. The name may only contain alphanumeric or dash (-) characters and must be between 6 and 36 characters long.", alias="keyName")
-    __properties: ClassVar[List[str]] = ["algorithm", "dateGenerated", "expiryDate", "generatedBy", "keyName"]
+    __properties: ClassVar[List[str]] = ["keyName", "algorithm", "generatedBy", "dateGenerated", "expiryDate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,11 +86,11 @@ class DesignerCryptoTenantEncryptionKeyDetailsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "keyName": obj.get("keyName"),
             "algorithm": obj.get("algorithm"),
-            "dateGenerated": obj.get("dateGenerated"),
-            "expiryDate": obj.get("expiryDate"),
             "generatedBy": obj.get("generatedBy"),
-            "keyName": obj.get("keyName")
+            "dateGenerated": obj.get("dateGenerated"),
+            "expiryDate": obj.get("expiryDate")
         })
         return _obj
 

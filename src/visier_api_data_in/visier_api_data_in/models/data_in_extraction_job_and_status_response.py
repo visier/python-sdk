@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,12 +29,12 @@ class DataInExtractionJobAndStatusResponse(BaseModel):
     """
     DataInExtractionJobAndStatusResponse
     """ # noqa: E501
-    extraction_jobs: Optional[List[DataInExtractionJob]] = Field(default=None, description="A list of extraction job information.", alias="extractionJobs")
-    limit: Optional[StrictInt] = Field(default=None, description="The number of extraction jobs to return. The maximum number of jobs to return is 1000.")
     parent_job_id: Optional[StrictStr] = Field(default=None, description="The ID of the dispatching job that generated the extraction jobs.", alias="parentJobId")
     parent_tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant that owns the dispatching job. This is usually the administrating tenant.", alias="parentTenantCode")
+    limit: Optional[StrictInt] = Field(default=None, description="The number of extraction jobs to return. The maximum number of jobs to return is 1000.")
     start: Optional[StrictInt] = Field(default=None, description="The index to start retrieving results from, also known as offset. The index begins at 0.")
-    __properties: ClassVar[List[str]] = ["extractionJobs", "limit", "parentJobId", "parentTenantCode", "start"]
+    extraction_jobs: Optional[List[DataInExtractionJob]] = Field(default=None, description="A list of extraction job information.", alias="extractionJobs")
+    __properties: ClassVar[List[str]] = ["parentJobId", "parentTenantCode", "limit", "start", "extractionJobs"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,11 +94,11 @@ class DataInExtractionJobAndStatusResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "extractionJobs": [DataInExtractionJob.from_dict(_item) for _item in obj["extractionJobs"]] if obj.get("extractionJobs") is not None else None,
-            "limit": obj.get("limit"),
             "parentJobId": obj.get("parentJobId"),
             "parentTenantCode": obj.get("parentTenantCode"),
-            "start": obj.get("start")
+            "limit": obj.get("limit"),
+            "start": obj.get("start"),
+            "extractionJobs": [DataInExtractionJob.from_dict(_item) for _item in obj["extractionJobs"]] if obj.get("extractionJobs") is not None else None
         })
         return _obj
 
