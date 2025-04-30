@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,16 +36,16 @@ class TestPlanDataLoadChangeListDTO(unittest.TestCase):
 
         if include_optional:
             return PlanDataLoadChangeListDTO(
+                plan_item = '',
                 changes = [
                     visier_api_data_in.models.plan_data_load_change_dto.PlanDataLoadChangeDTO(
-                        new_value = 1.337, 
-                        old_value = 1.337, 
-                        period = '', 
                         row_members = [
                             ''
-                            ], )
-                    ],
-                plan_item = ''
+                            ], 
+                        period = '', 
+                        old_value = 1.337, 
+                        new_value = 1.337, )
+                    ]
             )
         else:
             return PlanDataLoadChangeListDTO(

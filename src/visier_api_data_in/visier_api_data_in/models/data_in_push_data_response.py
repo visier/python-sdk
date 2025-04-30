@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,12 +29,12 @@ class DataInPushDataResponse(BaseModel):
     """
     DataInPushDataResponse
     """ # noqa: E501
-    message: Optional[StrictStr] = Field(default=None, description="Any additional information about the data transfer.")
+    transfer_session_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the transfer session.", alias="transferSessionId")
     sequence: Optional[StrictInt] = Field(default=None, description="The unique sequence number associated with a batch of records.")
     status: Optional[StrictStr] = Field(default=None, description="The status of the data transfer.")
+    message: Optional[StrictStr] = Field(default=None, description="Any additional information about the data transfer.")
     tenants: Optional[List[DataInTenant]] = Field(default=None, description="A list of strings representing the tenants that data was pushed to and their data transfer results.")
-    transfer_session_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the transfer session.", alias="transferSessionId")
-    __properties: ClassVar[List[str]] = ["message", "sequence", "status", "tenants", "transferSessionId"]
+    __properties: ClassVar[List[str]] = ["transferSessionId", "sequence", "status", "message", "tenants"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,11 +94,11 @@ class DataInPushDataResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": obj.get("message"),
+            "transferSessionId": obj.get("transferSessionId"),
             "sequence": obj.get("sequence"),
             "status": obj.get("status"),
-            "tenants": [DataInTenant.from_dict(_item) for _item in obj["tenants"]] if obj.get("tenants") is not None else None,
-            "transferSessionId": obj.get("transferSessionId")
+            "message": obj.get("message"),
+            "tenants": [DataInTenant.from_dict(_item) for _item in obj["tenants"]] if obj.get("tenants") is not None else None
         })
         return _obj
 

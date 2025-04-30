@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,17 +36,19 @@ class TestDataservicesCommonMemberValuesDTO(unittest.TestCase):
 
         if include_optional:
             return DataservicesCommonMemberValuesDTO(
-                excluded = [
-                    visier_api_data_out.models.dataservices/common/dimension_member_reference_dto.dataservices.common.DimensionMemberReferenceDTO(
-                        path = [
-                            ''
-                            ], )
-                    ],
                 included = [
                     visier_api_data_out.models.dataservices/common/dimension_member_reference_dto.dataservices.common.DimensionMemberReferenceDTO(
                         path = [
                             ''
-                            ], )
+                            ], 
+                        member_id = '', )
+                    ],
+                excluded = [
+                    visier_api_data_out.models.dataservices/common/dimension_member_reference_dto.dataservices.common.DimensionMemberReferenceDTO(
+                        path = [
+                            ''
+                            ], 
+                        member_id = '', )
                     ]
             )
         else:

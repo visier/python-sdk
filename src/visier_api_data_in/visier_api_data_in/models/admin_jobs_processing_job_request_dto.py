@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,12 +28,12 @@ class AdminJobsProcessingJobRequestDTO(BaseModel):
     """
     AdminJobsProcessingJobRequestDTO
     """ # noqa: E501
+    tenants: Optional[List[StrictStr]] = Field(default=None, description="The tenant codes of the tenants to run processing jobs for. If omitted, runs a processing job for the tenant associated with the user who made the API request. Only valid for requests from an administrating tenant.")
     all_tenants: Optional[StrictBool] = Field(default=None, description="If `true`, runs processing jobs for all accessible analytic tenants. Default is `false`. Only valid for requests from an administrating tenant.", alias="allTenants")
     data_category_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the data category to run the job. If omitted, runs a job using the primary data category.  To retrieve a list of all data categories, see `GET /v1/op/data/categories`.", alias="dataCategoryId")
-    excluded_tenants: Optional[List[StrictStr]] = Field(default=None, description="The unique IDs of the tenants to exclude from the extraction job. Only valid if `allTenants` is \"true\". Only valid for requests from an administrating tenant.", alias="excludedTenants")
     publish_to_production: Optional[StrictBool] = Field(default=None, description="If `true`, publishes the generated data version to production. Default is `false`.", alias="publishToProduction")
-    tenants: Optional[List[StrictStr]] = Field(default=None, description="The tenant codes of the tenants to run processing jobs for. If omitted, runs a processing job for the tenant associated with the user who made the API request. Only valid for requests from an administrating tenant.")
-    __properties: ClassVar[List[str]] = ["allTenants", "dataCategoryId", "excludedTenants", "publishToProduction", "tenants"]
+    excluded_tenants: Optional[List[StrictStr]] = Field(default=None, description="The unique IDs of the tenants to exclude from the extraction job. Only valid if `allTenants` is \"true\". Only valid for requests from an administrating tenant.", alias="excludedTenants")
+    __properties: ClassVar[List[str]] = ["tenants", "allTenants", "dataCategoryId", "publishToProduction", "excludedTenants"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,11 +86,11 @@ class AdminJobsProcessingJobRequestDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "tenants": obj.get("tenants"),
             "allTenants": obj.get("allTenants"),
             "dataCategoryId": obj.get("dataCategoryId"),
-            "excludedTenants": obj.get("excludedTenants"),
             "publishToProduction": obj.get("publishToProduction"),
-            "tenants": obj.get("tenants")
+            "excludedTenants": obj.get("excludedTenants")
         })
         return _obj
 

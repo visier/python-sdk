@@ -1,0 +1,70 @@
+# coding: utf-8
+
+"""
+    Visier Administration APIs
+
+    Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
+
+    The version of the OpenAPI document: 22222222.99201.1876
+    Contact: alpine@visier.com
+
+    Please note that this SDK is currently in beta.
+    Functionality and behavior may change in future releases.
+    We encourage you to provide feedback and report any issues encountered during your use.
+"""  # noqa: E501
+
+
+import unittest
+
+import visier_api_administration.models
+from visier_api_administration.models.admin_user_groups_get_api_response_dto import AdminUserGroupsGetAPIResponseDTO
+
+class TestAdminUserGroupsGetAPIResponseDTO(unittest.TestCase):
+    """AdminUserGroupsGetAPIResponseDTO unit test stubs"""
+
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def make_instance(self, include_optional) -> AdminUserGroupsGetAPIResponseDTO:
+        """Test AdminUserGroupsGetAPIResponseDTO
+            include_optional is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+
+        if include_optional:
+            return AdminUserGroupsGetAPIResponseDTO(
+                user_groups = [
+                    visier_api_administration.models.admin/user_group_get_api_response_dto.admin.UserGroupGetAPIResponseDTO(
+                        user_group_id = '', 
+                        display_name = '', 
+                        permissions = [
+                            visier_api_administration.models.admin/permission_response_dto.admin.PermissionResponseDTO(
+                                permission_id = '', 
+                                display_name = '', )
+                            ], )
+                    ],
+                limit = 56,
+                start = 56
+            )
+        else:
+            return AdminUserGroupsGetAPIResponseDTO(
+        )
+
+    def testAdminUserGroupsGetAPIResponseDTO(self):
+        """Test AdminUserGroupsGetAPIResponseDTO"""
+        def validate_instance(instance):
+            AdminUserGroupsGetAPIResponseDTO.model_validate(inst_req_only)
+            instance_deserialized = AdminUserGroupsGetAPIResponseDTO.from_dict(instance.to_dict())
+            assert instance == instance_deserialized
+
+        inst_req_only = self.make_instance(include_optional=False)
+        validate_instance(inst_req_only)
+
+        inst_req_and_optional = self.make_instance(include_optional=True)
+        validate_instance(inst_req_and_optional)
+
+if __name__ == '__main__':
+    unittest.main()

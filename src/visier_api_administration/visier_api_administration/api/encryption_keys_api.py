@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -60,7 +60,7 @@ class EncryptionKeysApi:
     ) -> AdminKeyName:
         """Delete an encryption key
 
-        Delete a specific encryption key.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete a specific encryption key.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param key_name: The encryption key's display name. The name may only contain alphanumeric or dash (-) characters and must be between 3 and 36 characters long. (required)
         :type key_name: str
@@ -128,7 +128,7 @@ class EncryptionKeysApi:
     ) -> ApiResponse[AdminKeyName]:
         """Delete an encryption key
 
-        Delete a specific encryption key.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete a specific encryption key.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param key_name: The encryption key's display name. The name may only contain alphanumeric or dash (-) characters and must be between 3 and 36 characters long. (required)
         :type key_name: str
@@ -196,7 +196,7 @@ class EncryptionKeysApi:
     ) -> RESTResponseType:
         """Delete an encryption key
 
-        Delete a specific encryption key.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete a specific encryption key.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param key_name: The encryption key's display name. The name may only contain alphanumeric or dash (-) characters and must be between 3 and 36 characters long. (required)
         :type key_name: str
@@ -325,7 +325,7 @@ class EncryptionKeysApi:
     ) -> DesignerCryptoTenantEncryptionKeyDTO:
         """Generate an encryption key
 
-        Create an encryption key using a specific algorithm. The algorithm must be one of `HmacSHA224`, `HmacSHA256`, `HmacSHA384`, or `HmacSHA512`.    In the request body, set the algorithm, give the key a display name and, optionally, set the UTC expiration date for the key pair in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.    The maximum number of encryption keys per tenant is 5.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Create an encryption key using a specific algorithm. The algorithm must be one of `HmacSHA224`, `HmacSHA256`, `HmacSHA384`, or `HmacSHA512`.    In the request body, set the algorithm, give the key a display name and, optionally, set the UTC expiration date for the key pair in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.    The maximum number of encryption keys per tenant is 5.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param designer_crypto_generate_key_request_dto: (required)
         :type designer_crypto_generate_key_request_dto: DesignerCryptoGenerateKeyRequestDTO
@@ -393,7 +393,7 @@ class EncryptionKeysApi:
     ) -> ApiResponse[DesignerCryptoTenantEncryptionKeyDTO]:
         """Generate an encryption key
 
-        Create an encryption key using a specific algorithm. The algorithm must be one of `HmacSHA224`, `HmacSHA256`, `HmacSHA384`, or `HmacSHA512`.    In the request body, set the algorithm, give the key a display name and, optionally, set the UTC expiration date for the key pair in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.    The maximum number of encryption keys per tenant is 5.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Create an encryption key using a specific algorithm. The algorithm must be one of `HmacSHA224`, `HmacSHA256`, `HmacSHA384`, or `HmacSHA512`.    In the request body, set the algorithm, give the key a display name and, optionally, set the UTC expiration date for the key pair in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.    The maximum number of encryption keys per tenant is 5.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param designer_crypto_generate_key_request_dto: (required)
         :type designer_crypto_generate_key_request_dto: DesignerCryptoGenerateKeyRequestDTO
@@ -461,7 +461,7 @@ class EncryptionKeysApi:
     ) -> RESTResponseType:
         """Generate an encryption key
 
-        Create an encryption key using a specific algorithm. The algorithm must be one of `HmacSHA224`, `HmacSHA256`, `HmacSHA384`, or `HmacSHA512`.    In the request body, set the algorithm, give the key a display name and, optionally, set the UTC expiration date for the key pair in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.    The maximum number of encryption keys per tenant is 5.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Create an encryption key using a specific algorithm. The algorithm must be one of `HmacSHA224`, `HmacSHA256`, `HmacSHA384`, or `HmacSHA512`.    In the request body, set the algorithm, give the key a display name and, optionally, set the UTC expiration date for the key pair in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.    The maximum number of encryption keys per tenant is 5.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param designer_crypto_generate_key_request_dto: (required)
         :type designer_crypto_generate_key_request_dto: DesignerCryptoGenerateKeyRequestDTO
@@ -602,7 +602,7 @@ class EncryptionKeysApi:
     ) -> DesignerCryptoTenantEncryptionKeyDetailsDTO:
         """Retrieve a list of all encryption keys
 
-        Retrieve a list of all encryption keys. The response returns information about each key, including the key name, algorithm, user who generated the key, the generation date, and expiration date.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve a list of all encryption keys. The response returns information about each key, including the key name, algorithm, user who generated the key, the generation date, and expiration date.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -666,7 +666,7 @@ class EncryptionKeysApi:
     ) -> ApiResponse[DesignerCryptoTenantEncryptionKeyDetailsDTO]:
         """Retrieve a list of all encryption keys
 
-        Retrieve a list of all encryption keys. The response returns information about each key, including the key name, algorithm, user who generated the key, the generation date, and expiration date.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve a list of all encryption keys. The response returns information about each key, including the key name, algorithm, user who generated the key, the generation date, and expiration date.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -730,7 +730,7 @@ class EncryptionKeysApi:
     ) -> RESTResponseType:
         """Retrieve a list of all encryption keys
 
-        Retrieve a list of all encryption keys. The response returns information about each key, including the key name, algorithm, user who generated the key, the generation date, and expiration date.   <br>**Note:** <em>These APIs are in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Retrieve a list of all encryption keys. The response returns information about each key, including the key name, algorithm, user who generated the key, the generation date, and expiration date.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
