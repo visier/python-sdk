@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,12 +28,12 @@ class DvExportStatus(BaseModel):
     """
     The response structure for errors.
     """ # noqa: E501
-    error_code: Optional[StrictStr] = Field(default=None, description="Error classification.", alias="errorCode")
     localized_message: Optional[StrictStr] = Field(default=None, description="Localized error message describing the root cause of the error.", alias="localizedMessage")
+    error_code: Optional[StrictStr] = Field(default=None, description="Error classification.", alias="errorCode")
     message: Optional[StrictStr] = Field(default=None, description="Not used.")
     rci: Optional[StrictStr] = Field(default=None, description="Optional root cause identifier.")
     user_error: Optional[StrictBool] = Field(default=None, description="Indicates whether the error is a user error.", alias="userError")
-    __properties: ClassVar[List[str]] = ["errorCode", "localizedMessage", "message", "rci", "userError"]
+    __properties: ClassVar[List[str]] = ["localizedMessage", "errorCode", "message", "rci", "userError"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,8 +86,8 @@ class DvExportStatus(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "errorCode": obj.get("errorCode"),
             "localizedMessage": obj.get("localizedMessage"),
+            "errorCode": obj.get("errorCode"),
             "message": obj.get("message"),
             "rci": obj.get("rci"),
             "userError": obj.get("userError")

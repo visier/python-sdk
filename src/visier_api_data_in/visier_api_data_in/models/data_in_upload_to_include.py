@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,13 +28,13 @@ class DataInUploadToInclude(BaseModel):
     """
     DataInUploadToInclude
     """ # noqa: E501
-    include_all: Optional[StrictBool] = Field(default=None, description="If `true`, all data uploads are included for the analytic tenant.", alias="includeAll")
-    max_upload_time: Optional[StrictStr] = Field(default=None, description="An ISO-8601 time such as `\"2001-10-25T13:45:35.999\"` for the latest upload time. If defined, omit `uploadTimes`. If omitted and `minUploadTime` is defined, includes files up to latest time available.", alias="maxUploadTime")
-    min_upload_time: Optional[StrictStr] = Field(default=None, description="An ISO-8601 time such as `\"2001-10-25T13:45:35.999\"` for the earliest upload time. If defined, omit `uploadTimes`. If omitted and `maxUploadTime` is defined, includes files up to earliest time available.", alias="minUploadTime")
-    sources: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings representing the object name of each source to include. If `uploadTimes` is omitted, includes files for the given sources for all `uploadTimes`.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant code of the analytic tenant you are including a data upload for.", alias="tenantCode")
+    include_all: Optional[StrictBool] = Field(default=None, description="If `true`, all data uploads are included for the analytic tenant.", alias="includeAll")
     upload_times: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of ISO-8601 time strings such as `\"2001-10-25T13:45:35.999\"` representing the upload time of each data upload to include.", alias="uploadTimes")
-    __properties: ClassVar[List[str]] = ["includeAll", "maxUploadTime", "minUploadTime", "sources", "tenantCode", "uploadTimes"]
+    min_upload_time: Optional[StrictStr] = Field(default=None, description="An ISO-8601 time such as `\"2001-10-25T13:45:35.999\"` for the earliest upload time. If defined, omit `uploadTimes`. If omitted and `maxUploadTime` is defined, includes files up to earliest time available.", alias="minUploadTime")
+    max_upload_time: Optional[StrictStr] = Field(default=None, description="An ISO-8601 time such as `\"2001-10-25T13:45:35.999\"` for the latest upload time. If defined, omit `uploadTimes`. If omitted and `minUploadTime` is defined, includes files up to latest time available.", alias="maxUploadTime")
+    sources: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings representing the object name of each source to include. If `uploadTimes` is omitted, includes files for the given sources for all `uploadTimes`.")
+    __properties: ClassVar[List[str]] = ["tenantCode", "includeAll", "uploadTimes", "minUploadTime", "maxUploadTime", "sources"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,12 +87,12 @@ class DataInUploadToInclude(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "includeAll": obj.get("includeAll"),
-            "maxUploadTime": obj.get("maxUploadTime"),
-            "minUploadTime": obj.get("minUploadTime"),
-            "sources": obj.get("sources"),
             "tenantCode": obj.get("tenantCode"),
-            "uploadTimes": obj.get("uploadTimes")
+            "includeAll": obj.get("includeAll"),
+            "uploadTimes": obj.get("uploadTimes"),
+            "minUploadTime": obj.get("minUploadTime"),
+            "maxUploadTime": obj.get("maxUploadTime"),
+            "sources": obj.get("sources")
         })
         return _obj
 

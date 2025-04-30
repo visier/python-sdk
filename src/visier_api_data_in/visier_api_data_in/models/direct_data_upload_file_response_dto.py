@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,10 +28,10 @@ class DirectDataUploadFileResponseDTO(BaseModel):
     """
     The transaction results.  If uploading a file, a success response means the upload was successful and doesn't always mean the file was successfully loaded into its target object.
     """ # noqa: E501
-    message: Optional[StrictStr] = Field(default=None, description="The upload response message from the provisioning service.")
-    status: Optional[StrictStr] = Field(default=None, description="The status of the request.")
     transaction_id: Optional[StrictStr] = Field(default=None, description="The unique transaction identifier.", alias="transactionId")
-    __properties: ClassVar[List[str]] = ["message", "status", "transactionId"]
+    status: Optional[StrictStr] = Field(default=None, description="The status of the request.")
+    message: Optional[StrictStr] = Field(default=None, description="The upload response message from the provisioning service.")
+    __properties: ClassVar[List[str]] = ["transactionId", "status", "message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,9 +84,9 @@ class DirectDataUploadFileResponseDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": obj.get("message"),
+            "transactionId": obj.get("transactionId"),
             "status": obj.get("status"),
-            "transactionId": obj.get("transactionId")
+            "message": obj.get("message")
         })
         return _obj
 

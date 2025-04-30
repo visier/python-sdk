@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,11 +28,11 @@ class DataInDataTransferResultDetail(BaseModel):
     """
     DataInDataTransferResultDetail
     """ # noqa: E501
+    tenant_code: Optional[StrictStr] = Field(default=None, description="The code of the tenant that data was transferred to. For example, WFF_j1r or WFF_j1r~c7o.", alias="tenantCode")
+    source_names: Optional[List[StrictStr]] = Field(default=None, description="A list of strings representing the sources that received a data transfer.", alias="sourceNames")
     data_size: Optional[StrictStr] = Field(default=None, description="The total size of the transfer session in bytes.", alias="dataSize")
     rows: Optional[StrictStr] = Field(default=None, description="The total number of rows transferred during the transfer session.")
-    source_names: Optional[List[StrictStr]] = Field(default=None, description="A list of strings representing the sources that received a data transfer.", alias="sourceNames")
-    tenant_code: Optional[StrictStr] = Field(default=None, description="The code of the tenant that data was transferred to. For example, WFF_j1r or WFF_j1r~c7o.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["dataSize", "rows", "sourceNames", "tenantCode"]
+    __properties: ClassVar[List[str]] = ["tenantCode", "sourceNames", "dataSize", "rows"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,10 +85,10 @@ class DataInDataTransferResultDetail(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dataSize": obj.get("dataSize"),
-            "rows": obj.get("rows"),
+            "tenantCode": obj.get("tenantCode"),
             "sourceNames": obj.get("sourceNames"),
-            "tenantCode": obj.get("tenantCode")
+            "dataSize": obj.get("dataSize"),
+            "rows": obj.get("rows")
         })
         return _obj
 

@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,33 +36,34 @@ class TestAdminJobsExtractDataAndLoadDTO(unittest.TestCase):
 
         if include_optional:
             return AdminJobsExtractDataAndLoadDTO(
+                tenants = [
+                    ''
+                    ],
                 all_tenants = True,
-                batch_size_override = 56,
-                connector_ids = [
-                    ''
-                    ],
-                data_category_id = '',
-                disable_artifact_generation = True,
-                excluded_tenants = [
-                    ''
-                    ],
-                extract_to_time_override = '',
-                force_update_existing_artifacts = True,
-                last_extraction_time_offset_mode = '',
-                last_extraction_time_offset_months = 56,
-                last_extraction_time_offset_weeks = 56,
-                months_to_extract = 56,
-                offset_month_option = '',
-                offset_week_option = '',
                 override_last_extraction_timestamp = '',
                 publish_data_load_artifacts = True,
                 run_processing_job = True,
-                spill_debug_info_detail_level_dto = 'fileAndLine',
-                spill_debug_info_partitions_dto = 'spillNone',
-                sql_batch_size = 56,
-                tenants = [
+                data_category_id = '',
+                disable_artifact_generation = True,
+                connector_ids = [
                     ''
-                    ]
+                    ],
+                last_extraction_time_offset_weeks = 56,
+                months_to_extract = 56,
+                extract_to_time_override = '',
+                batch_size_override = 56,
+                sql_batch_size = 56,
+                force_update_existing_artifacts = True,
+                excluded_tenants = [
+                    ''
+                    ],
+                spill_debug_info_partitions_dto = 'spillNone',
+                spill_debug_info_detail_level_dto = 'fileAndLine',
+                last_extraction_time_offset_months = 56,
+                last_extraction_time_offset_mode = '',
+                offset_week_option = '',
+                offset_month_option = '',
+                credential_id = ''
             )
         else:
             return AdminJobsExtractDataAndLoadDTO(
