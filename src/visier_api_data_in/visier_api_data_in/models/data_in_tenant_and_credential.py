@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,9 +28,9 @@ class DataInTenantAndCredential(BaseModel):
     """
     DataInTenantAndCredential
     """ # noqa: E501
-    credential_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the credential.", alias="credentialId")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the tenant.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["credentialId", "tenantCode"]
+    credential_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the credential.", alias="credentialId")
+    __properties: ClassVar[List[str]] = ["tenantCode", "credentialId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,8 +83,8 @@ class DataInTenantAndCredential(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "credentialId": obj.get("credentialId"),
-            "tenantCode": obj.get("tenantCode")
+            "tenantCode": obj.get("tenantCode"),
+            "credentialId": obj.get("credentialId")
         })
         return _obj
 

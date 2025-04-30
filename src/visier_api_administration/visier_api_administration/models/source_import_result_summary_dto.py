@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,10 +29,10 @@ class SourceImportResultSummaryDTO(BaseModel):
     SourceImportResultSummaryDTO
     """ # noqa: E501
     created: Optional[StrictInt] = Field(default=None, description="The number of imported sources that were newly created in the target tenant.")
-    deleted: Optional[StrictInt] = Field(default=None, description="The number of imported sources that existed in the target tenant prior to the import and were deleted during the import.")
-    ignored: Optional[StrictInt] = Field(default=None, description="The number of imported sources that already existed and were unchanged in the target tenant.")
     updated: Optional[StrictInt] = Field(default=None, description="The number of imported sources that already existed and were updated in the target tenant.")
-    __properties: ClassVar[List[str]] = ["created", "deleted", "ignored", "updated"]
+    ignored: Optional[StrictInt] = Field(default=None, description="The number of imported sources that already existed and were unchanged in the target tenant.")
+    deleted: Optional[StrictInt] = Field(default=None, description="The number of imported sources that existed in the target tenant prior to the import and were deleted during the import.")
+    __properties: ClassVar[List[str]] = ["created", "updated", "ignored", "deleted"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,9 +86,9 @@ class SourceImportResultSummaryDTO(BaseModel):
 
         _obj = cls.model_validate({
             "created": obj.get("created"),
-            "deleted": obj.get("deleted"),
+            "updated": obj.get("updated"),
             "ignored": obj.get("ignored"),
-            "updated": obj.get("updated")
+            "deleted": obj.get("deleted")
         })
         return _obj
 

@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,10 +36,10 @@ class TestDataInExtractionJob(unittest.TestCase):
 
         if include_optional:
             return DataInExtractionJob(
-                current_stage = '',
                 extraction_job_id = '',
+                tenant_code = '',
                 status = '',
-                tenant_code = ''
+                current_stage = ''
             )
         else:
             return DataInExtractionJob(

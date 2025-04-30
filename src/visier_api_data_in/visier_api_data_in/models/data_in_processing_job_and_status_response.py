@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,12 +29,12 @@ class DataInProcessingJobAndStatusResponse(BaseModel):
     """
     DataInProcessingJobAndStatusResponse
     """ # noqa: E501
-    limit: Optional[StrictInt] = Field(default=None, description="The number of processing jobs to return. The maximum number of jobs to return is 1000.")
     parent_job_id: Optional[StrictStr] = Field(default=None, description="The ID of the dispatching job that generated the extraction jobs.", alias="parentJobId")
     parent_tenant_code: Optional[StrictStr] = Field(default=None, description="The tenant that owns the dispatching job. This is usually the administrating tenant.", alias="parentTenantCode")
-    processing_jobs: Optional[List[DataInProcessingJob]] = Field(default=None, description="A list of processing job information.", alias="processingJobs")
+    limit: Optional[StrictInt] = Field(default=None, description="The number of processing jobs to return. The maximum number of jobs to return is 1000.")
     start: Optional[StrictInt] = Field(default=None, description="The index to start retrieving results from, also known as offset. The index begins at 0.")
-    __properties: ClassVar[List[str]] = ["limit", "parentJobId", "parentTenantCode", "processingJobs", "start"]
+    processing_jobs: Optional[List[DataInProcessingJob]] = Field(default=None, description="A list of processing job information.", alias="processingJobs")
+    __properties: ClassVar[List[str]] = ["parentJobId", "parentTenantCode", "limit", "start", "processingJobs"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,11 +94,11 @@ class DataInProcessingJobAndStatusResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "limit": obj.get("limit"),
             "parentJobId": obj.get("parentJobId"),
             "parentTenantCode": obj.get("parentTenantCode"),
-            "processingJobs": [DataInProcessingJob.from_dict(_item) for _item in obj["processingJobs"]] if obj.get("processingJobs") is not None else None,
-            "start": obj.get("start")
+            "limit": obj.get("limit"),
+            "start": obj.get("start"),
+            "processingJobs": [DataInProcessingJob.from_dict(_item) for _item in obj["processingJobs"]] if obj.get("processingJobs") is not None else None
         })
         return _obj
 

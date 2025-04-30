@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1876
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,12 +28,12 @@ class DataInResult(BaseModel):
     """
     DataInResult
     """ # noqa: E501
-    data_version: Optional[StrictStr] = Field(default=None, description="If applicable, the data version that was disabled.", alias="dataVersion")
     job_id: Optional[StrictStr] = Field(default=None, description="If applicable, the job ID associated with the data version.", alias="jobId")
-    message: Optional[StrictStr] = Field(default=None, description="If applicable, the message explains what errors occurred while disabling data versions.")
-    status: Optional[StrictStr] = Field(default=None, description="The outcome of the disabling operation.")
+    data_version: Optional[StrictStr] = Field(default=None, description="If applicable, the data version that was disabled.", alias="dataVersion")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The analytic tenant that the disable operation was conducted for.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["dataVersion", "jobId", "message", "status", "tenantCode"]
+    status: Optional[StrictStr] = Field(default=None, description="The outcome of the disabling operation.")
+    message: Optional[StrictStr] = Field(default=None, description="If applicable, the message explains what errors occurred while disabling data versions.")
+    __properties: ClassVar[List[str]] = ["jobId", "dataVersion", "tenantCode", "status", "message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,11 +86,11 @@ class DataInResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dataVersion": obj.get("dataVersion"),
             "jobId": obj.get("jobId"),
-            "message": obj.get("message"),
+            "dataVersion": obj.get("dataVersion"),
+            "tenantCode": obj.get("tenantCode"),
             "status": obj.get("status"),
-            "tenantCode": obj.get("tenantCode")
+            "message": obj.get("message")
         })
         return _obj
 
