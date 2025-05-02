@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,11 +29,11 @@ class DataInJobStatusWithStartTime(BaseModel):
     DataInJobStatusWithStartTime
     """ # noqa: E501
     job_id: Optional[StrictStr] = Field(default=None, description="The unique ID of the job.", alias="jobId")
+    tenant: Optional[StrictStr] = Field(default=None, description="The tenant code.")
+    status: Optional[StrictStr] = Field(default=None, description="The status of the job, such as Running or Completed.")
     job_type: Optional[StrictStr] = Field(default=None, description="The type of the job, such as a processing job or receiving job.", alias="jobType")
     start_time: Optional[StrictStr] = Field(default=None, description="The time that the job started.", alias="startTime")
-    status: Optional[StrictStr] = Field(default=None, description="The status of the job, such as Running or Completed.")
-    tenant: Optional[StrictStr] = Field(default=None, description="The tenant code.")
-    __properties: ClassVar[List[str]] = ["jobId", "jobType", "startTime", "status", "tenant"]
+    __properties: ClassVar[List[str]] = ["jobId", "tenant", "status", "jobType", "startTime"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,10 +87,10 @@ class DataInJobStatusWithStartTime(BaseModel):
 
         _obj = cls.model_validate({
             "jobId": obj.get("jobId"),
-            "jobType": obj.get("jobType"),
-            "startTime": obj.get("startTime"),
+            "tenant": obj.get("tenant"),
             "status": obj.get("status"),
-            "tenant": obj.get("tenant")
+            "jobType": obj.get("jobType"),
+            "startTime": obj.get("startTime")
         })
         return _obj
 

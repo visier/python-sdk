@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,24 +36,24 @@ class TestPlanDataUploadResponseDTO(unittest.TestCase):
 
         if include_optional:
             return PlanDataUploadResponseDTO(
-                changelists = [
-                    visier_api_data_in.models.plan_data_load_change_list_dto.PlanDataLoadChangeListDTO(
-                        changes = [
-                            visier_api_data_in.models.plan_data_load_change_dto.PlanDataLoadChangeDTO(
-                                new_value = 1.337, 
-                                old_value = 1.337, 
-                                period = '', 
-                                row_members = [
-                                    ''
-                                    ], )
-                            ], 
-                        plan_item = '', )
-                    ],
+                updated_cells_count = 56,
+                potential_updated_cells_count = 56,
                 errors = [
                     None
                     ],
-                potential_updated_cells_count = 56,
-                updated_cells_count = 56
+                changelists = [
+                    visier_api_data_in.models.plan_data_load_change_list_dto.PlanDataLoadChangeListDTO(
+                        plan_item = '', 
+                        changes = [
+                            visier_api_data_in.models.plan_data_load_change_dto.PlanDataLoadChangeDTO(
+                                row_members = [
+                                    ''
+                                    ], 
+                                period = '', 
+                                old_value = 1.337, 
+                                new_value = 1.337, )
+                            ], )
+                    ]
             )
         else:
             return PlanDataUploadResponseDTO(

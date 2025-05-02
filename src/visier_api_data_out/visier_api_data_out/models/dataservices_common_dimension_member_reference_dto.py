@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,7 +29,8 @@ class DataservicesCommonDimensionMemberReferenceDTO(BaseModel):
     The members of a dimension.
     """ # noqa: E501
     path: Optional[List[StrictStr]] = Field(default=None, description="A list of strings representing the members within a dimension path. For example, a dimension for Location  may have the paths \"Canada, BC, Vancouver\" and \"US, California, San Francisco\".")
-    __properties: ClassVar[List[str]] = ["path"]
+    member_id: Optional[StrictStr] = Field(default=None, description="*  The unique ID of the member. This can be used if the dimension member does not have a path. e.g. SD groups", alias="memberId")
+    __properties: ClassVar[List[str]] = ["path", "memberId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,7 +83,8 @@ class DataservicesCommonDimensionMemberReferenceDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "path": obj.get("path")
+            "path": obj.get("path"),
+            "memberId": obj.get("memberId")
         })
         return _obj
 

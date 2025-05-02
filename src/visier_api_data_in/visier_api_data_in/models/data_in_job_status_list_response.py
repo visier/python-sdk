@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,10 +29,10 @@ class DataInJobStatusListResponse(BaseModel):
     """
     DataInJobStatusListResponse
     """ # noqa: E501
-    job_status: Optional[List[DataInJobStatusWithStartTime]] = Field(default=None, description="The specific status to restrict the list of jobs to.", alias="jobStatus")
-    query_end_time: Optional[StrictStr] = Field(default=None, description="The end time from which to retrieve job statuses.", alias="queryEndTime")
     query_start_time: Optional[StrictStr] = Field(default=None, description="The start time from which to retrieve job statuses.", alias="queryStartTime")
-    __properties: ClassVar[List[str]] = ["jobStatus", "queryEndTime", "queryStartTime"]
+    query_end_time: Optional[StrictStr] = Field(default=None, description="The end time from which to retrieve job statuses.", alias="queryEndTime")
+    job_status: Optional[List[DataInJobStatusWithStartTime]] = Field(default=None, description="The specific status to restrict the list of jobs to.", alias="jobStatus")
+    __properties: ClassVar[List[str]] = ["queryStartTime", "queryEndTime", "jobStatus"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -92,9 +92,9 @@ class DataInJobStatusListResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "jobStatus": [DataInJobStatusWithStartTime.from_dict(_item) for _item in obj["jobStatus"]] if obj.get("jobStatus") is not None else None,
+            "queryStartTime": obj.get("queryStartTime"),
             "queryEndTime": obj.get("queryEndTime"),
-            "queryStartTime": obj.get("queryStartTime")
+            "jobStatus": [DataInJobStatusWithStartTime.from_dict(_item) for _item in obj["jobStatus"]] if obj.get("jobStatus") is not None else None
         })
         return _obj
 

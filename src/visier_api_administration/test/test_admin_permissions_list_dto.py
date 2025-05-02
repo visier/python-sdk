@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -37,56 +37,53 @@ class TestAdminPermissionsListDTO(unittest.TestCase):
         if include_optional:
             return AdminPermissionsListDTO(
                 permissions = [
-                    visier_api_administration.models.servicing/publicapi/transfers/permission_dto.servicing.publicapi.transfers.PermissionDTO(
-                        admin_capability_config = None, 
+                    visier_api_administration.models.servicing/permission_dto.servicing.PermissionDTO(
+                        permission_id = '', 
+                        display_name = '', 
+                        description = '', 
                         data_security_profiles = [
-                            visier_api_administration.models.servicing/publicapi/transfers/data_security_profile_dto.servicing.publicapi.transfers.DataSecurityProfileDTO(
-                                all_data_point_access = True, 
+                            visier_api_administration.models.servicing/data_security_profile_dto.servicing.DataSecurityProfileDTO(
                                 analytic_object_id = '', 
-                                analytic_object_status = 'Unset', 
-                                inherited_access_configs = [
-                                    visier_api_administration.models.servicing/publicapi/transfers/inherited_access_config_dto.servicing.publicapi.transfers.InheritedAccessConfigDTO(
-                                        analytic_object_id = '', 
-                                        member_filter_configs = [
-                                            visier_api_administration.models.servicing/publicapi/transfers/member_filter_config_dto.servicing.publicapi.transfers.MemberFilterConfigDTO(
-                                                dimension_filters = [
-                                                    visier_api_administration.models.servicing/publicapi/transfers/dimension_filter_dto.servicing.publicapi.transfers.DimensionFilterDTO(
-                                                        dynamic_dimension_filter = visier_api_administration.models.servicing/publicapi/transfers/dynamic_dimension_filter_dto.servicing.publicapi.transfers.DynamicDimensionFilterDTO(
-                                                            dimension_id = '', 
-                                                            dimension_status = 'Unset', 
-                                                            dynamic_property_mappings = [
-                                                                visier_api_administration.models.servicing/publicapi/transfers/dynamic_property_mapping_dto.servicing.publicapi.transfers.DynamicPropertyMappingDTO(
-                                                                    hierarchy_property_id = '', 
-                                                                    hierarchy_property_status = 'Unset', 
-                                                                    user_property = None, )
-                                                                ], 
-                                                            subject_reference_path = [
+                                property_set_config = None, 
+                                all_data_point_access = True, 
+                                member_filter_configs = [
+                                    visier_api_administration.models.servicing/member_filter_config_dto.servicing.MemberFilterConfigDTO(
+                                        dimension_filters = [
+                                            visier_api_administration.models.servicing/dimension_filter_dto.servicing.DimensionFilterDTO(
+                                                static_dimension_filter = visier_api_administration.models.servicing/static_dimension_filter_dto.servicing.StaticDimensionFilterDTO(
+                                                    dimension_id = '', 
+                                                    subject_reference_path = [
+                                                        ''
+                                                        ], 
+                                                    member_selections = [
+                                                        visier_api_administration.models.servicing/member_selection_dto.servicing.MemberSelectionDTO(
+                                                            name_path = [
                                                                 ''
-                                                                ], ), 
-                                                        static_dimension_filter = visier_api_administration.models.servicing/publicapi/transfers/static_dimension_filter_dto.servicing.publicapi.transfers.StaticDimensionFilterDTO(
-                                                            dimension_id = '', 
-                                                            dimension_status = 'Unset', 
-                                                            member_selections = [
-                                                                visier_api_administration.models.servicing/publicapi/transfers/member_selection_dto.servicing.publicapi.transfers.MemberSelectionDTO(
-                                                                    dimension_member_status = 'Unset', 
-                                                                    excluded = True, 
-                                                                    name_path = [
-                                                                        ''
-                                                                        ], )
-                                                                ], ), )
-                                                    ], )
-                                            ], 
+                                                                ], 
+                                                            excluded = True, 
+                                                            dimension_member_status = 'Unset', )
+                                                        ], 
+                                                    dimension_status = 'Unset', ), 
+                                                dynamic_dimension_filter = visier_api_administration.models.servicing/dynamic_dimension_filter_dto.servicing.DynamicDimensionFilterDTO(
+                                                    dimension_id = '', 
+                                                    dynamic_property_mappings = [
+                                                        visier_api_administration.models.servicing/dynamic_property_mapping_dto.servicing.DynamicPropertyMappingDTO(
+                                                            hierarchy_property_id = '', 
+                                                            user_property = None, 
+                                                            hierarchy_property_status = 'Unset', )
+                                                        ], 
+                                                    dimension_status = 'Unset', ), )
+                                            ], )
+                                    ], 
+                                inherited_access_configs = [
+                                    visier_api_administration.models.servicing/inherited_access_config_dto.servicing.InheritedAccessConfigDTO(
+                                        analytic_object_id = '', 
                                         remove_access = True, )
                                     ], 
                                 inherited_reference_member_filter_config = None, 
-                                member_filter_configs = [
-                                    visier_api_administration.models.servicing/publicapi/transfers/member_filter_config_dto.servicing.publicapi.transfers.MemberFilterConfigDTO()
-                                    ], 
-                                property_set_config = None, )
+                                analytic_object_status = 'Unset', )
                             ], 
-                        description = '', 
-                        display_name = '', 
-                        permission_id = '', 
+                        admin_capability_config = None, 
                         role_modules_config = None, )
                     ]
             )
