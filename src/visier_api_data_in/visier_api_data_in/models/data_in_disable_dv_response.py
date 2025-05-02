@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,10 +29,10 @@ class DataInDisableDVResponse(BaseModel):
     """
     DataInDisableDVResponse
     """ # noqa: E501
-    results: Optional[List[DataInResult]] = Field(default=None, description="A list of objects representing the disabling process.")
     total_failures: Optional[StrictInt] = Field(default=None, description="The number of data versions that failed during the disabling process.", alias="totalFailures")
     total_success: Optional[StrictInt] = Field(default=None, description="The number of data versions that were disabled successfully.", alias="totalSuccess")
-    __properties: ClassVar[List[str]] = ["results", "totalFailures", "totalSuccess"]
+    results: Optional[List[DataInResult]] = Field(default=None, description="A list of objects representing the disabling process.")
+    __properties: ClassVar[List[str]] = ["totalFailures", "totalSuccess", "results"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -92,9 +92,9 @@ class DataInDisableDVResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "results": [DataInResult.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None,
             "totalFailures": obj.get("totalFailures"),
-            "totalSuccess": obj.get("totalSuccess")
+            "totalSuccess": obj.get("totalSuccess"),
+            "results": [DataInResult.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
         })
         return _obj
 

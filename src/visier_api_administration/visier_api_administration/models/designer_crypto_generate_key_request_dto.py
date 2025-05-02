@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,10 +28,10 @@ class DesignerCryptoGenerateKeyRequestDTO(BaseModel):
     """
     The settings to define for an encryption key.
     """ # noqa: E501
-    algorithm: Optional[StrictStr] = Field(default=None, description="The hash-based message authentication code and cryptographic hash function associated with the encryption key. Must be one of `HmacSHA224`, `HmacSHA256`, `HmacSHA384`, or `HmacSHA512`.")
-    expiry_date: Optional[StrictStr] = Field(default=None, description="The UTC expiration date of the key in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.", alias="expiryDate")
     key_name: Optional[StrictStr] = Field(default=None, description="The encryption key's display name. The name may only contain alphanumeric or dash (-) characters and must be between 6 and 36 characters long.", alias="keyName")
-    __properties: ClassVar[List[str]] = ["algorithm", "expiryDate", "keyName"]
+    expiry_date: Optional[StrictStr] = Field(default=None, description="The UTC expiration date of the key in ISO-8601 format. Must be between 2 and 10 years. Default is 2 years.", alias="expiryDate")
+    algorithm: Optional[StrictStr] = Field(default=None, description="The hash-based message authentication code and cryptographic hash function associated with the encryption key. Must be one of `HmacSHA224`, `HmacSHA256`, `HmacSHA384`, or `HmacSHA512`.")
+    __properties: ClassVar[List[str]] = ["keyName", "expiryDate", "algorithm"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,9 +84,9 @@ class DesignerCryptoGenerateKeyRequestDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "algorithm": obj.get("algorithm"),
+            "keyName": obj.get("keyName"),
             "expiryDate": obj.get("expiryDate"),
-            "keyName": obj.get("keyName")
+            "algorithm": obj.get("algorithm")
         })
         return _obj
 

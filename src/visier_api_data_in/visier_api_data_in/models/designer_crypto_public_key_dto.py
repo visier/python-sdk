@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,12 +28,12 @@ class DesignerCryptoPublicKeyDTO(BaseModel):
     """
     DesignerCryptoPublicKeyDTO
     """ # noqa: E501
+    key_id: Optional[StrictStr] = Field(default=None, description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.", alias="keyID")
     date_generated: Optional[StrictStr] = Field(default=None, description="The UTC date that the key pair was generated in milliseconds since the Unix epoch.", alias="dateGenerated")
     expiry_date: Optional[StrictStr] = Field(default=None, description="The UTC expiration date of the key in milliseconds since the Unix epoch.", alias="expiryDate")
-    key_id: Optional[StrictStr] = Field(default=None, description="The key ID of the generated key pair in 16-letter hexadecimal format, including leading zeros.", alias="keyID")
-    public_key: Optional[StrictStr] = Field(default=None, description="The public key of the generated key pair.", alias="publicKey")
     recipient: Optional[StrictStr] = Field(default=None, description="The tenant code and creation date in milliseconds of the PGP key; for example, WFF_j1r_13490234234.")
-    __properties: ClassVar[List[str]] = ["dateGenerated", "expiryDate", "keyID", "publicKey", "recipient"]
+    public_key: Optional[StrictStr] = Field(default=None, description="The public key of the generated key pair.", alias="publicKey")
+    __properties: ClassVar[List[str]] = ["keyID", "dateGenerated", "expiryDate", "recipient", "publicKey"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,11 +86,11 @@ class DesignerCryptoPublicKeyDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "keyID": obj.get("keyID"),
             "dateGenerated": obj.get("dateGenerated"),
             "expiryDate": obj.get("expiryDate"),
-            "keyID": obj.get("keyID"),
-            "publicKey": obj.get("publicKey"),
-            "recipient": obj.get("recipient")
+            "recipient": obj.get("recipient"),
+            "publicKey": obj.get("publicKey")
         })
         return _obj
 

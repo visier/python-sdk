@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,11 +29,11 @@ class DataInPushDataCancelResponse(BaseModel):
     """
     DataInPushDataCancelResponse
     """ # noqa: E501
-    data_transfer_result_details: Optional[List[DataInDataTransferResultDetail]] = Field(default=None, description="A list of objects representing the results of the transfer session.", alias="dataTransferResultDetails")
     message: Optional[StrictStr] = Field(default=None, description="A meaningful message about the transfer session.")
-    status: Optional[StrictStr] = Field(default=None, description="The status of the transfer session. A cancelled session returns the status CANCELLED.")
     transfer_session_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the transfer session.", alias="transferSessionId")
-    __properties: ClassVar[List[str]] = ["dataTransferResultDetails", "message", "status", "transferSessionId"]
+    data_transfer_result_details: Optional[List[DataInDataTransferResultDetail]] = Field(default=None, description="A list of objects representing the results of the transfer session.", alias="dataTransferResultDetails")
+    status: Optional[StrictStr] = Field(default=None, description="The status of the transfer session. A cancelled session returns the status CANCELLED.")
+    __properties: ClassVar[List[str]] = ["message", "transferSessionId", "dataTransferResultDetails", "status"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,10 +93,10 @@ class DataInPushDataCancelResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dataTransferResultDetails": [DataInDataTransferResultDetail.from_dict(_item) for _item in obj["dataTransferResultDetails"]] if obj.get("dataTransferResultDetails") is not None else None,
             "message": obj.get("message"),
-            "status": obj.get("status"),
-            "transferSessionId": obj.get("transferSessionId")
+            "transferSessionId": obj.get("transferSessionId"),
+            "dataTransferResultDetails": [DataInDataTransferResultDetail.from_dict(_item) for _item in obj["dataTransferResultDetails"]] if obj.get("dataTransferResultDetails") is not None else None,
+            "status": obj.get("status")
         })
         return _obj
 

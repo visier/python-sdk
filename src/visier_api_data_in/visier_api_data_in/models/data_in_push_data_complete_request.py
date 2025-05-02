@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -28,9 +28,9 @@ class DataInPushDataCompleteRequest(BaseModel):
     """
     DataInPushDataCompleteRequest
     """ # noqa: E501
-    processing_data: Optional[StrictBool] = Field(default=None, description="If `true`, a processing job will be triggered after the receiving job successfully completes. This generates a new data version.", alias="processingData")
     transfer_session_id: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the transfer session.", alias="transferSessionId")
-    __properties: ClassVar[List[str]] = ["processingData", "transferSessionId"]
+    processing_data: Optional[StrictBool] = Field(default=None, description="If `true`, a processing job will be triggered after the receiving job successfully completes. This generates a new data version.", alias="processingData")
+    __properties: ClassVar[List[str]] = ["transferSessionId", "processingData"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,8 +83,8 @@ class DataInPushDataCompleteRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "processingData": obj.get("processingData"),
-            "transferSessionId": obj.get("transferSessionId")
+            "transferSessionId": obj.get("transferSessionId"),
+            "processingData": obj.get("processingData")
         })
         return _obj
 

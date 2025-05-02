@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,9 +29,9 @@ class DataInReceivingJob(BaseModel):
     DataInReceivingJob
     """ # noqa: E501
     receiving_job_id: Optional[StrictStr] = Field(default=None, description="The job ID of the receiving job for the analytic tenant.", alias="receivingJobId")
-    status: Optional[StrictStr] = Field(default=None, description="The status of the receiving job for the analytic tenant.")
     tenant_code: Optional[StrictStr] = Field(default=None, description="The analytic tenant code.", alias="tenantCode")
-    __properties: ClassVar[List[str]] = ["receivingJobId", "status", "tenantCode"]
+    status: Optional[StrictStr] = Field(default=None, description="The status of the receiving job for the analytic tenant.")
+    __properties: ClassVar[List[str]] = ["receivingJobId", "tenantCode", "status"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,8 +85,8 @@ class DataInReceivingJob(BaseModel):
 
         _obj = cls.model_validate({
             "receivingJobId": obj.get("receivingJobId"),
-            "status": obj.get("status"),
-            "tenantCode": obj.get("tenantCode")
+            "tenantCode": obj.get("tenantCode"),
+            "status": obj.get("status")
         })
         return _obj
 

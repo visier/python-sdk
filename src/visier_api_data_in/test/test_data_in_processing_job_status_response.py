@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,18 +36,18 @@ class TestDataInProcessingJobStatusResponse(unittest.TestCase):
 
         if include_optional:
             return DataInProcessingJobStatusResponse(
-                limit = 56,
                 parent_job_id = '',
                 parent_tenant_code = '',
+                limit = 56,
+                start = 56,
                 processing_jobs = [
                     visier_api_data_in.models.data_in/processing_job.data_in.ProcessingJob(
-                        data_version = '', 
                         job_id = '', 
-                        message = '', 
+                        tenant_code = '', 
+                        data_version = '', 
                         status = '', 
-                        tenant_code = '', )
-                    ],
-                start = 56
+                        message = '', )
+                    ]
             )
         else:
             return DataInProcessingJobStatusResponse(

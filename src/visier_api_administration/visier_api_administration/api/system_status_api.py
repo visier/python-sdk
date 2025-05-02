@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -23,7 +23,7 @@ from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTRespo
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_api_administration.models.systemstatus_publicapi_transfers_system_status_dto import SystemstatusPublicapiTransfersSystemStatusDTO
+from visier_api_administration.models.systemstatus_system_status_dto import SystemstatusSystemStatusDTO
 import visier_api_administration.models
 
 
@@ -55,7 +55,7 @@ class SystemStatusApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SystemstatusPublicapiTransfersSystemStatusDTO:
+    ) -> SystemstatusSystemStatusDTO:
         """Check the overall current status of Visier's systems
 
         Check the current overall status of Visier's systems.   The overall status is one of:  * ``UP`` : All systems are operational.  * `DOWN`: At least one system is not fully operational.
@@ -93,7 +93,7 @@ class SystemStatusApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SystemstatusPublicapiTransfersSystemStatusDTO",
+            '200': "SystemstatusSystemStatusDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -123,7 +123,7 @@ class SystemStatusApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SystemstatusPublicapiTransfersSystemStatusDTO]:
+    ) -> ApiResponse[SystemstatusSystemStatusDTO]:
         """Check the overall current status of Visier's systems
 
         Check the current overall status of Visier's systems.   The overall status is one of:  * ``UP`` : All systems are operational.  * `DOWN`: At least one system is not fully operational.
@@ -161,7 +161,7 @@ class SystemStatusApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SystemstatusPublicapiTransfersSystemStatusDTO",
+            '200': "SystemstatusSystemStatusDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -229,7 +229,7 @@ class SystemStatusApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SystemstatusPublicapiTransfersSystemStatusDTO",
+            '200': "SystemstatusSystemStatusDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -320,7 +320,7 @@ class SystemStatusApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SystemstatusPublicapiTransfersSystemStatusDTO:
+    ) -> SystemstatusSystemStatusDTO:
         """Check the overall current status of Visier's systems
 
         Check the current overall status of Visier's systems.   The overall status is one of:  * ``UP`` : All systems are operational.  * `DOWN`: At least one system is not fully operational.
@@ -358,7 +358,7 @@ class SystemStatusApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SystemstatusPublicapiTransfersSystemStatusDTO",
+            '200': "SystemstatusSystemStatusDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -388,7 +388,7 @@ class SystemStatusApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SystemstatusPublicapiTransfersSystemStatusDTO]:
+    ) -> ApiResponse[SystemstatusSystemStatusDTO]:
         """Check the overall current status of Visier's systems
 
         Check the current overall status of Visier's systems.   The overall status is one of:  * ``UP`` : All systems are operational.  * `DOWN`: At least one system is not fully operational.
@@ -426,7 +426,7 @@ class SystemStatusApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SystemstatusPublicapiTransfersSystemStatusDTO",
+            '200': "SystemstatusSystemStatusDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -494,7 +494,7 @@ class SystemStatusApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SystemstatusPublicapiTransfersSystemStatusDTO",
+            '200': "SystemstatusSystemStatusDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

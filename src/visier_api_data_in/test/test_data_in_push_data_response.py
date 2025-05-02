@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1793
+    The version of the OpenAPI document: 22222222.99201.1880
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,24 +36,24 @@ class TestDataInPushDataResponse(unittest.TestCase):
 
         if include_optional:
             return DataInPushDataResponse(
-                message = '',
+                transfer_session_id = '',
                 sequence = 56,
                 status = '',
+                message = '',
                 tenants = [
                     visier_api_data_in.models.data_in/tenant.data_in.Tenant(
+                        tenant_code = '', 
+                        status = '', 
                         sources = [
                             visier_api_data_in.models.data_in/source.data_in.Source(
-                                data_size = '', 
-                                message = '', 
-                                rows = '', 
                                 source_id = '', 
                                 source_name = '', 
-                                status = '', )
-                            ], 
-                        status = '', 
-                        tenant_code = '', )
-                    ],
-                transfer_session_id = ''
+                                data_size = '', 
+                                rows = '', 
+                                status = '', 
+                                message = '', )
+                            ], )
+                    ]
             )
         else:
             return DataInPushDataResponse(
