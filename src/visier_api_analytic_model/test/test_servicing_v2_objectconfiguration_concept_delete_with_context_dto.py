@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1880
+    The version of the OpenAPI document: 22222222.99201.1892
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -39,7 +39,7 @@ class TestServicingV2ObjectconfigurationConceptDeleteWithContextDTO(unittest.Tes
                 execution_context = visier_api_analytic_model.models.servicing/v2/objectconfiguration/execution_context_dto.servicing.v2.objectconfiguration.ExecutionContextDTO(
                     tenant_code = '', 
                     project_id = '', ),
-                concept = visier_api_analytic_model.models.servicing/v2/objectconfiguration/concept_delete_dto.servicing.v2.objectconfiguration.ConceptDeleteDTO(
+                concept = visier_api_analytic_model.models.servicing/v2/objectconfiguration/object_id_dto.servicing.v2.objectconfiguration.ObjectIdDTO(
                     uuid = '', 
                     object_name = '', )
             )

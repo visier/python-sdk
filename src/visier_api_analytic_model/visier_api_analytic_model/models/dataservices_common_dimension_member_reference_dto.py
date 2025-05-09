@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1880
+    The version of the OpenAPI document: 22222222.99201.1892
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -29,7 +29,7 @@ class DataservicesCommonDimensionMemberReferenceDTO(BaseModel):
     The members of a dimension.
     """ # noqa: E501
     path: Optional[List[StrictStr]] = Field(default=None, description="A list of strings representing the members within a dimension path. For example, a dimension for Location  may have the paths \"Canada, BC, Vancouver\" and \"US, California, San Francisco\".")
-    member_id: Optional[StrictStr] = Field(default=None, description="*  The unique ID of the member. This can be used if the dimension member does not have a path. e.g. SD groups", alias="memberId")
+    member_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the dimension member. Use `memberId` if the dimension member doesn't have a path, such as SD groups.", alias="memberId")
     __properties: ClassVar[List[str]] = ["path", "memberId"]
 
     model_config = ConfigDict(

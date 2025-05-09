@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1880
+    The version of the OpenAPI document: 22222222.99201.1892
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,8 +21,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_api_analytic_model.models.servicing_v2_objectconfiguration_concept_delete_dto import ServicingV2ObjectconfigurationConceptDeleteDTO
 from visier_api_analytic_model.models.servicing_v2_objectconfiguration_execution_context_dto import ServicingV2ObjectconfigurationExecutionContextDTO
+from visier_api_analytic_model.models.servicing_v2_objectconfiguration_object_id_dto import ServicingV2ObjectconfigurationObjectIdDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,7 +31,7 @@ class ServicingV2ObjectconfigurationConceptDeleteWithContextDTO(BaseModel):
     Information about the concept to delete and the context of the API request, such as the tenant code and project ID.
     """ # noqa: E501
     execution_context: Optional[ServicingV2ObjectconfigurationExecutionContextDTO] = Field(default=None, description="The context of the API request, such as the tenant code and project ID.", alias="executionContext")
-    concept: Optional[ServicingV2ObjectconfigurationConceptDeleteDTO] = Field(default=None, description="Information identifying the concept to delete.")
+    concept: Optional[ServicingV2ObjectconfigurationObjectIdDTO] = Field(default=None, description="Information identifying the concept to delete.")
     __properties: ClassVar[List[str]] = ["executionContext", "concept"]
 
     model_config = ConfigDict(
@@ -92,7 +92,7 @@ class ServicingV2ObjectconfigurationConceptDeleteWithContextDTO(BaseModel):
 
         _obj = cls.model_validate({
             "executionContext": ServicingV2ObjectconfigurationExecutionContextDTO.from_dict(obj["executionContext"]) if obj.get("executionContext") is not None else None,
-            "concept": ServicingV2ObjectconfigurationConceptDeleteDTO.from_dict(obj["concept"]) if obj.get("concept") is not None else None
+            "concept": ServicingV2ObjectconfigurationObjectIdDTO.from_dict(obj["concept"]) if obj.get("concept") is not None else None
         })
         return _obj
 

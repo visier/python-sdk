@@ -6,7 +6,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1880
+    The version of the OpenAPI document: 22222222.99201.1892
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -56,6 +56,7 @@ from visier_api_administration.models.admin_target_project_for_tenants_list_dto 
 from visier_api_administration.models.admin_tenant_assignments_dto import AdminTenantAssignmentsDTO
 from visier_api_administration.models.admin_tenant_code_body import AdminTenantCodeBody
 from visier_api_administration.models.admin_tenant_detail_apidto import AdminTenantDetailAPIDTO
+from visier_api_administration.models.admin_tenant_details_traits_dto import AdminTenantDetailsTraitsDTO
 from visier_api_administration.models.admin_tenant_management_api_get_response_dto import AdminTenantManagementAPIGetResponseDTO
 from visier_api_administration.models.admin_tenant_management_api_list_response_dto import AdminTenantManagementAPIListResponseDTO
 from visier_api_administration.models.admin_tenant_management_api_update_request_dto import AdminTenantManagementAPIUpdateRequestDTO

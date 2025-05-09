@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1880
+    The version of the OpenAPI document: 22222222.99201.1892
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -117,8 +117,8 @@ class DesignerDataProviderAuthParamsDTO(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['Bamboo', 'GoogleSheets', 'Greenhouse', 'Jira', 'Lever', 'Namely', 'Qualtrics', 'Salesforce', 'UKG', 'Workday', 'Icims', 'ServiceNow', 'Jdbc', 'BasicS3', 'InternalS3', 'CopyS3', 'Redshift', 'Snowflake', 'BigQuery', 'SqlServer', 'Dimensions', 'IcimsPartnerProviderRedshift', 'Willow', 'SuccessFactors', 'IcimsV2', 'ADP', 'WorkdayV2', 'ServiceNowV2', 'Medallia', 'Fusion', 'SalesforceV2', 'Gong', 'Zoom', 'GoogleCalendar', 'UKGV2', 'DayforceV2', 'GoogleActivityReport', 'Slack', 'MySql', 'WorkdayRaas', 'Microsoft365', 'GoogleWorkspace', 'OracleDb', 'SmartRecruiters', 'WorkdayWQL', 'OEMCornerstone', 'Databricks']):
-            raise ValueError("must be one of enum values ('Bamboo', 'GoogleSheets', 'Greenhouse', 'Jira', 'Lever', 'Namely', 'Qualtrics', 'Salesforce', 'UKG', 'Workday', 'Icims', 'ServiceNow', 'Jdbc', 'BasicS3', 'InternalS3', 'CopyS3', 'Redshift', 'Snowflake', 'BigQuery', 'SqlServer', 'Dimensions', 'IcimsPartnerProviderRedshift', 'Willow', 'SuccessFactors', 'IcimsV2', 'ADP', 'WorkdayV2', 'ServiceNowV2', 'Medallia', 'Fusion', 'SalesforceV2', 'Gong', 'Zoom', 'GoogleCalendar', 'UKGV2', 'DayforceV2', 'GoogleActivityReport', 'Slack', 'MySql', 'WorkdayRaas', 'Microsoft365', 'GoogleWorkspace', 'OracleDb', 'SmartRecruiters', 'WorkdayWQL', 'OEMCornerstone', 'Databricks')")
+        if value not in set(['Bamboo', 'GoogleSheets', 'Greenhouse', 'Jira', 'Lever', 'Namely', 'Qualtrics', 'Salesforce', 'UKG', 'Workday', 'Icims', 'ServiceNow', 'Jdbc', 'BasicS3', 'InternalS3', 'CopyS3', 'Redshift', 'Snowflake', 'BigQuery', 'SqlServer', 'Dimensions', 'IcimsPartnerProviderRedshift', 'Willow', 'SuccessFactors', 'IcimsV2', 'ADP', 'WorkdayV2', 'ServiceNowV2', 'Medallia', 'Fusion', 'SalesforceV2', 'Gong', 'Zoom', 'GoogleCalendar', 'UKGV2', 'DayforceV2', 'GoogleActivityReport', 'Slack', 'MySql', 'WorkdayRaas', 'Microsoft365', 'GoogleWorkspace', 'OracleDb', 'SmartRecruiters', 'WorkdayWQL', 'OEMCornerstone', 'Databricks', 'JiraV2']):
+            raise ValueError("must be one of enum values ('Bamboo', 'GoogleSheets', 'Greenhouse', 'Jira', 'Lever', 'Namely', 'Qualtrics', 'Salesforce', 'UKG', 'Workday', 'Icims', 'ServiceNow', 'Jdbc', 'BasicS3', 'InternalS3', 'CopyS3', 'Redshift', 'Snowflake', 'BigQuery', 'SqlServer', 'Dimensions', 'IcimsPartnerProviderRedshift', 'Willow', 'SuccessFactors', 'IcimsV2', 'ADP', 'WorkdayV2', 'ServiceNowV2', 'Medallia', 'Fusion', 'SalesforceV2', 'Gong', 'Zoom', 'GoogleCalendar', 'UKGV2', 'DayforceV2', 'GoogleActivityReport', 'Slack', 'MySql', 'WorkdayRaas', 'Microsoft365', 'GoogleWorkspace', 'OracleDb', 'SmartRecruiters', 'WorkdayWQL', 'OEMCornerstone', 'Databricks', 'JiraV2')")
         return value
 
     @field_validator('auth_context')
