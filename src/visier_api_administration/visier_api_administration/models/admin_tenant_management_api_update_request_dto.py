@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1880
+    The version of the OpenAPI document: 22222222.99201.1892
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -24,6 +24,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from visier_api_administration.models.admin_business_location_dto import AdminBusinessLocationDTO
 from visier_api_administration.models.admin_custom_property_dto import AdminCustomPropertyDTO
 from visier_api_administration.models.admin_home_analysis_by_user_group_dto import AdminHomeAnalysisByUserGroupDTO
+from visier_api_administration.models.admin_tenant_details_traits_dto import AdminTenantDetailsTraitsDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -48,7 +49,8 @@ class AdminTenantManagementAPIUpdateRequestDTO(BaseModel):
     click_through_link: Optional[StrictStr] = Field(default=None, description="A custom URL to redirect users into your portal to see the relevant content. This URL is used for links that are shared by and with your users through the sharing capability or email content. This is optional. Causes the API request to take longer because it must publish a project to production.", alias="clickThroughLink")
     default_currency: Optional[StrictStr] = Field(default=None, description="The default currency to show in the application for the tenant.", alias="defaultCurrency")
     allowed_o_auth_idp_url_domains: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the URLs, or domains, that are allowed in the idp_url OAuth parameter. This is optional.", alias="allowedOAuthIdpUrlDomains")
-    __properties: ClassVar[List[str]] = ["tenantCode", "tenantDisplayName", "tenantShortName", "vanityUrlName", "industryCode", "primaryBusinessLocation", "purchasedModules", "embeddableDomains", "customProperties", "ssoInstanceIssuers", "homeAnalysisId", "homeAnalysisByUserGroup", "updateAction", "enabled", "clickThroughLink", "defaultCurrency", "allowedOAuthIdpUrlDomains"]
+    traits: Optional[AdminTenantDetailsTraitsDTO] = Field(default=None, description="The tenant's traits, including aggregation rights, tenant type, and data profile type.")
+    __properties: ClassVar[List[str]] = ["tenantCode", "tenantDisplayName", "tenantShortName", "vanityUrlName", "industryCode", "primaryBusinessLocation", "purchasedModules", "embeddableDomains", "customProperties", "ssoInstanceIssuers", "homeAnalysisId", "homeAnalysisByUserGroup", "updateAction", "enabled", "clickThroughLink", "defaultCurrency", "allowedOAuthIdpUrlDomains", "traits"]
 
     @field_validator('update_action')
     def update_action_validate_enum(cls, value):
@@ -116,6 +118,9 @@ class AdminTenantManagementAPIUpdateRequestDTO(BaseModel):
                 if _item_home_analysis_by_user_group:
                     _items.append(_item_home_analysis_by_user_group.to_dict())
             _dict['homeAnalysisByUserGroup'] = _items
+        # override the default output from pydantic by calling `to_dict()` of traits
+        if self.traits:
+            _dict['traits'] = self.traits.to_dict()
         return _dict
 
     @classmethod
@@ -144,7 +149,8 @@ class AdminTenantManagementAPIUpdateRequestDTO(BaseModel):
             "enabled": obj.get("enabled"),
             "clickThroughLink": obj.get("clickThroughLink"),
             "defaultCurrency": obj.get("defaultCurrency"),
-            "allowedOAuthIdpUrlDomains": obj.get("allowedOAuthIdpUrlDomains")
+            "allowedOAuthIdpUrlDomains": obj.get("allowedOAuthIdpUrlDomains"),
+            "traits": AdminTenantDetailsTraitsDTO.from_dict(obj["traits"]) if obj.get("traits") is not None else None
         })
         return _obj
 

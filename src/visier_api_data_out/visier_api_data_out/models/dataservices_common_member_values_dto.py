@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1880
+    The version of the OpenAPI document: 22222222.99201.1892
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -27,7 +27,7 @@ from typing_extensions import Self
 
 class DataservicesCommonMemberValuesDTO(BaseModel):
     """
-    Member filter values are discrete member references in a dimension filter. You can define  included and excluded members simultaneously. This is typically done with filtering applied on  dimensions with multiple levels. For example, a Location parameter may include “South  America” and exclude “Brazil” which results in the metric being evaluated for all South American  countries except Brazil.
+    Member filter values are discrete member references in a dimension filter. You can define  included and excluded members simultaneously. This is typically done with filtering applied on  dimensions with multiple levels. For example, a Location parameter may include \"South  America\" and exclude \"Brazil\" which results in the metric being evaluated for all South American  countries except Brazil.
     """ # noqa: E501
     included: Optional[List[DataservicesCommonDimensionMemberReferenceDTO]] = Field(default=None, description="The unique IDs of members to include when evaluating the metric.")
     excluded: Optional[List[DataservicesCommonDimensionMemberReferenceDTO]] = Field(default=None, description="The unique IDs of members to exclude when evaluating the metric.")

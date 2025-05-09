@@ -5,7 +5,7 @@
 
     Visier APIs for sending data to Visier and running data load jobs.
 
-    The version of the OpenAPI document: 22222222.99201.1880
+    The version of the OpenAPI document: 22222222.99201.1892
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -49,7 +49,7 @@ class AdminJobsExtractDataAndLoadDTO(BaseModel):
     last_extraction_time_offset_mode: Optional[StrictStr] = Field(default=None, description="The mode used to offset the last extraction time (weeks vs months)", alias="lastExtractionTimeOffsetMode")
     offset_week_option: Optional[StrictStr] = Field(default=None, description="The week options used to offset the last extraction time (first of day / last of day)", alias="offsetWeekOption")
     offset_month_option: Optional[StrictStr] = Field(default=None, description="The month options used to offset the last extraction time (first of month / last of month)", alias="offsetMonthOption")
-    credential_id: Optional[StrictStr] = Field(default=None, alias="credentialId")
+    credential_id: Optional[StrictStr] = Field(default=None, description="If running a job for the Databricks connector, specify the unique identifier of the connector credentials to use.", alias="credentialId")
     __properties: ClassVar[List[str]] = ["tenants", "allTenants", "overrideLastExtractionTimestamp", "publishDataLoadArtifacts", "runProcessingJob", "dataCategoryId", "disableArtifactGeneration", "connectorIds", "lastExtractionTimeOffsetWeeks", "monthsToExtract", "extractToTimeOverride", "batchSizeOverride", "sqlBatchSize", "forceUpdateExistingArtifacts", "excludedTenants", "spillDebugInfoPartitionsDTO", "spillDebugInfoDetailLevelDTO", "lastExtractionTimeOffsetMonths", "lastExtractionTimeOffsetMode", "offsetWeekOption", "offsetMonthOption", "credentialId"]
 
     @field_validator('spill_debug_info_partitions_dto')

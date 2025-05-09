@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1880
+    The version of the OpenAPI document: 22222222.99201.1892
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -24,6 +24,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from visier_api_administration.models.admin_business_location_dto import AdminBusinessLocationDTO
 from visier_api_administration.models.admin_custom_property_dto import AdminCustomPropertyDTO
 from visier_api_administration.models.admin_home_analysis_by_user_group_dto import AdminHomeAnalysisByUserGroupDTO
+from visier_api_administration.models.admin_tenant_details_traits_dto import AdminTenantDetailsTraitsDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -51,9 +52,10 @@ class AdminTenantManagementAPIGetResponseDTO(BaseModel):
     click_through_link_enabled: Optional[StrictStr] = Field(default=None, description="Whether the click-through link is enabled or disabled.", alias="clickThroughLinkEnabled")
     default_currency: Optional[StrictStr] = Field(default=None, description="The default currency to show in the application for the tenant.", alias="defaultCurrency")
     allowed_o_auth_idp_url_domains: Optional[List[StrictStr]] = Field(default=None, description="A comma-separated list of strings that represent the URLs, or domains, that are allowed in the idp_url OAuth parameter.", alias="allowedOAuthIdpUrlDomains")
-    effective_industry_code: Optional[StrictInt] = Field(default=None, description="The effective 2-6 digit NAICS code for the industry to which the analytic tenant belongs. If undefined, it is omitted from the response.", alias="effectiveIndustryCode")
-    company_size: Optional[StrictInt] = Field(default=None, description="The determined company size for the analytic tenant. If undefined, it is omitted from the response.", alias="companySize")
-    __properties: ClassVar[List[str]] = ["tenantCode", "tenantDisplayName", "status", "provisionDate", "currentDataVersion", "dataVersionDate", "purchasedModules", "industryCode", "primaryBusinessLocation", "canAdministerOtherTenants", "embeddableDomains", "customProperties", "ssoInstanceIssuers", "vanityUrlName", "homeAnalysisId", "homeAnalysisByUserGroup", "clickThroughLink", "clickThroughLinkEnabled", "defaultCurrency", "allowedOAuthIdpUrlDomains", "effectiveIndustryCode", "companySize"]
+    effective_industry_code: Optional[StrictInt] = Field(default=None, description="The 6-digit NAICS code for the industry to which the analytic tenant belongs. This is calculated from industry codes in the tenant's data if the tenant has business unit data. Not returned if the effective industry code cannot be calculated.", alias="effectiveIndustryCode")
+    company_size: Optional[StrictInt] = Field(default=None, description="The latest headcount value for the analytic tenant. Not returned if no headcount data is available.", alias="companySize")
+    traits: Optional[AdminTenantDetailsTraitsDTO] = Field(default=None, description="The tenant's traits, including aggregation rights, tenant type, and data profile type.")
+    __properties: ClassVar[List[str]] = ["tenantCode", "tenantDisplayName", "status", "provisionDate", "currentDataVersion", "dataVersionDate", "purchasedModules", "industryCode", "primaryBusinessLocation", "canAdministerOtherTenants", "embeddableDomains", "customProperties", "ssoInstanceIssuers", "vanityUrlName", "homeAnalysisId", "homeAnalysisByUserGroup", "clickThroughLink", "clickThroughLinkEnabled", "defaultCurrency", "allowedOAuthIdpUrlDomains", "effectiveIndustryCode", "companySize", "traits"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -111,6 +113,9 @@ class AdminTenantManagementAPIGetResponseDTO(BaseModel):
                 if _item_home_analysis_by_user_group:
                     _items.append(_item_home_analysis_by_user_group.to_dict())
             _dict['homeAnalysisByUserGroup'] = _items
+        # override the default output from pydantic by calling `to_dict()` of traits
+        if self.traits:
+            _dict['traits'] = self.traits.to_dict()
         return _dict
 
     @classmethod
@@ -144,7 +149,8 @@ class AdminTenantManagementAPIGetResponseDTO(BaseModel):
             "defaultCurrency": obj.get("defaultCurrency"),
             "allowedOAuthIdpUrlDomains": obj.get("allowedOAuthIdpUrlDomains"),
             "effectiveIndustryCode": obj.get("effectiveIndustryCode"),
-            "companySize": obj.get("companySize")
+            "companySize": obj.get("companySize"),
+            "traits": AdminTenantDetailsTraitsDTO.from_dict(obj["traits"]) if obj.get("traits") is not None else None
         })
         return _obj
 

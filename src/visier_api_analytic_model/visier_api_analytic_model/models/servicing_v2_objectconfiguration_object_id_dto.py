@@ -5,7 +5,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1880
+    The version of the OpenAPI document: 22222222.99201.1892
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -24,12 +24,12 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ServicingV2ObjectconfigurationConceptDeleteDTO(BaseModel):
+class ServicingV2ObjectconfigurationObjectIdDTO(BaseModel):
     """
-    The concepts to delete.
+    The identifier for the object.
     """ # noqa: E501
-    uuid: Optional[StrictStr] = Field(default=None, description="The UUID identifying the concept.")
-    object_name: Optional[StrictStr] = Field(default=None, description="The object name of the concept.", alias="objectName")
+    uuid: Optional[StrictStr] = Field(default=None, description="The UUID identifying the object.")
+    object_name: Optional[StrictStr] = Field(default=None, description="The object name of the object.", alias="objectName")
     __properties: ClassVar[List[str]] = ["uuid", "objectName"]
 
     model_config = ConfigDict(
@@ -50,7 +50,7 @@ class ServicingV2ObjectconfigurationConceptDeleteDTO(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ServicingV2ObjectconfigurationConceptDeleteDTO from a JSON string"""
+        """Create an instance of ServicingV2ObjectconfigurationObjectIdDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,7 +75,7 @@ class ServicingV2ObjectconfigurationConceptDeleteDTO(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ServicingV2ObjectconfigurationConceptDeleteDTO from a dict"""
+        """Create an instance of ServicingV2ObjectconfigurationObjectIdDTO from a dict"""
         if obj is None:
             return None
 
