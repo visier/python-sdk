@@ -7,7 +7,7 @@
 
     Visier APIs for retrieving and configuring your analytic model in Visier.
 
-    The version of the OpenAPI document: 22222222.99201.1892
+    The version of the OpenAPI document: 22222222.99201.1905
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "22222222.99201.1892"
+__version__ = "22222222.99201.1905"
 
 # import apis into sdk package
 from visier_api_analytic_model.api.concepts_v2_api import ConceptsV2Api
