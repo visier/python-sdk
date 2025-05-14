@@ -5,7 +5,7 @@
 
     Visier APIs for authenticating with Visier. To use Visier's public APIs, you must first authenticate yourself as a Visier user who is allowed to use Visier APIs.
 
-    The version of the OpenAPI document: 22222222.99201.1892
+    The version of the OpenAPI document: 22222222.99201.1905
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -478,8 +478,8 @@ class Configuration:
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: 22222222.99201.1892\n"\
-               "SDK Package Version: 22222222.99201.1892".\
+               "Version of the API: 22222222.99201.1905\n"\
+               "SDK Package Version: 22222222.99201.1905".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
