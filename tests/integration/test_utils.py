@@ -3,7 +3,7 @@ import os
 import dotenv
 from dotenv import load_dotenv
 
-from visier_api_core import Configuration, ApiClient
+from visier_platform_sdk import Configuration, ApiClient
 
 
 def create_api(api_class, env_file_path=None):
@@ -14,5 +14,5 @@ def create_api(api_class, env_file_path=None):
     return api_class(api_client)
 
 
-load_dotenv(dotenv_path='../.env')
+load_dotenv()
 TENANT_CODE = os.getenv('VISIER_TENANT_CODE')
