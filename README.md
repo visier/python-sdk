@@ -111,7 +111,7 @@ The `ApiClient` object is created using the default configuration object. The de
 
 ```python
 from dotenv import dotenv_values
-from visier_platform_sdk import Configuration, ApiClient, DataIntakeApi
+from visier_platform_sdk import Configuration, ApiClient, DataUploadApi
 
 config_dict = dotenv_values(".env")
 config = Configuration.from_dict(config_dict)
@@ -119,13 +119,13 @@ Configuration.set_default(config)
 
 # The `ApiClient` object is created using the default `Configuration` object.
 api_client = ApiClient()
-data_intake_api = DataIntakeApi(api_client)
+data_intake_api = DataUploadApi(api_client)
 
 # You can set the default `ApiClient` using the `ApiClient.set_default` method.
 ApiClient.set_default(ApiClient(config))
 
 # The default `ApiClient` object is used to create API objects implicitly.
-data_intake_api = DataIntakeApi()
+data_intake_api = DataUploadApi()
 ```
 
 The API response is returned in DTO format, ApiResponse, or RESTResponseType respectively.
