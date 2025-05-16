@@ -14,5 +14,5 @@ def create_api(api_class, env_file_path=None):
     return api_class(api_client)
 
 
-load_dotenv(dotenv_path='../.env')
+load_dotenv()
 TENANT_CODE = os.getenv('VISIER_TENANT_CODE')

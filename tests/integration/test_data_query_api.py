@@ -2,12 +2,16 @@ import os
 import unittest
 
 from test_utils import create_api
-from visier_platform_sdk import DataQueryApi, DataservicesQueryListQueryExecutionDTO, DataservicesQueryAggregationQueryExecutionDTO, \
-    DataservicesQuerySnapshotQueryExecutionDTO, DataservicesQuerySqlLikeQueryExecutionDTO, DataservicesQueryCellSetDTO, TableResponseDTO
+from visier_platform_sdk import DataQueryApi, DataservicesQueryListQueryExecutionDTO, \
+    DataservicesQueryAggregationQueryExecutionDTO, \
+    DataservicesQuerySnapshotQueryExecutionDTO, DataservicesQuerySqlLikeQueryExecutionDTO, DataservicesQueryCellSetDTO, \
+    TableResponseDTO
+
+QUERY_PATH = 'data/queries'
 
 
 def get_query_content(file_name):
-    file_path = os.path.join('queries', file_name)
+    file_path = os.path.join(QUERY_PATH, file_name)
     with open(file_path, 'r') as file:
         return file.read()
 
