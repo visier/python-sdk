@@ -3,8 +3,7 @@ import unittest
 import zipfile
 
 from test_utils import create_api
-from visier_api_administration import SourcesAPIPutResponseDTO, SourcesAPIOperationRequestDTO
-from visier_api_administration.api.sources_api import SourcesApi
+from visier_platform_sdk import SourcesApi, ServicingSourcesAPIOperationRequestDTO, SourcesAPIPutResponseDTO
 
 
 class TestSourcesApi(unittest.TestCase):
@@ -17,7 +16,7 @@ class TestSourcesApi(unittest.TestCase):
         pass
 
     def test_get_sources(self) -> None:
-        operation_request_dto = SourcesAPIOperationRequestDTO(
+        operation_request_dto = ServicingSourcesAPIOperationRequestDTO(
             operation='exportSources'
         )
 

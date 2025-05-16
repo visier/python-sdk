@@ -1,8 +1,7 @@
 import unittest
 
 from test_utils import create_api
-from visier_api_core import ApiException
-from visier_api_data_in.api.direct_data_intake_api import DirectDataIntakeApi
+from visier_platform_sdk import ApiException, DirectDataIntakeApi
 
 SUCCEEDED = 'SUCCEEDED'
 

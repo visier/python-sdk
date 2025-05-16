@@ -1,8 +1,7 @@
 import unittest
 
 from test_utils import create_api
-from visier_api_administration import ProductionVersionAPIOperationRequestDTO
-from visier_api_administration.api.production_versions_api import ProductionVersionsApi
+from visier_platform_sdk import ProductionVersionsApi, ServicingProductionVersionAPIOperationRequestDTO
 
 
 class TestProductionVersionsApi(unittest.TestCase):
@@ -27,7 +26,7 @@ class TestProductionVersionsApi(unittest.TestCase):
         self.assertIsNotNone(versions_response_dto.published_versions)
         self.assertGreater(len(versions_response_dto.published_versions), 1)
 
-        operation_request_dto = ProductionVersionAPIOperationRequestDTO(
+        operation_request_dto = ServicingProductionVersionAPIOperationRequestDTO(
             operation='rollBackTo'
         )
         operation_response_dto = self.api.post_production_version(versions_response_dto.published_versions[1].id,

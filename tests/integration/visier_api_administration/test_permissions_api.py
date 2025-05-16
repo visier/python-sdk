@@ -1,7 +1,7 @@
 import unittest
 
 from test_utils import create_api, TENANT_CODE
-from visier_api_administration.api.permissions_api import PermissionsApi
+from visier_platform_sdk import PermissionsApi
 
 
 class TestPermissionsApi(unittest.TestCase):

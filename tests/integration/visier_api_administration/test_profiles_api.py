@@ -1,7 +1,7 @@
 import unittest
 
 from test_utils import create_api
-from visier_api_administration.api.profiles_api import ProfilesApi
+from visier_platform_sdk import ProfilesApi
 
 
 class TestProfilesApi(unittest.TestCase):
