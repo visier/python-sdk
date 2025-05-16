@@ -23,7 +23,7 @@ jobs:
     strategy:
       matrix:
         package_folder:
-          - visier_api
+          - visier_platform_sdk
     steps:
       - name: Check out code
         uses: actions/checkout@v4
