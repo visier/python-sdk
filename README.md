@@ -6,8 +6,8 @@ Welcome to the Visier Platform Python SDK! This SDK provides a convenient way to
 - This SDK supports Python 3.9 and above.
 
 ## Overview
-For detailed information about Visier APIs, see [Visier APIs](https://docs.visier.com/developer/apis/apis.htm).
-For APIs specification, see are divided into collections [Visier API Reference](https://docs.visier.com/developer/apis/references/api-reference.htm).
+For detailed information about Visier APIs, see [Visier APIs](https://docs.visier.com/developer/Default.htm#cshid=1007).
+For APIs specification, see are divided into collections [Visier API Reference](https://docs.visier.com/developer/Default.htm#cshid=1051).
 
 The Visier Platform Python SDK is a single `visier-platform-sdk` package that provides access to all Visier API collections.
 
