@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1905
+    The version of the OpenAPI document: 22222222.99201.1906
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -32,7 +32,7 @@ class DataservicesQueryListQueryExecutionOptionsDTO(BaseModel):
     query_mode: Optional[StrictStr] = Field(default=None, description="Determines how the query should handle column definitions that the query is unable to resolve. Default is DEFAULT.", alias="queryMode")
     omit_header: Optional[StrictBool] = Field(default=None, description="Option to omit the header from the result.  If true, queryMode must be either FILL or FAIL.  Default is false.", alias="omitHeader")
     calendar_type: Optional[StrictStr] = Field(default=None, description="The calendar type to use. This will be used for all time calculations unless explicitly overridden in  the calculation itself. Default is TENANT_CALENDAR.", alias="calendarType")
-    currency_conversion_mode: Optional[StrictStr] = Field(default=None, description="This option is deprecated. Use `currencyConversionCode` instead.", alias="currencyConversionMode")
+    currency_conversion_mode: Optional[StrictStr] = Field(default=None, description="This will be removed as of Winter 2026. Use `currencyConversionCode` instead.   The currency conversion mode to use. This will be used for all currency conversion calculations unless explicitly overridden in the calculation itself. Default is TENANT_CURRENCY_CONVERSION.", alias="currencyConversionMode")
     currency_conversion_date: Optional[StrictStr] = Field(default=None, description="The currency conversion date to use. If defined, the currency conversion will use the exchange rates as of this date.", alias="currencyConversionDate")
     page: Optional[StrictInt] = Field(default=None, description="A page defines a subset of the overall result set. The number of rows per page is equal to limit  with the exception of the last page in the result set which may contain fewer rows. `Page` is an index  that begins at 0. The index to start retrieving results is calculated by multiplying `page` by `limit`.")
     multiple_tables: Optional[StrictBool] = Field(default=None, description="Option to return multiple table files as zipped archive for derived metrics.  Default is false. If false, one table is returned for the drill-through metric.", alias="multipleTables")

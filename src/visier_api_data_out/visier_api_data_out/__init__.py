@@ -7,7 +7,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1905
+    The version of the OpenAPI document: 22222222.99201.1906
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -16,7 +16,7 @@
 """  # noqa: E501
 
 
-__version__ = "22222222.99201.1905"
+__version__ = "22222222.99201.1906"
 
 # import apis into sdk package
 from visier_api_data_out.api.data_query_api import DataQueryApi
@@ -33,6 +33,7 @@ from visier_api_data_out.models.analysis_common_report_dto import AnalysisCommon
 from visier_api_data_out.models.analysis_common_report_delete_success_dto import AnalysisCommonReportDeleteSuccessDTO
 from visier_api_data_out.models.analysis_common_report_list_response_dto import AnalysisCommonReportListResponseDTO
 from visier_api_data_out.models.analysis_common_vee_clarification_dto import AnalysisCommonVeeClarificationDTO
+from visier_api_data_out.models.analysis_common_vee_conversation_dto import AnalysisCommonVeeConversationDTO
 from visier_api_data_out.models.analysis_common_vee_conversation_state_dto import AnalysisCommonVeeConversationStateDTO
 from visier_api_data_out.models.analysis_common_vee_corrections_dto import AnalysisCommonVeeCorrectionsDTO
 from visier_api_data_out.models.analysis_common_vee_data_dto import AnalysisCommonVeeDataDTO

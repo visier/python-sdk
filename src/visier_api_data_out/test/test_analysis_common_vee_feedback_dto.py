@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1905
+    The version of the OpenAPI document: 22222222.99201.1906
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -36,40 +36,8 @@ class TestAnalysisCommonVeeFeedbackDTO(unittest.TestCase):
 
         if include_optional:
             return AnalysisCommonVeeFeedbackDTO(
-                response = visier_api_data_out.models.analysis/common/vee_response_dto.analysis.common.VeeResponseDTO(
-                    conversation_state = None, 
-                    status_code = None, 
-                    narrative = '', 
-                    chart_url = '', 
-                    schema = None, 
-                    corrections = [
-                        visier_api_data_out.models.analysis/common/vee_corrections_dto.analysis.common.VeeCorrectionsDTO(
-                            warning = [
-                                'VEE_NO_WARNING'
-                                ], 
-                            clarifications = [
-                                visier_api_data_out.models.analysis/common/vee_clarification_dto.analysis.common.VeeClarificationDTO(
-                                    message = '', 
-                                    questions = [
-                                        ''
-                                        ], 
-                                    metrics = [
-                                        ''
-                                        ], 
-                                    dimensions = [
-                                        ''
-                                        ], 
-                                    filters = [
-                                        ''
-                                        ], 
-                                    attributes = [
-                                        ''
-                                        ], )
-                                ], )
-                        ], 
-                    data = None, 
-                    visual = None, 
-                    reworded_question = '', ),
+                conversation = visier_api_data_out.models.analysis/common/vee_conversation_dto.analysis.common.VeeConversationDTO(
+                    conversation_state = None, ),
                 is_approved = True,
                 description = ''
             )
