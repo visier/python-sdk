@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1905
+    The version of the OpenAPI document: 22222222.99201.1906
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -64,7 +64,7 @@ class VeeApi:
     ) -> AnalysisCommonVeeStatusCodeDTO:
         """Submit Vee feedback
 
-        Give Vee feedback for a previous answer. To submit feedback, include:  * The response object from the `/question` response.  * A rating of Vee's answer. If `isApproved` is `true`, Vee answered the question correctly. If `isApproved` is `false`, Vee's answer was incorrect or lacked details.  * A description of how Vee should have answered the question or how Vee can improve the answer, such as \"Expected Headcount metric, but Vee returned Average Headcount\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Give Vee feedback for a previous answer. To submit feedback, include:  * The conversation details from the `/question` response.  * A rating of Vee's answer. If `isApproved` is `true`, Vee answered the question correctly. If `isApproved` is `false`, Vee's answer was incorrect or lacked details.  * A description of how Vee should have answered the question or how Vee can improve the answer, such as \"Expected Headcount metric, but Vee returned Average Headcount\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param analysis_common_vee_feedback_dto: (required)
         :type analysis_common_vee_feedback_dto: AnalysisCommonVeeFeedbackDTO
@@ -136,7 +136,7 @@ class VeeApi:
     ) -> ApiResponse[AnalysisCommonVeeStatusCodeDTO]:
         """Submit Vee feedback
 
-        Give Vee feedback for a previous answer. To submit feedback, include:  * The response object from the `/question` response.  * A rating of Vee's answer. If `isApproved` is `true`, Vee answered the question correctly. If `isApproved` is `false`, Vee's answer was incorrect or lacked details.  * A description of how Vee should have answered the question or how Vee can improve the answer, such as \"Expected Headcount metric, but Vee returned Average Headcount\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Give Vee feedback for a previous answer. To submit feedback, include:  * The conversation details from the `/question` response.  * A rating of Vee's answer. If `isApproved` is `true`, Vee answered the question correctly. If `isApproved` is `false`, Vee's answer was incorrect or lacked details.  * A description of how Vee should have answered the question or how Vee can improve the answer, such as \"Expected Headcount metric, but Vee returned Average Headcount\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param analysis_common_vee_feedback_dto: (required)
         :type analysis_common_vee_feedback_dto: AnalysisCommonVeeFeedbackDTO
@@ -208,7 +208,7 @@ class VeeApi:
     ) -> RESTResponseType:
         """Submit Vee feedback
 
-        Give Vee feedback for a previous answer. To submit feedback, include:  * The response object from the `/question` response.  * A rating of Vee's answer. If `isApproved` is `true`, Vee answered the question correctly. If `isApproved` is `false`, Vee's answer was incorrect or lacked details.  * A description of how Vee should have answered the question or how Vee can improve the answer, such as \"Expected Headcount metric, but Vee returned Average Headcount\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Give Vee feedback for a previous answer. To submit feedback, include:  * The conversation details from the `/question` response.  * A rating of Vee's answer. If `isApproved` is `true`, Vee answered the question correctly. If `isApproved` is `false`, Vee's answer was incorrect or lacked details.  * A description of how Vee should have answered the question or how Vee can improve the answer, such as \"Expected Headcount metric, but Vee returned Average Headcount\".   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param analysis_common_vee_feedback_dto: (required)
         :type analysis_common_vee_feedback_dto: AnalysisCommonVeeFeedbackDTO

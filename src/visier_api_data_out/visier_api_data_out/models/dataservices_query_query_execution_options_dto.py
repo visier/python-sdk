@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1905
+    The version of the OpenAPI document: 22222222.99201.1906
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -31,7 +31,7 @@ class DataservicesQueryQueryExecutionOptionsDTO(BaseModel):
     A QueryExecutionOptions provides additional instructions to perform a query.
     """ # noqa: E501
     calendar_type: Optional[StrictStr] = Field(default=None, description="The calendar type to use. This will be used for all time calculations unless explicitly overridden in  the calculation itself. Default is TENANT_CALENDAR.", alias="calendarType")
-    currency_conversion_mode: Optional[StrictStr] = Field(default=None, description="This option is deprecated. Use `currencyConversionCode` instead.", alias="currencyConversionMode")
+    currency_conversion_mode: Optional[StrictStr] = Field(default=None, description="This will be removed as of Winter 2026. Use `currencyConversionCode` instead.    The currency conversion mode to use. This will be used for all currency conversion calculations unless explicitly overridden in the calculation itself. Default is TENANT_CURRENCY_CONVERSION.", alias="currencyConversionMode")
     currency_conversion_date: Optional[StrictStr] = Field(default=None, description="The currency conversion date to use. If defined, the currency conversion will use the exchange rates as of this date.  Default is the exchange rate at the end of the query time interval. Format is the number of milliseconds since  midnight 01 January, 1970 UTC as a string. Note: Epochs are expressed as 64-bit integers and represented as  stringified longs in JSON due to JSON's inherent limitation in representing large numbers.", alias="currencyConversionDate")
     lineage_depth: Optional[StrictInt] = Field(default=None, description="The max number of levels of nesting to unwind when determining the lineage for a derived metric value.", alias="lineageDepth")
     zero_visibility: Optional[StrictStr] = Field(default=None, description="Show or hide zeros in the result. Default is SHOW.", alias="zeroVisibility")

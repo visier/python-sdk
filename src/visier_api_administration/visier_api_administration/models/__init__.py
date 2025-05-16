@@ -6,7 +6,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1905
+    The version of the OpenAPI document: 22222222.99201.1906
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -116,6 +116,7 @@ from visier_api_administration.models.servicing_assign_revoke_permissions_respon
 from visier_api_administration.models.servicing_bulk_data_access_set_response_dto import ServicingBulkDataAccessSetResponseDTO
 from visier_api_administration.models.servicing_capabilities_dto import ServicingCapabilitiesDTO
 from visier_api_administration.models.servicing_capability_dto import ServicingCapabilityDTO
+from visier_api_administration.models.servicing_clone_files_into_source_parameters_dto import ServicingCloneFilesIntoSourceParametersDTO
 from visier_api_administration.models.servicing_commit_and_publish_operation_response_dto import ServicingCommitAndPublishOperationResponseDTO
 from visier_api_administration.models.servicing_commit_dto import ServicingCommitDTO
 from visier_api_administration.models.servicing_content_package_dto import ServicingContentPackageDTO
@@ -125,6 +126,7 @@ from visier_api_administration.models.servicing_data_access_set_error_dto import
 from visier_api_administration.models.servicing_data_access_set_failure_dto import ServicingDataAccessSetFailureDTO
 from visier_api_administration.models.servicing_data_access_set_success_dto import ServicingDataAccessSetSuccessDTO
 from visier_api_administration.models.servicing_data_security_profile_dto import ServicingDataSecurityProfileDTO
+from visier_api_administration.models.servicing_date_range_dto import ServicingDateRangeDTO
 from visier_api_administration.models.servicing_delete_permissions_request_dto import ServicingDeletePermissionsRequestDTO
 from visier_api_administration.models.servicing_dimension_filter_dto import ServicingDimensionFilterDTO
 from visier_api_administration.models.servicing_dynamic_dimension_filter_dto import ServicingDynamicDimensionFilterDTO

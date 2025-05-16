@@ -5,7 +5,7 @@
 
     Visier APIs for getting data out of Visier, such as aggregate data and data version information.
 
-    The version of the OpenAPI document: 22222222.99201.1905
+    The version of the OpenAPI document: 22222222.99201.1906
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,7 +21,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_api_data_out.models.analysis_common_vee_response_dto import AnalysisCommonVeeResponseDTO
+from visier_api_data_out.models.analysis_common_vee_conversation_dto import AnalysisCommonVeeConversationDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,10 +29,10 @@ class AnalysisCommonVeeFeedbackDTO(BaseModel):
     """
     The request body fields to submit Vee feedback.
     """ # noqa: E501
-    response: Optional[AnalysisCommonVeeResponseDTO] = Field(default=None, description="Your feedback about Vee's answer. Include the response object from the `/question` call that you want to provide feedback about.")
+    conversation: Optional[AnalysisCommonVeeConversationDTO] = Field(default=None, description="Details of the Vee conversation you want to provide feedback about.")
     is_approved: Optional[StrictBool] = Field(default=None, description="If `true`, Vee answered the question correctly. If `false`, Vee's answer was incorrect or lacked details.", alias="isApproved")
     description: Optional[StrictStr] = Field(default=None, description="A description of how Vee should have answered the question or how Vee can improve the answer; for example, \"Expected Headcount metric, but Vee returned Average Headcount\".")
-    __properties: ClassVar[List[str]] = ["response", "isApproved", "description"]
+    __properties: ClassVar[List[str]] = ["conversation", "isApproved", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -73,9 +73,9 @@ class AnalysisCommonVeeFeedbackDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of response
-        if self.response:
-            _dict['response'] = self.response.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of conversation
+        if self.conversation:
+            _dict['conversation'] = self.conversation.to_dict()
         return _dict
 
     @classmethod
@@ -88,7 +88,7 @@ class AnalysisCommonVeeFeedbackDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "response": AnalysisCommonVeeResponseDTO.from_dict(obj["response"]) if obj.get("response") is not None else None,
+            "conversation": AnalysisCommonVeeConversationDTO.from_dict(obj["conversation"]) if obj.get("conversation") is not None else None,
             "isApproved": obj.get("isApproved"),
             "description": obj.get("description")
         })

@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1905
+    The version of the OpenAPI document: 22222222.99201.1906
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -2612,8 +2612,8 @@ class UsersV1Api:
     @validate_call
     def get_application_logs_xlsx(
         self,
-        start_time: Annotated[Optional[StrictStr], Field(description="An inclusive date-time to start retrieving Application Logs from.")] = None,
-        end_time: Annotated[Optional[StrictStr], Field(description="An exclusive date-time to stop retrieving Application Logs from.")] = None,
+        start_time: Annotated[Optional[StrictStr], Field(description="An inclusive date-time in milliseconds to start retrieving Application Logs from.")] = None,
+        end_time: Annotated[Optional[StrictStr], Field(description="An exclusive date-time in milliseconds to stop retrieving Application Logs from.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve Application Logs from.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -2633,9 +2633,9 @@ class UsersV1Api:
 
         This API allows you to export the Application Logs for a tenant. The Application Logs track information about your  users and how they are using the application. Performing regular audits will help you identify potential security  issues and keep your data safe. As part of user management, download the Application Logs to monitor user activity  and logon events to ensure your users are performing authorized activities.    Application logs are retained in the system for 180 days.   Administrating tenant users can export application logs for the administrating tenant and the analytic tenants  those users belong to.
 
-        :param start_time: An inclusive date-time to start retrieving Application Logs from.
+        :param start_time: An inclusive date-time in milliseconds to start retrieving Application Logs from.
         :type start_time: str
-        :param end_time: An exclusive date-time to stop retrieving Application Logs from.
+        :param end_time: An exclusive date-time in milliseconds to stop retrieving Application Logs from.
         :type end_time: str
         :param tenant_code: Specify the tenant to retrieve Application Logs from.
         :type tenant_code: str
@@ -2692,8 +2692,8 @@ class UsersV1Api:
     @validate_call
     def get_application_logs_xlsx_with_http_info(
         self,
-        start_time: Annotated[Optional[StrictStr], Field(description="An inclusive date-time to start retrieving Application Logs from.")] = None,
-        end_time: Annotated[Optional[StrictStr], Field(description="An exclusive date-time to stop retrieving Application Logs from.")] = None,
+        start_time: Annotated[Optional[StrictStr], Field(description="An inclusive date-time in milliseconds to start retrieving Application Logs from.")] = None,
+        end_time: Annotated[Optional[StrictStr], Field(description="An exclusive date-time in milliseconds to stop retrieving Application Logs from.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve Application Logs from.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -2713,9 +2713,9 @@ class UsersV1Api:
 
         This API allows you to export the Application Logs for a tenant. The Application Logs track information about your  users and how they are using the application. Performing regular audits will help you identify potential security  issues and keep your data safe. As part of user management, download the Application Logs to monitor user activity  and logon events to ensure your users are performing authorized activities.    Application logs are retained in the system for 180 days.   Administrating tenant users can export application logs for the administrating tenant and the analytic tenants  those users belong to.
 
-        :param start_time: An inclusive date-time to start retrieving Application Logs from.
+        :param start_time: An inclusive date-time in milliseconds to start retrieving Application Logs from.
         :type start_time: str
-        :param end_time: An exclusive date-time to stop retrieving Application Logs from.
+        :param end_time: An exclusive date-time in milliseconds to stop retrieving Application Logs from.
         :type end_time: str
         :param tenant_code: Specify the tenant to retrieve Application Logs from.
         :type tenant_code: str
@@ -2772,8 +2772,8 @@ class UsersV1Api:
     @validate_call
     def get_application_logs_xlsx_without_preload_content(
         self,
-        start_time: Annotated[Optional[StrictStr], Field(description="An inclusive date-time to start retrieving Application Logs from.")] = None,
-        end_time: Annotated[Optional[StrictStr], Field(description="An exclusive date-time to stop retrieving Application Logs from.")] = None,
+        start_time: Annotated[Optional[StrictStr], Field(description="An inclusive date-time in milliseconds to start retrieving Application Logs from.")] = None,
+        end_time: Annotated[Optional[StrictStr], Field(description="An exclusive date-time in milliseconds to stop retrieving Application Logs from.")] = None,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to retrieve Application Logs from.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -2793,9 +2793,9 @@ class UsersV1Api:
 
         This API allows you to export the Application Logs for a tenant. The Application Logs track information about your  users and how they are using the application. Performing regular audits will help you identify potential security  issues and keep your data safe. As part of user management, download the Application Logs to monitor user activity  and logon events to ensure your users are performing authorized activities.    Application logs are retained in the system for 180 days.   Administrating tenant users can export application logs for the administrating tenant and the analytic tenants  those users belong to.
 
-        :param start_time: An inclusive date-time to start retrieving Application Logs from.
+        :param start_time: An inclusive date-time in milliseconds to start retrieving Application Logs from.
         :type start_time: str
-        :param end_time: An exclusive date-time to stop retrieving Application Logs from.
+        :param end_time: An exclusive date-time in milliseconds to stop retrieving Application Logs from.
         :type end_time: str
         :param tenant_code: Specify the tenant to retrieve Application Logs from.
         :type tenant_code: str

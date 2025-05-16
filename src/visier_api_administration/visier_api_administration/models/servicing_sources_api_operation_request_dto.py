@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1905
+    The version of the OpenAPI document: 22222222.99201.1906
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -21,6 +21,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from visier_api_administration.models.servicing_clone_files_into_source_parameters_dto import ServicingCloneFilesIntoSourceParametersDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,8 +29,9 @@ class ServicingSourcesAPIOperationRequestDTO(BaseModel):
     """
     ServicingSourcesAPIOperationRequestDTO
     """ # noqa: E501
-    operation: Optional[StrictStr] = Field(default=None, description="The operation to perform. Valid values:  * `exportSources`: Export all sources from the tenant. If successful, a ZIP file is returned containing a compressed JSON file with the sources.")
-    __properties: ClassVar[List[str]] = ["operation"]
+    operation: Optional[StrictStr] = Field(default=None, description="The operation to perform. Valid values:  * `exportSources`: Export all sources from the tenant. If successful, returns a ZIP file containing a compressed JSON file with the sources.  * `cloneFilesIntoSource`: Clone a source's files into a different source. If successful, returns a receiving job ID. Use the job ID to monitor the cloning results.")
+    clone_files_into_source_parameters: Optional[ServicingCloneFilesIntoSourceParametersDTO] = Field(default=None, description="The parameters for the `cloneFilesIntoSource` option, such as the source to clone files from, the source to clone files into, and the date range of the files to clone.", alias="cloneFilesIntoSourceParameters")
+    __properties: ClassVar[List[str]] = ["operation", "cloneFilesIntoSourceParameters"]
 
     @field_validator('operation')
     def operation_validate_enum(cls, value):
@@ -37,8 +39,8 @@ class ServicingSourcesAPIOperationRequestDTO(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['unknownSourcesAPIOperation', 'exportSources']):
-            raise ValueError("must be one of enum values ('unknownSourcesAPIOperation', 'exportSources')")
+        if value not in set(['unknownSourcesAPIOperation', 'exportSources', 'cloneFilesIntoSource']):
+            raise ValueError("must be one of enum values ('unknownSourcesAPIOperation', 'exportSources', 'cloneFilesIntoSource')")
         return value
 
     model_config = ConfigDict(
@@ -80,6 +82,9 @@ class ServicingSourcesAPIOperationRequestDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of clone_files_into_source_parameters
+        if self.clone_files_into_source_parameters:
+            _dict['cloneFilesIntoSourceParameters'] = self.clone_files_into_source_parameters.to_dict()
         return _dict
 
     @classmethod
@@ -92,7 +97,8 @@ class ServicingSourcesAPIOperationRequestDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "operation": obj.get("operation")
+            "operation": obj.get("operation"),
+            "cloneFilesIntoSourceParameters": ServicingCloneFilesIntoSourceParametersDTO.from_dict(obj["cloneFilesIntoSourceParameters"]) if obj.get("cloneFilesIntoSourceParameters") is not None else None
         })
         return _obj
 

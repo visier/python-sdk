@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1905
+    The version of the OpenAPI document: 22222222.99201.1906
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -20,9 +20,6 @@ from typing_extensions import Annotated
 
 from visier_api_core import ApiClient, ApiResponse, RequestSerialized, RESTResponseType
 
-from pydantic import Field, StrictBool, StrictStr
-from typing import Optional
-from typing_extensions import Annotated
 from visier_api_administration.models.admin_email_domains_dto import AdminEmailDomainsDTO
 import visier_api_administration.models
 
@@ -42,8 +39,7 @@ class EmailDomainsApi:
     @validate_call
     def add_allowed_email_domains(
         self,
-        body: StrictStr,
-        confirm_not_allowed_domain: Annotated[Optional[StrictBool], Field(description="If `true`, you cannot sign in using credentials, such as username and password. You can only log in with single sign-on (SSO). To avoid this, add your current email address's domain to allowed domains list.")] = None,
+        admin_email_domains_dto: AdminEmailDomainsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,12 +55,10 @@ class EmailDomainsApi:
     ) -> AdminEmailDomainsDTO:
         """Add domains to the list of allowed domains
 
-        Add email address domains to the allowed domains list.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Add email address domains to the allowed domains list. The response returns an updated list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param body: (required)
-        :type body: str
-        :param confirm_not_allowed_domain: If `true`, you cannot sign in using credentials, such as username and password. You can only log in with single sign-on (SSO). To avoid this, add your current email address's domain to allowed domains list.
-        :type confirm_not_allowed_domain: bool
+        :param admin_email_domains_dto: (required)
+        :type admin_email_domains_dto: AdminEmailDomainsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -88,8 +82,7 @@ class EmailDomainsApi:
         """ # noqa: E501
 
         _param = self._add_allowed_email_domains_serialize(
-            body=body,
-            confirm_not_allowed_domain=confirm_not_allowed_domain,
+            admin_email_domains_dto=admin_email_domains_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -114,8 +107,7 @@ class EmailDomainsApi:
     @validate_call
     def add_allowed_email_domains_with_http_info(
         self,
-        body: StrictStr,
-        confirm_not_allowed_domain: Annotated[Optional[StrictBool], Field(description="If `true`, you cannot sign in using credentials, such as username and password. You can only log in with single sign-on (SSO). To avoid this, add your current email address's domain to allowed domains list.")] = None,
+        admin_email_domains_dto: AdminEmailDomainsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -131,12 +123,10 @@ class EmailDomainsApi:
     ) -> ApiResponse[AdminEmailDomainsDTO]:
         """Add domains to the list of allowed domains
 
-        Add email address domains to the allowed domains list.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Add email address domains to the allowed domains list. The response returns an updated list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param body: (required)
-        :type body: str
-        :param confirm_not_allowed_domain: If `true`, you cannot sign in using credentials, such as username and password. You can only log in with single sign-on (SSO). To avoid this, add your current email address's domain to allowed domains list.
-        :type confirm_not_allowed_domain: bool
+        :param admin_email_domains_dto: (required)
+        :type admin_email_domains_dto: AdminEmailDomainsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -160,8 +150,7 @@ class EmailDomainsApi:
         """ # noqa: E501
 
         _param = self._add_allowed_email_domains_serialize(
-            body=body,
-            confirm_not_allowed_domain=confirm_not_allowed_domain,
+            admin_email_domains_dto=admin_email_domains_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -186,8 +175,7 @@ class EmailDomainsApi:
     @validate_call
     def add_allowed_email_domains_without_preload_content(
         self,
-        body: StrictStr,
-        confirm_not_allowed_domain: Annotated[Optional[StrictBool], Field(description="If `true`, you cannot sign in using credentials, such as username and password. You can only log in with single sign-on (SSO). To avoid this, add your current email address's domain to allowed domains list.")] = None,
+        admin_email_domains_dto: AdminEmailDomainsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -203,12 +191,10 @@ class EmailDomainsApi:
     ) -> RESTResponseType:
         """Add domains to the list of allowed domains
 
-        Add email address domains to the allowed domains list.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Add email address domains to the allowed domains list. The response returns an updated list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param body: (required)
-        :type body: str
-        :param confirm_not_allowed_domain: If `true`, you cannot sign in using credentials, such as username and password. You can only log in with single sign-on (SSO). To avoid this, add your current email address's domain to allowed domains list.
-        :type confirm_not_allowed_domain: bool
+        :param admin_email_domains_dto: (required)
+        :type admin_email_domains_dto: AdminEmailDomainsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -232,8 +218,7 @@ class EmailDomainsApi:
         """ # noqa: E501
 
         _param = self._add_allowed_email_domains_serialize(
-            body=body,
-            confirm_not_allowed_domain=confirm_not_allowed_domain,
+            admin_email_domains_dto=admin_email_domains_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -252,8 +237,7 @@ class EmailDomainsApi:
 
     def _add_allowed_email_domains_serialize(
         self,
-        body,
-        confirm_not_allowed_domain,
+        admin_email_domains_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -274,15 +258,11 @@ class EmailDomainsApi:
 
         # process the path parameters
         # process the query parameters
-        if confirm_not_allowed_domain is not None:
-            
-            _query_params.append(('confirmNotAllowedDomain', confirm_not_allowed_domain))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if admin_email_domains_dto is not None:
+            _body_params = admin_email_domains_dto
 
 
         # set the HTTP header `Accept`
@@ -337,8 +317,7 @@ class EmailDomainsApi:
     @validate_call
     def delete_allowed_email_domains(
         self,
-        body: StrictStr,
-        confirm_not_allowed_domain: Annotated[Optional[StrictBool], Field(description="If `true`, you cannot sign in using credentials, such as username and password. You can only log in with single sign-on (SSO). To avoid this, add your current email address's domain to allowed domains list.")] = None,
+        admin_email_domains_dto: AdminEmailDomainsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -354,12 +333,10 @@ class EmailDomainsApi:
     ) -> AdminEmailDomainsDTO:
         """Remove domains from the list of allowed domains
 
-        Delete email address domains from the allowed domains list.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete email address domains from the allowed domains list. The response returns an updated list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param body: (required)
-        :type body: str
-        :param confirm_not_allowed_domain: If `true`, you cannot sign in using credentials, such as username and password. You can only log in with single sign-on (SSO). To avoid this, add your current email address's domain to allowed domains list.
-        :type confirm_not_allowed_domain: bool
+        :param admin_email_domains_dto: (required)
+        :type admin_email_domains_dto: AdminEmailDomainsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -383,8 +360,7 @@ class EmailDomainsApi:
         """ # noqa: E501
 
         _param = self._delete_allowed_email_domains_serialize(
-            body=body,
-            confirm_not_allowed_domain=confirm_not_allowed_domain,
+            admin_email_domains_dto=admin_email_domains_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -409,8 +385,7 @@ class EmailDomainsApi:
     @validate_call
     def delete_allowed_email_domains_with_http_info(
         self,
-        body: StrictStr,
-        confirm_not_allowed_domain: Annotated[Optional[StrictBool], Field(description="If `true`, you cannot sign in using credentials, such as username and password. You can only log in with single sign-on (SSO). To avoid this, add your current email address's domain to allowed domains list.")] = None,
+        admin_email_domains_dto: AdminEmailDomainsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -426,12 +401,10 @@ class EmailDomainsApi:
     ) -> ApiResponse[AdminEmailDomainsDTO]:
         """Remove domains from the list of allowed domains
 
-        Delete email address domains from the allowed domains list.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete email address domains from the allowed domains list. The response returns an updated list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param body: (required)
-        :type body: str
-        :param confirm_not_allowed_domain: If `true`, you cannot sign in using credentials, such as username and password. You can only log in with single sign-on (SSO). To avoid this, add your current email address's domain to allowed domains list.
-        :type confirm_not_allowed_domain: bool
+        :param admin_email_domains_dto: (required)
+        :type admin_email_domains_dto: AdminEmailDomainsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -455,8 +428,7 @@ class EmailDomainsApi:
         """ # noqa: E501
 
         _param = self._delete_allowed_email_domains_serialize(
-            body=body,
-            confirm_not_allowed_domain=confirm_not_allowed_domain,
+            admin_email_domains_dto=admin_email_domains_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -481,8 +453,7 @@ class EmailDomainsApi:
     @validate_call
     def delete_allowed_email_domains_without_preload_content(
         self,
-        body: StrictStr,
-        confirm_not_allowed_domain: Annotated[Optional[StrictBool], Field(description="If `true`, you cannot sign in using credentials, such as username and password. You can only log in with single sign-on (SSO). To avoid this, add your current email address's domain to allowed domains list.")] = None,
+        admin_email_domains_dto: AdminEmailDomainsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -498,12 +469,10 @@ class EmailDomainsApi:
     ) -> RESTResponseType:
         """Remove domains from the list of allowed domains
 
-        Delete email address domains from the allowed domains list.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
+        Delete email address domains from the allowed domains list. The response returns an updated list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param body: (required)
-        :type body: str
-        :param confirm_not_allowed_domain: If `true`, you cannot sign in using credentials, such as username and password. You can only log in with single sign-on (SSO). To avoid this, add your current email address's domain to allowed domains list.
-        :type confirm_not_allowed_domain: bool
+        :param admin_email_domains_dto: (required)
+        :type admin_email_domains_dto: AdminEmailDomainsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -527,8 +496,7 @@ class EmailDomainsApi:
         """ # noqa: E501
 
         _param = self._delete_allowed_email_domains_serialize(
-            body=body,
-            confirm_not_allowed_domain=confirm_not_allowed_domain,
+            admin_email_domains_dto=admin_email_domains_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -547,8 +515,7 @@ class EmailDomainsApi:
 
     def _delete_allowed_email_domains_serialize(
         self,
-        body,
-        confirm_not_allowed_domain,
+        admin_email_domains_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -569,15 +536,11 @@ class EmailDomainsApi:
 
         # process the path parameters
         # process the query parameters
-        if confirm_not_allowed_domain is not None:
-            
-            _query_params.append(('confirmNotAllowedDomain', confirm_not_allowed_domain))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if admin_email_domains_dto is not None:
+            _body_params = admin_email_domains_dto
 
 
         # set the HTTP header `Accept`

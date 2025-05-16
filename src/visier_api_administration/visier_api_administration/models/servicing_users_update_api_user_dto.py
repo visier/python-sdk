@@ -5,7 +5,7 @@
 
     Visier APIs for managing your tenant or tenants in Visier. You can programmatically manage user accounts in Visier, the profiles and permissions assigned to users, and to make changes in projects and publish projects to production. Administrating tenant users can use administration APIs to manage their analytic tenants and consolidated analytics tenants.<br>**Note:** If you submit API requests for changes that cause a project to publish to production (such as assigning permissions to users or updating permissions), each request is individually published to production, resulting in hundreds or thousands of production versions. We recommend that you use the `ProjectID` request header to make changes in a project, if `ProjectID` is available for the API endpoint.
 
-    The version of the OpenAPI document: 22222222.99201.1905
+    The version of the OpenAPI document: 22222222.99201.1906
     Contact: alpine@visier.com
 
     Please note that this SDK is currently in beta.
@@ -33,7 +33,8 @@ class ServicingUsersUpdateAPIUserDTO(BaseModel):
     employee_id: Optional[StrictStr] = Field(default=None, description="If applicable, and if available, the user employee ID in the data.", alias="employeeId")
     account_enabled: Optional[StrictStr] = Field(default=None, description="If true, the user account is enabled.", alias="accountEnabled")
     email: Optional[StrictStr] = Field(default=None, description="The user's email address.")
-    __properties: ClassVar[List[str]] = ["userId", "displayName", "employeeId", "accountEnabled", "email"]
+    username: Optional[StrictStr] = Field(default=None, description="The user's username. This is typically the user's email, such as john@jupiter.com. If a user's username changes, they must authenticate using the new username.")
+    __properties: ClassVar[List[str]] = ["userId", "displayName", "employeeId", "accountEnabled", "email", "username"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,7 +91,8 @@ class ServicingUsersUpdateAPIUserDTO(BaseModel):
             "displayName": obj.get("displayName"),
             "employeeId": obj.get("employeeId"),
             "accountEnabled": obj.get("accountEnabled"),
-            "email": obj.get("email")
+            "email": obj.get("email"),
+            "username": obj.get("username")
         })
         return _obj
 
