@@ -37,7 +37,7 @@ class TestDesignerApiSelectionConceptListDTO(unittest.TestCase):
         if include_optional:
             return DesignerApiSelectionConceptListDTO(
                 concepts = [
-                    visier_platform_sdk.models.designer/api/selection_concept_dto.designer.api.SelectionConceptDTO(
+                    visier_platform_sdk.models.designer_selection_concept_dto.DesignerSelectionConceptDTO(
                         uuid = '', 
                         name = '', 
                         configuration = None, )

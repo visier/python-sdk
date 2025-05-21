@@ -20,7 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_platform_sdk.models.dataservices_datamodel_analytic_object_dto import DataservicesDatamodelAnalyticObjectDTO
+from visier_platform_sdk.models.data_model_analytic_object_dto import DataModelAnalyticObjectDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class DataservicesDatamodelAnalyticObjectsDTO(BaseModel):
     """
     A collection of analytic objects
     """ # noqa: E501
-    analytic_objects: Optional[List[DataservicesDatamodelAnalyticObjectDTO]] = Field(default=None, alias="analyticObjects")
+    analytic_objects: Optional[List[DataModelAnalyticObjectDTO]] = Field(default=None, alias="analyticObjects")
     __properties: ClassVar[List[str]] = ["analyticObjects"]
 
     model_config = ConfigDict(
@@ -89,7 +89,7 @@ class DataservicesDatamodelAnalyticObjectsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "analyticObjects": [DataservicesDatamodelAnalyticObjectDTO.from_dict(_item) for _item in obj["analyticObjects"]] if obj.get("analyticObjects") is not None else None
+            "analyticObjects": [DataModelAnalyticObjectDTO.from_dict(_item) for _item in obj["analyticObjects"]] if obj.get("analyticObjects") is not None else None
         })
         return _obj
 

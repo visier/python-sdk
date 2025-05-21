@@ -23,14 +23,13 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO(BaseModel):
+class V2SimplePropertyTypeDTO(BaseModel):
     """
-    A calculated property that takes a value that comes directly from the data and creates a new value through a formula.
+    A simple property that provides single-level detail to an analytic object and contains one value at a time.
     """ # noqa: E501
     data_type: Optional[StrictStr] = Field(default=None, description="The property's data type. Valid values:   `Number`, `Integer`, `Ordinal`, `Categorical`, `Currency`, `Boolean`, `Percent`,  `IntegerPercent`, `PercentNoScaling`, `PercentagePoint`, `String`, `Text`, `LargeText`,  `Date`, `HourDuration`, `DayDuration`, `MonthDuration`, `YearDuration`.", alias="dataType")
     primitive_type: Optional[StrictStr] = Field(default=None, description="The primitive data type, such as String, Integer, or Boolean.", alias="primitiveType")
-    formula: Optional[StrictStr] = Field(default=None, description="The property's formula written in Visier Formula Language (VFL).")
-    __properties: ClassVar[List[str]] = ["dataType", "primitiveType", "formula"]
+    __properties: ClassVar[List[str]] = ["dataType", "primitiveType"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +49,7 @@ class ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO from a JSON string"""
+        """Create an instance of V2SimplePropertyTypeDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,7 +74,7 @@ class ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO from a dict"""
+        """Create an instance of V2SimplePropertyTypeDTO from a dict"""
         if obj is None:
             return None
 
@@ -84,8 +83,7 @@ class ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO(BaseModel):
 
         _obj = cls.model_validate({
             "dataType": obj.get("dataType"),
-            "primitiveType": obj.get("primitiveType"),
-            "formula": obj.get("formula")
+            "primitiveType": obj.get("primitiveType")
         })
         return _obj
 

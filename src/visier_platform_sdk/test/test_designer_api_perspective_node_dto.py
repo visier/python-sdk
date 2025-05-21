@@ -43,7 +43,7 @@ class TestDesignerApiPerspectiveNodeDTO(unittest.TestCase):
                         analytic_object_uuid = '', 
                         symbol_name = '', 
                         dimensions = [
-                            visier_platform_sdk.models.designer/api/dimension_filter_dto.designer.api.DimensionFilterDTO(
+                            visier_platform_sdk.models.designer_dimension_filter_dto.DesignerDimensionFilterDTO(
                                 dimension_id = '', 
                                 symbol_name = '', 
                                 dimension_members = [

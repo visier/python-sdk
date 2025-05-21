@@ -15,10 +15,10 @@
 
 import unittest
 
-from visier_platform_sdk.models.servicing_v2_objectconfiguration_simple_property_type_dto import ServicingV2ObjectconfigurationSimplePropertyTypeDTO
+from visier_platform_sdk.models.v2_simple_property_type_dto import V2SimplePropertyTypeDTO
 
-class TestServicingV2ObjectconfigurationSimplePropertyTypeDTO(unittest.TestCase):
-    """ServicingV2ObjectconfigurationSimplePropertyTypeDTO unit test stubs"""
+class TestV2SimplePropertyTypeDTO(unittest.TestCase):
+    """V2SimplePropertyTypeDTO unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,26 +26,26 @@ class TestServicingV2ObjectconfigurationSimplePropertyTypeDTO(unittest.TestCase)
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ServicingV2ObjectconfigurationSimplePropertyTypeDTO:
-        """Test ServicingV2ObjectconfigurationSimplePropertyTypeDTO
+    def make_instance(self, include_optional) -> V2SimplePropertyTypeDTO:
+        """Test V2SimplePropertyTypeDTO
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ServicingV2ObjectconfigurationSimplePropertyTypeDTO`
+        # uncomment below to create an instance of `V2SimplePropertyTypeDTO`
         """
-        model = ServicingV2ObjectconfigurationSimplePropertyTypeDTO()
+        model = V2SimplePropertyTypeDTO()
         if include_optional:
-            return ServicingV2ObjectconfigurationSimplePropertyTypeDTO(
+            return V2SimplePropertyTypeDTO(
                 data_type = '',
                 primitive_type = ''
             )
         else:
-            return ServicingV2ObjectconfigurationSimplePropertyTypeDTO(
+            return V2SimplePropertyTypeDTO(
         )
         """
 
-    def testServicingV2ObjectconfigurationSimplePropertyTypeDTO(self):
-        """Test ServicingV2ObjectconfigurationSimplePropertyTypeDTO"""
+    def testV2SimplePropertyTypeDTO(self):
+        """Test V2SimplePropertyTypeDTO"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

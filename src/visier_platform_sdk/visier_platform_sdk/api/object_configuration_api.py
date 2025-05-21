@@ -25,8 +25,8 @@ from visier_platform_sdk.models.designer_api_calculation_concept_dto import Desi
 from visier_platform_sdk.models.designer_api_calculation_concept_list_dto import DesignerApiCalculationConceptListDTO
 from visier_platform_sdk.models.designer_api_concept_configuration_result_dto import DesignerApiConceptConfigurationResultDTO
 from visier_platform_sdk.models.designer_api_selection_concept_configuration_map_dto import DesignerApiSelectionConceptConfigurationMapDTO
-from visier_platform_sdk.models.designer_api_selection_concept_dto import DesignerApiSelectionConceptDTO
 from visier_platform_sdk.models.designer_api_selection_concept_list_dto import DesignerApiSelectionConceptListDTO
+from visier_platform_sdk.models.designer_selection_concept_dto import DesignerSelectionConceptDTO
 
 from visier_platform_sdk.api_client import ApiClient, RequestSerialized
 from visier_platform_sdk.api_response import ApiResponse
@@ -608,7 +608,7 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerApiSelectionConceptDTO:
+    ) -> DesignerSelectionConceptDTO:
         """Retrieve the configuration of a selection concept
 
         Retrieve the configuration details of a selection concept in production.
@@ -649,7 +649,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiSelectionConceptDTO",
+            '200': "DesignerSelectionConceptDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -679,7 +679,7 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerApiSelectionConceptDTO]:
+    ) -> ApiResponse[DesignerSelectionConceptDTO]:
         """Retrieve the configuration of a selection concept
 
         Retrieve the configuration details of a selection concept in production.
@@ -720,7 +720,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiSelectionConceptDTO",
+            '200': "DesignerSelectionConceptDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -791,7 +791,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiSelectionConceptDTO",
+            '200': "DesignerSelectionConceptDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

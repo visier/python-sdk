@@ -20,16 +20,18 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from visier_platform_sdk.models.designer_api_selection_concept_configuration_dto import DesignerApiSelectionConceptConfigurationDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ServicingV2ObjectconfigurationSimplePropertyTypeDTO(BaseModel):
+class DesignerSelectionConceptDTO(BaseModel):
     """
-    A simple property that provides single-level detail to an analytic object and contains one value at a time.
+    DesignerSelectionConceptDTO
     """ # noqa: E501
-    data_type: Optional[StrictStr] = Field(default=None, description="The property's data type. Valid values:   `Number`, `Integer`, `Ordinal`, `Categorical`, `Currency`, `Boolean`, `Percent`,  `IntegerPercent`, `PercentNoScaling`, `PercentagePoint`, `String`, `Text`, `LargeText`,  `Date`, `HourDuration`, `DayDuration`, `MonthDuration`, `YearDuration`.", alias="dataType")
-    primitive_type: Optional[StrictStr] = Field(default=None, description="The primitive data type, such as String, Integer, or Boolean.", alias="primitiveType")
-    __properties: ClassVar[List[str]] = ["dataType", "primitiveType"]
+    uuid: Optional[StrictStr] = Field(default=None, description="The unique identifier associated with the selection concept.")
+    name: Optional[StrictStr] = Field(default=None, description="The display name of the selection concept.")
+    configuration: Optional[DesignerApiSelectionConceptConfigurationDTO] = Field(default=None, description="A list of objects representing the configuration for the selection concept.")
+    __properties: ClassVar[List[str]] = ["uuid", "name", "configuration"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +51,7 @@ class ServicingV2ObjectconfigurationSimplePropertyTypeDTO(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ServicingV2ObjectconfigurationSimplePropertyTypeDTO from a JSON string"""
+        """Create an instance of DesignerSelectionConceptDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,11 +72,14 @@ class ServicingV2ObjectconfigurationSimplePropertyTypeDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of configuration
+        if self.configuration:
+            _dict['configuration'] = self.configuration.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ServicingV2ObjectconfigurationSimplePropertyTypeDTO from a dict"""
+        """Create an instance of DesignerSelectionConceptDTO from a dict"""
         if obj is None:
             return None
 
@@ -82,8 +87,9 @@ class ServicingV2ObjectconfigurationSimplePropertyTypeDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dataType": obj.get("dataType"),
-            "primitiveType": obj.get("primitiveType")
+            "uuid": obj.get("uuid"),
+            "name": obj.get("name"),
+            "configuration": DesignerApiSelectionConceptConfigurationDTO.from_dict(obj["configuration"]) if obj.get("configuration") is not None else None
         })
         return _obj
 

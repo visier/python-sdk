@@ -20,9 +20,9 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_platform_sdk.models.servicing_v2_objectconfiguration_calculated_property_type_dto import ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO
 from visier_platform_sdk.models.servicing_v2_objectconfiguration_process_concept_property_type_dto import ServicingV2ObjectconfigurationProcessConceptPropertyTypeDTO
-from visier_platform_sdk.models.servicing_v2_objectconfiguration_simple_property_type_dto import ServicingV2ObjectconfigurationSimplePropertyTypeDTO
+from visier_platform_sdk.models.v2_calculated_property_type_dto import V2CalculatedPropertyTypeDTO
+from visier_platform_sdk.models.v2_simple_property_type_dto import V2SimplePropertyTypeDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,8 +30,8 @@ class ServicingV2ObjectconfigurationPropertyTypeDetailsDTO(BaseModel):
     """
     The property type.
     """ # noqa: E501
-    simple: Optional[ServicingV2ObjectconfigurationSimplePropertyTypeDTO] = Field(default=None, description="The simple property type, which provides a single value directly from the data.")
-    calculated: Optional[ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO] = Field(default=None, description="The calculated property type, which derives its value using a formula.")
+    simple: Optional[V2SimplePropertyTypeDTO] = Field(default=None, description="The simple property type, which provides a single value directly from the data.")
+    calculated: Optional[V2CalculatedPropertyTypeDTO] = Field(default=None, description="The calculated property type, which derives its value using a formula.")
     process_concept: Optional[ServicingV2ObjectconfigurationProcessConceptPropertyTypeDTO] = Field(default=None, description="The process concept property type, which describes the relationship between subject member properties and a subject member in the process pipeline.", alias="processConcept")
     __properties: ClassVar[List[str]] = ["simple", "calculated", "processConcept"]
 
@@ -95,8 +95,8 @@ class ServicingV2ObjectconfigurationPropertyTypeDetailsDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "simple": ServicingV2ObjectconfigurationSimplePropertyTypeDTO.from_dict(obj["simple"]) if obj.get("simple") is not None else None,
-            "calculated": ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO.from_dict(obj["calculated"]) if obj.get("calculated") is not None else None,
+            "simple": V2SimplePropertyTypeDTO.from_dict(obj["simple"]) if obj.get("simple") is not None else None,
+            "calculated": V2CalculatedPropertyTypeDTO.from_dict(obj["calculated"]) if obj.get("calculated") is not None else None,
             "processConcept": ServicingV2ObjectconfigurationProcessConceptPropertyTypeDTO.from_dict(obj["processConcept"]) if obj.get("processConcept") is not None else None
         })
         return _obj

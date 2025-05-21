@@ -15,10 +15,10 @@
 
 import unittest
 
-from visier_platform_sdk.models.designer_api_selection_concept_dto import DesignerApiSelectionConceptDTO
+from visier_platform_sdk.models.designer_selection_concept_dto import DesignerSelectionConceptDTO
 
-class TestDesignerApiSelectionConceptDTO(unittest.TestCase):
-    """DesignerApiSelectionConceptDTO unit test stubs"""
+class TestDesignerSelectionConceptDTO(unittest.TestCase):
+    """DesignerSelectionConceptDTO unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,16 +26,16 @@ class TestDesignerApiSelectionConceptDTO(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> DesignerApiSelectionConceptDTO:
-        """Test DesignerApiSelectionConceptDTO
+    def make_instance(self, include_optional) -> DesignerSelectionConceptDTO:
+        """Test DesignerSelectionConceptDTO
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `DesignerApiSelectionConceptDTO`
+        # uncomment below to create an instance of `DesignerSelectionConceptDTO`
         """
-        model = DesignerApiSelectionConceptDTO()
+        model = DesignerSelectionConceptDTO()
         if include_optional:
-            return DesignerApiSelectionConceptDTO(
+            return DesignerSelectionConceptDTO(
                 uuid = '',
                 name = '',
                 configuration = visier_platform_sdk.models.designer/api/selection_concept_configuration_dto.designer.api.SelectionConceptConfigurationDTO(
@@ -44,7 +44,7 @@ class TestDesignerApiSelectionConceptDTO(unittest.TestCase):
                             analytic_object_uuid = '', 
                             symbol_name = '', 
                             dimensions = [
-                                visier_platform_sdk.models.designer/api/dimension_filter_dto.designer.api.DimensionFilterDTO(
+                                visier_platform_sdk.models.designer_dimension_filter_dto.DesignerDimensionFilterDTO(
                                     dimension_id = '', 
                                     symbol_name = '', 
                                     dimension_members = [
@@ -57,12 +57,12 @@ class TestDesignerApiSelectionConceptDTO(unittest.TestCase):
                         ], )
             )
         else:
-            return DesignerApiSelectionConceptDTO(
+            return DesignerSelectionConceptDTO(
         )
         """
 
-    def testDesignerApiSelectionConceptDTO(self):
-        """Test DesignerApiSelectionConceptDTO"""
+    def testDesignerSelectionConceptDTO(self):
+        """Test DesignerSelectionConceptDTO"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

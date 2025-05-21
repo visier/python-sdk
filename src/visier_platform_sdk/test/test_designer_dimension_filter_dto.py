@@ -15,10 +15,10 @@
 
 import unittest
 
-from visier_platform_sdk.models.designer_api_dimension_filter_dto import DesignerApiDimensionFilterDTO
+from visier_platform_sdk.models.designer_dimension_filter_dto import DesignerDimensionFilterDTO
 
-class TestDesignerApiDimensionFilterDTO(unittest.TestCase):
-    """DesignerApiDimensionFilterDTO unit test stubs"""
+class TestDesignerDimensionFilterDTO(unittest.TestCase):
+    """DesignerDimensionFilterDTO unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,16 +26,16 @@ class TestDesignerApiDimensionFilterDTO(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> DesignerApiDimensionFilterDTO:
-        """Test DesignerApiDimensionFilterDTO
+    def make_instance(self, include_optional) -> DesignerDimensionFilterDTO:
+        """Test DesignerDimensionFilterDTO
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `DesignerApiDimensionFilterDTO`
+        # uncomment below to create an instance of `DesignerDimensionFilterDTO`
         """
-        model = DesignerApiDimensionFilterDTO()
+        model = DesignerDimensionFilterDTO()
         if include_optional:
-            return DesignerApiDimensionFilterDTO(
+            return DesignerDimensionFilterDTO(
                 dimension_id = '',
                 symbol_name = '',
                 dimension_members = [
@@ -46,12 +46,12 @@ class TestDesignerApiDimensionFilterDTO(unittest.TestCase):
                     ]
             )
         else:
-            return DesignerApiDimensionFilterDTO(
+            return DesignerDimensionFilterDTO(
         )
         """
 
-    def testDesignerApiDimensionFilterDTO(self):
-        """Test DesignerApiDimensionFilterDTO"""
+    def testDesignerDimensionFilterDTO(self):
+        """Test DesignerDimensionFilterDTO"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

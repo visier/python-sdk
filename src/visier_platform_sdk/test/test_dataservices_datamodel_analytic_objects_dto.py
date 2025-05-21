@@ -37,7 +37,7 @@ class TestDataservicesDatamodelAnalyticObjectsDTO(unittest.TestCase):
         if include_optional:
             return DataservicesDatamodelAnalyticObjectsDTO(
                 analytic_objects = [
-                    visier_platform_sdk.models.dataservices/datamodel/analytic_object_dto.dataservices.datamodel.AnalyticObjectDTO(
+                    visier_platform_sdk.models.data_model_analytic_object_dto.DataModelAnalyticObjectDTO(
                         id = '', 
                         display_name = '', 
                         description = '', 

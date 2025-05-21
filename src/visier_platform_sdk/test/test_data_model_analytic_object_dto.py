@@ -15,10 +15,10 @@
 
 import unittest
 
-from visier_platform_sdk.models.dataservices_datamodel_analytic_object_dto import DataservicesDatamodelAnalyticObjectDTO
+from visier_platform_sdk.models.data_model_analytic_object_dto import DataModelAnalyticObjectDTO
 
-class TestDataservicesDatamodelAnalyticObjectDTO(unittest.TestCase):
-    """DataservicesDatamodelAnalyticObjectDTO unit test stubs"""
+class TestDataModelAnalyticObjectDTO(unittest.TestCase):
+    """DataModelAnalyticObjectDTO unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,16 +26,16 @@ class TestDataservicesDatamodelAnalyticObjectDTO(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> DataservicesDatamodelAnalyticObjectDTO:
-        """Test DataservicesDatamodelAnalyticObjectDTO
+    def make_instance(self, include_optional) -> DataModelAnalyticObjectDTO:
+        """Test DataModelAnalyticObjectDTO
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `DataservicesDatamodelAnalyticObjectDTO`
+        # uncomment below to create an instance of `DataModelAnalyticObjectDTO`
         """
-        model = DataservicesDatamodelAnalyticObjectDTO()
+        model = DataModelAnalyticObjectDTO()
         if include_optional:
-            return DataservicesDatamodelAnalyticObjectDTO(
+            return DataModelAnalyticObjectDTO(
                 id = '',
                 display_name = '',
                 description = '',
@@ -79,12 +79,12 @@ class TestDataservicesDatamodelAnalyticObjectDTO(unittest.TestCase):
                         ], )
             )
         else:
-            return DataservicesDatamodelAnalyticObjectDTO(
+            return DataModelAnalyticObjectDTO(
         )
         """
 
-    def testDataservicesDatamodelAnalyticObjectDTO(self):
-        """Test DataservicesDatamodelAnalyticObjectDTO"""
+    def testDataModelAnalyticObjectDTO(self):
+        """Test DataModelAnalyticObjectDTO"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

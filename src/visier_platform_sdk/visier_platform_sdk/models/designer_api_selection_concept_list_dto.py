@@ -20,7 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_platform_sdk.models.designer_api_selection_concept_dto import DesignerApiSelectionConceptDTO
+from visier_platform_sdk.models.designer_selection_concept_dto import DesignerSelectionConceptDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class DesignerApiSelectionConceptListDTO(BaseModel):
     """
     DesignerApiSelectionConceptListDTO
     """ # noqa: E501
-    concepts: Optional[List[DesignerApiSelectionConceptDTO]] = Field(default=None, description="A list of objects representing selection concepts.")
+    concepts: Optional[List[DesignerSelectionConceptDTO]] = Field(default=None, description="A list of objects representing selection concepts.")
     __properties: ClassVar[List[str]] = ["concepts"]
 
     model_config = ConfigDict(
@@ -89,7 +89,7 @@ class DesignerApiSelectionConceptListDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "concepts": [DesignerApiSelectionConceptDTO.from_dict(_item) for _item in obj["concepts"]] if obj.get("concepts") is not None else None
+            "concepts": [DesignerSelectionConceptDTO.from_dict(_item) for _item in obj["concepts"]] if obj.get("concepts") is not None else None
         })
         return _obj
 

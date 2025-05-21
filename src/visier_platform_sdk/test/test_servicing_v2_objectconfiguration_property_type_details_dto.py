@@ -36,10 +36,10 @@ class TestServicingV2ObjectconfigurationPropertyTypeDetailsDTO(unittest.TestCase
         model = ServicingV2ObjectconfigurationPropertyTypeDetailsDTO()
         if include_optional:
             return ServicingV2ObjectconfigurationPropertyTypeDetailsDTO(
-                simple = visier_platform_sdk.models.servicing/v2/objectconfiguration/simple_property_type_dto.servicing.v2.objectconfiguration.SimplePropertyTypeDTO(
+                simple = visier_platform_sdk.models.v2_simple_property_type_dto.V2SimplePropertyTypeDTO(
                     data_type = '', 
                     primitive_type = '', ),
-                calculated = visier_platform_sdk.models.servicing/v2/objectconfiguration/calculated_property_type_dto.servicing.v2.objectconfiguration.CalculatedPropertyTypeDTO(
+                calculated = visier_platform_sdk.models.v2_calculated_property_type_dto.V2CalculatedPropertyTypeDTO(
                     data_type = '', 
                     primitive_type = '', 
                     formula = '', ),

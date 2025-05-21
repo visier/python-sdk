@@ -15,10 +15,10 @@
 
 import unittest
 
-from visier_platform_sdk.models.servicing_v2_objectconfiguration_calculated_property_type_dto import ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO
+from visier_platform_sdk.models.v2_calculated_property_type_dto import V2CalculatedPropertyTypeDTO
 
-class TestServicingV2ObjectconfigurationCalculatedPropertyTypeDTO(unittest.TestCase):
-    """ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO unit test stubs"""
+class TestV2CalculatedPropertyTypeDTO(unittest.TestCase):
+    """V2CalculatedPropertyTypeDTO unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,27 +26,27 @@ class TestServicingV2ObjectconfigurationCalculatedPropertyTypeDTO(unittest.TestC
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO:
-        """Test ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO
+    def make_instance(self, include_optional) -> V2CalculatedPropertyTypeDTO:
+        """Test V2CalculatedPropertyTypeDTO
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO`
+        # uncomment below to create an instance of `V2CalculatedPropertyTypeDTO`
         """
-        model = ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO()
+        model = V2CalculatedPropertyTypeDTO()
         if include_optional:
-            return ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO(
+            return V2CalculatedPropertyTypeDTO(
                 data_type = '',
                 primitive_type = '',
                 formula = ''
             )
         else:
-            return ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO(
+            return V2CalculatedPropertyTypeDTO(
         )
         """
 
-    def testServicingV2ObjectconfigurationCalculatedPropertyTypeDTO(self):
-        """Test ServicingV2ObjectconfigurationCalculatedPropertyTypeDTO"""
+    def testV2CalculatedPropertyTypeDTO(self):
+        """Test V2CalculatedPropertyTypeDTO"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

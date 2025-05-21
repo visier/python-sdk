@@ -20,7 +20,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from visier_platform_sdk.models.dataservices_datamodel_analytic_object_dto import DataservicesDatamodelAnalyticObjectDTO
+from visier_platform_sdk.models.data_model_analytic_object_dto import DataModelAnalyticObjectDTO
 from visier_platform_sdk.models.dataservices_datamodel_analytic_objects_dto import DataservicesDatamodelAnalyticObjectsDTO
 from visier_platform_sdk.models.dataservices_datamodel_currencies_dto import DataservicesDatamodelCurrenciesDTO
 from visier_platform_sdk.models.dataservices_datamodel_currency_dto import DataservicesDatamodelCurrencyDTO
@@ -374,7 +374,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelAnalyticObjectDTO:
+    ) -> DataModelAnalyticObjectDTO:
         """Retrieve an analytic object by ID
 
         If you know the ID of an analytic object, use this API to retrieve that object specifically.
@@ -415,7 +415,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelAnalyticObjectDTO",
+            '200': "DataModelAnalyticObjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -445,7 +445,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelAnalyticObjectDTO]:
+    ) -> ApiResponse[DataModelAnalyticObjectDTO]:
         """Retrieve an analytic object by ID
 
         If you know the ID of an analytic object, use this API to retrieve that object specifically.
@@ -486,7 +486,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelAnalyticObjectDTO",
+            '200': "DataModelAnalyticObjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -557,7 +557,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelAnalyticObjectDTO",
+            '200': "DataModelAnalyticObjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

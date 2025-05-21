@@ -20,18 +20,17 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_platform_sdk.models.designer_api_dimension_member_dto import DesignerApiDimensionMemberDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DesignerApiDimensionFilterDTO(BaseModel):
+class V2CalculatedPropertyTypeDTO(BaseModel):
     """
-    DesignerApiDimensionFilterDTO
+    A calculated property that takes a value that comes directly from the data and creates a new value through a formula.
     """ # noqa: E501
-    dimension_id: Optional[StrictStr] = Field(default=None, description="The UUID of the dimension.", alias="dimensionId")
-    symbol_name: Optional[StrictStr] = Field(default=None, description="The symbol name of the dimension.", alias="symbolName")
-    dimension_members: Optional[List[DesignerApiDimensionMemberDTO]] = Field(default=None, description="A list of dimension members to map to the perspective node.   Note: If this array is empty, all dimension members will be removed for the node.", alias="dimensionMembers")
-    __properties: ClassVar[List[str]] = ["dimensionId", "symbolName", "dimensionMembers"]
+    data_type: Optional[StrictStr] = Field(default=None, description="The property's data type. Valid values:   `Number`, `Integer`, `Ordinal`, `Categorical`, `Currency`, `Boolean`, `Percent`,  `IntegerPercent`, `PercentNoScaling`, `PercentagePoint`, `String`, `Text`, `LargeText`,  `Date`, `HourDuration`, `DayDuration`, `MonthDuration`, `YearDuration`.", alias="dataType")
+    primitive_type: Optional[StrictStr] = Field(default=None, description="The primitive data type, such as String, Integer, or Boolean.", alias="primitiveType")
+    formula: Optional[StrictStr] = Field(default=None, description="The property's formula written in Visier Formula Language (VFL).")
+    __properties: ClassVar[List[str]] = ["dataType", "primitiveType", "formula"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +50,7 @@ class DesignerApiDimensionFilterDTO(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DesignerApiDimensionFilterDTO from a JSON string"""
+        """Create an instance of V2CalculatedPropertyTypeDTO from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,18 +71,11 @@ class DesignerApiDimensionFilterDTO(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in dimension_members (list)
-        _items = []
-        if self.dimension_members:
-            for _item_dimension_members in self.dimension_members:
-                if _item_dimension_members:
-                    _items.append(_item_dimension_members.to_dict())
-            _dict['dimensionMembers'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DesignerApiDimensionFilterDTO from a dict"""
+        """Create an instance of V2CalculatedPropertyTypeDTO from a dict"""
         if obj is None:
             return None
 
@@ -91,9 +83,9 @@ class DesignerApiDimensionFilterDTO(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dimensionId": obj.get("dimensionId"),
-            "symbolName": obj.get("symbolName"),
-            "dimensionMembers": [DesignerApiDimensionMemberDTO.from_dict(_item) for _item in obj["dimensionMembers"]] if obj.get("dimensionMembers") is not None else None
+            "dataType": obj.get("dataType"),
+            "primitiveType": obj.get("primitiveType"),
+            "formula": obj.get("formula")
         })
         return _obj
 

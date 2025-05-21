@@ -20,7 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_platform_sdk.models.designer_api_dimension_filter_dto import DesignerApiDimensionFilterDTO
+from visier_platform_sdk.models.designer_dimension_filter_dto import DesignerDimensionFilterDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,7 +30,7 @@ class DesignerApiAnalyticObjectFilterDTO(BaseModel):
     """ # noqa: E501
     analytic_object_uuid: Optional[StrictStr] = Field(default=None, description="The UUID of the analytic object used in the selection concept.", alias="analyticObjectUuid")
     symbol_name: Optional[StrictStr] = Field(default=None, description="The symbol name of the analytic object.", alias="symbolName")
-    dimensions: Optional[List[DesignerApiDimensionFilterDTO]] = Field(default=None, description="A list of dimensions included in the concept.")
+    dimensions: Optional[List[DesignerDimensionFilterDTO]] = Field(default=None, description="A list of dimensions included in the concept.")
     __properties: ClassVar[List[str]] = ["analyticObjectUuid", "symbolName", "dimensions"]
 
     model_config = ConfigDict(
@@ -93,7 +93,7 @@ class DesignerApiAnalyticObjectFilterDTO(BaseModel):
         _obj = cls.model_validate({
             "analyticObjectUuid": obj.get("analyticObjectUuid"),
             "symbolName": obj.get("symbolName"),
-            "dimensions": [DesignerApiDimensionFilterDTO.from_dict(_item) for _item in obj["dimensions"]] if obj.get("dimensions") is not None else None
+            "dimensions": [DesignerDimensionFilterDTO.from_dict(_item) for _item in obj["dimensions"]] if obj.get("dimensions") is not None else None
         })
         return _obj
 
