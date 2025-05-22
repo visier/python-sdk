@@ -15,6 +15,7 @@
 
 import unittest
 
+import visier_platform_sdk.models
 from visier_platform_sdk.models.location_search_successful_output import LocationSearchSuccessfulOutput
 
 class TestLocationSearchSuccessfulOutput(unittest.TestCase):
@@ -31,9 +32,7 @@ class TestLocationSearchSuccessfulOutput(unittest.TestCase):
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `LocationSearchSuccessfulOutput`
-        """
-        model = LocationSearchSuccessfulOutput()
+
         if include_optional:
             return LocationSearchSuccessfulOutput(
                 uuid = '',
@@ -102,12 +101,19 @@ class TestLocationSearchSuccessfulOutput(unittest.TestCase):
                         soc_names = visier_platform_sdk.models.soc_names.socNames(), )
                     ],
         )
-        """
 
     def testLocationSearchSuccessfulOutput(self):
         """Test LocationSearchSuccessfulOutput"""
-        # inst_req_only = self.make_instance(include_optional=False)
-        # inst_req_and_optional = self.make_instance(include_optional=True)
+        def validate_instance(instance):
+            LocationSearchSuccessfulOutput.model_validate(inst_req_only)
+            instance_deserialized = LocationSearchSuccessfulOutput.from_dict(instance.to_dict())
+            assert instance == instance_deserialized
+
+        inst_req_only = self.make_instance(include_optional=False)
+        validate_instance(inst_req_only)
+
+        inst_req_and_optional = self.make_instance(include_optional=True)
+        validate_instance(inst_req_and_optional)
 
 if __name__ == '__main__':
     unittest.main()

@@ -15,6 +15,7 @@
 
 import unittest
 
+import visier_platform_sdk.models
 from visier_platform_sdk.models.extracted_skill import ExtractedSkill
 
 class TestExtractedSkill(unittest.TestCase):
@@ -31,9 +32,7 @@ class TestExtractedSkill(unittest.TestCase):
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ExtractedSkill`
-        """
-        model = ExtractedSkill()
+
         if include_optional:
             return ExtractedSkill(
                 id = '',
@@ -48,12 +47,19 @@ class TestExtractedSkill(unittest.TestCase):
                 description = '',
                 score = 56,
         )
-        """
 
     def testExtractedSkill(self):
         """Test ExtractedSkill"""
-        # inst_req_only = self.make_instance(include_optional=False)
-        # inst_req_and_optional = self.make_instance(include_optional=True)
+        def validate_instance(instance):
+            ExtractedSkill.model_validate(inst_req_only)
+            instance_deserialized = ExtractedSkill.from_dict(instance.to_dict())
+            assert instance == instance_deserialized
+
+        inst_req_only = self.make_instance(include_optional=False)
+        validate_instance(inst_req_only)
+
+        inst_req_and_optional = self.make_instance(include_optional=True)
+        validate_instance(inst_req_and_optional)
 
 if __name__ == '__main__':
     unittest.main()

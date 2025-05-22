@@ -15,6 +15,7 @@
 
 import unittest
 
+import visier_platform_sdk.models
 from visier_platform_sdk.models.skill_category_entry import SkillCategoryEntry
 
 class TestSkillCategoryEntry(unittest.TestCase):
@@ -31,9 +32,7 @@ class TestSkillCategoryEntry(unittest.TestCase):
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SkillCategoryEntry`
-        """
-        model = SkillCategoryEntry()
+
         if include_optional:
             return SkillCategoryEntry(
                 id = '',
@@ -46,12 +45,19 @@ class TestSkillCategoryEntry(unittest.TestCase):
                 name = '',
                 description = '',
         )
-        """
 
     def testSkillCategoryEntry(self):
         """Test SkillCategoryEntry"""
-        # inst_req_only = self.make_instance(include_optional=False)
-        # inst_req_and_optional = self.make_instance(include_optional=True)
+        def validate_instance(instance):
+            SkillCategoryEntry.model_validate(inst_req_only)
+            instance_deserialized = SkillCategoryEntry.from_dict(instance.to_dict())
+            assert instance == instance_deserialized
+
+        inst_req_only = self.make_instance(include_optional=False)
+        validate_instance(inst_req_only)
+
+        inst_req_and_optional = self.make_instance(include_optional=True)
+        validate_instance(inst_req_and_optional)
 
 if __name__ == '__main__':
     unittest.main()

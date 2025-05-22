@@ -20,10 +20,10 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
-from visier_platform_sdk.models.servicing_v2_objectconfiguration_bulk_change_response_dto import ServicingV2ObjectconfigurationBulkChangeResponseDTO
-from visier_platform_sdk.models.servicing_v2_objectconfiguration_concept_delete_request_dto import ServicingV2ObjectconfigurationConceptDeleteRequestDTO
-from visier_platform_sdk.models.servicing_v2_objectconfiguration_concept_request_dto import ServicingV2ObjectconfigurationConceptRequestDTO
-from visier_platform_sdk.models.servicing_v2_objectconfiguration_concept_response_dto import ServicingV2ObjectconfigurationConceptResponseDTO
+from visier_platform_sdk.models.bulk_change_response_dto import BulkChangeResponseDTO
+from visier_platform_sdk.models.concept_delete_request_dto import ConceptDeleteRequestDTO
+from visier_platform_sdk.models.concept_request_dto import ConceptRequestDTO
+from visier_platform_sdk.models.concept_response_dto import ConceptResponseDTO
 
 from visier_platform_sdk.api_client import ApiClient, RequestSerialized
 from visier_platform_sdk.api_response import ApiResponse
@@ -46,7 +46,7 @@ class ConceptsV2Api:
     @validate_call
     def create_concepts(
         self,
-        servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO,
+        concept_request_dto: ConceptRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -61,13 +61,13 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingV2ObjectconfigurationBulkChangeResponseDTO:
+    ) -> BulkChangeResponseDTO:
         """Create concepts
 
         Create new concepts. The response returns whether each concept was successfully created or not.  When creating objects, assign a unique object name but don't set a UUID. Visier generates UUIDs for new objects.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_concept_request_dto: (required)
-        :type servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO
+        :param concept_request_dto: (required)
+        :type concept_request_dto: ConceptRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -95,7 +95,7 @@ class ConceptsV2Api:
         """ # noqa: E501
 
         _param = self._create_concepts_serialize(
-            servicing_v2_objectconfiguration_concept_request_dto=servicing_v2_objectconfiguration_concept_request_dto,
+            concept_request_dto=concept_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -105,7 +105,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -121,7 +121,7 @@ class ConceptsV2Api:
     @validate_call
     def create_concepts_with_http_info(
         self,
-        servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO,
+        concept_request_dto: ConceptRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -136,13 +136,13 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingV2ObjectconfigurationBulkChangeResponseDTO]:
+    ) -> ApiResponse[BulkChangeResponseDTO]:
         """Create concepts
 
         Create new concepts. The response returns whether each concept was successfully created or not.  When creating objects, assign a unique object name but don't set a UUID. Visier generates UUIDs for new objects.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_concept_request_dto: (required)
-        :type servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO
+        :param concept_request_dto: (required)
+        :type concept_request_dto: ConceptRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -170,7 +170,7 @@ class ConceptsV2Api:
         """ # noqa: E501
 
         _param = self._create_concepts_serialize(
-            servicing_v2_objectconfiguration_concept_request_dto=servicing_v2_objectconfiguration_concept_request_dto,
+            concept_request_dto=concept_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -180,7 +180,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -196,7 +196,7 @@ class ConceptsV2Api:
     @validate_call
     def create_concepts_without_preload_content(
         self,
-        servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO,
+        concept_request_dto: ConceptRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -216,8 +216,8 @@ class ConceptsV2Api:
 
         Create new concepts. The response returns whether each concept was successfully created or not.  When creating objects, assign a unique object name but don't set a UUID. Visier generates UUIDs for new objects.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_concept_request_dto: (required)
-        :type servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO
+        :param concept_request_dto: (required)
+        :type concept_request_dto: ConceptRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -245,7 +245,7 @@ class ConceptsV2Api:
         """ # noqa: E501
 
         _param = self._create_concepts_serialize(
-            servicing_v2_objectconfiguration_concept_request_dto=servicing_v2_objectconfiguration_concept_request_dto,
+            concept_request_dto=concept_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -255,7 +255,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -266,7 +266,7 @@ class ConceptsV2Api:
 
     def _create_concepts_serialize(
         self,
-        servicing_v2_objectconfiguration_concept_request_dto,
+        concept_request_dto,
         target_tenant_id,
         project_id,
         _request_auth,
@@ -298,8 +298,8 @@ class ConceptsV2Api:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_v2_objectconfiguration_concept_request_dto is not None:
-            _body_params = servicing_v2_objectconfiguration_concept_request_dto
+        if concept_request_dto is not None:
+            _body_params = concept_request_dto
 
 
         # set the HTTP header `Accept`
@@ -354,7 +354,7 @@ class ConceptsV2Api:
     @validate_call
     def delete_concepts(
         self,
-        servicing_v2_objectconfiguration_concept_delete_request_dto: ServicingV2ObjectconfigurationConceptDeleteRequestDTO,
+        concept_delete_request_dto: ConceptDeleteRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -369,13 +369,13 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingV2ObjectconfigurationBulkChangeResponseDTO:
+    ) -> BulkChangeResponseDTO:
         """Delete concepts
 
         Delete existing concepts. The response returns whether each concept was successfully deleted or not.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_concept_delete_request_dto: (required)
-        :type servicing_v2_objectconfiguration_concept_delete_request_dto: ServicingV2ObjectconfigurationConceptDeleteRequestDTO
+        :param concept_delete_request_dto: (required)
+        :type concept_delete_request_dto: ConceptDeleteRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -403,7 +403,7 @@ class ConceptsV2Api:
         """ # noqa: E501
 
         _param = self._delete_concepts_serialize(
-            servicing_v2_objectconfiguration_concept_delete_request_dto=servicing_v2_objectconfiguration_concept_delete_request_dto,
+            concept_delete_request_dto=concept_delete_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -413,7 +413,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -429,7 +429,7 @@ class ConceptsV2Api:
     @validate_call
     def delete_concepts_with_http_info(
         self,
-        servicing_v2_objectconfiguration_concept_delete_request_dto: ServicingV2ObjectconfigurationConceptDeleteRequestDTO,
+        concept_delete_request_dto: ConceptDeleteRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -444,13 +444,13 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingV2ObjectconfigurationBulkChangeResponseDTO]:
+    ) -> ApiResponse[BulkChangeResponseDTO]:
         """Delete concepts
 
         Delete existing concepts. The response returns whether each concept was successfully deleted or not.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_concept_delete_request_dto: (required)
-        :type servicing_v2_objectconfiguration_concept_delete_request_dto: ServicingV2ObjectconfigurationConceptDeleteRequestDTO
+        :param concept_delete_request_dto: (required)
+        :type concept_delete_request_dto: ConceptDeleteRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -478,7 +478,7 @@ class ConceptsV2Api:
         """ # noqa: E501
 
         _param = self._delete_concepts_serialize(
-            servicing_v2_objectconfiguration_concept_delete_request_dto=servicing_v2_objectconfiguration_concept_delete_request_dto,
+            concept_delete_request_dto=concept_delete_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -488,7 +488,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -504,7 +504,7 @@ class ConceptsV2Api:
     @validate_call
     def delete_concepts_without_preload_content(
         self,
-        servicing_v2_objectconfiguration_concept_delete_request_dto: ServicingV2ObjectconfigurationConceptDeleteRequestDTO,
+        concept_delete_request_dto: ConceptDeleteRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -524,8 +524,8 @@ class ConceptsV2Api:
 
         Delete existing concepts. The response returns whether each concept was successfully deleted or not.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_concept_delete_request_dto: (required)
-        :type servicing_v2_objectconfiguration_concept_delete_request_dto: ServicingV2ObjectconfigurationConceptDeleteRequestDTO
+        :param concept_delete_request_dto: (required)
+        :type concept_delete_request_dto: ConceptDeleteRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -553,7 +553,7 @@ class ConceptsV2Api:
         """ # noqa: E501
 
         _param = self._delete_concepts_serialize(
-            servicing_v2_objectconfiguration_concept_delete_request_dto=servicing_v2_objectconfiguration_concept_delete_request_dto,
+            concept_delete_request_dto=concept_delete_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -563,7 +563,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -574,7 +574,7 @@ class ConceptsV2Api:
 
     def _delete_concepts_serialize(
         self,
-        servicing_v2_objectconfiguration_concept_delete_request_dto,
+        concept_delete_request_dto,
         target_tenant_id,
         project_id,
         _request_auth,
@@ -606,8 +606,8 @@ class ConceptsV2Api:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_v2_objectconfiguration_concept_delete_request_dto is not None:
-            _body_params = servicing_v2_objectconfiguration_concept_delete_request_dto
+        if concept_delete_request_dto is not None:
+            _body_params = concept_delete_request_dto
 
 
         # set the HTTP header `Accept`
@@ -680,7 +680,7 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingV2ObjectconfigurationConceptResponseDTO:
+    ) -> ConceptResponseDTO:
         """Retrieve a list of concepts
 
         Retrieve a list of all concepts in your Visier tenant.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -733,7 +733,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationConceptResponseDTO",
+            '200': "ConceptResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -767,7 +767,7 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingV2ObjectconfigurationConceptResponseDTO]:
+    ) -> ApiResponse[ConceptResponseDTO]:
         """Retrieve a list of concepts
 
         Retrieve a list of all concepts in your Visier tenant.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -820,7 +820,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationConceptResponseDTO",
+            '200': "ConceptResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -907,7 +907,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationConceptResponseDTO",
+            '200': "ConceptResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1033,7 +1033,7 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingV2ObjectconfigurationConceptResponseDTO:
+    ) -> ConceptResponseDTO:
         """Retrieve a list of concepts by analytic object
 
         Retrieve all the concepts for a specific analytic object. The response returns the details of all concepts for the analytic object, including object names, concept types, and descriptions.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1089,7 +1089,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationConceptResponseDTO",
+            '200': "ConceptResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1124,7 +1124,7 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingV2ObjectconfigurationConceptResponseDTO]:
+    ) -> ApiResponse[ConceptResponseDTO]:
         """Retrieve a list of concepts by analytic object
 
         Retrieve all the concepts for a specific analytic object. The response returns the details of all concepts for the analytic object, including object names, concept types, and descriptions.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1180,7 +1180,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationConceptResponseDTO",
+            '200': "ConceptResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1271,7 +1271,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationConceptResponseDTO",
+            '200': "ConceptResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1397,7 +1397,7 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingV2ObjectconfigurationConceptResponseDTO:
+    ) -> ConceptResponseDTO:
         """Retrieve a concept's details
 
         Retrieve the details of a specific concept, such as its concept type and description.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1444,7 +1444,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationConceptResponseDTO",
+            '200': "ConceptResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1476,7 +1476,7 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingV2ObjectconfigurationConceptResponseDTO]:
+    ) -> ApiResponse[ConceptResponseDTO]:
         """Retrieve a concept's details
 
         Retrieve the details of a specific concept, such as its concept type and description.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1523,7 +1523,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationConceptResponseDTO",
+            '200': "ConceptResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1602,7 +1602,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationConceptResponseDTO",
+            '200': "ConceptResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1694,7 +1694,7 @@ class ConceptsV2Api:
     @validate_call
     def patch_concepts(
         self,
-        servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO,
+        concept_request_dto: ConceptRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -1709,13 +1709,13 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingV2ObjectconfigurationBulkChangeResponseDTO:
+    ) -> BulkChangeResponseDTO:
         """Partially update concepts
 
         Make partial changes to existing concepts. The response returns whether each concept was successfully patched or not. When patching objects, we recommend that you first retrieve the object definition using `GET`. You can use the `GET` response in your `PATCH` request definition.   Unlike `PUT`, which completely replaces the concept definition, use `PATCH` to change specific fields in the concept without affecting omitted fields. To replace a concept's entire definition, see the `PUT` method.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_concept_request_dto: (required)
-        :type servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO
+        :param concept_request_dto: (required)
+        :type concept_request_dto: ConceptRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -1743,7 +1743,7 @@ class ConceptsV2Api:
         """ # noqa: E501
 
         _param = self._patch_concepts_serialize(
-            servicing_v2_objectconfiguration_concept_request_dto=servicing_v2_objectconfiguration_concept_request_dto,
+            concept_request_dto=concept_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -1753,7 +1753,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1769,7 +1769,7 @@ class ConceptsV2Api:
     @validate_call
     def patch_concepts_with_http_info(
         self,
-        servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO,
+        concept_request_dto: ConceptRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -1784,13 +1784,13 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingV2ObjectconfigurationBulkChangeResponseDTO]:
+    ) -> ApiResponse[BulkChangeResponseDTO]:
         """Partially update concepts
 
         Make partial changes to existing concepts. The response returns whether each concept was successfully patched or not. When patching objects, we recommend that you first retrieve the object definition using `GET`. You can use the `GET` response in your `PATCH` request definition.   Unlike `PUT`, which completely replaces the concept definition, use `PATCH` to change specific fields in the concept without affecting omitted fields. To replace a concept's entire definition, see the `PUT` method.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_concept_request_dto: (required)
-        :type servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO
+        :param concept_request_dto: (required)
+        :type concept_request_dto: ConceptRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -1818,7 +1818,7 @@ class ConceptsV2Api:
         """ # noqa: E501
 
         _param = self._patch_concepts_serialize(
-            servicing_v2_objectconfiguration_concept_request_dto=servicing_v2_objectconfiguration_concept_request_dto,
+            concept_request_dto=concept_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -1828,7 +1828,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1844,7 +1844,7 @@ class ConceptsV2Api:
     @validate_call
     def patch_concepts_without_preload_content(
         self,
-        servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO,
+        concept_request_dto: ConceptRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -1864,8 +1864,8 @@ class ConceptsV2Api:
 
         Make partial changes to existing concepts. The response returns whether each concept was successfully patched or not. When patching objects, we recommend that you first retrieve the object definition using `GET`. You can use the `GET` response in your `PATCH` request definition.   Unlike `PUT`, which completely replaces the concept definition, use `PATCH` to change specific fields in the concept without affecting omitted fields. To replace a concept's entire definition, see the `PUT` method.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_concept_request_dto: (required)
-        :type servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO
+        :param concept_request_dto: (required)
+        :type concept_request_dto: ConceptRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -1893,7 +1893,7 @@ class ConceptsV2Api:
         """ # noqa: E501
 
         _param = self._patch_concepts_serialize(
-            servicing_v2_objectconfiguration_concept_request_dto=servicing_v2_objectconfiguration_concept_request_dto,
+            concept_request_dto=concept_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -1903,7 +1903,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1914,7 +1914,7 @@ class ConceptsV2Api:
 
     def _patch_concepts_serialize(
         self,
-        servicing_v2_objectconfiguration_concept_request_dto,
+        concept_request_dto,
         target_tenant_id,
         project_id,
         _request_auth,
@@ -1946,8 +1946,8 @@ class ConceptsV2Api:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_v2_objectconfiguration_concept_request_dto is not None:
-            _body_params = servicing_v2_objectconfiguration_concept_request_dto
+        if concept_request_dto is not None:
+            _body_params = concept_request_dto
 
 
         # set the HTTP header `Accept`
@@ -2002,7 +2002,7 @@ class ConceptsV2Api:
     @validate_call
     def put_concepts(
         self,
-        servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO,
+        concept_request_dto: ConceptRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -2017,13 +2017,13 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingV2ObjectconfigurationBulkChangeResponseDTO:
+    ) -> BulkChangeResponseDTO:
         """Update concepts
 
         Update existing concepts. The response returns whether each concept was successfully updated or not. When updating objects, we recommend that you first retrieve the object definition using `GET`. You can use the `GET` response in your `PUT` request definition.   In `PUT` calls, the definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the concept. To partially update a concept, see the `PATCH` method.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_concept_request_dto: (required)
-        :type servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO
+        :param concept_request_dto: (required)
+        :type concept_request_dto: ConceptRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -2051,7 +2051,7 @@ class ConceptsV2Api:
         """ # noqa: E501
 
         _param = self._put_concepts_serialize(
-            servicing_v2_objectconfiguration_concept_request_dto=servicing_v2_objectconfiguration_concept_request_dto,
+            concept_request_dto=concept_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -2061,7 +2061,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2077,7 +2077,7 @@ class ConceptsV2Api:
     @validate_call
     def put_concepts_with_http_info(
         self,
-        servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO,
+        concept_request_dto: ConceptRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -2092,13 +2092,13 @@ class ConceptsV2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingV2ObjectconfigurationBulkChangeResponseDTO]:
+    ) -> ApiResponse[BulkChangeResponseDTO]:
         """Update concepts
 
         Update existing concepts. The response returns whether each concept was successfully updated or not. When updating objects, we recommend that you first retrieve the object definition using `GET`. You can use the `GET` response in your `PUT` request definition.   In `PUT` calls, the definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the concept. To partially update a concept, see the `PATCH` method.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_concept_request_dto: (required)
-        :type servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO
+        :param concept_request_dto: (required)
+        :type concept_request_dto: ConceptRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -2126,7 +2126,7 @@ class ConceptsV2Api:
         """ # noqa: E501
 
         _param = self._put_concepts_serialize(
-            servicing_v2_objectconfiguration_concept_request_dto=servicing_v2_objectconfiguration_concept_request_dto,
+            concept_request_dto=concept_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -2136,7 +2136,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2152,7 +2152,7 @@ class ConceptsV2Api:
     @validate_call
     def put_concepts_without_preload_content(
         self,
-        servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO,
+        concept_request_dto: ConceptRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -2172,8 +2172,8 @@ class ConceptsV2Api:
 
         Update existing concepts. The response returns whether each concept was successfully updated or not. When updating objects, we recommend that you first retrieve the object definition using `GET`. You can use the `GET` response in your `PUT` request definition.   In `PUT` calls, the definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the concept. To partially update a concept, see the `PATCH` method.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_concept_request_dto: (required)
-        :type servicing_v2_objectconfiguration_concept_request_dto: ServicingV2ObjectconfigurationConceptRequestDTO
+        :param concept_request_dto: (required)
+        :type concept_request_dto: ConceptRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -2201,7 +2201,7 @@ class ConceptsV2Api:
         """ # noqa: E501
 
         _param = self._put_concepts_serialize(
-            servicing_v2_objectconfiguration_concept_request_dto=servicing_v2_objectconfiguration_concept_request_dto,
+            concept_request_dto=concept_request_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -2211,7 +2211,7 @@ class ConceptsV2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2222,7 +2222,7 @@ class ConceptsV2Api:
 
     def _put_concepts_serialize(
         self,
-        servicing_v2_objectconfiguration_concept_request_dto,
+        concept_request_dto,
         target_tenant_id,
         project_id,
         _request_auth,
@@ -2254,8 +2254,8 @@ class ConceptsV2Api:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_v2_objectconfiguration_concept_request_dto is not None:
-            _body_params = servicing_v2_objectconfiguration_concept_request_dto
+        if concept_request_dto is not None:
+            _body_params = concept_request_dto
 
 
         # set the HTTP header `Accept`

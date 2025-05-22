@@ -20,8 +20,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from visier_platform_sdk.models.planning_plan_data_load_error_dto import PlanningPlanDataLoadErrorDTO
-from visier_platform_sdk.models.planning_plan_segment_level_member_dto import PlanningPlanSegmentLevelMemberDTO
+from visier_platform_sdk.models.plan_data_load_error_dto import PlanDataLoadErrorDTO
+from visier_platform_sdk.models.plan_segment_level_member_dto import PlanSegmentLevelMemberDTO
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,8 +33,8 @@ class PlanRowDataLoadResponseDTO(BaseModel):
     removed_rows_count: Optional[StrictInt] = Field(default=None, description="The number of rows removed from the plan.", alias="removedRowsCount")
     potential_added_rows_count: Optional[StrictInt] = Field(default=None, description="The number of rows that could have been added to the plan.", alias="potentialAddedRowsCount")
     potential_removed_rows_count: Optional[StrictInt] = Field(default=None, description="The number of rows that could have been removed from the plan.", alias="potentialRemovedRowsCount")
-    errors: Optional[List[PlanningPlanDataLoadErrorDTO]] = Field(default=None, description="The errors that occurred while loading the data.")
-    custom_members: Optional[List[PlanningPlanSegmentLevelMemberDTO]] = Field(default=None, description="The custom members and their corresponding IDs in the plan.", alias="customMembers")
+    errors: Optional[List[PlanDataLoadErrorDTO]] = Field(default=None, description="The errors that occurred while loading the data.")
+    custom_members: Optional[List[PlanSegmentLevelMemberDTO]] = Field(default=None, description="The custom members and their corresponding IDs in the plan.", alias="customMembers")
     __properties: ClassVar[List[str]] = ["addedRowsCount", "removedRowsCount", "potentialAddedRowsCount", "potentialRemovedRowsCount", "errors", "customMembers"]
 
     model_config = ConfigDict(
@@ -106,8 +106,8 @@ class PlanRowDataLoadResponseDTO(BaseModel):
             "removedRowsCount": obj.get("removedRowsCount"),
             "potentialAddedRowsCount": obj.get("potentialAddedRowsCount"),
             "potentialRemovedRowsCount": obj.get("potentialRemovedRowsCount"),
-            "errors": [PlanningPlanDataLoadErrorDTO.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
-            "customMembers": [PlanningPlanSegmentLevelMemberDTO.from_dict(_item) for _item in obj["customMembers"]] if obj.get("customMembers") is not None else None
+            "errors": [PlanDataLoadErrorDTO.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
+            "customMembers": [PlanSegmentLevelMemberDTO.from_dict(_item) for _item in obj["customMembers"]] if obj.get("customMembers") is not None else None
         })
         return _obj
 

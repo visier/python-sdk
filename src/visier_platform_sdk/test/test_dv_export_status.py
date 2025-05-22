@@ -15,6 +15,7 @@
 
 import unittest
 
+import visier_platform_sdk.models
 from visier_platform_sdk.models.dv_export_status import DvExportStatus
 
 class TestDvExportStatus(unittest.TestCase):
@@ -31,9 +32,7 @@ class TestDvExportStatus(unittest.TestCase):
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `DvExportStatus`
-        """
-        model = DvExportStatus()
+
         if include_optional:
             return DvExportStatus(
                 localized_message = '',
@@ -45,12 +44,19 @@ class TestDvExportStatus(unittest.TestCase):
         else:
             return DvExportStatus(
         )
-        """
 
     def testDvExportStatus(self):
         """Test DvExportStatus"""
-        # inst_req_only = self.make_instance(include_optional=False)
-        # inst_req_and_optional = self.make_instance(include_optional=True)
+        def validate_instance(instance):
+            DvExportStatus.model_validate(inst_req_only)
+            instance_deserialized = DvExportStatus.from_dict(instance.to_dict())
+            assert instance == instance_deserialized
+
+        inst_req_only = self.make_instance(include_optional=False)
+        validate_instance(inst_req_only)
+
+        inst_req_and_optional = self.make_instance(include_optional=True)
+        validate_instance(inst_req_and_optional)
 
 if __name__ == '__main__':
     unittest.main()

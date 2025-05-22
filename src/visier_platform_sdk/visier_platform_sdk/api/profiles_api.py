@@ -20,18 +20,18 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_platform_sdk.models.servicing_accessible_tenant_profile_assignment_request_dto import ServicingAccessibleTenantProfileAssignmentRequestDTO
-from visier_platform_sdk.models.servicing_accessible_tenant_profile_assignment_response_dto import ServicingAccessibleTenantProfileAssignmentResponseDTO
-from visier_platform_sdk.models.servicing_accessible_tenant_profile_revoke_request_dto import ServicingAccessibleTenantProfileRevokeRequestDTO
-from visier_platform_sdk.models.servicing_accessible_tenant_profile_revoke_response_dto import ServicingAccessibleTenantProfileRevokeResponseDTO
-from visier_platform_sdk.models.servicing_all_profile_assigned_for_accessible_tenant_dto import ServicingAllProfileAssignedForAccessibleTenantDTO
-from visier_platform_sdk.models.servicing_all_profile_assigned_for_local_tenant_dto import ServicingAllProfileAssignedForLocalTenantDTO
-from visier_platform_sdk.models.servicing_local_tenant_profile_assignment_request_dto import ServicingLocalTenantProfileAssignmentRequestDTO
-from visier_platform_sdk.models.servicing_local_tenant_profile_assignment_response_dto import ServicingLocalTenantProfileAssignmentResponseDTO
-from visier_platform_sdk.models.servicing_local_tenant_profile_revoke_request_dto import ServicingLocalTenantProfileRevokeRequestDTO
-from visier_platform_sdk.models.servicing_local_tenant_profile_revoke_response_dto import ServicingLocalTenantProfileRevokeResponseDTO
-from visier_platform_sdk.models.servicing_profile_get_api_response_dto import ServicingProfileGetAPIResponseDTO
-from visier_platform_sdk.models.servicing_profiles_get_api_response_dto import ServicingProfilesGetAPIResponseDTO
+from visier_platform_sdk.models.accessible_tenant_profile_assignment_request_dto import AccessibleTenantProfileAssignmentRequestDTO
+from visier_platform_sdk.models.accessible_tenant_profile_assignment_response_dto import AccessibleTenantProfileAssignmentResponseDTO
+from visier_platform_sdk.models.accessible_tenant_profile_revoke_request_dto import AccessibleTenantProfileRevokeRequestDTO
+from visier_platform_sdk.models.accessible_tenant_profile_revoke_response_dto import AccessibleTenantProfileRevokeResponseDTO
+from visier_platform_sdk.models.all_profile_assigned_for_accessible_tenant_dto import AllProfileAssignedForAccessibleTenantDTO
+from visier_platform_sdk.models.all_profile_assigned_for_local_tenant_dto import AllProfileAssignedForLocalTenantDTO
+from visier_platform_sdk.models.local_tenant_profile_assignment_request_dto import LocalTenantProfileAssignmentRequestDTO
+from visier_platform_sdk.models.local_tenant_profile_assignment_response_dto import LocalTenantProfileAssignmentResponseDTO
+from visier_platform_sdk.models.local_tenant_profile_revoke_request_dto import LocalTenantProfileRevokeRequestDTO
+from visier_platform_sdk.models.local_tenant_profile_revoke_response_dto import LocalTenantProfileRevokeResponseDTO
+from visier_platform_sdk.models.profile_get_api_response_dto import ProfileGetAPIResponseDTO
+from visier_platform_sdk.models.profiles_get_api_response_dto import ProfilesGetAPIResponseDTO
 
 from visier_platform_sdk.api_client import ApiClient, RequestSerialized
 from visier_platform_sdk.api_response import ApiResponse
@@ -55,7 +55,7 @@ class ProfilesApi:
     def assign_analytic_profile(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to assign.")],
-        servicing_accessible_tenant_profile_assignment_request_dto: ServicingAccessibleTenantProfileAssignmentRequestDTO,
+        accessible_tenant_profile_assignment_request_dto: AccessibleTenantProfileAssignmentRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -68,15 +68,15 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingAccessibleTenantProfileAssignmentResponseDTO:
+    ) -> AccessibleTenantProfileAssignmentResponseDTO:
         """Assign an analytic tenant profile to administrating tenant users
 
         Assign an analytic tenant profile to a list of administrating tenant users  for a list of analytic tenants.   **Note:**   - Administrating tenants only.   - You can revoke a profile from a user with this request by updating the validityEndTime to be     \"less than\" the current time (that is, in the past).
 
         :param profile_id: The ID of the profile to assign. (required)
         :type profile_id: str
-        :param servicing_accessible_tenant_profile_assignment_request_dto: (required)
-        :type servicing_accessible_tenant_profile_assignment_request_dto: ServicingAccessibleTenantProfileAssignmentRequestDTO
+        :param accessible_tenant_profile_assignment_request_dto: (required)
+        :type accessible_tenant_profile_assignment_request_dto: AccessibleTenantProfileAssignmentRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -101,7 +101,7 @@ class ProfilesApi:
 
         _param = self._assign_analytic_profile_serialize(
             profile_id=profile_id,
-            servicing_accessible_tenant_profile_assignment_request_dto=servicing_accessible_tenant_profile_assignment_request_dto,
+            accessible_tenant_profile_assignment_request_dto=accessible_tenant_profile_assignment_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -109,7 +109,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAccessibleTenantProfileAssignmentResponseDTO",
+            '200': "AccessibleTenantProfileAssignmentResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -126,7 +126,7 @@ class ProfilesApi:
     def assign_analytic_profile_with_http_info(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to assign.")],
-        servicing_accessible_tenant_profile_assignment_request_dto: ServicingAccessibleTenantProfileAssignmentRequestDTO,
+        accessible_tenant_profile_assignment_request_dto: AccessibleTenantProfileAssignmentRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -139,15 +139,15 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingAccessibleTenantProfileAssignmentResponseDTO]:
+    ) -> ApiResponse[AccessibleTenantProfileAssignmentResponseDTO]:
         """Assign an analytic tenant profile to administrating tenant users
 
         Assign an analytic tenant profile to a list of administrating tenant users  for a list of analytic tenants.   **Note:**   - Administrating tenants only.   - You can revoke a profile from a user with this request by updating the validityEndTime to be     \"less than\" the current time (that is, in the past).
 
         :param profile_id: The ID of the profile to assign. (required)
         :type profile_id: str
-        :param servicing_accessible_tenant_profile_assignment_request_dto: (required)
-        :type servicing_accessible_tenant_profile_assignment_request_dto: ServicingAccessibleTenantProfileAssignmentRequestDTO
+        :param accessible_tenant_profile_assignment_request_dto: (required)
+        :type accessible_tenant_profile_assignment_request_dto: AccessibleTenantProfileAssignmentRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -172,7 +172,7 @@ class ProfilesApi:
 
         _param = self._assign_analytic_profile_serialize(
             profile_id=profile_id,
-            servicing_accessible_tenant_profile_assignment_request_dto=servicing_accessible_tenant_profile_assignment_request_dto,
+            accessible_tenant_profile_assignment_request_dto=accessible_tenant_profile_assignment_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -180,7 +180,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAccessibleTenantProfileAssignmentResponseDTO",
+            '200': "AccessibleTenantProfileAssignmentResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -197,7 +197,7 @@ class ProfilesApi:
     def assign_analytic_profile_without_preload_content(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to assign.")],
-        servicing_accessible_tenant_profile_assignment_request_dto: ServicingAccessibleTenantProfileAssignmentRequestDTO,
+        accessible_tenant_profile_assignment_request_dto: AccessibleTenantProfileAssignmentRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -217,8 +217,8 @@ class ProfilesApi:
 
         :param profile_id: The ID of the profile to assign. (required)
         :type profile_id: str
-        :param servicing_accessible_tenant_profile_assignment_request_dto: (required)
-        :type servicing_accessible_tenant_profile_assignment_request_dto: ServicingAccessibleTenantProfileAssignmentRequestDTO
+        :param accessible_tenant_profile_assignment_request_dto: (required)
+        :type accessible_tenant_profile_assignment_request_dto: AccessibleTenantProfileAssignmentRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -243,7 +243,7 @@ class ProfilesApi:
 
         _param = self._assign_analytic_profile_serialize(
             profile_id=profile_id,
-            servicing_accessible_tenant_profile_assignment_request_dto=servicing_accessible_tenant_profile_assignment_request_dto,
+            accessible_tenant_profile_assignment_request_dto=accessible_tenant_profile_assignment_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -251,7 +251,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAccessibleTenantProfileAssignmentResponseDTO",
+            '200': "AccessibleTenantProfileAssignmentResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -263,7 +263,7 @@ class ProfilesApi:
     def _assign_analytic_profile_serialize(
         self,
         profile_id,
-        servicing_accessible_tenant_profile_assignment_request_dto,
+        accessible_tenant_profile_assignment_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -291,8 +291,8 @@ class ProfilesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if servicing_accessible_tenant_profile_assignment_request_dto is not None:
-            _body_params = servicing_accessible_tenant_profile_assignment_request_dto
+        if accessible_tenant_profile_assignment_request_dto is not None:
+            _body_params = accessible_tenant_profile_assignment_request_dto
 
 
         # set the HTTP header `Accept`
@@ -348,7 +348,7 @@ class ProfilesApi:
     def assign_profile(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to assign to a list of users.")],
-        servicing_local_tenant_profile_assignment_request_dto: ServicingLocalTenantProfileAssignmentRequestDTO,
+        local_tenant_profile_assignment_request_dto: LocalTenantProfileAssignmentRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -362,15 +362,15 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingLocalTenantProfileAssignmentResponseDTO:
+    ) -> LocalTenantProfileAssignmentResponseDTO:
         """Assign a profile to a list of users
 
         Assign a profile to a list of users. For administrating tenants,  this assigns an administrating tenant profile to a list of users.
 
         :param profile_id: The ID of the profile to assign to a list of users. (required)
         :type profile_id: str
-        :param servicing_local_tenant_profile_assignment_request_dto: (required)
-        :type servicing_local_tenant_profile_assignment_request_dto: ServicingLocalTenantProfileAssignmentRequestDTO
+        :param local_tenant_profile_assignment_request_dto: (required)
+        :type local_tenant_profile_assignment_request_dto: LocalTenantProfileAssignmentRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -397,7 +397,7 @@ class ProfilesApi:
 
         _param = self._assign_profile_serialize(
             profile_id=profile_id,
-            servicing_local_tenant_profile_assignment_request_dto=servicing_local_tenant_profile_assignment_request_dto,
+            local_tenant_profile_assignment_request_dto=local_tenant_profile_assignment_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -406,7 +406,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingLocalTenantProfileAssignmentResponseDTO",
+            '200': "LocalTenantProfileAssignmentResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -423,7 +423,7 @@ class ProfilesApi:
     def assign_profile_with_http_info(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to assign to a list of users.")],
-        servicing_local_tenant_profile_assignment_request_dto: ServicingLocalTenantProfileAssignmentRequestDTO,
+        local_tenant_profile_assignment_request_dto: LocalTenantProfileAssignmentRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -437,15 +437,15 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingLocalTenantProfileAssignmentResponseDTO]:
+    ) -> ApiResponse[LocalTenantProfileAssignmentResponseDTO]:
         """Assign a profile to a list of users
 
         Assign a profile to a list of users. For administrating tenants,  this assigns an administrating tenant profile to a list of users.
 
         :param profile_id: The ID of the profile to assign to a list of users. (required)
         :type profile_id: str
-        :param servicing_local_tenant_profile_assignment_request_dto: (required)
-        :type servicing_local_tenant_profile_assignment_request_dto: ServicingLocalTenantProfileAssignmentRequestDTO
+        :param local_tenant_profile_assignment_request_dto: (required)
+        :type local_tenant_profile_assignment_request_dto: LocalTenantProfileAssignmentRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -472,7 +472,7 @@ class ProfilesApi:
 
         _param = self._assign_profile_serialize(
             profile_id=profile_id,
-            servicing_local_tenant_profile_assignment_request_dto=servicing_local_tenant_profile_assignment_request_dto,
+            local_tenant_profile_assignment_request_dto=local_tenant_profile_assignment_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -481,7 +481,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingLocalTenantProfileAssignmentResponseDTO",
+            '200': "LocalTenantProfileAssignmentResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -498,7 +498,7 @@ class ProfilesApi:
     def assign_profile_without_preload_content(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to assign to a list of users.")],
-        servicing_local_tenant_profile_assignment_request_dto: ServicingLocalTenantProfileAssignmentRequestDTO,
+        local_tenant_profile_assignment_request_dto: LocalTenantProfileAssignmentRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -519,8 +519,8 @@ class ProfilesApi:
 
         :param profile_id: The ID of the profile to assign to a list of users. (required)
         :type profile_id: str
-        :param servicing_local_tenant_profile_assignment_request_dto: (required)
-        :type servicing_local_tenant_profile_assignment_request_dto: ServicingLocalTenantProfileAssignmentRequestDTO
+        :param local_tenant_profile_assignment_request_dto: (required)
+        :type local_tenant_profile_assignment_request_dto: LocalTenantProfileAssignmentRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -547,7 +547,7 @@ class ProfilesApi:
 
         _param = self._assign_profile_serialize(
             profile_id=profile_id,
-            servicing_local_tenant_profile_assignment_request_dto=servicing_local_tenant_profile_assignment_request_dto,
+            local_tenant_profile_assignment_request_dto=local_tenant_profile_assignment_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -556,7 +556,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingLocalTenantProfileAssignmentResponseDTO",
+            '200': "LocalTenantProfileAssignmentResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -568,7 +568,7 @@ class ProfilesApi:
     def _assign_profile_serialize(
         self,
         profile_id,
-        servicing_local_tenant_profile_assignment_request_dto,
+        local_tenant_profile_assignment_request_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -599,8 +599,8 @@ class ProfilesApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if servicing_local_tenant_profile_assignment_request_dto is not None:
-            _body_params = servicing_local_tenant_profile_assignment_request_dto
+        if local_tenant_profile_assignment_request_dto is not None:
+            _body_params = local_tenant_profile_assignment_request_dto
 
 
         # set the HTTP header `Accept`
@@ -668,7 +668,7 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingProfilesGetAPIResponseDTO:
+    ) -> ProfilesGetAPIResponseDTO:
         """Retrieve a list of all profiles
 
         Get a list of all available profiles. For administrating tenants,  this retrieves all administrating tenant profiles.
@@ -706,7 +706,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingProfilesGetAPIResponseDTO",
+            '200': "ProfilesGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -735,7 +735,7 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingProfilesGetAPIResponseDTO]:
+    ) -> ApiResponse[ProfilesGetAPIResponseDTO]:
         """Retrieve a list of all profiles
 
         Get a list of all available profiles. For administrating tenants,  this retrieves all administrating tenant profiles.
@@ -773,7 +773,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingProfilesGetAPIResponseDTO",
+            '200': "ProfilesGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -840,7 +840,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingProfilesGetAPIResponseDTO",
+            '200': "ProfilesGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -933,7 +933,7 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingProfileGetAPIResponseDTO:
+    ) -> ProfileGetAPIResponseDTO:
         """Retrieve the details of an analytic tenant profile
 
         Get the details of an analytic tenant profile.   **Note:** Administrating tenants only.
@@ -971,7 +971,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingProfileGetAPIResponseDTO",
+            '200': "ProfileGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1000,7 +1000,7 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingProfileGetAPIResponseDTO]:
+    ) -> ApiResponse[ProfileGetAPIResponseDTO]:
         """Retrieve the details of an analytic tenant profile
 
         Get the details of an analytic tenant profile.   **Note:** Administrating tenants only.
@@ -1038,7 +1038,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingProfileGetAPIResponseDTO",
+            '200': "ProfileGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1105,7 +1105,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingProfileGetAPIResponseDTO",
+            '200': "ProfileGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1197,7 +1197,7 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingProfilesGetAPIResponseDTO:
+    ) -> ProfilesGetAPIResponseDTO:
         """Retrieve a list of analytic tenant profiles
 
         Retrieve a list of profiles available for analytic tenants.   **Note:** Administrating tenants only.
@@ -1232,7 +1232,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingProfilesGetAPIResponseDTO",
+            '200': "ProfilesGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1260,7 +1260,7 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingProfilesGetAPIResponseDTO]:
+    ) -> ApiResponse[ProfilesGetAPIResponseDTO]:
         """Retrieve a list of analytic tenant profiles
 
         Retrieve a list of profiles available for analytic tenants.   **Note:** Administrating tenants only.
@@ -1295,7 +1295,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingProfilesGetAPIResponseDTO",
+            '200': "ProfilesGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1358,7 +1358,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingProfilesGetAPIResponseDTO",
+            '200': "ProfilesGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1448,7 +1448,7 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingAllProfileAssignedForAccessibleTenantDTO:
+    ) -> AllProfileAssignedForAccessibleTenantDTO:
         """Retrieve an administrating tenant user's analytic tenant profiles
 
         Retrieve a specified user's assigned profiles for analytic tenants.   **Note:** Administrating tenants only.
@@ -1486,7 +1486,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAllProfileAssignedForAccessibleTenantDTO",
+            '200': "AllProfileAssignedForAccessibleTenantDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1515,7 +1515,7 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingAllProfileAssignedForAccessibleTenantDTO]:
+    ) -> ApiResponse[AllProfileAssignedForAccessibleTenantDTO]:
         """Retrieve an administrating tenant user's analytic tenant profiles
 
         Retrieve a specified user's assigned profiles for analytic tenants.   **Note:** Administrating tenants only.
@@ -1553,7 +1553,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAllProfileAssignedForAccessibleTenantDTO",
+            '200': "AllProfileAssignedForAccessibleTenantDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1620,7 +1620,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAllProfileAssignedForAccessibleTenantDTO",
+            '200': "AllProfileAssignedForAccessibleTenantDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1714,7 +1714,7 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingProfileGetAPIResponseDTO:
+    ) -> ProfileGetAPIResponseDTO:
         """Retrieve the details of a profile
 
         Get the details of a specific profile. For administrating tenants, this retrieves  the details of administrating tenant profiles.
@@ -1755,7 +1755,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingProfileGetAPIResponseDTO",
+            '200': "ProfileGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1785,7 +1785,7 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingProfileGetAPIResponseDTO]:
+    ) -> ApiResponse[ProfileGetAPIResponseDTO]:
         """Retrieve the details of a profile
 
         Get the details of a specific profile. For administrating tenants, this retrieves  the details of administrating tenant profiles.
@@ -1826,7 +1826,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingProfileGetAPIResponseDTO",
+            '200': "ProfileGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1897,7 +1897,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingProfileGetAPIResponseDTO",
+            '200': "ProfileGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1994,7 +1994,7 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingAllProfileAssignedForLocalTenantDTO:
+    ) -> AllProfileAssignedForLocalTenantDTO:
         """Retrieve a user's profiles
 
         Retrieve a specified user's assigned profiles. For administrating tenants,  this retrieves a user's administrating tenant profiles.
@@ -2035,7 +2035,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAllProfileAssignedForLocalTenantDTO",
+            '200': "AllProfileAssignedForLocalTenantDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2065,7 +2065,7 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingAllProfileAssignedForLocalTenantDTO]:
+    ) -> ApiResponse[AllProfileAssignedForLocalTenantDTO]:
         """Retrieve a user's profiles
 
         Retrieve a specified user's assigned profiles. For administrating tenants,  this retrieves a user's administrating tenant profiles.
@@ -2106,7 +2106,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAllProfileAssignedForLocalTenantDTO",
+            '200': "AllProfileAssignedForLocalTenantDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2177,7 +2177,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAllProfileAssignedForLocalTenantDTO",
+            '200': "AllProfileAssignedForLocalTenantDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2261,7 +2261,7 @@ class ProfilesApi:
     def remove_analytic_profile(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to remove.")],
-        servicing_accessible_tenant_profile_revoke_request_dto: ServicingAccessibleTenantProfileRevokeRequestDTO,
+        accessible_tenant_profile_revoke_request_dto: AccessibleTenantProfileRevokeRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -2275,15 +2275,15 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingAccessibleTenantProfileRevokeResponseDTO:
+    ) -> AccessibleTenantProfileRevokeResponseDTO:
         """Remove an analytic tenant profile from administrating tenant users
 
         Remove an analytic tenant profile from a list of administrating tenant users for a list of analytic tenants.   **Note:** Administrating tenants only.
 
         :param profile_id: The ID of the profile to remove. (required)
         :type profile_id: str
-        :param servicing_accessible_tenant_profile_revoke_request_dto: (required)
-        :type servicing_accessible_tenant_profile_revoke_request_dto: ServicingAccessibleTenantProfileRevokeRequestDTO
+        :param accessible_tenant_profile_revoke_request_dto: (required)
+        :type accessible_tenant_profile_revoke_request_dto: AccessibleTenantProfileRevokeRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2310,7 +2310,7 @@ class ProfilesApi:
 
         _param = self._remove_analytic_profile_serialize(
             profile_id=profile_id,
-            servicing_accessible_tenant_profile_revoke_request_dto=servicing_accessible_tenant_profile_revoke_request_dto,
+            accessible_tenant_profile_revoke_request_dto=accessible_tenant_profile_revoke_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2319,7 +2319,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAccessibleTenantProfileRevokeResponseDTO",
+            '200': "AccessibleTenantProfileRevokeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2336,7 +2336,7 @@ class ProfilesApi:
     def remove_analytic_profile_with_http_info(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to remove.")],
-        servicing_accessible_tenant_profile_revoke_request_dto: ServicingAccessibleTenantProfileRevokeRequestDTO,
+        accessible_tenant_profile_revoke_request_dto: AccessibleTenantProfileRevokeRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -2350,15 +2350,15 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingAccessibleTenantProfileRevokeResponseDTO]:
+    ) -> ApiResponse[AccessibleTenantProfileRevokeResponseDTO]:
         """Remove an analytic tenant profile from administrating tenant users
 
         Remove an analytic tenant profile from a list of administrating tenant users for a list of analytic tenants.   **Note:** Administrating tenants only.
 
         :param profile_id: The ID of the profile to remove. (required)
         :type profile_id: str
-        :param servicing_accessible_tenant_profile_revoke_request_dto: (required)
-        :type servicing_accessible_tenant_profile_revoke_request_dto: ServicingAccessibleTenantProfileRevokeRequestDTO
+        :param accessible_tenant_profile_revoke_request_dto: (required)
+        :type accessible_tenant_profile_revoke_request_dto: AccessibleTenantProfileRevokeRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2385,7 +2385,7 @@ class ProfilesApi:
 
         _param = self._remove_analytic_profile_serialize(
             profile_id=profile_id,
-            servicing_accessible_tenant_profile_revoke_request_dto=servicing_accessible_tenant_profile_revoke_request_dto,
+            accessible_tenant_profile_revoke_request_dto=accessible_tenant_profile_revoke_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2394,7 +2394,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAccessibleTenantProfileRevokeResponseDTO",
+            '200': "AccessibleTenantProfileRevokeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2411,7 +2411,7 @@ class ProfilesApi:
     def remove_analytic_profile_without_preload_content(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to remove.")],
-        servicing_accessible_tenant_profile_revoke_request_dto: ServicingAccessibleTenantProfileRevokeRequestDTO,
+        accessible_tenant_profile_revoke_request_dto: AccessibleTenantProfileRevokeRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -2432,8 +2432,8 @@ class ProfilesApi:
 
         :param profile_id: The ID of the profile to remove. (required)
         :type profile_id: str
-        :param servicing_accessible_tenant_profile_revoke_request_dto: (required)
-        :type servicing_accessible_tenant_profile_revoke_request_dto: ServicingAccessibleTenantProfileRevokeRequestDTO
+        :param accessible_tenant_profile_revoke_request_dto: (required)
+        :type accessible_tenant_profile_revoke_request_dto: AccessibleTenantProfileRevokeRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2460,7 +2460,7 @@ class ProfilesApi:
 
         _param = self._remove_analytic_profile_serialize(
             profile_id=profile_id,
-            servicing_accessible_tenant_profile_revoke_request_dto=servicing_accessible_tenant_profile_revoke_request_dto,
+            accessible_tenant_profile_revoke_request_dto=accessible_tenant_profile_revoke_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2469,7 +2469,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAccessibleTenantProfileRevokeResponseDTO",
+            '200': "AccessibleTenantProfileRevokeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2481,7 +2481,7 @@ class ProfilesApi:
     def _remove_analytic_profile_serialize(
         self,
         profile_id,
-        servicing_accessible_tenant_profile_revoke_request_dto,
+        accessible_tenant_profile_revoke_request_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -2512,8 +2512,8 @@ class ProfilesApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if servicing_accessible_tenant_profile_revoke_request_dto is not None:
-            _body_params = servicing_accessible_tenant_profile_revoke_request_dto
+        if accessible_tenant_profile_revoke_request_dto is not None:
+            _body_params = accessible_tenant_profile_revoke_request_dto
 
 
         # set the HTTP header `Accept`
@@ -2569,7 +2569,7 @@ class ProfilesApi:
     def remove_profile(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to remove to a list of users.")],
-        servicing_local_tenant_profile_revoke_request_dto: ServicingLocalTenantProfileRevokeRequestDTO,
+        local_tenant_profile_revoke_request_dto: LocalTenantProfileRevokeRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -2583,15 +2583,15 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingLocalTenantProfileRevokeResponseDTO:
+    ) -> LocalTenantProfileRevokeResponseDTO:
         """Remove a profile from a list of users
 
         Remove a profile from a list of users. For administrating tenants, this  removes an administrating tenant profile from a list of users.
 
         :param profile_id: The ID of the profile to remove to a list of users. (required)
         :type profile_id: str
-        :param servicing_local_tenant_profile_revoke_request_dto: (required)
-        :type servicing_local_tenant_profile_revoke_request_dto: ServicingLocalTenantProfileRevokeRequestDTO
+        :param local_tenant_profile_revoke_request_dto: (required)
+        :type local_tenant_profile_revoke_request_dto: LocalTenantProfileRevokeRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2618,7 +2618,7 @@ class ProfilesApi:
 
         _param = self._remove_profile_serialize(
             profile_id=profile_id,
-            servicing_local_tenant_profile_revoke_request_dto=servicing_local_tenant_profile_revoke_request_dto,
+            local_tenant_profile_revoke_request_dto=local_tenant_profile_revoke_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2627,7 +2627,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingLocalTenantProfileRevokeResponseDTO",
+            '200': "LocalTenantProfileRevokeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2644,7 +2644,7 @@ class ProfilesApi:
     def remove_profile_with_http_info(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to remove to a list of users.")],
-        servicing_local_tenant_profile_revoke_request_dto: ServicingLocalTenantProfileRevokeRequestDTO,
+        local_tenant_profile_revoke_request_dto: LocalTenantProfileRevokeRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -2658,15 +2658,15 @@ class ProfilesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingLocalTenantProfileRevokeResponseDTO]:
+    ) -> ApiResponse[LocalTenantProfileRevokeResponseDTO]:
         """Remove a profile from a list of users
 
         Remove a profile from a list of users. For administrating tenants, this  removes an administrating tenant profile from a list of users.
 
         :param profile_id: The ID of the profile to remove to a list of users. (required)
         :type profile_id: str
-        :param servicing_local_tenant_profile_revoke_request_dto: (required)
-        :type servicing_local_tenant_profile_revoke_request_dto: ServicingLocalTenantProfileRevokeRequestDTO
+        :param local_tenant_profile_revoke_request_dto: (required)
+        :type local_tenant_profile_revoke_request_dto: LocalTenantProfileRevokeRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2693,7 +2693,7 @@ class ProfilesApi:
 
         _param = self._remove_profile_serialize(
             profile_id=profile_id,
-            servicing_local_tenant_profile_revoke_request_dto=servicing_local_tenant_profile_revoke_request_dto,
+            local_tenant_profile_revoke_request_dto=local_tenant_profile_revoke_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2702,7 +2702,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingLocalTenantProfileRevokeResponseDTO",
+            '200': "LocalTenantProfileRevokeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2719,7 +2719,7 @@ class ProfilesApi:
     def remove_profile_without_preload_content(
         self,
         profile_id: Annotated[StrictStr, Field(description="The ID of the profile to remove to a list of users.")],
-        servicing_local_tenant_profile_revoke_request_dto: ServicingLocalTenantProfileRevokeRequestDTO,
+        local_tenant_profile_revoke_request_dto: LocalTenantProfileRevokeRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -2740,8 +2740,8 @@ class ProfilesApi:
 
         :param profile_id: The ID of the profile to remove to a list of users. (required)
         :type profile_id: str
-        :param servicing_local_tenant_profile_revoke_request_dto: (required)
-        :type servicing_local_tenant_profile_revoke_request_dto: ServicingLocalTenantProfileRevokeRequestDTO
+        :param local_tenant_profile_revoke_request_dto: (required)
+        :type local_tenant_profile_revoke_request_dto: LocalTenantProfileRevokeRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2768,7 +2768,7 @@ class ProfilesApi:
 
         _param = self._remove_profile_serialize(
             profile_id=profile_id,
-            servicing_local_tenant_profile_revoke_request_dto=servicing_local_tenant_profile_revoke_request_dto,
+            local_tenant_profile_revoke_request_dto=local_tenant_profile_revoke_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2777,7 +2777,7 @@ class ProfilesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingLocalTenantProfileRevokeResponseDTO",
+            '200': "LocalTenantProfileRevokeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2789,7 +2789,7 @@ class ProfilesApi:
     def _remove_profile_serialize(
         self,
         profile_id,
-        servicing_local_tenant_profile_revoke_request_dto,
+        local_tenant_profile_revoke_request_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -2820,8 +2820,8 @@ class ProfilesApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if servicing_local_tenant_profile_revoke_request_dto is not None:
-            _body_params = servicing_local_tenant_profile_revoke_request_dto
+        if local_tenant_profile_revoke_request_dto is not None:
+            _body_params = local_tenant_profile_revoke_request_dto
 
 
         # set the HTTP header `Accept`

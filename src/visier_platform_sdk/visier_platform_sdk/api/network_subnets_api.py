@@ -20,8 +20,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_platform_sdk.models.admin_network_subnets_message_request import AdminNetworkSubnetsMessageRequest
-from visier_platform_sdk.models.admin_network_subnets_message_response import AdminNetworkSubnetsMessageResponse
+from visier_platform_sdk.models.network_subnets_message_request import NetworkSubnetsMessageRequest
+from visier_platform_sdk.models.network_subnets_message_response import NetworkSubnetsMessageResponse
 
 from visier_platform_sdk.api_client import ApiClient, RequestSerialized
 from visier_platform_sdk.api_response import ApiResponse
@@ -44,7 +44,7 @@ class NetworkSubnetsApi:
     @validate_call
     def add_api_subnets(
         self,
-        admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest,
+        network_subnets_message_request: NetworkSubnetsMessageRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -57,13 +57,13 @@ class NetworkSubnetsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminNetworkSubnetsMessageResponse:
+    ) -> NetworkSubnetsMessageResponse:
         """Add API network subnets
 
         Add IP addresses to the list of allowed network subnets that can call Visier APIs. IP addresses must use the Classless Inter-Domain Routing (CIDR) format: xxx.xxx.xxx.xxx/xx.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_network_subnets_message_request: (required)
-        :type admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest
+        :param network_subnets_message_request: (required)
+        :type network_subnets_message_request: NetworkSubnetsMessageRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -87,7 +87,7 @@ class NetworkSubnetsApi:
         """ # noqa: E501
 
         _param = self._add_api_subnets_serialize(
-            admin_network_subnets_message_request=admin_network_subnets_message_request,
+            network_subnets_message_request=network_subnets_message_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -95,7 +95,7 @@ class NetworkSubnetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminNetworkSubnetsMessageResponse",
+            '200': "NetworkSubnetsMessageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -111,7 +111,7 @@ class NetworkSubnetsApi:
     @validate_call
     def add_api_subnets_with_http_info(
         self,
-        admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest,
+        network_subnets_message_request: NetworkSubnetsMessageRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -124,13 +124,13 @@ class NetworkSubnetsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminNetworkSubnetsMessageResponse]:
+    ) -> ApiResponse[NetworkSubnetsMessageResponse]:
         """Add API network subnets
 
         Add IP addresses to the list of allowed network subnets that can call Visier APIs. IP addresses must use the Classless Inter-Domain Routing (CIDR) format: xxx.xxx.xxx.xxx/xx.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_network_subnets_message_request: (required)
-        :type admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest
+        :param network_subnets_message_request: (required)
+        :type network_subnets_message_request: NetworkSubnetsMessageRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -154,7 +154,7 @@ class NetworkSubnetsApi:
         """ # noqa: E501
 
         _param = self._add_api_subnets_serialize(
-            admin_network_subnets_message_request=admin_network_subnets_message_request,
+            network_subnets_message_request=network_subnets_message_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -162,7 +162,7 @@ class NetworkSubnetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminNetworkSubnetsMessageResponse",
+            '200': "NetworkSubnetsMessageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -178,7 +178,7 @@ class NetworkSubnetsApi:
     @validate_call
     def add_api_subnets_without_preload_content(
         self,
-        admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest,
+        network_subnets_message_request: NetworkSubnetsMessageRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -196,8 +196,8 @@ class NetworkSubnetsApi:
 
         Add IP addresses to the list of allowed network subnets that can call Visier APIs. IP addresses must use the Classless Inter-Domain Routing (CIDR) format: xxx.xxx.xxx.xxx/xx.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_network_subnets_message_request: (required)
-        :type admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest
+        :param network_subnets_message_request: (required)
+        :type network_subnets_message_request: NetworkSubnetsMessageRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -221,7 +221,7 @@ class NetworkSubnetsApi:
         """ # noqa: E501
 
         _param = self._add_api_subnets_serialize(
-            admin_network_subnets_message_request=admin_network_subnets_message_request,
+            network_subnets_message_request=network_subnets_message_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -229,7 +229,7 @@ class NetworkSubnetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminNetworkSubnetsMessageResponse",
+            '200': "NetworkSubnetsMessageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -240,7 +240,7 @@ class NetworkSubnetsApi:
 
     def _add_api_subnets_serialize(
         self,
-        admin_network_subnets_message_request,
+        network_subnets_message_request,
         _request_auth,
         _content_type,
         _headers,
@@ -266,8 +266,8 @@ class NetworkSubnetsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if admin_network_subnets_message_request is not None:
-            _body_params = admin_network_subnets_message_request
+        if network_subnets_message_request is not None:
+            _body_params = network_subnets_message_request
 
 
         # set the HTTP header `Accept`
@@ -322,7 +322,7 @@ class NetworkSubnetsApi:
     @validate_call
     def delete_api_subnets(
         self,
-        admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest,
+        network_subnets_message_request: NetworkSubnetsMessageRequest,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -336,13 +336,13 @@ class NetworkSubnetsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminNetworkSubnetsMessageResponse:
+    ) -> NetworkSubnetsMessageResponse:
         """Delete API network subnets
 
         Remove IP addresses from the list of allowed network subnets that can call Visier APIs. IP addresses must use the Classless Inter-Domain Routing (CIDR) format: xxx.xxx.xxx.xxx/xx.   When updating allowed network subnets, the definition in your API call replaces the prior definition. You must provide the entire definition in the PUT call. If you omit IP addresses from the update request, those IP addresses are removed from the allowlist We recommend that you retrieve the current list of allowed network subnets before you update the list.   **Note**: By deleting the allowed network subnets, you may remove your current IP address from the allowlist. If this happens, you will lock yourself out from making additional API calls. Visier does not allow lock outs unless you set `confirmLockout` to `true`. Default is `false`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_network_subnets_message_request: (required)
-        :type admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest
+        :param network_subnets_message_request: (required)
+        :type network_subnets_message_request: NetworkSubnetsMessageRequest
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -368,7 +368,7 @@ class NetworkSubnetsApi:
         """ # noqa: E501
 
         _param = self._delete_api_subnets_serialize(
-            admin_network_subnets_message_request=admin_network_subnets_message_request,
+            network_subnets_message_request=network_subnets_message_request,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -377,7 +377,7 @@ class NetworkSubnetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminNetworkSubnetsMessageResponse",
+            '200': "NetworkSubnetsMessageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -393,7 +393,7 @@ class NetworkSubnetsApi:
     @validate_call
     def delete_api_subnets_with_http_info(
         self,
-        admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest,
+        network_subnets_message_request: NetworkSubnetsMessageRequest,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -407,13 +407,13 @@ class NetworkSubnetsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminNetworkSubnetsMessageResponse]:
+    ) -> ApiResponse[NetworkSubnetsMessageResponse]:
         """Delete API network subnets
 
         Remove IP addresses from the list of allowed network subnets that can call Visier APIs. IP addresses must use the Classless Inter-Domain Routing (CIDR) format: xxx.xxx.xxx.xxx/xx.   When updating allowed network subnets, the definition in your API call replaces the prior definition. You must provide the entire definition in the PUT call. If you omit IP addresses from the update request, those IP addresses are removed from the allowlist We recommend that you retrieve the current list of allowed network subnets before you update the list.   **Note**: By deleting the allowed network subnets, you may remove your current IP address from the allowlist. If this happens, you will lock yourself out from making additional API calls. Visier does not allow lock outs unless you set `confirmLockout` to `true`. Default is `false`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_network_subnets_message_request: (required)
-        :type admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest
+        :param network_subnets_message_request: (required)
+        :type network_subnets_message_request: NetworkSubnetsMessageRequest
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -439,7 +439,7 @@ class NetworkSubnetsApi:
         """ # noqa: E501
 
         _param = self._delete_api_subnets_serialize(
-            admin_network_subnets_message_request=admin_network_subnets_message_request,
+            network_subnets_message_request=network_subnets_message_request,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -448,7 +448,7 @@ class NetworkSubnetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminNetworkSubnetsMessageResponse",
+            '200': "NetworkSubnetsMessageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -464,7 +464,7 @@ class NetworkSubnetsApi:
     @validate_call
     def delete_api_subnets_without_preload_content(
         self,
-        admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest,
+        network_subnets_message_request: NetworkSubnetsMessageRequest,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -483,8 +483,8 @@ class NetworkSubnetsApi:
 
         Remove IP addresses from the list of allowed network subnets that can call Visier APIs. IP addresses must use the Classless Inter-Domain Routing (CIDR) format: xxx.xxx.xxx.xxx/xx.   When updating allowed network subnets, the definition in your API call replaces the prior definition. You must provide the entire definition in the PUT call. If you omit IP addresses from the update request, those IP addresses are removed from the allowlist We recommend that you retrieve the current list of allowed network subnets before you update the list.   **Note**: By deleting the allowed network subnets, you may remove your current IP address from the allowlist. If this happens, you will lock yourself out from making additional API calls. Visier does not allow lock outs unless you set `confirmLockout` to `true`. Default is `false`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_network_subnets_message_request: (required)
-        :type admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest
+        :param network_subnets_message_request: (required)
+        :type network_subnets_message_request: NetworkSubnetsMessageRequest
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -510,7 +510,7 @@ class NetworkSubnetsApi:
         """ # noqa: E501
 
         _param = self._delete_api_subnets_serialize(
-            admin_network_subnets_message_request=admin_network_subnets_message_request,
+            network_subnets_message_request=network_subnets_message_request,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -519,7 +519,7 @@ class NetworkSubnetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminNetworkSubnetsMessageResponse",
+            '200': "NetworkSubnetsMessageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -530,7 +530,7 @@ class NetworkSubnetsApi:
 
     def _delete_api_subnets_serialize(
         self,
-        admin_network_subnets_message_request,
+        network_subnets_message_request,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -559,8 +559,8 @@ class NetworkSubnetsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if admin_network_subnets_message_request is not None:
-            _body_params = admin_network_subnets_message_request
+        if network_subnets_message_request is not None:
+            _body_params = network_subnets_message_request
 
 
         # set the HTTP header `Accept`
@@ -628,7 +628,7 @@ class NetworkSubnetsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminNetworkSubnetsMessageResponse:
+    ) -> NetworkSubnetsMessageResponse:
         """Retrieve a list of API network subnets
 
         Retrieve a list of all IP addresses that can call Visier APIs.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -666,7 +666,7 @@ class NetworkSubnetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminNetworkSubnetsMessageResponse",
+            '200': "NetworkSubnetsMessageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -695,7 +695,7 @@ class NetworkSubnetsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminNetworkSubnetsMessageResponse]:
+    ) -> ApiResponse[NetworkSubnetsMessageResponse]:
         """Retrieve a list of API network subnets
 
         Retrieve a list of all IP addresses that can call Visier APIs.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -733,7 +733,7 @@ class NetworkSubnetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminNetworkSubnetsMessageResponse",
+            '200': "NetworkSubnetsMessageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -800,7 +800,7 @@ class NetworkSubnetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminNetworkSubnetsMessageResponse",
+            '200': "NetworkSubnetsMessageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -880,7 +880,7 @@ class NetworkSubnetsApi:
     @validate_call
     def set_api_subnets(
         self,
-        admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest,
+        network_subnets_message_request: NetworkSubnetsMessageRequest,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -894,13 +894,13 @@ class NetworkSubnetsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminNetworkSubnetsMessageResponse:
+    ) -> NetworkSubnetsMessageResponse:
         """Update API network subnets
 
         Overwrite the existing list of IP addresses that can call Visier APIs with a new list. IP addresses must use the Classless Inter-Domain Routing (CIDR) format: xxx.xxx.xxx.xxx/xx.   When updating allowed network subnets, the definition in your API call replaces the prior definition. You must provide the entire definition in the PUT call. If you omit IP addresses from the update request, those IP addresses are removed from the allowlist We recommend that you retrieve the current list of allowed network subnets before you update the list.   **Note**: By updating the allowed network subnets, you may remove your current IP address from the allowlist. If this happens, you will lock yourself out from making additional API calls. Visier does not allow lock outs unless you set `confirmLockout` to `true`. Default is `false`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_network_subnets_message_request: (required)
-        :type admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest
+        :param network_subnets_message_request: (required)
+        :type network_subnets_message_request: NetworkSubnetsMessageRequest
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -926,7 +926,7 @@ class NetworkSubnetsApi:
         """ # noqa: E501
 
         _param = self._set_api_subnets_serialize(
-            admin_network_subnets_message_request=admin_network_subnets_message_request,
+            network_subnets_message_request=network_subnets_message_request,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -935,7 +935,7 @@ class NetworkSubnetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminNetworkSubnetsMessageResponse",
+            '200': "NetworkSubnetsMessageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -951,7 +951,7 @@ class NetworkSubnetsApi:
     @validate_call
     def set_api_subnets_with_http_info(
         self,
-        admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest,
+        network_subnets_message_request: NetworkSubnetsMessageRequest,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -965,13 +965,13 @@ class NetworkSubnetsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminNetworkSubnetsMessageResponse]:
+    ) -> ApiResponse[NetworkSubnetsMessageResponse]:
         """Update API network subnets
 
         Overwrite the existing list of IP addresses that can call Visier APIs with a new list. IP addresses must use the Classless Inter-Domain Routing (CIDR) format: xxx.xxx.xxx.xxx/xx.   When updating allowed network subnets, the definition in your API call replaces the prior definition. You must provide the entire definition in the PUT call. If you omit IP addresses from the update request, those IP addresses are removed from the allowlist We recommend that you retrieve the current list of allowed network subnets before you update the list.   **Note**: By updating the allowed network subnets, you may remove your current IP address from the allowlist. If this happens, you will lock yourself out from making additional API calls. Visier does not allow lock outs unless you set `confirmLockout` to `true`. Default is `false`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_network_subnets_message_request: (required)
-        :type admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest
+        :param network_subnets_message_request: (required)
+        :type network_subnets_message_request: NetworkSubnetsMessageRequest
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -997,7 +997,7 @@ class NetworkSubnetsApi:
         """ # noqa: E501
 
         _param = self._set_api_subnets_serialize(
-            admin_network_subnets_message_request=admin_network_subnets_message_request,
+            network_subnets_message_request=network_subnets_message_request,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1006,7 +1006,7 @@ class NetworkSubnetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminNetworkSubnetsMessageResponse",
+            '200': "NetworkSubnetsMessageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1022,7 +1022,7 @@ class NetworkSubnetsApi:
     @validate_call
     def set_api_subnets_without_preload_content(
         self,
-        admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest,
+        network_subnets_message_request: NetworkSubnetsMessageRequest,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1041,8 +1041,8 @@ class NetworkSubnetsApi:
 
         Overwrite the existing list of IP addresses that can call Visier APIs with a new list. IP addresses must use the Classless Inter-Domain Routing (CIDR) format: xxx.xxx.xxx.xxx/xx.   When updating allowed network subnets, the definition in your API call replaces the prior definition. You must provide the entire definition in the PUT call. If you omit IP addresses from the update request, those IP addresses are removed from the allowlist We recommend that you retrieve the current list of allowed network subnets before you update the list.   **Note**: By updating the allowed network subnets, you may remove your current IP address from the allowlist. If this happens, you will lock yourself out from making additional API calls. Visier does not allow lock outs unless you set `confirmLockout` to `true`. Default is `false`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_network_subnets_message_request: (required)
-        :type admin_network_subnets_message_request: AdminNetworkSubnetsMessageRequest
+        :param network_subnets_message_request: (required)
+        :type network_subnets_message_request: NetworkSubnetsMessageRequest
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1068,7 +1068,7 @@ class NetworkSubnetsApi:
         """ # noqa: E501
 
         _param = self._set_api_subnets_serialize(
-            admin_network_subnets_message_request=admin_network_subnets_message_request,
+            network_subnets_message_request=network_subnets_message_request,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1077,7 +1077,7 @@ class NetworkSubnetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminNetworkSubnetsMessageResponse",
+            '200': "NetworkSubnetsMessageResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1088,7 +1088,7 @@ class NetworkSubnetsApi:
 
     def _set_api_subnets_serialize(
         self,
-        admin_network_subnets_message_request,
+        network_subnets_message_request,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -1117,8 +1117,8 @@ class NetworkSubnetsApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if admin_network_subnets_message_request is not None:
-            _body_params = admin_network_subnets_message_request
+        if network_subnets_message_request is not None:
+            _body_params = network_subnets_message_request
 
 
         # set the HTTP header `Accept`

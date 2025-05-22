@@ -20,12 +20,12 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_platform_sdk.models.designer_webhook_webhook_credentials_dto import DesignerWebhookWebhookCredentialsDTO
-from visier_platform_sdk.models.designer_webhook_webhook_dto import DesignerWebhookWebhookDTO
-from visier_platform_sdk.models.designer_webhook_webhook_event_type_dto import DesignerWebhookWebhookEventTypeDTO
-from visier_platform_sdk.models.designer_webhook_webhook_message_response_dto import DesignerWebhookWebhookMessageResponseDTO
-from visier_platform_sdk.models.designer_webhook_webhook_request_dto import DesignerWebhookWebhookRequestDTO
-from visier_platform_sdk.models.designer_webhook_webhooks_dto import DesignerWebhookWebhooksDTO
+from visier_platform_sdk.models.webhook_credentials_dto import WebhookCredentialsDTO
+from visier_platform_sdk.models.webhook_dto import WebhookDTO
+from visier_platform_sdk.models.webhook_event_type_dto import WebhookEventTypeDTO
+from visier_platform_sdk.models.webhook_message_response_dto import WebhookMessageResponseDTO
+from visier_platform_sdk.models.webhook_request_dto import WebhookRequestDTO
+from visier_platform_sdk.models.webhooks_dto import WebhooksDTO
 
 from visier_platform_sdk.api_client import ApiClient, RequestSerialized
 from visier_platform_sdk.api_response import ApiResponse
@@ -48,7 +48,7 @@ class WebhooksApi:
     @validate_call
     def create_webhook(
         self,
-        designer_webhook_webhook_request_dto: DesignerWebhookWebhookRequestDTO,
+        webhook_request_dto: WebhookRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -61,13 +61,13 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerWebhookWebhookDTO:
+    ) -> WebhookDTO:
         """Create a webhook
 
         Create a new webhook with Visier. You must specify the webhook's endpoint URL, its active status, the event types to listen for, and the credentials to authenticate calls to the webhook endpoint.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param designer_webhook_webhook_request_dto: (required)
-        :type designer_webhook_webhook_request_dto: DesignerWebhookWebhookRequestDTO
+        :param webhook_request_dto: (required)
+        :type webhook_request_dto: WebhookRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91,7 +91,7 @@ class WebhooksApi:
         """ # noqa: E501
 
         _param = self._create_webhook_serialize(
-            designer_webhook_webhook_request_dto=designer_webhook_webhook_request_dto,
+            webhook_request_dto=webhook_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -99,7 +99,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -115,7 +115,7 @@ class WebhooksApi:
     @validate_call
     def create_webhook_with_http_info(
         self,
-        designer_webhook_webhook_request_dto: DesignerWebhookWebhookRequestDTO,
+        webhook_request_dto: WebhookRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -128,13 +128,13 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerWebhookWebhookDTO]:
+    ) -> ApiResponse[WebhookDTO]:
         """Create a webhook
 
         Create a new webhook with Visier. You must specify the webhook's endpoint URL, its active status, the event types to listen for, and the credentials to authenticate calls to the webhook endpoint.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param designer_webhook_webhook_request_dto: (required)
-        :type designer_webhook_webhook_request_dto: DesignerWebhookWebhookRequestDTO
+        :param webhook_request_dto: (required)
+        :type webhook_request_dto: WebhookRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -158,7 +158,7 @@ class WebhooksApi:
         """ # noqa: E501
 
         _param = self._create_webhook_serialize(
-            designer_webhook_webhook_request_dto=designer_webhook_webhook_request_dto,
+            webhook_request_dto=webhook_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -166,7 +166,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -182,7 +182,7 @@ class WebhooksApi:
     @validate_call
     def create_webhook_without_preload_content(
         self,
-        designer_webhook_webhook_request_dto: DesignerWebhookWebhookRequestDTO,
+        webhook_request_dto: WebhookRequestDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -200,8 +200,8 @@ class WebhooksApi:
 
         Create a new webhook with Visier. You must specify the webhook's endpoint URL, its active status, the event types to listen for, and the credentials to authenticate calls to the webhook endpoint.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param designer_webhook_webhook_request_dto: (required)
-        :type designer_webhook_webhook_request_dto: DesignerWebhookWebhookRequestDTO
+        :param webhook_request_dto: (required)
+        :type webhook_request_dto: WebhookRequestDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -225,7 +225,7 @@ class WebhooksApi:
         """ # noqa: E501
 
         _param = self._create_webhook_serialize(
-            designer_webhook_webhook_request_dto=designer_webhook_webhook_request_dto,
+            webhook_request_dto=webhook_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -233,7 +233,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -244,7 +244,7 @@ class WebhooksApi:
 
     def _create_webhook_serialize(
         self,
-        designer_webhook_webhook_request_dto,
+        webhook_request_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -270,8 +270,8 @@ class WebhooksApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if designer_webhook_webhook_request_dto is not None:
-            _body_params = designer_webhook_webhook_request_dto
+        if webhook_request_dto is not None:
+            _body_params = webhook_request_dto
 
 
         # set the HTTP header `Accept`
@@ -339,7 +339,7 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerWebhookWebhookDTO:
+    ) -> WebhookDTO:
         """Delete a webhook
 
         Delete a specific webhook. You must know the ID of the webhook to delete it. To retrieve webhook IDs, see `GET /v1beta/op/webhooks`.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -377,7 +377,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -406,7 +406,7 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerWebhookWebhookDTO]:
+    ) -> ApiResponse[WebhookDTO]:
         """Delete a webhook
 
         Delete a specific webhook. You must know the ID of the webhook to delete it. To retrieve webhook IDs, see `GET /v1beta/op/webhooks`.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -444,7 +444,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -511,7 +511,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -604,7 +604,7 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerWebhookWebhookDTO:
+    ) -> WebhookDTO:
         """Delete a webhook's credentials
 
         Delete the credentials for a webhook. You must know the ID of the webhook to delete its credentials. To retrieve webhook IDs, see `GET /v1beta/op/webhooks`.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -642,7 +642,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -671,7 +671,7 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerWebhookWebhookDTO]:
+    ) -> ApiResponse[WebhookDTO]:
         """Delete a webhook's credentials
 
         Delete the credentials for a webhook. You must know the ID of the webhook to delete its credentials. To retrieve webhook IDs, see `GET /v1beta/op/webhooks`.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -709,7 +709,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -776,7 +776,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -870,7 +870,7 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerWebhookWebhooksDTO:
+    ) -> WebhooksDTO:
         """Retrieve a list of webhooks
 
         Retrieve a list of all webhooks. The response returns each webhook's definition, such as its endpoint URL, active status, and event types.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -911,7 +911,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhooksDTO",
+            '200': "WebhooksDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -941,7 +941,7 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerWebhookWebhooksDTO]:
+    ) -> ApiResponse[WebhooksDTO]:
         """Retrieve a list of webhooks
 
         Retrieve a list of all webhooks. The response returns each webhook's definition, such as its endpoint URL, active status, and event types.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -982,7 +982,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhooksDTO",
+            '200': "WebhooksDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1053,7 +1053,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhooksDTO",
+            '200': "WebhooksDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1153,7 +1153,7 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerWebhookWebhookDTO:
+    ) -> WebhookDTO:
         """Retrieve a webhook's details
 
         Retrieve the details of a specific webhook. You must know the ID of the webhook to retrieve its details. To retrieve webhook IDs, see `GET /v1beta/op/webhooks`.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1191,7 +1191,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1220,7 +1220,7 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerWebhookWebhookDTO]:
+    ) -> ApiResponse[WebhookDTO]:
         """Retrieve a webhook's details
 
         Retrieve the details of a specific webhook. You must know the ID of the webhook to retrieve its details. To retrieve webhook IDs, see `GET /v1beta/op/webhooks`.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1258,7 +1258,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1325,7 +1325,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1406,7 +1406,7 @@ class WebhooksApi:
     def send_test_event(
         self,
         webhook_id: Annotated[StrictStr, Field(description="The unique identifier of the webhook.")],
-        designer_webhook_webhook_event_type_dto: DesignerWebhookWebhookEventTypeDTO,
+        webhook_event_type_dto: WebhookEventTypeDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1419,15 +1419,15 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerWebhookWebhookMessageResponseDTO:
+    ) -> WebhookMessageResponseDTO:
         """Test a webhook
 
         Send a test event to an existing webhook. This validates whether the webhook works. You must specify the webhook ID and an event type.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param webhook_id: The unique identifier of the webhook. (required)
         :type webhook_id: str
-        :param designer_webhook_webhook_event_type_dto: (required)
-        :type designer_webhook_webhook_event_type_dto: DesignerWebhookWebhookEventTypeDTO
+        :param webhook_event_type_dto: (required)
+        :type webhook_event_type_dto: WebhookEventTypeDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1452,7 +1452,7 @@ class WebhooksApi:
 
         _param = self._send_test_event_serialize(
             webhook_id=webhook_id,
-            designer_webhook_webhook_event_type_dto=designer_webhook_webhook_event_type_dto,
+            webhook_event_type_dto=webhook_event_type_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1460,7 +1460,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookMessageResponseDTO",
+            '200': "WebhookMessageResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1477,7 +1477,7 @@ class WebhooksApi:
     def send_test_event_with_http_info(
         self,
         webhook_id: Annotated[StrictStr, Field(description="The unique identifier of the webhook.")],
-        designer_webhook_webhook_event_type_dto: DesignerWebhookWebhookEventTypeDTO,
+        webhook_event_type_dto: WebhookEventTypeDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1490,15 +1490,15 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerWebhookWebhookMessageResponseDTO]:
+    ) -> ApiResponse[WebhookMessageResponseDTO]:
         """Test a webhook
 
         Send a test event to an existing webhook. This validates whether the webhook works. You must specify the webhook ID and an event type.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param webhook_id: The unique identifier of the webhook. (required)
         :type webhook_id: str
-        :param designer_webhook_webhook_event_type_dto: (required)
-        :type designer_webhook_webhook_event_type_dto: DesignerWebhookWebhookEventTypeDTO
+        :param webhook_event_type_dto: (required)
+        :type webhook_event_type_dto: WebhookEventTypeDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1523,7 +1523,7 @@ class WebhooksApi:
 
         _param = self._send_test_event_serialize(
             webhook_id=webhook_id,
-            designer_webhook_webhook_event_type_dto=designer_webhook_webhook_event_type_dto,
+            webhook_event_type_dto=webhook_event_type_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1531,7 +1531,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookMessageResponseDTO",
+            '200': "WebhookMessageResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1548,7 +1548,7 @@ class WebhooksApi:
     def send_test_event_without_preload_content(
         self,
         webhook_id: Annotated[StrictStr, Field(description="The unique identifier of the webhook.")],
-        designer_webhook_webhook_event_type_dto: DesignerWebhookWebhookEventTypeDTO,
+        webhook_event_type_dto: WebhookEventTypeDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1568,8 +1568,8 @@ class WebhooksApi:
 
         :param webhook_id: The unique identifier of the webhook. (required)
         :type webhook_id: str
-        :param designer_webhook_webhook_event_type_dto: (required)
-        :type designer_webhook_webhook_event_type_dto: DesignerWebhookWebhookEventTypeDTO
+        :param webhook_event_type_dto: (required)
+        :type webhook_event_type_dto: WebhookEventTypeDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1594,7 +1594,7 @@ class WebhooksApi:
 
         _param = self._send_test_event_serialize(
             webhook_id=webhook_id,
-            designer_webhook_webhook_event_type_dto=designer_webhook_webhook_event_type_dto,
+            webhook_event_type_dto=webhook_event_type_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1602,7 +1602,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookMessageResponseDTO",
+            '200': "WebhookMessageResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1614,7 +1614,7 @@ class WebhooksApi:
     def _send_test_event_serialize(
         self,
         webhook_id,
-        designer_webhook_webhook_event_type_dto,
+        webhook_event_type_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -1642,8 +1642,8 @@ class WebhooksApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if designer_webhook_webhook_event_type_dto is not None:
-            _body_params = designer_webhook_webhook_event_type_dto
+        if webhook_event_type_dto is not None:
+            _body_params = webhook_event_type_dto
 
 
         # set the HTTP header `Accept`
@@ -1699,7 +1699,7 @@ class WebhooksApi:
     def update_webhook(
         self,
         webhook_id: Annotated[StrictStr, Field(description="The unique identifier of the webhook.")],
-        designer_webhook_webhook_dto: DesignerWebhookWebhookDTO,
+        webhook_dto: WebhookDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1712,15 +1712,15 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerWebhookWebhookDTO:
+    ) -> WebhookDTO:
         """Update a webhook's details
 
         Update the details of an existing webhook, such as its URL and active status. You must know the ID of the webhook to update it. To retrieve webhook IDs, see `GET /v1beta/op/webhooks`. To update a webhook's credentials, see `PUT /v1beta/op/webhooks/{webhookId}/credentials`.   When updating a webhook, the webhook definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the webhook. We recommend that you retrieve a webhook's details before you update the webhook with new values.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param webhook_id: The unique identifier of the webhook. (required)
         :type webhook_id: str
-        :param designer_webhook_webhook_dto: (required)
-        :type designer_webhook_webhook_dto: DesignerWebhookWebhookDTO
+        :param webhook_dto: (required)
+        :type webhook_dto: WebhookDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1745,7 +1745,7 @@ class WebhooksApi:
 
         _param = self._update_webhook_serialize(
             webhook_id=webhook_id,
-            designer_webhook_webhook_dto=designer_webhook_webhook_dto,
+            webhook_dto=webhook_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1753,7 +1753,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1770,7 +1770,7 @@ class WebhooksApi:
     def update_webhook_with_http_info(
         self,
         webhook_id: Annotated[StrictStr, Field(description="The unique identifier of the webhook.")],
-        designer_webhook_webhook_dto: DesignerWebhookWebhookDTO,
+        webhook_dto: WebhookDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1783,15 +1783,15 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerWebhookWebhookDTO]:
+    ) -> ApiResponse[WebhookDTO]:
         """Update a webhook's details
 
         Update the details of an existing webhook, such as its URL and active status. You must know the ID of the webhook to update it. To retrieve webhook IDs, see `GET /v1beta/op/webhooks`. To update a webhook's credentials, see `PUT /v1beta/op/webhooks/{webhookId}/credentials`.   When updating a webhook, the webhook definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the webhook. We recommend that you retrieve a webhook's details before you update the webhook with new values.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param webhook_id: The unique identifier of the webhook. (required)
         :type webhook_id: str
-        :param designer_webhook_webhook_dto: (required)
-        :type designer_webhook_webhook_dto: DesignerWebhookWebhookDTO
+        :param webhook_dto: (required)
+        :type webhook_dto: WebhookDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1816,7 +1816,7 @@ class WebhooksApi:
 
         _param = self._update_webhook_serialize(
             webhook_id=webhook_id,
-            designer_webhook_webhook_dto=designer_webhook_webhook_dto,
+            webhook_dto=webhook_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1824,7 +1824,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1841,7 +1841,7 @@ class WebhooksApi:
     def update_webhook_without_preload_content(
         self,
         webhook_id: Annotated[StrictStr, Field(description="The unique identifier of the webhook.")],
-        designer_webhook_webhook_dto: DesignerWebhookWebhookDTO,
+        webhook_dto: WebhookDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1861,8 +1861,8 @@ class WebhooksApi:
 
         :param webhook_id: The unique identifier of the webhook. (required)
         :type webhook_id: str
-        :param designer_webhook_webhook_dto: (required)
-        :type designer_webhook_webhook_dto: DesignerWebhookWebhookDTO
+        :param webhook_dto: (required)
+        :type webhook_dto: WebhookDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1887,7 +1887,7 @@ class WebhooksApi:
 
         _param = self._update_webhook_serialize(
             webhook_id=webhook_id,
-            designer_webhook_webhook_dto=designer_webhook_webhook_dto,
+            webhook_dto=webhook_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1895,7 +1895,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1907,7 +1907,7 @@ class WebhooksApi:
     def _update_webhook_serialize(
         self,
         webhook_id,
-        designer_webhook_webhook_dto,
+        webhook_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -1935,8 +1935,8 @@ class WebhooksApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if designer_webhook_webhook_dto is not None:
-            _body_params = designer_webhook_webhook_dto
+        if webhook_dto is not None:
+            _body_params = webhook_dto
 
 
         # set the HTTP header `Accept`
@@ -1992,7 +1992,7 @@ class WebhooksApi:
     def update_webhook_credentials(
         self,
         webhook_id: Annotated[StrictStr, Field(description="The unique identifier of the webhook.")],
-        designer_webhook_webhook_credentials_dto: DesignerWebhookWebhookCredentialsDTO,
+        webhook_credentials_dto: WebhookCredentialsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2005,15 +2005,15 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerWebhookWebhookDTO:
+    ) -> WebhookDTO:
         """Update a webhook's credentials
 
         Update the credentials to authenticate calls to the webhook endpoint. You must know the ID of the webhook to update it. To retrieve webhook IDs, see `GET /v1beta/op/webhooks`. To update a webhook's details, see `PUT /v1beta/op/webhooks/{webhookId}`.   When updating a webhook, the webhook definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the webhook. We recommend that you retrieve a webhook's details before you update the webhook with new values.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param webhook_id: The unique identifier of the webhook. (required)
         :type webhook_id: str
-        :param designer_webhook_webhook_credentials_dto: (required)
-        :type designer_webhook_webhook_credentials_dto: DesignerWebhookWebhookCredentialsDTO
+        :param webhook_credentials_dto: (required)
+        :type webhook_credentials_dto: WebhookCredentialsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2038,7 +2038,7 @@ class WebhooksApi:
 
         _param = self._update_webhook_credentials_serialize(
             webhook_id=webhook_id,
-            designer_webhook_webhook_credentials_dto=designer_webhook_webhook_credentials_dto,
+            webhook_credentials_dto=webhook_credentials_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2046,7 +2046,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2063,7 +2063,7 @@ class WebhooksApi:
     def update_webhook_credentials_with_http_info(
         self,
         webhook_id: Annotated[StrictStr, Field(description="The unique identifier of the webhook.")],
-        designer_webhook_webhook_credentials_dto: DesignerWebhookWebhookCredentialsDTO,
+        webhook_credentials_dto: WebhookCredentialsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2076,15 +2076,15 @@ class WebhooksApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerWebhookWebhookDTO]:
+    ) -> ApiResponse[WebhookDTO]:
         """Update a webhook's credentials
 
         Update the credentials to authenticate calls to the webhook endpoint. You must know the ID of the webhook to update it. To retrieve webhook IDs, see `GET /v1beta/op/webhooks`. To update a webhook's details, see `PUT /v1beta/op/webhooks/{webhookId}`.   When updating a webhook, the webhook definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values from the update request, those values are removed from the webhook. We recommend that you retrieve a webhook's details before you update the webhook with new values.   <br>**Note:** <em>This API is in **beta**. While in beta, APIs are interface-stable and implementation may change without notice. Rarely, interface changes may occur that are not backwards-compatible and require advance communication.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
         :param webhook_id: The unique identifier of the webhook. (required)
         :type webhook_id: str
-        :param designer_webhook_webhook_credentials_dto: (required)
-        :type designer_webhook_webhook_credentials_dto: DesignerWebhookWebhookCredentialsDTO
+        :param webhook_credentials_dto: (required)
+        :type webhook_credentials_dto: WebhookCredentialsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2109,7 +2109,7 @@ class WebhooksApi:
 
         _param = self._update_webhook_credentials_serialize(
             webhook_id=webhook_id,
-            designer_webhook_webhook_credentials_dto=designer_webhook_webhook_credentials_dto,
+            webhook_credentials_dto=webhook_credentials_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2117,7 +2117,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2134,7 +2134,7 @@ class WebhooksApi:
     def update_webhook_credentials_without_preload_content(
         self,
         webhook_id: Annotated[StrictStr, Field(description="The unique identifier of the webhook.")],
-        designer_webhook_webhook_credentials_dto: DesignerWebhookWebhookCredentialsDTO,
+        webhook_credentials_dto: WebhookCredentialsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2154,8 +2154,8 @@ class WebhooksApi:
 
         :param webhook_id: The unique identifier of the webhook. (required)
         :type webhook_id: str
-        :param designer_webhook_webhook_credentials_dto: (required)
-        :type designer_webhook_webhook_credentials_dto: DesignerWebhookWebhookCredentialsDTO
+        :param webhook_credentials_dto: (required)
+        :type webhook_credentials_dto: WebhookCredentialsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2180,7 +2180,7 @@ class WebhooksApi:
 
         _param = self._update_webhook_credentials_serialize(
             webhook_id=webhook_id,
-            designer_webhook_webhook_credentials_dto=designer_webhook_webhook_credentials_dto,
+            webhook_credentials_dto=webhook_credentials_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2188,7 +2188,7 @@ class WebhooksApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerWebhookWebhookDTO",
+            '200': "WebhookDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2200,7 +2200,7 @@ class WebhooksApi:
     def _update_webhook_credentials_serialize(
         self,
         webhook_id,
-        designer_webhook_webhook_credentials_dto,
+        webhook_credentials_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -2228,8 +2228,8 @@ class WebhooksApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if designer_webhook_webhook_credentials_dto is not None:
-            _body_params = designer_webhook_webhook_credentials_dto
+        if webhook_credentials_dto is not None:
+            _body_params = webhook_credentials_dto
 
 
         # set the HTTP header `Accept`

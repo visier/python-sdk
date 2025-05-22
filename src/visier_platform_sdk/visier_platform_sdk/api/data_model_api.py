@@ -20,44 +20,44 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
-from visier_platform_sdk.models.dataservices_datamodel_analytic_object_dto import DataservicesDatamodelAnalyticObjectDTO
-from visier_platform_sdk.models.dataservices_datamodel_analytic_objects_dto import DataservicesDatamodelAnalyticObjectsDTO
-from visier_platform_sdk.models.dataservices_datamodel_currencies_dto import DataservicesDatamodelCurrenciesDTO
-from visier_platform_sdk.models.dataservices_datamodel_currency_dto import DataservicesDatamodelCurrencyDTO
-from visier_platform_sdk.models.dataservices_datamodel_currency_rates_dto import DataservicesDatamodelCurrencyRatesDTO
-from visier_platform_sdk.models.dataservices_datamodel_dimension_dto import DataservicesDatamodelDimensionDTO
-from visier_platform_sdk.models.dataservices_datamodel_dimension_mapping_validation_dto import DataservicesDatamodelDimensionMappingValidationDTO
-from visier_platform_sdk.models.dataservices_datamodel_dimension_mapping_validation_execution_dto import DataservicesDatamodelDimensionMappingValidationExecutionDTO
-from visier_platform_sdk.models.dataservices_datamodel_dimensions_dto import DataservicesDatamodelDimensionsDTO
-from visier_platform_sdk.models.dataservices_datamodel_members_dto import DataservicesDatamodelMembersDTO
-from visier_platform_sdk.models.dataservices_datamodel_metric_dto import DataservicesDatamodelMetricDTO
-from visier_platform_sdk.models.dataservices_datamodel_metrics_dto import DataservicesDatamodelMetricsDTO
-from visier_platform_sdk.models.dataservices_datamodel_planning_model_dto import DataservicesDatamodelPlanningModelDTO
-from visier_platform_sdk.models.dataservices_datamodel_planning_models_dto import DataservicesDatamodelPlanningModelsDTO
-from visier_platform_sdk.models.dataservices_datamodel_planning_plan_dto import DataservicesDatamodelPlanningPlanDTO
-from visier_platform_sdk.models.dataservices_datamodel_planning_plans_dto import DataservicesDatamodelPlanningPlansDTO
-from visier_platform_sdk.models.dataservices_datamodel_prediction_dto import DataservicesDatamodelPredictionDTO
-from visier_platform_sdk.models.dataservices_datamodel_predictions_dto import DataservicesDatamodelPredictionsDTO
-from visier_platform_sdk.models.dataservices_datamodel_properties_dto import DataservicesDatamodelPropertiesDTO
-from visier_platform_sdk.models.dataservices_datamodel_property_dto import DataservicesDatamodelPropertyDTO
-from visier_platform_sdk.models.dataservices_datamodel_selection_concept_dto import DataservicesDatamodelSelectionConceptDTO
-from visier_platform_sdk.models.dataservices_datamodel_selection_concepts_dto import DataservicesDatamodelSelectionConceptsDTO
-from visier_platform_sdk.models.planning_get_plan_list_response_dto import PlanningGetPlanListResponseDTO
-from visier_platform_sdk.models.planning_plan_with_schema_dto import PlanningPlanWithSchemaDTO
-from visier_platform_sdk.models.servicing_objectconfiguration_dimensions_change_definitions_dto import ServicingObjectconfigurationDimensionsChangeDefinitionsDTO
-from visier_platform_sdk.models.servicing_objectconfiguration_objects_bulk_change_response_dto import ServicingObjectconfigurationObjectsBulkChangeResponseDTO
-from visier_platform_sdk.models.servicing_objectconfiguration_properties_change_definitions_dto import ServicingObjectconfigurationPropertiesChangeDefinitionsDTO
-from visier_platform_sdk.models.servicing_objectconfiguration_properties_delete_definitions_dto import ServicingObjectconfigurationPropertiesDeleteDefinitionsDTO
-from visier_platform_sdk.models.servicing_objectconfiguration_property_bulk_delete_response_dto import ServicingObjectconfigurationPropertyBulkDeleteResponseDTO
-from visier_platform_sdk.models.servicing_question_categories_api_response_dto import ServicingQuestionCategoriesAPIResponseDTO
-from visier_platform_sdk.models.servicing_question_category_api_response_dto import ServicingQuestionCategoryAPIResponseDTO
-from visier_platform_sdk.models.servicing_sample_question_api_response_dto import ServicingSampleQuestionAPIResponseDTO
-from visier_platform_sdk.models.servicing_sample_questions_api_response_dto import ServicingSampleQuestionsAPIResponseDTO
-from visier_platform_sdk.models.servicing_v2_objectconfiguration_analytic_object_request_dto import ServicingV2ObjectconfigurationAnalyticObjectRequestDTO
-from visier_platform_sdk.models.servicing_v2_objectconfiguration_bulk_change_response_dto import ServicingV2ObjectconfigurationBulkChangeResponseDTO
-from visier_platform_sdk.models.servicing_vee_questions_bulk_change_response_dto import ServicingVeeQuestionsBulkChangeResponseDTO
-from visier_platform_sdk.models.servicing_vee_questions_change_definitions_dto import ServicingVeeQuestionsChangeDefinitionsDTO
-from visier_platform_sdk.models.servicing_vee_questions_delete_definitions_dto import ServicingVeeQuestionsDeleteDefinitionsDTO
+from visier_platform_sdk.models.analytic_object_request_dto import AnalyticObjectRequestDTO
+from visier_platform_sdk.models.analytic_objects_dto import AnalyticObjectsDTO
+from visier_platform_sdk.models.bulk_change_response_dto import BulkChangeResponseDTO
+from visier_platform_sdk.models.currencies_dto import CurrenciesDTO
+from visier_platform_sdk.models.currency_dto import CurrencyDTO
+from visier_platform_sdk.models.currency_rates_dto import CurrencyRatesDTO
+from visier_platform_sdk.models.data_model_analytic_object_dto import DataModelAnalyticObjectDTO
+from visier_platform_sdk.models.dimension_dto import DimensionDTO
+from visier_platform_sdk.models.dimension_mapping_validation_dto import DimensionMappingValidationDTO
+from visier_platform_sdk.models.dimension_mapping_validation_execution_dto import DimensionMappingValidationExecutionDTO
+from visier_platform_sdk.models.dimensions_change_definitions_dto import DimensionsChangeDefinitionsDTO
+from visier_platform_sdk.models.dimensions_dto import DimensionsDTO
+from visier_platform_sdk.models.get_plan_list_response_dto import GetPlanListResponseDTO
+from visier_platform_sdk.models.members_dto import MembersDTO
+from visier_platform_sdk.models.metric_dto import MetricDTO
+from visier_platform_sdk.models.metrics_dto import MetricsDTO
+from visier_platform_sdk.models.objects_bulk_change_response_dto import ObjectsBulkChangeResponseDTO
+from visier_platform_sdk.models.plan_with_schema_dto import PlanWithSchemaDTO
+from visier_platform_sdk.models.planning_model_dto import PlanningModelDTO
+from visier_platform_sdk.models.planning_models_dto import PlanningModelsDTO
+from visier_platform_sdk.models.planning_plan_dto import PlanningPlanDTO
+from visier_platform_sdk.models.planning_plans_dto import PlanningPlansDTO
+from visier_platform_sdk.models.prediction_dto import PredictionDTO
+from visier_platform_sdk.models.predictions_dto import PredictionsDTO
+from visier_platform_sdk.models.properties_change_definitions_dto import PropertiesChangeDefinitionsDTO
+from visier_platform_sdk.models.properties_dto import PropertiesDTO
+from visier_platform_sdk.models.properties_delete_definitions_dto import PropertiesDeleteDefinitionsDTO
+from visier_platform_sdk.models.property_bulk_delete_response_dto import PropertyBulkDeleteResponseDTO
+from visier_platform_sdk.models.property_dto import PropertyDTO
+from visier_platform_sdk.models.question_categories_api_response_dto import QuestionCategoriesAPIResponseDTO
+from visier_platform_sdk.models.question_category_api_response_dto import QuestionCategoryAPIResponseDTO
+from visier_platform_sdk.models.sample_question_api_response_dto import SampleQuestionAPIResponseDTO
+from visier_platform_sdk.models.sample_questions_api_response_dto import SampleQuestionsAPIResponseDTO
+from visier_platform_sdk.models.selection_concept_dto import SelectionConceptDTO
+from visier_platform_sdk.models.selection_concepts_dto import SelectionConceptsDTO
+from visier_platform_sdk.models.vee_questions_bulk_change_response_dto import VeeQuestionsBulkChangeResponseDTO
+from visier_platform_sdk.models.vee_questions_change_definitions_dto import VeeQuestionsChangeDefinitionsDTO
+from visier_platform_sdk.models.vee_questions_delete_definitions_dto import VeeQuestionsDeleteDefinitionsDTO
 
 from visier_platform_sdk.api_client import ApiClient, RequestSerialized
 from visier_platform_sdk.api_response import ApiResponse
@@ -94,7 +94,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelMetricsDTO:
+    ) -> MetricsDTO:
         """Retrieve a list of metrics for an analytic object by ID
 
         If you know the ID of an analytic object, use this API to retrieve metrics for that object specifically.
@@ -135,7 +135,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMetricsDTO",
+            '200': "MetricsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -165,7 +165,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelMetricsDTO]:
+    ) -> ApiResponse[MetricsDTO]:
         """Retrieve a list of metrics for an analytic object by ID
 
         If you know the ID of an analytic object, use this API to retrieve metrics for that object specifically.
@@ -206,7 +206,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMetricsDTO",
+            '200': "MetricsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -277,7 +277,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMetricsDTO",
+            '200': "MetricsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -374,7 +374,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelAnalyticObjectDTO:
+    ) -> DataModelAnalyticObjectDTO:
         """Retrieve an analytic object by ID
 
         If you know the ID of an analytic object, use this API to retrieve that object specifically.
@@ -415,7 +415,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelAnalyticObjectDTO",
+            '200': "DataModelAnalyticObjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -445,7 +445,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelAnalyticObjectDTO]:
+    ) -> ApiResponse[DataModelAnalyticObjectDTO]:
         """Retrieve an analytic object by ID
 
         If you know the ID of an analytic object, use this API to retrieve that object specifically.
@@ -486,7 +486,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelAnalyticObjectDTO",
+            '200': "DataModelAnalyticObjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -557,7 +557,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelAnalyticObjectDTO",
+            '200': "DataModelAnalyticObjectDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -655,7 +655,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelAnalyticObjectsDTO:
+    ) -> AnalyticObjectsDTO:
         """Retrieve a list of analytic objects
 
         Retrieve all the analytic objects in your Visier solution.
@@ -699,7 +699,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelAnalyticObjectsDTO",
+            '200': "AnalyticObjectsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -730,7 +730,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelAnalyticObjectsDTO]:
+    ) -> ApiResponse[AnalyticObjectsDTO]:
         """Retrieve a list of analytic objects
 
         Retrieve all the analytic objects in your Visier solution.
@@ -774,7 +774,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelAnalyticObjectsDTO",
+            '200': "AnalyticObjectsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -849,7 +849,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelAnalyticObjectsDTO",
+            '200': "AnalyticObjectsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -955,7 +955,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelPropertyDTO:
+    ) -> PropertyDTO:
         """Retrieve a property by ID
 
         If you know the ID of a property, use this API to retrieve that property specifically. You must also know the analytic object's ID..
@@ -999,7 +999,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPropertyDTO",
+            '200': "PropertyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1030,7 +1030,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelPropertyDTO]:
+    ) -> ApiResponse[PropertyDTO]:
         """Retrieve a property by ID
 
         If you know the ID of a property, use this API to retrieve that property specifically. You must also know the analytic object's ID..
@@ -1074,7 +1074,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPropertyDTO",
+            '200': "PropertyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1149,7 +1149,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPropertyDTO",
+            '200': "PropertyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1236,7 +1236,7 @@ class DataModelApi:
     @validate_call
     def create_properties(
         self,
-        servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO,
+        properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -1251,13 +1251,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingObjectconfigurationObjectsBulkChangeResponseDTO:
+    ) -> ObjectsBulkChangeResponseDTO:
         """Create properties
 
         Create new properties. Administrating tenant users can specify the tenant in which to add these properties.
 
-        :param servicing_objectconfiguration_properties_change_definitions_dto: (required)
-        :type servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO
+        :param properties_change_definitions_dto: (required)
+        :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -1285,7 +1285,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._create_properties_serialize(
-            servicing_objectconfiguration_properties_change_definitions_dto=servicing_objectconfiguration_properties_change_definitions_dto,
+            properties_change_definitions_dto=properties_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -1295,7 +1295,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationObjectsBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1311,7 +1311,7 @@ class DataModelApi:
     @validate_call
     def create_properties_with_http_info(
         self,
-        servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO,
+        properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -1326,13 +1326,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingObjectconfigurationObjectsBulkChangeResponseDTO]:
+    ) -> ApiResponse[ObjectsBulkChangeResponseDTO]:
         """Create properties
 
         Create new properties. Administrating tenant users can specify the tenant in which to add these properties.
 
-        :param servicing_objectconfiguration_properties_change_definitions_dto: (required)
-        :type servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO
+        :param properties_change_definitions_dto: (required)
+        :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -1360,7 +1360,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._create_properties_serialize(
-            servicing_objectconfiguration_properties_change_definitions_dto=servicing_objectconfiguration_properties_change_definitions_dto,
+            properties_change_definitions_dto=properties_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -1370,7 +1370,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationObjectsBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1386,7 +1386,7 @@ class DataModelApi:
     @validate_call
     def create_properties_without_preload_content(
         self,
-        servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO,
+        properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -1406,8 +1406,8 @@ class DataModelApi:
 
         Create new properties. Administrating tenant users can specify the tenant in which to add these properties.
 
-        :param servicing_objectconfiguration_properties_change_definitions_dto: (required)
-        :type servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO
+        :param properties_change_definitions_dto: (required)
+        :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -1435,7 +1435,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._create_properties_serialize(
-            servicing_objectconfiguration_properties_change_definitions_dto=servicing_objectconfiguration_properties_change_definitions_dto,
+            properties_change_definitions_dto=properties_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -1445,7 +1445,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationObjectsBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1456,7 +1456,7 @@ class DataModelApi:
 
     def _create_properties_serialize(
         self,
-        servicing_objectconfiguration_properties_change_definitions_dto,
+        properties_change_definitions_dto,
         target_tenant_id,
         project_id,
         _request_auth,
@@ -1488,8 +1488,8 @@ class DataModelApi:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_objectconfiguration_properties_change_definitions_dto is not None:
-            _body_params = servicing_objectconfiguration_properties_change_definitions_dto
+        if properties_change_definitions_dto is not None:
+            _body_params = properties_change_definitions_dto
 
 
         # set the HTTP header `Accept`
@@ -1544,7 +1544,7 @@ class DataModelApi:
     @validate_call
     def create_vee_sample_questions(
         self,
-        servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO,
+        vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -1559,13 +1559,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingVeeQuestionsBulkChangeResponseDTO:
+    ) -> VeeQuestionsBulkChangeResponseDTO:
         """Add Vee sample questions
 
         Create new sample questions that your users can ask Vee. Administrating tenants can specify the tenant in which to add sample questions using the `TargetTenantID` header.    <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_vee_questions_change_definitions_dto: (required)
-        :type servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO
+        :param vee_questions_change_definitions_dto: (required)
+        :type vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -1593,7 +1593,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._create_vee_sample_questions_serialize(
-            servicing_vee_questions_change_definitions_dto=servicing_vee_questions_change_definitions_dto,
+            vee_questions_change_definitions_dto=vee_questions_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -1603,7 +1603,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingVeeQuestionsBulkChangeResponseDTO",
+            '200': "VeeQuestionsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1619,7 +1619,7 @@ class DataModelApi:
     @validate_call
     def create_vee_sample_questions_with_http_info(
         self,
-        servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO,
+        vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -1634,13 +1634,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingVeeQuestionsBulkChangeResponseDTO]:
+    ) -> ApiResponse[VeeQuestionsBulkChangeResponseDTO]:
         """Add Vee sample questions
 
         Create new sample questions that your users can ask Vee. Administrating tenants can specify the tenant in which to add sample questions using the `TargetTenantID` header.    <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_vee_questions_change_definitions_dto: (required)
-        :type servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO
+        :param vee_questions_change_definitions_dto: (required)
+        :type vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -1668,7 +1668,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._create_vee_sample_questions_serialize(
-            servicing_vee_questions_change_definitions_dto=servicing_vee_questions_change_definitions_dto,
+            vee_questions_change_definitions_dto=vee_questions_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -1678,7 +1678,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingVeeQuestionsBulkChangeResponseDTO",
+            '200': "VeeQuestionsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1694,7 +1694,7 @@ class DataModelApi:
     @validate_call
     def create_vee_sample_questions_without_preload_content(
         self,
-        servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO,
+        vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -1714,8 +1714,8 @@ class DataModelApi:
 
         Create new sample questions that your users can ask Vee. Administrating tenants can specify the tenant in which to add sample questions using the `TargetTenantID` header.    <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_vee_questions_change_definitions_dto: (required)
-        :type servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO
+        :param vee_questions_change_definitions_dto: (required)
+        :type vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -1743,7 +1743,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._create_vee_sample_questions_serialize(
-            servicing_vee_questions_change_definitions_dto=servicing_vee_questions_change_definitions_dto,
+            vee_questions_change_definitions_dto=vee_questions_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -1753,7 +1753,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingVeeQuestionsBulkChangeResponseDTO",
+            '200': "VeeQuestionsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1764,7 +1764,7 @@ class DataModelApi:
 
     def _create_vee_sample_questions_serialize(
         self,
-        servicing_vee_questions_change_definitions_dto,
+        vee_questions_change_definitions_dto,
         target_tenant_id,
         project_id,
         _request_auth,
@@ -1796,8 +1796,8 @@ class DataModelApi:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_vee_questions_change_definitions_dto is not None:
-            _body_params = servicing_vee_questions_change_definitions_dto
+        if vee_questions_change_definitions_dto is not None:
+            _body_params = vee_questions_change_definitions_dto
 
 
         # set the HTTP header `Accept`
@@ -1865,7 +1865,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelCurrenciesDTO:
+    ) -> CurrenciesDTO:
         """Retrieve all currencies
 
         Retrieve all the available currencies in your Visier solution.
@@ -1903,7 +1903,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelCurrenciesDTO",
+            '200': "CurrenciesDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1932,7 +1932,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelCurrenciesDTO]:
+    ) -> ApiResponse[CurrenciesDTO]:
         """Retrieve all currencies
 
         Retrieve all the available currencies in your Visier solution.
@@ -1970,7 +1970,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelCurrenciesDTO",
+            '200': "CurrenciesDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2037,7 +2037,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelCurrenciesDTO",
+            '200': "CurrenciesDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2131,7 +2131,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelCurrencyDTO:
+    ) -> CurrencyDTO:
         """Retrieve a currency
 
         Retrieve a specific currency if you know the currency code.
@@ -2172,7 +2172,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelCurrencyDTO",
+            '200': "CurrencyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2202,7 +2202,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelCurrencyDTO]:
+    ) -> ApiResponse[CurrencyDTO]:
         """Retrieve a currency
 
         Retrieve a specific currency if you know the currency code.
@@ -2243,7 +2243,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelCurrencyDTO",
+            '200': "CurrencyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2314,7 +2314,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelCurrencyDTO",
+            '200': "CurrencyDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2414,7 +2414,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelCurrencyRatesDTO:
+    ) -> CurrencyRatesDTO:
         """Retrieve all exchange rates for a currency
 
         Retrieve exchange rates for a specific currency from Visier.  You can optionally specify query parameter options for the returned rates, such as the number of decimals to round the exchange rate to.
@@ -2464,7 +2464,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelCurrencyRatesDTO",
+            '200': "CurrencyRatesDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2497,7 +2497,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelCurrencyRatesDTO]:
+    ) -> ApiResponse[CurrencyRatesDTO]:
         """Retrieve all exchange rates for a currency
 
         Retrieve exchange rates for a specific currency from Visier.  You can optionally specify query parameter options for the returned rates, such as the number of decimals to round the exchange rate to.
@@ -2547,7 +2547,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelCurrencyRatesDTO",
+            '200': "CurrencyRatesDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2630,7 +2630,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelCurrencyRatesDTO",
+            '200': "CurrencyRatesDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2746,7 +2746,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelCurrencyRatesDTO:
+    ) -> CurrencyRatesDTO:
         """Retrieve exchange rates from one currency to another currency
 
         Retrieve exchange rates from a specific currency to another specific currency.  You can optionally specify query parameter options for the returned rates, such as the number of decimals to round the exchange rate to.
@@ -2799,7 +2799,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelCurrencyRatesDTO",
+            '200': "CurrencyRatesDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2833,7 +2833,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelCurrencyRatesDTO]:
+    ) -> ApiResponse[CurrencyRatesDTO]:
         """Retrieve exchange rates from one currency to another currency
 
         Retrieve exchange rates from a specific currency to another specific currency.  You can optionally specify query parameter options for the returned rates, such as the number of decimals to round the exchange rate to.
@@ -2886,7 +2886,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelCurrencyRatesDTO",
+            '200': "CurrencyRatesDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2973,7 +2973,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelCurrencyRatesDTO",
+            '200': "CurrencyRatesDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3074,7 +3074,7 @@ class DataModelApi:
     @validate_call
     def delete_properties(
         self,
-        servicing_objectconfiguration_properties_delete_definitions_dto: ServicingObjectconfigurationPropertiesDeleteDefinitionsDTO,
+        properties_delete_definitions_dto: PropertiesDeleteDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -3089,13 +3089,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingObjectconfigurationPropertyBulkDeleteResponseDTO:
+    ) -> PropertyBulkDeleteResponseDTO:
         """Delete properties
 
         Delete existing properties. Administrating tenant users can specify the tenant in which to delete the properties.  In each API request, delete up to 10 properties per tenant with a maximum of 500 tenants.
 
-        :param servicing_objectconfiguration_properties_delete_definitions_dto: (required)
-        :type servicing_objectconfiguration_properties_delete_definitions_dto: ServicingObjectconfigurationPropertiesDeleteDefinitionsDTO
+        :param properties_delete_definitions_dto: (required)
+        :type properties_delete_definitions_dto: PropertiesDeleteDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -3123,7 +3123,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._delete_properties_serialize(
-            servicing_objectconfiguration_properties_delete_definitions_dto=servicing_objectconfiguration_properties_delete_definitions_dto,
+            properties_delete_definitions_dto=properties_delete_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -3133,7 +3133,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationPropertyBulkDeleteResponseDTO",
+            '200': "PropertyBulkDeleteResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3149,7 +3149,7 @@ class DataModelApi:
     @validate_call
     def delete_properties_with_http_info(
         self,
-        servicing_objectconfiguration_properties_delete_definitions_dto: ServicingObjectconfigurationPropertiesDeleteDefinitionsDTO,
+        properties_delete_definitions_dto: PropertiesDeleteDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -3164,13 +3164,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingObjectconfigurationPropertyBulkDeleteResponseDTO]:
+    ) -> ApiResponse[PropertyBulkDeleteResponseDTO]:
         """Delete properties
 
         Delete existing properties. Administrating tenant users can specify the tenant in which to delete the properties.  In each API request, delete up to 10 properties per tenant with a maximum of 500 tenants.
 
-        :param servicing_objectconfiguration_properties_delete_definitions_dto: (required)
-        :type servicing_objectconfiguration_properties_delete_definitions_dto: ServicingObjectconfigurationPropertiesDeleteDefinitionsDTO
+        :param properties_delete_definitions_dto: (required)
+        :type properties_delete_definitions_dto: PropertiesDeleteDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -3198,7 +3198,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._delete_properties_serialize(
-            servicing_objectconfiguration_properties_delete_definitions_dto=servicing_objectconfiguration_properties_delete_definitions_dto,
+            properties_delete_definitions_dto=properties_delete_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -3208,7 +3208,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationPropertyBulkDeleteResponseDTO",
+            '200': "PropertyBulkDeleteResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3224,7 +3224,7 @@ class DataModelApi:
     @validate_call
     def delete_properties_without_preload_content(
         self,
-        servicing_objectconfiguration_properties_delete_definitions_dto: ServicingObjectconfigurationPropertiesDeleteDefinitionsDTO,
+        properties_delete_definitions_dto: PropertiesDeleteDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -3244,8 +3244,8 @@ class DataModelApi:
 
         Delete existing properties. Administrating tenant users can specify the tenant in which to delete the properties.  In each API request, delete up to 10 properties per tenant with a maximum of 500 tenants.
 
-        :param servicing_objectconfiguration_properties_delete_definitions_dto: (required)
-        :type servicing_objectconfiguration_properties_delete_definitions_dto: ServicingObjectconfigurationPropertiesDeleteDefinitionsDTO
+        :param properties_delete_definitions_dto: (required)
+        :type properties_delete_definitions_dto: PropertiesDeleteDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -3273,7 +3273,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._delete_properties_serialize(
-            servicing_objectconfiguration_properties_delete_definitions_dto=servicing_objectconfiguration_properties_delete_definitions_dto,
+            properties_delete_definitions_dto=properties_delete_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -3283,7 +3283,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationPropertyBulkDeleteResponseDTO",
+            '200': "PropertyBulkDeleteResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3294,7 +3294,7 @@ class DataModelApi:
 
     def _delete_properties_serialize(
         self,
-        servicing_objectconfiguration_properties_delete_definitions_dto,
+        properties_delete_definitions_dto,
         target_tenant_id,
         project_id,
         _request_auth,
@@ -3326,8 +3326,8 @@ class DataModelApi:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_objectconfiguration_properties_delete_definitions_dto is not None:
-            _body_params = servicing_objectconfiguration_properties_delete_definitions_dto
+        if properties_delete_definitions_dto is not None:
+            _body_params = properties_delete_definitions_dto
 
 
         # set the HTTP header `Accept`
@@ -3382,7 +3382,7 @@ class DataModelApi:
     @validate_call
     def delete_vee_sample_questions(
         self,
-        servicing_vee_questions_delete_definitions_dto: ServicingVeeQuestionsDeleteDefinitionsDTO,
+        vee_questions_delete_definitions_dto: VeeQuestionsDeleteDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -3397,13 +3397,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingVeeQuestionsBulkChangeResponseDTO:
+    ) -> VeeQuestionsBulkChangeResponseDTO:
         """Delete Vee sample questions
 
         Delete existing sample questions. Administrating tenants can specify the tenant in which to delete questions using the `TargetTenantID` header.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_vee_questions_delete_definitions_dto: (required)
-        :type servicing_vee_questions_delete_definitions_dto: ServicingVeeQuestionsDeleteDefinitionsDTO
+        :param vee_questions_delete_definitions_dto: (required)
+        :type vee_questions_delete_definitions_dto: VeeQuestionsDeleteDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -3431,7 +3431,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._delete_vee_sample_questions_serialize(
-            servicing_vee_questions_delete_definitions_dto=servicing_vee_questions_delete_definitions_dto,
+            vee_questions_delete_definitions_dto=vee_questions_delete_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -3441,7 +3441,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingVeeQuestionsBulkChangeResponseDTO",
+            '200': "VeeQuestionsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3457,7 +3457,7 @@ class DataModelApi:
     @validate_call
     def delete_vee_sample_questions_with_http_info(
         self,
-        servicing_vee_questions_delete_definitions_dto: ServicingVeeQuestionsDeleteDefinitionsDTO,
+        vee_questions_delete_definitions_dto: VeeQuestionsDeleteDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -3472,13 +3472,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingVeeQuestionsBulkChangeResponseDTO]:
+    ) -> ApiResponse[VeeQuestionsBulkChangeResponseDTO]:
         """Delete Vee sample questions
 
         Delete existing sample questions. Administrating tenants can specify the tenant in which to delete questions using the `TargetTenantID` header.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_vee_questions_delete_definitions_dto: (required)
-        :type servicing_vee_questions_delete_definitions_dto: ServicingVeeQuestionsDeleteDefinitionsDTO
+        :param vee_questions_delete_definitions_dto: (required)
+        :type vee_questions_delete_definitions_dto: VeeQuestionsDeleteDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -3506,7 +3506,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._delete_vee_sample_questions_serialize(
-            servicing_vee_questions_delete_definitions_dto=servicing_vee_questions_delete_definitions_dto,
+            vee_questions_delete_definitions_dto=vee_questions_delete_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -3516,7 +3516,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingVeeQuestionsBulkChangeResponseDTO",
+            '200': "VeeQuestionsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3532,7 +3532,7 @@ class DataModelApi:
     @validate_call
     def delete_vee_sample_questions_without_preload_content(
         self,
-        servicing_vee_questions_delete_definitions_dto: ServicingVeeQuestionsDeleteDefinitionsDTO,
+        vee_questions_delete_definitions_dto: VeeQuestionsDeleteDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -3552,8 +3552,8 @@ class DataModelApi:
 
         Delete existing sample questions. Administrating tenants can specify the tenant in which to delete questions using the `TargetTenantID` header.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_vee_questions_delete_definitions_dto: (required)
-        :type servicing_vee_questions_delete_definitions_dto: ServicingVeeQuestionsDeleteDefinitionsDTO
+        :param vee_questions_delete_definitions_dto: (required)
+        :type vee_questions_delete_definitions_dto: VeeQuestionsDeleteDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -3581,7 +3581,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._delete_vee_sample_questions_serialize(
-            servicing_vee_questions_delete_definitions_dto=servicing_vee_questions_delete_definitions_dto,
+            vee_questions_delete_definitions_dto=vee_questions_delete_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -3591,7 +3591,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingVeeQuestionsBulkChangeResponseDTO",
+            '200': "VeeQuestionsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3602,7 +3602,7 @@ class DataModelApi:
 
     def _delete_vee_sample_questions_serialize(
         self,
-        servicing_vee_questions_delete_definitions_dto,
+        vee_questions_delete_definitions_dto,
         target_tenant_id,
         project_id,
         _request_auth,
@@ -3634,8 +3634,8 @@ class DataModelApi:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_vee_questions_delete_definitions_dto is not None:
-            _body_params = servicing_vee_questions_delete_definitions_dto
+        if vee_questions_delete_definitions_dto is not None:
+            _body_params = vee_questions_delete_definitions_dto
 
 
         # set the HTTP header `Accept`
@@ -3705,7 +3705,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelDimensionDTO:
+    ) -> DimensionDTO:
         """Retrieve a dimension by ID
 
         If you know the ID of a dimension, use this API to retrieve that dimension specifically. You must also know the analytic object's ID.
@@ -3749,7 +3749,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelDimensionDTO",
+            '200': "DimensionDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3780,7 +3780,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelDimensionDTO]:
+    ) -> ApiResponse[DimensionDTO]:
         """Retrieve a dimension by ID
 
         If you know the ID of a dimension, use this API to retrieve that dimension specifically. You must also know the analytic object's ID.
@@ -3824,7 +3824,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelDimensionDTO",
+            '200': "DimensionDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3899,7 +3899,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelDimensionDTO",
+            '200': "DimensionDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3987,7 +3987,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object.")],
         dimension_id: Annotated[StrictStr, Field(description="The ID of a dimension of the member map.")],
-        dataservices_datamodel_dimension_mapping_validation_execution_dto: DataservicesDatamodelDimensionMappingValidationExecutionDTO,
+        dimension_mapping_validation_execution_dto: DimensionMappingValidationExecutionDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -4001,7 +4001,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelDimensionMappingValidationDTO:
+    ) -> DimensionMappingValidationDTO:
         """Validate a member map's unmapped dimension members by ID
 
         If you know the ID of a member map, use this API to validate one of the member map's dimensions.   You must also know the dimension's ID and the analytic object's ID.   The response returns the member map ID, the requested dimension ID, a list of the dimension's unmapped members, and a list of errors found.
@@ -4010,8 +4010,8 @@ class DataModelApi:
         :type object_id: str
         :param dimension_id: The ID of a dimension of the member map. (required)
         :type dimension_id: str
-        :param dataservices_datamodel_dimension_mapping_validation_execution_dto: (required)
-        :type dataservices_datamodel_dimension_mapping_validation_execution_dto: DataservicesDatamodelDimensionMappingValidationExecutionDTO
+        :param dimension_mapping_validation_execution_dto: (required)
+        :type dimension_mapping_validation_execution_dto: DimensionMappingValidationExecutionDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4039,7 +4039,7 @@ class DataModelApi:
         _param = self._dimension_member_map_validation_serialize(
             object_id=object_id,
             dimension_id=dimension_id,
-            dataservices_datamodel_dimension_mapping_validation_execution_dto=dataservices_datamodel_dimension_mapping_validation_execution_dto,
+            dimension_mapping_validation_execution_dto=dimension_mapping_validation_execution_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4048,7 +4048,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelDimensionMappingValidationDTO",
+            '200': "DimensionMappingValidationDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4066,7 +4066,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object.")],
         dimension_id: Annotated[StrictStr, Field(description="The ID of a dimension of the member map.")],
-        dataservices_datamodel_dimension_mapping_validation_execution_dto: DataservicesDatamodelDimensionMappingValidationExecutionDTO,
+        dimension_mapping_validation_execution_dto: DimensionMappingValidationExecutionDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -4080,7 +4080,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelDimensionMappingValidationDTO]:
+    ) -> ApiResponse[DimensionMappingValidationDTO]:
         """Validate a member map's unmapped dimension members by ID
 
         If you know the ID of a member map, use this API to validate one of the member map's dimensions.   You must also know the dimension's ID and the analytic object's ID.   The response returns the member map ID, the requested dimension ID, a list of the dimension's unmapped members, and a list of errors found.
@@ -4089,8 +4089,8 @@ class DataModelApi:
         :type object_id: str
         :param dimension_id: The ID of a dimension of the member map. (required)
         :type dimension_id: str
-        :param dataservices_datamodel_dimension_mapping_validation_execution_dto: (required)
-        :type dataservices_datamodel_dimension_mapping_validation_execution_dto: DataservicesDatamodelDimensionMappingValidationExecutionDTO
+        :param dimension_mapping_validation_execution_dto: (required)
+        :type dimension_mapping_validation_execution_dto: DimensionMappingValidationExecutionDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4118,7 +4118,7 @@ class DataModelApi:
         _param = self._dimension_member_map_validation_serialize(
             object_id=object_id,
             dimension_id=dimension_id,
-            dataservices_datamodel_dimension_mapping_validation_execution_dto=dataservices_datamodel_dimension_mapping_validation_execution_dto,
+            dimension_mapping_validation_execution_dto=dimension_mapping_validation_execution_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4127,7 +4127,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelDimensionMappingValidationDTO",
+            '200': "DimensionMappingValidationDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4145,7 +4145,7 @@ class DataModelApi:
         self,
         object_id: Annotated[StrictStr, Field(description="The ID of the analytic object.")],
         dimension_id: Annotated[StrictStr, Field(description="The ID of a dimension of the member map.")],
-        dataservices_datamodel_dimension_mapping_validation_execution_dto: DataservicesDatamodelDimensionMappingValidationExecutionDTO,
+        dimension_mapping_validation_execution_dto: DimensionMappingValidationExecutionDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -4168,8 +4168,8 @@ class DataModelApi:
         :type object_id: str
         :param dimension_id: The ID of a dimension of the member map. (required)
         :type dimension_id: str
-        :param dataservices_datamodel_dimension_mapping_validation_execution_dto: (required)
-        :type dataservices_datamodel_dimension_mapping_validation_execution_dto: DataservicesDatamodelDimensionMappingValidationExecutionDTO
+        :param dimension_mapping_validation_execution_dto: (required)
+        :type dimension_mapping_validation_execution_dto: DimensionMappingValidationExecutionDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4197,7 +4197,7 @@ class DataModelApi:
         _param = self._dimension_member_map_validation_serialize(
             object_id=object_id,
             dimension_id=dimension_id,
-            dataservices_datamodel_dimension_mapping_validation_execution_dto=dataservices_datamodel_dimension_mapping_validation_execution_dto,
+            dimension_mapping_validation_execution_dto=dimension_mapping_validation_execution_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4206,7 +4206,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelDimensionMappingValidationDTO",
+            '200': "DimensionMappingValidationDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4219,7 +4219,7 @@ class DataModelApi:
         self,
         object_id,
         dimension_id,
-        dataservices_datamodel_dimension_mapping_validation_execution_dto,
+        dimension_mapping_validation_execution_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -4252,8 +4252,8 @@ class DataModelApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if dataservices_datamodel_dimension_mapping_validation_execution_dto is not None:
-            _body_params = dataservices_datamodel_dimension_mapping_validation_execution_dto
+        if dimension_mapping_validation_execution_dto is not None:
+            _body_params = dimension_mapping_validation_execution_dto
 
 
         # set the HTTP header `Accept`
@@ -4323,7 +4323,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelDimensionsDTO:
+    ) -> DimensionsDTO:
         """Retrieve a list of dimensions
 
         Retrieve a list of dimensions for a specific analytic object.
@@ -4367,7 +4367,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelDimensionsDTO",
+            '200': "DimensionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4398,7 +4398,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelDimensionsDTO]:
+    ) -> ApiResponse[DimensionsDTO]:
         """Retrieve a list of dimensions
 
         Retrieve a list of dimensions for a specific analytic object.
@@ -4442,7 +4442,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelDimensionsDTO",
+            '200': "DimensionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4517,7 +4517,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelDimensionsDTO",
+            '200': "DimensionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4621,7 +4621,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingSampleQuestionAPIResponseDTO:
+    ) -> SampleQuestionAPIResponseDTO:
         """Retrieve a Vee sample question's details
 
         Get the details of a specific Vee sample question where the ID is the `questionID` returned by `GET /v1alpha/data/model/vee/sample-questions`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -4665,7 +4665,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingSampleQuestionAPIResponseDTO",
+            '200': "SampleQuestionAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4696,7 +4696,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingSampleQuestionAPIResponseDTO]:
+    ) -> ApiResponse[SampleQuestionAPIResponseDTO]:
         """Retrieve a Vee sample question's details
 
         Get the details of a specific Vee sample question where the ID is the `questionID` returned by `GET /v1alpha/data/model/vee/sample-questions`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -4740,7 +4740,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingSampleQuestionAPIResponseDTO",
+            '200': "SampleQuestionAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4815,7 +4815,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingSampleQuestionAPIResponseDTO",
+            '200': "SampleQuestionAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4914,7 +4914,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingQuestionCategoriesAPIResponseDTO:
+    ) -> QuestionCategoriesAPIResponseDTO:
         """Retrieve a list of all Vee question categories
 
         Get a list of all categories for Vee sample questions. Administrating tenants can specify the tenant from which to retrieve categories using the `TargetTenantID` header.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -4952,7 +4952,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingQuestionCategoriesAPIResponseDTO",
+            '200': "QuestionCategoriesAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4981,7 +4981,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingQuestionCategoriesAPIResponseDTO]:
+    ) -> ApiResponse[QuestionCategoriesAPIResponseDTO]:
         """Retrieve a list of all Vee question categories
 
         Get a list of all categories for Vee sample questions. Administrating tenants can specify the tenant from which to retrieve categories using the `TargetTenantID` header.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -5019,7 +5019,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingQuestionCategoriesAPIResponseDTO",
+            '200': "QuestionCategoriesAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5086,7 +5086,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingQuestionCategoriesAPIResponseDTO",
+            '200': "QuestionCategoriesAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5180,7 +5180,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingQuestionCategoryAPIResponseDTO:
+    ) -> QuestionCategoryAPIResponseDTO:
         """Retrieve a Vee question category's details
 
         Get the details of a specific Vee sample question category where the ID is the `categoryID` returned by `GET /v1alpha/data/model/vee/sample-question-categories`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -5221,7 +5221,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingQuestionCategoryAPIResponseDTO",
+            '200': "QuestionCategoryAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5251,7 +5251,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingQuestionCategoryAPIResponseDTO]:
+    ) -> ApiResponse[QuestionCategoryAPIResponseDTO]:
         """Retrieve a Vee question category's details
 
         Get the details of a specific Vee sample question category where the ID is the `categoryID` returned by `GET /v1alpha/data/model/vee/sample-question-categories`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -5292,7 +5292,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingQuestionCategoryAPIResponseDTO",
+            '200': "QuestionCategoryAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5363,7 +5363,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingQuestionCategoryAPIResponseDTO",
+            '200': "QuestionCategoryAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5460,7 +5460,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingSampleQuestionsAPIResponseDTO:
+    ) -> SampleQuestionsAPIResponseDTO:
         """Retrieve a list of all Vee sample questions
 
         Get a list of all Vee sample questions for a tenant, including sample questions that are not available to end users. Administrating tenants can specify the tenant from which to retrieve sample questions using the `TargetTenantID` header.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -5501,7 +5501,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingSampleQuestionsAPIResponseDTO",
+            '200': "SampleQuestionsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5531,7 +5531,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingSampleQuestionsAPIResponseDTO]:
+    ) -> ApiResponse[SampleQuestionsAPIResponseDTO]:
         """Retrieve a list of all Vee sample questions
 
         Get a list of all Vee sample questions for a tenant, including sample questions that are not available to end users. Administrating tenants can specify the tenant from which to retrieve sample questions using the `TargetTenantID` header.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -5572,7 +5572,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingSampleQuestionsAPIResponseDTO",
+            '200': "SampleQuestionsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5643,7 +5643,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingSampleQuestionsAPIResponseDTO",
+            '200': "SampleQuestionsAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5743,7 +5743,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelMembersDTO:
+    ) -> MembersDTO:
         """Retrieve a dimension member
 
         If you know the ID of a dimension member, use this API to retrieve that dimension member specifically. You must also know the dimension's ID and the analytic object's ID.
@@ -5793,7 +5793,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMembersDTO",
+            '200': "MembersDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5826,7 +5826,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelMembersDTO]:
+    ) -> ApiResponse[MembersDTO]:
         """Retrieve a dimension member
 
         If you know the ID of a dimension member, use this API to retrieve that dimension member specifically. You must also know the dimension's ID and the analytic object's ID.
@@ -5876,7 +5876,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMembersDTO",
+            '200': "MembersDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5959,7 +5959,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMembersDTO",
+            '200': "MembersDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6076,7 +6076,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelMembersDTO:
+    ) -> MembersDTO:
         """Retrieve a list of dimension members
 
         If you know the ID of a dimension, use this API to retrieve the members of that dimension specifically. You must  also know the analytic object's ID. Dimension members exist in a hierarchy. The levels in the hierarchy may be  fixed or non-uniform. Leveled dimensions have fixed hierarchies, while parent-child dimensions have non-uniform  levels. When you retrieve dimension members with this API, the response returns the level of the dimension and the  path to get to that level. For example, in a Location dimension, Vancouver is 3 levels deep:   - All > Canada > British Columbia > Vancouver   Parent-child hierarchies are non-uniform and exhibit distinct characteristics such as time dependence and data  attributes. These traits reflect the dynamic nature of hierarchies, for example, organizational hierarchies. The API  response includes elements that express the validity ranges for retrieved members.
@@ -6144,7 +6144,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMembersDTO",
+            '200': "MembersDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6183,7 +6183,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelMembersDTO]:
+    ) -> ApiResponse[MembersDTO]:
         """Retrieve a list of dimension members
 
         If you know the ID of a dimension, use this API to retrieve the members of that dimension specifically. You must  also know the analytic object's ID. Dimension members exist in a hierarchy. The levels in the hierarchy may be  fixed or non-uniform. Leveled dimensions have fixed hierarchies, while parent-child dimensions have non-uniform  levels. When you retrieve dimension members with this API, the response returns the level of the dimension and the  path to get to that level. For example, in a Location dimension, Vancouver is 3 levels deep:   - All > Canada > British Columbia > Vancouver   Parent-child hierarchies are non-uniform and exhibit distinct characteristics such as time dependence and data  attributes. These traits reflect the dynamic nature of hierarchies, for example, organizational hierarchies. The API  response includes elements that express the validity ranges for retrieved members.
@@ -6251,7 +6251,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMembersDTO",
+            '200': "MembersDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6358,7 +6358,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMembersDTO",
+            '200': "MembersDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6499,7 +6499,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelMetricDTO:
+    ) -> MetricDTO:
         """Retrieve a metric by ID
 
         If you know the ID of a metric, use this API to retrieve that metric specifically.
@@ -6540,7 +6540,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMetricDTO",
+            '200': "MetricDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6570,7 +6570,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelMetricDTO]:
+    ) -> ApiResponse[MetricDTO]:
         """Retrieve a metric by ID
 
         If you know the ID of a metric, use this API to retrieve that metric specifically.
@@ -6611,7 +6611,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMetricDTO",
+            '200': "MetricDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6682,7 +6682,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMetricDTO",
+            '200': "MetricDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6780,7 +6780,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelDimensionsDTO:
+    ) -> DimensionsDTO:
         """Retrieve a metric's dimensions
 
         Retrieve a list of dimensions for a specific metric.
@@ -6824,7 +6824,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelDimensionsDTO",
+            '200': "DimensionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6855,7 +6855,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelDimensionsDTO]:
+    ) -> ApiResponse[DimensionsDTO]:
         """Retrieve a metric's dimensions
 
         Retrieve a list of dimensions for a specific metric.
@@ -6899,7 +6899,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelDimensionsDTO",
+            '200': "DimensionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6974,7 +6974,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelDimensionsDTO",
+            '200': "DimensionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7078,7 +7078,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelSelectionConceptsDTO:
+    ) -> SelectionConceptsDTO:
         """Retrieve a metric's selection concepts
 
         Retrieve a list of selection concepts for a specific metric.
@@ -7122,7 +7122,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelSelectionConceptsDTO",
+            '200': "SelectionConceptsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7153,7 +7153,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelSelectionConceptsDTO]:
+    ) -> ApiResponse[SelectionConceptsDTO]:
         """Retrieve a metric's selection concepts
 
         Retrieve a list of selection concepts for a specific metric.
@@ -7197,7 +7197,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelSelectionConceptsDTO",
+            '200': "SelectionConceptsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7272,7 +7272,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelSelectionConceptsDTO",
+            '200': "SelectionConceptsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7376,7 +7376,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelMetricsDTO:
+    ) -> MetricsDTO:
         """Retrieve a list of metrics
 
         Retrieve all the metrics in your Visier solution.
@@ -7420,7 +7420,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMetricsDTO",
+            '200': "MetricsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7451,7 +7451,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelMetricsDTO]:
+    ) -> ApiResponse[MetricsDTO]:
         """Retrieve a list of metrics
 
         Retrieve all the metrics in your Visier solution.
@@ -7495,7 +7495,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMetricsDTO",
+            '200': "MetricsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7570,7 +7570,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMetricsDTO",
+            '200': "MetricsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7686,7 +7686,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PlanningGetPlanListResponseDTO:
+    ) -> GetPlanListResponseDTO:
         """Retrieve a list of plans
 
         Retrieve all the plans you have access to. The response returns plan information you can use to call the Planning Data Load API.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -7760,7 +7760,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlanningGetPlanListResponseDTO",
+            '200': "GetPlanListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7801,7 +7801,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PlanningGetPlanListResponseDTO]:
+    ) -> ApiResponse[GetPlanListResponseDTO]:
         """Retrieve a list of plans
 
         Retrieve all the plans you have access to. The response returns plan information you can use to call the Planning Data Load API.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -7875,7 +7875,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlanningGetPlanListResponseDTO",
+            '200': "GetPlanListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -7990,7 +7990,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlanningGetPlanListResponseDTO",
+            '200': "GetPlanListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8146,7 +8146,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PlanningPlanWithSchemaDTO:
+    ) -> PlanWithSchemaDTO:
         """Retrieve a plan's details
 
         Retrieve the details of a specific plan. The response returns plan information you can use to call the Planning Data Load API.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -8193,7 +8193,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlanningPlanWithSchemaDTO",
+            '200': "PlanWithSchemaDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8225,7 +8225,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PlanningPlanWithSchemaDTO]:
+    ) -> ApiResponse[PlanWithSchemaDTO]:
         """Retrieve a plan's details
 
         Retrieve the details of a specific plan. The response returns plan information you can use to call the Planning Data Load API.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -8272,7 +8272,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlanningPlanWithSchemaDTO",
+            '200': "PlanWithSchemaDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8351,7 +8351,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlanningPlanWithSchemaDTO",
+            '200': "PlanWithSchemaDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8458,7 +8458,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelMetricsDTO:
+    ) -> MetricsDTO:
         """Retrieve metrics by planning model ID
 
         Retrieve all the metrics you have access to for a planning model.
@@ -8499,7 +8499,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMetricsDTO",
+            '200': "MetricsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8529,7 +8529,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelMetricsDTO]:
+    ) -> ApiResponse[MetricsDTO]:
         """Retrieve metrics by planning model ID
 
         Retrieve all the metrics you have access to for a planning model.
@@ -8570,7 +8570,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMetricsDTO",
+            '200': "MetricsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8641,7 +8641,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelMetricsDTO",
+            '200': "MetricsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8738,7 +8738,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelPlanningModelDTO:
+    ) -> PlanningModelDTO:
         """Retrieve a planning model by ID
 
         Retrieve a specific planning model you have access to.
@@ -8779,7 +8779,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPlanningModelDTO",
+            '200': "PlanningModelDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8809,7 +8809,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelPlanningModelDTO]:
+    ) -> ApiResponse[PlanningModelDTO]:
         """Retrieve a planning model by ID
 
         Retrieve a specific planning model you have access to.
@@ -8850,7 +8850,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPlanningModelDTO",
+            '200': "PlanningModelDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -8921,7 +8921,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPlanningModelDTO",
+            '200': "PlanningModelDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9018,7 +9018,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelPlanningModelsDTO:
+    ) -> PlanningModelsDTO:
         """Retrieve a list of planning models
 
         Retrieve all the planning models you have access to.
@@ -9059,7 +9059,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPlanningModelsDTO",
+            '200': "PlanningModelsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9089,7 +9089,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelPlanningModelsDTO]:
+    ) -> ApiResponse[PlanningModelsDTO]:
         """Retrieve a list of planning models
 
         Retrieve all the planning models you have access to.
@@ -9130,7 +9130,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPlanningModelsDTO",
+            '200': "PlanningModelsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9201,7 +9201,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPlanningModelsDTO",
+            '200': "PlanningModelsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9302,7 +9302,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelPlanningPlanDTO:
+    ) -> PlanningPlanDTO:
         """Retrieve a plan by planning model ID and plan ID
 
         Retrieve a specific plan that you have access to in a planning model.
@@ -9346,7 +9346,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPlanningPlanDTO",
+            '200': "PlanningPlanDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9377,7 +9377,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelPlanningPlanDTO]:
+    ) -> ApiResponse[PlanningPlanDTO]:
         """Retrieve a plan by planning model ID and plan ID
 
         Retrieve a specific plan that you have access to in a planning model.
@@ -9421,7 +9421,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPlanningPlanDTO",
+            '200': "PlanningPlanDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9496,7 +9496,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPlanningPlanDTO",
+            '200': "PlanningPlanDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9597,7 +9597,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelPlanningPlansDTO:
+    ) -> PlanningPlansDTO:
         """Retrieve a list of plans by planning model ID
 
         Retrieve all the plans you have access to for a planning model.
@@ -9641,7 +9641,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPlanningPlansDTO",
+            '200': "PlanningPlansDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9672,7 +9672,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelPlanningPlansDTO]:
+    ) -> ApiResponse[PlanningPlansDTO]:
         """Retrieve a list of plans by planning model ID
 
         Retrieve all the plans you have access to for a planning model.
@@ -9716,7 +9716,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPlanningPlansDTO",
+            '200': "PlanningPlansDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9791,7 +9791,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPlanningPlansDTO",
+            '200': "PlanningPlansDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9894,7 +9894,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelPredictionDTO:
+    ) -> PredictionDTO:
         """Retrieve a prediction by ID
 
         If you know the ID of a prediction, use this API to retrieve that prediction specifically.
@@ -9935,7 +9935,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPredictionDTO",
+            '200': "PredictionDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9965,7 +9965,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelPredictionDTO]:
+    ) -> ApiResponse[PredictionDTO]:
         """Retrieve a prediction by ID
 
         If you know the ID of a prediction, use this API to retrieve that prediction specifically.
@@ -10006,7 +10006,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPredictionDTO",
+            '200': "PredictionDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10077,7 +10077,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPredictionDTO",
+            '200': "PredictionDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10174,7 +10174,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelPredictionsDTO:
+    ) -> PredictionsDTO:
         """Retrieve a list of predictions
 
         Retrieve all the predictions in your Visier solution.
@@ -10215,7 +10215,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPredictionsDTO",
+            '200': "PredictionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10245,7 +10245,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelPredictionsDTO]:
+    ) -> ApiResponse[PredictionsDTO]:
         """Retrieve a list of predictions
 
         Retrieve all the predictions in your Visier solution.
@@ -10286,7 +10286,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPredictionsDTO",
+            '200': "PredictionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10357,7 +10357,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPredictionsDTO",
+            '200': "PredictionsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10458,7 +10458,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelPropertiesDTO:
+    ) -> PropertiesDTO:
         """Retrieve a list of properties
 
         Retrieve a list of properties for a specific analytic object.
@@ -10502,7 +10502,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPropertiesDTO",
+            '200': "PropertiesDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10533,7 +10533,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelPropertiesDTO]:
+    ) -> ApiResponse[PropertiesDTO]:
         """Retrieve a list of properties
 
         Retrieve a list of properties for a specific analytic object.
@@ -10577,7 +10577,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPropertiesDTO",
+            '200': "PropertiesDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10652,7 +10652,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelPropertiesDTO",
+            '200': "PropertiesDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10741,7 +10741,7 @@ class DataModelApi:
     @validate_call
     def put_properties(
         self,
-        servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO,
+        properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -10756,13 +10756,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingObjectconfigurationObjectsBulkChangeResponseDTO:
+    ) -> ObjectsBulkChangeResponseDTO:
         """Replace properties
 
         Update existing properties by replacing their entire definition. The definition in your API call replaces the property's prior definition. You must provide the entire definition in the PUT call. If you omit values from the update request, those values are removed from the property. We recommend that you retrieve a property's details before you update the property with new values. This operation does not create new properties if they do not exist.  In each API request, update up to 10 properties per tenant with a maximum of 500 tenants.  To specify the tenant in which to update a property, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each property in the request body.  To specify the project in which to update properties, provide a project UUID in the `ProjectID` request header or `projectId` for each property in the request body.
 
-        :param servicing_objectconfiguration_properties_change_definitions_dto: (required)
-        :type servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO
+        :param properties_change_definitions_dto: (required)
+        :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -10790,7 +10790,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._put_properties_serialize(
-            servicing_objectconfiguration_properties_change_definitions_dto=servicing_objectconfiguration_properties_change_definitions_dto,
+            properties_change_definitions_dto=properties_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -10800,7 +10800,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationObjectsBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10816,7 +10816,7 @@ class DataModelApi:
     @validate_call
     def put_properties_with_http_info(
         self,
-        servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO,
+        properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -10831,13 +10831,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingObjectconfigurationObjectsBulkChangeResponseDTO]:
+    ) -> ApiResponse[ObjectsBulkChangeResponseDTO]:
         """Replace properties
 
         Update existing properties by replacing their entire definition. The definition in your API call replaces the property's prior definition. You must provide the entire definition in the PUT call. If you omit values from the update request, those values are removed from the property. We recommend that you retrieve a property's details before you update the property with new values. This operation does not create new properties if they do not exist.  In each API request, update up to 10 properties per tenant with a maximum of 500 tenants.  To specify the tenant in which to update a property, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each property in the request body.  To specify the project in which to update properties, provide a project UUID in the `ProjectID` request header or `projectId` for each property in the request body.
 
-        :param servicing_objectconfiguration_properties_change_definitions_dto: (required)
-        :type servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO
+        :param properties_change_definitions_dto: (required)
+        :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -10865,7 +10865,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._put_properties_serialize(
-            servicing_objectconfiguration_properties_change_definitions_dto=servicing_objectconfiguration_properties_change_definitions_dto,
+            properties_change_definitions_dto=properties_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -10875,7 +10875,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationObjectsBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10891,7 +10891,7 @@ class DataModelApi:
     @validate_call
     def put_properties_without_preload_content(
         self,
-        servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO,
+        properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -10911,8 +10911,8 @@ class DataModelApi:
 
         Update existing properties by replacing their entire definition. The definition in your API call replaces the property's prior definition. You must provide the entire definition in the PUT call. If you omit values from the update request, those values are removed from the property. We recommend that you retrieve a property's details before you update the property with new values. This operation does not create new properties if they do not exist.  In each API request, update up to 10 properties per tenant with a maximum of 500 tenants.  To specify the tenant in which to update a property, administrating tenants can provide an analytic tenant code in the `TargetTenantID` request header or `tenantCode` for each property in the request body.  To specify the project in which to update properties, provide a project UUID in the `ProjectID` request header or `projectId` for each property in the request body.
 
-        :param servicing_objectconfiguration_properties_change_definitions_dto: (required)
-        :type servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO
+        :param properties_change_definitions_dto: (required)
+        :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -10940,7 +10940,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._put_properties_serialize(
-            servicing_objectconfiguration_properties_change_definitions_dto=servicing_objectconfiguration_properties_change_definitions_dto,
+            properties_change_definitions_dto=properties_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -10950,7 +10950,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationObjectsBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10961,7 +10961,7 @@ class DataModelApi:
 
     def _put_properties_serialize(
         self,
-        servicing_objectconfiguration_properties_change_definitions_dto,
+        properties_change_definitions_dto,
         target_tenant_id,
         project_id,
         _request_auth,
@@ -10993,8 +10993,8 @@ class DataModelApi:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_objectconfiguration_properties_change_definitions_dto is not None:
-            _body_params = servicing_objectconfiguration_properties_change_definitions_dto
+        if properties_change_definitions_dto is not None:
+            _body_params = properties_change_definitions_dto
 
 
         # set the HTTP header `Accept`
@@ -11049,7 +11049,7 @@ class DataModelApi:
     @validate_call
     def put_vee_sample_questions(
         self,
-        servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO,
+        vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -11064,13 +11064,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingVeeQuestionsBulkChangeResponseDTO:
+    ) -> VeeQuestionsBulkChangeResponseDTO:
         """Update Vee sample questions
 
         Update existing sample questions, such as its question category or whether the question is visible in Vee. Administrating tenants can specify the tenant in which to update sample questions using the `TargetTenantID` header.  When updating sample questions, the question definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values for optional fields from the update request, the values reset to their respective default value. We recommend that you retrieve a question's details before you update the question with new values.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_vee_questions_change_definitions_dto: (required)
-        :type servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO
+        :param vee_questions_change_definitions_dto: (required)
+        :type vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -11098,7 +11098,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._put_vee_sample_questions_serialize(
-            servicing_vee_questions_change_definitions_dto=servicing_vee_questions_change_definitions_dto,
+            vee_questions_change_definitions_dto=vee_questions_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -11108,7 +11108,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingVeeQuestionsBulkChangeResponseDTO",
+            '200': "VeeQuestionsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11124,7 +11124,7 @@ class DataModelApi:
     @validate_call
     def put_vee_sample_questions_with_http_info(
         self,
-        servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO,
+        vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -11139,13 +11139,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingVeeQuestionsBulkChangeResponseDTO]:
+    ) -> ApiResponse[VeeQuestionsBulkChangeResponseDTO]:
         """Update Vee sample questions
 
         Update existing sample questions, such as its question category or whether the question is visible in Vee. Administrating tenants can specify the tenant in which to update sample questions using the `TargetTenantID` header.  When updating sample questions, the question definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values for optional fields from the update request, the values reset to their respective default value. We recommend that you retrieve a question's details before you update the question with new values.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_vee_questions_change_definitions_dto: (required)
-        :type servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO
+        :param vee_questions_change_definitions_dto: (required)
+        :type vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -11173,7 +11173,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._put_vee_sample_questions_serialize(
-            servicing_vee_questions_change_definitions_dto=servicing_vee_questions_change_definitions_dto,
+            vee_questions_change_definitions_dto=vee_questions_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -11183,7 +11183,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingVeeQuestionsBulkChangeResponseDTO",
+            '200': "VeeQuestionsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11199,7 +11199,7 @@ class DataModelApi:
     @validate_call
     def put_vee_sample_questions_without_preload_content(
         self,
-        servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO,
+        vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -11219,8 +11219,8 @@ class DataModelApi:
 
         Update existing sample questions, such as its question category or whether the question is visible in Vee. Administrating tenants can specify the tenant in which to update sample questions using the `TargetTenantID` header.  When updating sample questions, the question definition in your API call replaces the prior definition. You must provide the entire definition in the `PUT` call. If you omit values for optional fields from the update request, the values reset to their respective default value. We recommend that you retrieve a question's details before you update the question with new values.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_vee_questions_change_definitions_dto: (required)
-        :type servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO
+        :param vee_questions_change_definitions_dto: (required)
+        :type vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -11248,7 +11248,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._put_vee_sample_questions_serialize(
-            servicing_vee_questions_change_definitions_dto=servicing_vee_questions_change_definitions_dto,
+            vee_questions_change_definitions_dto=vee_questions_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -11258,7 +11258,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingVeeQuestionsBulkChangeResponseDTO",
+            '200': "VeeQuestionsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11269,7 +11269,7 @@ class DataModelApi:
 
     def _put_vee_sample_questions_serialize(
         self,
-        servicing_vee_questions_change_definitions_dto,
+        vee_questions_change_definitions_dto,
         target_tenant_id,
         project_id,
         _request_auth,
@@ -11301,8 +11301,8 @@ class DataModelApi:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_vee_questions_change_definitions_dto is not None:
-            _body_params = servicing_vee_questions_change_definitions_dto
+        if vee_questions_change_definitions_dto is not None:
+            _body_params = vee_questions_change_definitions_dto
 
 
         # set the HTTP header `Accept`
@@ -11372,7 +11372,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelSelectionConceptDTO:
+    ) -> SelectionConceptDTO:
         """Retrieve an analytic object's selection concept by ID
 
         If you know the ID of a selection concept, use this API to retrieve that selection concept specifically. You must also know the analytic object's ID.
@@ -11416,7 +11416,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelSelectionConceptDTO",
+            '200': "SelectionConceptDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11447,7 +11447,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelSelectionConceptDTO]:
+    ) -> ApiResponse[SelectionConceptDTO]:
         """Retrieve an analytic object's selection concept by ID
 
         If you know the ID of a selection concept, use this API to retrieve that selection concept specifically. You must also know the analytic object's ID.
@@ -11491,7 +11491,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelSelectionConceptDTO",
+            '200': "SelectionConceptDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11566,7 +11566,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelSelectionConceptDTO",
+            '200': "SelectionConceptDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11667,7 +11667,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DataservicesDatamodelSelectionConceptsDTO:
+    ) -> SelectionConceptsDTO:
         """Retrieve an analytic object's selection concepts
 
         Retrieve a list of selection concepts for a specific analytic object.
@@ -11711,7 +11711,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelSelectionConceptsDTO",
+            '200': "SelectionConceptsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11742,7 +11742,7 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DataservicesDatamodelSelectionConceptsDTO]:
+    ) -> ApiResponse[SelectionConceptsDTO]:
         """Retrieve an analytic object's selection concepts
 
         Retrieve a list of selection concepts for a specific analytic object.
@@ -11786,7 +11786,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelSelectionConceptsDTO",
+            '200': "SelectionConceptsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11861,7 +11861,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DataservicesDatamodelSelectionConceptsDTO",
+            '200': "SelectionConceptsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11950,7 +11950,7 @@ class DataModelApi:
     @validate_call
     def update_analytic_objects(
         self,
-        servicing_v2_objectconfiguration_analytic_object_request_dto: ServicingV2ObjectconfigurationAnalyticObjectRequestDTO,
+        analytic_object_request_dto: AnalyticObjectRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -11964,13 +11964,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingV2ObjectconfigurationBulkChangeResponseDTO:
+    ) -> BulkChangeResponseDTO:
         """Update analytic objects
 
         Update the details of an analytic object. Supports reverting subjects, events, and internal comparisons to Blueprint.   You can revert tenant override objects to Blueprint. If you execute the `revertToBP` operation on a:  - Blueprint object: Nothing happens. The object is already the Blueprint version!  - Tenant override object: The object reverts to the Blueprint version or, for administrating tenants who revert an analytic tenant's object, the administrating tenant's object version.  - Tenant object: The API request fails. The object is unique to your tenant and no Blueprint version exists.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_analytic_object_request_dto: (required)
-        :type servicing_v2_objectconfiguration_analytic_object_request_dto: ServicingV2ObjectconfigurationAnalyticObjectRequestDTO
+        :param analytic_object_request_dto: (required)
+        :type analytic_object_request_dto: AnalyticObjectRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -11996,7 +11996,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._update_analytic_objects_serialize(
-            servicing_v2_objectconfiguration_analytic_object_request_dto=servicing_v2_objectconfiguration_analytic_object_request_dto,
+            analytic_object_request_dto=analytic_object_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12005,7 +12005,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12021,7 +12021,7 @@ class DataModelApi:
     @validate_call
     def update_analytic_objects_with_http_info(
         self,
-        servicing_v2_objectconfiguration_analytic_object_request_dto: ServicingV2ObjectconfigurationAnalyticObjectRequestDTO,
+        analytic_object_request_dto: AnalyticObjectRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -12035,13 +12035,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingV2ObjectconfigurationBulkChangeResponseDTO]:
+    ) -> ApiResponse[BulkChangeResponseDTO]:
         """Update analytic objects
 
         Update the details of an analytic object. Supports reverting subjects, events, and internal comparisons to Blueprint.   You can revert tenant override objects to Blueprint. If you execute the `revertToBP` operation on a:  - Blueprint object: Nothing happens. The object is already the Blueprint version!  - Tenant override object: The object reverts to the Blueprint version or, for administrating tenants who revert an analytic tenant's object, the administrating tenant's object version.  - Tenant object: The API request fails. The object is unique to your tenant and no Blueprint version exists.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_analytic_object_request_dto: (required)
-        :type servicing_v2_objectconfiguration_analytic_object_request_dto: ServicingV2ObjectconfigurationAnalyticObjectRequestDTO
+        :param analytic_object_request_dto: (required)
+        :type analytic_object_request_dto: AnalyticObjectRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -12067,7 +12067,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._update_analytic_objects_serialize(
-            servicing_v2_objectconfiguration_analytic_object_request_dto=servicing_v2_objectconfiguration_analytic_object_request_dto,
+            analytic_object_request_dto=analytic_object_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12076,7 +12076,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12092,7 +12092,7 @@ class DataModelApi:
     @validate_call
     def update_analytic_objects_without_preload_content(
         self,
-        servicing_v2_objectconfiguration_analytic_object_request_dto: ServicingV2ObjectconfigurationAnalyticObjectRequestDTO,
+        analytic_object_request_dto: AnalyticObjectRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -12111,8 +12111,8 @@ class DataModelApi:
 
         Update the details of an analytic object. Supports reverting subjects, events, and internal comparisons to Blueprint.   You can revert tenant override objects to Blueprint. If you execute the `revertToBP` operation on a:  - Blueprint object: Nothing happens. The object is already the Blueprint version!  - Tenant override object: The object reverts to the Blueprint version or, for administrating tenants who revert an analytic tenant's object, the administrating tenant's object version.  - Tenant object: The API request fails. The object is unique to your tenant and no Blueprint version exists.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_v2_objectconfiguration_analytic_object_request_dto: (required)
-        :type servicing_v2_objectconfiguration_analytic_object_request_dto: ServicingV2ObjectconfigurationAnalyticObjectRequestDTO
+        :param analytic_object_request_dto: (required)
+        :type analytic_object_request_dto: AnalyticObjectRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -12138,7 +12138,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._update_analytic_objects_serialize(
-            servicing_v2_objectconfiguration_analytic_object_request_dto=servicing_v2_objectconfiguration_analytic_object_request_dto,
+            analytic_object_request_dto=analytic_object_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12147,7 +12147,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingV2ObjectconfigurationBulkChangeResponseDTO",
+            '200': "BulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12158,7 +12158,7 @@ class DataModelApi:
 
     def _update_analytic_objects_serialize(
         self,
-        servicing_v2_objectconfiguration_analytic_object_request_dto,
+        analytic_object_request_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -12187,8 +12187,8 @@ class DataModelApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if servicing_v2_objectconfiguration_analytic_object_request_dto is not None:
-            _body_params = servicing_v2_objectconfiguration_analytic_object_request_dto
+        if analytic_object_request_dto is not None:
+            _body_params = analytic_object_request_dto
 
 
         # set the HTTP header `Accept`
@@ -12243,7 +12243,7 @@ class DataModelApi:
     @validate_call
     def update_dimensions(
         self,
-        servicing_objectconfiguration_dimensions_change_definitions_dto: ServicingObjectconfigurationDimensionsChangeDefinitionsDTO,
+        dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         _request_timeout: Union[
@@ -12258,13 +12258,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingObjectconfigurationObjectsBulkChangeResponseDTO:
+    ) -> ObjectsBulkChangeResponseDTO:
         """Update dimensions
 
         Change the display name, short display name, and description of one or more dimensions. This API supports updating leveled dimensions.  In each API request, update up to 10 dimensions per tenant with a maximum of 500 tenants.
 
-        :param servicing_objectconfiguration_dimensions_change_definitions_dto: (required)
-        :type servicing_objectconfiguration_dimensions_change_definitions_dto: ServicingObjectconfigurationDimensionsChangeDefinitionsDTO
+        :param dimensions_change_definitions_dto: (required)
+        :type dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
@@ -12292,7 +12292,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._update_dimensions_serialize(
-            servicing_objectconfiguration_dimensions_change_definitions_dto=servicing_objectconfiguration_dimensions_change_definitions_dto,
+            dimensions_change_definitions_dto=dimensions_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -12302,7 +12302,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationObjectsBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12318,7 +12318,7 @@ class DataModelApi:
     @validate_call
     def update_dimensions_with_http_info(
         self,
-        servicing_objectconfiguration_dimensions_change_definitions_dto: ServicingObjectconfigurationDimensionsChangeDefinitionsDTO,
+        dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         _request_timeout: Union[
@@ -12333,13 +12333,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingObjectconfigurationObjectsBulkChangeResponseDTO]:
+    ) -> ApiResponse[ObjectsBulkChangeResponseDTO]:
         """Update dimensions
 
         Change the display name, short display name, and description of one or more dimensions. This API supports updating leveled dimensions.  In each API request, update up to 10 dimensions per tenant with a maximum of 500 tenants.
 
-        :param servicing_objectconfiguration_dimensions_change_definitions_dto: (required)
-        :type servicing_objectconfiguration_dimensions_change_definitions_dto: ServicingObjectconfigurationDimensionsChangeDefinitionsDTO
+        :param dimensions_change_definitions_dto: (required)
+        :type dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
@@ -12367,7 +12367,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._update_dimensions_serialize(
-            servicing_objectconfiguration_dimensions_change_definitions_dto=servicing_objectconfiguration_dimensions_change_definitions_dto,
+            dimensions_change_definitions_dto=dimensions_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -12377,7 +12377,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationObjectsBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12393,7 +12393,7 @@ class DataModelApi:
     @validate_call
     def update_dimensions_without_preload_content(
         self,
-        servicing_objectconfiguration_dimensions_change_definitions_dto: ServicingObjectconfigurationDimensionsChangeDefinitionsDTO,
+        dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         _request_timeout: Union[
@@ -12413,8 +12413,8 @@ class DataModelApi:
 
         Change the display name, short display name, and description of one or more dimensions. This API supports updating leveled dimensions.  In each API request, update up to 10 dimensions per tenant with a maximum of 500 tenants.
 
-        :param servicing_objectconfiguration_dimensions_change_definitions_dto: (required)
-        :type servicing_objectconfiguration_dimensions_change_definitions_dto: ServicingObjectconfigurationDimensionsChangeDefinitionsDTO
+        :param dimensions_change_definitions_dto: (required)
+        :type dimensions_change_definitions_dto: DimensionsChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
@@ -12442,7 +12442,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._update_dimensions_serialize(
-            servicing_objectconfiguration_dimensions_change_definitions_dto=servicing_objectconfiguration_dimensions_change_definitions_dto,
+            dimensions_change_definitions_dto=dimensions_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -12452,7 +12452,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationObjectsBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12463,7 +12463,7 @@ class DataModelApi:
 
     def _update_dimensions_serialize(
         self,
-        servicing_objectconfiguration_dimensions_change_definitions_dto,
+        dimensions_change_definitions_dto,
         target_tenant_id,
         project_id,
         _request_auth,
@@ -12495,8 +12495,8 @@ class DataModelApi:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_objectconfiguration_dimensions_change_definitions_dto is not None:
-            _body_params = servicing_objectconfiguration_dimensions_change_definitions_dto
+        if dimensions_change_definitions_dto is not None:
+            _body_params = dimensions_change_definitions_dto
 
 
         # set the HTTP header `Accept`
@@ -12551,7 +12551,7 @@ class DataModelApi:
     @validate_call
     def update_properties(
         self,
-        servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO,
+        properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -12566,13 +12566,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingObjectconfigurationObjectsBulkChangeResponseDTO:
+    ) -> ObjectsBulkChangeResponseDTO:
         """Update properties
 
         Change the display name, short display name, and description of one or more properties. In each API request, update up to 10 properties per tenant with a maximum of 500 tenants.
 
-        :param servicing_objectconfiguration_properties_change_definitions_dto: (required)
-        :type servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO
+        :param properties_change_definitions_dto: (required)
+        :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -12600,7 +12600,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._update_properties_serialize(
-            servicing_objectconfiguration_properties_change_definitions_dto=servicing_objectconfiguration_properties_change_definitions_dto,
+            properties_change_definitions_dto=properties_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -12610,7 +12610,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationObjectsBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12626,7 +12626,7 @@ class DataModelApi:
     @validate_call
     def update_properties_with_http_info(
         self,
-        servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO,
+        properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -12641,13 +12641,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingObjectconfigurationObjectsBulkChangeResponseDTO]:
+    ) -> ApiResponse[ObjectsBulkChangeResponseDTO]:
         """Update properties
 
         Change the display name, short display name, and description of one or more properties. In each API request, update up to 10 properties per tenant with a maximum of 500 tenants.
 
-        :param servicing_objectconfiguration_properties_change_definitions_dto: (required)
-        :type servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO
+        :param properties_change_definitions_dto: (required)
+        :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -12675,7 +12675,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._update_properties_serialize(
-            servicing_objectconfiguration_properties_change_definitions_dto=servicing_objectconfiguration_properties_change_definitions_dto,
+            properties_change_definitions_dto=properties_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -12685,7 +12685,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationObjectsBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12701,7 +12701,7 @@ class DataModelApi:
     @validate_call
     def update_properties_without_preload_content(
         self,
-        servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO,
+        properties_change_definitions_dto: PropertiesChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -12721,8 +12721,8 @@ class DataModelApi:
 
         Change the display name, short display name, and description of one or more properties. In each API request, update up to 10 properties per tenant with a maximum of 500 tenants.
 
-        :param servicing_objectconfiguration_properties_change_definitions_dto: (required)
-        :type servicing_objectconfiguration_properties_change_definitions_dto: ServicingObjectconfigurationPropertiesChangeDefinitionsDTO
+        :param properties_change_definitions_dto: (required)
+        :type properties_change_definitions_dto: PropertiesChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -12750,7 +12750,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._update_properties_serialize(
-            servicing_objectconfiguration_properties_change_definitions_dto=servicing_objectconfiguration_properties_change_definitions_dto,
+            properties_change_definitions_dto=properties_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -12760,7 +12760,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingObjectconfigurationObjectsBulkChangeResponseDTO",
+            '200': "ObjectsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12771,7 +12771,7 @@ class DataModelApi:
 
     def _update_properties_serialize(
         self,
-        servicing_objectconfiguration_properties_change_definitions_dto,
+        properties_change_definitions_dto,
         target_tenant_id,
         project_id,
         _request_auth,
@@ -12803,8 +12803,8 @@ class DataModelApi:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_objectconfiguration_properties_change_definitions_dto is not None:
-            _body_params = servicing_objectconfiguration_properties_change_definitions_dto
+        if properties_change_definitions_dto is not None:
+            _body_params = properties_change_definitions_dto
 
 
         # set the HTTP header `Accept`
@@ -12859,7 +12859,7 @@ class DataModelApi:
     @validate_call
     def update_vee_sample_questions(
         self,
-        servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO,
+        vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -12874,13 +12874,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingVeeQuestionsBulkChangeResponseDTO:
+    ) -> VeeQuestionsBulkChangeResponseDTO:
         """Patch Vee sample questions
 
         Make partial changes to Vee sample questions. Administrating tenants can specify the tenant in which to patch questions using the `TargetTenantID` header.  Unlike a `PUT` call, which completely replaces the sample question definition, use `PATCH` to change specific fields in the question without affecting omitted fields.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_vee_questions_change_definitions_dto: (required)
-        :type servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO
+        :param vee_questions_change_definitions_dto: (required)
+        :type vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -12908,7 +12908,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._update_vee_sample_questions_serialize(
-            servicing_vee_questions_change_definitions_dto=servicing_vee_questions_change_definitions_dto,
+            vee_questions_change_definitions_dto=vee_questions_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -12918,7 +12918,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingVeeQuestionsBulkChangeResponseDTO",
+            '200': "VeeQuestionsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12934,7 +12934,7 @@ class DataModelApi:
     @validate_call
     def update_vee_sample_questions_with_http_info(
         self,
-        servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO,
+        vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -12949,13 +12949,13 @@ class DataModelApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingVeeQuestionsBulkChangeResponseDTO]:
+    ) -> ApiResponse[VeeQuestionsBulkChangeResponseDTO]:
         """Patch Vee sample questions
 
         Make partial changes to Vee sample questions. Administrating tenants can specify the tenant in which to patch questions using the `TargetTenantID` header.  Unlike a `PUT` call, which completely replaces the sample question definition, use `PATCH` to change specific fields in the question without affecting omitted fields.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_vee_questions_change_definitions_dto: (required)
-        :type servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO
+        :param vee_questions_change_definitions_dto: (required)
+        :type vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -12983,7 +12983,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._update_vee_sample_questions_serialize(
-            servicing_vee_questions_change_definitions_dto=servicing_vee_questions_change_definitions_dto,
+            vee_questions_change_definitions_dto=vee_questions_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -12993,7 +12993,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingVeeQuestionsBulkChangeResponseDTO",
+            '200': "VeeQuestionsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -13009,7 +13009,7 @@ class DataModelApi:
     @validate_call
     def update_vee_sample_questions_without_preload_content(
         self,
-        servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO,
+        vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request.")] = None,
         _request_timeout: Union[
@@ -13029,8 +13029,8 @@ class DataModelApi:
 
         Make partial changes to Vee sample questions. Administrating tenants can specify the tenant in which to patch questions using the `TargetTenantID` header.  Unlike a `PUT` call, which completely replaces the sample question definition, use `PATCH` to change specific fields in the question without affecting omitted fields.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param servicing_vee_questions_change_definitions_dto: (required)
-        :type servicing_vee_questions_change_definitions_dto: ServicingVeeQuestionsChangeDefinitionsDTO
+        :param vee_questions_change_definitions_dto: (required)
+        :type vee_questions_change_definitions_dto: VeeQuestionsChangeDefinitionsDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param project_id: Optionally, specify a project in which to make the request.
@@ -13058,7 +13058,7 @@ class DataModelApi:
         """ # noqa: E501
 
         _param = self._update_vee_sample_questions_serialize(
-            servicing_vee_questions_change_definitions_dto=servicing_vee_questions_change_definitions_dto,
+            vee_questions_change_definitions_dto=vee_questions_change_definitions_dto,
             target_tenant_id=target_tenant_id,
             project_id=project_id,
             _request_auth=_request_auth,
@@ -13068,7 +13068,7 @@ class DataModelApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingVeeQuestionsBulkChangeResponseDTO",
+            '200': "VeeQuestionsBulkChangeResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -13079,7 +13079,7 @@ class DataModelApi:
 
     def _update_vee_sample_questions_serialize(
         self,
-        servicing_vee_questions_change_definitions_dto,
+        vee_questions_change_definitions_dto,
         target_tenant_id,
         project_id,
         _request_auth,
@@ -13111,8 +13111,8 @@ class DataModelApi:
             _header_params['ProjectID'] = project_id
         # process the form parameters
         # process the body parameter
-        if servicing_vee_questions_change_definitions_dto is not None:
-            _body_params = servicing_vee_questions_change_definitions_dto
+        if vee_questions_change_definitions_dto is not None:
+            _body_params = vee_questions_change_definitions_dto
 
 
         # set the HTTP header `Accept`
