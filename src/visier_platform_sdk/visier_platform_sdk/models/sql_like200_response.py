@@ -18,13 +18,13 @@ import json
 import pprint
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Any, List, Optional
-from visier_platform_sdk.models.dataservices_query_cell_set_dto import DataservicesQueryCellSetDTO
+from visier_platform_sdk.models.cell_set_dto import CellSetDTO
 from visier_platform_sdk.models.table_response_dto import TableResponseDTO
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-SQLLIKE200RESPONSE_ONE_OF_SCHEMAS = ["DataservicesQueryCellSetDTO", "TableResponseDTO"]
+SQLLIKE200RESPONSE_ONE_OF_SCHEMAS = ["CellSetDTO", "TableResponseDTO"]
 
 class SqlLike200Response(BaseModel):
     """
@@ -32,10 +32,10 @@ class SqlLike200Response(BaseModel):
     """
     # data type: TableResponseDTO
     oneof_schema_1_validator: Optional[TableResponseDTO] = None
-    # data type: DataservicesQueryCellSetDTO
-    oneof_schema_2_validator: Optional[DataservicesQueryCellSetDTO] = None
-    actual_instance: Optional[Union[DataservicesQueryCellSetDTO, TableResponseDTO]] = None
-    one_of_schemas: Set[str] = { "DataservicesQueryCellSetDTO", "TableResponseDTO" }
+    # data type: CellSetDTO
+    oneof_schema_2_validator: Optional[CellSetDTO] = None
+    actual_instance: Optional[Union[CellSetDTO, TableResponseDTO]] = None
+    one_of_schemas: Set[str] = { "CellSetDTO", "TableResponseDTO" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -63,17 +63,17 @@ class SqlLike200Response(BaseModel):
             error_messages.append(f"Error! Input type `{type(v)}` is not `TableResponseDTO`")
         else:
             match += 1
-        # validate data type: DataservicesQueryCellSetDTO
-        if not isinstance(v, DataservicesQueryCellSetDTO):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `DataservicesQueryCellSetDTO`")
+        # validate data type: CellSetDTO
+        if not isinstance(v, CellSetDTO):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `CellSetDTO`")
         else:
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in SqlLike200Response with oneOf schemas: DataservicesQueryCellSetDTO, TableResponseDTO. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in SqlLike200Response with oneOf schemas: CellSetDTO, TableResponseDTO. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in SqlLike200Response with oneOf schemas: DataservicesQueryCellSetDTO, TableResponseDTO. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in SqlLike200Response with oneOf schemas: CellSetDTO, TableResponseDTO. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -94,19 +94,19 @@ class SqlLike200Response(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into DataservicesQueryCellSetDTO
+        # deserialize data into CellSetDTO
         try:
-            instance.actual_instance = DataservicesQueryCellSetDTO.from_json(json_str)
+            instance.actual_instance = CellSetDTO.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into SqlLike200Response with oneOf schemas: DataservicesQueryCellSetDTO, TableResponseDTO. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into SqlLike200Response with oneOf schemas: CellSetDTO, TableResponseDTO. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into SqlLike200Response with oneOf schemas: DataservicesQueryCellSetDTO, TableResponseDTO. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into SqlLike200Response with oneOf schemas: CellSetDTO, TableResponseDTO. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -120,7 +120,7 @@ class SqlLike200Response(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], DataservicesQueryCellSetDTO, TableResponseDTO]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], CellSetDTO, TableResponseDTO]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

@@ -20,7 +20,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_platform_sdk.models.authentication_o_auth2_user_info_dto import AuthenticationOAuth2UserInfoDTO
+from visier_platform_sdk.models.o_auth2_user_info_dto import OAuth2UserInfoDTO
 from visier_platform_sdk.models.status import Status
 from visier_platform_sdk.models.token_response import TokenResponse
 
@@ -774,7 +774,7 @@ class OAuth2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AuthenticationOAuth2UserInfoDTO:
+    ) -> OAuth2UserInfoDTO:
         """Retrieve user-specific metadata
 
         Retrieve user-specific metadata, such as a user's ID, username, and profile capabilities.
@@ -812,7 +812,7 @@ class OAuth2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AuthenticationOAuth2UserInfoDTO",
+            '200': "OAuth2UserInfoDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -841,7 +841,7 @@ class OAuth2Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AuthenticationOAuth2UserInfoDTO]:
+    ) -> ApiResponse[OAuth2UserInfoDTO]:
         """Retrieve user-specific metadata
 
         Retrieve user-specific metadata, such as a user's ID, username, and profile capabilities.
@@ -879,7 +879,7 @@ class OAuth2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AuthenticationOAuth2UserInfoDTO",
+            '200': "OAuth2UserInfoDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -946,7 +946,7 @@ class OAuth2Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AuthenticationOAuth2UserInfoDTO",
+            '200': "OAuth2UserInfoDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

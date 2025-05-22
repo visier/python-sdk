@@ -15,6 +15,7 @@
 
 import unittest
 
+import visier_platform_sdk.models
 from visier_platform_sdk.models.salary_benchmarks_batch_processing_outputs import SalaryBenchmarksBatchProcessingOutputs
 
 class TestSalaryBenchmarksBatchProcessingOutputs(unittest.TestCase):
@@ -31,9 +32,7 @@ class TestSalaryBenchmarksBatchProcessingOutputs(unittest.TestCase):
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SalaryBenchmarksBatchProcessingOutputs`
-        """
-        model = SalaryBenchmarksBatchProcessingOutputs()
+
         if include_optional:
             return SalaryBenchmarksBatchProcessingOutputs(
                 successes = [
@@ -63,12 +62,19 @@ class TestSalaryBenchmarksBatchProcessingOutputs(unittest.TestCase):
         else:
             return SalaryBenchmarksBatchProcessingOutputs(
         )
-        """
 
     def testSalaryBenchmarksBatchProcessingOutputs(self):
         """Test SalaryBenchmarksBatchProcessingOutputs"""
-        # inst_req_only = self.make_instance(include_optional=False)
-        # inst_req_and_optional = self.make_instance(include_optional=True)
+        def validate_instance(instance):
+            SalaryBenchmarksBatchProcessingOutputs.model_validate(inst_req_only)
+            instance_deserialized = SalaryBenchmarksBatchProcessingOutputs.from_dict(instance.to_dict())
+            assert instance == instance_deserialized
+
+        inst_req_only = self.make_instance(include_optional=False)
+        validate_instance(inst_req_only)
+
+        inst_req_and_optional = self.make_instance(include_optional=True)
+        validate_instance(inst_req_and_optional)
 
 if __name__ == '__main__':
     unittest.main()

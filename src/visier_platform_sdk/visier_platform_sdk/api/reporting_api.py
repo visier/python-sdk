@@ -20,10 +20,10 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_platform_sdk.models.analysis_common_report_create_request_dto import AnalysisCommonReportCreateRequestDTO
-from visier_platform_sdk.models.analysis_common_report_dto import AnalysisCommonReportDTO
-from visier_platform_sdk.models.analysis_common_report_delete_success_dto import AnalysisCommonReportDeleteSuccessDTO
-from visier_platform_sdk.models.analysis_common_report_list_response_dto import AnalysisCommonReportListResponseDTO
+from visier_platform_sdk.models.report_create_request_dto import ReportCreateRequestDTO
+from visier_platform_sdk.models.report_dto import ReportDTO
+from visier_platform_sdk.models.report_delete_success_dto import ReportDeleteSuccessDTO
+from visier_platform_sdk.models.report_list_response_dto import ReportListResponseDTO
 
 from visier_platform_sdk.api_client import ApiClient, RequestSerialized
 from visier_platform_sdk.api_response import ApiResponse
@@ -46,7 +46,7 @@ class ReportingApi:
     @validate_call
     def create_report(
         self,
-        analysis_common_report_create_request_dto: AnalysisCommonReportCreateRequestDTO,
+        report_create_request_dto: ReportCreateRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -60,13 +60,13 @@ class ReportingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AnalysisCommonReportDTO:
+    ) -> ReportDTO:
         """Create a report
 
         Create a new report with a title and description. To edit other contents of the report, such as columns and group bys, navigate to the Reports room in Visier.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param analysis_common_report_create_request_dto: (required)
-        :type analysis_common_report_create_request_dto: AnalysisCommonReportCreateRequestDTO
+        :param report_create_request_dto: (required)
+        :type report_create_request_dto: ReportCreateRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -92,7 +92,7 @@ class ReportingApi:
         """ # noqa: E501
 
         _param = self._create_report_serialize(
-            analysis_common_report_create_request_dto=analysis_common_report_create_request_dto,
+            report_create_request_dto=report_create_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -101,7 +101,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportDTO",
+            '200': "ReportDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -117,7 +117,7 @@ class ReportingApi:
     @validate_call
     def create_report_with_http_info(
         self,
-        analysis_common_report_create_request_dto: AnalysisCommonReportCreateRequestDTO,
+        report_create_request_dto: ReportCreateRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -131,13 +131,13 @@ class ReportingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AnalysisCommonReportDTO]:
+    ) -> ApiResponse[ReportDTO]:
         """Create a report
 
         Create a new report with a title and description. To edit other contents of the report, such as columns and group bys, navigate to the Reports room in Visier.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param analysis_common_report_create_request_dto: (required)
-        :type analysis_common_report_create_request_dto: AnalysisCommonReportCreateRequestDTO
+        :param report_create_request_dto: (required)
+        :type report_create_request_dto: ReportCreateRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -163,7 +163,7 @@ class ReportingApi:
         """ # noqa: E501
 
         _param = self._create_report_serialize(
-            analysis_common_report_create_request_dto=analysis_common_report_create_request_dto,
+            report_create_request_dto=report_create_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -172,7 +172,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportDTO",
+            '200': "ReportDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -188,7 +188,7 @@ class ReportingApi:
     @validate_call
     def create_report_without_preload_content(
         self,
-        analysis_common_report_create_request_dto: AnalysisCommonReportCreateRequestDTO,
+        report_create_request_dto: ReportCreateRequestDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -207,8 +207,8 @@ class ReportingApi:
 
         Create a new report with a title and description. To edit other contents of the report, such as columns and group bys, navigate to the Reports room in Visier.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param analysis_common_report_create_request_dto: (required)
-        :type analysis_common_report_create_request_dto: AnalysisCommonReportCreateRequestDTO
+        :param report_create_request_dto: (required)
+        :type report_create_request_dto: ReportCreateRequestDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -234,7 +234,7 @@ class ReportingApi:
         """ # noqa: E501
 
         _param = self._create_report_serialize(
-            analysis_common_report_create_request_dto=analysis_common_report_create_request_dto,
+            report_create_request_dto=report_create_request_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -243,7 +243,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportDTO",
+            '200': "ReportDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -254,7 +254,7 @@ class ReportingApi:
 
     def _create_report_serialize(
         self,
-        analysis_common_report_create_request_dto,
+        report_create_request_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -283,8 +283,8 @@ class ReportingApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if analysis_common_report_create_request_dto is not None:
-            _body_params = analysis_common_report_create_request_dto
+        if report_create_request_dto is not None:
+            _body_params = report_create_request_dto
 
 
         # set the HTTP header `Accept`
@@ -353,7 +353,7 @@ class ReportingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AnalysisCommonReportDeleteSuccessDTO:
+    ) -> ReportDeleteSuccessDTO:
         """Delete a report
 
         Delete a report in the tenant. You must know the ID of the report to delete it. To retrieve report IDs, see `GET /v1alpha/reporting/reports`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -394,7 +394,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportDeleteSuccessDTO",
+            '200': "ReportDeleteSuccessDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -424,7 +424,7 @@ class ReportingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AnalysisCommonReportDeleteSuccessDTO]:
+    ) -> ApiResponse[ReportDeleteSuccessDTO]:
         """Delete a report
 
         Delete a report in the tenant. You must know the ID of the report to delete it. To retrieve report IDs, see `GET /v1alpha/reporting/reports`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -465,7 +465,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportDeleteSuccessDTO",
+            '200': "ReportDeleteSuccessDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -536,7 +536,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportDeleteSuccessDTO",
+            '200': "ReportDeleteSuccessDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -915,7 +915,7 @@ class ReportingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AnalysisCommonReportDTO:
+    ) -> ReportDTO:
         """Duplicate a report
 
         Make a copy of an existing report. You must know the ID of the report to copy it. To retrieve report IDs, see `GET /v1alpha/reporting/reports`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -956,7 +956,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportDTO",
+            '200': "ReportDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -986,7 +986,7 @@ class ReportingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AnalysisCommonReportDTO]:
+    ) -> ApiResponse[ReportDTO]:
         """Duplicate a report
 
         Make a copy of an existing report. You must know the ID of the report to copy it. To retrieve report IDs, see `GET /v1alpha/reporting/reports`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1027,7 +1027,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportDTO",
+            '200': "ReportDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1098,7 +1098,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportDTO",
+            '200': "ReportDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1195,7 +1195,7 @@ class ReportingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AnalysisCommonReportDTO:
+    ) -> ReportDTO:
         """Retrieve a report's details
 
         Retrieve the details of a specific report. The response returns information such as title, description, owner, and the allowed actions you can take on the report. You must know the ID of the report to retrieve its details. To retrieve report IDs, see `GET /v1alpha/reporting/reports`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1236,7 +1236,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportDTO",
+            '200': "ReportDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1266,7 +1266,7 @@ class ReportingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AnalysisCommonReportDTO]:
+    ) -> ApiResponse[ReportDTO]:
         """Retrieve a report's details
 
         Retrieve the details of a specific report. The response returns information such as title, description, owner, and the allowed actions you can take on the report. You must know the ID of the report to retrieve its details. To retrieve report IDs, see `GET /v1alpha/reporting/reports`.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1307,7 +1307,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportDTO",
+            '200': "ReportDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1378,7 +1378,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportDTO",
+            '200': "ReportDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1476,7 +1476,7 @@ class ReportingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AnalysisCommonReportListResponseDTO:
+    ) -> ReportListResponseDTO:
         """Retrieve a list of reports
 
         Retrieve a list of reports. The response returns information such as the unique ID, title, description, owner, and the allowed actions you can take on the report.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1520,7 +1520,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportListResponseDTO",
+            '200': "ReportListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1551,7 +1551,7 @@ class ReportingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AnalysisCommonReportListResponseDTO]:
+    ) -> ApiResponse[ReportListResponseDTO]:
         """Retrieve a list of reports
 
         Retrieve a list of reports. The response returns information such as the unique ID, title, description, owner, and the allowed actions you can take on the report.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -1595,7 +1595,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportListResponseDTO",
+            '200': "ReportListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1670,7 +1670,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AnalysisCommonReportListResponseDTO",
+            '200': "ReportListResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

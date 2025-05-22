@@ -15,6 +15,7 @@
 
 import unittest
 
+import visier_platform_sdk.models
 from visier_platform_sdk.models.plan_data_load_change_list_dto import PlanDataLoadChangeListDTO
 
 class TestPlanDataLoadChangeListDTO(unittest.TestCase):
@@ -31,9 +32,7 @@ class TestPlanDataLoadChangeListDTO(unittest.TestCase):
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `PlanDataLoadChangeListDTO`
-        """
-        model = PlanDataLoadChangeListDTO()
+
         if include_optional:
             return PlanDataLoadChangeListDTO(
                 plan_item = '',
@@ -50,12 +49,19 @@ class TestPlanDataLoadChangeListDTO(unittest.TestCase):
         else:
             return PlanDataLoadChangeListDTO(
         )
-        """
 
     def testPlanDataLoadChangeListDTO(self):
         """Test PlanDataLoadChangeListDTO"""
-        # inst_req_only = self.make_instance(include_optional=False)
-        # inst_req_and_optional = self.make_instance(include_optional=True)
+        def validate_instance(instance):
+            PlanDataLoadChangeListDTO.model_validate(inst_req_only)
+            instance_deserialized = PlanDataLoadChangeListDTO.from_dict(instance.to_dict())
+            assert instance == instance_deserialized
+
+        inst_req_only = self.make_instance(include_optional=False)
+        validate_instance(inst_req_only)
+
+        inst_req_and_optional = self.make_instance(include_optional=True)
+        validate_instance(inst_req_and_optional)
 
 if __name__ == '__main__':
     unittest.main()

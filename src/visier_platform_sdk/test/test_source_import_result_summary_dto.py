@@ -15,6 +15,7 @@
 
 import unittest
 
+import visier_platform_sdk.models
 from visier_platform_sdk.models.source_import_result_summary_dto import SourceImportResultSummaryDTO
 
 class TestSourceImportResultSummaryDTO(unittest.TestCase):
@@ -31,9 +32,7 @@ class TestSourceImportResultSummaryDTO(unittest.TestCase):
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SourceImportResultSummaryDTO`
-        """
-        model = SourceImportResultSummaryDTO()
+
         if include_optional:
             return SourceImportResultSummaryDTO(
                 created = 56,
@@ -44,12 +43,19 @@ class TestSourceImportResultSummaryDTO(unittest.TestCase):
         else:
             return SourceImportResultSummaryDTO(
         )
-        """
 
     def testSourceImportResultSummaryDTO(self):
         """Test SourceImportResultSummaryDTO"""
-        # inst_req_only = self.make_instance(include_optional=False)
-        # inst_req_and_optional = self.make_instance(include_optional=True)
+        def validate_instance(instance):
+            SourceImportResultSummaryDTO.model_validate(inst_req_only)
+            instance_deserialized = SourceImportResultSummaryDTO.from_dict(instance.to_dict())
+            assert instance == instance_deserialized
+
+        inst_req_only = self.make_instance(include_optional=False)
+        validate_instance(inst_req_only)
+
+        inst_req_and_optional = self.make_instance(include_optional=True)
+        validate_instance(inst_req_and_optional)
 
 if __name__ == '__main__':
     unittest.main()

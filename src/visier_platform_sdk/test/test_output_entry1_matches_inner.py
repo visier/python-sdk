@@ -15,6 +15,7 @@
 
 import unittest
 
+import visier_platform_sdk.models
 from visier_platform_sdk.models.output_entry1_matches_inner import OutputEntry1MatchesInner
 
 class TestOutputEntry1MatchesInner(unittest.TestCase):
@@ -31,9 +32,7 @@ class TestOutputEntry1MatchesInner(unittest.TestCase):
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `OutputEntry1MatchesInner`
-        """
-        model = OutputEntry1MatchesInner()
+
         if include_optional:
             return OutputEntry1MatchesInner(
                 id = '',
@@ -48,12 +47,19 @@ class TestOutputEntry1MatchesInner(unittest.TestCase):
                 description = '',
                 score = 56,
         )
-        """
 
     def testOutputEntry1MatchesInner(self):
         """Test OutputEntry1MatchesInner"""
-        # inst_req_only = self.make_instance(include_optional=False)
-        # inst_req_and_optional = self.make_instance(include_optional=True)
+        def validate_instance(instance):
+            OutputEntry1MatchesInner.model_validate(inst_req_only)
+            instance_deserialized = OutputEntry1MatchesInner.from_dict(instance.to_dict())
+            assert instance == instance_deserialized
+
+        inst_req_only = self.make_instance(include_optional=False)
+        validate_instance(inst_req_only)
+
+        inst_req_and_optional = self.make_instance(include_optional=True)
+        validate_instance(inst_req_and_optional)
 
 if __name__ == '__main__':
     unittest.main()

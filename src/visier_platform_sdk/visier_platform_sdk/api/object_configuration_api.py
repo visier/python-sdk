@@ -20,13 +20,13 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_platform_sdk.models.designer_api_calculation_concept_configuration_map_dto import DesignerApiCalculationConceptConfigurationMapDTO
-from visier_platform_sdk.models.designer_api_calculation_concept_dto import DesignerApiCalculationConceptDTO
-from visier_platform_sdk.models.designer_api_calculation_concept_list_dto import DesignerApiCalculationConceptListDTO
-from visier_platform_sdk.models.designer_api_concept_configuration_result_dto import DesignerApiConceptConfigurationResultDTO
-from visier_platform_sdk.models.designer_api_selection_concept_configuration_map_dto import DesignerApiSelectionConceptConfigurationMapDTO
-from visier_platform_sdk.models.designer_api_selection_concept_dto import DesignerApiSelectionConceptDTO
-from visier_platform_sdk.models.designer_api_selection_concept_list_dto import DesignerApiSelectionConceptListDTO
+from visier_platform_sdk.models.calculation_concept_configuration_map_dto import CalculationConceptConfigurationMapDTO
+from visier_platform_sdk.models.calculation_concept_dto import CalculationConceptDTO
+from visier_platform_sdk.models.calculation_concept_list_dto import CalculationConceptListDTO
+from visier_platform_sdk.models.concept_configuration_result_dto import ConceptConfigurationResultDTO
+from visier_platform_sdk.models.designer_selection_concept_dto import DesignerSelectionConceptDTO
+from visier_platform_sdk.models.selection_concept_configuration_map_dto import SelectionConceptConfigurationMapDTO
+from visier_platform_sdk.models.selection_concept_list_dto import SelectionConceptListDTO
 
 from visier_platform_sdk.api_client import ApiClient, RequestSerialized
 from visier_platform_sdk.api_response import ApiResponse
@@ -63,7 +63,7 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerApiCalculationConceptDTO:
+    ) -> CalculationConceptDTO:
         """Retrieve the configuration of a calculation concept
 
         Retrieve the configuration details of a calculation concept in production.
@@ -104,7 +104,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiCalculationConceptDTO",
+            '200': "CalculationConceptDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -134,7 +134,7 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerApiCalculationConceptDTO]:
+    ) -> ApiResponse[CalculationConceptDTO]:
         """Retrieve the configuration of a calculation concept
 
         Retrieve the configuration details of a calculation concept in production.
@@ -175,7 +175,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiCalculationConceptDTO",
+            '200': "CalculationConceptDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -246,7 +246,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiCalculationConceptDTO",
+            '200': "CalculationConceptDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -342,7 +342,7 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerApiCalculationConceptListDTO:
+    ) -> CalculationConceptListDTO:
         """Retrieve all calculation concepts
 
         Retrieve the calculation concepts available in production.
@@ -380,7 +380,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiCalculationConceptListDTO",
+            '200': "CalculationConceptListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -409,7 +409,7 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerApiCalculationConceptListDTO]:
+    ) -> ApiResponse[CalculationConceptListDTO]:
         """Retrieve all calculation concepts
 
         Retrieve the calculation concepts available in production.
@@ -447,7 +447,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiCalculationConceptListDTO",
+            '200': "CalculationConceptListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -514,7 +514,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiCalculationConceptListDTO",
+            '200': "CalculationConceptListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -608,7 +608,7 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerApiSelectionConceptDTO:
+    ) -> DesignerSelectionConceptDTO:
         """Retrieve the configuration of a selection concept
 
         Retrieve the configuration details of a selection concept in production.
@@ -649,7 +649,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiSelectionConceptDTO",
+            '200': "DesignerSelectionConceptDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -679,7 +679,7 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerApiSelectionConceptDTO]:
+    ) -> ApiResponse[DesignerSelectionConceptDTO]:
         """Retrieve the configuration of a selection concept
 
         Retrieve the configuration details of a selection concept in production.
@@ -720,7 +720,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiSelectionConceptDTO",
+            '200': "DesignerSelectionConceptDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -791,7 +791,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiSelectionConceptDTO",
+            '200': "DesignerSelectionConceptDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -887,7 +887,7 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerApiSelectionConceptListDTO:
+    ) -> SelectionConceptListDTO:
         """Retrieve all selection concepts
 
         Retrieve the selection concepts available in production.
@@ -925,7 +925,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiSelectionConceptListDTO",
+            '200': "SelectionConceptListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -954,7 +954,7 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerApiSelectionConceptListDTO]:
+    ) -> ApiResponse[SelectionConceptListDTO]:
         """Retrieve all selection concepts
 
         Retrieve the selection concepts available in production.
@@ -992,7 +992,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiSelectionConceptListDTO",
+            '200': "SelectionConceptListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1059,7 +1059,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiSelectionConceptListDTO",
+            '200': "SelectionConceptListDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1140,7 +1140,7 @@ class ObjectConfigurationApi:
     def map_calculation_concept(
         self,
         concept_id: Annotated[StrictStr, Field(description="The UUID of the concept to configure.")],
-        designer_api_calculation_concept_configuration_map_dto: DesignerApiCalculationConceptConfigurationMapDTO,
+        calculation_concept_configuration_map_dto: CalculationConceptConfigurationMapDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1154,15 +1154,15 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerApiConceptConfigurationResultDTO:
+    ) -> ConceptConfigurationResultDTO:
         """Map dimension members to nodes in a calculation concept
 
         Map dimension members to nodes in a calculation concept.  The changes are applied in a new project and published to production.   The body of this API is the source of truth for dimension members mapped to the concept. For example, if a node in  the body does not have any dimension members, all existing dimension members mapped to that node will be removed.
 
         :param concept_id: The UUID of the concept to configure. (required)
         :type concept_id: str
-        :param designer_api_calculation_concept_configuration_map_dto: (required)
-        :type designer_api_calculation_concept_configuration_map_dto: DesignerApiCalculationConceptConfigurationMapDTO
+        :param calculation_concept_configuration_map_dto: (required)
+        :type calculation_concept_configuration_map_dto: CalculationConceptConfigurationMapDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1189,7 +1189,7 @@ class ObjectConfigurationApi:
 
         _param = self._map_calculation_concept_serialize(
             concept_id=concept_id,
-            designer_api_calculation_concept_configuration_map_dto=designer_api_calculation_concept_configuration_map_dto,
+            calculation_concept_configuration_map_dto=calculation_concept_configuration_map_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1198,7 +1198,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiConceptConfigurationResultDTO",
+            '200': "ConceptConfigurationResultDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1215,7 +1215,7 @@ class ObjectConfigurationApi:
     def map_calculation_concept_with_http_info(
         self,
         concept_id: Annotated[StrictStr, Field(description="The UUID of the concept to configure.")],
-        designer_api_calculation_concept_configuration_map_dto: DesignerApiCalculationConceptConfigurationMapDTO,
+        calculation_concept_configuration_map_dto: CalculationConceptConfigurationMapDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1229,15 +1229,15 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerApiConceptConfigurationResultDTO]:
+    ) -> ApiResponse[ConceptConfigurationResultDTO]:
         """Map dimension members to nodes in a calculation concept
 
         Map dimension members to nodes in a calculation concept.  The changes are applied in a new project and published to production.   The body of this API is the source of truth for dimension members mapped to the concept. For example, if a node in  the body does not have any dimension members, all existing dimension members mapped to that node will be removed.
 
         :param concept_id: The UUID of the concept to configure. (required)
         :type concept_id: str
-        :param designer_api_calculation_concept_configuration_map_dto: (required)
-        :type designer_api_calculation_concept_configuration_map_dto: DesignerApiCalculationConceptConfigurationMapDTO
+        :param calculation_concept_configuration_map_dto: (required)
+        :type calculation_concept_configuration_map_dto: CalculationConceptConfigurationMapDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1264,7 +1264,7 @@ class ObjectConfigurationApi:
 
         _param = self._map_calculation_concept_serialize(
             concept_id=concept_id,
-            designer_api_calculation_concept_configuration_map_dto=designer_api_calculation_concept_configuration_map_dto,
+            calculation_concept_configuration_map_dto=calculation_concept_configuration_map_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1273,7 +1273,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiConceptConfigurationResultDTO",
+            '200': "ConceptConfigurationResultDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1290,7 +1290,7 @@ class ObjectConfigurationApi:
     def map_calculation_concept_without_preload_content(
         self,
         concept_id: Annotated[StrictStr, Field(description="The UUID of the concept to configure.")],
-        designer_api_calculation_concept_configuration_map_dto: DesignerApiCalculationConceptConfigurationMapDTO,
+        calculation_concept_configuration_map_dto: CalculationConceptConfigurationMapDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1311,8 +1311,8 @@ class ObjectConfigurationApi:
 
         :param concept_id: The UUID of the concept to configure. (required)
         :type concept_id: str
-        :param designer_api_calculation_concept_configuration_map_dto: (required)
-        :type designer_api_calculation_concept_configuration_map_dto: DesignerApiCalculationConceptConfigurationMapDTO
+        :param calculation_concept_configuration_map_dto: (required)
+        :type calculation_concept_configuration_map_dto: CalculationConceptConfigurationMapDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1339,7 +1339,7 @@ class ObjectConfigurationApi:
 
         _param = self._map_calculation_concept_serialize(
             concept_id=concept_id,
-            designer_api_calculation_concept_configuration_map_dto=designer_api_calculation_concept_configuration_map_dto,
+            calculation_concept_configuration_map_dto=calculation_concept_configuration_map_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1348,7 +1348,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiConceptConfigurationResultDTO",
+            '200': "ConceptConfigurationResultDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1360,7 +1360,7 @@ class ObjectConfigurationApi:
     def _map_calculation_concept_serialize(
         self,
         concept_id,
-        designer_api_calculation_concept_configuration_map_dto,
+        calculation_concept_configuration_map_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -1391,8 +1391,8 @@ class ObjectConfigurationApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if designer_api_calculation_concept_configuration_map_dto is not None:
-            _body_params = designer_api_calculation_concept_configuration_map_dto
+        if calculation_concept_configuration_map_dto is not None:
+            _body_params = calculation_concept_configuration_map_dto
 
 
         # set the HTTP header `Accept`
@@ -1448,7 +1448,7 @@ class ObjectConfigurationApi:
     def map_selection_concept(
         self,
         concept_id: Annotated[StrictStr, Field(description="The UUID of the concept to configure.")],
-        designer_api_selection_concept_configuration_map_dto: DesignerApiSelectionConceptConfigurationMapDTO,
+        selection_concept_configuration_map_dto: SelectionConceptConfigurationMapDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1462,15 +1462,15 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerApiConceptConfigurationResultDTO:
+    ) -> ConceptConfigurationResultDTO:
         """Map dimension members to a selection concept
 
         Map dimension members to a selection concept.  The changes are applied to a new project and published to production.   The body of this API is the source of truth for dimension members mapped to the concept. For example, if a node in  the body does not have any dimension members, all existing dimension members mapped to that node will be removed.
 
         :param concept_id: The UUID of the concept to configure. (required)
         :type concept_id: str
-        :param designer_api_selection_concept_configuration_map_dto: (required)
-        :type designer_api_selection_concept_configuration_map_dto: DesignerApiSelectionConceptConfigurationMapDTO
+        :param selection_concept_configuration_map_dto: (required)
+        :type selection_concept_configuration_map_dto: SelectionConceptConfigurationMapDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1497,7 +1497,7 @@ class ObjectConfigurationApi:
 
         _param = self._map_selection_concept_serialize(
             concept_id=concept_id,
-            designer_api_selection_concept_configuration_map_dto=designer_api_selection_concept_configuration_map_dto,
+            selection_concept_configuration_map_dto=selection_concept_configuration_map_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1506,7 +1506,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiConceptConfigurationResultDTO",
+            '200': "ConceptConfigurationResultDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1523,7 +1523,7 @@ class ObjectConfigurationApi:
     def map_selection_concept_with_http_info(
         self,
         concept_id: Annotated[StrictStr, Field(description="The UUID of the concept to configure.")],
-        designer_api_selection_concept_configuration_map_dto: DesignerApiSelectionConceptConfigurationMapDTO,
+        selection_concept_configuration_map_dto: SelectionConceptConfigurationMapDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1537,15 +1537,15 @@ class ObjectConfigurationApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerApiConceptConfigurationResultDTO]:
+    ) -> ApiResponse[ConceptConfigurationResultDTO]:
         """Map dimension members to a selection concept
 
         Map dimension members to a selection concept.  The changes are applied to a new project and published to production.   The body of this API is the source of truth for dimension members mapped to the concept. For example, if a node in  the body does not have any dimension members, all existing dimension members mapped to that node will be removed.
 
         :param concept_id: The UUID of the concept to configure. (required)
         :type concept_id: str
-        :param designer_api_selection_concept_configuration_map_dto: (required)
-        :type designer_api_selection_concept_configuration_map_dto: DesignerApiSelectionConceptConfigurationMapDTO
+        :param selection_concept_configuration_map_dto: (required)
+        :type selection_concept_configuration_map_dto: SelectionConceptConfigurationMapDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1572,7 +1572,7 @@ class ObjectConfigurationApi:
 
         _param = self._map_selection_concept_serialize(
             concept_id=concept_id,
-            designer_api_selection_concept_configuration_map_dto=designer_api_selection_concept_configuration_map_dto,
+            selection_concept_configuration_map_dto=selection_concept_configuration_map_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1581,7 +1581,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiConceptConfigurationResultDTO",
+            '200': "ConceptConfigurationResultDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1598,7 +1598,7 @@ class ObjectConfigurationApi:
     def map_selection_concept_without_preload_content(
         self,
         concept_id: Annotated[StrictStr, Field(description="The UUID of the concept to configure.")],
-        designer_api_selection_concept_configuration_map_dto: DesignerApiSelectionConceptConfigurationMapDTO,
+        selection_concept_configuration_map_dto: SelectionConceptConfigurationMapDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -1619,8 +1619,8 @@ class ObjectConfigurationApi:
 
         :param concept_id: The UUID of the concept to configure. (required)
         :type concept_id: str
-        :param designer_api_selection_concept_configuration_map_dto: (required)
-        :type designer_api_selection_concept_configuration_map_dto: DesignerApiSelectionConceptConfigurationMapDTO
+        :param selection_concept_configuration_map_dto: (required)
+        :type selection_concept_configuration_map_dto: SelectionConceptConfigurationMapDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1647,7 +1647,7 @@ class ObjectConfigurationApi:
 
         _param = self._map_selection_concept_serialize(
             concept_id=concept_id,
-            designer_api_selection_concept_configuration_map_dto=designer_api_selection_concept_configuration_map_dto,
+            selection_concept_configuration_map_dto=selection_concept_configuration_map_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1656,7 +1656,7 @@ class ObjectConfigurationApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerApiConceptConfigurationResultDTO",
+            '200': "ConceptConfigurationResultDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1668,7 +1668,7 @@ class ObjectConfigurationApi:
     def _map_selection_concept_serialize(
         self,
         concept_id,
-        designer_api_selection_concept_configuration_map_dto,
+        selection_concept_configuration_map_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -1699,8 +1699,8 @@ class ObjectConfigurationApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if designer_api_selection_concept_configuration_map_dto is not None:
-            _body_params = designer_api_selection_concept_configuration_map_dto
+        if selection_concept_configuration_map_dto is not None:
+            _body_params = selection_concept_configuration_map_dto
 
 
         # set the HTTP header `Accept`

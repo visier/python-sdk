@@ -20,8 +20,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
-from visier_platform_sdk.models.designer_download_source_files_dto import DesignerDownloadSourceFilesDTO
-from visier_platform_sdk.models.designer_download_source_files_response_dto import DesignerDownloadSourceFilesResponseDTO
+from visier_platform_sdk.models.download_source_files_dto import DownloadSourceFilesDTO
+from visier_platform_sdk.models.download_source_files_response_dto import DownloadSourceFilesResponseDTO
 
 from visier_platform_sdk.api_client import ApiClient, RequestSerialized
 from visier_platform_sdk.api_response import ApiResponse
@@ -44,7 +44,7 @@ class SourceFilesDownloadApi:
     @validate_call
     def download_source_files(
         self,
-        designer_download_source_files_dto: DesignerDownloadSourceFilesDTO,
+        download_source_files_dto: DownloadSourceFilesDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -58,13 +58,13 @@ class SourceFilesDownloadApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> DesignerDownloadSourceFilesResponseDTO:
+    ) -> DownloadSourceFilesResponseDTO:
         """Download source files
 
         Download a tenant's source files. You can download all included source files or specify a list of sources to download. Use object names or unique identifiers to specify the list of sources. Excluded source files will not be downloaded.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param designer_download_source_files_dto: (required)
-        :type designer_download_source_files_dto: DesignerDownloadSourceFilesDTO
+        :param download_source_files_dto: (required)
+        :type download_source_files_dto: DownloadSourceFilesDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -90,7 +90,7 @@ class SourceFilesDownloadApi:
         """ # noqa: E501
 
         _param = self._download_source_files_serialize(
-            designer_download_source_files_dto=designer_download_source_files_dto,
+            download_source_files_dto=download_source_files_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -99,7 +99,7 @@ class SourceFilesDownloadApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerDownloadSourceFilesResponseDTO",
+            '200': "DownloadSourceFilesResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -115,7 +115,7 @@ class SourceFilesDownloadApi:
     @validate_call
     def download_source_files_with_http_info(
         self,
-        designer_download_source_files_dto: DesignerDownloadSourceFilesDTO,
+        download_source_files_dto: DownloadSourceFilesDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -129,13 +129,13 @@ class SourceFilesDownloadApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[DesignerDownloadSourceFilesResponseDTO]:
+    ) -> ApiResponse[DownloadSourceFilesResponseDTO]:
         """Download source files
 
         Download a tenant's source files. You can download all included source files or specify a list of sources to download. Use object names or unique identifiers to specify the list of sources. Excluded source files will not be downloaded.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param designer_download_source_files_dto: (required)
-        :type designer_download_source_files_dto: DesignerDownloadSourceFilesDTO
+        :param download_source_files_dto: (required)
+        :type download_source_files_dto: DownloadSourceFilesDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -161,7 +161,7 @@ class SourceFilesDownloadApi:
         """ # noqa: E501
 
         _param = self._download_source_files_serialize(
-            designer_download_source_files_dto=designer_download_source_files_dto,
+            download_source_files_dto=download_source_files_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -170,7 +170,7 @@ class SourceFilesDownloadApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerDownloadSourceFilesResponseDTO",
+            '200': "DownloadSourceFilesResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -186,7 +186,7 @@ class SourceFilesDownloadApi:
     @validate_call
     def download_source_files_without_preload_content(
         self,
-        designer_download_source_files_dto: DesignerDownloadSourceFilesDTO,
+        download_source_files_dto: DownloadSourceFilesDTO,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
             None,
@@ -205,8 +205,8 @@ class SourceFilesDownloadApi:
 
         Download a tenant's source files. You can download all included source files or specify a list of sources to download. Use object names or unique identifiers to specify the list of sources. Excluded source files will not be downloaded.   If `minTimestamp` and `maxTimestamp` are defined, downloads the source files uploaded within the specified time range for all sources or the specified sources.   Administrating tenants can specify the tenant from which to download sources using the `TargetTenantID` header.   **Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param designer_download_source_files_dto: (required)
-        :type designer_download_source_files_dto: DesignerDownloadSourceFilesDTO
+        :param download_source_files_dto: (required)
+        :type download_source_files_dto: DownloadSourceFilesDTO
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
         :type target_tenant_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -232,7 +232,7 @@ class SourceFilesDownloadApi:
         """ # noqa: E501
 
         _param = self._download_source_files_serialize(
-            designer_download_source_files_dto=designer_download_source_files_dto,
+            download_source_files_dto=download_source_files_dto,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -241,7 +241,7 @@ class SourceFilesDownloadApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "DesignerDownloadSourceFilesResponseDTO",
+            '200': "DownloadSourceFilesResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -252,7 +252,7 @@ class SourceFilesDownloadApi:
 
     def _download_source_files_serialize(
         self,
-        designer_download_source_files_dto,
+        download_source_files_dto,
         target_tenant_id,
         _request_auth,
         _content_type,
@@ -281,8 +281,8 @@ class SourceFilesDownloadApi:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if designer_download_source_files_dto is not None:
-            _body_params = designer_download_source_files_dto
+        if download_source_files_dto is not None:
+            _body_params = download_source_files_dto
 
 
         # set the HTTP header `Accept`

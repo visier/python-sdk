@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from visier_platform_sdk.models.admin_email_domains_dto import AdminEmailDomainsDTO
+from visier_platform_sdk.models.email_domains_dto import EmailDomainsDTO
 
 from visier_platform_sdk.api_client import ApiClient, RequestSerialized
 from visier_platform_sdk.api_response import ApiResponse
@@ -40,7 +40,7 @@ class EmailDomainsApi:
     @validate_call
     def add_allowed_email_domains(
         self,
-        admin_email_domains_dto: AdminEmailDomainsDTO,
+        email_domains_dto: EmailDomainsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -53,13 +53,13 @@ class EmailDomainsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminEmailDomainsDTO:
+    ) -> EmailDomainsDTO:
         """Add domains to the list of allowed domains
 
         Add email address domains to the allowed domains list. The response returns an updated list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_email_domains_dto: (required)
-        :type admin_email_domains_dto: AdminEmailDomainsDTO
+        :param email_domains_dto: (required)
+        :type email_domains_dto: EmailDomainsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -83,7 +83,7 @@ class EmailDomainsApi:
         """ # noqa: E501
 
         _param = self._add_allowed_email_domains_serialize(
-            admin_email_domains_dto=admin_email_domains_dto,
+            email_domains_dto=email_domains_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -91,7 +91,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminEmailDomainsDTO",
+            '200': "EmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -107,7 +107,7 @@ class EmailDomainsApi:
     @validate_call
     def add_allowed_email_domains_with_http_info(
         self,
-        admin_email_domains_dto: AdminEmailDomainsDTO,
+        email_domains_dto: EmailDomainsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -120,13 +120,13 @@ class EmailDomainsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminEmailDomainsDTO]:
+    ) -> ApiResponse[EmailDomainsDTO]:
         """Add domains to the list of allowed domains
 
         Add email address domains to the allowed domains list. The response returns an updated list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_email_domains_dto: (required)
-        :type admin_email_domains_dto: AdminEmailDomainsDTO
+        :param email_domains_dto: (required)
+        :type email_domains_dto: EmailDomainsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -150,7 +150,7 @@ class EmailDomainsApi:
         """ # noqa: E501
 
         _param = self._add_allowed_email_domains_serialize(
-            admin_email_domains_dto=admin_email_domains_dto,
+            email_domains_dto=email_domains_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -158,7 +158,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminEmailDomainsDTO",
+            '200': "EmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -174,7 +174,7 @@ class EmailDomainsApi:
     @validate_call
     def add_allowed_email_domains_without_preload_content(
         self,
-        admin_email_domains_dto: AdminEmailDomainsDTO,
+        email_domains_dto: EmailDomainsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -192,8 +192,8 @@ class EmailDomainsApi:
 
         Add email address domains to the allowed domains list. The response returns an updated list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_email_domains_dto: (required)
-        :type admin_email_domains_dto: AdminEmailDomainsDTO
+        :param email_domains_dto: (required)
+        :type email_domains_dto: EmailDomainsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -217,7 +217,7 @@ class EmailDomainsApi:
         """ # noqa: E501
 
         _param = self._add_allowed_email_domains_serialize(
-            admin_email_domains_dto=admin_email_domains_dto,
+            email_domains_dto=email_domains_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -225,7 +225,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminEmailDomainsDTO",
+            '200': "EmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -236,7 +236,7 @@ class EmailDomainsApi:
 
     def _add_allowed_email_domains_serialize(
         self,
-        admin_email_domains_dto,
+        email_domains_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -262,8 +262,8 @@ class EmailDomainsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if admin_email_domains_dto is not None:
-            _body_params = admin_email_domains_dto
+        if email_domains_dto is not None:
+            _body_params = email_domains_dto
 
 
         # set the HTTP header `Accept`
@@ -318,7 +318,7 @@ class EmailDomainsApi:
     @validate_call
     def delete_allowed_email_domains(
         self,
-        admin_email_domains_dto: AdminEmailDomainsDTO,
+        email_domains_dto: EmailDomainsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -331,13 +331,13 @@ class EmailDomainsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminEmailDomainsDTO:
+    ) -> EmailDomainsDTO:
         """Remove domains from the list of allowed domains
 
         Delete email address domains from the allowed domains list. The response returns an updated list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_email_domains_dto: (required)
-        :type admin_email_domains_dto: AdminEmailDomainsDTO
+        :param email_domains_dto: (required)
+        :type email_domains_dto: EmailDomainsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -361,7 +361,7 @@ class EmailDomainsApi:
         """ # noqa: E501
 
         _param = self._delete_allowed_email_domains_serialize(
-            admin_email_domains_dto=admin_email_domains_dto,
+            email_domains_dto=email_domains_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -369,7 +369,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminEmailDomainsDTO",
+            '200': "EmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -385,7 +385,7 @@ class EmailDomainsApi:
     @validate_call
     def delete_allowed_email_domains_with_http_info(
         self,
-        admin_email_domains_dto: AdminEmailDomainsDTO,
+        email_domains_dto: EmailDomainsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -398,13 +398,13 @@ class EmailDomainsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminEmailDomainsDTO]:
+    ) -> ApiResponse[EmailDomainsDTO]:
         """Remove domains from the list of allowed domains
 
         Delete email address domains from the allowed domains list. The response returns an updated list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_email_domains_dto: (required)
-        :type admin_email_domains_dto: AdminEmailDomainsDTO
+        :param email_domains_dto: (required)
+        :type email_domains_dto: EmailDomainsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -428,7 +428,7 @@ class EmailDomainsApi:
         """ # noqa: E501
 
         _param = self._delete_allowed_email_domains_serialize(
-            admin_email_domains_dto=admin_email_domains_dto,
+            email_domains_dto=email_domains_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -436,7 +436,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminEmailDomainsDTO",
+            '200': "EmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -452,7 +452,7 @@ class EmailDomainsApi:
     @validate_call
     def delete_allowed_email_domains_without_preload_content(
         self,
-        admin_email_domains_dto: AdminEmailDomainsDTO,
+        email_domains_dto: EmailDomainsDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -470,8 +470,8 @@ class EmailDomainsApi:
 
         Delete email address domains from the allowed domains list. The response returns an updated list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
 
-        :param admin_email_domains_dto: (required)
-        :type admin_email_domains_dto: AdminEmailDomainsDTO
+        :param email_domains_dto: (required)
+        :type email_domains_dto: EmailDomainsDTO
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -495,7 +495,7 @@ class EmailDomainsApi:
         """ # noqa: E501
 
         _param = self._delete_allowed_email_domains_serialize(
-            admin_email_domains_dto=admin_email_domains_dto,
+            email_domains_dto=email_domains_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -503,7 +503,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminEmailDomainsDTO",
+            '200': "EmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -514,7 +514,7 @@ class EmailDomainsApi:
 
     def _delete_allowed_email_domains_serialize(
         self,
-        admin_email_domains_dto,
+        email_domains_dto,
         _request_auth,
         _content_type,
         _headers,
@@ -540,8 +540,8 @@ class EmailDomainsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if admin_email_domains_dto is not None:
-            _body_params = admin_email_domains_dto
+        if email_domains_dto is not None:
+            _body_params = email_domains_dto
 
 
         # set the HTTP header `Accept`
@@ -608,7 +608,7 @@ class EmailDomainsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminEmailDomainsDTO:
+    ) -> EmailDomainsDTO:
         """Retrieve a list of allowed email domains
 
         Retrieve the full list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -643,7 +643,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminEmailDomainsDTO",
+            '200': "EmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -671,7 +671,7 @@ class EmailDomainsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminEmailDomainsDTO]:
+    ) -> ApiResponse[EmailDomainsDTO]:
         """Retrieve a list of allowed email domains
 
         Retrieve the full list of allowed email domains.   <br>**Note:** <em>This API is in **alpha**. While in alpha, APIs may change in a breaking way without notice; functionality may be removed, and no deprecation notices will be issued.  If you are interested in using this API, please contact your Customer Success Manager (CSM).</em>
@@ -706,7 +706,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminEmailDomainsDTO",
+            '200': "EmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -769,7 +769,7 @@ class EmailDomainsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminEmailDomainsDTO",
+            '200': "EmailDomainsDTO",
         }
         response_data = self.api_client.call_api(
             *_param,

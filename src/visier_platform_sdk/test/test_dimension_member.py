@@ -15,6 +15,7 @@
 
 import unittest
 
+import visier_platform_sdk.models
 from visier_platform_sdk.models.dimension_member import DimensionMember
 
 class TestDimensionMember(unittest.TestCase):
@@ -31,9 +32,7 @@ class TestDimensionMember(unittest.TestCase):
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `DimensionMember`
-        """
-        model = DimensionMember()
+
         if include_optional:
             return DimensionMember(
                 id = '',
@@ -73,12 +72,19 @@ class TestDimensionMember(unittest.TestCase):
                 has_children = True,
                 status = 'active',
         )
-        """
 
     def testDimensionMember(self):
         """Test DimensionMember"""
-        # inst_req_only = self.make_instance(include_optional=False)
-        # inst_req_and_optional = self.make_instance(include_optional=True)
+        def validate_instance(instance):
+            DimensionMember.model_validate(inst_req_only)
+            instance_deserialized = DimensionMember.from_dict(instance.to_dict())
+            assert instance == instance_deserialized
+
+        inst_req_only = self.make_instance(include_optional=False)
+        validate_instance(inst_req_only)
+
+        inst_req_and_optional = self.make_instance(include_optional=True)
+        validate_instance(inst_req_and_optional)
 
 if __name__ == '__main__':
     unittest.main()

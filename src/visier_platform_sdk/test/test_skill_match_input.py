@@ -15,6 +15,7 @@
 
 import unittest
 
+import visier_platform_sdk.models
 from visier_platform_sdk.models.skill_match_input import SkillMatchInput
 
 class TestSkillMatchInput(unittest.TestCase):
@@ -31,9 +32,7 @@ class TestSkillMatchInput(unittest.TestCase):
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SkillMatchInput`
-        """
-        model = SkillMatchInput()
+
         if include_optional:
             return SkillMatchInput(
                 skill_set = [["21795",85],["19391",50],["21577",40]],
@@ -42,12 +41,19 @@ class TestSkillMatchInput(unittest.TestCase):
         else:
             return SkillMatchInput(
         )
-        """
 
     def testSkillMatchInput(self):
         """Test SkillMatchInput"""
-        # inst_req_only = self.make_instance(include_optional=False)
-        # inst_req_and_optional = self.make_instance(include_optional=True)
+        def validate_instance(instance):
+            SkillMatchInput.model_validate(inst_req_only)
+            instance_deserialized = SkillMatchInput.from_dict(instance.to_dict())
+            assert instance == instance_deserialized
+
+        inst_req_only = self.make_instance(include_optional=False)
+        validate_instance(inst_req_only)
+
+        inst_req_and_optional = self.make_instance(include_optional=True)
+        validate_instance(inst_req_and_optional)
 
 if __name__ == '__main__':
     unittest.main()

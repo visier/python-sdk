@@ -20,20 +20,20 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
 from typing import Any, Dict, Optional, Tuple, Union
 from typing_extensions import Annotated
-from visier_platform_sdk.models.admin_permissions_to_user_group_for_tenant_dto import AdminPermissionsToUserGroupForTenantDTO
-from visier_platform_sdk.models.admin_permissions_to_user_groups_request_dto import AdminPermissionsToUserGroupsRequestDTO
-from visier_platform_sdk.models.admin_security_assignment_response_dto import AdminSecurityAssignmentResponseDTO
-from visier_platform_sdk.models.admin_user_groups_get_api_response_dto import AdminUserGroupsGetAPIResponseDTO
-from visier_platform_sdk.models.admin_user_groups_users_dto import AdminUserGroupsUsersDTO
-from visier_platform_sdk.models.admin_users_to_user_groups_request_dto import AdminUsersToUserGroupsRequestDTO
-from visier_platform_sdk.models.servicing_all_users_get_api_response_dto import ServicingAllUsersGetAPIResponseDTO
-from visier_platform_sdk.models.servicing_assign_revoke_permissions_request_dto import ServicingAssignRevokePermissionsRequestDTO
-from visier_platform_sdk.models.servicing_assign_revoke_permissions_response_dto import ServicingAssignRevokePermissionsResponseDTO
-from visier_platform_sdk.models.servicing_permission_assigned_users_dto import ServicingPermissionAssignedUsersDTO
-from visier_platform_sdk.models.servicing_user_creation_api_request_dto import ServicingUserCreationAPIRequestDTO
-from visier_platform_sdk.models.servicing_user_get_api_response_dto import ServicingUserGetAPIResponseDTO
-from visier_platform_sdk.models.servicing_user_update_api_request_dto import ServicingUserUpdateAPIRequestDTO
+from visier_platform_sdk.models.all_users_get_api_response_dto import AllUsersGetAPIResponseDTO
+from visier_platform_sdk.models.assign_revoke_permissions_request_dto import AssignRevokePermissionsRequestDTO
+from visier_platform_sdk.models.assign_revoke_permissions_response_dto import AssignRevokePermissionsResponseDTO
+from visier_platform_sdk.models.permission_assigned_users_dto import PermissionAssignedUsersDTO
+from visier_platform_sdk.models.permissions_to_user_group_for_tenant_dto import PermissionsToUserGroupForTenantDTO
+from visier_platform_sdk.models.permissions_to_user_groups_request_dto import PermissionsToUserGroupsRequestDTO
+from visier_platform_sdk.models.security_assignment_response_dto import SecurityAssignmentResponseDTO
+from visier_platform_sdk.models.user_creation_api_request_dto import UserCreationAPIRequestDTO
 from visier_platform_sdk.models.user_creation_api_response_dto import UserCreationAPIResponseDTO
+from visier_platform_sdk.models.user_get_api_response_dto import UserGetAPIResponseDTO
+from visier_platform_sdk.models.user_groups_get_api_response_dto import UserGroupsGetAPIResponseDTO
+from visier_platform_sdk.models.user_groups_users_dto import UserGroupsUsersDTO
+from visier_platform_sdk.models.user_update_api_request_dto import UserUpdateAPIRequestDTO
+from visier_platform_sdk.models.users_to_user_groups_request_dto import UsersToUserGroupsRequestDTO
 
 from visier_platform_sdk.api_client import ApiClient, RequestSerialized
 from visier_platform_sdk.api_response import ApiResponse
@@ -56,7 +56,7 @@ class UsersV1Api:
     @validate_call
     def add_user(
         self,
-        servicing_user_creation_api_request_dto: ServicingUserCreationAPIRequestDTO,
+        user_creation_api_request_dto: UserCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -76,8 +76,8 @@ class UsersV1Api:
 
         Create a new user. Administrating tenant users can specify the tenant in which to add a user.
 
-        :param servicing_user_creation_api_request_dto: (required)
-        :type servicing_user_creation_api_request_dto: ServicingUserCreationAPIRequestDTO
+        :param user_creation_api_request_dto: (required)
+        :type user_creation_api_request_dto: UserCreationAPIRequestDTO
         :param tenant_code: Specify the tenant to create a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -105,7 +105,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._add_user_serialize(
-            servicing_user_creation_api_request_dto=servicing_user_creation_api_request_dto,
+            user_creation_api_request_dto=user_creation_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -131,7 +131,7 @@ class UsersV1Api:
     @validate_call
     def add_user_with_http_info(
         self,
-        servicing_user_creation_api_request_dto: ServicingUserCreationAPIRequestDTO,
+        user_creation_api_request_dto: UserCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -151,8 +151,8 @@ class UsersV1Api:
 
         Create a new user. Administrating tenant users can specify the tenant in which to add a user.
 
-        :param servicing_user_creation_api_request_dto: (required)
-        :type servicing_user_creation_api_request_dto: ServicingUserCreationAPIRequestDTO
+        :param user_creation_api_request_dto: (required)
+        :type user_creation_api_request_dto: UserCreationAPIRequestDTO
         :param tenant_code: Specify the tenant to create a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -180,7 +180,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._add_user_serialize(
-            servicing_user_creation_api_request_dto=servicing_user_creation_api_request_dto,
+            user_creation_api_request_dto=user_creation_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -206,7 +206,7 @@ class UsersV1Api:
     @validate_call
     def add_user_without_preload_content(
         self,
-        servicing_user_creation_api_request_dto: ServicingUserCreationAPIRequestDTO,
+        user_creation_api_request_dto: UserCreationAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to create a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -226,8 +226,8 @@ class UsersV1Api:
 
         Create a new user. Administrating tenant users can specify the tenant in which to add a user.
 
-        :param servicing_user_creation_api_request_dto: (required)
-        :type servicing_user_creation_api_request_dto: ServicingUserCreationAPIRequestDTO
+        :param user_creation_api_request_dto: (required)
+        :type user_creation_api_request_dto: UserCreationAPIRequestDTO
         :param tenant_code: Specify the tenant to create a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -255,7 +255,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._add_user_serialize(
-            servicing_user_creation_api_request_dto=servicing_user_creation_api_request_dto,
+            user_creation_api_request_dto=user_creation_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -276,7 +276,7 @@ class UsersV1Api:
 
     def _add_user_serialize(
         self,
-        servicing_user_creation_api_request_dto,
+        user_creation_api_request_dto,
         tenant_code,
         target_tenant_id,
         _request_auth,
@@ -310,8 +310,8 @@ class UsersV1Api:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if servicing_user_creation_api_request_dto is not None:
-            _body_params = servicing_user_creation_api_request_dto
+        if user_creation_api_request_dto is not None:
+            _body_params = user_creation_api_request_dto
 
 
         # set the HTTP header `Accept`
@@ -366,7 +366,7 @@ class UsersV1Api:
     @validate_call
     def add_users_to_user_group(
         self,
-        admin_users_to_user_groups_request_dto: AdminUsersToUserGroupsRequestDTO,
+        users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -382,13 +382,13 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminSecurityAssignmentResponseDTO:
+    ) -> SecurityAssignmentResponseDTO:
         """Assign users to user groups
 
         This API allows you to assign users to specific user groups.   To assign users to user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can assign users to user groups in multiple analytic tenants by providing a tenant code and project ID in the request body.   We recommend that administrating tenants set the analytic tenant in which to execute the API call using the `TargetTenantID` request header.
 
-        :param admin_users_to_user_groups_request_dto: (required)
-        :type admin_users_to_user_groups_request_dto: AdminUsersToUserGroupsRequestDTO
+        :param users_to_user_groups_request_dto: (required)
+        :type users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -418,7 +418,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._add_users_to_user_group_serialize(
-            admin_users_to_user_groups_request_dto=admin_users_to_user_groups_request_dto,
+            users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             non_versioned=non_versioned,
@@ -429,7 +429,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminSecurityAssignmentResponseDTO",
+            '200': "SecurityAssignmentResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -445,7 +445,7 @@ class UsersV1Api:
     @validate_call
     def add_users_to_user_group_with_http_info(
         self,
-        admin_users_to_user_groups_request_dto: AdminUsersToUserGroupsRequestDTO,
+        users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -461,13 +461,13 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminSecurityAssignmentResponseDTO]:
+    ) -> ApiResponse[SecurityAssignmentResponseDTO]:
         """Assign users to user groups
 
         This API allows you to assign users to specific user groups.   To assign users to user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can assign users to user groups in multiple analytic tenants by providing a tenant code and project ID in the request body.   We recommend that administrating tenants set the analytic tenant in which to execute the API call using the `TargetTenantID` request header.
 
-        :param admin_users_to_user_groups_request_dto: (required)
-        :type admin_users_to_user_groups_request_dto: AdminUsersToUserGroupsRequestDTO
+        :param users_to_user_groups_request_dto: (required)
+        :type users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -497,7 +497,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._add_users_to_user_group_serialize(
-            admin_users_to_user_groups_request_dto=admin_users_to_user_groups_request_dto,
+            users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             non_versioned=non_versioned,
@@ -508,7 +508,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminSecurityAssignmentResponseDTO",
+            '200': "SecurityAssignmentResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -524,7 +524,7 @@ class UsersV1Api:
     @validate_call
     def add_users_to_user_group_without_preload_content(
         self,
-        admin_users_to_user_groups_request_dto: AdminUsersToUserGroupsRequestDTO,
+        users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -545,8 +545,8 @@ class UsersV1Api:
 
         This API allows you to assign users to specific user groups.   To assign users to user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can assign users to user groups in multiple analytic tenants by providing a tenant code and project ID in the request body.   We recommend that administrating tenants set the analytic tenant in which to execute the API call using the `TargetTenantID` request header.
 
-        :param admin_users_to_user_groups_request_dto: (required)
-        :type admin_users_to_user_groups_request_dto: AdminUsersToUserGroupsRequestDTO
+        :param users_to_user_groups_request_dto: (required)
+        :type users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -576,7 +576,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._add_users_to_user_group_serialize(
-            admin_users_to_user_groups_request_dto=admin_users_to_user_groups_request_dto,
+            users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             non_versioned=non_versioned,
@@ -587,7 +587,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminSecurityAssignmentResponseDTO",
+            '200': "SecurityAssignmentResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -598,7 +598,7 @@ class UsersV1Api:
 
     def _add_users_to_user_group_serialize(
         self,
-        admin_users_to_user_groups_request_dto,
+        users_to_user_groups_request_dto,
         project_id,
         target_tenant_id,
         non_versioned,
@@ -633,8 +633,8 @@ class UsersV1Api:
             _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
-        if admin_users_to_user_groups_request_dto is not None:
-            _body_params = admin_users_to_user_groups_request_dto
+        if users_to_user_groups_request_dto is not None:
+            _body_params = users_to_user_groups_request_dto
 
 
         # set the HTTP header `Accept`
@@ -689,7 +689,7 @@ class UsersV1Api:
     @validate_call
     def assign_permissions(
         self,
-        servicing_assign_revoke_permissions_request_dto: ServicingAssignRevokePermissionsRequestDTO,
+        assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -705,13 +705,13 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingAssignRevokePermissionsResponseDTO:
+    ) -> AssignRevokePermissionsResponseDTO:
         """Assign permissions to users
 
         This API allows you to assign a permission to specific users. Administrating tenant users can assign permissions  to users in the administrating tenant and in the analytic tenants those users belong to.   To assign permissions to users in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can assign permissions to users in analytic tenants by providing a tenant code and project ID in the request body.
 
-        :param servicing_assign_revoke_permissions_request_dto: (required)
-        :type servicing_assign_revoke_permissions_request_dto: ServicingAssignRevokePermissionsRequestDTO
+        :param assign_revoke_permissions_request_dto: (required)
+        :type assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -741,7 +741,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._assign_permissions_serialize(
-            servicing_assign_revoke_permissions_request_dto=servicing_assign_revoke_permissions_request_dto,
+            assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             non_versioned=non_versioned,
@@ -752,7 +752,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAssignRevokePermissionsResponseDTO",
+            '200': "AssignRevokePermissionsResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -768,7 +768,7 @@ class UsersV1Api:
     @validate_call
     def assign_permissions_with_http_info(
         self,
-        servicing_assign_revoke_permissions_request_dto: ServicingAssignRevokePermissionsRequestDTO,
+        assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -784,13 +784,13 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingAssignRevokePermissionsResponseDTO]:
+    ) -> ApiResponse[AssignRevokePermissionsResponseDTO]:
         """Assign permissions to users
 
         This API allows you to assign a permission to specific users. Administrating tenant users can assign permissions  to users in the administrating tenant and in the analytic tenants those users belong to.   To assign permissions to users in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can assign permissions to users in analytic tenants by providing a tenant code and project ID in the request body.
 
-        :param servicing_assign_revoke_permissions_request_dto: (required)
-        :type servicing_assign_revoke_permissions_request_dto: ServicingAssignRevokePermissionsRequestDTO
+        :param assign_revoke_permissions_request_dto: (required)
+        :type assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -820,7 +820,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._assign_permissions_serialize(
-            servicing_assign_revoke_permissions_request_dto=servicing_assign_revoke_permissions_request_dto,
+            assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             non_versioned=non_versioned,
@@ -831,7 +831,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAssignRevokePermissionsResponseDTO",
+            '200': "AssignRevokePermissionsResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -847,7 +847,7 @@ class UsersV1Api:
     @validate_call
     def assign_permissions_without_preload_content(
         self,
-        servicing_assign_revoke_permissions_request_dto: ServicingAssignRevokePermissionsRequestDTO,
+        assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -868,8 +868,8 @@ class UsersV1Api:
 
         This API allows you to assign a permission to specific users. Administrating tenant users can assign permissions  to users in the administrating tenant and in the analytic tenants those users belong to.   To assign permissions to users in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can assign permissions to users in analytic tenants by providing a tenant code and project ID in the request body.
 
-        :param servicing_assign_revoke_permissions_request_dto: (required)
-        :type servicing_assign_revoke_permissions_request_dto: ServicingAssignRevokePermissionsRequestDTO
+        :param assign_revoke_permissions_request_dto: (required)
+        :type assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -899,7 +899,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._assign_permissions_serialize(
-            servicing_assign_revoke_permissions_request_dto=servicing_assign_revoke_permissions_request_dto,
+            assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             non_versioned=non_versioned,
@@ -910,7 +910,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAssignRevokePermissionsResponseDTO",
+            '200': "AssignRevokePermissionsResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -921,7 +921,7 @@ class UsersV1Api:
 
     def _assign_permissions_serialize(
         self,
-        servicing_assign_revoke_permissions_request_dto,
+        assign_revoke_permissions_request_dto,
         project_id,
         target_tenant_id,
         non_versioned,
@@ -956,8 +956,8 @@ class UsersV1Api:
             _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
-        if servicing_assign_revoke_permissions_request_dto is not None:
-            _body_params = servicing_assign_revoke_permissions_request_dto
+        if assign_revoke_permissions_request_dto is not None:
+            _body_params = assign_revoke_permissions_request_dto
 
 
         # set the HTTP header `Accept`
@@ -1012,7 +1012,7 @@ class UsersV1Api:
     @validate_call
     def assign_permissions_to_user_groups(
         self,
-        admin_permissions_to_user_groups_request_dto: AdminPermissionsToUserGroupsRequestDTO,
+        permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -1027,13 +1027,13 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminPermissionsToUserGroupForTenantDTO:
+    ) -> PermissionsToUserGroupForTenantDTO:
         """Assign permissions to user groups
 
         This API allows you to assign a permission to specific user groups. This assigns the permission to all users in the user group.   To assign permissions to user groups in a project, provide a project UUID in the `ProjectID` request header.
 
-        :param admin_permissions_to_user_groups_request_dto: (required)
-        :type admin_permissions_to_user_groups_request_dto: AdminPermissionsToUserGroupsRequestDTO
+        :param permissions_to_user_groups_request_dto: (required)
+        :type permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -1061,7 +1061,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._assign_permissions_to_user_groups_serialize(
-            admin_permissions_to_user_groups_request_dto=admin_permissions_to_user_groups_request_dto,
+            permissions_to_user_groups_request_dto=permissions_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -1071,7 +1071,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPermissionsToUserGroupForTenantDTO",
+            '200': "PermissionsToUserGroupForTenantDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1087,7 +1087,7 @@ class UsersV1Api:
     @validate_call
     def assign_permissions_to_user_groups_with_http_info(
         self,
-        admin_permissions_to_user_groups_request_dto: AdminPermissionsToUserGroupsRequestDTO,
+        permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -1102,13 +1102,13 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminPermissionsToUserGroupForTenantDTO]:
+    ) -> ApiResponse[PermissionsToUserGroupForTenantDTO]:
         """Assign permissions to user groups
 
         This API allows you to assign a permission to specific user groups. This assigns the permission to all users in the user group.   To assign permissions to user groups in a project, provide a project UUID in the `ProjectID` request header.
 
-        :param admin_permissions_to_user_groups_request_dto: (required)
-        :type admin_permissions_to_user_groups_request_dto: AdminPermissionsToUserGroupsRequestDTO
+        :param permissions_to_user_groups_request_dto: (required)
+        :type permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -1136,7 +1136,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._assign_permissions_to_user_groups_serialize(
-            admin_permissions_to_user_groups_request_dto=admin_permissions_to_user_groups_request_dto,
+            permissions_to_user_groups_request_dto=permissions_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -1146,7 +1146,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPermissionsToUserGroupForTenantDTO",
+            '200': "PermissionsToUserGroupForTenantDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1162,7 +1162,7 @@ class UsersV1Api:
     @validate_call
     def assign_permissions_to_user_groups_without_preload_content(
         self,
-        admin_permissions_to_user_groups_request_dto: AdminPermissionsToUserGroupsRequestDTO,
+        permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -1182,8 +1182,8 @@ class UsersV1Api:
 
         This API allows you to assign a permission to specific user groups. This assigns the permission to all users in the user group.   To assign permissions to user groups in a project, provide a project UUID in the `ProjectID` request header.
 
-        :param admin_permissions_to_user_groups_request_dto: (required)
-        :type admin_permissions_to_user_groups_request_dto: AdminPermissionsToUserGroupsRequestDTO
+        :param permissions_to_user_groups_request_dto: (required)
+        :type permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -1211,7 +1211,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._assign_permissions_to_user_groups_serialize(
-            admin_permissions_to_user_groups_request_dto=admin_permissions_to_user_groups_request_dto,
+            permissions_to_user_groups_request_dto=permissions_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -1221,7 +1221,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPermissionsToUserGroupForTenantDTO",
+            '200': "PermissionsToUserGroupForTenantDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1232,7 +1232,7 @@ class UsersV1Api:
 
     def _assign_permissions_to_user_groups_serialize(
         self,
-        admin_permissions_to_user_groups_request_dto,
+        permissions_to_user_groups_request_dto,
         project_id,
         target_tenant_id,
         _request_auth,
@@ -1264,8 +1264,8 @@ class UsersV1Api:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if admin_permissions_to_user_groups_request_dto is not None:
-            _body_params = admin_permissions_to_user_groups_request_dto
+        if permissions_to_user_groups_request_dto is not None:
+            _body_params = permissions_to_user_groups_request_dto
 
 
         # set the HTTP header `Accept`
@@ -1917,7 +1917,7 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminUserGroupsGetAPIResponseDTO:
+    ) -> UserGroupsGetAPIResponseDTO:
         """Retrieve a list of all user groups
 
         This API allows you to retrieve the full list of user groups in a tenant.   To specify the project in which to retrieve user groups for a tenant, provide a project UUID in the `ProjectID` request header. If omitted, the request retrieves user information from production.
@@ -1967,7 +1967,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminUserGroupsGetAPIResponseDTO",
+            '200': "UserGroupsGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2000,7 +2000,7 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminUserGroupsGetAPIResponseDTO]:
+    ) -> ApiResponse[UserGroupsGetAPIResponseDTO]:
         """Retrieve a list of all user groups
 
         This API allows you to retrieve the full list of user groups in a tenant.   To specify the project in which to retrieve user groups for a tenant, provide a project UUID in the `ProjectID` request header. If omitted, the request retrieves user information from production.
@@ -2050,7 +2050,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminUserGroupsGetAPIResponseDTO",
+            '200': "UserGroupsGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2133,7 +2133,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminUserGroupsGetAPIResponseDTO",
+            '200': "UserGroupsGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2251,7 +2251,7 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingAllUsersGetAPIResponseDTO:
+    ) -> AllUsersGetAPIResponseDTO:
         """Retrieve a list of all users
 
         This API allows you to retrieve the full list of users and their current states.   To specify the project in which to retrieve user information, provide a project UUID in the `ProjectID` request header. If omitted, the request retrieves user information from production.
@@ -2310,7 +2310,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAllUsersGetAPIResponseDTO",
+            '200': "AllUsersGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2346,7 +2346,7 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingAllUsersGetAPIResponseDTO]:
+    ) -> ApiResponse[AllUsersGetAPIResponseDTO]:
         """Retrieve a list of all users
 
         This API allows you to retrieve the full list of users and their current states.   To specify the project in which to retrieve user information, provide a project UUID in the `ProjectID` request header. If omitted, the request retrieves user information from production.
@@ -2405,7 +2405,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAllUsersGetAPIResponseDTO",
+            '200': "AllUsersGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2500,7 +2500,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAllUsersGetAPIResponseDTO",
+            '200': "AllUsersGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3248,7 +3248,7 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingPermissionAssignedUsersDTO:
+    ) -> PermissionAssignedUsersDTO:
         """Retrieve users that are assigned a specific permission
 
         This API allows you to retrieve all the users that are assigned a specified permission. You must know the ID  of the permission you want to retrieve users for.   To specify the project in which to retrieve users assigned to a specific permission for the login tenant, provide  a project UUID in the `ProjectID` request header. If omitted, the request retrieves users assigned to a specific permission from production.
@@ -3307,7 +3307,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPermissionAssignedUsersDTO",
+            '200': "PermissionAssignedUsersDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3343,7 +3343,7 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingPermissionAssignedUsersDTO]:
+    ) -> ApiResponse[PermissionAssignedUsersDTO]:
         """Retrieve users that are assigned a specific permission
 
         This API allows you to retrieve all the users that are assigned a specified permission. You must know the ID  of the permission you want to retrieve users for.   To specify the project in which to retrieve users assigned to a specific permission for the login tenant, provide  a project UUID in the `ProjectID` request header. If omitted, the request retrieves users assigned to a specific permission from production.
@@ -3402,7 +3402,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPermissionAssignedUsersDTO",
+            '200': "PermissionAssignedUsersDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3497,7 +3497,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingPermissionAssignedUsersDTO",
+            '200': "PermissionAssignedUsersDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3908,7 +3908,7 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingUserGetAPIResponseDTO:
+    ) -> UserGetAPIResponseDTO:
         """Retrieve a user's details
 
         This API allows you to retrieve all details for a specified user.   To specify the project in which to retrieve user information, provide a project UUID in the `ProjectID` request header. If omitted, the request retrieves user information from production.
@@ -3964,7 +3964,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingUserGetAPIResponseDTO",
+            '200': "UserGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3999,7 +3999,7 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingUserGetAPIResponseDTO]:
+    ) -> ApiResponse[UserGetAPIResponseDTO]:
         """Retrieve a user's details
 
         This API allows you to retrieve all details for a specified user.   To specify the project in which to retrieve user information, provide a project UUID in the `ProjectID` request header. If omitted, the request retrieves user information from production.
@@ -4055,7 +4055,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingUserGetAPIResponseDTO",
+            '200': "UserGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4146,7 +4146,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingUserGetAPIResponseDTO",
+            '200': "UserGetAPIResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4270,7 +4270,7 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminUserGroupsUsersDTO:
+    ) -> UserGroupsUsersDTO:
         """Retrieve a list of user group users
 
         This API allows you to retrieve the list of users explicitly assigned to a user group. Users that are implicitly  included in the user group through the user group's dynamic filters are not returned by this endpoint.   To specify the project in which to retrieve user group users for the login tenant, provide  a project UUID in the `ProjectID` request header. If omitted, the request retrieves user group users from production.
@@ -4323,7 +4323,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminUserGroupsUsersDTO",
+            '200': "UserGroupsUsersDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4357,7 +4357,7 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminUserGroupsUsersDTO]:
+    ) -> ApiResponse[UserGroupsUsersDTO]:
         """Retrieve a list of user group users
 
         This API allows you to retrieve the list of users explicitly assigned to a user group. Users that are implicitly  included in the user group through the user group's dynamic filters are not returned by this endpoint.   To specify the project in which to retrieve user group users for the login tenant, provide  a project UUID in the `ProjectID` request header. If omitted, the request retrieves user group users from production.
@@ -4410,7 +4410,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminUserGroupsUsersDTO",
+            '200': "UserGroupsUsersDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4497,7 +4497,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminUserGroupsUsersDTO",
+            '200': "UserGroupsUsersDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4881,7 +4881,7 @@ class UsersV1Api:
     @validate_call
     def remove_permissions(
         self,
-        servicing_assign_revoke_permissions_request_dto: ServicingAssignRevokePermissionsRequestDTO,
+        assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -4897,13 +4897,13 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingAssignRevokePermissionsResponseDTO:
+    ) -> AssignRevokePermissionsResponseDTO:
         """Remove permissions from users
 
         This API allows you to remove a permission from specific users. Administrating tenant users can remove permissions  from users in the administrating tenant and in the analytic tenants those users belong to.   To remove permission from users in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can remove permissions from users in analytic tenants by providing a tenant code and project ID in the request body.
 
-        :param servicing_assign_revoke_permissions_request_dto: (required)
-        :type servicing_assign_revoke_permissions_request_dto: ServicingAssignRevokePermissionsRequestDTO
+        :param assign_revoke_permissions_request_dto: (required)
+        :type assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -4933,7 +4933,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._remove_permissions_serialize(
-            servicing_assign_revoke_permissions_request_dto=servicing_assign_revoke_permissions_request_dto,
+            assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             non_versioned=non_versioned,
@@ -4944,7 +4944,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAssignRevokePermissionsResponseDTO",
+            '200': "AssignRevokePermissionsResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4960,7 +4960,7 @@ class UsersV1Api:
     @validate_call
     def remove_permissions_with_http_info(
         self,
-        servicing_assign_revoke_permissions_request_dto: ServicingAssignRevokePermissionsRequestDTO,
+        assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -4976,13 +4976,13 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingAssignRevokePermissionsResponseDTO]:
+    ) -> ApiResponse[AssignRevokePermissionsResponseDTO]:
         """Remove permissions from users
 
         This API allows you to remove a permission from specific users. Administrating tenant users can remove permissions  from users in the administrating tenant and in the analytic tenants those users belong to.   To remove permission from users in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can remove permissions from users in analytic tenants by providing a tenant code and project ID in the request body.
 
-        :param servicing_assign_revoke_permissions_request_dto: (required)
-        :type servicing_assign_revoke_permissions_request_dto: ServicingAssignRevokePermissionsRequestDTO
+        :param assign_revoke_permissions_request_dto: (required)
+        :type assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -5012,7 +5012,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._remove_permissions_serialize(
-            servicing_assign_revoke_permissions_request_dto=servicing_assign_revoke_permissions_request_dto,
+            assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             non_versioned=non_versioned,
@@ -5023,7 +5023,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAssignRevokePermissionsResponseDTO",
+            '200': "AssignRevokePermissionsResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5039,7 +5039,7 @@ class UsersV1Api:
     @validate_call
     def remove_permissions_without_preload_content(
         self,
-        servicing_assign_revoke_permissions_request_dto: ServicingAssignRevokePermissionsRequestDTO,
+        assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -5060,8 +5060,8 @@ class UsersV1Api:
 
         This API allows you to remove a permission from specific users. Administrating tenant users can remove permissions  from users in the administrating tenant and in the analytic tenants those users belong to.   To remove permission from users in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can remove permissions from users in analytic tenants by providing a tenant code and project ID in the request body.
 
-        :param servicing_assign_revoke_permissions_request_dto: (required)
-        :type servicing_assign_revoke_permissions_request_dto: ServicingAssignRevokePermissionsRequestDTO
+        :param assign_revoke_permissions_request_dto: (required)
+        :type assign_revoke_permissions_request_dto: AssignRevokePermissionsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -5091,7 +5091,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._remove_permissions_serialize(
-            servicing_assign_revoke_permissions_request_dto=servicing_assign_revoke_permissions_request_dto,
+            assign_revoke_permissions_request_dto=assign_revoke_permissions_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             non_versioned=non_versioned,
@@ -5102,7 +5102,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingAssignRevokePermissionsResponseDTO",
+            '200': "AssignRevokePermissionsResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5113,7 +5113,7 @@ class UsersV1Api:
 
     def _remove_permissions_serialize(
         self,
-        servicing_assign_revoke_permissions_request_dto,
+        assign_revoke_permissions_request_dto,
         project_id,
         target_tenant_id,
         non_versioned,
@@ -5148,8 +5148,8 @@ class UsersV1Api:
             _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
-        if servicing_assign_revoke_permissions_request_dto is not None:
-            _body_params = servicing_assign_revoke_permissions_request_dto
+        if assign_revoke_permissions_request_dto is not None:
+            _body_params = assign_revoke_permissions_request_dto
 
 
         # set the HTTP header `Accept`
@@ -5204,7 +5204,7 @@ class UsersV1Api:
     @validate_call
     def remove_users_from_user_group(
         self,
-        admin_users_to_user_groups_request_dto: AdminUsersToUserGroupsRequestDTO,
+        users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -5220,13 +5220,13 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminSecurityAssignmentResponseDTO:
+    ) -> SecurityAssignmentResponseDTO:
         """Remove users from user groups
 
         This API allows you to remove users from specific user groups.   To remove users from user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can remove users to user groups in multiple analytic tenants by providing a tenant code and project ID in the request body.   We recommend that administrating tenants set the analytic tenant in which to execute the API call using the `TargetTenantID` request header.
 
-        :param admin_users_to_user_groups_request_dto: (required)
-        :type admin_users_to_user_groups_request_dto: AdminUsersToUserGroupsRequestDTO
+        :param users_to_user_groups_request_dto: (required)
+        :type users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -5256,7 +5256,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._remove_users_from_user_group_serialize(
-            admin_users_to_user_groups_request_dto=admin_users_to_user_groups_request_dto,
+            users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             non_versioned=non_versioned,
@@ -5267,7 +5267,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminSecurityAssignmentResponseDTO",
+            '200': "SecurityAssignmentResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5283,7 +5283,7 @@ class UsersV1Api:
     @validate_call
     def remove_users_from_user_group_with_http_info(
         self,
-        admin_users_to_user_groups_request_dto: AdminUsersToUserGroupsRequestDTO,
+        users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -5299,13 +5299,13 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminSecurityAssignmentResponseDTO]:
+    ) -> ApiResponse[SecurityAssignmentResponseDTO]:
         """Remove users from user groups
 
         This API allows you to remove users from specific user groups.   To remove users from user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can remove users to user groups in multiple analytic tenants by providing a tenant code and project ID in the request body.   We recommend that administrating tenants set the analytic tenant in which to execute the API call using the `TargetTenantID` request header.
 
-        :param admin_users_to_user_groups_request_dto: (required)
-        :type admin_users_to_user_groups_request_dto: AdminUsersToUserGroupsRequestDTO
+        :param users_to_user_groups_request_dto: (required)
+        :type users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -5335,7 +5335,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._remove_users_from_user_group_serialize(
-            admin_users_to_user_groups_request_dto=admin_users_to_user_groups_request_dto,
+            users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             non_versioned=non_versioned,
@@ -5346,7 +5346,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminSecurityAssignmentResponseDTO",
+            '200': "SecurityAssignmentResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5362,7 +5362,7 @@ class UsersV1Api:
     @validate_call
     def remove_users_from_user_group_without_preload_content(
         self,
-        admin_users_to_user_groups_request_dto: AdminUsersToUserGroupsRequestDTO,
+        users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         non_versioned: Annotated[Optional[StrictBool], Field(description="If `true`, the API call executes on non-versioned artifacts and create/update actions take effect without a new production version. If `false`, the API call executes on versioned artifacts and create/update actions release a new production version. Default is `false`.<br>**Note:** <em>This header is in **limited availability**. If you are interested in using it, please contact your Customer Success Manager (CSM).</em>")] = None,
@@ -5383,8 +5383,8 @@ class UsersV1Api:
 
         This API allows you to remove users from specific user groups.   To remove users from user groups in a project for the administrating tenant, provide a project UUID in the `ProjectID` request header.  Administrating tenants can remove users to user groups in multiple analytic tenants by providing a tenant code and project ID in the request body.   We recommend that administrating tenants set the analytic tenant in which to execute the API call using the `TargetTenantID` request header.
 
-        :param admin_users_to_user_groups_request_dto: (required)
-        :type admin_users_to_user_groups_request_dto: AdminUsersToUserGroupsRequestDTO
+        :param users_to_user_groups_request_dto: (required)
+        :type users_to_user_groups_request_dto: UsersToUserGroupsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -5414,7 +5414,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._remove_users_from_user_group_serialize(
-            admin_users_to_user_groups_request_dto=admin_users_to_user_groups_request_dto,
+            users_to_user_groups_request_dto=users_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             non_versioned=non_versioned,
@@ -5425,7 +5425,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminSecurityAssignmentResponseDTO",
+            '200': "SecurityAssignmentResponseDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5436,7 +5436,7 @@ class UsersV1Api:
 
     def _remove_users_from_user_group_serialize(
         self,
-        admin_users_to_user_groups_request_dto,
+        users_to_user_groups_request_dto,
         project_id,
         target_tenant_id,
         non_versioned,
@@ -5471,8 +5471,8 @@ class UsersV1Api:
             _header_params['NonVersioned'] = non_versioned
         # process the form parameters
         # process the body parameter
-        if admin_users_to_user_groups_request_dto is not None:
-            _body_params = admin_users_to_user_groups_request_dto
+        if users_to_user_groups_request_dto is not None:
+            _body_params = users_to_user_groups_request_dto
 
 
         # set the HTTP header `Accept`
@@ -5527,7 +5527,7 @@ class UsersV1Api:
     @validate_call
     def revoke_permissions_from_user_groups(
         self,
-        admin_permissions_to_user_groups_request_dto: AdminPermissionsToUserGroupsRequestDTO,
+        permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -5542,13 +5542,13 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AdminPermissionsToUserGroupForTenantDTO:
+    ) -> PermissionsToUserGroupForTenantDTO:
         """Remove permissions from user groups
 
         This API allows you to remove a permission from specific user groups.   To remove permissions from user groups in a project, provide a project UUID in the `ProjectID` request header.
 
-        :param admin_permissions_to_user_groups_request_dto: (required)
-        :type admin_permissions_to_user_groups_request_dto: AdminPermissionsToUserGroupsRequestDTO
+        :param permissions_to_user_groups_request_dto: (required)
+        :type permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -5576,7 +5576,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._revoke_permissions_from_user_groups_serialize(
-            admin_permissions_to_user_groups_request_dto=admin_permissions_to_user_groups_request_dto,
+            permissions_to_user_groups_request_dto=permissions_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -5586,7 +5586,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPermissionsToUserGroupForTenantDTO",
+            '200': "PermissionsToUserGroupForTenantDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5602,7 +5602,7 @@ class UsersV1Api:
     @validate_call
     def revoke_permissions_from_user_groups_with_http_info(
         self,
-        admin_permissions_to_user_groups_request_dto: AdminPermissionsToUserGroupsRequestDTO,
+        permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -5617,13 +5617,13 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AdminPermissionsToUserGroupForTenantDTO]:
+    ) -> ApiResponse[PermissionsToUserGroupForTenantDTO]:
         """Remove permissions from user groups
 
         This API allows you to remove a permission from specific user groups.   To remove permissions from user groups in a project, provide a project UUID in the `ProjectID` request header.
 
-        :param admin_permissions_to_user_groups_request_dto: (required)
-        :type admin_permissions_to_user_groups_request_dto: AdminPermissionsToUserGroupsRequestDTO
+        :param permissions_to_user_groups_request_dto: (required)
+        :type permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -5651,7 +5651,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._revoke_permissions_from_user_groups_serialize(
-            admin_permissions_to_user_groups_request_dto=admin_permissions_to_user_groups_request_dto,
+            permissions_to_user_groups_request_dto=permissions_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -5661,7 +5661,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPermissionsToUserGroupForTenantDTO",
+            '200': "PermissionsToUserGroupForTenantDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5677,7 +5677,7 @@ class UsersV1Api:
     @validate_call
     def revoke_permissions_from_user_groups_without_preload_content(
         self,
-        admin_permissions_to_user_groups_request_dto: AdminPermissionsToUserGroupsRequestDTO,
+        permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO,
         project_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify a project in which to make the request. If omitted, the request uses the production version.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -5697,8 +5697,8 @@ class UsersV1Api:
 
         This API allows you to remove a permission from specific user groups.   To remove permissions from user groups in a project, provide a project UUID in the `ProjectID` request header.
 
-        :param admin_permissions_to_user_groups_request_dto: (required)
-        :type admin_permissions_to_user_groups_request_dto: AdminPermissionsToUserGroupsRequestDTO
+        :param permissions_to_user_groups_request_dto: (required)
+        :type permissions_to_user_groups_request_dto: PermissionsToUserGroupsRequestDTO
         :param project_id: Optionally, specify a project in which to make the request. If omitted, the request uses the production version.
         :type project_id: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -5726,7 +5726,7 @@ class UsersV1Api:
         """ # noqa: E501
 
         _param = self._revoke_permissions_from_user_groups_serialize(
-            admin_permissions_to_user_groups_request_dto=admin_permissions_to_user_groups_request_dto,
+            permissions_to_user_groups_request_dto=permissions_to_user_groups_request_dto,
             project_id=project_id,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -5736,7 +5736,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AdminPermissionsToUserGroupForTenantDTO",
+            '200': "PermissionsToUserGroupForTenantDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5747,7 +5747,7 @@ class UsersV1Api:
 
     def _revoke_permissions_from_user_groups_serialize(
         self,
-        admin_permissions_to_user_groups_request_dto,
+        permissions_to_user_groups_request_dto,
         project_id,
         target_tenant_id,
         _request_auth,
@@ -5779,8 +5779,8 @@ class UsersV1Api:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if admin_permissions_to_user_groups_request_dto is not None:
-            _body_params = admin_permissions_to_user_groups_request_dto
+        if permissions_to_user_groups_request_dto is not None:
+            _body_params = permissions_to_user_groups_request_dto
 
 
         # set the HTTP header `Accept`
@@ -5836,7 +5836,7 @@ class UsersV1Api:
     def update_user(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to update.")],
-        servicing_user_update_api_request_dto: ServicingUserUpdateAPIRequestDTO,
+        user_update_api_request_dto: UserUpdateAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -5851,15 +5851,15 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ServicingUserUpdateAPIRequestDTO:
+    ) -> UserUpdateAPIRequestDTO:
         """Update a user
 
         Update an existing user's information, such as their display name or if the user is enabled in Visier.
 
         :param user_id: The ID of the user you want to update. (required)
         :type user_id: str
-        :param servicing_user_update_api_request_dto: (required)
-        :type servicing_user_update_api_request_dto: ServicingUserUpdateAPIRequestDTO
+        :param user_update_api_request_dto: (required)
+        :type user_update_api_request_dto: UserUpdateAPIRequestDTO
         :param tenant_code: Specify the tenant to update a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -5888,7 +5888,7 @@ class UsersV1Api:
 
         _param = self._update_user_serialize(
             user_id=user_id,
-            servicing_user_update_api_request_dto=servicing_user_update_api_request_dto,
+            user_update_api_request_dto=user_update_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -5898,7 +5898,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingUserUpdateAPIRequestDTO",
+            '200': "UserUpdateAPIRequestDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5915,7 +5915,7 @@ class UsersV1Api:
     def update_user_with_http_info(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to update.")],
-        servicing_user_update_api_request_dto: ServicingUserUpdateAPIRequestDTO,
+        user_update_api_request_dto: UserUpdateAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -5930,15 +5930,15 @@ class UsersV1Api:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ServicingUserUpdateAPIRequestDTO]:
+    ) -> ApiResponse[UserUpdateAPIRequestDTO]:
         """Update a user
 
         Update an existing user's information, such as their display name or if the user is enabled in Visier.
 
         :param user_id: The ID of the user you want to update. (required)
         :type user_id: str
-        :param servicing_user_update_api_request_dto: (required)
-        :type servicing_user_update_api_request_dto: ServicingUserUpdateAPIRequestDTO
+        :param user_update_api_request_dto: (required)
+        :type user_update_api_request_dto: UserUpdateAPIRequestDTO
         :param tenant_code: Specify the tenant to update a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -5967,7 +5967,7 @@ class UsersV1Api:
 
         _param = self._update_user_serialize(
             user_id=user_id,
-            servicing_user_update_api_request_dto=servicing_user_update_api_request_dto,
+            user_update_api_request_dto=user_update_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -5977,7 +5977,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingUserUpdateAPIRequestDTO",
+            '200': "UserUpdateAPIRequestDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5994,7 +5994,7 @@ class UsersV1Api:
     def update_user_without_preload_content(
         self,
         user_id: Annotated[StrictStr, Field(description="The ID of the user you want to update.")],
-        servicing_user_update_api_request_dto: ServicingUserUpdateAPIRequestDTO,
+        user_update_api_request_dto: UserUpdateAPIRequestDTO,
         tenant_code: Annotated[Optional[StrictStr], Field(description="Specify the tenant to update a user in.")] = None,
         target_tenant_id: Annotated[Optional[StrictStr], Field(description="Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.")] = None,
         _request_timeout: Union[
@@ -6016,8 +6016,8 @@ class UsersV1Api:
 
         :param user_id: The ID of the user you want to update. (required)
         :type user_id: str
-        :param servicing_user_update_api_request_dto: (required)
-        :type servicing_user_update_api_request_dto: ServicingUserUpdateAPIRequestDTO
+        :param user_update_api_request_dto: (required)
+        :type user_update_api_request_dto: UserUpdateAPIRequestDTO
         :param tenant_code: Specify the tenant to update a user in.
         :type tenant_code: str
         :param target_tenant_id: Optionally, specify the tenant that you want to execute the API call on. This defines the tenant that you're logged into. If omitted, the request uses the administrating tenant as the login tenant.
@@ -6046,7 +6046,7 @@ class UsersV1Api:
 
         _param = self._update_user_serialize(
             user_id=user_id,
-            servicing_user_update_api_request_dto=servicing_user_update_api_request_dto,
+            user_update_api_request_dto=user_update_api_request_dto,
             tenant_code=tenant_code,
             target_tenant_id=target_tenant_id,
             _request_auth=_request_auth,
@@ -6056,7 +6056,7 @@ class UsersV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ServicingUserUpdateAPIRequestDTO",
+            '200': "UserUpdateAPIRequestDTO",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6068,7 +6068,7 @@ class UsersV1Api:
     def _update_user_serialize(
         self,
         user_id,
-        servicing_user_update_api_request_dto,
+        user_update_api_request_dto,
         tenant_code,
         target_tenant_id,
         _request_auth,
@@ -6104,8 +6104,8 @@ class UsersV1Api:
             _header_params['TargetTenantID'] = target_tenant_id
         # process the form parameters
         # process the body parameter
-        if servicing_user_update_api_request_dto is not None:
-            _body_params = servicing_user_update_api_request_dto
+        if user_update_api_request_dto is not None:
+            _body_params = user_update_api_request_dto
 
 
         # set the HTTP header `Accept`
