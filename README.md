@@ -146,23 +146,22 @@ if api_response.status_code == 200:
 
 # RESTResponseType
 # Use this method to work with raw data.
-from visier_platform_sdk.models.dataservices_datamodel_properties_dto import DataservicesDatamodelPropertiesDTO
+from visier_platform_sdk import PropertiesDTO
 
 rest_response = data_model_api.properties_without_preload_content(analytic_object_id)
 if rest_response.status == 200:
-    properties = DataservicesDatamodelPropertiesDTO.from_json(rest_response.data.decode())
+    properties = PropertiesDTO.from_json(rest_response.data.decode())
 ```
 
 For full API DTO documentation, see the API references. For example, [Visier Data In APIs](https://docs.visier.com/developer/Default.htm#cshid=1042).
 All DTOs have a `from_json` method to create a DTO object from a JSON string. In some cases, you may need to switch from DTO format to CSV format. To switch, set the `Accept` header to `text/csv` when creating the `ApiClient` or making a request.
 
 ```python
-from visier_platform_sdk import ApiClient, DataQueryApi
-from visier_platform_sdk.models.dataservices_query_aggregation_query_execution_dto import DataservicesQueryAggregationQueryExecutionDTO
+from visier_platform_sdk import ApiClient, DataQueryApi, AggregationQueryExecutionDTO
 
 with open('query_examples/aggregate/applicants-source.json') as f:
     headcount_json = f.read()
-aggr_query_dto = DataservicesQueryAggregationQueryExecutionDTO.from_json(headcount_json)
+aggr_query_dto = AggregationQueryExecutionDTO.from_json(headcount_json)
 
 # Set the `Accept` header to `text/csv` in the constructor or by using the `set_default_header` method.
 # The `set_default_header` method allows you to add additional headers as needed.

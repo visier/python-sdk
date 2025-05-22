@@ -1,7 +1,7 @@
 import unittest
 
 from test_utils import TENANT_CODE, create_api
-from visier_platform_sdk import UsersV1Api, ServicingUserCreationAPIRequestDTO, UserCreationAPIResponseDTO
+from visier_platform_sdk import UsersV1Api, UserCreationAPIRequestDTO, UserCreationAPIResponseDTO
 
 
 class TestUsersV1Api(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestUsersV1Api(unittest.TestCase):
             api_response = self.api.delete_user_with_http_info(test_user.user_id, tenant_code=TENANT_CODE)
             self.assertEqual(api_response.status_code, 204)
 
-        creation_request_dto = ServicingUserCreationAPIRequestDTO(
+        creation_request_dto = UserCreationAPIRequestDTO(
             account_enabled='true',
             display_name='Creation test User Visier Python SDK',
             email=test_user_email,
