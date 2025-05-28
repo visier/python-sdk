@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "22222222.99201.1926"
+__version__ = "22222222.99201.1926.beta1"
 
 # import apis into sdk package
 from visier_platform_sdk.api.basic_authentication_api import BasicAuthenticationApi
