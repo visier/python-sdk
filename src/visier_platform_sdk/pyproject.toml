@@ -1,21 +1,26 @@
 [tool.poetry]
 name = "visier_platform_sdk"
-version = "22222222.99201.1926"
+version = "22222222.99201.1926.beta3"
 description = "API Reference"
 authors = ["Visier <alpine@visier.com>"]
 license = "Apache License, Version 2.0"
 readme = "README.md"
-repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
-keywords = ["OpenAPI", "OpenAPI-Generator", "API Reference"]
+repository = "https://github.com/visier/python-sdk"
+keywords = ["Visier", "Visier-SDK", "API Reference"]
 include = ["visier_platform_sdk/py.typed"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 
-urllib3 = ">= 2.1.0, < 3.0.0"
+# Workaround to fix urllib3 version conflict with `vcrpy` while using `uv` and `poetry`
+urllib3 = [
+    { version = ">= 2.1.0, < 3.0.0", markers = "platform_python_implementation != 'PyPy'" },
+    { version = "<2", markers = "platform_python_implementation == 'PyPy'" }
+]
 python-dateutil = ">= 2.8.2"
 pydantic = ">= 2"
 typing-extensions = ">= 4.7.1"
+Flask = ">= 3.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = ">= 7.2.1"
