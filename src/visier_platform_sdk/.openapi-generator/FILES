@@ -28,6 +28,8 @@ test/test_all_users_get_api_response_dto.py
 test/test_analytic_object_definition_dto.py
 test/test_analytic_object_dto.py
 test/test_analytic_object_filter_dto.py
+test/test_analytic_object_filter_list_dto.py
+test/test_analytic_object_names_dto.py
 test/test_analytic_object_reference_dto.py
 test/test_analytic_object_reference_list_dto.py
 test/test_analytic_object_request_dto.py
@@ -60,6 +62,7 @@ test/test_bulk_change_response_dto.py
 test/test_bulk_data_access_set_response_dto.py
 test/test_business_location_dto.py
 test/test_calculated_property_type_dto.py
+test/test_calculated_selection_concept_dto.py
 test/test_calculation_concept_configuration_dto.py
 test/test_calculation_concept_configuration_map_dto.py
 test/test_calculation_concept_dto.py
@@ -162,6 +165,7 @@ test/test_dimension_delete_with_context_dto.py
 test/test_dimension_details_dto.py
 test/test_dimension_dto.py
 test/test_dimension_filter_dto.py
+test/test_dimension_filter_list_dto.py
 test/test_dimension_mapping_validation_dto.py
 test/test_dimension_mapping_validation_execution_dto.py
 test/test_dimension_member.py
@@ -292,7 +296,9 @@ test/test_member_filter_config_dto.py
 test/test_member_filter_dto.py
 test/test_member_parameter_definition_dto.py
 test/test_member_parameter_value_dto.py
+test/test_member_selection_concept_dto.py
 test/test_member_selection_dto.py
+test/test_member_selection_list_dto.py
 test/test_member_values_dto.py
 test/test_members_dto.py
 test/test_metric_definition_dto.py
@@ -347,7 +353,7 @@ test/test_permissions_to_user_group_request_dto.py
 test/test_permissions_to_user_groups_request_dto.py
 test/test_perspective_configuration_dto.py
 test/test_perspective_node_dto.py
-test/test_pgp_key_api.py
+test/test_pgp_keys_api.py
 test/test_plan_data_load_change_dto.py
 test/test_plan_data_load_change_list_dto.py
 test/test_plan_data_load_error_dto.py
@@ -440,6 +446,7 @@ test/test_push_data_response.py
 test/test_push_data_source_definition_dto.py
 test/test_push_data_source_definitions_dto.py
 test/test_put_project_commits_request.py
+test/test_qualifying_path_dto.py
 test/test_qualtrics_auth_params_dto.py
 test/test_query_axis_dto.py
 test/test_query_axis_options_dto.py
@@ -698,7 +705,7 @@ visier_platform_sdk/api/network_subnets_api.py
 visier_platform_sdk/api/o_auth2_api.py
 visier_platform_sdk/api/object_configuration_api.py
 visier_platform_sdk/api/permissions_api.py
-visier_platform_sdk/api/pgp_key_api.py
+visier_platform_sdk/api/pgp_keys_api.py
 visier_platform_sdk/api/planning_data_load_api.py
 visier_platform_sdk/api/production_versions_api.py
 visier_platform_sdk/api/profiles_api.py
@@ -746,6 +753,8 @@ visier_platform_sdk/models/all_users_get_api_response_dto.py
 visier_platform_sdk/models/analytic_object_definition_dto.py
 visier_platform_sdk/models/analytic_object_dto.py
 visier_platform_sdk/models/analytic_object_filter_dto.py
+visier_platform_sdk/models/analytic_object_filter_list_dto.py
+visier_platform_sdk/models/analytic_object_names_dto.py
 visier_platform_sdk/models/analytic_object_reference_dto.py
 visier_platform_sdk/models/analytic_object_reference_list_dto.py
 visier_platform_sdk/models/analytic_object_request_dto.py
@@ -776,6 +785,7 @@ visier_platform_sdk/models/bulk_change_response_dto.py
 visier_platform_sdk/models/bulk_data_access_set_response_dto.py
 visier_platform_sdk/models/business_location_dto.py
 visier_platform_sdk/models/calculated_property_type_dto.py
+visier_platform_sdk/models/calculated_selection_concept_dto.py
 visier_platform_sdk/models/calculation_concept_configuration_dto.py
 visier_platform_sdk/models/calculation_concept_configuration_map_dto.py
 visier_platform_sdk/models/calculation_concept_dto.py
@@ -870,6 +880,7 @@ visier_platform_sdk/models/dimension_delete_with_context_dto.py
 visier_platform_sdk/models/dimension_details_dto.py
 visier_platform_sdk/models/dimension_dto.py
 visier_platform_sdk/models/dimension_filter_dto.py
+visier_platform_sdk/models/dimension_filter_list_dto.py
 visier_platform_sdk/models/dimension_mapping_validation_dto.py
 visier_platform_sdk/models/dimension_mapping_validation_execution_dto.py
 visier_platform_sdk/models/dimension_member.py
@@ -994,7 +1005,9 @@ visier_platform_sdk/models/member_filter_config_dto.py
 visier_platform_sdk/models/member_filter_dto.py
 visier_platform_sdk/models/member_parameter_definition_dto.py
 visier_platform_sdk/models/member_parameter_value_dto.py
+visier_platform_sdk/models/member_selection_concept_dto.py
 visier_platform_sdk/models/member_selection_dto.py
+visier_platform_sdk/models/member_selection_list_dto.py
 visier_platform_sdk/models/member_values_dto.py
 visier_platform_sdk/models/members_dto.py
 visier_platform_sdk/models/metric_definition_dto.py
@@ -1133,6 +1146,7 @@ visier_platform_sdk/models/push_data_response.py
 visier_platform_sdk/models/push_data_source_definition_dto.py
 visier_platform_sdk/models/push_data_source_definitions_dto.py
 visier_platform_sdk/models/put_project_commits_request.py
+visier_platform_sdk/models/qualifying_path_dto.py
 visier_platform_sdk/models/qualtrics_auth_params_dto.py
 visier_platform_sdk/models/query_axis_dto.py
 visier_platform_sdk/models/query_axis_options_dto.py

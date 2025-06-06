@@ -20,7 +20,7 @@ from visier_platform_sdk.api.jobs_library_api import JobsLibraryApi
 from visier_platform_sdk.api.network_subnets_api import NetworkSubnetsApi
 from visier_platform_sdk.api.o_auth2_api import OAuth2Api
 from visier_platform_sdk.api.object_configuration_api import ObjectConfigurationApi
-from visier_platform_sdk.api.pgp_key_api import PGPKeyApi
+from visier_platform_sdk.api.pgp_keys_api import PGPKeysApi
 from visier_platform_sdk.api.permissions_api import PermissionsApi
 from visier_platform_sdk.api.planning_data_load_api import PlanningDataLoadApi
 from visier_platform_sdk.api.production_versions_api import ProductionVersionsApi
