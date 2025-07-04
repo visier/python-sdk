@@ -484,6 +484,9 @@ test/test_question_categories_api_response_dto.py
 test/test_question_category_api_response_dto.py
 test/test_receiving_job.py
 test/test_receiving_job_and_status_response.py
+test/test_receiving_job_extracted_file_response_dto.py
+test/test_receiving_job_extracted_files_for_tenant_response_dto.py
+test/test_receiving_job_extracted_files_list_response_dto.py
 test/test_receiving_job_status_response.py
 test/test_redshift_auth_params_dto.py
 test/test_reduced_error_dto.py
@@ -546,6 +549,7 @@ test/test_snapshot_query_execution_options_dto.py
 test/test_snowflake_auth_params_dto.py
 test/test_sort_option_dto.py
 test/test_source.py
+test/test_source_file_response_dto.py
 test/test_source_files_download_api.py
 test/test_source_import_result_summary_dto.py
 test/test_sources_api.py
@@ -600,6 +604,7 @@ test/test_tenant_module_dto.py
 test/test_tenant_preview_entries_summary_dto.py
 test/test_tenant_preview_entries_summary_list_dto.py
 test/test_tenant_provision_apidto.py
+test/test_tenant_source_files_list_response_dto.py
 test/test_tenant_status_apidto.py
 test/test_tenants_v1_api.py
 test/test_tenants_v2_api.py
@@ -1200,6 +1205,9 @@ visier_platform_sdk/models/question_categories_api_response_dto.py
 visier_platform_sdk/models/question_category_api_response_dto.py
 visier_platform_sdk/models/receiving_job.py
 visier_platform_sdk/models/receiving_job_and_status_response.py
+visier_platform_sdk/models/receiving_job_extracted_file_response_dto.py
+visier_platform_sdk/models/receiving_job_extracted_files_for_tenant_response_dto.py
+visier_platform_sdk/models/receiving_job_extracted_files_list_response_dto.py
 visier_platform_sdk/models/receiving_job_status_response.py
 visier_platform_sdk/models/redshift_auth_params_dto.py
 visier_platform_sdk/models/reduced_error_dto.py
@@ -1258,6 +1266,7 @@ visier_platform_sdk/models/snapshot_query_execution_options_dto.py
 visier_platform_sdk/models/snowflake_auth_params_dto.py
 visier_platform_sdk/models/sort_option_dto.py
 visier_platform_sdk/models/source.py
+visier_platform_sdk/models/source_file_response_dto.py
 visier_platform_sdk/models/source_import_result_summary_dto.py
 visier_platform_sdk/models/sources_api_operation_request_dto.py
 visier_platform_sdk/models/sources_api_put_response_dto.py
@@ -1310,6 +1319,7 @@ visier_platform_sdk/models/tenant_module_dto.py
 visier_platform_sdk/models/tenant_preview_entries_summary_dto.py
 visier_platform_sdk/models/tenant_preview_entries_summary_list_dto.py
 visier_platform_sdk/models/tenant_provision_apidto.py
+visier_platform_sdk/models/tenant_source_files_list_response_dto.py
 visier_platform_sdk/models/tenant_status_apidto.py
 visier_platform_sdk/models/time_shift_dto.py
 visier_platform_sdk/models/token_response.py
