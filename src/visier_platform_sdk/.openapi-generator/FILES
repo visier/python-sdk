@@ -230,6 +230,7 @@ test/test_failed_accessible_tenant_profile_assignment_dto.py
 test/test_failed_change_dto.py
 test/test_failed_local_tenant_profile_assignment_dto.py
 test/test_failed_local_tenant_profile_revoke_dto.py
+test/test_features_for_user_group_dto.py
 test/test_fusion_auth_params_dto.py
 test/test_generate_impersonation_token_request.py
 test/test_generate_key_request_dto.py
@@ -989,6 +990,7 @@ visier_platform_sdk/models/failed_accessible_tenant_profile_assignment_dto.py
 visier_platform_sdk/models/failed_change_dto.py
 visier_platform_sdk/models/failed_local_tenant_profile_assignment_dto.py
 visier_platform_sdk/models/failed_local_tenant_profile_revoke_dto.py
+visier_platform_sdk/models/features_for_user_group_dto.py
 visier_platform_sdk/models/fusion_auth_params_dto.py
 visier_platform_sdk/models/generate_impersonation_token_request.py
 visier_platform_sdk/models/generate_key_request_dto.py
