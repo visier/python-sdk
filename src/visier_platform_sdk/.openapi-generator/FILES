@@ -76,6 +76,7 @@ test/test_capability_dto.py
 test/test_capability_group_dto.py
 test/test_caption_dto.py
 test/test_caption_list_dto.py
+test/test_category_icon_dto.py
 test/test_cell_distribution_bin_dto.py
 test/test_cell_distribution_options_dto.py
 test/test_cell_dto.py
@@ -159,9 +160,11 @@ test/test_data_version_object.py
 test/test_databricks_auth_params_dto.py
 test/test_date_range_dto.py
 test/test_dayforce_v2_auth_params_dto.py
+test/test_delete_email_domains_dto.py
 test/test_delete_permissions_request_dto.py
 test/test_delete_user_group_v2_request.py
 test/test_dependent_dto.py
+test/test_derived_metric_details_dto.py
 test/test_description_entry.py
 test/test_designer_dimension_filter_dto.py
 test/test_designer_selection_concept_dto.py
@@ -230,7 +233,6 @@ test/test_failed_accessible_tenant_profile_assignment_dto.py
 test/test_failed_change_dto.py
 test/test_failed_local_tenant_profile_assignment_dto.py
 test/test_failed_local_tenant_profile_revoke_dto.py
-test/test_features_for_user_group_dto.py
 test/test_fusion_auth_params_dto.py
 test/test_generate_impersonation_token_request.py
 test/test_generate_key_request_dto.py
@@ -407,7 +409,7 @@ test/test_predictions_dto.py
 test/test_process_concept_definition_dto.py
 test/test_process_concept_member_dto.py
 test/test_process_concept_member_list_dto.py
-test/test_process_concept_metric_definition_dto.py
+test/test_process_concept_metric_details_dto.py
 test/test_process_concept_metric_list_dto.py
 test/test_process_concept_outcome_dto.py
 test/test_process_concept_outcome_list_dto.py
@@ -437,6 +439,7 @@ test/test_profile_assignment_dto.py
 test/test_profile_get_api_response_dto.py
 test/test_profiles_api.py
 test/test_profiles_get_api_response_dto.py
+test/test_project_commit_dto.py
 test/test_project_commits_api_response_dto.py
 test/test_project_dto.py
 test/test_project_operation_request_dto.py
@@ -471,7 +474,6 @@ test/test_push_data_complete_response.py
 test/test_push_data_response.py
 test/test_push_data_source_definition_dto.py
 test/test_push_data_source_definitions_dto.py
-test/test_put_project_commits_request.py
 test/test_qualtrics_auth_params_dto.py
 test/test_query_axis_dto.py
 test/test_query_axis_options_dto.py
@@ -519,6 +521,7 @@ test/test_report_list_response_dto.py
 test/test_reporting_api.py
 test/test_result.py
 test/test_role_modules_config_dto.py
+test/test_salary_benchmark_feedback_input.py
 test/test_salary_benchmark_input.py
 test/test_salary_benchmarks_batch_processing_failure_output.py
 test/test_salary_benchmarks_batch_processing_outputs.py
@@ -554,6 +557,7 @@ test/test_sidecar_solution_settings_dto.py
 test/test_sidecar_solutions_api.py
 test/test_simple_document_header_search_response_dto.py
 test/test_simple_document_header_search_result_dto.py
+test/test_simple_metric_details_dto.py
 test/test_simple_property_type_dto.py
 test/test_simple_user_dto.py
 test/test_single_value_setting_dto.py
@@ -585,6 +589,9 @@ test/test_start_transfer_response.py
 test/test_static_dimension_filter_dto.py
 test/test_status.py
 test/test_subject_details_dto.py
+test/test_subject_member_set_parameter_value_dto.py
+test/test_subject_member_set_parameter_value_dto_list_of_name_path_dto.py
+test/test_subject_member_set_parameter_value_dto_name_path_dto.py
 test/test_subject_missing_access_dto.py
 test/test_subject_reference_dto.py
 test/test_subject_reference_list_dto.py
@@ -693,8 +700,17 @@ test/test_vee_conversation_dto.py
 test/test_vee_conversation_state_dto.py
 test/test_vee_corrections_dto.py
 test/test_vee_data_dto.py
+test/test_vee_detail_data_dto.py
 test/test_vee_feedback_dto.py
 test/test_vee_options_dto.py
+test/test_vee_question_categories_bulk_change_response_dto.py
+test/test_vee_question_categories_change_definitions_dto.py
+test/test_vee_question_categories_delete_definitions_dto.py
+test/test_vee_question_category_change_definition_dto.py
+test/test_vee_question_category_change_definitions_by_tenant_dto.py
+test/test_vee_question_category_change_failure_dto.py
+test/test_vee_question_category_change_success_dto.py
+test/test_vee_question_category_delete_definitions_by_tenant_dto.py
 test/test_vee_question_change_definition_dto.py
 test/test_vee_question_change_definitions_by_tenant_dto.py
 test/test_vee_question_change_failure_dto.py
@@ -714,6 +730,7 @@ test/test_vee_status_dto.py
 test/test_vee_visual_dto.py
 test/test_vee_visual_options_dto.py
 test/test_version_information_dto.py
+test/test_visible_for_selection_dto.py
 test/test_webhook_basic_auth_credential_dto.py
 test/test_webhook_credentials_dto.py
 test/test_webhook_details_dto.py
@@ -849,6 +866,7 @@ visier_platform_sdk/models/capability_dto.py
 visier_platform_sdk/models/capability_group_dto.py
 visier_platform_sdk/models/caption_dto.py
 visier_platform_sdk/models/caption_list_dto.py
+visier_platform_sdk/models/category_icon_dto.py
 visier_platform_sdk/models/cell_distribution_bin_dto.py
 visier_platform_sdk/models/cell_distribution_options_dto.py
 visier_platform_sdk/models/cell_dto.py
@@ -924,9 +942,11 @@ visier_platform_sdk/models/data_version_object.py
 visier_platform_sdk/models/databricks_auth_params_dto.py
 visier_platform_sdk/models/date_range_dto.py
 visier_platform_sdk/models/dayforce_v2_auth_params_dto.py
+visier_platform_sdk/models/delete_email_domains_dto.py
 visier_platform_sdk/models/delete_permissions_request_dto.py
 visier_platform_sdk/models/delete_user_group_v2_request.py
 visier_platform_sdk/models/dependent_dto.py
+visier_platform_sdk/models/derived_metric_details_dto.py
 visier_platform_sdk/models/description_entry.py
 visier_platform_sdk/models/designer_dimension_filter_dto.py
 visier_platform_sdk/models/designer_selection_concept_dto.py
@@ -990,7 +1010,6 @@ visier_platform_sdk/models/failed_accessible_tenant_profile_assignment_dto.py
 visier_platform_sdk/models/failed_change_dto.py
 visier_platform_sdk/models/failed_local_tenant_profile_assignment_dto.py
 visier_platform_sdk/models/failed_local_tenant_profile_revoke_dto.py
-visier_platform_sdk/models/features_for_user_group_dto.py
 visier_platform_sdk/models/fusion_auth_params_dto.py
 visier_platform_sdk/models/generate_impersonation_token_request.py
 visier_platform_sdk/models/generate_key_request_dto.py
@@ -1159,7 +1178,7 @@ visier_platform_sdk/models/predictions_dto.py
 visier_platform_sdk/models/process_concept_definition_dto.py
 visier_platform_sdk/models/process_concept_member_dto.py
 visier_platform_sdk/models/process_concept_member_list_dto.py
-visier_platform_sdk/models/process_concept_metric_definition_dto.py
+visier_platform_sdk/models/process_concept_metric_details_dto.py
 visier_platform_sdk/models/process_concept_metric_list_dto.py
 visier_platform_sdk/models/process_concept_outcome_dto.py
 visier_platform_sdk/models/process_concept_outcome_list_dto.py
@@ -1187,6 +1206,7 @@ visier_platform_sdk/models/profile_assigned_for_local_tenant_dto.py
 visier_platform_sdk/models/profile_assignment_dto.py
 visier_platform_sdk/models/profile_get_api_response_dto.py
 visier_platform_sdk/models/profiles_get_api_response_dto.py
+visier_platform_sdk/models/project_commit_dto.py
 visier_platform_sdk/models/project_commits_api_response_dto.py
 visier_platform_sdk/models/project_dto.py
 visier_platform_sdk/models/project_operation_request_dto.py
@@ -1220,7 +1240,6 @@ visier_platform_sdk/models/push_data_complete_response.py
 visier_platform_sdk/models/push_data_response.py
 visier_platform_sdk/models/push_data_source_definition_dto.py
 visier_platform_sdk/models/push_data_source_definitions_dto.py
-visier_platform_sdk/models/put_project_commits_request.py
 visier_platform_sdk/models/qualtrics_auth_params_dto.py
 visier_platform_sdk/models/query_axis_dto.py
 visier_platform_sdk/models/query_axis_options_dto.py
@@ -1266,6 +1285,7 @@ visier_platform_sdk/models/report_dto.py
 visier_platform_sdk/models/report_list_response_dto.py
 visier_platform_sdk/models/result.py
 visier_platform_sdk/models/role_modules_config_dto.py
+visier_platform_sdk/models/salary_benchmark_feedback_input.py
 visier_platform_sdk/models/salary_benchmark_input.py
 visier_platform_sdk/models/salary_benchmarks_batch_processing_failure_output.py
 visier_platform_sdk/models/salary_benchmarks_batch_processing_outputs.py
@@ -1299,6 +1319,7 @@ visier_platform_sdk/models/sidecar_solution_request_dto.py
 visier_platform_sdk/models/sidecar_solution_settings_dto.py
 visier_platform_sdk/models/simple_document_header_search_response_dto.py
 visier_platform_sdk/models/simple_document_header_search_result_dto.py
+visier_platform_sdk/models/simple_metric_details_dto.py
 visier_platform_sdk/models/simple_property_type_dto.py
 visier_platform_sdk/models/simple_user_dto.py
 visier_platform_sdk/models/single_value_setting_dto.py
@@ -1328,6 +1349,9 @@ visier_platform_sdk/models/start_transfer_response.py
 visier_platform_sdk/models/static_dimension_filter_dto.py
 visier_platform_sdk/models/status.py
 visier_platform_sdk/models/subject_details_dto.py
+visier_platform_sdk/models/subject_member_set_parameter_value_dto.py
+visier_platform_sdk/models/subject_member_set_parameter_value_dto_list_of_name_path_dto.py
+visier_platform_sdk/models/subject_member_set_parameter_value_dto_name_path_dto.py
 visier_platform_sdk/models/subject_missing_access_dto.py
 visier_platform_sdk/models/subject_reference_dto.py
 visier_platform_sdk/models/subject_reference_list_dto.py
@@ -1428,8 +1452,17 @@ visier_platform_sdk/models/vee_conversation_dto.py
 visier_platform_sdk/models/vee_conversation_state_dto.py
 visier_platform_sdk/models/vee_corrections_dto.py
 visier_platform_sdk/models/vee_data_dto.py
+visier_platform_sdk/models/vee_detail_data_dto.py
 visier_platform_sdk/models/vee_feedback_dto.py
 visier_platform_sdk/models/vee_options_dto.py
+visier_platform_sdk/models/vee_question_categories_bulk_change_response_dto.py
+visier_platform_sdk/models/vee_question_categories_change_definitions_dto.py
+visier_platform_sdk/models/vee_question_categories_delete_definitions_dto.py
+visier_platform_sdk/models/vee_question_category_change_definition_dto.py
+visier_platform_sdk/models/vee_question_category_change_definitions_by_tenant_dto.py
+visier_platform_sdk/models/vee_question_category_change_failure_dto.py
+visier_platform_sdk/models/vee_question_category_change_success_dto.py
+visier_platform_sdk/models/vee_question_category_delete_definitions_by_tenant_dto.py
 visier_platform_sdk/models/vee_question_change_definition_dto.py
 visier_platform_sdk/models/vee_question_change_definitions_by_tenant_dto.py
 visier_platform_sdk/models/vee_question_change_failure_dto.py
@@ -1449,6 +1482,7 @@ visier_platform_sdk/models/vee_status_dto.py
 visier_platform_sdk/models/vee_visual_dto.py
 visier_platform_sdk/models/vee_visual_options_dto.py
 visier_platform_sdk/models/version_information_dto.py
+visier_platform_sdk/models/visible_for_selection_dto.py
 visier_platform_sdk/models/webhook_basic_auth_credential_dto.py
 visier_platform_sdk/models/webhook_credentials_dto.py
 visier_platform_sdk/models/webhook_details_dto.py
