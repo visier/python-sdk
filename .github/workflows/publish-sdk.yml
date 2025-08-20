@@ -50,17 +50,10 @@ jobs:
       - name: Check out before merge
         uses: actions/checkout@v4
 
-      - name: Create a token
-        id: create-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-
       - name: Create Pull Request
         id: create_pr
         env:
-          GH_TOKEN: ${{ steps.create-token.outputs.token }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           pr_output=$(gh pr create \
             --title "Auto-generated SDK ${{ github.ref_name }}" \
@@ -73,6 +66,6 @@ jobs:
 
       - name: Merge Pull Request
         env:
-          GH_TOKEN: ${{ steps.create-token.outputs.token }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           gh pr merge ${{ steps.create_pr.outputs.pr_number }} --merge --delete-branch
