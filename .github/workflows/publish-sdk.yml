@@ -16,10 +16,10 @@ on:
         required: true
         default: 'github-action-test'
         type: string
-      publish_package:
+      should_publish_to_pypi:
         description: 'Whether to publish package to PyPI'
         required: false
-        default: true
+        default: false
         type: boolean
 
 # Permissions to create PR, to write changes, to use PyPi auth
@@ -53,7 +53,7 @@ jobs:
           python -m build --outdir ./dist
 
       - name: Publish PyPi package
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.publish_package == 'true' || github.event_name == 'push'
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.should_publish_to_pypi == 'true' || github.event_name == 'push'
         uses: pypa/gh-action-pypi-publish@v1.12.4
         with:
           packages-dir: "src/${{ matrix.package_folder }}/dist"
