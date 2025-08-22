@@ -66,6 +66,9 @@ jobs:
     if: needs.publish_package.result == 'success' && (github.event_name == 'workflow_dispatch' && github.event.inputs.from_branch != github.event.inputs.to_branch)
     name: Merge PR
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
     env:
       SOURCE_BRANCH: ${{ github.event.inputs.from_branch || github.ref_name }}
       TARGET_BRANCH: ${{ github.event.inputs.to_branch || 'main' }}
@@ -76,7 +79,7 @@ jobs:
       - name: Create Pull Request
         id: create_pr
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           pr_output=$(gh pr create \
             --title "Auto-generated SDK from ${{ env.SOURCE_BRANCH }}" \
@@ -89,6 +92,6 @@ jobs:
 
       - name: Merge Pull Request
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh pr merge ${{ steps.create_pr.outputs.pr_number }} --merge --delete-branch
