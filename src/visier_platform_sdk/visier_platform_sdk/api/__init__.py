@@ -22,6 +22,7 @@ from visier_platform_sdk.api.o_auth2_api import OAuth2Api
 from visier_platform_sdk.api.object_configuration_api import ObjectConfigurationApi
 from visier_platform_sdk.api.pgp_keys_api import PGPKeysApi
 from visier_platform_sdk.api.permissions_api import PermissionsApi
+from visier_platform_sdk.api.personalized_alerts_api import PersonalizedAlertsApi
 from visier_platform_sdk.api.plan_administration_api import PlanAdministrationApi
 from visier_platform_sdk.api.plan_data_load_api import PlanDataLoadApi
 from visier_platform_sdk.api.production_versions_api import ProductionVersionsApi
