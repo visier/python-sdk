@@ -1,6 +1,7 @@
 # flake8: noqa
 
 # import apis into api package
+from visier_platform_sdk.api.analytic_objects_v2_api import AnalyticObjectsV2Api
 from visier_platform_sdk.api.basic_authentication_api import BasicAuthenticationApi
 from visier_platform_sdk.api.benchmarks_api import BenchmarksApi
 from visier_platform_sdk.api.concepts_v2_api import ConceptsV2Api
@@ -17,11 +18,13 @@ from visier_platform_sdk.api.direct_data_intake_api import DirectDataIntakeApi
 from visier_platform_sdk.api.email_domains_api import EmailDomainsApi
 from visier_platform_sdk.api.encryption_keys_api import EncryptionKeysApi
 from visier_platform_sdk.api.jobs_library_api import JobsLibraryApi
+from visier_platform_sdk.api.metrics_v2_api import MetricsV2Api
 from visier_platform_sdk.api.network_subnets_api import NetworkSubnetsApi
 from visier_platform_sdk.api.o_auth2_api import OAuth2Api
 from visier_platform_sdk.api.object_configuration_api import ObjectConfigurationApi
 from visier_platform_sdk.api.pgp_keys_api import PGPKeysApi
 from visier_platform_sdk.api.permissions_api import PermissionsApi
+from visier_platform_sdk.api.personalized_alerts_api import PersonalizedAlertsApi
 from visier_platform_sdk.api.plan_administration_api import PlanAdministrationApi
 from visier_platform_sdk.api.plan_data_load_api import PlanDataLoadApi
 from visier_platform_sdk.api.production_versions_api import ProductionVersionsApi
