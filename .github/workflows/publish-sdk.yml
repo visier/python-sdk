@@ -117,6 +117,7 @@ jobs:
             # Extract values
             mergeable=$(echo "$pr_status" | jq -r '.mergeable')
             state=$(echo "$pr_status" | jq -r '.state')
+            echo "Checking: mergeable=$mergeable, state=$state"
             
             if [ "$mergeable" = "MERGEABLE" ] && [ "$state" = "OPEN" ]; then
               echo "PR is ready for merge"
