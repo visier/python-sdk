@@ -62,7 +62,7 @@ jobs:
 
       - name: Publish PyPi package
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.should_publish_to_pypi == 'true' || github.event_name == 'push'
-        uses: pypa/gh-action-pypi-publish@v1.12.4
+        uses: pypa/gh-action-pypi-publish@v1.13.0
         with:
           packages-dir: "src/${{ matrix.package_folder }}/dist"
 
@@ -75,10 +75,8 @@ jobs:
       SOURCE_BRANCH: ${{ github.event.inputs.from_branch || github.ref_name }}
       TARGET_BRANCH: ${{ github.event.inputs.to_branch || 'main' }}
     steps:
-      - name: Check out code
+      - name: Check out before merge
         uses: actions/checkout@v4
-        with:
-          ref: ${{ env.SOURCE_BRANCH }}
 
       - name: Create a token
         id: create-token
@@ -117,7 +115,7 @@ jobs:
             # Extract values
             mergeable=$(echo "$pr_status" | jq -r '.mergeable')
             state=$(echo "$pr_status" | jq -r '.state')
-            echo "Checking: mergeable=$mergeable, state=$state"
+            echo "Extracted variables: mergeable=$mergeable, state=$state"
             
             if [ "$mergeable" = "MERGEABLE" ] && [ "$state" = "OPEN" ]; then
               echo "PR is ready for merge"
