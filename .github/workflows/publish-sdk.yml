@@ -101,34 +101,6 @@ jobs:
           echo "Pull Request #$pr_number created successfully."
           echo "pr_number=$pr_number" >> $GITHUB_OUTPUT
 
-      - name: Wait for PR to be ready
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          for i in {1..5}; do
-            echo "Checking PR status (attempt $i/5)..."
-            
-            # Get PR status details
-            pr_status=$(gh pr view ${{ steps.create_pr.outputs.pr_number }} --json mergeable,state,mergeStateStatus --jq '{mergeable: .mergeable, state: .state, mergeStateStatus: .mergeStateStatus}')
-            echo "PR Status: $pr_status"
-            
-            # Extract values
-            mergeable=$(echo "$pr_status" | jq -r '.mergeable')
-            state=$(echo "$pr_status" | jq -r '.state')
-            echo "Extracted variables: mergeable=$mergeable, state=$state"
-            
-            if [ "$mergeable" = "MERGEABLE" ] && [ "$state" = "OPEN" ]; then
-              echo "PR is ready for merge"
-              exit 0
-            fi
-            
-            echo "PR not ready, waiting 5 seconds..."
-            sleep 5
-          done
-          
-          echo "ERROR: PR is not ready after 25 seconds"
-          exit 1
-
       - name: Merge Pull Request
         env:
           GITHUB_TOKEN: ${{ steps.create-token.outputs.token }}
