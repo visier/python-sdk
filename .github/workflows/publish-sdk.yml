@@ -21,6 +21,11 @@ on:
         required: false
         default: false
         type: boolean
+      should_create_and_merge_pr:
+        description: 'Whether to create and merge pull request'
+        required: false
+        default: false
+        type: boolean
 
 # Permissions to create PR, to write changes, to use PyPi auth
 permissions:
@@ -57,13 +62,13 @@ jobs:
 
       - name: Publish PyPi package
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.should_publish_to_pypi == 'true' || github.event_name == 'push'
-        uses: pypa/gh-action-pypi-publish@v1.12.4
+        uses: pypa/gh-action-pypi-publish@v1.13.0
         with:
           packages-dir: "src/${{ matrix.package_folder }}/dist"
 
   create_and_merge_pr:
     needs: publish_package
-    if: needs.publish_package.result == 'success' && (github.event_name == 'workflow_dispatch' && github.event.inputs.from_branch != github.event.inputs.to_branch)
+    if: needs.publish_package.result == 'success' && (github.event_name == 'workflow_dispatch' && github.event.inputs.should_create_and_merge_pr == 'true' || github.event_name == 'push')
     name: Merge PR
     runs-on: ubuntu-latest
     env:
@@ -73,10 +78,19 @@ jobs:
       - name: Check out before merge
         uses: actions/checkout@v4
 
+      - name: Create a token
+        id: create-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: python-sdk
+
       - name: Create Pull Request
         id: create_pr
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.create-token.outputs.token }}
         run: |
           pr_output=$(gh pr create \
             --title "Auto-generated SDK from ${{ env.SOURCE_BRANCH }}" \
@@ -89,6 +103,6 @@ jobs:
 
       - name: Merge Pull Request
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.create-token.outputs.token }}
         run: |
           gh pr merge ${{ steps.create_pr.outputs.pr_number }} --merge --delete-branch
