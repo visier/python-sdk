@@ -114,7 +114,11 @@ jobs:
             pr_status=$(gh pr view ${{ steps.create_pr.outputs.pr_number }} --json mergeable,state,mergeStateStatus --jq '{mergeable: .mergeable, state: .state, mergeStateStatus: .mergeStateStatus}')
             echo "PR Status: $pr_status"
             
-            if echo "$pr_status" | jq '.mergeable == true and .state == "OPEN"' | grep -q true; then
+            # Extract values
+            mergeable=$(echo "$pr_status" | jq -r '.mergeable')
+            state=$(echo "$pr_status" | jq -r '.state')
+            
+            if [ "$mergeable" = "MERGEABLE" ] && [ "$state" = "OPEN" ]; then
               echo "PR is ready for merge"
               exit 0
             fi
