@@ -108,10 +108,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           for i in {1..5}; do
-            if gh pr view ${{ steps.create_pr.outputs.pr_number }} --json mergeable,state --jq '.mergeable == true and .state == "OPEN"' | grep -q true; then
+            echo "Checking PR status (attempt $i/5)..."
+            
+            # Get PR status details
+            pr_status=$(gh pr view ${{ steps.create_pr.outputs.pr_number }} --json mergeable,state,mergeStateStatus --jq '{mergeable: .mergeable, state: .state, mergeStateStatus: .mergeStateStatus}')
+            echo "PR Status: $pr_status"
+            
+            if echo "$pr_status" | jq '.mergeable == true and .state == "OPEN"' | grep -q true; then
               echo "PR is ready for merge"
               exit 0
             fi
+            
+            echo "PR not ready, waiting 5 seconds..."
             sleep 5
           done
           
