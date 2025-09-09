@@ -13,6 +13,7 @@
 """  # noqa: E501
 
 
+import base64
 import copy
 import http.client as httplib
 import logging
@@ -37,6 +38,8 @@ from wsgiref.simple_server import make_server
 import urllib3
 from flask import Flask, request
 from pydantic import BaseModel
+
+from visier_platform_sdk.exceptions import ApiException
 
 VISIER_USERNAME='VISIER_USERNAME'
 VISIER_PASSWORD='VISIER_PASSWORD'
@@ -480,7 +483,7 @@ class Configuration:
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 22222222.99201.2176\n"\
-               "SDK Package Version: 22222222.99201.2176.post2".\
+               "SDK Package Version: 22222222.99201.2176.post3".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
