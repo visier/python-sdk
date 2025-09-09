@@ -77,6 +77,9 @@ jobs:
     steps:
       - name: Check out before merge
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ env.TARGET_BRANCH }}
 
       - name: Create a token
         id: create-token
