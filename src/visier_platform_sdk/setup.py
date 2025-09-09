@@ -22,7 +22,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "visier-platform-sdk"
-VERSION = "22222222.99201.2176.post1"
+VERSION = "22222222.99201.2176.post2"
 PYTHON_REQUIRES = ">= 3.10"
 REQUIRES = [
     # Workaround to fix urllib3 version conflict with `vcrpy` while using `uv` and `poetry`.
