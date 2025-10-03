@@ -223,8 +223,7 @@ test/test_dv_export_status.py
 test/test_dynamic_dimension_filter_dto.py
 test/test_dynamic_property_mapping_dto.py
 test/test_echo_auth_params_dto.py
-test/test_echo_basic_params_dto.py
-test/test_echo_o_auth_params_dto.py
+test/test_echo_basic_auth_dto.py
 test/test_element_ids_dto.py
 test/test_email_domains_api.py
 test/test_email_domains_dto.py
@@ -1070,8 +1069,7 @@ visier_platform_sdk/models/dv_export_status.py
 visier_platform_sdk/models/dynamic_dimension_filter_dto.py
 visier_platform_sdk/models/dynamic_property_mapping_dto.py
 visier_platform_sdk/models/echo_auth_params_dto.py
-visier_platform_sdk/models/echo_basic_params_dto.py
-visier_platform_sdk/models/echo_o_auth_params_dto.py
+visier_platform_sdk/models/echo_basic_auth_dto.py
 visier_platform_sdk/models/element_ids_dto.py
 visier_platform_sdk/models/email_domains_dto.py
 visier_platform_sdk/models/end_collaboration_action_payload.py
