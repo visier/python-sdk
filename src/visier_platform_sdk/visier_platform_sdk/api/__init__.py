@@ -38,6 +38,7 @@ from visier_platform_sdk.api.skills_library_api import SkillsLibraryApi
 from visier_platform_sdk.api.source_files_download_api import SourceFilesDownloadApi
 from visier_platform_sdk.api.sources_api import SourcesApi
 from visier_platform_sdk.api.system_status_api import SystemStatusApi
+from visier_platform_sdk.api.table_source_api import TableSourceApi
 from visier_platform_sdk.api.tenants_v1_api import TenantsV1Api
 from visier_platform_sdk.api.tenants_v2_api import TenantsV2Api
 from visier_platform_sdk.api.user_groups_v2_api import UserGroupsV2Api
