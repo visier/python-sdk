@@ -68,6 +68,7 @@ test/test_between_rule_dto.py
 test/test_big_query_auth_params_dto.py
 test/test_big_query_service_account_params_dto.py
 test/test_bulk_change_response_dto.py
+test/test_bulk_data_access_set_delete_request_dto.py
 test/test_bulk_data_access_set_request_dto.py
 test/test_bulk_data_access_set_response_dto.py
 test/test_business_location_dto.py
@@ -135,6 +136,7 @@ test/test_currency_rate_dto.py
 test/test_currency_rates_dto.py
 test/test_custom_property_dto.py
 test/test_custom_tenant_property_dto.py
+test/test_data_access_set_delete_dto.py
 test/test_data_access_set_dto.py
 test/test_data_access_set_error_dto.py
 test/test_data_access_set_failure_dto.py
@@ -945,6 +947,7 @@ visier_platform_sdk/models/between_rule_dto.py
 visier_platform_sdk/models/big_query_auth_params_dto.py
 visier_platform_sdk/models/big_query_service_account_params_dto.py
 visier_platform_sdk/models/bulk_change_response_dto.py
+visier_platform_sdk/models/bulk_data_access_set_delete_request_dto.py
 visier_platform_sdk/models/bulk_data_access_set_request_dto.py
 visier_platform_sdk/models/bulk_data_access_set_response_dto.py
 visier_platform_sdk/models/business_location_dto.py
@@ -1010,6 +1013,7 @@ visier_platform_sdk/models/currency_rate_dto.py
 visier_platform_sdk/models/currency_rates_dto.py
 visier_platform_sdk/models/custom_property_dto.py
 visier_platform_sdk/models/custom_tenant_property_dto.py
+visier_platform_sdk/models/data_access_set_delete_dto.py
 visier_platform_sdk/models/data_access_set_dto.py
 visier_platform_sdk/models/data_access_set_error_dto.py
 visier_platform_sdk/models/data_access_set_failure_dto.py
