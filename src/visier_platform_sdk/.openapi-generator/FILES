@@ -818,6 +818,8 @@ test/test_vee_question_dto.py
 test/test_vee_questions_bulk_change_response_dto.py
 test/test_vee_questions_change_definitions_dto.py
 test/test_vee_questions_delete_definitions_dto.py
+test/test_vee_related_document_dto.py
+test/test_vee_related_document_list_dto.py
 test/test_vee_response_dto.py
 test/test_vee_response_schema_dto.py
 test/test_vee_response_schema_reference_dto.py
@@ -1672,6 +1674,8 @@ visier_platform_sdk/models/vee_question_dto.py
 visier_platform_sdk/models/vee_questions_bulk_change_response_dto.py
 visier_platform_sdk/models/vee_questions_change_definitions_dto.py
 visier_platform_sdk/models/vee_questions_delete_definitions_dto.py
+visier_platform_sdk/models/vee_related_document_dto.py
+visier_platform_sdk/models/vee_related_document_list_dto.py
 visier_platform_sdk/models/vee_response_dto.py
 visier_platform_sdk/models/vee_response_schema_dto.py
 visier_platform_sdk/models/vee_response_schema_reference_dto.py
