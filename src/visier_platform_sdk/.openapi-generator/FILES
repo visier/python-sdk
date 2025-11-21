@@ -178,7 +178,6 @@ test/test_date_range_dto.py
 test/test_dayforce_v2_auth_params_dto.py
 test/test_delete_email_domains_dto.py
 test/test_delete_permissions_request_dto.py
-test/test_delete_user_group_v2_request.py
 test/test_dependent_dto.py
 test/test_derived_metric_details_dto.py
 test/test_description_entry.py
@@ -1067,7 +1066,6 @@ visier_platform_sdk/models/date_range_dto.py
 visier_platform_sdk/models/dayforce_v2_auth_params_dto.py
 visier_platform_sdk/models/delete_email_domains_dto.py
 visier_platform_sdk/models/delete_permissions_request_dto.py
-visier_platform_sdk/models/delete_user_group_v2_request.py
 visier_platform_sdk/models/dependent_dto.py
 visier_platform_sdk/models/derived_metric_details_dto.py
 visier_platform_sdk/models/description_entry.py
