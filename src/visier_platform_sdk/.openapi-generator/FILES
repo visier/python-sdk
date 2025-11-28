@@ -521,7 +521,10 @@ test/test_push_data_source_definition_dto.py
 test/test_push_data_source_definitions_dto.py
 test/test_qualtrics_auth_params_dto.py
 test/test_query_axis_dto.py
+test/test_query_axis_limit_dto.py
 test/test_query_axis_options_dto.py
+test/test_query_axis_sort_and_limit_options_dto.py
+test/test_query_axis_sort_dto.py
 test/test_query_dimension_data_member_selection_dto.py
 test/test_query_dimension_leaf_selection_dto.py
 test/test_query_dimension_level_property_dto.py
@@ -657,6 +660,7 @@ test/test_sql_source_process_action_dto.py
 test/test_sql_source_query_action_dto.py
 test/test_sql_source_query_output_dto.py
 test/test_sql_source_replace_action_dto.py
+test/test_sql_source_reset_action_dto.py
 test/test_sql_source_set_metadata_action_dto.py
 test/test_sql_source_table_dto.py
 test/test_sql_source_table_list_response_dto.py
@@ -1391,7 +1395,10 @@ visier_platform_sdk/models/push_data_source_definition_dto.py
 visier_platform_sdk/models/push_data_source_definitions_dto.py
 visier_platform_sdk/models/qualtrics_auth_params_dto.py
 visier_platform_sdk/models/query_axis_dto.py
+visier_platform_sdk/models/query_axis_limit_dto.py
 visier_platform_sdk/models/query_axis_options_dto.py
+visier_platform_sdk/models/query_axis_sort_and_limit_options_dto.py
+visier_platform_sdk/models/query_axis_sort_dto.py
 visier_platform_sdk/models/query_dimension_data_member_selection_dto.py
 visier_platform_sdk/models/query_dimension_leaf_selection_dto.py
 visier_platform_sdk/models/query_dimension_level_property_dto.py
@@ -1521,6 +1528,7 @@ visier_platform_sdk/models/sql_source_process_action_dto.py
 visier_platform_sdk/models/sql_source_query_action_dto.py
 visier_platform_sdk/models/sql_source_query_output_dto.py
 visier_platform_sdk/models/sql_source_replace_action_dto.py
+visier_platform_sdk/models/sql_source_reset_action_dto.py
 visier_platform_sdk/models/sql_source_set_metadata_action_dto.py
 visier_platform_sdk/models/sql_source_table_dto.py
 visier_platform_sdk/models/sql_source_table_list_response_dto.py
