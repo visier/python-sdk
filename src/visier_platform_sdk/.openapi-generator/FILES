@@ -240,6 +240,8 @@ test/test_event_alert_dto.py
 test/test_event_alert_notification_result_alert_details_dto.py
 test/test_event_alert_notification_result_dto.py
 test/test_event_alert_notification_results_dto.py
+test/test_event_alert_related_analysis_dto.py
+test/test_event_alert_related_content_dto.py
 test/test_event_alert_trigger_criteria_dto.py
 test/test_event_details_dto.py
 test/test_exclude_data_uploads_request.py
@@ -1127,6 +1129,8 @@ visier_platform_sdk/models/event_alert_dto.py
 visier_platform_sdk/models/event_alert_notification_result_alert_details_dto.py
 visier_platform_sdk/models/event_alert_notification_result_dto.py
 visier_platform_sdk/models/event_alert_notification_results_dto.py
+visier_platform_sdk/models/event_alert_related_analysis_dto.py
+visier_platform_sdk/models/event_alert_related_content_dto.py
 visier_platform_sdk/models/event_alert_trigger_criteria_dto.py
 visier_platform_sdk/models/event_details_dto.py
 visier_platform_sdk/models/exclude_data_uploads_request.py
