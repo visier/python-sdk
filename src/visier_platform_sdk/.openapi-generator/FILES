@@ -71,6 +71,7 @@ test/test_bulk_change_response_dto.py
 test/test_bulk_data_access_set_delete_request_dto.py
 test/test_bulk_data_access_set_request_dto.py
 test/test_bulk_data_access_set_response_dto.py
+test/test_bulk_data_access_set_revert_request_dto.py
 test/test_business_location_dto.py
 test/test_calculated_property_type_dto.py
 test/test_calculated_selection_concept_dto.py
@@ -137,10 +138,10 @@ test/test_currency_rate_dto.py
 test/test_currency_rates_dto.py
 test/test_custom_property_dto.py
 test/test_custom_tenant_property_dto.py
-test/test_data_access_set_delete_dto.py
 test/test_data_access_set_dto.py
 test/test_data_access_set_error_dto.py
 test/test_data_access_set_failure_dto.py
+test/test_data_access_set_id_dto.py
 test/test_data_access_set_success_dto.py
 test/test_data_and_job_handling_api.py
 test/test_data_categories_response_dto.py
@@ -576,6 +577,7 @@ test/test_report_dto.py
 test/test_report_list_response_dto.py
 test/test_reporting_api.py
 test/test_result.py
+test/test_revert_permissions_request_dto.py
 test/test_role_modules_config_dto.py
 test/test_rule_dto.py
 test/test_rule_set_dto.py
@@ -716,6 +718,7 @@ test/test_tenant_detail_apidto.py
 test/test_tenant_details_traits_dto.py
 test/test_tenant_encryption_key_details_dto.py
 test/test_tenant_encryption_key_dto.py
+test/test_tenant_industry_info_dto.py
 test/test_tenant_management_api_get_response_dto.py
 test/test_tenant_management_api_list_response_dto.py
 test/test_tenant_management_api_update_request_dto.py
@@ -973,6 +976,7 @@ visier_platform_sdk/models/bulk_change_response_dto.py
 visier_platform_sdk/models/bulk_data_access_set_delete_request_dto.py
 visier_platform_sdk/models/bulk_data_access_set_request_dto.py
 visier_platform_sdk/models/bulk_data_access_set_response_dto.py
+visier_platform_sdk/models/bulk_data_access_set_revert_request_dto.py
 visier_platform_sdk/models/business_location_dto.py
 visier_platform_sdk/models/calculated_property_type_dto.py
 visier_platform_sdk/models/calculated_selection_concept_dto.py
@@ -1037,10 +1041,10 @@ visier_platform_sdk/models/currency_rate_dto.py
 visier_platform_sdk/models/currency_rates_dto.py
 visier_platform_sdk/models/custom_property_dto.py
 visier_platform_sdk/models/custom_tenant_property_dto.py
-visier_platform_sdk/models/data_access_set_delete_dto.py
 visier_platform_sdk/models/data_access_set_dto.py
 visier_platform_sdk/models/data_access_set_error_dto.py
 visier_platform_sdk/models/data_access_set_failure_dto.py
+visier_platform_sdk/models/data_access_set_id_dto.py
 visier_platform_sdk/models/data_access_set_success_dto.py
 visier_platform_sdk/models/data_categories_response_dto.py
 visier_platform_sdk/models/data_category_response_dto.py
@@ -1450,6 +1454,7 @@ visier_platform_sdk/models/report_delete_success_dto.py
 visier_platform_sdk/models/report_dto.py
 visier_platform_sdk/models/report_list_response_dto.py
 visier_platform_sdk/models/result.py
+visier_platform_sdk/models/revert_permissions_request_dto.py
 visier_platform_sdk/models/role_modules_config_dto.py
 visier_platform_sdk/models/rule_dto.py
 visier_platform_sdk/models/rule_set_dto.py
@@ -1584,6 +1589,7 @@ visier_platform_sdk/models/tenant_detail_apidto.py
 visier_platform_sdk/models/tenant_details_traits_dto.py
 visier_platform_sdk/models/tenant_encryption_key_details_dto.py
 visier_platform_sdk/models/tenant_encryption_key_dto.py
+visier_platform_sdk/models/tenant_industry_info_dto.py
 visier_platform_sdk/models/tenant_management_api_get_response_dto.py
 visier_platform_sdk/models/tenant_management_api_list_response_dto.py
 visier_platform_sdk/models/tenant_management_api_update_request_dto.py
