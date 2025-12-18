@@ -1,8 +1,7 @@
-# Visier Platform Python SDK (Beta)
+# Visier Platform Python SDK
 Welcome to the Visier Platform Python SDK! This SDK provides a convenient way to interact with Visier's public APIs.
 
 **Note:**
-- This SDK is currently in beta. You may encounter issues while using it.
 - This SDK supports Python 3.9 and above.
 
 ## Overview
