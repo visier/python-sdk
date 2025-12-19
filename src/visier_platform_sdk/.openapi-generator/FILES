@@ -369,6 +369,9 @@ test/test_namely_auth_params_dto.py
 test/test_network_subnets_api.py
 test/test_network_subnets_message_request.py
 test/test_network_subnets_message_response.py
+test/test_non_versioned_sync_error_dto.py
+test/test_non_versioned_sync_request_dto.py
+test/test_non_versioned_sync_response_dto.py
 test/test_numeric_parameter_definition_dto.py
 test/test_numeric_parameter_value_dto.py
 test/test_numeric_range_dto.py
@@ -636,6 +639,7 @@ test/test_slack_auth_params_dto.py
 test/test_snapshot_query_execution_dto.py
 test/test_snapshot_query_execution_options_dto.py
 test/test_snowflake_auth_params_dto.py
+test/test_snowflake_v2_auth_params_dto.py
 test/test_sort_option_dto.py
 test/test_source.py
 test/test_source_file_response_dto.py
@@ -1258,6 +1262,9 @@ visier_platform_sdk/models/my_sql_auth_params_dto.py
 visier_platform_sdk/models/namely_auth_params_dto.py
 visier_platform_sdk/models/network_subnets_message_request.py
 visier_platform_sdk/models/network_subnets_message_response.py
+visier_platform_sdk/models/non_versioned_sync_error_dto.py
+visier_platform_sdk/models/non_versioned_sync_request_dto.py
+visier_platform_sdk/models/non_versioned_sync_response_dto.py
 visier_platform_sdk/models/numeric_parameter_definition_dto.py
 visier_platform_sdk/models/numeric_parameter_value_dto.py
 visier_platform_sdk/models/numeric_range_dto.py
@@ -1510,6 +1517,7 @@ visier_platform_sdk/models/slack_auth_params_dto.py
 visier_platform_sdk/models/snapshot_query_execution_dto.py
 visier_platform_sdk/models/snapshot_query_execution_options_dto.py
 visier_platform_sdk/models/snowflake_auth_params_dto.py
+visier_platform_sdk/models/snowflake_v2_auth_params_dto.py
 visier_platform_sdk/models/sort_option_dto.py
 visier_platform_sdk/models/source.py
 visier_platform_sdk/models/source_file_response_dto.py
