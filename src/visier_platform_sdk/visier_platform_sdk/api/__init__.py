@@ -17,7 +17,6 @@ from visier_platform_sdk.api.dimensions_v2_api import DimensionsV2Api
 from visier_platform_sdk.api.direct_data_intake_api import DirectDataIntakeApi
 from visier_platform_sdk.api.email_domains_api import EmailDomainsApi
 from visier_platform_sdk.api.encryption_keys_api import EncryptionKeysApi
-from visier_platform_sdk.api.jobs_library_api import JobsLibraryApi
 from visier_platform_sdk.api.metrics_v2_api import MetricsV2Api
 from visier_platform_sdk.api.network_subnets_api import NetworkSubnetsApi
 from visier_platform_sdk.api.o_auth2_api import OAuth2Api
@@ -34,7 +33,6 @@ from visier_platform_sdk.api.release_version_configuration_api import ReleaseVer
 from visier_platform_sdk.api.reporting_api import ReportingApi
 from visier_platform_sdk.api.search_api import SearchApi
 from visier_platform_sdk.api.sidecar_solutions_api import SidecarSolutionsApi
-from visier_platform_sdk.api.skills_library_api import SkillsLibraryApi
 from visier_platform_sdk.api.source_files_download_api import SourceFilesDownloadApi
 from visier_platform_sdk.api.sources_api import SourcesApi
 from visier_platform_sdk.api.system_status_api import SystemStatusApi
