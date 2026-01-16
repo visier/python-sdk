@@ -119,6 +119,7 @@ test/test_connector_info_response_dto.py
 test/test_connector_setting_request_dto.py
 test/test_connector_setting_response_dto.py
 test/test_connector_settings_response_dto.py
+test/test_connector_version_dto.py
 test/test_consolidate_action_payload.py
 test/test_consolidated_analytics_api.py
 test/test_consolidated_analytics_api_excluded_source_list_dto.py
@@ -138,6 +139,7 @@ test/test_currency_rate_dto.py
 test/test_currency_rates_dto.py
 test/test_custom_member_set_selection_dto.py
 test/test_custom_property_dto.py
+test/test_custom_property_list_dto.py
 test/test_custom_tenant_property_dto.py
 test/test_data_access_set_dto.py
 test/test_data_access_set_error_dto.py
@@ -1015,6 +1017,7 @@ visier_platform_sdk/models/connector_info_response_dto.py
 visier_platform_sdk/models/connector_setting_request_dto.py
 visier_platform_sdk/models/connector_setting_response_dto.py
 visier_platform_sdk/models/connector_settings_response_dto.py
+visier_platform_sdk/models/connector_version_dto.py
 visier_platform_sdk/models/consolidate_action_payload.py
 visier_platform_sdk/models/consolidated_analytics_api_excluded_source_list_dto.py
 visier_platform_sdk/models/consolidated_analytics_api_source_tenant_list_dto.py
@@ -1033,6 +1036,7 @@ visier_platform_sdk/models/currency_rate_dto.py
 visier_platform_sdk/models/currency_rates_dto.py
 visier_platform_sdk/models/custom_member_set_selection_dto.py
 visier_platform_sdk/models/custom_property_dto.py
+visier_platform_sdk/models/custom_property_list_dto.py
 visier_platform_sdk/models/custom_tenant_property_dto.py
 visier_platform_sdk/models/data_access_set_dto.py
 visier_platform_sdk/models/data_access_set_error_dto.py
