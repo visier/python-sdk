@@ -793,7 +793,6 @@ test/test_v2_dimension_dto.py
 test/test_v2_level_dto.py
 test/test_v2_simple_property_type_dto.py
 test/test_validity_range_dto.py
-test/test_vee_api.py
 test/test_vee_category_basic_information_dto.py
 test/test_vee_clarification_dto.py
 test/test_vee_conversation_dto.py
@@ -829,8 +828,12 @@ test/test_vee_response_schema_dto.py
 test/test_vee_response_schema_reference_dto.py
 test/test_vee_sample_question_dto.py
 test/test_vee_sample_question_library_dto.py
+test/test_vee_sample_question_library_v2_dto.py
+test/test_vee_sample_question_v2_dto.py
 test/test_vee_status_code_dto.py
 test/test_vee_status_dto.py
+test/test_vee_v1_api.py
+test/test_vee_v2_api.py
 test/test_vee_visual_dto.py
 test/test_vee_visual_options_dto.py
 test/test_version_information_dto.py
@@ -899,7 +902,8 @@ visier_platform_sdk/api/user_groups_v2_api.py
 visier_platform_sdk/api/users_v1_api.py
 visier_platform_sdk/api/users_v2_api.py
 visier_platform_sdk/api/users_v3_api.py
-visier_platform_sdk/api/vee_api.py
+visier_platform_sdk/api/vee_v1_api.py
+visier_platform_sdk/api/vee_v2_api.py
 visier_platform_sdk/api/webhooks_api.py
 visier_platform_sdk/api_client.py
 visier_platform_sdk/api_response.py
@@ -1689,6 +1693,8 @@ visier_platform_sdk/models/vee_response_schema_dto.py
 visier_platform_sdk/models/vee_response_schema_reference_dto.py
 visier_platform_sdk/models/vee_sample_question_dto.py
 visier_platform_sdk/models/vee_sample_question_library_dto.py
+visier_platform_sdk/models/vee_sample_question_library_v2_dto.py
+visier_platform_sdk/models/vee_sample_question_v2_dto.py
 visier_platform_sdk/models/vee_status_code_dto.py
 visier_platform_sdk/models/vee_status_dto.py
 visier_platform_sdk/models/vee_visual_dto.py
