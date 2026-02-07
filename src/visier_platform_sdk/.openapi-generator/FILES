@@ -646,7 +646,6 @@ test/test_sql_like_query_execution_dto.py
 test/test_sql_server_auth_params_dto.py
 test/test_sql_source_action_dto.py
 test/test_sql_source_begin_transaction_request_dto.py
-test/test_sql_source_capture_changes_action_dto.py
 test/test_sql_source_column_dto.py
 test/test_sql_source_execute_job_request_dto.py
 test/test_sql_source_execute_job_response_dto.py
@@ -1519,7 +1518,6 @@ visier_platform_sdk/models/sql_like_query_execution_dto.py
 visier_platform_sdk/models/sql_server_auth_params_dto.py
 visier_platform_sdk/models/sql_source_action_dto.py
 visier_platform_sdk/models/sql_source_begin_transaction_request_dto.py
-visier_platform_sdk/models/sql_source_capture_changes_action_dto.py
 visier_platform_sdk/models/sql_source_column_dto.py
 visier_platform_sdk/models/sql_source_execute_job_request_dto.py
 visier_platform_sdk/models/sql_source_execute_job_response_dto.py
