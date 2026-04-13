@@ -43,6 +43,7 @@ from visier_platform_sdk.api.user_groups_v2_api import UserGroupsV2Api
 from visier_platform_sdk.api.users_v1_api import UsersV1Api
 from visier_platform_sdk.api.users_v2_api import UsersV2Api
 from visier_platform_sdk.api.users_v3_api import UsersV3Api
+from visier_platform_sdk.api.vee_configuration_api import VeeConfigurationApi
 from visier_platform_sdk.api.vee_v1_api import VeeV1Api
 from visier_platform_sdk.api.vee_v2_api import VeeV2Api
 from visier_platform_sdk.api.webhooks_api import WebhooksApi
