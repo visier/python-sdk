@@ -734,6 +734,7 @@ test/test_tenant_data_uploads_response_dto.py
 test/test_tenant_data_uploads_update_response_dto.py
 test/test_tenant_detail_apidto.py
 test/test_tenant_details_traits_dto.py
+test/test_tenant_encryption_key_detail_list_dto.py
 test/test_tenant_encryption_key_details_dto.py
 test/test_tenant_encryption_key_dto.py
 test/test_tenant_industry_info_dto.py
@@ -1634,6 +1635,7 @@ visier_platform_sdk/models/tenant_data_uploads_response_dto.py
 visier_platform_sdk/models/tenant_data_uploads_update_response_dto.py
 visier_platform_sdk/models/tenant_detail_apidto.py
 visier_platform_sdk/models/tenant_details_traits_dto.py
+visier_platform_sdk/models/tenant_encryption_key_detail_list_dto.py
 visier_platform_sdk/models/tenant_encryption_key_details_dto.py
 visier_platform_sdk/models/tenant_encryption_key_dto.py
 visier_platform_sdk/models/tenant_industry_info_dto.py
