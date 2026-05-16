@@ -55,6 +55,8 @@ test/test_assign_revoke_permission_by_user_dto.py
 test/test_assign_revoke_permission_request_dto.py
 test/test_assign_revoke_permissions_request_dto.py
 test/test_assign_revoke_permissions_response_dto.py
+test/test_assign_subplan_action_payload.py
+test/test_assign_subplans_action_payload.py
 test/test_assigned_credential_info_response_dto.py
 test/test_bamboo_auth_params_dto.py
 test/test_basic_authentication_api.py
@@ -150,6 +152,22 @@ test/test_data_access_set_success_dto.py
 test/test_data_and_job_handling_api.py
 test/test_data_categories_response_dto.py
 test/test_data_category_response_dto.py
+test/test_data_export_connector.py
+test/test_data_export_connector_credential.py
+test/test_data_export_connector_credential_list_response.py
+test/test_data_export_connector_credential_parameters.py
+test/test_data_export_connector_credential_parameters_with_databricks.py
+test/test_data_export_connector_credential_parameters_with_snowflake.py
+test/test_data_export_connector_credential_validation_created.py
+test/test_data_export_connector_credential_validation_error.py
+test/test_data_export_connector_credential_validation_request.py
+test/test_data_export_connector_credential_validation_request_with_id.py
+test/test_data_export_connector_credential_validation_request_with_parameters.py
+test/test_data_export_connector_credential_validation_response.py
+test/test_data_export_connector_job_dispatched.py
+test/test_data_export_connector_link.py
+test/test_data_export_connector_list_response.py
+test/test_data_export_connectors_api_api.py
 test/test_data_intake_api.py
 test/test_data_load_request.py
 test/test_data_load_request_model.py
@@ -191,6 +209,7 @@ test/test_data_version_export_table_dto.py
 test/test_data_version_exports_dto.py
 test/test_data_version_object.py
 test/test_databricks_auth_params_dto.py
+test/test_databricks_credential_parameters.py
 test/test_date_range_dto.py
 test/test_dayforce_v2_auth_params_dto.py
 test/test_delete_email_domains_dto.py
@@ -266,6 +285,7 @@ test/test_exclude_data_uploads_request.py
 test/test_excluded_sources_body.py
 test/test_execution_context_dto.py
 test/test_export_production_versions_api_operation_parameters_dto.py
+test/test_export_sources_parameters_dto.py
 test/test_extract_data_and_load_dto.py
 test/test_extraction_job.py
 test/test_extraction_job_and_status_response.py
@@ -333,6 +353,7 @@ test/test_level_list_dto.py
 test/test_leveled_details_dto.py
 test/test_lever_auth_params_dto.py
 test/test_lineage_dto.py
+test/test_linked_data_export.py
 test/test_list_query_execution_dto.py
 test/test_list_query_execution_options_dto.py
 test/test_list_query_source_dto.py
@@ -440,6 +461,7 @@ test/test_plan_info_dto.py
 test/test_plan_item_dto.py
 test/test_plan_parameter_definition_dto.py
 test/test_plan_parameter_value_dto.py
+test/test_plan_patch_assign_subplan_action_request.py
 test/test_plan_patch_consolidate_action_request.py
 test/test_plan_patch_end_collaboration_action_request.py
 test/test_plan_patch_reopen_action_request.py
@@ -456,6 +478,7 @@ test/test_plan_segment_level_member_list_dto.py
 test/test_plan_time_period_dto.py
 test/test_plan_with_schema_dto.py
 test/test_planning_concept_filter_context_dto.py
+test/test_planning_dimension_member.py
 test/test_planning_hierarchy_filter_context_dto.py
 test/test_planning_model_dto.py
 test/test_planning_models_dto.py
@@ -647,6 +670,7 @@ test/test_slack_auth_params_dto.py
 test/test_snapshot_query_execution_dto.py
 test/test_snapshot_query_execution_options_dto.py
 test/test_snowflake_auth_params_dto.py
+test/test_snowflake_credential_parameters.py
 test/test_snowflake_v2_auth_params_dto.py
 test/test_sort_option_dto.py
 test/test_source.py
@@ -896,6 +920,7 @@ visier_platform_sdk/api/benchmarks_api.py
 visier_platform_sdk/api/concepts_v2_api.py
 visier_platform_sdk/api/consolidated_analytics_api.py
 visier_platform_sdk/api/data_and_job_handling_api.py
+visier_platform_sdk/api/data_export_connectors_api_api.py
 visier_platform_sdk/api/data_intake_api.py
 visier_platform_sdk/api/data_model_api.py
 visier_platform_sdk/api/data_query_api.py
@@ -991,6 +1016,8 @@ visier_platform_sdk/models/assign_revoke_permission_by_user_dto.py
 visier_platform_sdk/models/assign_revoke_permission_request_dto.py
 visier_platform_sdk/models/assign_revoke_permissions_request_dto.py
 visier_platform_sdk/models/assign_revoke_permissions_response_dto.py
+visier_platform_sdk/models/assign_subplan_action_payload.py
+visier_platform_sdk/models/assign_subplans_action_payload.py
 visier_platform_sdk/models/assigned_credential_info_response_dto.py
 visier_platform_sdk/models/bamboo_auth_params_dto.py
 visier_platform_sdk/models/basic_information_dto.py
@@ -1081,6 +1108,21 @@ visier_platform_sdk/models/data_access_set_id_dto.py
 visier_platform_sdk/models/data_access_set_success_dto.py
 visier_platform_sdk/models/data_categories_response_dto.py
 visier_platform_sdk/models/data_category_response_dto.py
+visier_platform_sdk/models/data_export_connector.py
+visier_platform_sdk/models/data_export_connector_credential.py
+visier_platform_sdk/models/data_export_connector_credential_list_response.py
+visier_platform_sdk/models/data_export_connector_credential_parameters.py
+visier_platform_sdk/models/data_export_connector_credential_parameters_with_databricks.py
+visier_platform_sdk/models/data_export_connector_credential_parameters_with_snowflake.py
+visier_platform_sdk/models/data_export_connector_credential_validation_created.py
+visier_platform_sdk/models/data_export_connector_credential_validation_error.py
+visier_platform_sdk/models/data_export_connector_credential_validation_request.py
+visier_platform_sdk/models/data_export_connector_credential_validation_request_with_id.py
+visier_platform_sdk/models/data_export_connector_credential_validation_request_with_parameters.py
+visier_platform_sdk/models/data_export_connector_credential_validation_response.py
+visier_platform_sdk/models/data_export_connector_job_dispatched.py
+visier_platform_sdk/models/data_export_connector_link.py
+visier_platform_sdk/models/data_export_connector_list_response.py
 visier_platform_sdk/models/data_load_request.py
 visier_platform_sdk/models/data_load_request_model.py
 visier_platform_sdk/models/data_load_response.py
@@ -1117,6 +1159,7 @@ visier_platform_sdk/models/data_version_export_table_dto.py
 visier_platform_sdk/models/data_version_exports_dto.py
 visier_platform_sdk/models/data_version_object.py
 visier_platform_sdk/models/databricks_auth_params_dto.py
+visier_platform_sdk/models/databricks_credential_parameters.py
 visier_platform_sdk/models/date_range_dto.py
 visier_platform_sdk/models/dayforce_v2_auth_params_dto.py
 visier_platform_sdk/models/delete_email_domains_dto.py
@@ -1187,6 +1230,7 @@ visier_platform_sdk/models/exclude_data_uploads_request.py
 visier_platform_sdk/models/excluded_sources_body.py
 visier_platform_sdk/models/execution_context_dto.py
 visier_platform_sdk/models/export_production_versions_api_operation_parameters_dto.py
+visier_platform_sdk/models/export_sources_parameters_dto.py
 visier_platform_sdk/models/extract_data_and_load_dto.py
 visier_platform_sdk/models/extraction_job.py
 visier_platform_sdk/models/extraction_job_and_status_response.py
@@ -1254,6 +1298,7 @@ visier_platform_sdk/models/level_list_dto.py
 visier_platform_sdk/models/leveled_details_dto.py
 visier_platform_sdk/models/lever_auth_params_dto.py
 visier_platform_sdk/models/lineage_dto.py
+visier_platform_sdk/models/linked_data_export.py
 visier_platform_sdk/models/list_query_execution_dto.py
 visier_platform_sdk/models/list_query_execution_options_dto.py
 visier_platform_sdk/models/list_query_source_dto.py
@@ -1352,6 +1397,7 @@ visier_platform_sdk/models/plan_info_dto.py
 visier_platform_sdk/models/plan_item_dto.py
 visier_platform_sdk/models/plan_parameter_definition_dto.py
 visier_platform_sdk/models/plan_parameter_value_dto.py
+visier_platform_sdk/models/plan_patch_assign_subplan_action_request.py
 visier_platform_sdk/models/plan_patch_consolidate_action_request.py
 visier_platform_sdk/models/plan_patch_end_collaboration_action_request.py
 visier_platform_sdk/models/plan_patch_reopen_action_request.py
@@ -1368,6 +1414,7 @@ visier_platform_sdk/models/plan_segment_level_member_list_dto.py
 visier_platform_sdk/models/plan_time_period_dto.py
 visier_platform_sdk/models/plan_with_schema_dto.py
 visier_platform_sdk/models/planning_concept_filter_context_dto.py
+visier_platform_sdk/models/planning_dimension_member.py
 visier_platform_sdk/models/planning_hierarchy_filter_context_dto.py
 visier_platform_sdk/models/planning_model_dto.py
 visier_platform_sdk/models/planning_models_dto.py
@@ -1552,6 +1599,7 @@ visier_platform_sdk/models/slack_auth_params_dto.py
 visier_platform_sdk/models/snapshot_query_execution_dto.py
 visier_platform_sdk/models/snapshot_query_execution_options_dto.py
 visier_platform_sdk/models/snowflake_auth_params_dto.py
+visier_platform_sdk/models/snowflake_credential_parameters.py
 visier_platform_sdk/models/snowflake_v2_auth_params_dto.py
 visier_platform_sdk/models/sort_option_dto.py
 visier_platform_sdk/models/source.py

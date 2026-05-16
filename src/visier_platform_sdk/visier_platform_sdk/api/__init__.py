@@ -7,6 +7,7 @@ from visier_platform_sdk.api.benchmarks_api import BenchmarksApi
 from visier_platform_sdk.api.concepts_v2_api import ConceptsV2Api
 from visier_platform_sdk.api.consolidated_analytics_api import ConsolidatedAnalyticsApi
 from visier_platform_sdk.api.data_and_job_handling_api import DataAndJobHandlingApi
+from visier_platform_sdk.api.data_export_connectors_api_api import DataExportConnectorsAPIApi
 from visier_platform_sdk.api.data_intake_api import DataIntakeApi
 from visier_platform_sdk.api.data_model_api import DataModelApi
 from visier_platform_sdk.api.data_query_api import DataQueryApi
