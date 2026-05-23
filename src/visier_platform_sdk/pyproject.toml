@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "visier_platform_sdk"
-version = "22222222.99201.2811"
+version = "22222222.99201.2826"
 description = "API Reference"
 authors = ["Visier <alpine@visier.com>"]
 license = "Apache License, Version 2.0"

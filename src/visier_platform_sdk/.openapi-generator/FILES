@@ -165,8 +165,10 @@ test/test_data_export_connector_credential_validation_request_with_id.py
 test/test_data_export_connector_credential_validation_request_with_parameters.py
 test/test_data_export_connector_credential_validation_response.py
 test/test_data_export_connector_job_dispatched.py
+test/test_data_export_connector_job_status.py
 test/test_data_export_connector_link.py
 test/test_data_export_connector_list_response.py
+test/test_data_export_connector_sync_job_status.py
 test/test_data_export_connectors_api_api.py
 test/test_data_intake_api.py
 test/test_data_load_request.py
@@ -885,6 +887,7 @@ test/test_vee_sample_question_library_v2_dto.py
 test/test_vee_sample_question_v2_dto.py
 test/test_vee_status_code_dto.py
 test/test_vee_status_dto.py
+test/test_vee_suggestion_dto.py
 test/test_vee_v1_api.py
 test/test_vee_v2_api.py
 test/test_vee_visual_dto.py
@@ -1121,8 +1124,10 @@ visier_platform_sdk/models/data_export_connector_credential_validation_request_w
 visier_platform_sdk/models/data_export_connector_credential_validation_request_with_parameters.py
 visier_platform_sdk/models/data_export_connector_credential_validation_response.py
 visier_platform_sdk/models/data_export_connector_job_dispatched.py
+visier_platform_sdk/models/data_export_connector_job_status.py
 visier_platform_sdk/models/data_export_connector_link.py
 visier_platform_sdk/models/data_export_connector_list_response.py
+visier_platform_sdk/models/data_export_connector_sync_job_status.py
 visier_platform_sdk/models/data_load_request.py
 visier_platform_sdk/models/data_load_request_model.py
 visier_platform_sdk/models/data_load_response.py
@@ -1804,6 +1809,7 @@ visier_platform_sdk/models/vee_sample_question_library_v2_dto.py
 visier_platform_sdk/models/vee_sample_question_v2_dto.py
 visier_platform_sdk/models/vee_status_code_dto.py
 visier_platform_sdk/models/vee_status_dto.py
+visier_platform_sdk/models/vee_suggestion_dto.py
 visier_platform_sdk/models/vee_visual_dto.py
 visier_platform_sdk/models/vee_visual_options_dto.py
 visier_platform_sdk/models/version_information_dto.py
