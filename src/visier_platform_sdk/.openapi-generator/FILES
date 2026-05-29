@@ -702,6 +702,8 @@ test/test_sql_source_io_format_dto_csv_format_dto.py
 test/test_sql_source_job_precondition_dto.py
 test/test_sql_source_job_status_summary_dto.py
 test/test_sql_source_list_output_file_parts_response_dto.py
+test/test_sql_source_materialized_view_config_dto.py
+test/test_sql_source_materialized_view_dependency_dto.py
 test/test_sql_source_process_action_dto.py
 test/test_sql_source_query_action_dto.py
 test/test_sql_source_query_output_dto.py
@@ -899,6 +901,7 @@ test/test_visier_object_search_request_dto.py
 test/test_visier_object_search_response_dto.py
 test/test_visier_object_search_result_dto.py
 test/test_visier_object_search_results_dto.py
+test/test_viva_glint_auth_params_dto.py
 test/test_webhook_basic_auth_credential_dto.py
 test/test_webhook_credentials_dto.py
 test/test_webhook_details_dto.py
@@ -1633,6 +1636,8 @@ visier_platform_sdk/models/sql_source_io_format_dto_csv_format_dto.py
 visier_platform_sdk/models/sql_source_job_precondition_dto.py
 visier_platform_sdk/models/sql_source_job_status_summary_dto.py
 visier_platform_sdk/models/sql_source_list_output_file_parts_response_dto.py
+visier_platform_sdk/models/sql_source_materialized_view_config_dto.py
+visier_platform_sdk/models/sql_source_materialized_view_dependency_dto.py
 visier_platform_sdk/models/sql_source_process_action_dto.py
 visier_platform_sdk/models/sql_source_query_action_dto.py
 visier_platform_sdk/models/sql_source_query_output_dto.py
@@ -1819,6 +1824,7 @@ visier_platform_sdk/models/visier_object_search_request_dto.py
 visier_platform_sdk/models/visier_object_search_response_dto.py
 visier_platform_sdk/models/visier_object_search_result_dto.py
 visier_platform_sdk/models/visier_object_search_results_dto.py
+visier_platform_sdk/models/viva_glint_auth_params_dto.py
 visier_platform_sdk/models/webhook_basic_auth_credential_dto.py
 visier_platform_sdk/models/webhook_credentials_dto.py
 visier_platform_sdk/models/webhook_details_dto.py
