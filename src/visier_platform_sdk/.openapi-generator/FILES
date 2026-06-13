@@ -454,6 +454,7 @@ test/test_perspective_configuration_dto.py
 test/test_perspective_node_dto.py
 test/test_pgp_keys_api.py
 test/test_plan_administration_api.py
+test/test_plan_context_dto.py
 test/test_plan_data_load_api.py
 test/test_plan_data_load_change_dto.py
 test/test_plan_data_load_change_list_dto.py
@@ -482,6 +483,7 @@ test/test_plan_with_schema_dto.py
 test/test_planning_concept_filter_context_dto.py
 test/test_planning_dimension_member.py
 test/test_planning_hierarchy_filter_context_dto.py
+test/test_planning_member_dto.py
 test/test_planning_model_dto.py
 test/test_planning_models_dto.py
 test/test_planning_plan_context_dto.py
@@ -740,6 +742,7 @@ test/test_system_status_api.py
 test/test_system_status_dto.py
 test/test_table_response_dto.py
 test/test_table_source_api.py
+test/test_table_source_request.py
 test/test_tag_map_element_dto.py
 test/test_tag_reference_dto.py
 test/test_tag_reference_list_dto.py
@@ -1397,6 +1400,7 @@ visier_platform_sdk/models/permissions_to_user_groups_request_dto.py
 visier_platform_sdk/models/persisted_cohort_filter_dto.py
 visier_platform_sdk/models/perspective_configuration_dto.py
 visier_platform_sdk/models/perspective_node_dto.py
+visier_platform_sdk/models/plan_context_dto.py
 visier_platform_sdk/models/plan_data_load_change_dto.py
 visier_platform_sdk/models/plan_data_load_change_list_dto.py
 visier_platform_sdk/models/plan_data_load_error_dto.py
@@ -1424,6 +1428,7 @@ visier_platform_sdk/models/plan_with_schema_dto.py
 visier_platform_sdk/models/planning_concept_filter_context_dto.py
 visier_platform_sdk/models/planning_dimension_member.py
 visier_platform_sdk/models/planning_hierarchy_filter_context_dto.py
+visier_platform_sdk/models/planning_member_dto.py
 visier_platform_sdk/models/planning_model_dto.py
 visier_platform_sdk/models/planning_models_dto.py
 visier_platform_sdk/models/planning_plan_context_dto.py
@@ -1672,6 +1677,7 @@ visier_platform_sdk/models/successful_local_tenant_profile_assignment_dto.py
 visier_platform_sdk/models/synonym_list_dto.py
 visier_platform_sdk/models/system_status_dto.py
 visier_platform_sdk/models/table_response_dto.py
+visier_platform_sdk/models/table_source_request.py
 visier_platform_sdk/models/tag_map_element_dto.py
 visier_platform_sdk/models/tag_reference_dto.py
 visier_platform_sdk/models/tag_reference_list_dto.py
