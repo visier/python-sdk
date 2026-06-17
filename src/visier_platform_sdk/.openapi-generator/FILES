@@ -74,6 +74,7 @@ test/test_bulk_data_access_set_delete_request_dto.py
 test/test_bulk_data_access_set_request_dto.py
 test/test_bulk_data_access_set_response_dto.py
 test/test_bulk_data_access_set_revert_request_dto.py
+test/test_bulk_promotion_demotion_event_data.py
 test/test_business_location_dto.py
 test/test_calculated_property_type_dto.py
 test/test_calculated_selection_concept_dto.py
@@ -460,6 +461,7 @@ test/test_plan_data_load_change_dto.py
 test/test_plan_data_load_change_list_dto.py
 test/test_plan_data_load_error_dto.py
 test/test_plan_data_upload_response_dto.py
+test/test_plan_events_api.py
 test/test_plan_info_dto.py
 test/test_plan_item_dto.py
 test/test_plan_parameter_definition_dto.py
@@ -482,6 +484,7 @@ test/test_plan_time_period_dto.py
 test/test_plan_with_schema_dto.py
 test/test_planning_concept_filter_context_dto.py
 test/test_planning_dimension_member.py
+test/test_planning_event_response.py
 test/test_planning_hierarchy_filter_context_dto.py
 test/test_planning_member_dto.py
 test/test_planning_model_dto.py
@@ -536,6 +539,8 @@ test/test_project_dto.py
 test/test_project_operation_request_dto.py
 test/test_project_operation_response_dto.py
 test/test_projects_api.py
+test/test_promoted_row_dto.py
+test/test_promotion_event_data.py
 test/test_properties_change_definitions_dto.py
 test/test_properties_delete_definitions_dto.py
 test/test_properties_dto.py
@@ -949,6 +954,7 @@ visier_platform_sdk/api/personalized_alerts_api.py
 visier_platform_sdk/api/pgp_keys_api.py
 visier_platform_sdk/api/plan_administration_api.py
 visier_platform_sdk/api/plan_data_load_api.py
+visier_platform_sdk/api/plan_events_api.py
 visier_platform_sdk/api/production_versions_api.py
 visier_platform_sdk/api/profiles_api.py
 visier_platform_sdk/api/projects_api.py
@@ -1042,6 +1048,7 @@ visier_platform_sdk/models/bulk_data_access_set_delete_request_dto.py
 visier_platform_sdk/models/bulk_data_access_set_request_dto.py
 visier_platform_sdk/models/bulk_data_access_set_response_dto.py
 visier_platform_sdk/models/bulk_data_access_set_revert_request_dto.py
+visier_platform_sdk/models/bulk_promotion_demotion_event_data.py
 visier_platform_sdk/models/business_location_dto.py
 visier_platform_sdk/models/calculated_property_type_dto.py
 visier_platform_sdk/models/calculated_selection_concept_dto.py
@@ -1427,6 +1434,7 @@ visier_platform_sdk/models/plan_time_period_dto.py
 visier_platform_sdk/models/plan_with_schema_dto.py
 visier_platform_sdk/models/planning_concept_filter_context_dto.py
 visier_platform_sdk/models/planning_dimension_member.py
+visier_platform_sdk/models/planning_event_response.py
 visier_platform_sdk/models/planning_hierarchy_filter_context_dto.py
 visier_platform_sdk/models/planning_member_dto.py
 visier_platform_sdk/models/planning_model_dto.py
@@ -1478,6 +1486,8 @@ visier_platform_sdk/models/project_commits_api_response_dto.py
 visier_platform_sdk/models/project_dto.py
 visier_platform_sdk/models/project_operation_request_dto.py
 visier_platform_sdk/models/project_operation_response_dto.py
+visier_platform_sdk/models/promoted_row_dto.py
+visier_platform_sdk/models/promotion_event_data.py
 visier_platform_sdk/models/properties_change_definitions_dto.py
 visier_platform_sdk/models/properties_delete_definitions_dto.py
 visier_platform_sdk/models/properties_dto.py
