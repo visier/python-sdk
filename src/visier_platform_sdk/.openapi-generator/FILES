@@ -284,6 +284,7 @@ test/test_event_alert_related_analysis_dto.py
 test/test_event_alert_related_content_dto.py
 test/test_event_alert_trigger_criteria_dto.py
 test/test_event_details_dto.py
+test/test_event_summary_dto.py
 test/test_exclude_data_uploads_request.py
 test/test_excluded_sources_body.py
 test/test_execution_context_dto.py
@@ -310,6 +311,7 @@ test/test_get_content_packages_api_response_dto.py
 test/test_get_data_access_sets_api_response_dto.py
 test/test_get_data_security_objects_api_response_dto.py
 test/test_get_event_alerts_response_dto.py
+test/test_get_events_response.py
 test/test_get_permissions_api_response_dto.py
 test/test_get_plan_list_response_dto.py
 test/test_get_production_versions_api_response_dto.py
@@ -1245,6 +1247,7 @@ visier_platform_sdk/models/event_alert_related_analysis_dto.py
 visier_platform_sdk/models/event_alert_related_content_dto.py
 visier_platform_sdk/models/event_alert_trigger_criteria_dto.py
 visier_platform_sdk/models/event_details_dto.py
+visier_platform_sdk/models/event_summary_dto.py
 visier_platform_sdk/models/exclude_data_uploads_request.py
 visier_platform_sdk/models/excluded_sources_body.py
 visier_platform_sdk/models/execution_context_dto.py
@@ -1271,6 +1274,7 @@ visier_platform_sdk/models/get_content_packages_api_response_dto.py
 visier_platform_sdk/models/get_data_access_sets_api_response_dto.py
 visier_platform_sdk/models/get_data_security_objects_api_response_dto.py
 visier_platform_sdk/models/get_event_alerts_response_dto.py
+visier_platform_sdk/models/get_events_response.py
 visier_platform_sdk/models/get_permissions_api_response_dto.py
 visier_platform_sdk/models/get_plan_list_response_dto.py
 visier_platform_sdk/models/get_production_versions_api_response_dto.py
