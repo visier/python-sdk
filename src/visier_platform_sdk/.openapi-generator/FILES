@@ -133,6 +133,8 @@ test/test_consolidated_analytics_api_tenant_list_response_dto.py
 test/test_consolidated_analytics_api_tenant_with_details.py
 test/test_consolidated_analytics_api_tenant_with_details_list_response_dto.py
 test/test_consolidated_analytics_job_request_dto.py
+test/test_content_package_artifact_dto.py
+test/test_content_package_artifact_type_dto.py
 test/test_content_package_dto.py
 test/test_copy_s3_auth_params_dto.py
 test/test_create_event_alert_request_dto.py
@@ -920,6 +922,9 @@ test/test_webhook_dto.py
 test/test_webhook_event_type_dto.py
 test/test_webhook_message_response_dto.py
 test/test_webhook_request_dto.py
+test/test_webhook_status_details_dto.py
+test/test_webhook_status_dto.py
+test/test_webhook_statuses_dto.py
 test/test_webhooks_api.py
 test/test_webhooks_dto.py
 test/test_willow_auth_params_dto.py
@@ -1108,6 +1113,8 @@ visier_platform_sdk/models/consolidated_analytics_api_tenant_list_response_dto.p
 visier_platform_sdk/models/consolidated_analytics_api_tenant_with_details.py
 visier_platform_sdk/models/consolidated_analytics_api_tenant_with_details_list_response_dto.py
 visier_platform_sdk/models/consolidated_analytics_job_request_dto.py
+visier_platform_sdk/models/content_package_artifact_dto.py
+visier_platform_sdk/models/content_package_artifact_type_dto.py
 visier_platform_sdk/models/content_package_dto.py
 visier_platform_sdk/models/copy_s3_auth_params_dto.py
 visier_platform_sdk/models/create_event_alert_request_dto.py
@@ -1854,6 +1861,9 @@ visier_platform_sdk/models/webhook_dto.py
 visier_platform_sdk/models/webhook_event_type_dto.py
 visier_platform_sdk/models/webhook_message_response_dto.py
 visier_platform_sdk/models/webhook_request_dto.py
+visier_platform_sdk/models/webhook_status_details_dto.py
+visier_platform_sdk/models/webhook_status_dto.py
+visier_platform_sdk/models/webhook_statuses_dto.py
 visier_platform_sdk/models/webhooks_dto.py
 visier_platform_sdk/models/willow_auth_params_dto.py
 visier_platform_sdk/models/workday_auth_params_dto.py
