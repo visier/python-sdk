@@ -304,6 +304,7 @@ test/test_failed_accessible_tenant_profile_assignment_dto.py
 test/test_failed_change_dto.py
 test/test_failed_local_tenant_profile_assignment_dto.py
 test/test_failed_local_tenant_profile_revoke_dto.py
+test/test_failed_share_entry.py
 test/test_filter_dto.py
 test/test_fixed_time_type_dto.py
 test/test_fusion_auth_params_dto.py
@@ -470,10 +471,13 @@ test/test_plan_info_dto.py
 test/test_plan_item_dto.py
 test/test_plan_parameter_definition_dto.py
 test/test_plan_parameter_value_dto.py
+test/test_plan_patch_action_result.py
 test/test_plan_patch_assign_subplan_action_request.py
 test/test_plan_patch_consolidate_action_request.py
 test/test_plan_patch_end_collaboration_action_request.py
 test/test_plan_patch_reopen_action_request.py
+test/test_plan_patch_request.py
+test/test_plan_patch_response.py
 test/test_plan_patch_start_collaboration_action_request.py
 test/test_plan_patch_submit_action_request.py
 test/test_plan_row_data_load_response_dto.py
@@ -485,6 +489,7 @@ test/test_plan_segment_level_dto.py
 test/test_plan_segment_level_member_dto.py
 test/test_plan_segment_level_member_list_dto.py
 test/test_plan_time_period_dto.py
+test/test_plan_user_share_entry.py
 test/test_plan_with_schema_dto.py
 test/test_planning_concept_filter_context_dto.py
 test/test_planning_dimension_member.py
@@ -669,6 +674,8 @@ test/test_set_connector_setting_response_dto.py
 test/test_set_connector_settings_request_dto.py
 test/test_set_connector_settings_response_dto.py
 test/test_settings_dto.py
+test/test_share_action_payload.py
+test/test_share_action_result.py
 test/test_shareable_data_access_set.py
 test/test_sidecar_solution_request_dto.py
 test/test_sidecar_solution_settings_dto.py
@@ -1272,6 +1279,7 @@ visier_platform_sdk/models/failed_accessible_tenant_profile_assignment_dto.py
 visier_platform_sdk/models/failed_change_dto.py
 visier_platform_sdk/models/failed_local_tenant_profile_assignment_dto.py
 visier_platform_sdk/models/failed_local_tenant_profile_revoke_dto.py
+visier_platform_sdk/models/failed_share_entry.py
 visier_platform_sdk/models/filter_dto.py
 visier_platform_sdk/models/fixed_time_type_dto.py
 visier_platform_sdk/models/fusion_auth_params_dto.py
@@ -1428,10 +1436,13 @@ visier_platform_sdk/models/plan_info_dto.py
 visier_platform_sdk/models/plan_item_dto.py
 visier_platform_sdk/models/plan_parameter_definition_dto.py
 visier_platform_sdk/models/plan_parameter_value_dto.py
+visier_platform_sdk/models/plan_patch_action_result.py
 visier_platform_sdk/models/plan_patch_assign_subplan_action_request.py
 visier_platform_sdk/models/plan_patch_consolidate_action_request.py
 visier_platform_sdk/models/plan_patch_end_collaboration_action_request.py
 visier_platform_sdk/models/plan_patch_reopen_action_request.py
+visier_platform_sdk/models/plan_patch_request.py
+visier_platform_sdk/models/plan_patch_response.py
 visier_platform_sdk/models/plan_patch_start_collaboration_action_request.py
 visier_platform_sdk/models/plan_patch_submit_action_request.py
 visier_platform_sdk/models/plan_row_data_load_response_dto.py
@@ -1443,6 +1454,7 @@ visier_platform_sdk/models/plan_segment_level_dto.py
 visier_platform_sdk/models/plan_segment_level_member_dto.py
 visier_platform_sdk/models/plan_segment_level_member_list_dto.py
 visier_platform_sdk/models/plan_time_period_dto.py
+visier_platform_sdk/models/plan_user_share_entry.py
 visier_platform_sdk/models/plan_with_schema_dto.py
 visier_platform_sdk/models/planning_concept_filter_context_dto.py
 visier_platform_sdk/models/planning_dimension_member.py
@@ -1621,6 +1633,8 @@ visier_platform_sdk/models/set_connector_setting_response_dto.py
 visier_platform_sdk/models/set_connector_settings_request_dto.py
 visier_platform_sdk/models/set_connector_settings_response_dto.py
 visier_platform_sdk/models/settings_dto.py
+visier_platform_sdk/models/share_action_payload.py
+visier_platform_sdk/models/share_action_result.py
 visier_platform_sdk/models/shareable_data_access_set.py
 visier_platform_sdk/models/sidecar_solution_request_dto.py
 visier_platform_sdk/models/sidecar_solution_settings_dto.py
