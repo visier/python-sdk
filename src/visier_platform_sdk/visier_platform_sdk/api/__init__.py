@@ -13,6 +13,7 @@ from visier_platform_sdk.api.data_model_api import DataModelApi
 from visier_platform_sdk.api.data_query_api import DataQueryApi
 from visier_platform_sdk.api.data_upload_api import DataUploadApi
 from visier_platform_sdk.api.data_version_export_api import DataVersionExportApi
+from visier_platform_sdk.api.data_version_snapshot_api import DataVersionSnapshotApi
 from visier_platform_sdk.api.dimensions_api import DimensionsApi
 from visier_platform_sdk.api.dimensions_v2_api import DimensionsV2Api
 from visier_platform_sdk.api.direct_data_intake_api import DirectDataIntakeApi
