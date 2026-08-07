@@ -138,6 +138,7 @@ test/test_content_package_artifact_dto.py
 test/test_content_package_artifact_type_dto.py
 test/test_content_package_dto.py
 test/test_copy_s3_auth_params_dto.py
+test/test_create_data_version_snapshot_request_dto.py
 test/test_create_event_alert_request_dto.py
 test/test_credential_creation_api_response_dto.py
 test/test_currencies_dto.py
@@ -215,6 +216,9 @@ test/test_data_version_export_schedule_job_response_dto.py
 test/test_data_version_export_table_dto.py
 test/test_data_version_exports_dto.py
 test/test_data_version_object.py
+test/test_data_version_snapshot_api.py
+test/test_data_version_snapshot_dto.py
+test/test_data_version_snapshot_list_response_dto.py
 test/test_databricks_auth_params_dto.py
 test/test_databricks_credential_parameters.py
 test/test_databricks_oidc_auth_params_dto.py
@@ -958,6 +962,7 @@ visier_platform_sdk/api/data_model_api.py
 visier_platform_sdk/api/data_query_api.py
 visier_platform_sdk/api/data_upload_api.py
 visier_platform_sdk/api/data_version_export_api.py
+visier_platform_sdk/api/data_version_snapshot_api.py
 visier_platform_sdk/api/dimensions_api.py
 visier_platform_sdk/api/dimensions_v2_api.py
 visier_platform_sdk/api/direct_data_intake_api.py
@@ -1128,6 +1133,7 @@ visier_platform_sdk/models/content_package_artifact_dto.py
 visier_platform_sdk/models/content_package_artifact_type_dto.py
 visier_platform_sdk/models/content_package_dto.py
 visier_platform_sdk/models/copy_s3_auth_params_dto.py
+visier_platform_sdk/models/create_data_version_snapshot_request_dto.py
 visier_platform_sdk/models/create_event_alert_request_dto.py
 visier_platform_sdk/models/credential_creation_api_response_dto.py
 visier_platform_sdk/models/currencies_dto.py
@@ -1198,6 +1204,8 @@ visier_platform_sdk/models/data_version_export_schedule_job_response_dto.py
 visier_platform_sdk/models/data_version_export_table_dto.py
 visier_platform_sdk/models/data_version_exports_dto.py
 visier_platform_sdk/models/data_version_object.py
+visier_platform_sdk/models/data_version_snapshot_dto.py
+visier_platform_sdk/models/data_version_snapshot_list_response_dto.py
 visier_platform_sdk/models/databricks_auth_params_dto.py
 visier_platform_sdk/models/databricks_credential_parameters.py
 visier_platform_sdk/models/databricks_oidc_auth_params_dto.py
