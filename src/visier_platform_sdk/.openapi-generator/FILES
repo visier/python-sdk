@@ -11,6 +11,7 @@ test/test_accessible_tenant_profile_revoke_response_dto.py
 test/test_additional_capabilities_dto.py
 test/test_admin_capability_config_dto.py
 test/test_adp_auth_params_dto.py
+test/test_advanced_filter_dto.py
 test/test_aggregate_query_execution_options_dto.py
 test/test_aggregation_query_dto.py
 test/test_aggregation_query_execution_dto.py
@@ -700,6 +701,7 @@ test/test_settings_dto.py
 test/test_share_action_payload.py
 test/test_share_action_result.py
 test/test_shareable_data_access_set.py
+test/test_shareable_security_filter_dto.py
 test/test_sidecar_solution_request_dto.py
 test/test_sidecar_solution_settings_dto.py
 test/test_sidecar_solutions_api.py
@@ -1028,6 +1030,7 @@ visier_platform_sdk/models/accessible_tenant_profile_revoke_response_dto.py
 visier_platform_sdk/models/additional_capabilities_dto.py
 visier_platform_sdk/models/admin_capability_config_dto.py
 visier_platform_sdk/models/adp_auth_params_dto.py
+visier_platform_sdk/models/advanced_filter_dto.py
 visier_platform_sdk/models/aggregate_query_execution_options_dto.py
 visier_platform_sdk/models/aggregation_query_dto.py
 visier_platform_sdk/models/aggregation_query_execution_dto.py
@@ -1682,6 +1685,7 @@ visier_platform_sdk/models/settings_dto.py
 visier_platform_sdk/models/share_action_payload.py
 visier_platform_sdk/models/share_action_result.py
 visier_platform_sdk/models/shareable_data_access_set.py
+visier_platform_sdk/models/shareable_security_filter_dto.py
 visier_platform_sdk/models/sidecar_solution_request_dto.py
 visier_platform_sdk/models/sidecar_solution_settings_dto.py
 visier_platform_sdk/models/simple_document_header_search_response_dto.py
