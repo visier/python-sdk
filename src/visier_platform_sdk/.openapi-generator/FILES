@@ -76,6 +76,8 @@ test/test_bulk_data_access_set_delete_request_dto.py
 test/test_bulk_data_access_set_request_dto.py
 test/test_bulk_data_access_set_response_dto.py
 test/test_bulk_data_access_set_revert_request_dto.py
+test/test_bulk_project_delete_request_dto.py
+test/test_bulk_project_delete_response_dto.py
 test/test_bulk_promotion_demotion_event_data.py
 test/test_bulk_security_filter_delete_request_dto.py
 test/test_bulk_security_filter_request_dto.py
@@ -563,6 +565,7 @@ test/test_profiles_api.py
 test/test_profiles_get_api_response_dto.py
 test/test_project_commit_dto.py
 test/test_project_commits_api_response_dto.py
+test/test_project_delete_failure_dto.py
 test/test_project_dto.py
 test/test_project_operation_request_dto.py
 test/test_project_operation_response_dto.py
@@ -1088,6 +1091,8 @@ visier_platform_sdk/models/bulk_data_access_set_delete_request_dto.py
 visier_platform_sdk/models/bulk_data_access_set_request_dto.py
 visier_platform_sdk/models/bulk_data_access_set_response_dto.py
 visier_platform_sdk/models/bulk_data_access_set_revert_request_dto.py
+visier_platform_sdk/models/bulk_project_delete_request_dto.py
+visier_platform_sdk/models/bulk_project_delete_response_dto.py
 visier_platform_sdk/models/bulk_promotion_demotion_event_data.py
 visier_platform_sdk/models/bulk_security_filter_delete_request_dto.py
 visier_platform_sdk/models/bulk_security_filter_request_dto.py
@@ -1547,6 +1552,7 @@ visier_platform_sdk/models/profile_get_api_response_dto.py
 visier_platform_sdk/models/profiles_get_api_response_dto.py
 visier_platform_sdk/models/project_commit_dto.py
 visier_platform_sdk/models/project_commits_api_response_dto.py
+visier_platform_sdk/models/project_delete_failure_dto.py
 visier_platform_sdk/models/project_dto.py
 visier_platform_sdk/models/project_operation_request_dto.py
 visier_platform_sdk/models/project_operation_response_dto.py
