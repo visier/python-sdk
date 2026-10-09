@@ -338,10 +338,13 @@ test/test_get_data_security_objects_api_response_dto.py
 test/test_get_event_alerts_response_dto.py
 test/test_get_events_response.py
 test/test_get_permissions_api_response_dto.py
+test/test_get_pilot_features_response_dto.py
 test/test_get_plan_list_response_dto.py
 test/test_get_production_versions_api_response_dto.py
 test/test_get_projects_api_response_dto.py
 test/test_get_security_filters_api_response_dto.py
+test/test_get_tenant_pilot_feature_configs_response_dto.py
+test/test_get_user_pilot_feature_configs_response_dto.py
 test/test_gong_auth_params_dto.py
 test/test_google_sheets_auth_params_dto.py
 test/test_google_workspace_auth_params_dto.py
@@ -480,6 +483,11 @@ test/test_personalized_alerts_api.py
 test/test_perspective_configuration_dto.py
 test/test_perspective_node_dto.py
 test/test_pgp_keys_api.py
+test/test_pilot_feature_dto.py
+test/test_pilot_feature_update_error_dto.py
+test/test_pilot_feature_update_failure_dto.py
+test/test_pilot_feature_update_success_dto.py
+test/test_pilot_features_api.py
 test/test_plan_administration_api.py
 test/test_plan_context_dto.py
 test/test_plan_data_load_api.py
@@ -698,6 +706,9 @@ test/test_set_connector_setting_request_dto.py
 test/test_set_connector_setting_response_dto.py
 test/test_set_connector_settings_request_dto.py
 test/test_set_connector_settings_response_dto.py
+test/test_set_pilot_feature_configs_response_dto.py
+test/test_set_tenant_pilot_feature_configs_request_dto.py
+test/test_set_user_pilot_feature_configs_request_dto.py
 test/test_settings_dto.py
 test/test_share_action_payload.py
 test/test_share_action_result.py
@@ -818,6 +829,7 @@ test/test_tenant_management_api_update_request_dto.py
 test/test_tenant_management_api_update_response_dto.py
 test/test_tenant_module_dto.py
 test/test_tenant_names_filter_dto.py
+test/test_tenant_pilot_feature_config_dto.py
 test/test_tenant_preview_entries_summary_dto.py
 test/test_tenant_preview_entries_summary_list_dto.py
 test/test_tenant_provision_apidto.py
@@ -868,6 +880,7 @@ test/test_user_groups_users_dto.py
 test/test_user_groups_users_for_tenant_dto.py
 test/test_user_groups_v2_api.py
 test/test_user_id_error_dto.py
+test/test_user_pilot_feature_config_dto.py
 test/test_user_property_dto.py
 test/test_user_security_assignments_dto.py
 test/test_user_update_api_request_dto.py
@@ -994,6 +1007,7 @@ visier_platform_sdk/api/object_configuration_api.py
 visier_platform_sdk/api/permissions_api.py
 visier_platform_sdk/api/personalized_alerts_api.py
 visier_platform_sdk/api/pgp_keys_api.py
+visier_platform_sdk/api/pilot_features_api.py
 visier_platform_sdk/api/plan_administration_api.py
 visier_platform_sdk/api/plan_data_load_api.py
 visier_platform_sdk/api/plan_events_api.py
@@ -1337,10 +1351,13 @@ visier_platform_sdk/models/get_data_security_objects_api_response_dto.py
 visier_platform_sdk/models/get_event_alerts_response_dto.py
 visier_platform_sdk/models/get_events_response.py
 visier_platform_sdk/models/get_permissions_api_response_dto.py
+visier_platform_sdk/models/get_pilot_features_response_dto.py
 visier_platform_sdk/models/get_plan_list_response_dto.py
 visier_platform_sdk/models/get_production_versions_api_response_dto.py
 visier_platform_sdk/models/get_projects_api_response_dto.py
 visier_platform_sdk/models/get_security_filters_api_response_dto.py
+visier_platform_sdk/models/get_tenant_pilot_feature_configs_response_dto.py
+visier_platform_sdk/models/get_user_pilot_feature_configs_response_dto.py
 visier_platform_sdk/models/gong_auth_params_dto.py
 visier_platform_sdk/models/google_sheets_auth_params_dto.py
 visier_platform_sdk/models/google_workspace_auth_params_dto.py
@@ -1472,6 +1489,10 @@ visier_platform_sdk/models/permissions_to_user_groups_request_dto.py
 visier_platform_sdk/models/persisted_cohort_filter_dto.py
 visier_platform_sdk/models/perspective_configuration_dto.py
 visier_platform_sdk/models/perspective_node_dto.py
+visier_platform_sdk/models/pilot_feature_dto.py
+visier_platform_sdk/models/pilot_feature_update_error_dto.py
+visier_platform_sdk/models/pilot_feature_update_failure_dto.py
+visier_platform_sdk/models/pilot_feature_update_success_dto.py
 visier_platform_sdk/models/plan_context_dto.py
 visier_platform_sdk/models/plan_data_load_change_dto.py
 visier_platform_sdk/models/plan_data_load_change_list_dto.py
@@ -1681,6 +1702,9 @@ visier_platform_sdk/models/set_connector_setting_request_dto.py
 visier_platform_sdk/models/set_connector_setting_response_dto.py
 visier_platform_sdk/models/set_connector_settings_request_dto.py
 visier_platform_sdk/models/set_connector_settings_response_dto.py
+visier_platform_sdk/models/set_pilot_feature_configs_response_dto.py
+visier_platform_sdk/models/set_tenant_pilot_feature_configs_request_dto.py
+visier_platform_sdk/models/set_user_pilot_feature_configs_request_dto.py
 visier_platform_sdk/models/settings_dto.py
 visier_platform_sdk/models/share_action_payload.py
 visier_platform_sdk/models/share_action_result.py
@@ -1797,6 +1821,7 @@ visier_platform_sdk/models/tenant_management_api_update_request_dto.py
 visier_platform_sdk/models/tenant_management_api_update_response_dto.py
 visier_platform_sdk/models/tenant_module_dto.py
 visier_platform_sdk/models/tenant_names_filter_dto.py
+visier_platform_sdk/models/tenant_pilot_feature_config_dto.py
 visier_platform_sdk/models/tenant_preview_entries_summary_dto.py
 visier_platform_sdk/models/tenant_preview_entries_summary_list_dto.py
 visier_platform_sdk/models/tenant_provision_apidto.py
@@ -1844,6 +1869,7 @@ visier_platform_sdk/models/user_groups_revert_request_dto.py
 visier_platform_sdk/models/user_groups_users_dto.py
 visier_platform_sdk/models/user_groups_users_for_tenant_dto.py
 visier_platform_sdk/models/user_id_error_dto.py
+visier_platform_sdk/models/user_pilot_feature_config_dto.py
 visier_platform_sdk/models/user_property_dto.py
 visier_platform_sdk/models/user_security_assignments_dto.py
 visier_platform_sdk/models/user_update_api_request_dto.py
