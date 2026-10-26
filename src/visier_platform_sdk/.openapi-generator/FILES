@@ -851,6 +851,7 @@ test/test_trigger_criteria_member_result_info_dto.py
 test/test_trigger_criteria_overall_result_info_dto.py
 test/test_trigger_criteria_result_info_dto.py
 test/test_ultimate_auth_params_dto.py
+test/test_update_connector_credential_dto.py
 test/test_update_event_alert_recipient_status_dto.py
 test/test_update_tenant_model.py
 test/test_upload_to_exclude.py
@@ -1845,6 +1846,7 @@ visier_platform_sdk/models/trigger_criteria_member_result_info_dto.py
 visier_platform_sdk/models/trigger_criteria_overall_result_info_dto.py
 visier_platform_sdk/models/trigger_criteria_result_info_dto.py
 visier_platform_sdk/models/ultimate_auth_params_dto.py
+visier_platform_sdk/models/update_connector_credential_dto.py
 visier_platform_sdk/models/update_event_alert_recipient_status_dto.py
 visier_platform_sdk/models/update_tenant_model.py
 visier_platform_sdk/models/upload_to_exclude.py
