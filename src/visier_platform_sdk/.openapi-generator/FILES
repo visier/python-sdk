@@ -126,7 +126,6 @@ test/test_concept_delete_with_context_dto.py
 test/test_concept_reference_filter_dto.py
 test/test_concept_request_dto.py
 test/test_concept_response_dto.py
-test/test_concept_search_context_dto.py
 test/test_concept_type_details_dto.py
 test/test_concept_with_context_dto.py
 test/test_concepts_v2_api.py
@@ -327,6 +326,7 @@ test/test_extractor_setting_apidto.py
 test/test_extractor_setting_key_value_apidto.py
 test/test_extractor_settings_apidto.py
 test/test_failed_accessible_tenant_profile_assignment_dto.py
+test/test_failed_accessible_tenant_profile_revoke_dto.py
 test/test_failed_change_dto.py
 test/test_failed_local_tenant_profile_assignment_dto.py
 test/test_failed_local_tenant_profile_revoke_dto.py
@@ -1160,7 +1160,6 @@ visier_platform_sdk/models/concept_delete_with_context_dto.py
 visier_platform_sdk/models/concept_reference_filter_dto.py
 visier_platform_sdk/models/concept_request_dto.py
 visier_platform_sdk/models/concept_response_dto.py
-visier_platform_sdk/models/concept_search_context_dto.py
 visier_platform_sdk/models/concept_type_details_dto.py
 visier_platform_sdk/models/concept_with_context_dto.py
 visier_platform_sdk/models/connector.py
@@ -1345,6 +1344,7 @@ visier_platform_sdk/models/extractor_setting_apidto.py
 visier_platform_sdk/models/extractor_setting_key_value_apidto.py
 visier_platform_sdk/models/extractor_settings_apidto.py
 visier_platform_sdk/models/failed_accessible_tenant_profile_assignment_dto.py
+visier_platform_sdk/models/failed_accessible_tenant_profile_revoke_dto.py
 visier_platform_sdk/models/failed_change_dto.py
 visier_platform_sdk/models/failed_local_tenant_profile_assignment_dto.py
 visier_platform_sdk/models/failed_local_tenant_profile_revoke_dto.py
