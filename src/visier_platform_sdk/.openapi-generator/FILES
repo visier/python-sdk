@@ -291,6 +291,7 @@ test/test_download_source_files_dto.py
 test/test_download_source_files_response_dto.py
 test/test_dv_export_status.py
 test/test_dynamic_dimension_filter_dto.py
+test/test_dynamic_dimension_value_filter_dto.py
 test/test_dynamic_property_mapping_dto.py
 test/test_echo_auth_params_dto.py
 test/test_echo_basic_auth_dto.py
@@ -1311,6 +1312,7 @@ visier_platform_sdk/models/download_source_files_dto.py
 visier_platform_sdk/models/download_source_files_response_dto.py
 visier_platform_sdk/models/dv_export_status.py
 visier_platform_sdk/models/dynamic_dimension_filter_dto.py
+visier_platform_sdk/models/dynamic_dimension_value_filter_dto.py
 visier_platform_sdk/models/dynamic_property_mapping_dto.py
 visier_platform_sdk/models/echo_auth_params_dto.py
 visier_platform_sdk/models/echo_basic_auth_dto.py
