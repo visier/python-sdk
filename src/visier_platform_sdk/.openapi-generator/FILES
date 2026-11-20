@@ -674,6 +674,8 @@ test/test_revert_permissions_request_dto.py
 test/test_role_modules_config_dto.py
 test/test_rule_dto.py
 test/test_rule_set_dto.py
+test/test_s4_hana_auth_params_dto.py
+test/test_s4_hana_o_auth_params_dto.py
 test/test_salary_benchmark_feedback_input.py
 test/test_salary_benchmark_input.py
 test/test_salary_benchmarks_batch_processing_failure_output.py
@@ -1677,6 +1679,8 @@ visier_platform_sdk/models/revert_permissions_request_dto.py
 visier_platform_sdk/models/role_modules_config_dto.py
 visier_platform_sdk/models/rule_dto.py
 visier_platform_sdk/models/rule_set_dto.py
+visier_platform_sdk/models/s4_hana_auth_params_dto.py
+visier_platform_sdk/models/s4_hana_o_auth_params_dto.py
 visier_platform_sdk/models/salary_benchmark_feedback_input.py
 visier_platform_sdk/models/salary_benchmark_input.py
 visier_platform_sdk/models/salary_benchmarks_batch_processing_failure_output.py
